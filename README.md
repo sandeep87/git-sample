@@ -1,2 +1,2 @@
-ccil_android_client
+CCIL Android Application
 ===================
