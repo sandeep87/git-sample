@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/teams_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOTIFICATIONS"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/teams_title"
+        android:background="@drawable/borderlines_teams" />
+
+    
+    <HorizontalScrollView
+        android:id="@+id/list_of_teams"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/teams_title"
+        android:layout_marginTop="5dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/teams_title"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/bengalururoyalslogo_teams" />
+
+            <ImageView
+                android:id="@+id/bengalore"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/bengalore_tigers_logo" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/chennairhinos_teamslogo" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/mumbaiheroeslogo_teams" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/telugu_warriors_logo_scoreboard_bowling" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="310dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/bengalore"
+        android:background="@drawable/team_title"
+        >
+
+        <TextView
+           android:id="@+id/team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="12dp"
+            android:text="BENGALURU ROYALS"
+            android:textColor="#000000" />
+    </RelativeLayout>
+
+    <ListView 
+        android:layout_height="250dp"
+        android:layout_width="fill_parent"
+        android:id="@+id/notification_players_list"
+        android:layout_below="@id/team"
+        android:layout_marginTop="105dp"
+        android:dividerHeight="0px"
+        android:cacheColorHint="#ffffff"></ListView>
+
+    
+</RelativeLayout>
