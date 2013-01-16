@@ -2,6 +2,8 @@
 
     <!-- Image Content Description -->
     <string name="splash_screen_logo">splash_screen_logo</string>
+    <string name="dot">dot</string>
+    <!-- End Content Description -->
     <string name="app_name">CCL</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>

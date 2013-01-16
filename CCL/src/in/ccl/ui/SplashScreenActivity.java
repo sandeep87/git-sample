@@ -1,5 +1,6 @@
 package in.ccl.ui;
 
+import in.ccl.helper.ServerResponse;
 import in.ccl.logging.Logger;
 import in.ccl.logging.ParadigmExceptionHandler;
 import in.ccl.util.AppPropertiesUtil;
@@ -18,11 +19,13 @@ import android.widget.ImageView;
  * @author Rajesh Babu | Paradigm Creatives
  */
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends Activity implements ServerResponse{
 
 	private Animation animationRotateCenter;
 
 	private ImageView floatingLogoImage;
+
+	private boolean isInitialDataLoaded;
 
 	/**
 	 * Called when the activity is first created.
@@ -35,25 +38,42 @@ public class SplashScreenActivity extends Activity {
 		// Setting the default layout
 		setContentView(R.layout.splash_screen);
 
-		// for animated splash screen.
+		// getting reference of ccl logo for animated splash screen
 		floatingLogoImage = (ImageView) findViewById(R.id.logo_image);
+		// creating rotate animation object by loading rotate_center anim properties.
 		animationRotateCenter = AnimationUtils.loadAnimation(this, R.anim.rotate_center);
+		// adding rotation animation lister to animation object to know the start and end of the animations.
 		animationRotateCenter.setAnimationListener(rotationAnimationListener);
+		// starting the animation for ccl logo on splash screen.
 		floatingLogoImage.startAnimation(animationRotateCenter);
 	}
 
 	AnimationListener rotationAnimationListener = new AnimationListener() {
 
 		public void onAnimationStart (Animation animation) {
-			initAppComponents(SplashScreenActivity.this); // initializing logs and application utilities.
+			// initializing logs and application utilities.
+			initAppComponents(getApplicationContext());
 		}
 
 		public void onAnimationRepeat (Animation animation) {
+			floatingLogoImage.startAnimation(animation);
 		}
 
 		public void onAnimationEnd (Animation animation) {
-			Intent nextActivityIntent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-			SplashScreenActivity.this.startActivityForResult(nextActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
+			// Here it should get data from server for home screen.
+			// isInitialDataLoaded is true when all required home screen data is downloaded from the server.
+			// in this case it should navigate to home screen.
+			if (!isInitialDataLoaded) {
+				Intent nextActivityIntent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+				SplashScreenActivity.this.startActivityForResult(nextActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
+			}
+			else {
+				// if initial data is not received from the server to show on home screen.
+				// here it repeat the animation, until it gets the data.
+				if (animationRotateCenter != null) {
+					onAnimationRepeat(animationRotateCenter);
+				}
+			}
 		}
 	};
 
@@ -90,6 +110,11 @@ public class SplashScreenActivity extends Activity {
 		// if user press back from Home activity splash screen should not be appear.
 		// so here it finishes the splash screen activity.
 		finish();
+	}
+
+	@Override
+	public void setData (String result) {
+		
 	}
 }// end of class
 

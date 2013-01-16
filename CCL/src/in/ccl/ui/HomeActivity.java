@@ -8,11 +8,8 @@ import in.ccl.model.Items;
 
 import java.util.ArrayList;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -118,7 +115,7 @@ public class HomeActivity extends TopActivity {
 
 		photoViewPager.setAdapter(new ImagePagerAdapter(this, photoGalleryList, Category.PHOTO));
 		photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager));
-    // for loading videos in home screen
+		// for loading videos in home screen
 		ArrayList <Items> videoGalleryList = new ArrayList <Items>();
 		// TODO loading dummy data for show casing the application, should load dynamically these data .
 		Items videoGalleryItem = new Items();
