@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="5dip"
-        android:layout_marginLeft="5dip"
-        android:layout_marginRight="5dip" >
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
 
         <TextView
             android:id="@+id/txt_banner_title"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:gravity="center"
             android:text="@string/banner_title"
             android:textColor="@android:color/black" />
 
@@ -22,10 +17,10 @@
             android:id="@+id/banner_page_indicator_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_gravity="right" >
 
             <ImageView
                 android:id="@+id/page_one_indicator"
@@ -52,15 +47,14 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/banner_view_pager"
             android:layout_width="fill_parent"
-            android:layout_height="165dp"
-            android:layout_below="@id/txt_banner_title"
-            android:background="@drawable/content_bg" />
+            android:layout_height="0dip"
+            android:background="@drawable/content_bg" 
+            android:layout_weight="3.5"/>
 
         <TextView
             android:id="@+id/txt_gallery_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/banner_view_pager"
             android:layout_marginTop="5dp"
             android:text="@string/photos"
             android:textColor="@android:color/black" />
@@ -69,11 +63,10 @@
             android:id="@+id/photo_page_indicator_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/banner_view_pager"
             android:layout_marginRight="5dp"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_gravity="right" >
 
             <ImageView
                 android:id="@+id/page_one_indicator"
@@ -100,15 +93,14 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/photo_view_pager"
             android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/txt_gallery_title"
-            android:background="@drawable/content_bg" />
+            android:layout_height="0dip"
+            android:background="@drawable/content_bg" 
+            android:layout_weight="4"/>
 
         <TextView
             android:id="@+id/txt_video_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/photo_view_pager"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
             android:text="@string/videos"
@@ -118,12 +110,10 @@
             android:id="@+id/video_page_indicator_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/photo_view_pager"
             android:layout_marginRight="5dp"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal" 
+            android:layout_gravity="right">
 
             <ImageView
                 android:id="@+id/page_one_indicator"
@@ -150,9 +140,13 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/video_view_pager"
             android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_below="@id/txt_video_title"
-            android:background="@drawable/content_bg" />
-    </RelativeLayout>
+            android:layout_height="0dip"
+            android:background="@drawable/content_bg" 
+            android:layout_weight="4"/>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dip" />
 
-</RelativeLayout>
+
+</LinearLayout>

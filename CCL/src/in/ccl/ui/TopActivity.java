@@ -275,7 +275,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		LayoutInflater inflate = LayoutInflater.from(this);
 		try {
 			View view = inflate.inflate(resourceId, null);
-			layoutContent.addView(view);
+			layoutContent.addView(view, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 		}
 		catch (InflateException e) {
 			Log.e(TAG, "Invalide resource id provided for adding content.");
