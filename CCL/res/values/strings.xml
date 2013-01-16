@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Image Content Description -->
+    <string name="splash_screen_logo">splash_screen_logo</string>
     <string name="app_name">CCL</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -18,7 +20,8 @@
     <string name="sample_score">BENGAL TIGERS 112/6 (18.2 OVERS)</string>
     <string name="sample_notification">INDRAJIT SCORES A SIX</string>
     <!--  -->
-    
+
+
     <!-- Menu Items -->
     <string name="home">HOME</string>
     <string name="news">NEWS</string>
@@ -31,7 +34,8 @@
     <string name="notifications">NOTIFICATIONS</string>
     <string name="downloads">DOWNLOADS</string>
     <!-- end of menu items -->
- <string name="owners_lounge">OWNERS LOUNGE</string>
+    <string name="owners_lounge">OWNERS LOUNGE</string>
     <string name="owners_info">VISHNU VARDHAN INDURI </string>
     <string name="proffession_info">FOUNDER AND MANAGINGDIRECTOR</string>
+
 </resources>

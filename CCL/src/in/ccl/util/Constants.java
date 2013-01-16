@@ -2,7 +2,7 @@ package in.ccl.util;
 
 public class Constants {
 
-	public static final long SPLASH_SCREEN_DURATION =0;
+	public static final int SPLASH_SCREEN_RESULT = 1;
 
 	public static final boolean DEBUG = true;
 
