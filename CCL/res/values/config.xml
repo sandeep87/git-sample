@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="banner_url">http://202.140.56.122/ccl/rest/sliders</string>
-    <string name="photo_album_url">http://202.140.56.122/ccl/rest/albums</string>
-    <string name="video_album_url">http://202.140.56.122/ccl/rest/videoalbums</string>
-    <string name="photo_gallery_url">http://202.140.56.122/ccl/rest/photos/</string>
-    <string name="video_gallery_url">http://202.140.56.122/ccl/rest/videos/</string>
-    <string name="team_url">http://202.140.56.122/ccl/rest/teams</string>
-    <string name="team_members_url">http://202.140.56.122/ccl/rest/members/</string>
-    <string name="news_url">http://202.140.56.122/ccl/rest/news/regional</string>
-     <string name="nation_news_url">http://202.140.56.122/ccl/rest/news/national</string>
-     <string name="downloads_url">http://202.140.56.122/ccl/rest/downloads</string>
+    <string name="banner_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/slidersv2</string>
+    <string name="photo_album_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/albumsv2</string>
+    <string name="video_album_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/videoalbumsv2</string>
 
 </resources>

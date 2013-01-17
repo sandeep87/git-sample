@@ -42,10 +42,10 @@ public class DownLoadAsynTask extends AsyncTask <String, Void, String> {
 	protected void onPreExecute () {
 
 		super.onPreExecute();
-		progressDialog = new ProgressDialog(context);
+	/*	progressDialog = new ProgressDialog(context);
 		progressDialog.setMessage(context.getResources().getString(R.string.loading));
 		progressDialog.show();
-	}
+	*/}
 
 	@Override
 	protected String doInBackground (String... params) {

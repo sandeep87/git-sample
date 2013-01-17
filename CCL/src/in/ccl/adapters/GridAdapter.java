@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
@@ -56,7 +56,7 @@ public class GridAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView (int position, View convertView, ViewGroup arg2) {
+	public View getView (int position, View convertView, ViewGroup parent) {
 		ViewHolder mViewHolder;
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.gallery_item, null);
@@ -65,9 +65,7 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.playImage = (ImageView) convertView.findViewById(R.id.img_play_icon);
 			mViewHolder.title = (TextView) convertView.findViewById(R.id.title);
 			mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
-
 			mViewHolder.spinner = (ProgressBar) convertView.findViewById(R.id.loading);
-			mViewHolder.image.setLayoutParams(new RelativeLayout.LayoutParams(143, 141));
 			mViewHolder.image.setScaleType(ImageView.ScaleType.FIT_XY);
 			mViewHolder.image.setPadding(5, 5, 5, 5);
 			convertView.setTag(mViewHolder);
@@ -77,9 +75,9 @@ public class GridAdapter extends BaseAdapter {
 		}
 		Util.setTextFont((Activity) mcontext, mViewHolder.title);
 		mViewHolder.image.setTag(gridItemsList.get(position).getUrl());
-		
+
 		DisplayImage displayImage = new DisplayImage(gridItemsList.get(position).getUrl(), mViewHolder.image, (Activity) mcontext, mViewHolder.spinner);
-	  displayImage.setErrorTitle(mViewHolder.errorTxt);
+		displayImage.setErrorTitle(mViewHolder.errorTxt);
 		if (isFrom.equals("video")) {
 			mViewHolder.title.setVisibility(View.INVISIBLE);
 			displayImage.setPlayIcon(mViewHolder.playImage);
@@ -101,7 +99,6 @@ public class GridAdapter extends BaseAdapter {
 			displayImage.setPlayIcon(null);
 		}
 		displayImage.show();
-
 		return convertView;
 	}
 

@@ -12,4 +12,10 @@ public class Constants {
 
 	public static final String EXTRA_ALBUM_TITLE = "photo_album_title";
 
+	public static final String EXTRA_BANNER_KEY = "extra_banner_key";
+
+	public static final String EXTRA_PHOTO_KEY = "extra_photo_key";
+
+	public static final String EXTRA_VIDEO_KEY = "extra_video_key";
+
 }

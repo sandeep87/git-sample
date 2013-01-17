@@ -40,4 +40,6 @@
     <string name="owners_info">VISHNU VARDHAN INDURI </string>
     <string name="proffession_info">FOUNDER AND MANAGINGDIRECTOR</string>
 
+    
+    <string name="network_error_message">No network available</string>
 </resources>

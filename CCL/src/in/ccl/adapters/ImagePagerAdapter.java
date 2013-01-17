@@ -3,7 +3,6 @@ package in.ccl.adapters;
 import in.ccl.helper.Category;
 import in.ccl.imageloader.DisplayImage;
 import in.ccl.model.Items;
-import in.ccl.ui.HomeActivity;
 import in.ccl.ui.PhotoGalleryActivity;
 import in.ccl.ui.R;
 import in.ccl.ui.VideoGalleryActivity;
@@ -19,9 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class ImagePagerAdapter extends PagerAdapter {
 
@@ -45,6 +46,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 		itemsList = list;
 		mCategory = category;
 		inflater = activity.getLayoutInflater();
+		System.out.println("Rajesh "+category +" "+list.size());
 	}
 
 	@Override
@@ -59,12 +61,13 @@ public class ImagePagerAdapter extends PagerAdapter {
 		ProgressBar spinner = null;
 
 		switch (mCategory) {
-		
+
 			case BANNER:
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 				imageView = (ImageView) imageLayout.findViewById(R.id.image);
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 				spinner = (ProgressBar) imageLayout.findViewById(R.id.loading);
+				System.out.println("BANNER "+itemsList.get(position).getUrl());
 				imageView.setTag(itemsList.get(position).getUrl());
 				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, spinner);
 				displayImage.show();
@@ -86,12 +89,13 @@ public class ImagePagerAdapter extends PagerAdapter {
 			default:
 				break;
 		}
-		((ViewPager) view).addView(imageLayout, 0);
+		((ViewPager) view).addView(imageLayout, new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
 		return imageLayout;
 	}
 
 	private View load (final String from, int position) {
-		GridView gridView = (GridView) inflater.inflate(R.layout.grid_view, null);
+		View view = inflater.inflate(R.layout.grid_view, null);
+		GridView gridView = (GridView)view.findViewById(R.id.grid_view) ;
 		ArrayList <Items> items = new ArrayList <Items>();
 		items.add(itemsList.get(VIEW_PAGER_PAGE_COUNT * position));
 		items.add(itemsList.get((VIEW_PAGER_PAGE_COUNT * position) + 1));
@@ -112,7 +116,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 				}
 			}
 		});
-		return gridView;
+		return view;
 	}
 
 	@Override
