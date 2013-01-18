@@ -67,8 +67,9 @@ public class ImageLoader {
 			if (cache.containsKey(displayImage.getUrl())) {
 				Bitmap bmp = cache.get(displayImage.getUrl());
 				if (bmp != null) {
-					Drawable drawable = new BitmapDrawable(bmp);
-					displayImage.getImageView().setBackgroundDrawable(drawable);
+					displayImage.getImageView().setImageBitmap(bmp);
+					//Drawable drawable = new BitmapDrawable(bmp);
+					//displayImage.getImageView().setBackgroundDrawable(drawable);
 					listener.onLoadingComplete(bmp);
 				}
 				else {
