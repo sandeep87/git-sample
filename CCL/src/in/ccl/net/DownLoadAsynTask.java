@@ -33,8 +33,12 @@ public class DownLoadAsynTask extends AsyncTask <String, Void, String> {
 
 	private ServerResponse serverResponse;
 
-	public DownLoadAsynTask (Context context, ServerResponse serverResponse) {
+	// if this class is called from home screen so that shouldn't display progress.
+	private boolean isHomeCall;
+
+	public DownLoadAsynTask (Context context, ServerResponse serverResponse, boolean isHomeCall) {
 		this.context = context;
+		this.isHomeCall = isHomeCall;
 		this.serverResponse = serverResponse;
 	}
 
@@ -42,10 +46,12 @@ public class DownLoadAsynTask extends AsyncTask <String, Void, String> {
 	protected void onPreExecute () {
 
 		super.onPreExecute();
-	/*	progressDialog = new ProgressDialog(context);
-		progressDialog.setMessage(context.getResources().getString(R.string.loading));
-		progressDialog.show();
-	*/}
+		if (!isHomeCall) {
+			progressDialog = new ProgressDialog(context);
+			progressDialog.setMessage(context.getResources().getString(R.string.loading));
+			progressDialog.show();
+		}
+	}
 
 	@Override
 	protected String doInBackground (String... params) {

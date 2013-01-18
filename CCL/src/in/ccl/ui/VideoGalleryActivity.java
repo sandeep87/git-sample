@@ -1,6 +1,10 @@
 package in.ccl.ui;
 
 import in.ccl.adapters.GridAdapter;
+import in.ccl.helper.ServerResponse;
+import in.ccl.model.Items;
+import in.ccl.net.DownLoadAsynTask;
+import in.ccl.parser.CCLParser;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
@@ -12,18 +16,26 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
-public class VideoGalleryActivity extends TopActivity {
+public class VideoGalleryActivity extends TopActivity implements ServerResponse {
 
 	public static ArrayList <Integer> photo_albums = new ArrayList <Integer>();
 
 	private GridView gridView;
+
+	private ArrayList <Items> videoGalleryList;
+
+	private String albumTitle;
 
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.grid_layout);
-		int albumId = getIntent().getIntExtra(Constants.EXTRA_ALBUM_ID, -1);
+
+		if (getIntent().hasExtra(Constants.EXTRA_VIDEO_KEY)) {
+			videoGalleryList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY);
+		}
+
 		TextView txtAlbumHeader = (TextView) findViewById(R.id.txt_album_header);
 		txtAlbumHeader.setText(getResources().getString(R.string.videos));
 
@@ -31,21 +43,28 @@ public class VideoGalleryActivity extends TopActivity {
 		txtSeperator.setVisibility(View.GONE);
 
 		gridView = (GridView) findViewById(R.id.photos_gridview);
-
-		gridView.setAdapter(new GridAdapter(VideoGalleryActivity.this, PhotoGalleryActivity.addDummyData(), "video_gallery"));
-
+		if (videoGalleryList != null) {
+			gridView.setAdapter(new GridAdapter(VideoGalleryActivity.this, videoGalleryList, "video_gallery"));
+		}
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View view, int position, long arg3) {
-				// Sending image id to FullScreenActivity
-				Intent photoAlbumIntent = new Intent(getApplicationContext(), VideoAlbumActivity.class);
-				photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, 1);
-				photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, "Chennai Rhinos vs Mumbai Heroes");
 
-				startActivity(photoAlbumIntent);
+				DownLoadAsynTask asyncTask = new DownLoadAsynTask(VideoGalleryActivity.this, VideoGalleryActivity.this, false);
+				asyncTask.execute(getResources().getString(R.string.video_gallery_url) + videoGalleryList.get(position).getId());
+				albumTitle = videoGalleryList.get(position).getTitle();
 			}
 		});
 
+	}
+
+	@Override
+	public void setData (String result) {
+		Intent photoAlbumIntent = new Intent(getApplicationContext(), VideoAlbumActivity.class);
+		photoAlbumIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS,CCLParser.videoAlbumParser(result));
+		photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, albumTitle);
+		startActivity(photoAlbumIntent);
+	
 	}
 }

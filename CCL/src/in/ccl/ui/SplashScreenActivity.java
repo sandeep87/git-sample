@@ -73,7 +73,7 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 		initAppComponents(SplashScreenActivity.this);
 
 		if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
-			asyncTask = new DownLoadAsynTask(this, this);
+			asyncTask = new DownLoadAsynTask(this, this, true);
 			mRequestType = RequestType.BANNER_REQUEST;
 			asyncTask.execute(getResources().getString(R.string.banner_url));
 		}
@@ -162,7 +162,7 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 					// parsing server banner items response.
 					bannerList = CCLService.getBannerItems(result);
 					// for downloading photo album data.
-					asyncTask = new DownLoadAsynTask(this, this);
+					asyncTask = new DownLoadAsynTask(this, this, true);
 					mRequestType = RequestType.PHOTO_ALBUMREQUEST;
 					asyncTask.execute(getResources().getString(R.string.photo_album_url));
 
@@ -171,7 +171,7 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 					// parsing server photo album responose.
 					photoGalleryList = CCLService.getPhotoAlbums(result);
 					// for downloading video albums.
-					asyncTask = new DownLoadAsynTask(this, this);
+					asyncTask = new DownLoadAsynTask(this, this, true);
 					mRequestType = RequestType.VIDEO_ALBUMREQUEST;
 					asyncTask.execute(getResources().getString(R.string.video_album_url));
 					break;
@@ -179,7 +179,9 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 					// parsing video album response.
 					videoGalleryList = CCLService.getVideoAlbums(result);
 					// to finish the animation, it will be executed in onAnimation end method.
-					isInitialDataLoaded = true;
+					if (videoGalleryList != null) {
+						isInitialDataLoaded = true;
+					}
 					break;
 				default:
 					break;

@@ -2,12 +2,16 @@ package in.ccl.net;
 
 import in.ccl.logging.Logger;
 import in.ccl.model.Items;
+import in.ccl.ui.R;
+import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.content.Context;
 
 public class CCLService {
 
@@ -46,10 +50,6 @@ public class CCLService {
 			Logger.info(TAG, e.toString());
 		}
 		return photoGalleryList;
-	}
-
-	public static void getPhotosFromAlbum (int photoAlbumId) {
-
 	}
 
 	public static ArrayList <Items> getBannerItems (String bannerJson) {
@@ -116,16 +116,33 @@ public class CCLService {
 				}
 				videoGalleryList.add(videoGalleryItem);
 			}
-			// designHomeVideoGallery(videoGalleryList);
 		}
 		catch (JSONException e) {
 			Logger.info(TAG, e.toString());
 		}
-		System.out.println("Title "+videoGalleryList.size());
 		return videoGalleryList;
 	}
 
-	public static void getVideosFromAlum (int videoAlbumId) {
+	public static ArrayList <Items> getVideosFromAlbum (Context ctx, int videoAlbumId) {
+		new Download(ctx, Constants.VIDEO_PARSER, new CCLDownloadListener() {
+
+			@Override
+			public ArrayList <Items> downloadCompleted (ArrayList <Items> resultList) {
+				return resultList;
+			}
+		}).start(ctx.getResources().getString(R.string.video_album_url));
+		return null;
+	}
+
+	public static ArrayList <Items> getPhotosFromAlbum (Context ctx, int photoAlbumId) {
+		new Download(ctx, Constants.PHOTO_PARSER, new CCLDownloadListener() {
+
+			@Override
+			public ArrayList <Items> downloadCompleted (ArrayList <Items> resultList) {
+				return resultList;
+			}
+		}).start(ctx.getResources().getString(R.string.photo_album_url + photoAlbumId));
+		return null;
 
 	}
 

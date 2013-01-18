@@ -14,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 public class GridAdapter extends BaseAdapter {
@@ -75,9 +73,15 @@ public class GridAdapter extends BaseAdapter {
 		}
 		Util.setTextFont((Activity) mcontext, mViewHolder.title);
 		mViewHolder.image.setTag(gridItemsList.get(position).getUrl());
-
-		DisplayImage displayImage = new DisplayImage(gridItemsList.get(position).getUrl(), mViewHolder.image, (Activity) mcontext, mViewHolder.spinner);
+		DisplayImage displayImage = null;
+		if (isFrom.equals("photo")|| isFrom.equals("video")) {
+			displayImage = new DisplayImage(gridItemsList.get(position).getThumbUrl(), mViewHolder.image, (Activity) mcontext, mViewHolder.spinner);
+		}
+		else {
+			displayImage = new DisplayImage(gridItemsList.get(position).getUrl(), mViewHolder.image, (Activity) mcontext, mViewHolder.spinner);
+		}
 		displayImage.setErrorTitle(mViewHolder.errorTxt);
+
 		if (isFrom.equals("video")) {
 			mViewHolder.title.setVisibility(View.INVISIBLE);
 			displayImage.setPlayIcon(mViewHolder.playImage);

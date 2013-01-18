@@ -1,6 +1,7 @@
 package in.ccl.imageloader;
 
 import in.ccl.helper.Util;
+import in.ccl.logging.Logger;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.view.View;
@@ -20,14 +21,13 @@ public class DisplayImage implements ImageLoadingListener {
 
 	// if video is loading should enable paly icon once loading is completed.
 	private ImageView playIcon;
+
 	private TextView errorTitle;
 
-	
 	public TextView getErrorTitle () {
 		return errorTitle;
 	}
 
-	
 	public void setErrorTitle (TextView errorTitle) {
 		this.errorTitle = errorTitle;
 	}
@@ -66,7 +66,7 @@ public class DisplayImage implements ImageLoadingListener {
 	@Override
 	public void onLoadingStarted () {
 		spinner.setVisibility(View.VISIBLE);
-		if(errorTitle != null){
+		if (errorTitle != null) {
 			errorTitle.setVisibility(View.GONE);
 		}
 	}
@@ -77,7 +77,7 @@ public class DisplayImage implements ImageLoadingListener {
 		if (getPlayIcon() != null) {
 			getPlayIcon().setVisibility(View.VISIBLE);
 		}
-		if(errorTitle != null){
+		if (errorTitle != null) {
 			errorTitle.setVisibility(View.GONE);
 		}
 	}
@@ -96,8 +96,9 @@ public class DisplayImage implements ImageLoadingListener {
 				message = "Unknown error";
 				break;
 		}
-		spinner.setVisibility(View.GONE);	
-		if(errorTitle != null){
+		spinner.setVisibility(View.GONE);
+		Logger.info("DisplayImage", message);
+		if (errorTitle != null) {
 			errorTitle.setVisibility(View.VISIBLE);
 			Util.setTextFont(activity, errorTitle);
 			errorTitle.setText("Unable to load image");

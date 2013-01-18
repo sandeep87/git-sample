@@ -1,11 +1,15 @@
 package in.ccl.adapters;
 
 import in.ccl.helper.Category;
+import in.ccl.helper.ServerResponse;
 import in.ccl.imageloader.DisplayImage;
 import in.ccl.model.Items;
+import in.ccl.net.CCLService;
+import in.ccl.net.DownLoadAsynTask;
 import in.ccl.ui.PhotoGalleryActivity;
 import in.ccl.ui.R;
 import in.ccl.ui.VideoGalleryActivity;
+import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
@@ -24,7 +28,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 
-public class ImagePagerAdapter extends PagerAdapter {
+public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 
 	private LayoutInflater inflater;
 
@@ -36,6 +40,12 @@ public class ImagePagerAdapter extends PagerAdapter {
 
 	private static final int VIEW_PAGER_PAGE_COUNT = 3;
 
+	private enum RequestType {
+		NO_REQUEST, PHOTOGALLERY_REQUEST, VIDEOGALLERY_REQUEST;
+	}
+
+	RequestType mRequestType = RequestType.NO_REQUEST;
+
 	@Override
 	public void destroyItem (ViewGroup container, int position, Object object) {
 		((ViewPager) container).removeView((View) object);
@@ -46,7 +56,6 @@ public class ImagePagerAdapter extends PagerAdapter {
 		itemsList = list;
 		mCategory = category;
 		inflater = activity.getLayoutInflater();
-		System.out.println("Rajesh "+category +" "+list.size());
 	}
 
 	@Override
@@ -63,19 +72,22 @@ public class ImagePagerAdapter extends PagerAdapter {
 		switch (mCategory) {
 
 			case BANNER:
+				mRequestType = RequestType.NO_REQUEST;
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 				imageView = (ImageView) imageLayout.findViewById(R.id.image);
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 				spinner = (ProgressBar) imageLayout.findViewById(R.id.loading);
-				System.out.println("BANNER "+itemsList.get(position).getUrl());
+				System.out.println("BANNER " + itemsList.get(position).getUrl());
 				imageView.setTag(itemsList.get(position).getUrl());
 				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, spinner);
 				displayImage.show();
 				break;
 			case PHOTO:
+				mRequestType = RequestType.PHOTOGALLERY_REQUEST;
 				imageLayout = load("photo_gallery", position);
 				break;
 			case VIDEO:
+				mRequestType = RequestType.VIDEOGALLERY_REQUEST;
 				imageLayout = load("video_gallery", position);
 				break;
 			case FULL_SCREEN:
@@ -95,8 +107,8 @@ public class ImagePagerAdapter extends PagerAdapter {
 
 	private View load (final String from, int position) {
 		View view = inflater.inflate(R.layout.grid_view, null);
-		GridView gridView = (GridView)view.findViewById(R.id.grid_view) ;
-		ArrayList <Items> items = new ArrayList <Items>();
+		GridView gridView = (GridView) view.findViewById(R.id.grid_view);
+		final ArrayList <Items> items = new ArrayList <Items>();
 		items.add(itemsList.get(VIEW_PAGER_PAGE_COUNT * position));
 		items.add(itemsList.get((VIEW_PAGER_PAGE_COUNT * position) + 1));
 		items.add(itemsList.get((VIEW_PAGER_PAGE_COUNT * position) + 2));
@@ -105,14 +117,15 @@ public class ImagePagerAdapter extends PagerAdapter {
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick (AdapterView <?> arg0, View arg1, int arg2, long arg3) {
+			public void onItemClick (AdapterView <?> arg0, View arg1, int position, long arg3) {
+				DownLoadAsynTask asyncTask = null;
 				if (from.equals("video_gallery")) {
-					Intent photoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
-					activity.startActivity(photoGalleryIntent);
+					asyncTask = new DownLoadAsynTask(activity, ImagePagerAdapter.this, false);
+					asyncTask.execute(activity.getResources().getString(R.string.video_album_url));
 				}
 				else if (from.equals("photo_gallery")) {
-					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
-					activity.startActivity(photoGalleryIntent);
+					asyncTask = new DownLoadAsynTask(activity, ImagePagerAdapter.this, false);
+					asyncTask.execute(activity.getResources().getString(R.string.photo_album_url));
 				}
 			}
 		});
@@ -122,7 +135,24 @@ public class ImagePagerAdapter extends PagerAdapter {
 	@Override
 	public boolean isViewFromObject (View view, Object object) {
 		return view.equals(object);
-
 	}
 
+	@Override
+	public void setData (String result) {
+		switch (mRequestType) {
+			case PHOTOGALLERY_REQUEST:
+				Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
+				photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, CCLService.getPhotoAlbums(result));
+				activity.startActivity(photoGalleryIntent);
+				break;
+			case VIDEOGALLERY_REQUEST:
+				Intent videoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
+				videoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, CCLService.getVideoAlbums(result));
+				activity.startActivity(videoGalleryIntent);
+				break;
+
+			default:
+				break;
+		}
+	}
 }

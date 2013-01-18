@@ -154,7 +154,6 @@ public class ImageLoader {
 						photosToLoad.remove(j);
 					else
 						++j;
-
 				}
 			}
 			catch (ArrayIndexOutOfBoundsException e) {

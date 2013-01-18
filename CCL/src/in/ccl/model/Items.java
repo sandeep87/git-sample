@@ -9,6 +9,16 @@ public class Items implements Parcelable {
 
 	private String url;
 
+	private String thumbUrl;
+
+	public String getThumbUrl () {
+		return thumbUrl;
+	}
+
+	public void setThumbUrl (String thumb_url) {
+		this.thumbUrl = thumb_url;
+	}
+
 	private String title;
 
 	private String videoUrl;
@@ -74,6 +84,7 @@ public class Items implements Parcelable {
 		setTitle(in.readString());
 		setUrl(in.readString());
 		setVideoUrl(in.readString());
+		setThumbUrl(in.readString());
 	}
 
 	@Override
@@ -82,6 +93,7 @@ public class Items implements Parcelable {
 		dest.writeString(getTitle());
 		dest.writeString(getUrl());
 		dest.writeString(getVideoUrl());
+		dest.writeString(getThumbUrl());
 	}
 
 }

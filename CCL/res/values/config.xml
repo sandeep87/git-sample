@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="banner_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/slidersv2</string>
+    <string name="banner_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/slidersv2?limit=3</string>
     <string name="photo_album_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/albumsv2</string>
     <string name="video_album_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/videoalbumsv2</string>
+    <string name="photo_gallery_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/photos/</string>
+    <string name="video_gallery_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/videos/</string>
+    <string name="team_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/teams</string>
+    <string name="team_members_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/members/</string>
+    <string name="news_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/news/regional</string>
+    <string name="nation_news_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/news/national</string>
+    <string name="downloads_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/downloads</string>
 
 </resources>

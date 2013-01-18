@@ -47,20 +47,26 @@ public class HomeActivity extends TopActivity {
 		ArrayList <Items> videoGalleryList = null;
 
 		if (getIntent().hasExtra(Constants.EXTRA_BANNER_KEY)) {
-			System.out.println("HAS DATA");
 			bannerItemsList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_BANNER_KEY);
 			photoGalleryList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY);
 			videoGalleryList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY);
 		}
-		bannerViewPager.setAdapter(new ImagePagerAdapter(this, bannerItemsList, Category.BANNER));
-		bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager));
-
+		if (bannerItemsList != null) {
+			bannerViewPager.setAdapter(new ImagePagerAdapter(this, bannerItemsList, Category.BANNER));
+			bannerViewPager.setOnClickListener(null);
+			bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager));
+		}
 		// for photos
-		photoViewPager.setAdapter(new ImagePagerAdapter(this, photoGalleryList, Category.PHOTO));
-		photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager));
+		if (photoGalleryList != null) {
+			photoViewPager.setAdapter(new ImagePagerAdapter(this, photoGalleryList, Category.PHOTO));
+			photoViewPager.setOnClickListener(null);
+			photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager));
+		}
 		// for loading videos in home screen
-		System.out.println("length "+videoGalleryList);
-		videoViewPager.setAdapter(new ImagePagerAdapter(this, videoGalleryList, Category.VIDEO));
-		videoViewPager.setOnPageChangeListener(new PageChangeListener(videoPageIndicatorLayout, videoViewPager));
+		if (videoGalleryList != null) {
+			videoViewPager.setAdapter(new ImagePagerAdapter(this, videoGalleryList, Category.VIDEO));
+			videoViewPager.setOnClickListener(null);
+			videoViewPager.setOnPageChangeListener(new PageChangeListener(videoPageIndicatorLayout, videoViewPager));
+		}
 	}
 }
