@@ -19,13 +19,13 @@
             android:gravity="left|center_vertical"
             android:text="@string/banner_title"
             android:textColor="@android:color/black"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
         <LinearLayout
             android:id="@+id/banner_page_indicator_layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:gravity="right|center_vertical"
             android:orientation="horizontal" >
 
@@ -72,13 +72,13 @@
             android:layout_gravity="left|center_vertical"
             android:text="@string/photos"
             android:textColor="@android:color/black"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
         <LinearLayout
             android:id="@+id/photo_page_indicator_layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:gravity="right|center_vertical"
             android:orientation="horizontal" >
 
@@ -109,7 +109,7 @@
         android:id="@+id/photo_view_pager"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="9"
+        android:layout_weight="10"
         android:background="@drawable/content_bg" />
 
     <LinearLayout
@@ -124,14 +124,14 @@
             android:layout_height="wrap_content"
             android:text="@string/videos"
             android:textColor="@android:color/black"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
         <LinearLayout
             android:id="@+id/video_page_indicator_layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:gravity="right|center_vertical"
             android:orientation="horizontal" >
 
@@ -162,11 +162,11 @@
         android:id="@+id/video_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="9"
+        android:layout_weight="10"
         android:background="@drawable/content_bg" />
 
-    <View
+   <!--  <View
         android:layout_width="match_parent"
         android:layout_height="10dip" />
-
+ -->
 </LinearLayout>

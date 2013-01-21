@@ -1,13 +1,16 @@
 package in.ccl.imageloader;
 
-import java.io.File;
-import java.io.FilterInputStream;
-import java.io.IOException;
+import in.ccl.ui.R;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Stack;
+import java.util.Map;
+import java.util.WeakHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,283 +20,202 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.assist.FlushedInputStream;
+
 public class ImageLoader {
 
-	public static Bitmap bmp;
+	FileCache fileCache;
 
-	// the simplest in-memory cache implementation. This should be replaced with something like SoftReference or BitmapOptions.inPurgeable(since 1.6)
+	private Map <ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap <ImageView, String>());
+
 	private static HashMap <String, Bitmap> cache = new HashMap <String, Bitmap>();
 
-	private File cacheDir;
+	ExecutorService executorService;
 
-	private Context mContext;
+	/**
+	 * Constructor for Image Loader
+	 * 
+	 * @param context application context
+	 */
+	public ImageLoader (Context context) {
+		fileCache = new FileCache(context);
+		executorService = Executors.newFixedThreadPool(5);
+	}
 
 	private volatile static ImageLoader instance;
 
 	/** Returns singleton class instance */
-	public static ImageLoader getInstance () {
+	public static ImageLoader getInstance (Context ctx) {
 		if (instance == null) {
 			synchronized (ImageLoader.class) {
 				if (instance == null) {
-					instance = new ImageLoader();
+					instance = new ImageLoader(ctx);
 				}
 			}
 		}
 		return instance;
 	}
 
-	protected ImageLoader () {
-	}
+	final int stub_id = R.raw.pre_loader;
 
-	public ImageLoader (Context context) {
-		mContext = context;
-		// Make the background thead low priority. This way it will not affect the UI performance
-		photoLoaderThread.setPriority(Thread.NORM_PRIORITY - 1);
-
-		// Find the dir to save cached images
-		if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-			cacheDir = new File(android.os.Environment.getExternalStorageDirectory(), "LazyList");
-		else
-			cacheDir = mContext.getCacheDir();
-		if (!cacheDir.exists())
-			cacheDir.mkdirs();
-	}
-
-	// final int stub_id = R.drawable.ccl_no_avatar;
-
-	public void displayImage (DisplayImage displayImage, ImageLoadingListener listener) {
-		listener.onLoadingStarted();
-		if (displayImage != null) {
-			if (cache.containsKey(displayImage.getUrl())) {
-				Bitmap bmp = cache.get(displayImage.getUrl());
-				if (bmp != null) {
-					displayImage.getImageView().setImageBitmap(bmp);
-					//Drawable drawable = new BitmapDrawable(bmp);
-					//displayImage.getImageView().setBackgroundDrawable(drawable);
-					listener.onLoadingComplete(bmp);
-				}
-				else {
-					listener.onLoadingFailed(FailToLoad.IO_ERROR);
-				}
+	/**
+	 * It displays image.
+	 * 
+	 * @param url as {@link String}
+	 * @param imageView {@link ImageView}
+	 */
+	public void displayImage (final DisplayImage displayImage, final ImageLoadingListener listener) {
+		imageViews.put(displayImage.getImageView(), displayImage.getUrl());
+		if (cache.containsKey(displayImage.getUrl())) {
+			Bitmap bitmap = cache.get(displayImage.getUrl());
+			if (bitmap != null) {
+				Drawable background = new BitmapDrawable(displayImage.getActivity().getResources(),bitmap);				 
+				displayImage.getImageView().setBackgroundDrawable(background);
+				listener.onLoadingComplete(bitmap);
 			}
 			else {
-				queuePhoto(displayImage.getUrl(), displayImage.getActivity(), displayImage.getImageView(), listener);
-				// imageView.Resource(stub_id);
+				displayImage.getImageView().setBackgroundResource(stub_id);
+
+				listener.onLoadingFailed(FailToLoad.IO_ERROR);
 			}
 		}
-	}
+		else {
+			queuePhoto(displayImage);
+			displayImage.getImageView().setBackgroundResource(stub_id);
 
-	private void queuePhoto (String url, Activity activity, ImageView imageView, ImageLoadingListener listener) {
-		// This ImageView may be used for other images before. So there may be some old tasks in the queue. We need to discard them.
-		photosQueue.Clean(imageView);
-		PhotoToLoad p = new PhotoToLoad(url, imageView, listener);
-		synchronized (photosQueue.photosToLoad) {
-			photosQueue.photosToLoad.push(p);
-			photosQueue.photosToLoad.notifyAll();
 		}
-
-		// start thread if it's not started yet
-		if (photoLoaderThread.getState() == Thread.State.NEW)
-			photoLoaderThread.start();
 	}
 
-	private Bitmap getBitmap (String url) {
+	/**
+	 * It calls PhotoToLoad class, for setting url, and imageView. PhotoLoader will be called, which will dispaly the image with the url, passed as parameter in PhotoToLoad
+	 * 
+	 * @param url
+	 * @param imageView
+	 */
+	private void queuePhoto (DisplayImage displayImage) {
+		PhotoToLoad p = new PhotoToLoad(displayImage);
+		executorService.submit(new PhotosLoader(p));
+	}
 
+	/**
+	 * 
+	 * @param url {@link String}
+	 * @return {@link Bitmap}
+	 */
+	private Bitmap getBitmap (String url) {
 		if (cache.containsKey(url)) {
 			Bitmap bmp = cache.get(url);
 			return bmp;
-		}
-
+		}// from web
 		try {
-			// Bitmap bitmap = null;
 			URL urls = new URL(url);
 			HttpURLConnection connection = (HttpURLConnection) urls.openConnection();
 			connection.setDoInput(true);
+			// connection.setInstanceFollowRedirects(true);
 			connection.connect();
 			InputStream input = connection.getInputStream();
 			return BitmapFactory.decodeStream(new FlushedInputStream(input));
 		}
 		catch (Exception ex) {
-
+			ex.printStackTrace();
+			return null;
 		}
-		return null;
-
 	}
 
-	// Task for the queue
+	/**
+	 * decodes image and scales it to reduce memory consumption
+	 * 
+	 * @param f {@link File}
+	 * @return image, {@link Bitmap}
+	 */
+	/**
+	 * Task for the queue
+	 */
 	private class PhotoToLoad {
 
-		public String url;
+		DisplayImage displayImage;
 
-		public ImageView imageView;
-
-		public ImageLoadingListener listener;
-
-		public PhotoToLoad (String u, ImageView i, ImageLoadingListener lis) {
-			url = u;
-			imageView = i;
-			listener = lis;
+		public PhotoToLoad (DisplayImage displayImage) {
+			this.displayImage = displayImage;
 		}
 	}
 
-	PhotosQueue photosQueue = new PhotosQueue();
+	/**
+	 * This class displays images by accessing url form PhotoToLoad class
+	 */
+	class PhotosLoader implements Runnable {
 
-	public void stopThread () {
-		photoLoaderThread.interrupt();
-	}
+		PhotoToLoad photoToLoad;
 
-	// stores list of photos to download
-	class PhotosQueue {
-
-		private Stack <PhotoToLoad> photosToLoad = new Stack <PhotoToLoad>();
-
-		// removes all instances of this ImageView
-		public void Clean (ImageView image) {
-			try {
-				for (int j = 0; j < photosToLoad.size();) {
-					if (photosToLoad.get(j).imageView == image)
-						photosToLoad.remove(j);
-					else
-						++j;
-				}
-			}
-			catch (ArrayIndexOutOfBoundsException e) {
-			}
-			catch (IndexOutOfBoundsException e) {
-
-			}
-		}
-	}
-
-	class PhotosLoader extends Thread {
-
-		public void run () {
-			try {
-				while (true) {
-					// thread waits until there are any images to load in the queue
-					if (photosQueue.photosToLoad.size() == 0)
-						synchronized (photosQueue.photosToLoad) {
-							photosQueue.photosToLoad.wait();
-						}
-					if (photosQueue.photosToLoad.size() != 0) {
-						PhotoToLoad photoToLoad;
-						synchronized (photosQueue.photosToLoad) {
-							photoToLoad = photosQueue.photosToLoad.pop();
-						}
-						bmp = getBitmap(photoToLoad.url.replace(" ", "%20"));
-						cache.put(photoToLoad.url, bmp);
-						Object tag = photoToLoad.imageView.getTag();
-						if (tag != null && ((String) tag).equals(photoToLoad.url)) {
-
-							BitmapDisplayer bd = new BitmapDisplayer(bmp, photoToLoad.imageView, photoToLoad.listener);
-							Activity a = (Activity) photoToLoad.imageView.getContext();
-							/*
-							 * if (bmp != null) { bmp.recycle(); bmp = null; }
-							 */
-							a.runOnUiThread(bd);
-						}
-					}
-					if (Thread.interrupted())
-						break;
-				}
-			}
-			catch (InterruptedException e) {
-				// allow thread to exit
-			}
-			catch (OutOfMemoryError e) {
-
-			}
-		}
-	}
-
-	public class PatchInputStream extends FilterInputStream {
-
-		public PatchInputStream (InputStream in) {
-			super(in);
-		}
-
-		public long skip (long n) throws IOException {
-			long m = 0L;
-			while (m < n) {
-				long _m = in.skip(n - m);
-				if (_m == 0L)
-					break;
-				m += _m;
-			}
-			return m;
-		}
-	}
-
-	PhotosLoader photoLoaderThread = new PhotosLoader();
-
-	// Used to display bitmap in the UI thread
-	class BitmapDisplayer implements Runnable {
-
-		Bitmap bitmap = null;
-
-		ImageView imageView;
-
-		ImageLoadingListener listener;
-
-		public BitmapDisplayer (Bitmap b, ImageView i, ImageLoadingListener lis) {
-			bitmap = b;
-			imageView = i;
-			listener = lis;
-		}
-
-		public void run () {
-			if (bitmap != null) {
-				Drawable drawable = new BitmapDrawable(bitmap);
-				imageView.setBackgroundDrawable(drawable);
-				if (listener != null) {
-					listener.onLoadingComplete(bitmap);
-				}
-			}
-			else {
-				listener.onLoadingFailed(FailToLoad.IO_ERROR);
-			}
-		}
-	}
-
-	public void clearCache () {
-		// clear memory cache
-		cache.clear();
-
-		// clear SD cache
-		File[] files = cacheDir.listFiles();
-		for (File f : files)
-			f.delete();
-	}
-
-	public void disposeBitmap (Bitmap bitmap) {
-		bitmap.recycle();
-		bitmap = null;
-	}
-
-	static class FlushedInputStream extends FilterInputStream {
-
-		public FlushedInputStream (InputStream inputStream) {
-			super(inputStream);
+		PhotosLoader (PhotoToLoad photoToLoad) {
+			this.photoToLoad = photoToLoad;
 		}
 
 		@Override
-		public long skip (long n) throws IOException {
-			long totalBytesSkipped = 0L;
-			while (totalBytesSkipped < n) {
-				long bytesSkipped = in.skip(n - totalBytesSkipped);
-				if (bytesSkipped == 0L) {
-					int byteValue = read();
-					if (byteValue < 0) {
-						break; // we reached EOF
-					}
-					else {
-						bytesSkipped = 1; // we read one byte
-					}
-				}
-				totalBytesSkipped += bytesSkipped;
-			}
-			return totalBytesSkipped;
+		public void run () {
+			if (imageViewReused(photoToLoad))
+				return;
+			Bitmap bmp = getBitmap(photoToLoad.displayImage.getUrl().replace(" ", "%20"));
+			cache.put(photoToLoad.displayImage.getUrl(), bmp);
+			if (imageViewReused(photoToLoad))
+				return;
+			BitmapDisplayer bd = new BitmapDisplayer(bmp, photoToLoad);
+			Activity a = (Activity) photoToLoad.displayImage.getImageView().getContext();
+			a.runOnUiThread(bd);
 		}
+	}
+
+	/**
+	 * 
+	 * @param photoToLoad {@link PhotoToLoad}
+	 * @return, It returns true if {@link PhotoToLoad} contains image url({@link String})
+	 */
+	boolean imageViewReused (PhotoToLoad photoToLoad) {
+		String tag = imageViews.get(photoToLoad.displayImage.getImageView());
+		if (tag == null || !tag.equals(photoToLoad.displayImage.getUrl()))
+			return true;
+		return false;
+	}
+
+	/**
+	 * Used to display bitmap in the UI thread
+	 */
+	class BitmapDisplayer implements Runnable {
+
+		Bitmap bitmap;
+
+		PhotoToLoad photoToLoad;
+
+		public BitmapDisplayer (Bitmap b, PhotoToLoad p) {
+			bitmap = b;
+			photoToLoad = p;
+		}
+
+		public void run () {
+			if (imageViewReused(photoToLoad))
+				return;
+			if (bitmap != null) {
+				Drawable background = new BitmapDrawable(photoToLoad.displayImage.getActivity().getResources(),bitmap);				 
+
+				photoToLoad.displayImage.getImageView().setBackgroundDrawable(background);
+			}
+			else {
+				photoToLoad.displayImage.getImageView().setBackgroundResource(stub_id);
+
+			}
+		}
+	}
+
+	/**
+	 * delete the files, for memory reuse.
+	 */
+	public void clearCache () {
+		fileCache.clear();
+	}
+
+	public static Object getInstance () {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

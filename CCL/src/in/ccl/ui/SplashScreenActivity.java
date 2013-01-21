@@ -161,19 +161,29 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 				case BANNER_REQUEST:
 					// parsing server banner items response.
 					bannerList = CCLService.getBannerItems(result);
-					// for downloading photo album data.
-					asyncTask = new DownLoadAsynTask(this, this, true);
-					mRequestType = RequestType.PHOTO_ALBUMREQUEST;
-					asyncTask.execute(getResources().getString(R.string.photo_album_url));
+					if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
+						// for downloading photo album data.
+						asyncTask = new DownLoadAsynTask(this, this, true);
+						mRequestType = RequestType.PHOTO_ALBUMREQUEST;
+						asyncTask.execute(getResources().getString(R.string.photo_album_url));
+					}
+					else {
+						Toast.makeText(SplashScreenActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
 
 					break;
 				case PHOTO_ALBUMREQUEST:
 					// parsing server photo album responose.
 					photoGalleryList = CCLService.getPhotoAlbums(result);
-					// for downloading video albums.
-					asyncTask = new DownLoadAsynTask(this, this, true);
-					mRequestType = RequestType.VIDEO_ALBUMREQUEST;
-					asyncTask.execute(getResources().getString(R.string.video_album_url));
+					if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
+						// for downloading video albums.
+						asyncTask = new DownLoadAsynTask(this, this, true);
+						mRequestType = RequestType.VIDEO_ALBUMREQUEST;
+						asyncTask.execute(getResources().getString(R.string.video_album_url));
+					}
+					else {
+						Toast.makeText(SplashScreenActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
 					break;
 				case VIDEO_ALBUMREQUEST:
 					// parsing video album response.
@@ -188,6 +198,9 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 			}
 		}
 		else {
+			// to finish the animation if server return null.
+			isInitialDataLoaded = true;
+
 			// No network connection.
 			if (!Util.getInstance().isOnline(SplashScreenActivity.this)) {
 				Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();

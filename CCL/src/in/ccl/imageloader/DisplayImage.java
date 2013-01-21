@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class DisplayImage implements ImageLoadingListener {
@@ -17,7 +16,7 @@ public class DisplayImage implements ImageLoadingListener {
 
 	private Activity activity;
 
-	private ProgressBar spinner;
+//	private ImageView imgageLoader;
 
 	// if video is loading should enable paly icon once loading is completed.
 	private ImageView playIcon;
@@ -40,15 +39,15 @@ public class DisplayImage implements ImageLoadingListener {
 		this.playIcon = playIcon;
 	}
 
-	public ProgressBar getSpinner () {
-		return spinner;
-	}
+	/*public ImageView getImgageLoader () {
+		return imgageLoader;
+	}*/
 
-	public DisplayImage (String url, ImageView imageView, Activity activity, ProgressBar spinner) {
+	public DisplayImage (String url, ImageView imageView, Activity activity, ImageView imgageLoader) {
 		this.url = url;
 		this.imageView = imageView;
 		this.activity = activity;
-		this.spinner = spinner;
+	//	this.imgageLoader = imgageLoader;
 	}
 
 	public String getUrl () {
@@ -65,7 +64,6 @@ public class DisplayImage implements ImageLoadingListener {
 
 	@Override
 	public void onLoadingStarted () {
-		spinner.setVisibility(View.VISIBLE);
 		if (errorTitle != null) {
 			errorTitle.setVisibility(View.GONE);
 		}
@@ -73,7 +71,6 @@ public class DisplayImage implements ImageLoadingListener {
 
 	@Override
 	public void onLoadingComplete (Bitmap loadedImage) {
-		spinner.setVisibility(View.GONE);
 		if (getPlayIcon() != null) {
 			getPlayIcon().setVisibility(View.VISIBLE);
 		}
@@ -96,7 +93,7 @@ public class DisplayImage implements ImageLoadingListener {
 				message = "Unknown error";
 				break;
 		}
-		spinner.setVisibility(View.GONE);
+		
 		Logger.info("DisplayImage", message);
 		if (errorTitle != null) {
 			errorTitle.setVisibility(View.VISIBLE);
@@ -106,7 +103,7 @@ public class DisplayImage implements ImageLoadingListener {
 	}
 
 	public void show () {
-		ImageLoader.getInstance().displayImage(this, this);
+		ImageLoader.getInstance(activity).displayImage(this, this);
 
 	}
 }

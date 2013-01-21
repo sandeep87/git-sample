@@ -15,19 +15,21 @@ public class CCLParser {
 
 	public static ArrayList <Items> photoParser (String result) {
 		ArrayList <Items> photoList = new ArrayList <Items>();
+		int totalPages = 0;
 		try {
 			JSONObject jsonObject = new JSONObject(result);
 			if (jsonObject.has("total_pages")) {
-				int totalPages = jsonObject.getInt("total_pages");
+				totalPages = jsonObject.getInt("total_pages");
 			}
 			if (jsonObject.has("current_page")) {
-				int currentPage = jsonObject.getInt("current_page");
+				//int currentPage = jsonObject.getInt("current_page");
 			}
 			if (jsonObject.has("result")) {
 				JSONArray jsonArray = jsonObject.getJSONArray("result");
 
 				for (int i = 0; i < jsonArray.length(); i++) {
 					Items item = new Items();
+					item.setNumberOfPages(totalPages);
 					JSONObject resultJsonObject = jsonArray.getJSONObject(i);
 					if (resultJsonObject.has("photo_id")) {
 						int photoId = resultJsonObject.getInt("photo_id");
@@ -87,20 +89,22 @@ public class CCLParser {
 	}
 
 	public static ArrayList <Items> videoAlbumParser (String videoJson) {
+		int totalPages = 0;
 		ArrayList <Items> videosList = new ArrayList <Items>();
 		try {
 			JSONObject jsonObject = new JSONObject(videoJson);
 			if (jsonObject.has("total_pages")) {
-				int totalPages = jsonObject.getInt("total_pages");
+				totalPages = jsonObject.getInt("total_pages");
 			}
 			if (jsonObject.has("current_page")) {
-				int currentPage = jsonObject.getInt("current_page");
+				//int currentPage = jsonObject.getInt("current_page");
 			}
 			if (jsonObject.has("result")) {
 				JSONArray jsonArray = jsonObject.getJSONArray("result");
 
 				for (int i = 0; i < jsonArray.length(); i++) {
 					Items item = new Items();
+					item.setNumberOfPages(totalPages);
 					JSONObject resultJsonObject = jsonArray.getJSONObject(i);
 					if (resultJsonObject.has("video_id")) {
 						int videoId = resultJsonObject.getInt("video_id");

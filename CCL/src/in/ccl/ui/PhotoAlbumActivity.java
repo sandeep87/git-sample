@@ -1,10 +1,13 @@
 package in.ccl.ui;
 
-import java.util.ArrayList;
-
 import in.ccl.adapters.GridAdapter;
+import in.ccl.helper.Util;
+import in.ccl.imageloader.EndlessScrollListener;
 import in.ccl.model.Items;
 import in.ccl.util.Constants;
+
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,9 +27,12 @@ public class PhotoAlbumActivity extends TopActivity {
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.grid_layout);
 		String albumTitle = getIntent().getStringExtra(Constants.EXTRA_ALBUM_TITLE);
+		int photoGalleryId = getIntent().getIntExtra(Constants.EXTRA_ALBUM_ID, 1);
 		TextView txtAlbumTitle = (TextView) findViewById(R.id.txt_album_title);
+		Util.setTextFont(this, txtAlbumTitle);
 		txtAlbumTitle.setText(albumTitle);
 		TextView txtAlbumHeader = (TextView) findViewById(R.id.txt_album_header);
+		Util.setTextFont(this, txtAlbumHeader);
 		txtAlbumHeader.setText(getResources().getString(R.string.photos));
 
 		if (getIntent().hasExtra(Constants.EXTRA_ALBUM_ITEMS)) {
@@ -34,8 +40,10 @@ public class PhotoAlbumActivity extends TopActivity {
 		}
 
 		gridView = (GridView) findViewById(R.id.photos_gridview);
+		GridAdapter adapter = new GridAdapter(PhotoAlbumActivity.this, photoGalleryList, "photo");
+		gridView.setAdapter(adapter);
 
-		gridView.setAdapter(new GridAdapter(PhotoAlbumActivity.this, photoGalleryList, "photo"));
+		gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, photoGalleryId, EndlessScrollListener.RequestType.PHOTO_GALLERY_REQUEST, photoGalleryList.get(0).getNumberOfPages()));
 
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -49,13 +57,5 @@ public class PhotoAlbumActivity extends TopActivity {
 				startActivity(intent);
 			}
 		});
-
 	}
-
-	/*
-	 * public static ArrayList<Items> addPhotoDummyData() { ArrayList<Items> photoGalleryList = new ArrayList<Items>(); for (int i = 1; i < 20; i++) { Items photoGalleryItem = new Items(); photoGalleryItem.setId(i); photoGalleryItem
-	 * .setUrl("http://ccl.in/images/gallery/Telugu Warriors CCL Team Logo Launch/Telugu Warriors CCL Team Logo Launch (" + i + ").jpg"); photoGalleryList.add(photoGalleryItem); } return photoGalleryList;
-	 * 
-	 * }
-	 */
 }

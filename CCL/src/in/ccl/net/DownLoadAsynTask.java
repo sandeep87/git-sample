@@ -7,17 +7,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.WindowManager.BadTokenException;
 
 public class DownLoadAsynTask extends AsyncTask <String, Void, String> {
 
@@ -49,15 +48,26 @@ public class DownLoadAsynTask extends AsyncTask <String, Void, String> {
 		if (!isHomeCall) {
 			progressDialog = new ProgressDialog(context);
 			progressDialog.setMessage(context.getResources().getString(R.string.loading));
-			progressDialog.show();
+			try {
+				progressDialog.show();
+			}
+			catch (BadTokenException e) {
+			}
 		}
 	}
 
 	@Override
 	protected String doInBackground (String... params) {
 		try {
-			DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
+			int timeoutConnection = 3000;
+			URL url = new URL(params[0]);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setConnectTimeout(timeoutConnection);
+			return readStream(con.getInputStream());
+
+			/*DefaultHttpClient defaultHttpClient = new DefaultHttpClient(httpParameters);
 			HttpGet httpGet = new HttpGet(params[0]);
+
 			HttpResponse response = defaultHttpClient.execute(httpGet);
 			HttpEntity entity = response.getEntity();
 			if (entity != null && response.getStatusLine().getStatusCode() == 200) {
@@ -71,7 +81,7 @@ public class DownLoadAsynTask extends AsyncTask <String, Void, String> {
 				value = sb.toString();
 				return value;
 			}
-		}
+*/		}
 		catch (ClientProtocolException e) {
 			Log.e(TAG, e.toString());
 		}
@@ -80,6 +90,36 @@ public class DownLoadAsynTask extends AsyncTask <String, Void, String> {
 		}
 		return null;
 
+	}
+
+	private String readStream (InputStream inputStream) {
+
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new InputStreamReader(inputStream));
+			String line = "";
+			sb = new StringBuilder();
+
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+			value = sb.toString();
+      return value;
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
 	}
 
 	@Override

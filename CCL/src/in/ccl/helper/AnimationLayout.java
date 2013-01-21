@@ -30,232 +30,248 @@ import android.view.animation.TranslateAnimation;
 
 public class AnimationLayout extends ViewGroup {
 
-    public final static int DURATION = 500;
+	public final static int DURATION = 500;
 
-    protected boolean mPlaceLeft = true;
-    protected boolean mOpened;
-    protected View mSidebar;
-    protected View mContent;
-    protected int mSidebarWidth = 10; /* assign default value. It will be overwrite
-                                          in onMeasure by Layout xml resource. */
+	protected boolean mPlaceLeft = true;
 
-    protected Animation mAnimation;
-    protected OpenListener    mOpenListener;
-    protected CloseListener   mCloseListener;
-    protected Listener mListener;
+	protected boolean mOpened;
 
-    protected boolean mPressed = false;
+	protected View mSidebar;
 
-    public AnimationLayout(Context context) {
-        this(context, null);
-    }
+	protected View mContent;
 
-    public AnimationLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+	protected int mSidebarWidth = 10; /*
+																		 * assign default value. It will be overwrite in onMeasure by Layout xml resource.
+																		 */
 
-    @Override
-    public void onFinishInflate() {
-        super.onFinishInflate();
-        mSidebar = findViewById(R.id.animation_layout_sidebar);
-        mContent = findViewById(R.id.animation_layout_content);
+	protected Animation mAnimation;
 
-        if (mSidebar == null) {
-            throw new NullPointerException("no view id = animation_sidebar");
-        }
+	protected OpenListener mOpenListener;
 
-        if (mContent == null) {
-            throw new NullPointerException("no view id = animation_content");
-        }
+	protected CloseListener mCloseListener;
 
-        mOpenListener = new OpenListener(mSidebar, mContent);
-        mCloseListener = new CloseListener(mSidebar, mContent);
-    }
+	protected Listener mListener;
 
-    @Override
-    public void onLayout(boolean changed, int l, int t, int r, int b) {
-        /* the title bar assign top padding, drop it */
-        int sidebarLeft = l;
-        if (!mPlaceLeft) {
-            sidebarLeft = r - mSidebarWidth;
-        }
-        mSidebar.layout(sidebarLeft,
-                0,
-                sidebarLeft + mSidebarWidth,
-                0 + mSidebar.getMeasuredHeight());
+	protected boolean mPressed = false;
 
-        if (mOpened) {
-            if (mPlaceLeft) {
-                mContent.layout(l + mSidebarWidth, 0, r + mSidebarWidth, b);
-            } else  {
-                mContent.layout(l - mSidebarWidth, 0, r - mSidebarWidth, b);
-            }
-        } else {
-            mContent.layout(l, 0, r, b);
-        }
-    }
+	public AnimationLayout (Context context) {
+		this(context, null);
+	}
 
-    @Override
-    public void onMeasure(int w, int h) {
-        super.onMeasure(w, h);
-        super.measureChildren(w, h);
-        mSidebarWidth = mSidebar.getMeasuredWidth();
-    }
+	public AnimationLayout (Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
 
-    @Override
-    protected void measureChild(View child, int parentWSpec, int parentHSpec) {
-        /* the max width of Sidebar is 90% of Parent */
-        if (child == mSidebar) {
-            int mode = MeasureSpec.getMode(parentWSpec);
-            int width = (int)(getMeasuredWidth() * 0.9);
-            super.measureChild(child, MeasureSpec.makeMeasureSpec(width, mode), parentHSpec);
-        } else {
-            super.measureChild(child, parentWSpec, parentHSpec);
-        }
-    }
+	@Override
+	public void onFinishInflate () {
+		super.onFinishInflate();
+		mSidebar = findViewById(R.id.animation_layout_sidebar);
+		mContent = findViewById(R.id.animation_layout_content);
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (!isOpening()) {
-            return false;
-        }
+		if (mSidebar == null) {
+			throw new NullPointerException("no view id = animation_sidebar");
+		}
 
-        int action = ev.getAction();
+		if (mContent == null) {
+			throw new NullPointerException("no view id = animation_content");
+		}
 
-        if (action != MotionEvent.ACTION_UP
-                && action != MotionEvent.ACTION_DOWN) {
-            return false;
-        }
+		mOpenListener = new OpenListener(mSidebar, mContent);
+		mCloseListener = new CloseListener(mSidebar, mContent);
+	}
 
-        /* if user press and release both on Content while
-         * sidebar is opening, call listener. otherwise, pass
-         * the event to child. */
-        int x = (int)ev.getX();
-        int y = (int)ev.getY();
-        if (mContent.getLeft() < x
-                && mContent.getRight() > x
-                && mContent.getTop() < y
-                && mContent.getBottom() > y) {
-            if (action == MotionEvent.ACTION_DOWN) {
-                mPressed = true;
-            }
+	@Override
+	public void onLayout (boolean changed, int l, int t, int r, int b) {
+		/* the title bar assign top padding, drop it */
+		int sidebarLeft = l;
+		if (!mPlaceLeft) {
+			sidebarLeft = r - mSidebarWidth;
+		}
+		mSidebar.layout(sidebarLeft, 0, sidebarLeft + mSidebarWidth, 0 + mSidebar.getMeasuredHeight());
 
-            if (mPressed
-                    && action == MotionEvent.ACTION_UP
-                    && mListener != null) {
-                mPressed = false;
-                return mListener.onContentTouchedWhenOpening();
-            }
-        } else {
-            mPressed = false;
-        }
+		if (mOpened) {
+			if (mPlaceLeft) {
+				mContent.layout(l + mSidebarWidth, 0, r + mSidebarWidth, b);
+			}
+			else {
+				mContent.layout(l - mSidebarWidth, 0, r - mSidebarWidth, b);
+			}
+		}
+		else {
+			mContent.layout(l, 0, r, b);
+		}
+	}
 
-        return false;
-    }
+	@Override
+	public void onMeasure (int w, int h) {
+		super.onMeasure(w, h);
+		super.measureChildren(w, h);
+		mSidebarWidth = mSidebar.getMeasuredWidth();
+	}
 
-    public void setListener(Listener l) {
-        mListener = l;
-    }
+	@Override
+	protected void measureChild (View child, int parentWSpec, int parentHSpec) {
+		/* the max width of Sidebar is 90% of Parent */
+		if (child == mSidebar) {
+			int mode = MeasureSpec.getMode(parentWSpec);
+			int width = (int) (getMeasuredWidth() * 0.9);
+			super.measureChild(child, MeasureSpec.makeMeasureSpec(width, mode), parentHSpec);
+		}
+		else {
+			super.measureChild(child, parentWSpec, parentHSpec);
+		}
+	}
 
-    /* to see if the Sidebar is visible */
-    public boolean isOpening() {
-        return mOpened;
-    }
+	@Override
+	public boolean onInterceptTouchEvent (MotionEvent ev) {
+		if (!isOpening()) {
+			return false;
+		}
 
-    public void toggleSidebar() {
-        if (mContent.getAnimation() != null) {
-            return;
-        }
+		int action = ev.getAction();
 
-        if (mOpened) {
-            /* opened, make close animation*/
-            if (mPlaceLeft) {
-                mAnimation = new TranslateAnimation(0, -mSidebarWidth, 0, 0);
-            } else {
-                mAnimation = new TranslateAnimation(0, mSidebarWidth, 0, 0);
-            }
-            mAnimation.setAnimationListener(mCloseListener);
-        } else {
-            /* not opened, make open animation */
-            if (mPlaceLeft) {
-                mAnimation = new TranslateAnimation(0, mSidebarWidth, 0, 0);
-            } else {
-                mAnimation = new TranslateAnimation(0, -mSidebarWidth, 0, 0);
-            }
-            mAnimation.setAnimationListener(mOpenListener);
-        }
-        mAnimation.setDuration(DURATION);
-        mAnimation.setFillAfter(true);
-        mAnimation.setFillEnabled(true);
-        mContent.startAnimation(mAnimation);
-    }
+		if (action != MotionEvent.ACTION_UP && action != MotionEvent.ACTION_DOWN) {
+			return false;
+		}
 
-    public void openSidebar() {
-        if (!mOpened) {
-            toggleSidebar();
-        }
-    }
+		/*
+		 * if user press and release both on Content while sidebar is opening, call listener. otherwise, pass the event to child.
+		 */
+		int x = (int) ev.getX();
+		int y = (int) ev.getY();
+		if (mContent.getLeft() < x && mContent.getRight() > x && mContent.getTop() < y && mContent.getBottom() > y) {
+			if (action == MotionEvent.ACTION_DOWN) {
+				mPressed = true;
+			}
 
-    public void closeSidebar() {
-        if (mOpened) {
-            toggleSidebar();
-        }
-    }
+			if (mPressed && action == MotionEvent.ACTION_UP && mListener != null) {
+				mPressed = false;
+				return mListener.onContentTouchedWhenOpening();
+			}
+		}
+		else {
+			mPressed = false;
+		}
 
-    class OpenListener implements Animation.AnimationListener {
-        View iSidebar;
-        View iContent;
+		return false;
+	}
 
-        OpenListener(View sidebar, View content) {
-            iSidebar = sidebar;
-            iContent = content;
-        }
+	public void setListener (Listener l) {
+		mListener = l;
+	}
 
-        public void onAnimationRepeat(Animation animation) {
-        }
+	/* to see if the Sidebar is visible */
+	public boolean isOpening () {
+		return mOpened;
+	}
 
-        public void onAnimationStart(Animation animation) {
-            iSidebar.setVisibility(View.VISIBLE);
-        }
+	public void toggleSidebar () {
+		if (mContent.getAnimation() != null) {
+			return;
+		}
 
-        public void onAnimationEnd(Animation animation) {
-            iContent.clearAnimation();
-            mOpened = !mOpened;
-            requestLayout();
-            if (mListener != null) {
-                mListener.onSidebarOpened();
-            }
-        }
-    }
+		if (mOpened) {
+			/* opened, make close animation */
+			if (mPlaceLeft) {
+				mAnimation = new TranslateAnimation(0, -mSidebarWidth, 0, 0);
+			}
+			else {
+				mAnimation = new TranslateAnimation(0, mSidebarWidth, 0, 0);
+			}
+			mAnimation.setAnimationListener(mCloseListener);
+		}
+		else {
+			/* not opened, make open animation */
+			if (mPlaceLeft) {
+				mAnimation = new TranslateAnimation(0, mSidebarWidth, 0, 0);
+			}
+			else {
+				mAnimation = new TranslateAnimation(0, -mSidebarWidth, 0, 0);
+			}
+			mAnimation.setAnimationListener(mOpenListener);
+		}
+		mAnimation.setDuration(DURATION);
+		mAnimation.setFillAfter(true);
+		mAnimation.setFillEnabled(true);
+		mContent.startAnimation(mAnimation);
+	}
 
-    class CloseListener implements Animation.AnimationListener {
-        View iSidebar;
-        View iContent;
+	public void openSidebar () {
+		if (!mOpened) {
+		//	mSidebar.setVisibility(View.VISIBLE);
+			toggleSidebar();
+		}
+	}
 
-        CloseListener(View sidebar, View content) {
-            iSidebar = sidebar;
-            iContent = content;
-        }
+	public void closeSidebar () {
+		if (mOpened) {
+		//	mSidebar.setVisibility(View.GONE);
+			toggleSidebar();
+		}
+	}
 
-        public void onAnimationRepeat(Animation animation) {
-        }
-        public void onAnimationStart(Animation animation) {
-        }
+	class OpenListener implements Animation.AnimationListener {
 
-        public void onAnimationEnd(Animation animation) {
-            iContent.clearAnimation();
-            iSidebar.setVisibility(View.INVISIBLE);
-            mOpened = !mOpened;
-            requestLayout();
-            if (mListener != null) {
-                mListener.onSidebarClosed();
-            }
-        }
-    }
+		View iSidebar;
 
-    public interface Listener {
-        public void onSidebarOpened();
-        public void onSidebarClosed();
-        public boolean onContentTouchedWhenOpening();
-    }
+		View iContent;
+
+		OpenListener (View sidebar, View content) {
+			iSidebar = sidebar;
+			iContent = content;
+		}
+
+		public void onAnimationRepeat (Animation animation) {
+		}
+
+		public void onAnimationStart (Animation animation) {
+			iSidebar.setVisibility(View.VISIBLE);
+		}
+
+		public void onAnimationEnd (Animation animation) {
+			iContent.clearAnimation();
+			mOpened = !mOpened;
+			requestLayout();
+			if (mListener != null) {
+				mListener.onSidebarOpened();
+			}
+		}
+	}
+
+	class CloseListener implements Animation.AnimationListener {
+
+		View iSidebar;
+
+		View iContent;
+
+		CloseListener (View sidebar, View content) {
+			iSidebar = sidebar;
+			iContent = content;
+		}
+
+		public void onAnimationRepeat (Animation animation) {
+		}
+
+		public void onAnimationStart (Animation animation) {
+		}
+
+		public void onAnimationEnd (Animation animation) {
+			iContent.clearAnimation();
+			iSidebar.setVisibility(View.INVISIBLE);
+			mOpened = !mOpened;
+			requestLayout();
+			if (mListener != null) {
+				mListener.onSidebarClosed();
+			}
+		}
+	}
+
+	public interface Listener {
+
+		public void onSidebarOpened ();
+
+		public void onSidebarClosed ();
+
+		public boolean onContentTouchedWhenOpening ();
+	}
 }

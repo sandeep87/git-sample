@@ -68,7 +68,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="3dip"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_vs"
@@ -76,7 +77,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_fst_team"
                     android:padding="3dip"
-                    android:text="vs" />
+                    android:text="vs"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_second_team"
@@ -84,7 +86,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_vs"
                     android:padding="3dip"
-                    android:textColor="#00ff00" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
             </RelativeLayout>
 
             <TextView
@@ -95,7 +98,8 @@
                 android:padding="3dip"
                 android:paddingTop="5dip" />
 
-            <ImageButton
+            <!--
+                 <ImageButton
                 android:id="@+id/img_fstteam_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,6 +109,7 @@
                 android:layout_marginTop="3dp"
                 android:background="@drawable/info_schedule"
                 android:paddingTop="3dip" />
+            -->
         </RelativeLayout>
 
         <RelativeLayout
@@ -125,7 +130,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="3dip"
-                    android:textColor="#00ff00" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_scnd_vs"
@@ -133,7 +139,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_scnd_team"
                     android:padding="3dip"
-                    android:text="vs" />
+                    android:text="vs"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_opponent_team"
@@ -141,7 +148,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_scnd_vs"
                     android:padding="3dip"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
             </RelativeLayout>
 
             <TextView
@@ -152,7 +160,8 @@
                 android:padding="3dip"
                 android:paddingTop="5dip" />
 
-            <ImageButton
+            <!--
+                 <ImageButton
                 android:id="@+id/img_scnd_btn_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -162,6 +171,7 @@
                 android:layout_marginTop="3dp"
                 android:background="@drawable/info_schedule"
                 android:paddingTop="3dip" />
+            -->
         </RelativeLayout>
     </RelativeLayout>
 

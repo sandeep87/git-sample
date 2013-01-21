@@ -11,6 +11,29 @@ public class Items implements Parcelable {
 
 	private String thumbUrl;
 
+	private int numberOfPages;
+	
+	private String personRoles;
+	
+
+	
+	public String getPersonRoles () {
+		return personRoles;
+	}
+
+	
+	public void setPersonRoles (String personRoles) {
+		this.personRoles = personRoles;
+	}
+
+	public int getNumberOfPages () {
+		return numberOfPages;
+	}
+
+	public void setNumberOfPages (int numberOfPages) {
+		this.numberOfPages = numberOfPages;
+	}
+
 	public String getThumbUrl () {
 		return thumbUrl;
 	}
@@ -85,6 +108,8 @@ public class Items implements Parcelable {
 		setUrl(in.readString());
 		setVideoUrl(in.readString());
 		setThumbUrl(in.readString());
+		setNumberOfPages(in.readInt());
+		setPersonRoles(in.readString());
 	}
 
 	@Override
@@ -94,6 +119,8 @@ public class Items implements Parcelable {
 		dest.writeString(getUrl());
 		dest.writeString(getVideoUrl());
 		dest.writeString(getThumbUrl());
+		dest.writeInt(getNumberOfPages());
+		dest.writeString(getPersonRoles());
 	}
 
 }

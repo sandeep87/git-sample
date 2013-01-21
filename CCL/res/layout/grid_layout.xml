@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textColor="@android:color/black"
-            android:textSize="10sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/divider"
@@ -33,7 +33,7 @@
             android:gravity="center_vertical"
             android:text="|"
             android:textColor="@color/dark_grey"
-            android:textSize="10sp" >
+            android:textSize="20sp" >
         </TextView>
 
         <TextView
@@ -45,18 +45,18 @@
             android:layout_toRightOf="@id/divider"
             android:singleLine="true"
             android:textColor="@color/dark_grey"
-            android:textSize="10sp" />
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/layout_content"
         android:layout_marginBottom="5dip"
         android:layout_marginLeft="5dip"
         android:layout_marginRight="5dip"
-        android:background="@android:color/background_light" >
+        android:background="@android:color/background_light"
+        android:orientation="vertical" >
 
         <GridView
             android:id="@+id/photos_gridview"

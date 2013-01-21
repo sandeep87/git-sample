@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 public class FullPagerAdapter extends PagerAdapter {
 
@@ -24,7 +23,7 @@ public class FullPagerAdapter extends PagerAdapter {
 
 	private Activity activity;
 
-	//private Category mCategory;
+	// private Category mCategory;
 
 	@Override
 	public void destroyItem (ViewGroup container, int position, Object object) {
@@ -34,7 +33,7 @@ public class FullPagerAdapter extends PagerAdapter {
 	public FullPagerAdapter (Activity ctx, ArrayList <Items> list, Category category) {
 		activity = ctx;
 		itemsList = list;
-	//	mCategory = category;
+		// mCategory = category;
 		inflater = activity.getLayoutInflater();
 	}
 
@@ -47,11 +46,11 @@ public class FullPagerAdapter extends PagerAdapter {
 	public View instantiateItem (View view, int position) {
 		View imageLayout = null;
 		ImageView imageView = null;
-		ProgressBar spinner = null;
+		ImageView spinner = null;
 
 		imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 		imageView = (ImageView) imageLayout.findViewById(R.id.image);
-		spinner = (ProgressBar) imageLayout.findViewById(R.id.loading);
+		spinner = (ImageView) imageLayout.findViewById(R.id.loading);
 		imageView.setTag(itemsList.get(position).getUrl());
 		DisplayImage displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, spinner);
 		displayImage.show();
