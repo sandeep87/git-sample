@@ -9,7 +9,8 @@
         android:layout_width="139dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true"
+         />
 
     <TextView
         android:id="@+id/title"
@@ -19,7 +20,7 @@
         android:background="@drawable/overlay"
         android:paddingLeft="3dp"
         android:textColor="@android:color/white"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
 
     <ImageView
         android:id="@+id/img_play_icon"

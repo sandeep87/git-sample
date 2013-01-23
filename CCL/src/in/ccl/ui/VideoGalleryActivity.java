@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +28,8 @@ public class VideoGalleryActivity extends TopActivity implements ServerResponse 
 	private ArrayList <Items> videoGalleryList;
 
 	private String albumTitle;
-
+	
+	private ImageView imgFolder;
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -39,11 +41,14 @@ public class VideoGalleryActivity extends TopActivity implements ServerResponse 
 		}
 
 		TextView txtAlbumHeader = (TextView) findViewById(R.id.txt_album_header);
-		txtAlbumHeader.setText(getResources().getString(R.string.videos));
+		txtAlbumHeader.setText(getResources().getString(R.string.videos_gallery));
 		Util.setTextFont(this, txtAlbumHeader);
 		TextView txtSeperator = (TextView) findViewById(R.id.divider);
 		txtSeperator.setVisibility(View.GONE);
 
+		imgFolder = (ImageView) findViewById(R.id.img_folder);
+		imgFolder.setImageResource(R.drawable.videos_folder);
+		imgFolder.setVisibility(View.VISIBLE);
 		gridView = (GridView) findViewById(R.id.photos_gridview);
 		if (videoGalleryList != null) {
 			gridView.setAdapter(new GridAdapter(VideoGalleryActivity.this, videoGalleryList, "video_gallery"));

@@ -19,6 +19,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
@@ -37,18 +38,27 @@ public class TeamActivity extends TopActivity {
 
 	private ImageView indicatorThreeImage;
 
-	private ImageView indicatorFourImage;
+	private ImageView indicatorFourImage;	
+	
+	private ViewPager pager;
+	
+	private LinearLayout IndicatorLayout;
+
+	private int previousState;
+
+	private int currentState;
 
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.team_layout);
-		ViewPager pager = (ViewPager) findViewById(R.id.team_view_pager);
+		pager = (ViewPager) findViewById(R.id.team_view_pager);
 		teamLayout = (RelativeLayout) findViewById(R.id.team_desc);
 		indicatorOneImage = (ImageView) findViewById(R.id.indicator_one);
 		indicatorTwoImage = (ImageView) findViewById(R.id.indicator_two);
 		indicatorThreeImage = (ImageView) findViewById(R.id.indicator_three);
 		indicatorFourImage = (ImageView) findViewById(R.id.indicator_four);
+		IndicatorLayout = (LinearLayout) findViewById(R.id.team_page_indicator_layout);
 		TextView teamTitle = (TextView)findViewById(R.id.team_title);
 		Util.setTextFont(this,teamTitle);
 		items = new ArrayList <TeamItems>();
@@ -100,11 +110,10 @@ public class TeamActivity extends TopActivity {
 		
 	
 		pager.setAdapter(new TeamPagerAdapter(this, items));
+		
 		pager.setOnPageChangeListener(new OnPageChangeListener() {
 
-			@Override
-			public void onPageSelected (int position) {
-			}
+		
 
 			@Override
 			public void onPageScrolled (int pageno, float arg1, int arg2) {
@@ -125,11 +134,24 @@ public class TeamActivity extends TopActivity {
 					teamPlayers.setBackgroundResource(items.get(4).getTeamPlayersResource());
 				}
 			}
+		
+			@Override
+			public void onPageScrollStateChanged(int state) {
+				int currentPage = pager.getCurrentItem();
+				if (currentPage == 1 || currentPage == 0) {
+					previousState = currentState;
+					currentState = state;
+					if (previousState == 1 && currentState == 0) {
+						pager.setCurrentItem(currentPage == 0 ? 2 : 0);
+					}
+				}
+			}
 
 			@Override
-			public void onPageScrollStateChanged (int arg0) {
-				// TODO Auto-generated method stub
-
+			public void onPageSelected(int position) {
+				if (IndicatorLayout != null) {
+					Util.setTeamPageIndicator(position, IndicatorLayout);
+				}
 			}
 		});
 	}
@@ -151,7 +173,6 @@ public class TeamActivity extends TopActivity {
 
 		@Override
 		public int getCount () {
-			// TODO Auto-generated method stub
 			return NO_OF_PAGES;
 		}
 
@@ -184,7 +205,7 @@ public class TeamActivity extends TopActivity {
 					switch (pos) {
 						case 0:
 							indicatorOneImage.setVisibility(View.VISIBLE);
-							indicatorTwoImage.setVisibility(View.INVISIBLE);
+						  indicatorTwoImage.setVisibility(View.INVISIBLE);
 							indicatorThreeImage.setVisibility(View.INVISIBLE);
 							indicatorFourImage.setVisibility(View.INVISIBLE);
 
@@ -228,7 +249,6 @@ public class TeamActivity extends TopActivity {
 
 		@Override
 		public boolean isViewFromObject (View view, Object object) {
-			// TODO Auto-generated method stub
 			return view.equals(object);
 		}
 

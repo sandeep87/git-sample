@@ -92,9 +92,9 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 				imageView = (ImageView) imageLayout.findViewById(R.id.image);
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-				loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
+				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getUrl());
-				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, loadingImage);
+				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, "banner");
 				displayImage.show();
 				break;
 			case PHOTO:
@@ -110,7 +110,7 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 				imageView = (ImageView) imageLayout.findViewById(R.id.image);
 				loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getUrl());
-				displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, loadingImage);
+				displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, null);
 				displayImage.show();
 				break;
 			case TEAM_LOGO:
