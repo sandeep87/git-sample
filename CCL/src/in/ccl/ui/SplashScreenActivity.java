@@ -20,6 +20,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -33,6 +34,8 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 	private Animation animationRotateCenter;
 
 	private ImageView floatingLogoImage;
+	
+	private TextView txtSplashLoading;
 
 	private boolean isInitialDataLoaded;
 
@@ -63,6 +66,8 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 
 		// getting reference of ccl logo for animated splash screen
 		floatingLogoImage = (ImageView) findViewById(R.id.logo_image);
+		// getting reference of loading text in splash screen
+		txtSplashLoading = (TextView)findViewById(R.id.txt_splash_loading);
 		// creating rotate animation object by loading rotate_center anim properties.
 		animationRotateCenter = AnimationUtils.loadAnimation(this, R.anim.rotate_center);
 		// adding rotation animation lister to animation object to know the start and end of the animations.
@@ -71,6 +76,8 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 		floatingLogoImage.startAnimation(animationRotateCenter);
 		// initializing logs and application utilities.
 		initAppComponents(SplashScreenActivity.this);
+		
+		Util.setTextFont(SplashScreenActivity.this, txtSplashLoading);
 
 		if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
 			asyncTask = new DownLoadAsynTask(this, this, true);

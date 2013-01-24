@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,17 +23,7 @@ public class ScheduleAdapter extends BaseAdapter {
 
 	private Context mContext;
 
-	/*
-	 * private String[] date;
-	 * 
-	 * private String[] day;
-	 * 
-	 * private String[] place;
-	 * 
-	 * private String[] players;
-	 * 
-	 * private String[] time;
-	 */
+	
 
 	private ArrayList <ScheduleItem> scheduleList;
 
@@ -63,6 +54,10 @@ public class ScheduleAdapter extends BaseAdapter {
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
 			convertView = layoutInflater.inflate(R.layout.schedule_row, null);
+			
+			viewHolder.layoutTeams = (RelativeLayout) convertView.findViewById(R.id.layout_teams);
+			viewHolder.scndLayout = (RelativeLayout) convertView.findViewById(R.id.scnd_layout);
+
 			viewHolder.txtDate = (TextView) convertView.findViewById(R.id.txt_date);
 			viewHolder.txtDay = (TextView) convertView.findViewById(R.id.txt_day);
 			viewHolder.txtPlace = (TextView) convertView.findViewById(R.id.txt_place);
@@ -105,7 +100,7 @@ public class ScheduleAdapter extends BaseAdapter {
 		viewHolder.txtPlace.setText(scheduleList.get(position).getPalce());
 
 		viewHolder.txtfstTeam.setText(scheduleList.get(position).getFirstMatchTeamOne());
-		System.out.println("kranthi..." + " " + TextUtils.isEmpty(scheduleList.get(position).getFirstMatchTeamTwo()));
+		
 		if (!TextUtils.isEmpty(scheduleList.get(position).getFirstMatchTeamTwo())) {
 			viewHolder.txtSecondTeam.setText(scheduleList.get(position).getFirstMatchTeamTwo());
 		}
@@ -121,6 +116,9 @@ public class ScheduleAdapter extends BaseAdapter {
 		else {
 			viewHolder.txtScndTeam.setText("");
 			viewHolder.txtScndTime.setText("");
+			viewHolder.layoutTeams.setBackgroundResource(R.drawable.schedule_final_txt_bg);
+			viewHolder.scndLayout.setVisibility(View.GONE);
+		
 		//	viewHolder.imgScndBtnInfo.setVisibility(View.INVISIBLE);
 
 			// viewHolder.scndTeamLayout.setVisibility(View.INVISIBLE);
@@ -171,6 +169,10 @@ public class ScheduleAdapter extends BaseAdapter {
 
 		public RelativeLayout scndTeamLayout;
 
+		public RelativeLayout layoutTeams;
+		public RelativeLayout scndLayout;
+
+		
 		// public View viewSeparator;
 	}
 

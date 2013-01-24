@@ -10,4 +10,16 @@
         android:layout_centerInParent="true"
         android:contentDescription="@string/splash_screen_logo"
         android:src="@drawable/ccl_logo" />
+        
+     <TextView
+            android:id="@+id/txt_splash_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo_image"
+            android:text="@string/splash_loading_title"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textColor="@android:color/background_light"/>
+             
 </RelativeLayout>

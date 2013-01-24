@@ -51,8 +51,9 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/owner_one_name_one_bengal"
+                android:layout_below="@id/entire_team_title_bengal"
                 android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/owner_one_data_bengal"
                 android:src="@raw/boney_kapoor" />
 
@@ -104,7 +105,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/owner_two_name_one_bengal"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
                 android:layout_toRightOf="@+id/owner_two_data_bengal"
                 android:src="@raw/arjun_kapoor" />
@@ -157,7 +158,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/owner_three_name_one_bengal"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
                 android:layout_toRightOf="@+id/owner_three_data_bengal"
                 android:src="@raw/raj_shah" />

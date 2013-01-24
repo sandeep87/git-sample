@@ -114,7 +114,7 @@ public class AnimationLayout extends ViewGroup {
 		/* the max width of Sidebar is 90% of Parent */
 		if (child == mSidebar) {
 			int mode = MeasureSpec.getMode(parentWSpec);
-			int width = (int) (getMeasuredWidth() * 0.9);
+			int width = (int) (getMeasuredWidth() * 0.7);
 			super.measureChild(child, MeasureSpec.makeMeasureSpec(width, mode), parentHSpec);
 		}
 		else {

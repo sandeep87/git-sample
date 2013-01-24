@@ -112,6 +112,20 @@ public class Util {
 			imgPageThree.setImageResource(R.drawable.scroll_currentpage);
 		}
 	}
+	
+	public static void setTeamPageIndicator (int position, LinearLayout teamPageIndicatorLayout) {
+		ImageView imgPageOne = (ImageView) teamPageIndicatorLayout.findViewById(R.id.team_page_one_indicator);
+		ImageView imgPageTwo = (ImageView) teamPageIndicatorLayout.findViewById(R.id.team_page_two_indicator);
+		if (position == 0) {
+			imgPageOne.setImageResource(R.drawable.scroll_currentpage);
+			imgPageTwo.setImageResource(R.drawable.scroll);
+		}
+		else if (position == 1) {
+			imgPageOne.setImageResource(R.drawable.scroll);
+			imgPageTwo.setImageResource(R.drawable.scroll_currentpage);
+		}
+		
+	}
 
 	public static void setTextFont (Activity activity, TextView txtView) {
 		Typeface tf = Typeface.createFromAsset(activity.getAssets(), "fonts/VonnesMediumCompressed.ttf");

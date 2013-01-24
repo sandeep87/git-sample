@@ -16,9 +16,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.nostra13.universalimageloader.core.assist.FlushedInputStream;
 
@@ -56,8 +60,14 @@ public class ImageLoader {
 		return instance;
 	}
 
-	final int stub_id = R.raw.pre_loader;
+	// final int stub_id = R.raw.pre_loader;
+	final int stubs_id = R.drawable.banner_item_preloader;
 
+	final int stub_id = R.drawable.grid_item_preloader;
+
+	final int photo_preview_stub_id = R.drawable.photo_preview_preloader;
+ // latest image loader
+ 
 	/**
 	 * It displays image.
 	 * 
@@ -69,25 +79,89 @@ public class ImageLoader {
 		if (cache.containsKey(displayImage.getUrl())) {
 			Bitmap bitmap = cache.get(displayImage.getUrl());
 			if (bitmap != null) {
-				Drawable background = new BitmapDrawable(displayImage.getActivity().getResources(),bitmap);				 
-				displayImage.getImageView().setBackgroundDrawable(background);
+				Drawable background = new BitmapDrawable(displayImage.getActivity().getResources(), bitmap);
+					if (displayImage.getFrom() != null) {
+						if(displayImage.getFrom().equals("banner") || displayImage.getFrom().equals("fullview")){
+							displayImage.getImageView().setImageBitmap(null);
+							if(displayImage.getFrom().equals("banner")){
+								displayImage.getImageView().setBackgroundDrawable(background);			    
+
+							}else{
+								displayImage.getImageView().setImageDrawable(background);   
+
+							}
+						}else{
+							bitmap =  Bitmap.createScaledBitmap(bitmap,139,93,true);
+							background = new BitmapDrawable(displayImage.getActivity().getResources(), bitmap);
+							displayImage.getImageView().setImageBitmap(null);
+							displayImage.getImageView().setBackgroundDrawable(background);			
+						}
+				}
+				else {
+					displayImage.getImageView().setImageBitmap(null);
+					displayImage.getImageView().setBackgroundDrawable(background);
+				}
 				listener.onLoadingComplete(bitmap);
 			}
 			else {
-				displayImage.getImageView().setBackgroundResource(stub_id);
+				if (displayImage.getFrom() != null) {
+					if (displayImage.getFrom().equals("banner")) {
+						displayImage.getImageView().setImageResource(stubs_id);
+						displayImage.getImageView().setBackgroundDrawable(null);
+
+					}
+					else if (displayImage.getFrom().equals("fullview")) {
+						displayImage.getImageView().setImageResource(photo_preview_stub_id);
+						displayImage.getImageView().setBackgroundDrawable(null);
+
+					}
+					else {
+						displayImage.getImageView().setImageResource(stub_id);
+						displayImage.getImageView().setBackgroundDrawable(null);
+
+					}
+				}
+				else {
+					// displayImage.getImageView().setBackgroundResource(stub_id);
+					displayImage.getImageView().setImageResource(stub_id);
+					displayImage.getImageView().setBackgroundDrawable(null);
+
+				}
 
 				listener.onLoadingFailed(FailToLoad.IO_ERROR);
 			}
 		}
 		else {
 			queuePhoto(displayImage);
-			displayImage.getImageView().setBackgroundResource(stub_id);
+			if (displayImage.getFrom() != null) {
+				if (displayImage.getFrom().equals("banner")) {
 
+					displayImage.getImageView().setImageResource(stubs_id);
+					displayImage.getImageView().setBackgroundDrawable(null);
+
+				}
+				else if (displayImage.getFrom().equals("fullview")) {
+					displayImage.getImageView().setImageResource(photo_preview_stub_id);
+					displayImage.getImageView().setBackgroundDrawable(null);
+
+				}
+				else {
+					displayImage.getImageView().setImageResource(stub_id);
+					displayImage.getImageView().setBackgroundDrawable(null);
+
+				}
+			}
+			else {
+				// displayImage.getImageView().setBackgroundResource(stub_id);
+				displayImage.getImageView().setImageResource(stub_id);
+				displayImage.getImageView().setBackgroundDrawable(null);
+
+			}
 		}
 	}
 
 	/**
-	 * It calls PhotoToLoad class, for setting url, and imageView. PhotoLoader will be called, which will dispaly the image with the url, passed as parameter in PhotoToLoad
+	 * * It calls PhotoToLoad class, for setting url, and imageView. PhotoLoader will be called, which will dispaly the image with the url, passed as parameter in PhotoToLoad
 	 * 
 	 * @param url
 	 * @param imageView
@@ -114,7 +188,10 @@ public class ImageLoader {
 			// connection.setInstanceFollowRedirects(true);
 			connection.connect();
 			InputStream input = connection.getInputStream();
-			return BitmapFactory.decodeStream(new FlushedInputStream(input));
+			input = new FlushedInputStream(input);
+			// scaling image
+			Bitmap bmp = BitmapFactory.decodeStream(input);
+			return bmp;
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();
@@ -122,6 +199,32 @@ public class ImageLoader {
 		}
 	}
 
+	/*
+	 * public Bitmap fitScreenBitmap(Bitmap bitmap2) { // TODO Auto-generated method stub if(bitmap2 == null) { //showInitialLayout(); return null; } float w = bitmap2.getWidth(); float h = bitmap2.getHeight();
+	 * 
+	 * System.out.println("width1 ------>"+w+"   Height1 ------->"+h);
+	 * 
+	 * Matrix m = new Matrix(); float scalefactor = 1;
+	 * 
+	 * if( w > 139 && h > 93 ) { if(w/h>2) { scalefactor = 139/w; } else { scalefactor = 93/h; }
+	 * 
+	 * 
+	 * } else if( w > 139 && h < 93 ) { scalefactor = 139/w;
+	 * 
+	 * } else if( w < 139 && h > 93 ) { // System.out.println("h ->"+h ); scalefactor = 93/h; // System.out.println("hi"+scalefactor); } else if( w < 139 && h < 93 ) { if(bitmap2.isMutable()) { return bitmap2; } else // System.out.println("its an Immutable bitmap"); return
+	 * bitmap2.copy(Bitmap.Config.ARGB_8888, true); }
+	 * 
+	 * 
+	 * m.postScale(scalefactor, scalefactor);
+	 * 
+	 * Bitmap bmp = Bitmap.createBitmap(bitmap2, 0, 0, bitmap2.getWidth(), bitmap2.getHeight(), m, true);
+	 * 
+	 * if(!bmp.isMutable()) {
+	 * 
+	 * bmp= bmp.copy(Bitmap.Config.ARGB_8888, true); }
+	 * 
+	 * return bmp; }
+	 */
 	/**
 	 * decodes image and scales it to reduce memory consumption
 	 * 
@@ -177,6 +280,58 @@ public class ImageLoader {
 		return false;
 	}
 
+	
+	
+	
+	
+ /* private void scaleImage(DisplayImage displayImage, int boundBoxInDp) 
+  { 
+      // Get the ImageView and its bitmap 
+      Drawable drawing = displayImage.getImageView().getDrawable(); 
+      if(drawing != null){
+      Bitmap bitmap = ((BitmapDrawable)drawing).getBitmap(); 
+
+      // Get current dimensions 
+      int width = bitmap.getWidth(); 
+      int height = bitmap.getHeight(); 
+
+      // Determine how much to scale: the dimension requiring less scaling is 
+      // closer to the its side. This way the image always stays inside your 
+      // bounding box AND either x/y axis touches it. 
+      float xScale = ((float) boundBoxInDp) / width; 
+      float yScale = ((float) boundBoxInDp) / height; 
+      float scale = (xScale <= yScale) ? xScale : yScale; 
+
+      // Create a matrix for the scaling and add the scaling data 
+      Matrix matrix = new Matrix(); 
+      matrix.postScale(scale, scale); 
+
+      // Create a new bitmap and convert it to a format understood by the ImageView 
+      Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true); 
+      BitmapDrawable result = new BitmapDrawable(scaledBitmap); 
+      width = scaledBitmap.getWidth(); 
+      height = scaledBitmap.getHeight(); 
+
+      // Apply the scaled bitmap 
+      displayImage.getImageView().setBackgroundDrawable(result); 
+   
+      // Now change ImageView's dimensions to match the scaled image 
+      if(displayImage.getFrom().equals("banner")){
+      FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) displayImage.getImageView().getLayoutParams(); 
+      params.width = width; 
+      params.height = height; 
+      displayImage.getImageView().setLayoutParams(params); 
+      }else{
+      	 RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) displayImage.getImageView().getLayoutParams(); 
+         params.width = width; 
+         params.height = height; 
+         displayImage.getImageView().setLayoutParams(params); 
+      }
+      }
+  }*/
+	
+	
+	
 	/**
 	 * Used to display bitmap in the UI thread
 	 */
@@ -195,13 +350,56 @@ public class ImageLoader {
 			if (imageViewReused(photoToLoad))
 				return;
 			if (bitmap != null) {
-				Drawable background = new BitmapDrawable(photoToLoad.displayImage.getActivity().getResources(),bitmap);				 
+				Drawable background = new BitmapDrawable(photoToLoad.displayImage.getActivity().getResources(), bitmap);
+				if (photoToLoad.displayImage.getFrom() != null) {
+					if(photoToLoad.displayImage.getFrom().equals("banner") || photoToLoad.displayImage.getFrom().equals("fullview")){
+							photoToLoad.displayImage.getImageView().setImageBitmap(null);
+							if(photoToLoad.displayImage.getFrom().equals("banner")){
+								photoToLoad.displayImage.getImageView().setBackgroundDrawable(background);			    
 
-				photoToLoad.displayImage.getImageView().setBackgroundDrawable(background);
+							}else{
+								photoToLoad.displayImage.getImageView().setImageDrawable(background);   
+
+							}
+						}else{
+							bitmap =  Bitmap.createScaledBitmap(bitmap,139,93,true);
+							background = new BitmapDrawable(photoToLoad.displayImage.getActivity().getResources(), bitmap);
+							photoToLoad.displayImage.getImageView().setImageBitmap(null);
+							photoToLoad.displayImage.getImageView().setBackgroundDrawable(background);			
+						}
+				
+				}
+				else {
+					photoToLoad.displayImage.getImageView().setImageBitmap(null);
+					photoToLoad.displayImage.getImageView().setBackgroundDrawable(background);
+
+				}
 			}
 			else {
-				photoToLoad.displayImage.getImageView().setBackgroundResource(stub_id);
+				if (photoToLoad.displayImage.getFrom() != null) {
 
+					if (photoToLoad.displayImage.getFrom().equals("banner")) {
+						photoToLoad.displayImage.getImageView().setImageResource(stubs_id);
+						photoToLoad.displayImage.getImageView().setBackgroundDrawable(null);
+
+					}
+					else if (photoToLoad.displayImage.getFrom().equals("fullview")) {
+						photoToLoad.displayImage.getImageView().setImageResource(photo_preview_stub_id);
+						photoToLoad.displayImage.getImageView().setBackgroundDrawable(null);
+
+					}
+					else {
+						photoToLoad.displayImage.getImageView().setImageResource(stub_id);
+						photoToLoad.displayImage.getImageView().setBackgroundDrawable(null);
+
+					}
+				}
+				else {
+					// photoToLoad.displayImage.getImageView().setBackgroundResource(stub_id);
+					photoToLoad.displayImage.getImageView().setImageResource(stub_id);
+					photoToLoad.displayImage.getImageView().setBackgroundDrawable(null);
+
+				}
 			}
 		}
 	}
