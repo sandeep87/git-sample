@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="139dp"
-        android:layout_height="104dp"
+        android:layout_width="150dp"
+        android:layout_height="110dp"
         android:layout_gravity="center"
         android:adjustViewBounds="true" />
 
@@ -19,7 +19,7 @@
         android:background="@drawable/overlay"
         android:paddingLeft="3dp"
         android:textColor="@android:color/white"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
 
     <ImageView
         android:id="@+id/img_play_icon"
@@ -29,5 +29,4 @@
         android:src="@drawable/play_icon"
         android:visibility="gone" />
 
-  
 </RelativeLayout>

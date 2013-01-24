@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,8 @@ public class PhotoGalleryActivity extends TopActivity implements ServerResponse,
 
 	private GridAdapter adapter;
 
+	private ImageView imgFolder;
+	
 	public enum RequestType {
 		NO_REQUEST, GALLERY_REQUEST, ALBUM_REQUEST;
 	}
@@ -56,11 +59,14 @@ public class PhotoGalleryActivity extends TopActivity implements ServerResponse,
 		}
 		TextView txtAlbumHeader = (TextView) findViewById(R.id.txt_album_header);
 		Util.setTextFont(this, txtAlbumHeader);
-		txtAlbumHeader.setText(getResources().getString(R.string.photos));
-
+		txtAlbumHeader.setText(getResources().getString(R.string.photos_gallery));
+		
 		TextView txtSeperator = (TextView) findViewById(R.id.divider);
 		txtSeperator.setVisibility(View.GONE);
 
+		imgFolder = (ImageView) findViewById(R.id.img_folder);
+		imgFolder.setImageResource(R.drawable.photos_folder);
+		imgFolder.setVisibility(View.VISIBLE);
 		gridView = (GridView) findViewById(R.id.photos_gridview);
 		gridView.setOnScrollListener(this);
 		if (photoGalleryList != null) {

@@ -16,7 +16,17 @@ public class DisplayImage implements ImageLoadingListener {
 
 	private Activity activity;
 
-//	private ImageView imgageLoader;
+	private String from;
+
+	
+	public String getFrom () {
+		return from;
+	}
+
+	
+	public void setFrom (String from) {
+		this.from = from;
+	}
 
 	// if video is loading should enable paly icon once loading is completed.
 	private ImageView playIcon;
@@ -43,11 +53,11 @@ public class DisplayImage implements ImageLoadingListener {
 		return imgageLoader;
 	}*/
 
-	public DisplayImage (String url, ImageView imageView, Activity activity, ImageView imgageLoader) {
+	public DisplayImage (String url, ImageView imageView, Activity activity, String from) {
 		this.url = url;
 		this.imageView = imageView;
 		this.activity = activity;
-	//	this.imgageLoader = imgageLoader;
+	  this.from = from;
 	}
 
 	public String getUrl () {

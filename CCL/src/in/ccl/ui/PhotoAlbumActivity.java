@@ -43,7 +43,11 @@ public class PhotoAlbumActivity extends TopActivity {
 		GridAdapter adapter = new GridAdapter(PhotoAlbumActivity.this, photoGalleryList, "photo");
 		gridView.setAdapter(adapter);
 
-		gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, photoGalleryId, EndlessScrollListener.RequestType.PHOTO_GALLERY_REQUEST, photoGalleryList.get(0).getNumberOfPages()));
+		if(photoGalleryList.size() > 0){
+			
+			gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, photoGalleryId, EndlessScrollListener.RequestType.PHOTO_GALLERY_REQUEST, photoGalleryList.get(0).getNumberOfPages()));
+
+		}
 
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

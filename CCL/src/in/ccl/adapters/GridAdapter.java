@@ -36,19 +36,19 @@ public class GridAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount () {
-		// TODO Auto-generated method stub
+
 		return gridItemsList.size();
 	}
 
 	@Override
 	public Object getItem (int position) {
-		// TODO Auto-generated method stub
+
 		return gridItemsList.get(position);
 	}
 
 	@Override
 	public long getItemId (int arg0) {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
@@ -63,7 +63,8 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.title = (TextView) convertView.findViewById(R.id.title);
 			//mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
 			mViewHolder.imageLoader = (ImageView) convertView.findViewById(R.id.loading);
-		//	mViewHolder.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+
+			mViewHolder.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 			mViewHolder.image.setPadding(5, 5, 5, 5);
 			convertView.setTag(mViewHolder);
 		}
@@ -74,10 +75,10 @@ public class GridAdapter extends BaseAdapter {
 		mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
 		DisplayImage displayImage = null;
 		if (isFrom.equals("video")) {
-			displayImage = new DisplayImage(gridItemsList.get(position).getThumbUrl(), mViewHolder.image, (Activity) mcontext, mViewHolder.imageLoader);
+			displayImage = new DisplayImage(gridItemsList.get(position).getThumbUrl(), mViewHolder.image, (Activity) mcontext, null);
 		}
 		else {
-			displayImage = new DisplayImage(gridItemsList.get(position).getPhotoOrVideoUrl(), mViewHolder.image, (Activity) mcontext, mViewHolder.imageLoader);
+			displayImage = new DisplayImage(gridItemsList.get(position).getPhotoOrVideoUrl(), mViewHolder.image, (Activity) mcontext,null);
 		}
 		//displayImage.setErrorTitle(mViewHolder.errorTxt);
 

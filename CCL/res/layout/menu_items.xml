@@ -18,10 +18,10 @@
 
         <ImageView
             android:id="@+id/home_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="7dp"
             android:src="@drawable/home" />
 
         <TextView
@@ -42,11 +42,7 @@
         android:layout_height="1dp"
         android:padding="1dp" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:padding="1dp" />
-
+   
     <RelativeLayout
         android:id="@+id/layout_teams"
         android:layout_width="fill_parent"
@@ -55,10 +51,10 @@
 
         <ImageView
             android:id="@+id/teams_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="7dp"
             android:src="@drawable/teams" />
 
         <TextView
@@ -87,10 +83,10 @@
 
         <ImageView
             android:id="@+id/video_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="7dp"
             android:src="@drawable/videos" />
 
         <TextView
@@ -119,10 +115,10 @@
 
         <ImageView
             android:id="@+id/photo_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="7dp"
             android:src="@drawable/photos" />
 
         <TextView
@@ -151,10 +147,10 @@
 
         <ImageView
             android:id="@+id/owner_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="7dp"
             android:src="@drawable/lounge" />
 
         <TextView
@@ -183,10 +179,10 @@
 
         <ImageView
             android:id="@+id/schedule_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="7dp"
             android:src="@drawable/schedule" />
 
         <TextView

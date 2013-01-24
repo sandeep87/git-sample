@@ -34,7 +34,7 @@
             android:padding="12dp"
             android:text="@string/home"
             android:textColor="@android:color/background_light"
-            android:textSize="35sp" />
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <View
@@ -42,10 +42,6 @@
         android:layout_height="1dp"
         android:padding="1dp" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:padding="1dp" />
 
     <RelativeLayout
         android:id="@+id/layout_teams"
@@ -71,7 +67,7 @@
             android:padding="12dp"
             android:text="@string/teams"
             android:textColor="@android:color/background_light"
-            android:textSize="35sp" />
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <View
@@ -103,7 +99,7 @@
             android:padding="12dp"
             android:text="@string/videos"
             android:textColor="@android:color/background_light"
-            android:textSize="35sp" />
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <View
@@ -135,7 +131,7 @@
             android:padding="12dp"
             android:text="@string/photos"
             android:textColor="@android:color/background_light"
-            android:textSize="35sp" />
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <View
@@ -167,7 +163,7 @@
             android:padding="12dp"
             android:text="@string/ownerslounge"
             android:textColor="@android:color/background_light"
-            android:textSize="35sp" />
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <View
@@ -199,7 +195,7 @@
             android:padding="12dp"
             android:text="@string/schedule"
             android:textColor="@android:color/background_light"
-            android:textSize="35sp" />
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <View

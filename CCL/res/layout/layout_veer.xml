@@ -51,8 +51,9 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/owner_one_name_one_veer"
+                android:layout_below="@id/entire_team_title_veer"
                 android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/owner_one_data_veer"
                 android:src="@raw/ritesh_deshmukh_ow" />
 
