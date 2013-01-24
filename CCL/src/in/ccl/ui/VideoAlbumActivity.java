@@ -57,7 +57,7 @@ public class VideoAlbumActivity extends TopActivity {
 				String packageName = "com.google.android.youtube";
 				boolean isYoutubeInstalled = isAppInstalled(packageName);
 				if (isYoutubeInstalled) {
-					String videoId = videoAlbumList.get(position).getVideoUrl();
+					String videoId = videoAlbumList.get(position).getPhotoOrVideoUrl();
 					Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
 					intent.putExtra("VIDEO_ID", videoId);
 					startActivity(intent);

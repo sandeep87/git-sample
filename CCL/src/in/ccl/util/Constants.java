@@ -48,4 +48,13 @@ public class Constants {
 
 	public static final String EXTRA_LOGO_POSITION = "extra_logo_position";
 
+	public static final int PHOTO_GALLERY = 1;
+
+	public static final int VIDEO_GALLERY = 2;
+
+	public static final int PHOTO_ITEMS = 3;
+
+	public static final int VIDEO_ITEMS = 4;
+
+
 }

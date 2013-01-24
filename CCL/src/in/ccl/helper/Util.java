@@ -1,12 +1,10 @@
 package in.ccl.helper;
 
-import in.ccl.model.Items;
 import in.ccl.ui.R;
 
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,9 +20,9 @@ public class Util {
 
 	private static Util singleInstance;
 
-	private ArrayList <Items> teamMembersList;
+//	private ArrayList <Items> teamMembersList;
 
-	private Items membersItem;
+//	private Items membersItem;
 
 	/**
 	 * private constructor
@@ -119,7 +117,7 @@ public class Util {
 
 	}
 
-	public ArrayList <Items> getChnnaiTeamMembersList () {
+/*	public ArrayList <Items> getChnnaiTeamMembersList () {
 		teamMembersList = new ArrayList <Items>();
 		membersItem = new Items();
 		membersItem.setId(1);
@@ -186,8 +184,8 @@ public class Util {
 
 		return teamMembersList;
 	}
-
-	public ArrayList <Items> getTeluguWarriorsTeamMembersList () {
+*/
+/*	public ArrayList <Items> getTeluguWarriorsTeamMembersList () {
 		teamMembersList = new ArrayList <Items>();
 		membersItem = new Items();
 		membersItem.setId(1);
@@ -254,8 +252,8 @@ public class Util {
 
 		return teamMembersList;
 	}
-
-	public ArrayList <Items> getKarnatakaTeamMembersList () {
+*/
+/*	public ArrayList <Items> getKarnatakaTeamMembersList () {
 		teamMembersList = new ArrayList <Items>();
 		membersItem = new Items();
 		membersItem.setId(1);
@@ -322,8 +320,8 @@ public class Util {
 
 		return teamMembersList;
 	}
-
-	public ArrayList <Items> getKeralaTeamMembersList () {
+*/
+/*	public ArrayList <Items> getKeralaTeamMembersList () {
 		teamMembersList = new ArrayList <Items>();
 		membersItem = new Items();
 		membersItem.setId(1);
@@ -390,8 +388,8 @@ public class Util {
 
 		return teamMembersList;
 	}
-
-	public ArrayList <Items> getBangalTeamMembersList () {
+*/
+/*	public ArrayList <Items> getBangalTeamMembersList () {
 		teamMembersList = new ArrayList <Items>();
 		membersItem = new Items();
 		membersItem.setId(1);
@@ -458,8 +456,8 @@ public class Util {
 
 		return teamMembersList;
 	}
-
-	public ArrayList <Items> getMarathiTeamMembersList () {
+*/
+/*	public ArrayList <Items> getMarathiTeamMembersList () {
 		teamMembersList = new ArrayList <Items>();
 		membersItem = new Items();
 		membersItem.setId(1);
@@ -526,8 +524,8 @@ public class Util {
 
 		return teamMembersList;
 	}
-
-	public ArrayList <Items> getBhojpuriTeamMembersList () {
+*/
+/*	public ArrayList <Items> getBhojpuriTeamMembersList () {
 		teamMembersList = new ArrayList <Items>();
 		membersItem = new Items();
 		membersItem.setId(1);
@@ -594,5 +592,5 @@ public class Util {
 
 		return teamMembersList;
 	}
-
+*/
 }

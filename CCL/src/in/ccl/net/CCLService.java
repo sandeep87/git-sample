@@ -1,5 +1,6 @@
 package in.ccl.net;
 
+import in.ccl.database.CCLDAO;
 import in.ccl.logging.Logger;
 import in.ccl.model.Items;
 
@@ -9,12 +10,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.AsyncTask;
+
 public class CCLService {
 
 	private static final String TAG = "CCLSevice";
 
 	public static ArrayList <Items> getPhotoAlbums (String photoJson) {
-		ArrayList <Items> photoGalleryList = new ArrayList <Items>();
+		final ArrayList <Items> photoGalleryList = new ArrayList <Items>();
 		try {
 			JSONArray jsonArray = new JSONArray(photoJson);
 			for (int i = 0; i < jsonArray.length(); i++) {
@@ -36,7 +39,7 @@ public class CCLService {
 				if (!jsonObject.isNull("album_thumb")) {
 					if (jsonObject.has("album_thumb")) {
 						String photoThumbUrl = jsonObject.getString("album_thumb");
-						photoGalleryItem.setUrl(photoThumbUrl);
+						photoGalleryItem.setPhotoOrVideoUrl(photoThumbUrl);
 					}
 				}
 				photoGalleryList.add(photoGalleryItem);
@@ -45,11 +48,21 @@ public class CCLService {
 		catch (JSONException e) {
 			Logger.info(TAG, e.toString());
 		}
+
+		new AsyncTask <Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground (Void... params) {
+				CCLDAO.insertPhotoGalleryItems(photoGalleryList);
+				return null;
+			}
+		}.execute();
+
 		return photoGalleryList;
 	}
 
 	public static ArrayList <Items> getBannerItems (String bannerJson) {
-		ArrayList <Items> bannerList = new ArrayList <Items>();
+		final ArrayList <Items> bannerList = new ArrayList <Items>();
 		try {
 			JSONArray jsonArray = new JSONArray(bannerJson);
 			for (int i = 0; i < jsonArray.length(); i++) {
@@ -64,7 +77,7 @@ public class CCLService {
 				if (!jsonObject.isNull("slide_url")) {
 					if (jsonObject.has("slide_url")) {
 						String slide_url = jsonObject.getString("slide_url");
-						bannerItem.setUrl(slide_url);
+						bannerItem.setPhotoOrVideoUrl(slide_url);
 					}
 				}
 				if (!jsonObject.isNull("slide_title")) {
@@ -73,17 +86,34 @@ public class CCLService {
 						bannerItem.setTitle(slide_title);
 					}
 				}
+				if (!jsonObject.isNull("slide_album_id")) {
+					if (jsonObject.has("slide_album_id")) {
+						int slide_album_id = jsonObject.getInt("slide_album_id");
+						bannerItem.setAlbumId(slide_album_id);
+					}
+				}
 				bannerList.add(bannerItem);
 			}
 		}
 		catch (JSONException e) {
 			Logger.info(TAG, e.toString());
 		}
+
+		// inserting download data into database.
+		new AsyncTask <Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground (Void... params) {
+				CCLDAO.insertBannerItems(bannerList);
+				return null;
+			}
+		}.execute();
+
 		return bannerList;
 	}
 
 	public static ArrayList <Items> getVideoAlbums (String videoJson) {
-		ArrayList <Items> videoGalleryList = new ArrayList <Items>();
+		final ArrayList <Items> videoGalleryList = new ArrayList <Items>();
 		try {
 			JSONArray jsonArray = new JSONArray(videoJson);
 			for (int i = 0; i < jsonArray.length(); i++) {
@@ -106,7 +136,7 @@ public class CCLService {
 				if (!jsonObject.isNull("valbum_thumb")) {
 					if (jsonObject.has("valbum_thumb")) {
 						String valbumThumbUrl = jsonObject.getString("valbum_thumb");
-						videoGalleryItem.setUrl(valbumThumbUrl);
+						videoGalleryItem.setPhotoOrVideoUrl(valbumThumbUrl);
 
 					}
 				}
@@ -116,6 +146,14 @@ public class CCLService {
 		catch (JSONException e) {
 			Logger.info(TAG, e.toString());
 		}
+		new AsyncTask <Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground (Void... params) {
+				CCLDAO.insertVideoGalleryItems(videoGalleryList);
+				return null;
+			}
+		}.execute();
 		return videoGalleryList;
 	}
 

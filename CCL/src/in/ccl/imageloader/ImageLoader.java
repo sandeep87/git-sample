@@ -1,7 +1,10 @@
 package in.ccl.imageloader;
 
+import in.ccl.logging.Logger;
 import in.ccl.ui.R;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -11,6 +14,8 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.apache.http.util.ByteArrayBuffer;
 
 import android.app.Activity;
 import android.content.Context;
@@ -58,6 +63,8 @@ public class ImageLoader {
 
 	final int stub_id = R.raw.pre_loader;
 
+	private String TAG = "Image Loader'";
+
 	/**
 	 * It displays image.
 	 * 
@@ -69,7 +76,7 @@ public class ImageLoader {
 		if (cache.containsKey(displayImage.getUrl())) {
 			Bitmap bitmap = cache.get(displayImage.getUrl());
 			if (bitmap != null) {
-				Drawable background = new BitmapDrawable(displayImage.getActivity().getResources(),bitmap);				 
+				Drawable background = new BitmapDrawable(displayImage.getActivity().getResources(), bitmap);
 				displayImage.getImageView().setBackgroundDrawable(background);
 				listener.onLoadingComplete(bitmap);
 			}
@@ -111,15 +118,73 @@ public class ImageLoader {
 			URL urls = new URL(url);
 			HttpURLConnection connection = (HttpURLConnection) urls.openConnection();
 			connection.setDoInput(true);
-			// connection.setInstanceFollowRedirects(true);
 			connection.connect();
 			InputStream input = connection.getInputStream();
-			return BitmapFactory.decodeStream(new FlushedInputStream(input));
+			// return BitmapFactory.decodeStream(input);
+			return decodeFile(new FlushedInputStream(input));
 		}
 		catch (Exception ex) {
-			ex.printStackTrace();
+			Logger.info(TAG, ex.toString());
 			return null;
 		}
+	}
+
+	private Bitmap decodeFile (InputStream is) {
+		final BitmapFactory.Options options = new BitmapFactory.Options();
+
+		BufferedInputStream bis = new BufferedInputStream(is, 4 * 1024);
+		ByteArrayBuffer baf = new ByteArrayBuffer(50);
+		int current = 0;
+		try {
+			while ((current = bis.read()) != -1) {
+				baf.append((byte) current);
+			}
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte[] imageData = baf.toByteArray();
+		BitmapFactory.decodeByteArray(imageData, 0, imageData.length, options);
+		options.inJustDecodeBounds = true;
+		options.inSampleSize =  calculateInSampleSize(options, 139, 93);
+		options.inJustDecodeBounds = false;
+		Bitmap bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length, options);
+		return bitmap;
+	}
+
+	public static int calculateInSampleSize (BitmapFactory.Options options, int reqWidth, int reqHeight) {
+		// Raw height and width of image
+		final int height = options.outHeight;
+		final int width = options.outWidth;
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+
+			// Calculate ratios of height and width to requested height and width
+			final int heightRatio = Math.round((float) height / (float) reqHeight);
+			final int widthRatio = Math.round((float) width / (float) reqWidth);
+
+			// Choose the smallest ratio as inSampleSize value, this will guarantee a final image
+			// with both dimensions larger than or equal to the requested height and width.
+			inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+
+			// This offers some additional logic in case the image has a strange
+			// aspect ratio. For example, a panorama may have a much larger
+			// width than height. In these cases the total pixels might still
+			// end up being too large to fit comfortably in memory, so we should
+			// be more aggressive with sample down the image (=larger inSampleSize).
+
+			final float totalPixels = width * height;
+
+			// Anything more than 2x the requested pixels we'll sample down further
+			final float totalReqPixelsCap = reqWidth * reqHeight * 2;
+
+			while (totalPixels / (inSampleSize * inSampleSize) > totalReqPixelsCap) {
+				inSampleSize++;
+			}
+		}
+		return inSampleSize;
 	}
 
 	/**
@@ -195,7 +260,7 @@ public class ImageLoader {
 			if (imageViewReused(photoToLoad))
 				return;
 			if (bitmap != null) {
-				Drawable background = new BitmapDrawable(photoToLoad.displayImage.getActivity().getResources(),bitmap);				 
+				Drawable background = new BitmapDrawable(photoToLoad.displayImage.getActivity().getResources(), bitmap);
 
 				photoToLoad.displayImage.getImageView().setBackgroundDrawable(background);
 			}

@@ -1,5 +1,6 @@
 package in.ccl.adapters;
 
+import in.ccl.database.CCLDAO;
 import in.ccl.helper.Category;
 import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
@@ -51,11 +52,10 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 	protected static final String TAG = "ImagePagerAdapter";
 
 	private enum RequestType {
-		NO_REQUEST, PHOTOGALLERY_REQUEST, VIDEOGALLERY_REQUEST,TEAMLOGO_REQUEST;
+		NO_REQUEST, PHOTOGALLERY_REQUEST, VIDEOGALLERY_REQUEST, TEAMLOGO_REQUEST;
 	}
 
 	RequestType mRequestType = RequestType.NO_REQUEST;
-	
 
 	@Override
 	public void destroyItem (ViewGroup container, int position, Object object) {
@@ -67,14 +67,13 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 		itemsList = list;
 		mCategory = category;
 		inflater = activity.getLayoutInflater();
-		
 
 	}
 
 	@Override
 	public int getCount () {
-		if(itemsList.size()>0){
-		return VIEW_PAGER_PAGE_COUNT;
+		if (itemsList.size() > 0) {
+			return VIEW_PAGER_PAGE_COUNT;
 		}
 		return 0;
 	}
@@ -93,8 +92,8 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 				imageView = (ImageView) imageLayout.findViewById(R.id.image);
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 				loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
-				imageView.setTag(itemsList.get(position).getUrl());
-				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, loadingImage);
+				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
+				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, loadingImage);
 				displayImage.show();
 				break;
 			case PHOTO:
@@ -109,8 +108,8 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 				imageView = (ImageView) imageLayout.findViewById(R.id.image);
 				loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
-				imageView.setTag(itemsList.get(position).getUrl());
-				displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, loadingImage);
+				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
+				displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, loadingImage);
 				displayImage.show();
 				break;
 			case TEAM_LOGO:
@@ -122,7 +121,7 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 				imageLayout = load("team_member_image", position);
 
 				break;
-			
+
 			default:
 				break;
 		}
@@ -134,11 +133,15 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 		View view = inflater.inflate(R.layout.grid_view, null);
 		GridView gridView = (GridView) view.findViewById(R.id.grid_view);
 		final ArrayList <Items> items = new ArrayList <Items>();
-		items.add(itemsList.get(VIEW_PAGER_PAGE_COUNT * position));
-		items.add(itemsList.get((VIEW_PAGER_PAGE_COUNT * position) + 1));
-		items.add(itemsList.get((VIEW_PAGER_PAGE_COUNT * position) + 2));
-		// options = new DisplayImageOptions.Builder().showStubImage(R.drawable.stub_image).showImageForEmptyUri(R.drawable.image_for_empty_url).cacheInMemory().cacheOnDisc().bitmapConfig(Bitmap.Config.RGB_565).build();
-
+		try {
+			items.add(itemsList.get(VIEW_PAGER_PAGE_COUNT * position));
+			items.add(itemsList.get((VIEW_PAGER_PAGE_COUNT * position) + 1));
+			items.add(itemsList.get((VIEW_PAGER_PAGE_COUNT * position) + 2));
+			// options = new DisplayImageOptions.Builder().showStubImage(R.drawable.stub_image).showImageForEmptyUri(R.drawable.image_for_empty_url).cacheInMemory().cacheOnDisc().bitmapConfig(Bitmap.Config.RGB_565).build();
+		}
+		catch (IndexOutOfBoundsException e) {
+			Logger.info(TAG, "Loading empty page ");
+		}
 		GridAdapter adapter = new GridAdapter(activity, items, from);
 		gridView.setAdapter(adapter);
 		gridView.setOnItemClickListener(new OnItemClickListener() {
@@ -149,14 +152,27 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 				int index = (2 * position) + (position + pos);
 				if (from.equals("video_gallery")) {
 					try {
-						if (Util.getInstance().isOnline(activity)) {
-							asyncTask.execute(activity.getResources().getString(R.string.video_gallery_url) + itemsList.get(index).getId());
-						}
-						else {
-							Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-						}
+
 						AlbumTitle = itemsList.get(index).getTitle();
 						photoGalleryId = itemsList.get(index).getId();
+
+						ArrayList <Items> list = CCLDAO.getVideos(itemsList.get(index).getId());
+						if (list == null || list.size() <= 0) {
+							if (Util.getInstance().isOnline(activity)) {
+								asyncTask.execute(activity.getResources().getString(R.string.video_gallery_url) + itemsList.get(index).getId());
+							}
+							else {
+								Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+							}
+						}
+						else {
+							Intent videoGalleryIntent = new Intent(activity, VideoAlbumActivity.class);
+							videoGalleryIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, list);
+							videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
+							videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
+							activity.startActivity(videoGalleryIntent);
+						
+						}
 					}
 					catch (ArrayIndexOutOfBoundsException e) {
 						Logger.info(TAG, e.toString());
@@ -166,16 +182,28 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 					}
 				}
 				else if (from.equals("photo_gallery")) {
-					try {
-						if (Util.getInstance().isOnline(activity)) {
-							asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
 
-						}
-						else {
-							Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-						}
+					try {
 						AlbumTitle = itemsList.get(index).getTitle();
 						photoGalleryId = itemsList.get(index).getId();
+
+						ArrayList <Items> list = CCLDAO.getPhotos(itemsList.get(index).getId());
+						if (list == null || list.size() <= 0) {
+							if (Util.getInstance().isOnline(activity)) {
+								asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
+							}
+							else {
+								Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+							}
+						}
+						else {
+							Intent photoAlbumIntent = new Intent(activity, PhotoAlbumActivity.class);
+							photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ITEMS, list);
+							photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
+							photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
+							activity.startActivity(photoAlbumIntent);
+						}
+
 					}
 					catch (ArrayIndexOutOfBoundsException e) {
 						Logger.info(TAG, e.toString());
@@ -278,8 +306,8 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 
 				}
 
-				}
-			
+			}
+
 		});
 		return view;
 	}
@@ -293,25 +321,27 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 	public void setData (String result) {
 		switch (mRequestType) {
 			case PHOTOGALLERY_REQUEST:
-				if(result != null){
+				if (result != null) {
 					Intent photoAlbumIntent = new Intent(activity, PhotoAlbumActivity.class);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ITEMS, CCLParser.photoParser(result));
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
 					activity.startActivity(photoAlbumIntent);
-				}else{
+				}
+				else {
 					Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 				}
-				
+
 				break;
 			case VIDEOGALLERY_REQUEST:
-				if(result != null){
-				Intent videoGalleryIntent = new Intent(activity, VideoAlbumActivity.class);
-				videoGalleryIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, CCLParser.videoAlbumParser(result));
-				videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
-				videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
-				activity.startActivity(videoGalleryIntent);
-				}else{
+				if (result != null) {
+					Intent videoGalleryIntent = new Intent(activity, VideoAlbumActivity.class);
+					videoGalleryIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, CCLParser.videoAlbumParser(result));
+					videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
+					videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
+					activity.startActivity(videoGalleryIntent);
+				}
+				else {
 					Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 				}
 				break;

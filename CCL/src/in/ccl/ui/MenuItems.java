@@ -1,5 +1,6 @@
 package in.ccl.ui;
 
+import in.ccl.database.CCLDAO;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
@@ -138,14 +139,10 @@ public class MenuItems implements OnClickListener, ServerResponse {
 		// layoutScore.setOnClickListener(this);
 		// layoutNews.setOnClickListener(this);
 
-		chennaiTeamMembersList = Util.getInstance().getChnnaiTeamMembersList();
-		teluguTeamMembersList = Util.getInstance().getTeluguWarriorsTeamMembersList();
-		karnatakaTeamMembersList = Util.getInstance().getKarnatakaTeamMembersList();
-		keralaTeamMembersList = Util.getInstance().getKeralaTeamMembersList();
-		bengalTeamMembersList = Util.getInstance().getBangalTeamMembersList();
-		marathiTeamMembersList = Util.getInstance().getMarathiTeamMembersList();
-		bhojpuriTeamMembersList = Util.getInstance().getBhojpuriTeamMembersList();
-	}
+		/*
+		 * chennaiTeamMembersList = Util.getInstance().getChnnaiTeamMembersList(); teluguTeamMembersList = Util.getInstance().getTeluguWarriorsTeamMembersList(); karnatakaTeamMembersList = Util.getInstance().getKarnatakaTeamMembersList(); keralaTeamMembersList =
+		 * Util.getInstance().getKeralaTeamMembersList(); bengalTeamMembersList = Util.getInstance().getBangalTeamMembersList(); marathiTeamMembersList = Util.getInstance().getMarathiTeamMembersList(); bhojpuriTeamMembersList = Util.getInstance().getBhojpuriTeamMembersList();
+		 */}
 
 	@Override
 	public void onClick (View v) {
@@ -154,12 +151,22 @@ public class MenuItems implements OnClickListener, ServerResponse {
 		switch (key) {
 			case R.id.layout_photos:
 				mRequestType = RequestType.PHOTOS_REQUEST;
-				if (Util.getInstance().isOnline(activity)) {
-					DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, MenuItems.this, false);
-					asyncTask.execute(activity.getResources().getString(R.string.photo_album_url));
+				ArrayList <Items> list = CCLDAO.getPhotoGallery();
+				if (list == null || list.size() <= 0) {
+					if (Util.getInstance().isOnline(activity)) {
+						DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, MenuItems.this, false);
+						asyncTask.execute(activity.getResources().getString(R.string.photo_album_url));
+					}
+					else {
+						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
 				}
 				else {
-					Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
+					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, list);
+					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					activity.startActivity(photoGalleryIntent);
+					
 				}
 				break;
 			case R.id.layout_schedule:

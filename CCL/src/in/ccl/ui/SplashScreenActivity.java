@@ -1,5 +1,6 @@
 package in.ccl.ui;
 
+import in.ccl.database.CCLDAO;
 import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
 import in.ccl.logging.Logger;
@@ -60,7 +61,8 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 
 		// Setting the default layout
 		setContentView(R.layout.splash_screen);
-
+		CCLDAO cclDao = new CCLDAO(this);
+		cclDao.init();
 		// getting reference of ccl logo for animated splash screen
 		floatingLogoImage = (ImageView) findViewById(R.id.logo_image);
 		// creating rotate animation object by loading rotate_center anim properties.
@@ -70,17 +72,26 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 		// starting the animation for ccl logo on splash screen.
 		floatingLogoImage.startAnimation(animationRotateCenter);
 		// initializing logs and application utilities.
-		initAppComponents(SplashScreenActivity.this);
+		// initAppComponents(SplashScreenActivity.this);
 
-		if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
-			asyncTask = new DownLoadAsynTask(this, this, true);
-			mRequestType = RequestType.BANNER_REQUEST;
-			asyncTask.execute(getResources().getString(R.string.banner_url));
+		if (CCLDAO.getBannerItems() == null || CCLDAO.getBannerItems().size() == 0) {
+			if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
+				asyncTask = new DownLoadAsynTask(this, this, true);
+				mRequestType = RequestType.BANNER_REQUEST;
+				asyncTask.execute(getResources().getString(R.string.banner_url));
+			}
+			else {
+				animationRotateCenter = null;
+				Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+			}
 		}
 		else {
-			animationRotateCenter = null;
-			Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+			bannerList = CCLDAO.getBannerItems();
+			photoGalleryList = CCLDAO.getPhotoGallery();
+			videoGalleryList = CCLDAO.getVideoGallery();
+			isInitialDataLoaded = true;
 		}
+
 	}
 
 	AnimationListener rotationAnimationListener = new AnimationListener() {

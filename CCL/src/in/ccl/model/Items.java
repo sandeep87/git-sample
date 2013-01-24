@@ -7,21 +7,40 @@ public class Items implements Parcelable {
 
 	private int id;
 
-	private String url;
-
 	private String thumbUrl;
 
 	private int numberOfPages;
-	
+
 	private String personRoles;
+
+	private String title;
+
+	private String photoOrVideoUrl;
 	
+	private int albumId;
 
 	
+	public int getAlbumId () {
+		return albumId;
+	}
+
+	
+	public void setAlbumId (int albumId) {
+		this.albumId = albumId;
+	}
+
+	public String getPhotoOrVideoUrl () {
+		return photoOrVideoUrl;
+	}
+
+	public void setPhotoOrVideoUrl (String photoOrVideoUrl) {
+		this.photoOrVideoUrl = photoOrVideoUrl;
+	}
+
 	public String getPersonRoles () {
 		return personRoles;
 	}
 
-	
 	public void setPersonRoles (String personRoles) {
 		this.personRoles = personRoles;
 	}
@@ -42,19 +61,7 @@ public class Items implements Parcelable {
 		this.thumbUrl = thumb_url;
 	}
 
-	private String title;
-
-	private String videoUrl;
-
 	public Items () {
-	}
-
-	public String getVideoUrl () {
-		return videoUrl;
-	}
-
-	public void setVideoUrl (String videoUrl) {
-		this.videoUrl = videoUrl;
 	}
 
 	public int getId () {
@@ -63,14 +70,6 @@ public class Items implements Parcelable {
 
 	public void setId (int id) {
 		this.id = id;
-	}
-
-	public String getUrl () {
-		return url;
-	}
-
-	public void setUrl (String url) {
-		this.url = url;
 	}
 
 	public String getTitle () {
@@ -105,22 +104,22 @@ public class Items implements Parcelable {
 	public Items (Parcel in) {
 		setId(in.readInt());
 		setTitle(in.readString());
-		setUrl(in.readString());
-		setVideoUrl(in.readString());
 		setThumbUrl(in.readString());
 		setNumberOfPages(in.readInt());
 		setPersonRoles(in.readString());
+		setPhotoOrVideoUrl(in.readString());
+		setAlbumId(in.readInt());
 	}
 
 	@Override
 	public void writeToParcel (Parcel dest, int flags) {
 		dest.writeInt(getId());
 		dest.writeString(getTitle());
-		dest.writeString(getUrl());
-		dest.writeString(getVideoUrl());
 		dest.writeString(getThumbUrl());
 		dest.writeInt(getNumberOfPages());
 		dest.writeString(getPersonRoles());
+		dest.writeString(getPhotoOrVideoUrl());
+		dest.writeInt(getAlbumId());
 	}
 
 }

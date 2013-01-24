@@ -51,8 +51,8 @@ public class FullPagerAdapter extends PagerAdapter {
 		imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 		imageView = (ImageView) imageLayout.findViewById(R.id.image);
 		spinner = (ImageView) imageLayout.findViewById(R.id.loading);
-		imageView.setTag(itemsList.get(position).getUrl());
-		DisplayImage displayImage = new DisplayImage(itemsList.get(position).getUrl(), imageView, activity, spinner);
+		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
+		DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, spinner);
 		displayImage.show();
 
 		((ViewPager) view).addView(imageLayout, 0);

@@ -167,8 +167,6 @@
             android:id="@+id/new_owners_list"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="4dp"
             android:scrollbars="none" >
