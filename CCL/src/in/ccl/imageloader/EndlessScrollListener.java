@@ -1,31 +1,25 @@
 package in.ccl.imageloader;
 
 import in.ccl.adapters.GridAdapter;
-import in.ccl.helper.ServerResponse;
+import in.ccl.database.CCLPullService;
 import in.ccl.helper.Util;
-import in.ccl.model.Items;
-import in.ccl.net.DownLoadAsynTask;
-import in.ccl.parser.CCLParser;
 import in.ccl.ui.R;
-
-import java.util.ArrayList;
-
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.Toast;
 
-public class EndlessScrollListener implements ServerResponse, OnScrollListener {
+public class EndlessScrollListener implements OnScrollListener {
 
-	private int visibleThreshold = 5;
+	private int visibleThreshold = 25;
 
 	private int currentPage = 0;
 
 	private int previousTotal = 0;
 
 	private boolean loading = true;
-
-	private GridAdapter adapter;
 
 	public static enum RequestType {
 		NO_REQUEST, VIDEO_REQUEST, ALBUM_REQUEST, PHOTO_GALLERY_REQUEST;
@@ -43,7 +37,6 @@ public class EndlessScrollListener implements ServerResponse, OnScrollListener {
 	}
 
 	public EndlessScrollListener (Activity activity, GridAdapter adapter, int itemId, RequestType from, int pages) {
-		this.adapter = adapter;
 		mRequestType = from;
 		this.itemId = itemId;
 		this.activity = activity;
@@ -53,7 +46,7 @@ public class EndlessScrollListener implements ServerResponse, OnScrollListener {
 	@Override
 	public void onScroll (AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 		if (loading) {
-			if (totalItemCount > previousTotal) {
+			if (totalItemCount >= previousTotal) {
 				loading = false;
 				previousTotal = totalItemCount;
 				currentPage++;
@@ -65,10 +58,11 @@ public class EndlessScrollListener implements ServerResponse, OnScrollListener {
 			switch (mRequestType) {
 				case PHOTO_GALLERY_REQUEST:
 					if (Util.getInstance().isOnline(activity)) {
-
-						DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, this, true);
-						asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemId + "?page=" + (currentPage + 1));
-
+						Intent mServiceIntent = new Intent(activity, CCLPullService.class);
+						String url = activity.getResources().getString(R.string.photo_gallery_url) + itemId + "?page=" + (currentPage + 1);
+						mServiceIntent.setData(Uri.parse(url));
+						mServiceIntent.putExtra("KEY", "photos");
+						activity.startService(mServiceIntent);
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -76,8 +70,10 @@ public class EndlessScrollListener implements ServerResponse, OnScrollListener {
 					break;
 				case VIDEO_REQUEST:
 					if (Util.getInstance().isOnline(activity)) {
-						DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, this, true);
-						asyncTask.execute(activity.getResources().getString(R.string.video_gallery_url) + itemId + "?page=" + (currentPage + 1));
+						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.video_gallery_url) + itemId + "?page=" + (currentPage + 1)));
+						mServiceIntent.putExtra("KEY", "videos");
+						activity.startService(mServiceIntent);
+
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -93,30 +89,6 @@ public class EndlessScrollListener implements ServerResponse, OnScrollListener {
 
 	@Override
 	public void onScrollStateChanged (AbsListView view, int scrollState) {
-	}
-
-	@Override
-	public void setData (String result) {
-		if (result != null) {
-			switch (mRequestType) {
-				case PHOTO_GALLERY_REQUEST:
-
-					ArrayList <Items> items = CCLParser.photoParser(result);
-					adapter.updateList(items);
-					break;
-				case VIDEO_REQUEST:
-					items = CCLParser.videoAlbumParser(result);
-					adapter.updateList(items);
-					break;
-
-				default:
-					break;
-			}
-		}
-		else {
-			Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-		}
-
 	}
 
 }

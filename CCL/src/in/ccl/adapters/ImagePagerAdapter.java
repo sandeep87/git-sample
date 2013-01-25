@@ -1,14 +1,13 @@
 package in.ccl.adapters;
 
-import in.ccl.database.CCLDAO;
+import in.ccl.database.CCLPullService;
+import in.ccl.database.PhotoAlbumCurosr;
+import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Category;
-import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
 import in.ccl.imageloader.DisplayImage;
 import in.ccl.logging.Logger;
 import in.ccl.model.Items;
-import in.ccl.net.DownLoadAsynTask;
-import in.ccl.parser.CCLParser;
 import in.ccl.ui.MenuItems;
 import in.ccl.ui.PhotoAlbumActivity;
 import in.ccl.ui.R;
@@ -20,10 +19,12 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -33,7 +34,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 
-public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
+public class ImagePagerAdapter extends PagerAdapter {
 
 	private LayoutInflater inflater;
 
@@ -43,9 +44,9 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 
 	private Category mCategory;
 
-	private String AlbumTitle;
+	public static String AlbumTitle;
 
-	private int photoGalleryId;
+	public static int photoGalleryId;
 
 	private static final int VIEW_PAGER_PAGE_COUNT = 3;
 
@@ -79,7 +80,7 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 	}
 
 	@Override
-	public View instantiateItem (View view, int position) {
+	public View instantiateItem (View view, final int position) {
 		View imageLayout = null;
 		ImageView imageView = null;
 		ImageView loadingImage = null;
@@ -91,7 +92,45 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 				imageView = (ImageView) imageLayout.findViewById(R.id.image);
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+				imageView.setOnClickListener(new OnClickListener() {
 
+					@Override
+					public void onClick (View v) {
+
+						try {
+							AlbumTitle = itemsList.get(position).getTitle();
+							photoGalleryId = itemsList.get(position).getAlbumId();
+							ArrayList <Items> list = PhotoAlbumCurosr.getPhotos(activity, photoGalleryId);
+							if (list == null || list.size() <= 0) {
+								if (Util.getInstance().isOnline(activity)) {
+									Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(position).getAlbumId()));
+									mServiceIntent.putExtra("KEY", "photos");
+									activity.startService(mServiceIntent);
+
+									// asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
+								}
+								else {
+									Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+								}
+							}
+							else {
+								Intent photoAlbumIntent = new Intent(activity, PhotoAlbumActivity.class);
+								photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ITEMS, list);
+								photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
+								photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
+								activity.startActivity(photoAlbumIntent);
+							}
+
+						}
+						catch (ArrayIndexOutOfBoundsException e) {
+							Logger.info(TAG, e.toString());
+						}
+						catch (IndexOutOfBoundsException e) {
+							e.printStackTrace();
+							Logger.info(TAG, e.toString());
+						}
+					}
+				});
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
@@ -150,18 +189,20 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View arg1, int pos, long arg3) {
-				DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, ImagePagerAdapter.this, false);
+				// DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, ImagePagerAdapter.this, false);
 				int index = (2 * position) + (position + pos);
 				if (from.equals("video_gallery")) {
 					try {
 
 						AlbumTitle = itemsList.get(index).getTitle();
 						photoGalleryId = itemsList.get(index).getId();
-
-						ArrayList <Items> list = CCLDAO.getVideos(itemsList.get(index).getId());
+						ArrayList <Items> list = VideoAlbumCursor.getVideos(activity, photoGalleryId);
 						if (list == null || list.size() <= 0) {
 							if (Util.getInstance().isOnline(activity)) {
-								asyncTask.execute(activity.getResources().getString(R.string.video_gallery_url) + itemsList.get(index).getId());
+								Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.video_gallery_url) + itemsList.get(index).getId()));
+								mServiceIntent.putExtra("KEY", "videos");
+								activity.startService(mServiceIntent);
+								// asyncTask.execute(activity.getResources().getString(R.string.video_gallery_url) + itemsList.get(index).getId());
 							}
 							else {
 								Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -173,13 +214,14 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 							videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
 							videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
 							activity.startActivity(videoGalleryIntent);
-						
+
 						}
 					}
 					catch (ArrayIndexOutOfBoundsException e) {
 						Logger.info(TAG, e.toString());
 					}
 					catch (IndexOutOfBoundsException e) {
+						e.printStackTrace();
 						Logger.info(TAG, e.toString());
 					}
 				}
@@ -188,11 +230,14 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 					try {
 						AlbumTitle = itemsList.get(index).getTitle();
 						photoGalleryId = itemsList.get(index).getId();
-
-						ArrayList <Items> list = CCLDAO.getPhotos(itemsList.get(index).getId());
+						ArrayList <Items> list = PhotoAlbumCurosr.getPhotos(activity, photoGalleryId);
 						if (list == null || list.size() <= 0) {
 							if (Util.getInstance().isOnline(activity)) {
-								asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
+								Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId()));
+								mServiceIntent.putExtra("KEY", "photos");
+								activity.startService(mServiceIntent);
+
+								// asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
 							}
 							else {
 								Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -211,6 +256,7 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 						Logger.info(TAG, e.toString());
 					}
 					catch (IndexOutOfBoundsException e) {
+						e.printStackTrace();
 						Logger.info(TAG, e.toString());
 					}
 				}
@@ -319,37 +365,4 @@ public class ImagePagerAdapter extends PagerAdapter implements ServerResponse {
 		return view.equals(object);
 	}
 
-	@Override
-	public void setData (String result) {
-		switch (mRequestType) {
-			case PHOTOGALLERY_REQUEST:
-				if (result != null) {
-					Intent photoAlbumIntent = new Intent(activity, PhotoAlbumActivity.class);
-					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ITEMS, CCLParser.photoParser(result));
-					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
-					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
-					activity.startActivity(photoAlbumIntent);
-				}
-				else {
-					Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-				}
-
-				break;
-			case VIDEOGALLERY_REQUEST:
-				if (result != null) {
-					Intent videoGalleryIntent = new Intent(activity, VideoAlbumActivity.class);
-					videoGalleryIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, CCLParser.videoAlbumParser(result));
-					videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
-					videoGalleryIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
-					activity.startActivity(videoGalleryIntent);
-				}
-				else {
-					Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-				}
-				break;
-
-			default:
-				break;
-		}
-	}
 }

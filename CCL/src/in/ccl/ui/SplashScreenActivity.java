@@ -1,22 +1,32 @@
 package in.ccl.ui;
 
-import in.ccl.database.CCLDAO;
-import in.ccl.helper.ServerResponse;
+import in.ccl.database.BannerCursor;
+import in.ccl.database.CCLPullService;
+import in.ccl.database.Constants;
+import in.ccl.database.DataProviderContract;
+import in.ccl.database.DisplayActivity;
+import in.ccl.database.JSONPullParser;
+import in.ccl.database.PhotoAlbumCurosr;
+import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Util;
 import in.ccl.logging.Logger;
 import in.ccl.logging.ParadigmExceptionHandler;
 import in.ccl.model.Items;
-import in.ccl.net.CCLService;
-import in.ccl.net.DownLoadAsynTask;
 import in.ccl.util.AppPropertiesUtil;
-import in.ccl.util.Constants;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
@@ -30,7 +40,7 @@ import android.widget.Toast;
  * @author Rajesh Babu | Paradigm Creatives
  */
 
-public class SplashScreenActivity extends Activity implements ServerResponse {
+public class SplashScreenActivity extends FragmentActivity {
 
 	private Animation animationRotateCenter;
 
@@ -39,14 +49,6 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 	private TextView txtSplashLoading;
 
 	private boolean isInitialDataLoaded;
-
-	private ArrayList <Items> bannerList = new ArrayList <Items>();
-
-	private ArrayList <Items> photoGalleryList = new ArrayList <Items>();
-
-	private ArrayList <Items> videoGalleryList = new ArrayList <Items>();
-
-	private DownLoadAsynTask asyncTask;
 
 	public enum RequestType {
 		NO_REQUEST, BANNER_REQUEST, PHOTO_ALBUMREQUEST, VIDEO_ALBUMREQUEST;
@@ -57,6 +59,8 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 	/**
 	 * Called when the activity is first created.
 	 */
+	// Intent for starting the IntentService that downloads the Picasa featured picture RSS feed
+	private Intent mServiceIntent;
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -64,8 +68,6 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 
 		// Setting the default layout
 		setContentView(R.layout.splash_screen);
-		CCLDAO cclDao = new CCLDAO(this);
-		cclDao.init();
 		// getting reference of ccl logo for animated splash screen
 		floatingLogoImage = (ImageView) findViewById(R.id.logo_image);
 		// getting reference of loading text in splash screen
@@ -81,24 +83,75 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 
 		Util.setTextFont(SplashScreenActivity.this, txtSplashLoading);
 
-		if (CCLDAO.getBannerItems() == null || CCLDAO.getBannerItems().size() == 0) {
+		// The filter's action is BROADCAST_ACTION
+		IntentFilter statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
+
+		// Sets the filter's category to DEFAULT
+		statusIntentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+
+		// Instantiates a new DownloadStateReceiver
+		DownloadStateReceiver mDownloadStateReceiver = new DownloadStateReceiver();
+
+		// Registers the DownloadStateReceiver and its intent filters
+		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		Cursor cursor = getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
+		if (cursor.getCount() > 0) {
+			ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
+			cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+			ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+			cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+			ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+			cursor.close();
+			callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
+		}
+		else {
+			if (cursor != null) {
+				cursor.close();
+			}
 			if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
-				asyncTask = new DownLoadAsynTask(this, this, true);
-				mRequestType = RequestType.BANNER_REQUEST;
-				asyncTask.execute(getResources().getString(R.string.banner_url));
+				mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.banner_url)));
+				startService(mServiceIntent);
+
+				mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.photo_album_url)));
+				startService(mServiceIntent);
+
+				mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.video_album_url)));
+				startService(mServiceIntent);
+
+				cursor = getContentResolver().query(DataProviderContract.CATEGORY_TABLE_CONTENTURI, null, null, null, null);
+				if (cursor.getCount() <= 0) {
+					// Initilization of Category table.
+					Vector <ContentValues> mValues = new Vector <ContentValues>(JSONPullParser.VECTOR_INITIAL_SIZE);
+					ContentValues values = new ContentValues();
+					values.put(DataProviderContract.ROW_ID, 1);
+					values.put(DataProviderContract.CATEGORY_TITLE, "photos");
+					mValues.add(values);
+					values = new ContentValues();
+					values.put(DataProviderContract.ROW_ID, 2);
+					values.put(DataProviderContract.CATEGORY_TITLE, "videos");
+					mValues.add(values);
+					// Stores the number of images
+					int imageVectorSize = mValues.size();
+					// Creates one ContentValues for each image
+					ContentValues[] imageValuesArray = new ContentValues[imageVectorSize];
+					imageValuesArray = mValues.toArray(imageValuesArray);
+					getContentResolver().bulkInsert(DataProviderContract.CATEGORY_TABLE_CONTENTURI, imageValuesArray);
+				}
+
 			}
 			else {
 				animationRotateCenter = null;
 				Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 			}
 		}
-		else {
-			bannerList = CCLDAO.getBannerItems();
-			photoGalleryList = CCLDAO.getPhotoGallery();
-			videoGalleryList = CCLDAO.getVideoGallery();
-			isInitialDataLoaded = true;
-		}
+	}
 
+	private void callHomeIntent (ArrayList <Items> bannerItems, ArrayList <Items> photoAlbumItems, ArrayList <Items> videoAlbumItems) {
+		Intent homeActivityIntent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_BANNER_KEY, bannerItems);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
+		SplashScreenActivity.this.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
 	}
 
 	AnimationListener rotationAnimationListener = new AnimationListener() {
@@ -117,13 +170,13 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 			// isInitialDataLoaded is true when all required home screen data is downloaded from the server.
 			// in this case it should navigate to home screen.
 			if (isInitialDataLoaded) {
+				Intent homeActivityIntent = new Intent(SplashScreenActivity.this, DisplayActivity.class);
+				startActivity(homeActivityIntent);
 
-				Intent homeActivityIntent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-				homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_BANNER_KEY, bannerList);
-				homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, photoGalleryList);
-				homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, videoGalleryList);
-				SplashScreenActivity.this.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
-			}
+				/*
+				 * Intent homeActivityIntent = new Intent(SplashScreenActivity.this, HomeActivity.class); homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_BANNER_KEY, bannerList); homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, photoGalleryList);
+				 * homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, videoGalleryList); SplashScreenActivity.this.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
+				 */}
 			else {
 				// if initial data is not received from the server to show on home screen.
 				// here it repeat the animation, until it gets the data.
@@ -169,62 +222,41 @@ public class SplashScreenActivity extends Activity implements ServerResponse {
 		finish();
 	}
 
-	@Override
-	public void setData (String result) {
-		if (result != null) {
-			switch (mRequestType) {
-				case NO_REQUEST:
-					mRequestType = RequestType.NO_REQUEST;
-					break;
-				case BANNER_REQUEST:
-					// parsing server banner items response.
-					bannerList = CCLService.getBannerItems(result);
-					if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
-						// for downloading photo album data.
-						asyncTask = new DownLoadAsynTask(this, this, true);
-						mRequestType = RequestType.PHOTO_ALBUMREQUEST;
-						asyncTask.execute(getResources().getString(R.string.photo_album_url));
-					}
-					else {
-						Toast.makeText(SplashScreenActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
+	private class DownloadStateReceiver extends BroadcastReceiver {
 
-					break;
-				case PHOTO_ALBUMREQUEST:
-					// parsing server photo album responose.
-					photoGalleryList = CCLService.getPhotoAlbums(result);
-					if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
-						// for downloading video albums.
-						asyncTask = new DownLoadAsynTask(this, this, true);
-						mRequestType = RequestType.VIDEO_ALBUMREQUEST;
-						asyncTask.execute(getResources().getString(R.string.video_album_url));
-					}
-					else {
-						Toast.makeText(SplashScreenActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
-					break;
-				case VIDEO_ALBUMREQUEST:
-					// parsing video album response.
-					videoGalleryList = CCLService.getVideoAlbums(result);
-					// to finish the animation, it will be executed in onAnimation end method.
-					if (videoGalleryList != null) {
-						isInitialDataLoaded = true;
-					}
+		private static final String CLASS_TAG = "DisplayActivity";
+
+		private DownloadStateReceiver () {
+			// prevents instantiation by other packages.
+		}
+
+		/**
+		 * 
+		 * This method is called by the system when a broadcast Intent is matched by this class' intent filters
+		 * 
+		 * @param context An Android context
+		 * @param intent The incoming broadcast Intent
+		 */
+		@Override
+		public void onReceive (Context context, Intent intent) {
+
+			// Gets the status from the Intent's extended data, and chooses the appropriate action
+
+			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
+				case Constants.STATE_ACTION_VIDEO_ALBUM_COMPLETE:
+					Cursor cursor = getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
+					cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+					cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+					cursor.close();
+					callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
 					break;
 				default:
 					break;
 			}
 		}
-		else {
-			// to finish the animation if server return null.
-			isInitialDataLoaded = true;
-
-			// No network connection.
-			if (!Util.getInstance().isOnline(SplashScreenActivity.this)) {
-				Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-			}
-		}
-
 	}
 }// end of class
 

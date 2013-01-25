@@ -1,10 +1,25 @@
 package in.ccl.ui;
 
+import in.ccl.database.BannerCursor;
+import in.ccl.database.DataProviderContract;
+import in.ccl.database.PhotoAlbumCurosr;
+import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
+import in.ccl.model.Items;
+import in.ccl.util.Constants;
+
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -58,15 +73,27 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	private TextView notificationTitle;
 
-//	private LinearLayout animationLayoutSlider;
+	// private LinearLayout animationLayoutSlider;
+	private DownloadStateReceiver mDownloadStateReceiver;
+
+	private IntentFilter statusIntentFilter;
 
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.common_layout);
 
+		// The filter's action is BROADCAST_ACTION
+		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
+
+		// Sets the filter's category to DEFAULT
+		statusIntentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+
+		// Instantiates a new DownloadStateReceiver
+		mDownloadStateReceiver = new DownloadStateReceiver();
+
 		mLayout = (AnimationLayout) findViewById(R.id.animation_layout);
-		//animationLayoutSlider = (LinearLayout) findViewById(R.id.animation_layout_sidebar);
+		// animationLayoutSlider = (LinearLayout) findViewById(R.id.animation_layout_sidebar);
 		menuLayout = (LinearLayout) findViewById(R.id.menu_layout);
 
 		notificationTxt = (TextView) findViewById(R.id.notification_textview);
@@ -186,6 +213,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	@Override
 	protected void onPause () {
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
 
 		new Handler().postDelayed(new Runnable() {
 
@@ -247,6 +275,75 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		mLayout.closeSidebar();
 		// animationLayoutSlider.setVisibility(View.GONE);
 		return true;
+	}
+
+	@Override
+	protected void onResume () {
+		super.onResume();
+		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+
+	}
+
+	private class DownloadStateReceiver extends BroadcastReceiver {
+
+		private DownloadStateReceiver () {
+		}
+
+		/**
+		 * 
+		 * This method is called by the system when a broadcast Intent is matched by this class' intent filters
+		 * 
+		 * @param context An Android context
+		 * @param intent The incoming broadcast Intent
+		 */
+		@Override
+		public void onReceive (Context context, Intent intent) {
+
+			// Gets the status from the Intent's extended data, and chooses the appropriate action
+
+			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
+
+				case in.ccl.database.Constants.STATE_ACTION_PHOTO_ALBUM_COMPLETE:
+					Cursor cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+					Intent photoGalleryIntent = new Intent(TopActivity.this, PhotoGalleryActivity.class);
+					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
+					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					startActivity(photoGalleryIntent);
+					break;
+				case in.ccl.database.Constants.STATE_ACTION_VIDEO_ALBUM_COMPLETE:
+					cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+
+					Intent videoGalleryIntent = new Intent(TopActivity.this, VideoGalleryActivity.class);
+					videoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
+					videoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					startActivity(videoGalleryIntent);
+					break;
+				case in.ccl.database.Constants.STATE_ACTION_BANNER_COMPLETE:
+					cursor = getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor.getCount() > 0) {
+						ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
+						cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+						photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+						cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+						videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+						cursor.close();
+						callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
+					}
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
+	private void callHomeIntent (ArrayList <Items> bannerItems, ArrayList <Items> photoAlbumItems, ArrayList <Items> videoAlbumItems) {
+		Intent homeActivityIntent = new Intent(this, HomeActivity.class);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_BANNER_KEY, bannerItems);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
+		startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
 	}
 
 }

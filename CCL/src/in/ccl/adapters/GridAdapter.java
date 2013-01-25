@@ -26,12 +26,16 @@ public class GridAdapter extends BaseAdapter {
 
 	private String isFrom;
 
+	// A Drawable for a grid cell that's empty
+	// private Drawable mEmptyDrawable;
+
 	public GridAdapter (Context context, ArrayList <Items> listOfItems, String from) {
 		mcontext = context;
 		isFrom = from;
 		gridItemsList = listOfItems;
 		inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
+		// mEmptyDrawable = context.getResources().getDrawable(R.drawable.imagenotqueued);
+
 	}
 
 	@Override
@@ -61,7 +65,7 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.image = (ImageView) convertView.findViewById(R.id.image);
 			mViewHolder.playImage = (ImageView) convertView.findViewById(R.id.img_play_icon);
 			mViewHolder.title = (TextView) convertView.findViewById(R.id.title);
-			//mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
+			// mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
 			mViewHolder.imageLoader = (ImageView) convertView.findViewById(R.id.loading);
 
 			mViewHolder.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -78,9 +82,9 @@ public class GridAdapter extends BaseAdapter {
 			displayImage = new DisplayImage(gridItemsList.get(position).getThumbUrl(), mViewHolder.image, (Activity) mcontext, null);
 		}
 		else {
-			displayImage = new DisplayImage(gridItemsList.get(position).getPhotoOrVideoUrl(), mViewHolder.image, (Activity) mcontext,null);
+			displayImage = new DisplayImage(gridItemsList.get(position).getPhotoOrVideoUrl(), mViewHolder.image, (Activity) mcontext, null);
 		}
-		//displayImage.setErrorTitle(mViewHolder.errorTxt);
+		// displayImage.setErrorTitle(mViewHolder.errorTxt);
 
 		if (isFrom.equals("video")) {
 			mViewHolder.title.setVisibility(View.INVISIBLE);
@@ -122,7 +126,7 @@ public class GridAdapter extends BaseAdapter {
 
 		public TextView title;
 
-	//	public TextView errorTxt;
+		// public TextView errorTxt;
 
 		public ImageView imageLoader;
 	}

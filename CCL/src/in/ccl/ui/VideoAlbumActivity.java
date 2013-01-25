@@ -8,9 +8,13 @@ import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -23,15 +27,34 @@ public class VideoAlbumActivity extends TopActivity {
 
 	private GridView gridView;
 
+	private GridAdapter adapter;
+
 	private ArrayList <Items> videoAlbumList;
+
+	private int videoGalleryId;
+
+	private DownloadStateReceiver mDownloadStateReceiver;
+
+	private IntentFilter statusIntentFilter;
 
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.grid_layout);
+		// The filter's action is BROADCAST_ACTION
+		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
+
+		// Sets the filter's category to DEFAULT
+		statusIntentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+
+		// Instantiates a new DownloadStateReceiver
+		mDownloadStateReceiver = new DownloadStateReceiver();
+
+		// Registers the DownloadStateReceiver and its intent filters
+
 		String albumTitle = getIntent().getStringExtra(Constants.EXTRA_ALBUM_TITLE);
-		int videoGalleryId = getIntent().getIntExtra(Constants.EXTRA_ALBUM_ID, 1);
+		videoGalleryId = getIntent().getIntExtra(Constants.EXTRA_ALBUM_ID, 1);
 
 		TextView txtAlbumTitle = (TextView) findViewById(R.id.txt_album_title);
 		txtAlbumTitle.setText(albumTitle);
@@ -45,9 +68,8 @@ public class VideoAlbumActivity extends TopActivity {
 			videoAlbumList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_VIDEO_ITEMS);
 		}
 
-		GridAdapter adapter = new GridAdapter(VideoAlbumActivity.this, videoAlbumList, "video");
+		adapter = new GridAdapter(VideoAlbumActivity.this, videoAlbumList, "video");
 		gridView.setAdapter(adapter);
-
 		gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, videoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, videoAlbumList.get(0).getNumberOfPages()));
 
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,10 +85,24 @@ public class VideoAlbumActivity extends TopActivity {
 					startActivity(intent);
 				}
 				else {
-           Toast.makeText(VideoAlbumActivity.this,"Youtube application is not installed in your device.", Toast.LENGTH_LONG).show();
+					Toast.makeText(VideoAlbumActivity.this, "Youtube application is not installed in your device.", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
+	}
+
+	@Override
+	protected void onResume () {
+		// TODO Auto-generated method stub
+		super.onResume();
+		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+	}
+	@Override
+	protected void onPause () {
+		// TODO Auto-generated method stub
+		super.onPause();
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
+
 	}
 
 	protected boolean isAppInstalled (String packageName) {
@@ -78,4 +114,36 @@ public class VideoAlbumActivity extends TopActivity {
 			return false;
 		}
 	}
+
+	private class DownloadStateReceiver extends BroadcastReceiver {
+
+		private DownloadStateReceiver () {
+		}
+
+		/**
+		 * 
+		 * This method is called by the system when a broadcast Intent is matched by this class' intent filters
+		 * 
+		 * @param context An Android context
+		 * @param intent The incoming broadcast Intent
+		 */
+		@Override
+		public void onReceive (Context context, Intent intent) {
+
+			// Gets the status from the Intent's extended data, and chooses the appropriate action
+
+			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
+
+				case in.ccl.database.Constants.STATE_ACTION_VIDEO_COMPLETE:
+					if (intent != null && intent.hasExtra("list")) {
+						ArrayList <Items> list = intent.getParcelableArrayListExtra("list");
+						adapter.updateList(list);
+					}
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
 }

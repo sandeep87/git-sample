@@ -1,5 +1,7 @@
 package in.ccl.util;
 
+import java.util.Locale;
+
 public class Constants {
 
 	public static final int SPLASH_SCREEN_RESULT = 1;
@@ -55,6 +57,58 @@ public class Constants {
 	public static final int PHOTO_ITEMS = 3;
 
 	public static final int VIDEO_ITEMS = 4;
+	
+  // Set to true to turn on debug logging
+  public static final boolean LOGD = true;
 
+//The download is starting
+  public static final int STATE_ACTION_STARTED = 0;
+
+  // The background thread is connecting to the RSS feed
+  public static final int STATE_ACTION_CONNECTING = 1;
+
+  // The background thread is parsing the RSS feed
+  public static final int STATE_ACTION_PARSING = 2;
+
+  // The background thread is writing data to the content provider
+  public static final int STATE_ACTION_WRITING = 3;
+
+  // The background thread is done
+  public static final int STATE_ACTION_COMPLETE = 4;
+
+  // The background thread is doing logging
+  public static final int STATE_LOG = -1;
+
+  public static final CharSequence BLANK = " ";
+
+  public static final String THUMBNAIL_FRAGMENT_TAG =
+    "in.ccl.THUMBNAIL_FRAGMENT_TAG";
+
+//Custom actions
+  
+  public static final String ACTION_VIEW_IMAGE =
+          "in.ccl.ACTION_VIEW_IMAGE";
+
+  public static final String ACTION_ZOOM_IMAGE =
+    "com.example.android.threadsample.ACTION_ZOOM_IMAGE";
+
+//Fragment tags
+  public static final String PHOTO_FRAGMENT_TAG =
+          "com.example.android.threadsample.PHOTO_FRAGMENT_TAG";
+  
+  
+	/*
+	 * A user-agent string that's sent to the HTTP site. It includes information about the device and the build that the device is running.
+	 */
+	public static final String USER_AGENT = "Mozilla/5.0 (Linux; U; Android " + android.os.Build.VERSION.RELEASE + ";" + Locale.getDefault().toString() + "; " + android.os.Build.DEVICE + "/" + android.os.Build.ID + ")";
+
+	// Defines a custom Intent action
+	public static final String BROADCAST_ACTION = "in.ccl.BROADCAST";
+
+	// Defines the key for the status "extra" in an Intent
+	public static final String EXTENDED_DATA_STATUS = "in.ccl.STATUS";
+
+	// Defines the key for the log "extra" in an Intent
+	public static final String EXTENDED_STATUS_LOG = "in.ccl.LOG";
 
 }

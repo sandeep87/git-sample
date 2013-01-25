@@ -1,12 +1,13 @@
 package in.ccl.ui;
 
-import in.ccl.database.CCLDAO;
+import in.ccl.database.BannerCursor;
+import in.ccl.database.CCLPullService;
+import in.ccl.database.DataProviderContract;
+import in.ccl.database.PhotoAlbumCurosr;
+import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.AnimationLayout;
-import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
-import in.ccl.net.CCLService;
-import in.ccl.net.DownLoadAsynTask;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,19 +26,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MenuItems implements OnClickListener, ServerResponse {
+public class MenuItems implements OnClickListener {
 
 	private static MenuItems singleInstance;
 
 	private Activity activity;
 
 	private AnimationLayout mLayout;
-
-	private ArrayList <Items> bannerList;
-
-	private ArrayList <Items> photoGalleryList;
-
-	private ArrayList <Items> videoGalleryList;
 
 	public static ArrayList <Items> teamLogosList;
 
@@ -151,11 +148,12 @@ public class MenuItems implements OnClickListener, ServerResponse {
 		switch (key) {
 			case R.id.layout_photos:
 				mRequestType = RequestType.PHOTOS_REQUEST;
-				ArrayList <Items> list = CCLDAO.getPhotoGallery();
+				Cursor cursor = activity.getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+				ArrayList <Items> list = PhotoAlbumCurosr.getItems(cursor);
 				if (list == null || list.size() <= 0) {
 					if (Util.getInstance().isOnline(activity)) {
-						DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, MenuItems.this, false);
-						asyncTask.execute(activity.getResources().getString(R.string.photo_album_url));
+						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_album_url)));
+						activity.startService(mServiceIntent);
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -166,7 +164,7 @@ public class MenuItems implements OnClickListener, ServerResponse {
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, list);
 					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					activity.startActivity(photoGalleryIntent);
-					
+
 				}
 				break;
 			case R.id.layout_schedule:
@@ -239,26 +237,58 @@ public class MenuItems implements OnClickListener, ServerResponse {
 				break;
 			case R.id.layout_videos:
 				mRequestType = RequestType.VIDEOS_REQUEST;
-				if (Util.getInstance().isOnline(activity)) {
-					DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, MenuItems.this, false);
-					asyncTask.execute(activity.getResources().getString(R.string.video_album_url));
-				}
-				else {
-					Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-				}
-
-				break;
-			case R.id.layout_home:
-				if (mLayout.isShown()) {
+				cursor = activity.getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+				list = VideoAlbumCursor.getItems(cursor);
+				if (list == null || list.size() <= 0) {
 					if (Util.getInstance().isOnline(activity)) {
-						DownLoadAsynTask downLoadAsyncTask = new DownLoadAsynTask(activity, this, false);
-						mRequestType = RequestType.BANNER_REQUEST;
-						downLoadAsyncTask.execute(activity.getResources().getString(R.string.banner_url));
+						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_album_url)));
+						activity.startService(mServiceIntent);
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 					}
 				}
+				else {
+					Intent photoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
+					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, list);
+					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					activity.startActivity(photoGalleryIntent);
+				}
+
+				break;
+			case R.id.layout_home:
+				if (mLayout.isShown()) {
+					cursor = activity.getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor.getCount() > 0) {
+						ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
+						cursor = activity.getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+						ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+						cursor = activity.getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+						ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+						cursor.close();
+						callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
+					}
+					else {
+						if (cursor != null) {
+							cursor.close();
+						}
+						if (Util.getInstance().isOnline(activity)) {
+							Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.banner_url)));
+							activity.startService(mServiceIntent);
+
+							mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_album_url)));
+							activity.startService(mServiceIntent);
+
+							mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.video_album_url)));
+							activity.startService(mServiceIntent);
+						}
+						else {
+							Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+						}
+					}
+
+				}
+
 				break;
 			default:
 				break;
@@ -266,76 +296,12 @@ public class MenuItems implements OnClickListener, ServerResponse {
 
 	}
 
-	@Override
-	public void setData (String result) {
-		if (result != null) {
-			switch (mRequestType) {
-				case NO_REQUEST:
-					mRequestType = RequestType.NO_REQUEST;
-					break;
-				case BANNER_REQUEST:
-					// parsing server banner items response.
-					bannerList = CCLService.getBannerItems(result);
-					if (Util.getInstance().isOnline(activity)) {
-						// for downloading photo album data.
-						DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, this, true);
-						mRequestType = RequestType.PHOTO_ALBUMREQUEST;
-						asyncTask.execute(activity.getResources().getString(R.string.photo_album_url));
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
-
-					break;
-				case PHOTO_ALBUMREQUEST:
-					// parsing server photo album responose.
-					photoGalleryList = CCLService.getPhotoAlbums(result);
-					if (Util.getInstance().isOnline(activity)) {
-						// for downloading video albums.
-						DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, this, true);
-						mRequestType = RequestType.VIDEO_ALBUMREQUEST;
-						asyncTask.execute(activity.getResources().getString(R.string.video_album_url));
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
-
-					break;
-				case VIDEO_ALBUMREQUEST:
-					// parsing video album response.
-					videoGalleryList = CCLService.getVideoAlbums(result);
-					// to finish the animation, it will be executed in onAnimation end method.
-					Intent homeActivityIntent = new Intent(activity, HomeActivity.class);
-					homeActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_BANNER_KEY, bannerList);
-					homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, photoGalleryList);
-					homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, videoGalleryList);
-					activity.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
-					break;
-				case PHOTOS_REQUEST:
-					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
-					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, CCLService.getPhotoAlbums(result));
-					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					activity.startActivity(photoGalleryIntent);
-					break;
-				case VIDEOS_REQUEST:
-					Intent videoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
-					videoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, CCLService.getVideoAlbums(result));
-					videoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-
-					activity.startActivity(videoGalleryIntent);
-					break;
-				default:
-					break;
-			}
-		}
-		else {
-			// No network connection.
-
-			Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-
-		}
-
+	private void callHomeIntent (ArrayList <Items> bannerItems, ArrayList <Items> photoAlbumItems, ArrayList <Items> videoAlbumItems) {
+		Intent homeActivityIntent = new Intent(activity, HomeActivity.class);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_BANNER_KEY, bannerItems);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
+		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
+		activity.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
 	}
 
 }

@@ -1,0 +1,52 @@
+package in.ccl.database;
+
+import java.util.Locale;
+
+import android.net.Uri;
+
+public class Constants {
+
+	// The download is starting
+	public static final int STATE_ACTION_STARTED = 0;
+
+	// The background thread is connecting to the RSS feed
+	public static final int STATE_ACTION_CONNECTING = 1;
+
+	// The background thread is parsing the RSS feed
+	public static final int STATE_ACTION_PARSING = 2;
+
+	// The background thread is writing data to the content provider
+	public static final int STATE_ACTION_WRITING = 3;
+
+	// The background thread is done
+	public static final int STATE_ACTION_COMPLETE = 4;
+
+
+//The banner thread is done
+	public static final int STATE_ACTION_BANNER_COMPLETE = 5;
+//The photo album thread is done
+	public static final int STATE_ACTION_PHOTO_ALBUM_COMPLETE = 6;
+//The video album thread is done
+	public static final int STATE_ACTION_VIDEO_ALBUM_COMPLETE = 7;
+//The video album thread is done
+	public static final int STATE_ACTION_PHOTO_COMPLETE = 8;
+//The video album thread is done
+	public static final int STATE_ACTION_VIDEO_COMPLETE = 9;
+
+	/*
+	 * A user-agent string that's sent to the HTTP site. It includes information about the device and the build that the device is running.
+	 */
+	public static final String USER_AGENT = "Mozilla/5.0 (Linux; U; Android " + android.os.Build.VERSION.RELEASE + ";" + Locale.getDefault().toString() + "; " + android.os.Build.DEVICE + "/" + android.os.Build.ID + ")";
+
+	// Defines a custom Intent action
+	public static final String BROADCAST_ACTION = "in.ccl.BROADCAST";
+
+	// Defines the key for the status "extra" in an Intent
+	public static final String EXTENDED_DATA_STATUS = "in.ccl.STATUS";
+
+	// Defines the key for the log "extra" in an Intent
+	public static final String EXTENDED_STATUS_LOG = "in.ccl.LOG";
+
+	public static final boolean LOGD = true;
+
+}

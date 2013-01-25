@@ -21,13 +21,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.nostra13.universalimageloader.core.assist.FlushedInputStream;
 
@@ -73,7 +69,6 @@ public class ImageLoader {
 	final int stub_id = R.drawable.grid_item_preloader;
 
 	final int photo_preview_stub_id = R.drawable.photo_preview_preloader;
- // latest image loader
  
 	/**
 	 * It displays image.
@@ -125,16 +120,13 @@ public class ImageLoader {
 					else {
 						displayImage.getImageView().setImageResource(stub_id);
 						displayImage.getImageView().setBackgroundDrawable(null);
-
 					}
 				}
 				else {
 					// displayImage.getImageView().setBackgroundResource(stub_id);
 					displayImage.getImageView().setImageResource(stub_id);
 					displayImage.getImageView().setBackgroundDrawable(null);
-
 				}
-
 				listener.onLoadingFailed(FailToLoad.IO_ERROR);
 			}
 		}
@@ -142,20 +134,16 @@ public class ImageLoader {
 			queuePhoto(displayImage);
 			if (displayImage.getFrom() != null) {
 				if (displayImage.getFrom().equals("banner")) {
-
 					displayImage.getImageView().setImageResource(stubs_id);
 					displayImage.getImageView().setBackgroundDrawable(null);
-
 				}
 				else if (displayImage.getFrom().equals("fullview")) {
 					displayImage.getImageView().setImageResource(photo_preview_stub_id);
 					displayImage.getImageView().setBackgroundDrawable(null);
-
 				}
 				else {
 					displayImage.getImageView().setImageResource(stub_id);
 					displayImage.getImageView().setBackgroundDrawable(null);
-
 				}
 			}
 			else {

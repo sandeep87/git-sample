@@ -1,17 +1,22 @@
 package in.ccl.ui;
 
 import in.ccl.adapters.GridAdapter;
+import in.ccl.database.CCLPullService;
+import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
-import in.ccl.net.DownLoadAsynTask;
-import in.ccl.parser.CCLParser;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -19,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class VideoGalleryActivity extends TopActivity implements ServerResponse {
+public class VideoGalleryActivity extends TopActivity {
 
 	public static ArrayList <Integer> photo_albums = new ArrayList <Integer>();
 
@@ -28,13 +33,29 @@ public class VideoGalleryActivity extends TopActivity implements ServerResponse 
 	private ArrayList <Items> videoGalleryList;
 
 	private String albumTitle;
-	
+
 	private ImageView imgFolder;
+
+	private int videoGalleryId;
+
+	private DownloadStateReceiver mDownloadStateReceiver;
+
+	private IntentFilter statusIntentFilter;
+
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.grid_layout);
+
+		// The filter's action is BROADCAST_ACTION
+		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
+
+		// Sets the filter's category to DEFAULT
+		statusIntentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+
+		// Instantiates a new DownloadStateReceiver
+		mDownloadStateReceiver = new DownloadStateReceiver();
 
 		if (getIntent().hasExtra(Constants.EXTRA_VIDEO_KEY)) {
 			videoGalleryList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY);
@@ -58,13 +79,25 @@ public class VideoGalleryActivity extends TopActivity implements ServerResponse 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View view, int position, long arg3) {
 
-				if (Util.getInstance().isOnline(VideoGalleryActivity.this)) {
-					DownLoadAsynTask asyncTask = new DownLoadAsynTask(VideoGalleryActivity.this, VideoGalleryActivity.this, false);
-					asyncTask.execute(getResources().getString(R.string.video_gallery_url) + videoGalleryList.get(position).getId());
-					albumTitle = videoGalleryList.get(position).getTitle();
+				albumTitle = videoGalleryList.get(position).getTitle();
+				videoGalleryId = videoGalleryList.get(position).getId();
+				ArrayList <Items> list = VideoAlbumCursor.getVideos(VideoGalleryActivity.this, videoGalleryId);
+				if (list == null || list.size() <= 0) {
+					if (Util.getInstance().isOnline(VideoGalleryActivity.this)) {
+						Intent mServiceIntent = new Intent(VideoGalleryActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.video_gallery_url) + videoGalleryList.get(position).getId()));
+						mServiceIntent.putExtra("KEY", "videos");
+						startService(mServiceIntent);
+					}
+					else {
+						Toast.makeText(VideoGalleryActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
 				}
 				else {
-					Toast.makeText(VideoGalleryActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					Intent photoAlbumIntent = new Intent(VideoGalleryActivity.this, VideoAlbumActivity.class);
+					photoAlbumIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, list);
+					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, videoGalleryId);
+					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, albumTitle);
+					startActivity(photoAlbumIntent);
 				}
 
 			}
@@ -72,16 +105,51 @@ public class VideoGalleryActivity extends TopActivity implements ServerResponse 
 	}
 
 	@Override
-	public void setData (String result) {
-		if (result != null) {
-			Intent photoAlbumIntent = new Intent(getApplicationContext(), VideoAlbumActivity.class);
-			photoAlbumIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, CCLParser.videoAlbumParser(result));
-			photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, albumTitle);
-			startActivity(photoAlbumIntent);
-		}
-		else {
-			Toast.makeText(VideoGalleryActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-		}
+	protected void onResume () {
+		// TODO Auto-generated method stub
+		super.onResume();
+		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+	}
+	@Override
+	protected void onPause () {
+		// TODO Auto-generated method stub
+		super.onPause();
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
 
 	}
+
+	private class DownloadStateReceiver extends BroadcastReceiver {
+
+		private DownloadStateReceiver () {
+		}
+
+		/**
+		 * 
+		 * This method is called by the system when a broadcast Intent is matched by this class' intent filters
+		 * 
+		 * @param context An Android context
+		 * @param intent The incoming broadcast Intent
+		 */
+		@Override
+		public void onReceive (Context context, Intent intent) {
+
+			// Gets the status from the Intent's extended data, and chooses the appropriate action
+
+			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
+
+				case in.ccl.database.Constants.STATE_ACTION_PHOTO_COMPLETE:
+					ArrayList <Items> list = VideoAlbumCursor.getVideos(VideoGalleryActivity.this, videoGalleryId);
+					Intent photoAlbumIntent = new Intent(VideoGalleryActivity.this, VideoAlbumActivity.class);
+					photoAlbumIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, list);
+					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, videoGalleryId);
+					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, albumTitle);
+					startActivity(photoAlbumIntent);
+
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
 }
