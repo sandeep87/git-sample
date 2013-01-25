@@ -109,7 +109,7 @@
         android:id="@+id/photo_view_pager"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="9"
+        android:layout_weight="10"
         android:background="@drawable/content_bg" />
 
     <LinearLayout

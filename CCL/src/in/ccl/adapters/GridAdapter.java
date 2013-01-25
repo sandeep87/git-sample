@@ -75,7 +75,8 @@ public class GridAdapter extends BaseAdapter {
 		else {
 			mViewHolder = (ViewHolder) convertView.getTag();
 		}
-		Util.setTextFont((Activity) mcontext, mViewHolder.title);
+
+//		Util.setTextFont((Activity) mcontext, mViewHolder.title);
 		mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
 		DisplayImage displayImage = null;
 		if (isFrom.equals("video")) {
@@ -104,6 +105,7 @@ public class GridAdapter extends BaseAdapter {
 			displayImage.setPlayIcon(mViewHolder.playImage);
 		}
 		else if (isFrom.equals("team_member_image")) {
+			Util.setTextFont((Activity) mcontext, mViewHolder.title);
 			mViewHolder.title.setText(gridItemsList.get(position).getTitle() + "\n" + gridItemsList.get(position).getPersonRoles());
 			mViewHolder.title.setVisibility(View.VISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);

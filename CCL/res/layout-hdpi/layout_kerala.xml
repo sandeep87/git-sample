@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
                 android:text="KERALA STRIKERS"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_name_one_kerala"
@@ -35,7 +36,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="PADMASREE LT.COL.V.MOHANLAL"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_data_kerala"
@@ -58,7 +60,7 @@
                 android:layout_toRightOf="@+id/owner_one_data_kerala"
                 android:src="@raw/mohanlal" />
 
-            <TextView
+           <!--  <TextView
                 android:id="@+id/owner_one_name_two_kerala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +71,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="PADMASREE LT.COL.V.MOHANLAL"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
         <!-- Owner two -->
@@ -89,7 +91,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="MS.LISSY PRIYADARSHAN"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_two_data_kerala"
@@ -110,7 +113,7 @@
                 android:layout_toRightOf="@+id/owner_two_data_kerala"
                 android:src="@raw/lissy_priyadarshan" />
 
-            <TextView
+            <!-- <TextView
                 android:id="@+id/owner_two_name_two_kerala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,7 +124,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="MS.LISSY PRIYADARSHAN"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
         <!-- Owner three -->
@@ -141,7 +144,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="MR.SHAJI"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_three_data_kerala"
@@ -162,19 +166,18 @@
                 android:layout_toRightOf="@+id/owner_three_data_kerala"
                 android:src="@raw/shaji" />
 
-            <TextView
+          <!--   <TextView
                 android:id="@+id/owner_three_name_two_kerala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/owner_three_image_kerala"
-                android:layout_marginRight="20dip"
+                android:layout_marginRight="5dip"
                 android:layout_toRightOf="@+id/owner_two_data_kerala"
                 android:paddingTop="1dip"
-                android:singleLine="false"
-                
+                android:singleLine="false"                
                 android:text="MR.SHAJI"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
     </RelativeLayout>
 

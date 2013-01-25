@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
                 android:text="BENGAL TIGERS"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_name_one_bengal"
@@ -34,11 +35,12 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="Mr. Boney Kapoor"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_data_bengal"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_one_name_one_bengal"
                 android:layout_marginLeft="2dp"
@@ -57,7 +59,7 @@
                 android:layout_toRightOf="@+id/owner_one_data_bengal"
                 android:src="@raw/boney_kapoor" />
 
-            <TextView
+           <!--  <TextView
                 android:id="@+id/owner_one_name_two_bengal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +70,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr. Boney Kapoor"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
         <!-- Owner two -->
@@ -88,11 +90,12 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="Mr. Arjun Kapoor"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_two_data_bengal"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_two_name_one_bengal"
                 android:layout_marginLeft="2dp"
@@ -109,7 +112,7 @@
                 android:layout_toRightOf="@+id/owner_two_data_bengal"
                 android:src="@raw/arjun_kapoor" />
 
-            <TextView
+           <!--  <TextView
                 android:id="@+id/owner_two_name_two_bengal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,7 +123,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr. Arjun Kapoor"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
         <!-- Owner three -->
@@ -140,11 +143,12 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="Mr. Raj Shah"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_three_data_bengal"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_three_name_one_bengal"
                 android:layout_marginLeft="2dp"
@@ -161,19 +165,18 @@
                 android:layout_toRightOf="@+id/owner_three_data_bengal"
                 android:src="@raw/raj_shah" />
 
-            <TextView
+            <!-- <TextView
                 android:id="@+id/owner_three_name_two_bengal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/owner_three_image_bengal"
-                android:layout_marginRight="5dip"
-                android:layout_toRightOf="@+id/owner_two_data_bengal"
+                android:layout_marginRight="3dip"
+                android:layout_toRightOf="@+id/owner_three_data_bengal"
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr. Raj Shah"
-                android:paddingRight="5dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
     </RelativeLayout>
 

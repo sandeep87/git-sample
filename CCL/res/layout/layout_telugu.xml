@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
                 android:text="TELUGU WARRIORS"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_name_one_telugu"
@@ -34,12 +35,13 @@
                 android:layout_below="@+id/entire_team_title_telugu"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="AMR Group"
-                android:textColor="@android:color/black" />
+                android:text="Mr. Mahesh Reddy"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_data_telugu"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_one_name_one_telugu"
                 android:layout_marginLeft="2dp"
@@ -58,7 +60,7 @@
                 android:layout_toRightOf="@+id/owner_one_data_telugu"
                 android:src="@raw/mahesh_reddy" />
 
-            <TextView
+            <!-- <TextView
                 android:id="@+id/owner_one_name_two_telugu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +71,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr. Mahesh Reddy"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
         <!-- Owner two -->
@@ -89,11 +91,12 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="Mr. A. Tirumal reddy"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_two_data_telugu"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_two_name_one_telugu"
                 android:layout_marginLeft="2dp"
@@ -110,7 +113,7 @@
                 android:layout_toRightOf="@+id/owner_two_data_telugu"
                 android:src="@raw/tirumal_reddy" />
 
-            <TextView
+         <!--    <TextView
                 android:id="@+id/owner_two_name_two_telugu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,7 +124,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr. A. Tirumal Reddy"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
      

@@ -79,42 +79,43 @@ public class OwnersLoungueActivity extends TopActivity {
 		mEntireTeamTitleKerala = (TextView) findViewById(R.id.entire_team_title_kerala);
 		mOwnerOneNameOneKerala = (TextView) findViewById(R.id.owner_one_name_one_kerala);
 		mOwnerOneDataKerala = (TextView) findViewById(R.id.owner_one_data_kerala);
-		mOwnerOneNameTwoKerala = (TextView) findViewById(R.id.owner_one_name_two_kerala);
+		// mOwnerOneNameTwoKerala = (TextView) findViewById(R.id.owner_one_name_two_kerala);
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataKerala, 175f);
 
 		mOwnerTwoNameOneKerala = (TextView) findViewById(R.id.owner_two_name_one_kerala);
 		mOwnerTwoDataKerala = (TextView) findViewById(R.id.owner_two_data_kerala);
-		mOwnerTwoNameTwoKerala = (TextView) findViewById(R.id.owner_two_name_two_kerala);
+		// mOwnerTwoNameTwoKerala = (TextView) findViewById(R.id.owner_two_name_two_kerala);
+		// TextViewJustify.getInstance().justifyText(mOwnerTwoDataKerala, 175f);
 
 		mOwnerThreeNameOneKerala = (TextView) findViewById(R.id.owner_three_name_one_kerala);
 		mOwnerThreeDataKerala = (TextView) findViewById(R.id.owner_three_data_kerala);
-		mOwnerThreeNameTwoKerala = (TextView) findViewById(R.id.owner_three_name_two_kerala);
+		// mOwnerThreeNameTwoKerala = (TextView) findViewById(R.id.owner_three_name_two_kerala);
+		// TextViewJustify.getInstance().justifyText(mOwnerThreeDataKerala, 175f);
 
-		Util.setTextFont(this, mEntireTeamTitleKerala);
-		Util.setTextFont(this, mOwnerOneNameOneKerala);
-		Util.setTextFont(this, mOwnerOneDataKerala);
-		Util.setTextFont(this, mOwnerOneNameTwoKerala);
-
-		Util.setTextFont(this, mOwnerTwoNameOneKerala);
-		Util.setTextFont(this, mOwnerTwoDataKerala);
-		Util.setTextFont(this, mOwnerTwoNameTwoKerala);
-
-		Util.setTextFont(this, mOwnerThreeNameOneKerala);
-		Util.setTextFont(this, mOwnerThreeDataKerala);
-		Util.setTextFont(this, mOwnerThreeNameTwoKerala);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleKerala); Util.setTextFont(this, mOwnerOneNameOneKerala); Util.setTextFont(this, mOwnerOneDataKerala); Util.setTextFont(this, mOwnerOneNameTwoKerala);
+		 * 
+		 * Util.setTextFont(this, mOwnerTwoNameOneKerala); Util.setTextFont(this, mOwnerTwoDataKerala); Util.setTextFont(this, mOwnerTwoNameTwoKerala);
+		 * 
+		 * Util.setTextFont(this, mOwnerThreeNameOneKerala); Util.setTextFont(this, mOwnerThreeDataKerala); Util.setTextFont(this, mOwnerThreeNameTwoKerala);
+		 */
 
 		// Bengal tigers
 		mEntireTeamTitleBengal = (TextView) findViewById(R.id.entire_team_title_bengal);
 		mOwnerOneNameOneBengal = (TextView) findViewById(R.id.owner_one_name_one_bengal);
 		mOwnerOneDataBengal = (TextView) findViewById(R.id.owner_one_data_bengal);
-		mOwnerOneNameTwoBengal = (TextView) findViewById(R.id.owner_one_name_two_bengal);
+		// mOwnerOneNameTwoBengal = (TextView) findViewById(R.id.owner_one_name_two_bengal);
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataBengal, 175f);
 
 		mOwnerTwoNameOneBengal = (TextView) findViewById(R.id.owner_two_name_one_bengal);
 		mOwnerTwoDataBengal = (TextView) findViewById(R.id.owner_two_data_bengal);
-		mOwnerTwoNameTwoBengal = (TextView) findViewById(R.id.owner_two_name_two_bengal);
+		// mOwnerTwoNameTwoBengal = (TextView) findViewById(R.id.owner_two_name_two_bengal);
+		// TextViewJustify.getInstance().justifyText(mOwnerTwoDataBengal, 175f);
 
 		mOwnerThreeNameOneBengal = (TextView) findViewById(R.id.owner_three_name_one_bengal);
 		mOwnerThreeDataBengal = (TextView) findViewById(R.id.owner_three_data_bengal);
-		mOwnerThreeNameTwoBengal = (TextView) findViewById(R.id.owner_three_name_two_bengal);
+		// mOwnerThreeNameTwoBengal = (TextView) findViewById(R.id.owner_three_name_two_bengal);
+		// TextViewJustify.getInstance().justifyText(mOwnerThreeDataBengal, 175f);
 
 		/*
 		 * mEntireTeamTitleBengal.setText(mEntireTeamTitleBengal.getText().toString()); mOwnerOneNameOneBengal.setText(mOwnerOneNameOneBengal.getText().toString()); mOwnerOneDataBengal.setText(mOwnerOneDataBengal.getText().toString());
@@ -124,60 +125,62 @@ public class OwnersLoungueActivity extends TopActivity {
 		 * 
 		 * mOwnerThreeNameOneBengal.setText(mOwnerThreeNameOneBengal.getText().toString()); mOwnerThreeDataBengal.setText(mOwnerThreeDataBengal.getText().toString()); mOwnerThreeNameTwoBengal.setText(mOwnerThreeNameTwoBengal.getText().toString());
 		 */
-		Util.setTextFont(this, mEntireTeamTitleBengal);
-		Util.setTextFont(this, mOwnerOneNameOneBengal);
-		Util.setTextFont(this, mOwnerOneDataBengal);
-		Util.setTextFont(this, mOwnerOneNameTwoBengal);
-
-		Util.setTextFont(this, mOwnerTwoNameOneBengal);
-		Util.setTextFont(this, mOwnerTwoDataBengal);
-		Util.setTextFont(this, mOwnerTwoNameTwoBengal);
-
-		Util.setTextFont(this, mOwnerThreeNameOneBengal);
-		Util.setTextFont(this, mOwnerThreeDataBengal);
-		Util.setTextFont(this, mOwnerThreeNameTwoBengal);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleBengal); Util.setTextFont(this, mOwnerOneNameOneBengal); Util.setTextFont(this, mOwnerOneDataBengal); Util.setTextFont(this, mOwnerOneNameTwoBengal);
+		 * 
+		 * Util.setTextFont(this, mOwnerTwoNameOneBengal); Util.setTextFont(this, mOwnerTwoDataBengal); Util.setTextFont(this, mOwnerTwoNameTwoBengal);
+		 * 
+		 * Util.setTextFont(this, mOwnerThreeNameOneBengal); Util.setTextFont(this, mOwnerThreeDataBengal); Util.setTextFont(this, mOwnerThreeNameTwoBengal);
+		 */
 
 		// mumbai heros
 		mEntireTeamTitleMumbai = (TextView) findViewById(R.id.entire_team_title_mumbai);
 		mOwnerOneNameOneMumbai = (TextView) findViewById(R.id.owner_one_name_one_mumbai);
 		mOwnerOneDataMumbai = (TextView) findViewById(R.id.owner_one_data_mumbai);
-		mOwnerOneNameTwoMumbai = (TextView) findViewById(R.id.owner_one_name_two_mumbai);
+		// mOwnerOneNameTwoMumbai = (TextView) findViewById(R.id.owner_one_name_two_mumbai);
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataMumbai, 175f);
+
+		/*
+		 * //mOwnerOneDataMumbai.setText(Html.fromHtml(getString(R.string.owner_one_data_mumbai))); TextViewJustify.justifyText(((TextView)findViewById(R.id.owner_one_data_mumbai)), 175f);
+		 */
 
 		/*
 		 * mEntireTeamTitleMumbai.setText(mEntireTeamTitleMumbai.getText().toString()); mOwnerOneNameOneMumbai.setText(mOwnerOneNameOneMumbai.getText().toString()); mOwnerOneDataMumbai.setText(mOwnerOneDataMumbai.getText().toString());
 		 * mOwnerOneNameTwoMumbai.setText(mOwnerOneNameTwoMumbai.getText().toString());
 		 */
 
-		Util.setTextFont(this, mEntireTeamTitleMumbai);
-		Util.setTextFont(this, mOwnerOneNameOneMumbai);
-		Util.setTextFont(this, mOwnerOneDataMumbai);
-		Util.setTextFont(this, mOwnerOneNameTwoMumbai);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleMumbai); Util.setTextFont(this, mOwnerOneNameOneMumbai); Util.setTextFont(this, mOwnerOneDataMumbai); Util.setTextFont(this, mOwnerOneNameTwoMumbai);
+		 */
 
 		// chennai rhinos
 		mEntireTeamTitleChennai = (TextView) findViewById(R.id.entire_team_title_chennai);
 		mOwnerOneNameOneChennai = (TextView) findViewById(R.id.owner_one_name_one_chennai);
 		mOwnerOneDataChennai = (TextView) findViewById(R.id.owner_one_data_chennai);
-		mOwnerOneNameTwoChennai = (TextView) findViewById(R.id.owner_one_name_two_chennai);
+
+		// mOwnerOneNameTwoChennai = (TextView) findViewById(R.id.owner_one_name_two_chennai);
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataChennai, 175f);
 
 		/*
 		 * mEntireTeamTitleChennai.setText(mEntireTeamTitleChennai.getText().toString()); mOwnerOneNameOneChennai.setText(mOwnerOneNameOneChennai.getText().toString()); mOwnerOneDataChennai.setText(mOwnerOneDataChennai.getText().toString());
 		 * mOwnerOneNameTwoChennai.setText(mOwnerOneNameTwoChennai.getText().toString());
 		 */
 
-		Util.setTextFont(this, mEntireTeamTitleChennai);
-		Util.setTextFont(this, mOwnerOneNameOneChennai);
-		Util.setTextFont(this, mOwnerOneDataChennai);
-		Util.setTextFont(this, mOwnerOneNameTwoChennai);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleChennai); Util.setTextFont(this, mOwnerOneNameOneChennai); Util.setTextFont(this, mOwnerOneDataChennai); Util.setTextFont(this, mOwnerOneNameTwoChennai);
+		 */
 
 		// Telugu warriors
 		mEntireTeamTitleTelugu = (TextView) findViewById(R.id.entire_team_title_telugu);
 		mOwnerOneNameOneTelugu = (TextView) findViewById(R.id.owner_one_name_one_telugu);
 		mOwnerOneDataTelugu = (TextView) findViewById(R.id.owner_one_data_telugu);
-		mOwnerOneNameTwoTelugu = (TextView) findViewById(R.id.owner_one_name_two_telugu);
+		// mOwnerOneNameTwoTelugu = (TextView) findViewById(R.id.owner_one_name_two_telugu);
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataTelugu, 175f);
 
 		mOwnerTwoNameOneTelugu = (TextView) findViewById(R.id.owner_two_name_one_telugu);
 		mOwnerTwoDataTelugu = (TextView) findViewById(R.id.owner_two_data_telugu);
-		mOwnerTwoNameTwoTelugu = (TextView) findViewById(R.id.owner_two_name_two_telugu);
+		// mOwnerTwoNameTwoTelugu = (TextView) findViewById(R.id.owner_two_name_two_telugu);
+		// TextViewJustify.getInstance().justifyText(mOwnerTwoDataTelugu, 175f);
 
 		/*
 		 * mEntireTeamTitleTelugu.setText(mEntireTeamTitleTelugu.getText().toString()); mOwnerOneNameOneTelugu.setText(mOwnerOneNameOneTelugu.getText().toString()); mOwnerOneDataTelugu.setText(mOwnerOneDataTelugu.getText().toString());
@@ -186,61 +189,58 @@ public class OwnersLoungueActivity extends TopActivity {
 		 * mOwnerTwoNameOneTelugu.setText(mOwnerTwoNameOneTelugu.getText().toString()); mOwnerTwoDataTelugu.setText(mOwnerTwoDataTelugu.getText().toString()); mOwnerTwoNameTwoTelugu.setText(mOwnerTwoNameTwoTelugu.getText().toString());
 		 */
 
-		Util.setTextFont(this, mEntireTeamTitleTelugu);
-		Util.setTextFont(this, mOwnerOneNameOneTelugu);
-		Util.setTextFont(this, mOwnerOneDataTelugu);
-		Util.setTextFont(this, mOwnerOneNameTwoTelugu);
-
-		Util.setTextFont(this, mOwnerTwoNameOneTelugu);
-		Util.setTextFont(this, mOwnerTwoDataTelugu);
-		Util.setTextFont(this, mOwnerTwoNameTwoTelugu);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleTelugu); Util.setTextFont(this, mOwnerOneNameOneTelugu); Util.setTextFont(this, mOwnerOneDataTelugu); Util.setTextFont(this, mOwnerOneNameTwoTelugu);
+		 * 
+		 * Util.setTextFont(this, mOwnerTwoNameOneTelugu); Util.setTextFont(this, mOwnerTwoDataTelugu); Util.setTextFont(this, mOwnerTwoNameTwoTelugu);
+		 */
 
 		// karnataka
 		mEntireTeamTitleKarnataka = (TextView) findViewById(R.id.entire_team_title_karnataka);
 		mOwnerOneNameOneKarnataka = (TextView) findViewById(R.id.owner_one_name_one_karnataka);
 		mOwnerOneDataKarnataka = (TextView) findViewById(R.id.owner_one_data_karnataka);
-		mOwnerOneNameTwoKarnataka = (TextView) findViewById(R.id.owner_one_name_two_karnataka);
+		// mOwnerOneNameTwoKarnataka = (TextView) findViewById(R.id.owner_one_name_two_karnataka);
 
-		mEntireTeamTitleKarnataka.setText(mEntireTeamTitleKarnataka.getText().toString());
-		mOwnerOneNameOneKarnataka.setText(mOwnerOneNameOneKarnataka.getText().toString());
-		mOwnerOneDataKarnataka.setText(mOwnerOneDataKarnataka.getText().toString());
-		mOwnerOneNameTwoKarnataka.setText(mOwnerOneNameTwoKarnataka.getText().toString());
+		/*
+		 * mEntireTeamTitleKarnataka.setText(mEntireTeamTitleKarnataka.getText().toString()); mOwnerOneNameOneKarnataka.setText(mOwnerOneNameOneKarnataka.getText().toString()); mOwnerOneDataKarnataka.setText(mOwnerOneDataKarnataka.getText().toString());
+		 */
+		// mOwnerOneNameTwoKarnataka.setText(mOwnerOneNameTwoKarnataka.getText().toString());
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataKarnataka, 175f);
 
-		Util.setTextFont(this, mEntireTeamTitleKarnataka);
-		Util.setTextFont(this, mOwnerOneNameOneKarnataka);
-		Util.setTextFont(this, mOwnerOneDataKarnataka);
-		Util.setTextFont(this, mOwnerOneNameTwoKarnataka);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleKarnataka); Util.setTextFont(this, mOwnerOneNameOneKarnataka); Util.setTextFont(this, mOwnerOneDataKarnataka); Util.setTextFont(this, mOwnerOneNameTwoKarnataka);
+		 */
 
 		// veer
 		mEntireTeamTitleVeer = (TextView) findViewById(R.id.entire_team_title_veer);
 		mOwnerOneNameOneVeer = (TextView) findViewById(R.id.owner_one_name_one_veer);
 		mOwnerOneDataVeer = (TextView) findViewById(R.id.owner_one_data_veer);
-		mOwnerOneNameTwoVeer = (TextView) findViewById(R.id.owner_one_name_two_veer);
+		// mOwnerOneNameTwoVeer = (TextView) findViewById(R.id.owner_one_name_two_veer);
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataVeer, 175f);
 
 		/*
 		 * mEntireTeamTitleVeer.setText(mEntireTeamTitleVeer.getText().toString()); mOwnerOneNameOneVeer.setText(mOwnerOneNameOneVeer.getText().toString()); mOwnerOneDataVeer.setText(mOwnerOneDataVeer.getText().toString()); mOwnerOneNameTwoVeer.setText(mOwnerOneNameTwoVeer.getText().toString());
 		 */
 
-		Util.setTextFont(this, mEntireTeamTitleVeer);
-		Util.setTextFont(this, mOwnerOneNameOneVeer);
-		Util.setTextFont(this, mOwnerOneDataVeer);
-		Util.setTextFont(this, mOwnerOneNameTwoVeer);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleVeer); Util.setTextFont(this, mOwnerOneNameOneVeer); Util.setTextFont(this, mOwnerOneDataVeer); Util.setTextFont(this, mOwnerOneNameTwoVeer);
+		 */
 
 		// bhojpuri
 		mEntireTeamTitleBhojpuri = (TextView) findViewById(R.id.entire_team_title_bhojpuri);
 		mOwnerOneNameOneBhojpuri = (TextView) findViewById(R.id.owner_one_name_one_bhojpuri);
 		mOwnerOneDataBhojpuri = (TextView) findViewById(R.id.owner_one_data_bhojpuri);
-		mOwnerOneNameTwoBhojpuri = (TextView) findViewById(R.id.owner_one_name_two_bhojpuri);
+		// mOwnerOneNameTwoBhojpuri = (TextView) findViewById(R.id.owner_one_name_two_bhojpuri);
+		// TextViewJustify.getInstance().justifyText(mOwnerOneDataBhojpuri, 175f);
 
 		/*
 		 * mEntireTeamTitleBhojpuri.setText(mEntireTeamTitleBhojpuri.getText().toString()); mOwnerOneNameOneBhojpuri.setText(mOwnerOneNameOneBhojpuri.getText().toString()); mOwnerOneDataBhojpuri.setText(mOwnerOneDataBhojpuri.getText().toString());
 		 * mOwnerOneNameTwoBhojpuri.setText(mOwnerOneNameTwoBhojpuri.getText().toString());
 		 */
 
-		Util.setTextFont(this, mEntireTeamTitleBhojpuri);
-		Util.setTextFont(this, mOwnerOneNameOneBhojpuri);
-		Util.setTextFont(this, mOwnerOneDataBhojpuri);
-		Util.setTextFont(this, mOwnerOneNameTwoBhojpuri);
+		/*
+		 * Util.setTextFont(this, mEntireTeamTitleBhojpuri); Util.setTextFont(this, mOwnerOneNameOneBhojpuri); Util.setTextFont(this, mOwnerOneDataBhojpuri); Util.setTextFont(this, mOwnerOneNameTwoBhojpuri);
+		 */
 
 		String[] directorNames = this.getResources().getStringArray(R.array.director_names);
 

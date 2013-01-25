@@ -58,24 +58,16 @@
 	</string-array>
 
 	<string name="director">Director</string>
-	<string name="founder_director">Founder \n and \n Managing Director</string>
-	<string name="mumbai_desc">"A prominent film production and distribution
-		company of full length feature films in Hindi. Produced many large
-		format events and has organised exhibition matches in various sports
-		with Bollywood artists in India and Abroad."</string>
+	
+	<string name="founder_director">Founder \nand \n Managing Director</string>
+	
+	<string name="owner_one_data_mumbai">A prominent film production and distribution company of full length feature films in Hindi. Produced many large format events and has organised exhibition matches in various sports with Bollywood artists in India and Abroad.</string>
 
-	<string name="owner_lounge_kerala_one">Mr. Mohanlal, the four time National Films Award
-		winning actor, the man with the Midas touch, the versatile actor,
-		described by film fraternity as the most gifted; a star who always
-		lived up to the expectations of his fans.</string>
-	<string name="owner_lounge_kerala_two">Ms. Lissy\'s transition from one of the silver
-		screen\'s favourite leading ladies to one of the cinemas most
-		successful businesswoman was seamless.</string>
-	<string name="owner_lounge_kerala_three">Mr. P.M. Shaji is the Managing Director of Cold
-		Point Pvt. Ltd., a 33 year old company in the air conditioning
-		industry, having a base of over 50,000 customers. It is the only
-		company in its field with an ISO 9001:2008 Quality Certification.
-	</string>
+	<string name="owner_lounge_kerala_one">Mr. Mohanlal, the four time National Films Award winning actor, the man with the Midas touch, the versatile actor, described by film fraternity as the most gifted; a star who always lived up to the expectations of his fans.</string>
+	
+	<string name="owner_lounge_kerala_two">Ms. Lissy\'s transition from one of the silver screen\'s favourite leading ladies to one of the cinemas most successful businesswoman was seamless.</string>
+	
+	<string name="owner_lounge_kerala_three">Mr. P.M. Shaji is the Managing Director of Cold Point Pvt. Ltd., a 33 year old company in the air conditioning industry, having a base of over 50,000 customers. It is the only company in its field with an ISO 9001:2008 Quality Certification.</string>
 
 
 </resources>

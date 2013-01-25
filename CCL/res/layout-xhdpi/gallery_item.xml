@@ -6,14 +6,14 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="122dp"
+        android:layout_height="115dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:adjustViewBounds="true" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="32dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/overlay"
         android:paddingLeft="3dp"
