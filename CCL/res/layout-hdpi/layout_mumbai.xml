@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
                 android:text="MUMBAI HEROES"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_name_one_mumbai"
@@ -33,18 +34,20 @@
                 android:layout_below="@+id/entire_team_title_mumbai"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="Mumbai Heroes Sports LLP"
-                android:textColor="@android:color/black" />
+                android:text="Mr.Sohail Khan"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_data_mumbai"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_one_name_one_mumbai"
                 android:layout_marginLeft="2dp"
                 android:paddingRight="5dip"
-                android:text="A prominent film production and distribution company of full length feature films in Hindi. Produced many large format events and has organised exhibition matches in various sports with Bollywood artists in India and Abroad."
-                android:textColor="@android:color/black" />
+                android:text="@string/owner_one_data_mumbai"
+                android:textColor="@android:color/black"                
+                />
 
             <ImageView
                 android:id="@+id/owner_one_image_mumbai"
@@ -57,7 +60,7 @@
                 android:layout_toRightOf="@+id/owner_one_data_mumbai"
                 android:src="@raw/sohail_khan" />
 
-            <TextView
+           <!--  <TextView
                 android:id="@+id/owner_one_name_two_mumbai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +70,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr.Sohail Khan"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
       
