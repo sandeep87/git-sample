@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
                 android:text="CHENNAI RHINOS"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_name_one_chennai"
@@ -33,12 +34,13 @@
                 android:layout_below="@+id/entire_team_title_chennai"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="Chennai rhinos PVT. LTd."
-                android:textColor="@android:color/black" />
+                android:text="Mr. K. Ganga Prasad"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/owner_one_data_chennai"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_one_name_one_chennai"
                 android:layout_marginLeft="2dp"
@@ -57,7 +59,7 @@
                 android:layout_toRightOf="@+id/owner_one_data_chennai"
                 android:src="@raw/ganga_prasad" />
 
-            <TextView
+          <!--   <TextView
                 android:id="@+id/owner_one_name_two_chennai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +70,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr. K. Ganga Prasad"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
       

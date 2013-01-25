@@ -23,8 +23,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
-                android:text="veer marathi"
-                android:textColor="@android:color/black" />
+                android:text="VEER MARATHI"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_name_one_veer"
@@ -34,11 +35,12 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:text="Mr. Riteish Deshmukh"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_data_veer"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_one_name_one_veer"
                 android:layout_marginLeft="2dp"
@@ -57,7 +59,7 @@
                 android:layout_toRightOf="@+id/owner_one_data_veer"
                 android:src="@raw/ritesh_deshmukh_ow" />
 
-            <TextView
+            <!-- <TextView
                 android:id="@+id/owner_one_name_two_veer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +71,7 @@
                 android:singleLine="false"
                 android:paddingLeft="20dp"
                 android:text="Mr. Riteish Deshmukh"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
 
       

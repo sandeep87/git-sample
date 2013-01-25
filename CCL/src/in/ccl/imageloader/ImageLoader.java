@@ -66,7 +66,6 @@ public class ImageLoader {
 	final int stub_id = R.drawable.grid_item_preloader;
 
 	final int photo_preview_stub_id = R.drawable.photo_preview_preloader;
- // latest image loader
  
 	/**
 	 * It displays image.

@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
                 android:text="BHOJPURI DABANGGS"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_name_one_bhojpuri"
@@ -33,12 +34,13 @@
                 android:layout_below="@+id/entire_team_title_bhojpuri"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="Group Delphoenix"
-                android:textColor="@android:color/black" />
+                android:text="Mr. Prateek Kanakia"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/owner_one_data_bhojpuri"
-                android:layout_width="240dp"
+                android:layout_width="240dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/owner_one_name_one_bhojpuri"
                 android:layout_marginLeft="2dp"
@@ -57,7 +59,7 @@
                 android:layout_toRightOf="@+id/owner_one_data_bhojpuri"
                 android:src="@raw/prateek_kanakia" />
 
-            <TextView
+           <!--  <TextView
                 android:id="@+id/owner_one_name_two_bhojpuri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +70,7 @@
                 android:paddingTop="1dip"
                 android:singleLine="false"
                 android:text="Mr. Prateek Kanakia"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" /> -->
         </RelativeLayout>
     </RelativeLayout>
 
