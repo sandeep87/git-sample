@@ -197,6 +197,7 @@ public class JSONPullParser {
 
 	public void parsePhotoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 		String result = readStream(inputStream);
+		System.out.println("Result "+result);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
     ContentValues pages = new ContentValues();

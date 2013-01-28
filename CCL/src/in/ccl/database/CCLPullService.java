@@ -184,15 +184,9 @@ public class CCLPullService extends IntentService {
 							getContentResolver().bulkInsert(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, imageValuesArray);
 						}
 						else if (compareKey.equals("photos")) {
-							try {
-								int result = getContentResolver().bulkInsert(DataProviderContract.RAW_TABLE_CONTENTURI, imageValuesArray);
-								if (result == -1) {
-									return;
-								}
-							}
-							catch (SQLiteConstraintException e) {
-								// TODO: handle exception
-							}
+							System.out.println("INfor size "+imageValuesArray.length);
+							int result = getContentResolver().bulkInsert(DataProviderContract.RAW_TABLE_CONTENTURI, imageValuesArray);
+							System.out.println("Inserting value "+result);
 							// Gets image data from the parser
 							Vector <ContentValues> pageValues = localDataPullParser.getPages();
 							if (pageValues != null) {

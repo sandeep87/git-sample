@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="in.ccl.ui"
-    android:versionCode="1"
-    android:versionName="0.1.2" >
-
+    android:versionCode="2"
+    android:versionName="1.1" >
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
@@ -89,18 +88,18 @@
             No intent filters are specified, so android:exported defaults to "false". The
             service is only available to this app.
         -->
-           <service
+        <service
             android:name="in.ccl.database.CCLPullService"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!--
             The attribute "android:exported" must be set to "false" to restrict this content
             provider to its own app. Otherwise, all apps could access it.
-         -->
+        -->
         <provider
             android:name="in.ccl.database.DataProvider"
-            android:exported="false"
-            android:authorities="@string/authority"/>
+            android:authorities="@string/authority"
+            android:exported="false" />
     </application>
 
 </manifest>

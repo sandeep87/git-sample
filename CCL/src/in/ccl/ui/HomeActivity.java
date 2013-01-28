@@ -119,7 +119,7 @@ public class HomeActivity extends TopActivity {
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 
 				case in.ccl.database.Constants.STATE_ACTION_PHOTO_COMPLETE:
-
+          System.out.println("Home activity onReceive "+ImagePagerAdapter.photoGalleryId);
 					Intent photoAlbumIntent = new Intent(HomeActivity.this, PhotoAlbumActivity.class);
 					photoAlbumIntent.putExtra(in.ccl.util.Constants.EXTRA_ALBUM_ITEMS, PhotoAlbumCurosr.getPhotos(HomeActivity.this, ImagePagerAdapter.photoGalleryId));
 					photoAlbumIntent.putExtra(in.ccl.util.Constants.EXTRA_ALBUM_ID, ImagePagerAdapter.photoGalleryId);

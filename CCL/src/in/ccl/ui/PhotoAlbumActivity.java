@@ -63,9 +63,10 @@ public class PhotoAlbumActivity extends TopActivity {
 		gridView = (GridView) findViewById(R.id.photos_gridview);
 		adapter = new GridAdapter(PhotoAlbumActivity.this, photoGalleryList, "photo");
 		gridView.setAdapter(adapter);
+		
+		System.out.println("Rajesh album count "+photoGalleryList.size());
 
-		if (photoGalleryList.size() > 0) {
-			System.out.println("Rajesh number of pages " + photoGalleryList.get(0).getNumberOfPages());
+		if (photoGalleryList != null && photoGalleryList.size() > 0) {
 			gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, photoGalleryId, EndlessScrollListener.RequestType.PHOTO_GALLERY_REQUEST, photoGalleryList.get(0).getNumberOfPages()));
 
 		}

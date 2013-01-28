@@ -162,7 +162,7 @@ public class MenuItems implements OnClickListener {
 				else {
 					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, list);
-					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					//photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					activity.startActivity(photoGalleryIntent);
 
 				}
@@ -251,7 +251,7 @@ public class MenuItems implements OnClickListener {
 				else {
 					Intent photoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, list);
-					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				//	photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					activity.startActivity(photoGalleryIntent);
 				}
 

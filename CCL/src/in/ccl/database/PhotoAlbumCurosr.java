@@ -26,6 +26,7 @@ public class PhotoAlbumCurosr {
 	}
 
 	public static ArrayList <Items> getPhotos (Context ctx, int albumId) {
+		System.out.println("Alubum Id "+albumId);
 		String condition = DataProviderContract.ALBUM_ID_COLUMN + " = " + albumId + " and " + DataProviderContract.CATEGORY_ID + " = 1";
 		Cursor cursor = ctx.getContentResolver().query(DataProviderContract.PAGES_TABLE_CONTENTURI, new String[] { DataProviderContract.TOTAL_PAGES }, condition, null, null);
 		int totalPages = 0;
@@ -49,6 +50,7 @@ public class PhotoAlbumCurosr {
 		}
 		if (cursor != null)
 			cursor.close();
+		System.out.println("List size "+list.size());
 		return list;
 
 	}

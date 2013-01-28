@@ -8,6 +8,7 @@ import in.ccl.helper.Util;
 import in.ccl.imageloader.DisplayImage;
 import in.ccl.logging.Logger;
 import in.ccl.model.Items;
+import in.ccl.photo.PhotoView;
 import in.ccl.ui.MenuItems;
 import in.ccl.ui.PhotoAlbumActivity;
 import in.ccl.ui.R;
@@ -31,6 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 
@@ -82,7 +84,10 @@ public class ImagePagerAdapter extends PagerAdapter {
 	@Override
 	public View instantiateItem (View view, final int position) {
 		View imageLayout = null;
-		ImageView imageView = null;
+		//ImageView imageView = null;
+		PhotoView imageView = null;
+		TextView errorTitleText = null;
+
 		ImageView loadingImage = null;
 
 		switch (mCategory) {
@@ -90,7 +95,10 @@ public class ImagePagerAdapter extends PagerAdapter {
 			case BANNER:
 				mRequestType = RequestType.NO_REQUEST;
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
-				imageView = (ImageView) imageLayout.findViewById(R.id.image);
+				imageView = (PhotoView) imageLayout.findViewById(R.id.image);
+				errorTitleText = (TextView)imageLayout.findViewById(R.id.error_title);
+			//	imageView = (ImageView) imageLayout.findViewById(R.id.image);
+
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 				imageView.setOnClickListener(new OnClickListener() {
 
@@ -133,8 +141,9 @@ public class ImagePagerAdapter extends PagerAdapter {
 				});
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
-				displayImage.show();
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText);
+				//DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
+			//	displayImage.show();
 				break;
 			case PHOTO:
 				mRequestType = RequestType.PHOTOGALLERY_REQUEST;
@@ -146,11 +155,11 @@ public class ImagePagerAdapter extends PagerAdapter {
 				break;
 			case FULL_SCREEN:
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
-				imageView = (ImageView) imageLayout.findViewById(R.id.image);
+				imageView = (PhotoView) imageLayout.findViewById(R.id.image);
 				loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, null);
+				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, null);
 				displayImage.show();
 				break;
 			case TEAM_LOGO:
@@ -231,8 +240,9 @@ public class ImagePagerAdapter extends PagerAdapter {
 						AlbumTitle = itemsList.get(index).getTitle();
 						photoGalleryId = itemsList.get(index).getId();
 						ArrayList <Items> list = PhotoAlbumCurosr.getPhotos(activity, photoGalleryId);
-						if (list == null || list.size() <= 0) {
+						if (list.size() <= 0) {
 							if (Util.getInstance().isOnline(activity)) {
+								System.out.println("Server requesting...");
 								Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId()));
 								mServiceIntent.putExtra("KEY", "photos");
 								activity.startService(mServiceIntent);

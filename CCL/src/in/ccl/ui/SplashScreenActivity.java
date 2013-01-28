@@ -101,7 +101,6 @@ public class SplashScreenActivity extends FragmentActivity {
 			ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
 			cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
 			ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
-			cursor.close();
 			callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
 		}
 		else {
