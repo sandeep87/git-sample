@@ -35,7 +35,7 @@
                 android:layout_below="@+id/entire_team_title_kerala"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="PADMASREE LT.COL.V.MOHANLAL"
+                android:text="Padmadsree LT.COL.V.Mohanlal"
                 android:textColor="@android:color/black" 
                 android:textStyle="bold" />
 
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="MS.LISSY PRIYADARSHAN"
+                android:text="Ms.Lissy Priyadarshan"
                 android:textColor="@android:color/black" 
                 android:textStyle="bold" />
 
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="MR.SHAJI"
+                android:text="Mr.Shaji"
                 android:textColor="@android:color/black" 
                 android:textStyle="bold" />
 
