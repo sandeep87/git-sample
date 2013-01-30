@@ -1,6 +1,8 @@
 package in.ccl.ui;
 
 import in.ccl.adapters.ImagePagerAdapter;
+import in.ccl.database.BannerCursor;
+import in.ccl.database.DataProviderContract;
 import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Category;
@@ -11,11 +13,17 @@ import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.widget.LinearLayout;
@@ -33,12 +41,20 @@ public class HomeActivity extends TopActivity {
 
 	private IntentFilter statusIntentFilter;
 
+	private ImagePagerAdapter bannerImagePagerAdapter;
+
+	private ViewPager bannerViewPager;
+
+	private ViewPager photoViewPager;
+
+	private ViewPager videoViewPager;
+
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// adding menu items to header of the screen, which is in MainActivity.
 		addContent(R.layout.home);
-
+	
 		// The filter's action is BROADCAST_ACTION
 		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
 
@@ -51,9 +67,9 @@ public class HomeActivity extends TopActivity {
 		// Registers the DownloadStateReceiver and its intent filters
 
 		// for banner items, banner items always shows latest three items only.
-		ViewPager bannerViewPager = (ViewPager) findViewById(R.id.banner_view_pager);
-		ViewPager photoViewPager = (ViewPager) findViewById(R.id.photo_view_pager);
-		ViewPager videoViewPager = (ViewPager) findViewById(R.id.video_view_pager);
+		bannerViewPager = (ViewPager) findViewById(R.id.banner_view_pager);
+		photoViewPager = (ViewPager) findViewById(R.id.photo_view_pager);
+		videoViewPager = (ViewPager) findViewById(R.id.video_view_pager);
 		TextView txtBannerTitle = (TextView) findViewById(R.id.txt_banner_title);
 		TextView txtPhotoTitle = (TextView) findViewById(R.id.txt_gallery_title);
 		TextView txtVideoTitle = (TextView) findViewById(R.id.txt_video_title);
@@ -75,7 +91,8 @@ public class HomeActivity extends TopActivity {
 			videoGalleryList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY);
 		}
 		if (bannerItemsList != null) {
-			bannerViewPager.setAdapter(new ImagePagerAdapter(this, bannerItemsList, Category.BANNER));
+			bannerImagePagerAdapter = new ImagePagerAdapter(this, bannerItemsList, Category.BANNER);
+			bannerViewPager.setAdapter(bannerImagePagerAdapter);
 			bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager));
 		}
 		// for photos
@@ -96,7 +113,25 @@ public class HomeActivity extends TopActivity {
 	protected void onResume () {
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		if (Util.getInstance().isOnline(HomeActivity.this)) {
+			new Handler().postDelayed(new Runnable() {
 
+				@Override
+				public void run () {
+					checkForUpdates();
+				}
+			}, 20000);
+		}
+	}
+
+	@Override
+	protected void onStop () {
+		super.onStop();
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
+
+	}
+	private void checkForUpdates () {
+		SplashScreenActivity.callDataServices(HomeActivity.this, 1);
 	}
 
 	private class DownloadStateReceiver extends BroadcastReceiver {
@@ -113,13 +148,40 @@ public class HomeActivity extends TopActivity {
 		 */
 		@Override
 		public void onReceive (Context context, Intent intent) {
-
 			// Gets the status from the Intent's extended data, and chooses the appropriate action
+			int key = intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE);
+			switch (key) {
 
-			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
-
+				case in.ccl.database.Constants.STATE_ACTION_BANNER_UPDATES_COMPLETE:
+					Cursor cursor = getContentResolver().query(DataProviderContract.BANNERURL_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor != null && cursor.getCount() > 0) {
+						ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
+						bannerViewPager.setAdapter(new ImagePagerAdapter(HomeActivity.this, bannerItems, Category.BANNER));
+						bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager));
+						cursor.close();
+					}
+					break;
+				case in.ccl.database.Constants.STATE_ACTION_PHOTO_ALBUM_UPDATES_COMPLETE:
+					cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor != null && cursor.getCount() > 0) {
+						ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+						photoViewPager.setAdapter(new ImagePagerAdapter(HomeActivity.this, photoAlbumItems, Category.PHOTO));
+						photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager));
+						cursor.close();
+					}
+					break;
+				case in.ccl.database.Constants.STATE_ACTION_VIDEO_ALBUM_UPDATES_COMPLETE:
+					cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor != null && cursor.getCount() > 0) {
+						ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+						videoViewPager.setAdapter(new ImagePagerAdapter(HomeActivity.this, videoAlbumItems, Category.VIDEO));
+						videoViewPager.setOnPageChangeListener(new PageChangeListener(videoPageIndicatorLayout, videoViewPager));
+						cursor.close();
+					}
+					break;
 				case in.ccl.database.Constants.STATE_ACTION_PHOTO_COMPLETE:
-          System.out.println("Home activity onReceive "+ImagePagerAdapter.photoGalleryId);
+				case in.ccl.database.Constants.STATE_ACTION_BANNER_PAGES_DOWNLOAD_COMPLETE:
+
 					Intent photoAlbumIntent = new Intent(HomeActivity.this, PhotoAlbumActivity.class);
 					photoAlbumIntent.putExtra(in.ccl.util.Constants.EXTRA_ALBUM_ITEMS, PhotoAlbumCurosr.getPhotos(HomeActivity.this, ImagePagerAdapter.photoGalleryId));
 					photoAlbumIntent.putExtra(in.ccl.util.Constants.EXTRA_ALBUM_ID, ImagePagerAdapter.photoGalleryId);
@@ -138,12 +200,4 @@ public class HomeActivity extends TopActivity {
 			}
 		}
 	}
-
-	@Override
-	protected void onPause () {
-		super.onPause();
-		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
-
-	}
-
 }

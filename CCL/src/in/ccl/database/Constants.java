@@ -2,8 +2,6 @@ package in.ccl.database;
 
 import java.util.Locale;
 
-import android.net.Uri;
-
 public class Constants {
 
 	// The download is starting
@@ -21,17 +19,36 @@ public class Constants {
 	// The background thread is done
 	public static final int STATE_ACTION_COMPLETE = 4;
 
-
-//The banner thread is done
+	// The banner thread is done
 	public static final int STATE_ACTION_BANNER_COMPLETE = 5;
-//The photo album thread is done
+
+	// The photo album thread is done
 	public static final int STATE_ACTION_PHOTO_ALBUM_COMPLETE = 6;
-//The video album thread is done
+
+	// The video album thread is done
 	public static final int STATE_ACTION_VIDEO_ALBUM_COMPLETE = 7;
-//The video album thread is done
+
+	// The video album thread is done
 	public static final int STATE_ACTION_PHOTO_COMPLETE = 8;
-//The video album thread is done
+
+	// The video album thread is done
 	public static final int STATE_ACTION_VIDEO_COMPLETE = 9;
+
+	public static final int STATE_ACTION_BANNER_UPDATES_COMPLETE = 10;
+
+	public static final int STATE_ACTION_PHOTO_ALBUM_UPDATES_COMPLETE = 11;
+
+	public static final int STATE_ACTION_VIDEO_ALBUM_UPDATES_COMPLETE = 12;
+
+	public static final int STATE_ACTION_PHOTO_PAGES_DOWNLOAD_COMPLETE = 13;
+
+	public static final int STATE_ACTION_VIDEO_PAGES_DOWNLOAD_COMPLETE = 14;
+
+	public static final int STATE_ACTION_BANNER_PAGES_DOWNLOAD_COMPLETE = 15;
+
+	public static final int STATE_ACTION_VIDEO_UPDATES_COMPLETE = 16;
+
+	public static final int STATE_ACTION_PHOTO_UPDATES_COMPLETE = 17;
 
 	/*
 	 * A user-agent string that's sent to the HTTP site. It includes information about the device and the build that the device is running.

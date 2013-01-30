@@ -82,7 +82,7 @@ public class ScheduleAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
-		Util.setTextFont((Activity) mContext, viewHolder.txtDate);
+		/*Util.setTextFont((Activity) mContext, viewHolder.txtDate);
 		Util.setTextFont((Activity) mContext, viewHolder.txtPlace);
 
 		Util.setTextFont((Activity) mContext, viewHolder.txtDay);
@@ -94,7 +94,7 @@ public class ScheduleAdapter extends BaseAdapter {
 		Util.setTextFont((Activity) mContext, viewHolder.txtScndTime);
 		Util.setTextFont((Activity) mContext, viewHolder.txtfstvs);
 		Util.setTextFont((Activity) mContext, viewHolder.txtScndVs);
-		viewHolder.txtDate.setText(scheduleList.get(position).getDate());
+*/		viewHolder.txtDate.setText(scheduleList.get(position).getDate());
 
 		viewHolder.txtDay.setText(scheduleList.get(position).getDay());
 		viewHolder.txtPlace.setText(scheduleList.get(position).getPalce());

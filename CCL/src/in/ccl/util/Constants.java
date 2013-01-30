@@ -111,4 +111,6 @@ public class Constants {
 	// Defines the key for the log "extra" in an Intent
 	public static final String EXTENDED_STATUS_LOG = "in.ccl.LOG";
 
+	public static final String MY_AD_UNIT_ID = "a15108b4f6bb5fe";
+
 }

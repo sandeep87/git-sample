@@ -102,8 +102,8 @@
             android:background="@drawable/home_bg" >
         </RelativeLayout>
 
-        <SlidingDrawer
-            android:id="@+id/slidingDrawer"
+        <LinearLayout
+            android:id="@+id/admob_layout"
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_alignParentBottom="true"
@@ -111,7 +111,9 @@
             android:handle="@+id/handle"
             android:visibility="gone" >
 
-            <RelativeLayout
+          <!--   <SlidingDrawer
+            android:id="@+id/slidingDrawer"
+             <RelativeLayout
                 android:id="@+id/handle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -214,6 +216,7 @@
                 </TextView>
             </LinearLayout>
         </SlidingDrawer>
-    </RelativeLayout>
+   -->  
+   </LinearLayout></RelativeLayout>
 
 </in.ccl.helper.AnimationLayout>

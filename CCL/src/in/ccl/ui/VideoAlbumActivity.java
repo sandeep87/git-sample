@@ -1,6 +1,8 @@
 package in.ccl.ui;
 
 import in.ccl.adapters.GridAdapter;
+import in.ccl.database.CCLPullService;
+import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Util;
 import in.ccl.imageloader.EndlessScrollListener;
 import in.ccl.model.Items;
@@ -14,6 +16,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.AdapterView;
@@ -70,8 +73,9 @@ public class VideoAlbumActivity extends TopActivity {
 
 		adapter = new GridAdapter(VideoAlbumActivity.this, videoAlbumList, "video");
 		gridView.setAdapter(adapter);
-		gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, videoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, videoAlbumList.get(0).getNumberOfPages()));
-
+		if (videoAlbumList.size() > 0) {
+			gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, videoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, videoAlbumList.get(0).getNumberOfPages()));
+		}
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
@@ -96,7 +100,20 @@ public class VideoAlbumActivity extends TopActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		if (Util.getInstance().isOnline(VideoAlbumActivity.this)) {
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run () {
+					Intent mServiceIntent = new Intent(VideoAlbumActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.video_gallery_url) + videoGalleryId));
+					mServiceIntent.putExtra("KEY", "videos_updates");
+					startService(mServiceIntent);
+				}
+			}, 20000);
+		}
+
 	}
+
 	@Override
 	protected void onPause () {
 		// TODO Auto-generated method stub
@@ -134,10 +151,18 @@ public class VideoAlbumActivity extends TopActivity {
 
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 
-				case in.ccl.database.Constants.STATE_ACTION_VIDEO_COMPLETE:
+				case in.ccl.database.Constants.STATE_ACTION_VIDEO_PAGES_DOWNLOAD_COMPLETE:
 					if (intent != null && intent.hasExtra("list")) {
 						ArrayList <Items> list = intent.getParcelableArrayListExtra("list");
 						adapter.updateList(list);
+					}
+					break;
+				case in.ccl.database.Constants.STATE_ACTION_VIDEO_UPDATES_COMPLETE:
+					ArrayList <Items> list = VideoAlbumCursor.getVideos(VideoAlbumActivity.this, videoGalleryId);
+					adapter = new GridAdapter(VideoAlbumActivity.this, list, "video");
+					gridView.setAdapter(adapter);
+					if (list.size() > 0) {
+						gridView.setOnScrollListener(new EndlessScrollListener(VideoAlbumActivity.this, adapter, videoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, list.get(0).getNumberOfPages()));
 					}
 					break;
 				default:

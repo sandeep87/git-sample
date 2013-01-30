@@ -5,7 +5,6 @@ import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Category;
 import in.ccl.helper.Util;
-import in.ccl.imageloader.DisplayImage;
 import in.ccl.logging.Logger;
 import in.ccl.model.Items;
 import in.ccl.photo.PhotoView;
@@ -32,8 +31,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ImagePagerAdapter extends PagerAdapter {
@@ -84,20 +83,17 @@ public class ImagePagerAdapter extends PagerAdapter {
 	@Override
 	public View instantiateItem (View view, final int position) {
 		View imageLayout = null;
-		//ImageView imageView = null;
+		// ImageView imageView = null;
 		PhotoView imageView = null;
 		TextView errorTitleText = null;
-
-		ImageView loadingImage = null;
-
+		// ImageView loadingImage = null;
 		switch (mCategory) {
-
 			case BANNER:
 				mRequestType = RequestType.NO_REQUEST;
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 				imageView = (PhotoView) imageLayout.findViewById(R.id.image);
-				errorTitleText = (TextView)imageLayout.findViewById(R.id.error_title);
-			//	imageView = (ImageView) imageLayout.findViewById(R.id.image);
+				errorTitleText = (TextView) imageLayout.findViewById(R.id.error_title);
+				// imageView = (ImageView) imageLayout.findViewById(R.id.image);
 
 				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 				imageView.setOnClickListener(new OnClickListener() {
@@ -112,10 +108,8 @@ public class ImagePagerAdapter extends PagerAdapter {
 							if (list == null || list.size() <= 0) {
 								if (Util.getInstance().isOnline(activity)) {
 									Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(position).getAlbumId()));
-									mServiceIntent.putExtra("KEY", "photos");
+									mServiceIntent.putExtra("KEY", "banner-photos");
 									activity.startService(mServiceIntent);
-
-									// asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
 								}
 								else {
 									Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -142,8 +136,8 @@ public class ImagePagerAdapter extends PagerAdapter {
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText);
-				//DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
-			//	displayImage.show();
+				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
+				// displayImage.show();
 				break;
 			case PHOTO:
 				mRequestType = RequestType.PHOTOGALLERY_REQUEST;
@@ -156,11 +150,13 @@ public class ImagePagerAdapter extends PagerAdapter {
 			case FULL_SCREEN:
 				imageLayout = inflater.inflate(R.layout.item_pager_image, null);
 				imageView = (PhotoView) imageLayout.findViewById(R.id.image);
-				loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
+				TextView errorTxt = (TextView) imageLayout.findViewById(R.id.error_title);
+				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, null);
-				displayImage.show();
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTxt);
+				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, null);
+				// displayImage.show();
 				break;
 			case TEAM_LOGO:
 				mRequestType = RequestType.TEAMLOGO_REQUEST;
@@ -198,7 +194,6 @@ public class ImagePagerAdapter extends PagerAdapter {
 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View arg1, int pos, long arg3) {
-				// DownLoadAsynTask asyncTask = new DownLoadAsynTask(activity, ImagePagerAdapter.this, false);
 				int index = (2 * position) + (position + pos);
 				if (from.equals("video_gallery")) {
 					try {
@@ -211,7 +206,6 @@ public class ImagePagerAdapter extends PagerAdapter {
 								Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.video_gallery_url) + itemsList.get(index).getId()));
 								mServiceIntent.putExtra("KEY", "videos");
 								activity.startService(mServiceIntent);
-								// asyncTask.execute(activity.getResources().getString(R.string.video_gallery_url) + itemsList.get(index).getId());
 							}
 							else {
 								Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -242,12 +236,9 @@ public class ImagePagerAdapter extends PagerAdapter {
 						ArrayList <Items> list = PhotoAlbumCurosr.getPhotos(activity, photoGalleryId);
 						if (list.size() <= 0) {
 							if (Util.getInstance().isOnline(activity)) {
-								System.out.println("Server requesting...");
 								Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId()));
 								mServiceIntent.putExtra("KEY", "photos");
 								activity.startService(mServiceIntent);
-
-								// asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
 							}
 							else {
 								Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -374,5 +365,4 @@ public class ImagePagerAdapter extends PagerAdapter {
 	public boolean isViewFromObject (View view, Object object) {
 		return view.equals(object);
 	}
-
 }

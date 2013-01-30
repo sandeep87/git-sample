@@ -2,8 +2,8 @@ package in.ccl.ui;
 
 import in.ccl.adapters.GridAdapter;
 import in.ccl.database.CCLPullService;
+import in.ccl.database.DataProviderContract;
 import in.ccl.database.VideoAlbumCursor;
-import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
 import in.ccl.util.Constants;
@@ -14,8 +14,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.AdapterView;
@@ -109,7 +111,18 @@ public class VideoGalleryActivity extends TopActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		if (Util.getInstance().isOnline(VideoGalleryActivity.this)) {
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run () {
+					Intent mServiceIntent = new Intent(VideoGalleryActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.video_album_url)));
+					mServiceIntent.putExtra("KEY", "update-videos");
+					startService(mServiceIntent);
+				}
+			}, 20000);
+		}
 	}
+
 	@Override
 	protected void onPause () {
 		// TODO Auto-generated method stub
@@ -137,15 +150,28 @@ public class VideoGalleryActivity extends TopActivity {
 
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 
-				case in.ccl.database.Constants.STATE_ACTION_PHOTO_COMPLETE:
+				case in.ccl.database.Constants.STATE_ACTION_VIDEO_COMPLETE:
 					ArrayList <Items> list = VideoAlbumCursor.getVideos(VideoGalleryActivity.this, videoGalleryId);
 					Intent photoAlbumIntent = new Intent(VideoGalleryActivity.this, VideoAlbumActivity.class);
 					photoAlbumIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, list);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, videoGalleryId);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, albumTitle);
 					startActivity(photoAlbumIntent);
-
 					break;
+				case in.ccl.database.Constants.STATE_ACTION_VIDEO_ALBUM_UPDATES_COMPLETE:
+					Cursor cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor != null && cursor.getCount() > 0) {
+						ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+						if (videoAlbumItems.size() > 0) {
+							gridView.setAdapter(new GridAdapter(VideoGalleryActivity.this, videoAlbumItems, "video_gallery"));
+						}
+						else {
+							// display no items message.
+						}
+						cursor.close();
+					}
+					break;
+
 				default:
 					break;
 			}

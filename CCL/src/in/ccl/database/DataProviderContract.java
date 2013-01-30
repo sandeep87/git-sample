@@ -85,7 +85,7 @@ public class DataProviderContract {
 	/**
 	 * Banner table content URI
 	 */
-	public static final Uri PICTUREURL_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, BANNERURL_TABLE_NAME);
+	public static final Uri BANNERURL_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, BANNERURL_TABLE_NAME);
 
 	/**
 	 * Photo Album table content URI
