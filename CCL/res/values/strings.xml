@@ -32,7 +32,7 @@
 	<string name="home">HOME</string>
 	<string name="news">NEWS</string>
 	<string name="teams">TEAMS</string>
-	<string name="team_title">THE TEAM</string>
+	<string name="team_title">TEAM</string>
 	<string name="ambassadors_title">BRAND AMBASSADORS</string>
 	<string name="photos">PHOTOS</string>
 	<string name="videos">VIDEOS</string>
@@ -69,5 +69,7 @@
 	
 	<string name="owner_lounge_kerala_three">Mr. P.M. Shaji is the Managing Director of Cold Point Pvt. Ltd., a 33 year old company in the air conditioning industry, having a base of over 50,000 customers. It is the only company in its field with an ISO 9001:2008 Quality Certification.</string>
 
+	<string name="regional_title">Regional</string>
+	<string name="national_title">National</string>
 
 </resources>
