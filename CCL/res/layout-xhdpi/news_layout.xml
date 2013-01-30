@@ -50,7 +50,10 @@
     <ListView
         android:id="@+id/news_listview"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:dividerHeight="1dp"
+        android:divider="@android:color/transparent" >
     </ListView>
 
 </LinearLayout>

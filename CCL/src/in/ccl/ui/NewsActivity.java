@@ -96,7 +96,7 @@ public class NewsActivity extends TopActivity implements OnClickListener, OnItem
 		newsListview.setAdapter(newsAdapter);
 		newsListview.setFadingEdgeLength(1);
 		newsListview.setCacheColorHint(Color.TRANSPARENT);
-
+		newsListview.setVerticalScrollBarEnabled(false);
 	}
 
 	@Override
