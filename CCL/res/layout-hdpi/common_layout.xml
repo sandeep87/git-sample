@@ -98,6 +98,7 @@
             android:id="@+id/layout_content"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_above="@+id/admob_layout"
             android:layout_below="@id/header"
             android:background="@drawable/home_bg" >
         </RelativeLayout>

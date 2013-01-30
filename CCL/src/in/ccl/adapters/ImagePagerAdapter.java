@@ -94,8 +94,9 @@ public class ImagePagerAdapter extends PagerAdapter {
 				imageView = (PhotoView) imageLayout.findViewById(R.id.image);
 				errorTitleText = (TextView) imageLayout.findViewById(R.id.error_title);
 				// imageView = (ImageView) imageLayout.findViewById(R.id.image);
+				imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.imagenotqueued));
 
-				imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+				imageView.setScaleType(ImageView.ScaleType.MATRIX);
 				imageView.setOnClickListener(new OnClickListener() {
 
 					@Override

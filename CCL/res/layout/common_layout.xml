@@ -7,10 +7,10 @@
     <LinearLayout
         android:id="@+id/animation_layout_sidebar"
         android:layout_width="wrap_content"
-        android:visibility="gone"
         android:layout_height="match_parent"
         android:background="@drawable/slidebar_bg"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,6 +98,7 @@
             android:id="@+id/layout_content"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_above="@+id/admob_layout"
             android:layout_below="@id/header"
             android:background="@drawable/home_bg" >
         </RelativeLayout>
@@ -111,7 +112,8 @@
             android:handle="@+id/handle"
             android:visibility="gone" >
 
-          <!--   <SlidingDrawer
+            <!--
+        <SlidingDrawer
             android:id="@+id/slidingDrawer"
              <RelativeLayout
                 android:id="@+id/handle"
@@ -216,7 +218,8 @@
                 </TextView>
             </LinearLayout>
         </SlidingDrawer>
-   -->  
-   </LinearLayout></RelativeLayout>
+            -->
+        </LinearLayout>
+    </RelativeLayout>
 
 </in.ccl.helper.AnimationLayout>

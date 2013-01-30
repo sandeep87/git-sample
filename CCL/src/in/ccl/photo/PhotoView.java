@@ -27,6 +27,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
@@ -179,30 +180,20 @@ public class PhotoView extends ImageView {
 	@Override
 	protected void onDetachedFromWindow () {
 		super.onDetachedFromWindow();
-/*
-
-		// Clears out the image drawable, turns off the cache, disconnects the view from a URL
-		setImageURL(null, false, null, null);
-
-		// Gets the current Drawable, or null if no Drawable is attached
-		Drawable localDrawable = getDrawable();
-
-		// if the Drawable is null, unbind it from this VIew
-		if (localDrawable != null)
-			localDrawable.setCallback(null);
-
-		// If this View still exists, clears the weak reference, then sets the reference to null
-		if (mThisView != null) {
-			mThisView.clear();
-			mThisView = null;
-		}
-
-		// Sets the downloader thread to null
-		this.mDownloadThread = null;
-
-		// Always call the super method last
-		super.onDetachedFromWindow();
-	*/}
+		/*
+		 * 
+		 * // Clears out the image drawable, turns off the cache, disconnects the view from a URL setImageURL(null, false, null, null);
+		 * 
+		 * // Gets the current Drawable, or null if no Drawable is attached Drawable localDrawable = getDrawable();
+		 * 
+		 * // if the Drawable is null, unbind it from this VIew if (localDrawable != null) localDrawable.setCallback(null);
+		 * 
+		 * // If this View still exists, clears the weak reference, then sets the reference to null if (mThisView != null) { mThisView.clear(); mThisView = null; }
+		 * 
+		 * // Sets the downloader thread to null this.mDownloadThread = null;
+		 * 
+		 * // Always call the super method last super.onDetachedFromWindow();
+		 */}
 
 	/*
 	 * This callback is invoked when the system tells the View to draw itself. If the View isn't already drawn, and its URL isn't null, it invokes a Thread to download the image. Otherwise, it simply passes the existing Canvas to the super method
@@ -227,13 +218,22 @@ public class PhotoView extends ImageView {
 	 * 
 	 * @param view the View to use as the new WeakReference
 	 */
-	/*public void setHideView (View view) {
-		this.mThisView = new WeakReference <View>(view);
-	}*/
+	/*
+	 * public void setHideView (View view) { this.mThisView = new WeakReference <View>(view); }
+	 */
 
 	@Override
 	public void setImageBitmap (Bitmap paramBitmap) {
 		super.setImageBitmap(paramBitmap);
+	}
+
+	@Override
+	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {
+		Matrix matrix = getImageMatrix();
+		float scaleFactor = getWidth() / (float) getDrawable().getIntrinsicWidth();
+		matrix.setScale(scaleFactor, scaleFactor, 0, 0);
+		setImageMatrix(matrix);
+		return super.setFrame(frameLeft, frameTop, frameRight, frameBottom);
 	}
 
 	@Override
@@ -291,7 +291,7 @@ public class PhotoView extends ImageView {
 	 * @param errorTxt
 	 */
 	public void setImageURL (String pictureUrl, boolean cacheFlag, Drawable imageDrawable, TextView errorTxt) {
-		
+
 		errorTitleTxt = errorTxt;
 		URL pictureURL = null;
 		try {

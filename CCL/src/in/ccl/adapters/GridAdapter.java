@@ -71,8 +71,10 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
 			mViewHolder.imageLoader = (ImageView) convertView.findViewById(R.id.loading);
 
-			mViewHolder.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-			mViewHolder.image.setPadding(5, 5, 5, 5);
+			mViewHolder.image.setImageDrawable(this.mEmptyDrawable);
+			mViewHolder.image.setScaleType(ImageView.ScaleType.MATRIX);
+
+			//mViewHolder.image.setPadding(5, 5, 5, 5);
 			convertView.setTag(mViewHolder);
 		}
 		else {

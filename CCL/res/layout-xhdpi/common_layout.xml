@@ -99,16 +99,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@id/header"
+            android:layout_above="@+id/admob_layout"
             android:background="@drawable/home_bg" >
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/admob_layout"
+            android:id="@+id/admob_layout"            
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:visibility="gone" >
-
+            android:visibility="gone">
+            </LinearLayout>
+            
             <!--
  android:id="@+id/slidingDrawer"
                       android:layout_height="150dp"
@@ -220,7 +222,6 @@
             </LinearLayout>
  </SlidingDrawer>
             -->
-        </LinearLayout>
     </RelativeLayout>
 
 </in.ccl.helper.AnimationLayout>

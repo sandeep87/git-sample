@@ -16,12 +16,6 @@
 
 package in.ccl.photo;
 
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-
 import in.ccl.ui.R;
 
 import java.net.URL;
@@ -30,6 +24,13 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 
 /**
  * This class creates pools of background threads for downloading
@@ -239,7 +240,9 @@ public class PhotoManager {
                              * incoming message
                              */
                             case TASK_COMPLETE:
-                                localView.setImageBitmap(photoTask.getImage());
+                            	  Bitmap bmp = photoTask.getImage();
+                            	 // Bitmap newBmp = Bitmap.createBitmap(bmp, 0, 0, photoTask.getTargetWidth(), photoTask.getTargetHeight());
+                                localView.setImageBitmap(bmp);
                                 recycleTask(photoTask);
                                 break;
                             // The download failed, sets the background color to dark red

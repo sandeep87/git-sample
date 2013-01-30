@@ -76,7 +76,6 @@ public class EndlessScrollListener implements OnScrollListener {
 						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.video_gallery_url) + itemId + "?page=" + (currentPage + 1)));
 						mServiceIntent.putExtra("KEY", "videos_pages");
 						activity.startService(mServiceIntent);
-
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();

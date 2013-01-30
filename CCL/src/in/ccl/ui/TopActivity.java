@@ -11,12 +11,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.SlidingDrawer;
 import android.widget.SlidingDrawer.OnDrawerCloseListener;
@@ -81,12 +83,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.admob_layout);
 		layout.setVisibility(View.VISIBLE);
 		// Add the adView to it
-		layout.addView(adView);
+		LinearLayout.LayoutParams  lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
+		lp.gravity = Gravity.CENTER_HORIZONTAL;
+		layout.addView(adView,lp);
 
 		// Initiate a generic request to load it with an ad
 		AdRequest adRequest = new AdRequest();
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);               // Emulator
-
+		//adRequest.addTestDevice(AdRequest.TEST_EMULATOR);               // Emulator
+		adRequest.addTestDevice("TEST_DEVICE_ID");                      // Test Android Device
 		adView.loadAd(adRequest);//new AdRequest()
 
 		/*
