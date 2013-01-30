@@ -2,6 +2,7 @@ package in.ccl.ui;
 
 import in.ccl.database.BannerCursor;
 import in.ccl.database.DataProviderContract;
+import in.ccl.database.NewsItemsCursor;
 import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.AnimationLayout;
@@ -332,6 +333,17 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 						callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
 					}
 					break;
+				case in.ccl.database.Constants.STATE_ACTION_NEWS_COMPLETE:
+					
+					cursor = getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null,null, null,null);
+					ArrayList <Items> newsItems = NewsItemsCursor.getItems(cursor);
+					Intent newsIntent = new Intent(TopActivity.this, NewsActivity.class);
+					if(newsItems != null){
+						newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, newsItems);
+					}
+					newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					startActivity(newsIntent);
+
 				default:
 					break;
 			}

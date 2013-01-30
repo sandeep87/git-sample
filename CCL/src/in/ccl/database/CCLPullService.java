@@ -155,6 +155,10 @@ public class CCLPullService extends IntentService {
 						}
 						else if (compareKey.equals("videos")) {
 							localDataPullParser.parseVideoJson(localURLConnection.getInputStream(), mBroadcaster);
+						}else if (compareKey.equals("regional")){
+							 localDataPullParser.parseNewsJson(localURLConnection.getInputStream(),mBroadcaster,1);							 
+						}else if (compareKey.equals("national")){
+							 localDataPullParser.parseNewsJson(localURLConnection.getInputStream(),mBroadcaster,2);
 						}
 
 						// Reports that the service is now writing data to the content provider.
@@ -184,7 +188,6 @@ public class CCLPullService extends IntentService {
 							getContentResolver().bulkInsert(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, imageValuesArray);
 						}
 						else if (compareKey.equals("photos")) {
-							System.out.println("INfor size "+imageValuesArray.length);
 							int result = getContentResolver().bulkInsert(DataProviderContract.RAW_TABLE_CONTENTURI, imageValuesArray);
 							System.out.println("Inserting value "+result);
 							// Gets image data from the parser
@@ -221,6 +224,8 @@ public class CCLPullService extends IntentService {
 								getContentResolver().bulkInsert(DataProviderContract.PAGES_TABLE_CONTENTURI, pageValuesArray);
 							}
 
+						}else if (compareKey.equals("regional") || compareKey.equals("national")) {
+							getContentResolver().bulkInsert(DataProviderContract.NEWS_TABLE_CONTENTURI, imageValuesArray);
 						}
 						// Creates another ContentValues for storing date information
 						ContentValues dateValues = new ContentValues();
@@ -259,6 +264,10 @@ public class CCLPullService extends IntentService {
 				}
 				else if (compareKey.equals("videos")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_COMPLETE, getArrayOfItems(imageValues));
+					
+				}else if (compareKey.equals("regional") || compareKey.equals("national")) {
+					
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_NEWS_COMPLETE, null);
 				}
 
 			}

@@ -43,11 +43,15 @@ public class Constants {
 	public static final String EXTRA_TEAMROLE_KEY = "extra_teamroles_key";
 
 	public static final String EXTRA_TEAMMEMBER_KEY = "extra_teammember_key";
+	
+	public static final String EXTRA_NEWS_KEY = "extra_news_key";
 
+	public static final String EXTRA_NEWS_DOWNLOAD_IMAGE_KEY = "extra_news_download_image_key";
+	
 	public static final String EXTRA_KEY = "extra_key";
 
 	public static final String EXTRA_TEAMNAME = "extra_teamname";
-
+	
 	public static final String EXTRA_LOGO_POSITION = "extra_logo_position";
 
 	public static final int PHOTO_GALLERY = 1;
@@ -110,5 +114,7 @@ public class Constants {
 
 	// Defines the key for the log "extra" in an Intent
 	public static final String EXTENDED_STATUS_LOG = "in.ccl.LOG";
+
+	
 
 }

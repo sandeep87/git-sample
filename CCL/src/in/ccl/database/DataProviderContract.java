@@ -22,6 +22,11 @@ public class DataProviderContract {
 
 	public static final String TOTAL_PAGES = "total_pages";
 
+	public static final String NEWS_ID = "news_id";
+	public static final String NEWS_TITLE = "news_title";
+	public static final String NEWS_URL = "news_url";
+	public static final String NEWS_CATEGORY = "news_category";
+
 
 	private DataProviderContract () {
 	}
@@ -51,6 +56,18 @@ public class DataProviderContract {
 	 * Modification date table name
 	 */
 	public static final String DATE_TABLE_NAME = "DateMetadatData";
+	
+	/**
+	 * News date table name
+	 */
+	public static final String NEWS_TABLE_NAME = "NewsMetadatData";
+	
+	
+	/**
+	 * Content URI for news table
+	 */
+	public static final Uri NEWS_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, NEWS_TABLE_NAME);
+
 
 	/**
 	 * Content URI for modification date table

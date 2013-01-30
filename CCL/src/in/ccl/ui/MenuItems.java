@@ -3,6 +3,7 @@ package in.ccl.ui;
 import in.ccl.database.BannerCursor;
 import in.ccl.database.CCLPullService;
 import in.ccl.database.DataProviderContract;
+import in.ccl.database.NewsItemsCursor;
 import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.AnimationLayout;
@@ -31,7 +32,7 @@ public class MenuItems implements OnClickListener {
 	private static MenuItems singleInstance;
 
 	private Activity activity;
-
+	
 	private AnimationLayout mLayout;
 
 	public static ArrayList <Items> teamLogosList;
@@ -59,7 +60,7 @@ public class MenuItems implements OnClickListener {
 	private ProgressDialog progressDialog;
 
 	private enum RequestType {
-		NO_REQUEST, BANNER_REQUEST, PHOTO_ALBUMREQUEST, TEAMS_REQUEST, TEAMROLE_REQUEST, VIDEOS_REQUEST, PHOTOS_REQUEST, OWNERS_LOUNGE_REQUEST, SCHEDULE_REQUEST, VIDEO_ALBUMREQUEST, NOTIFICATIONS_REQUEST, DOWNLOADS_REQUEST, TEAM_MEMBERS_REQUEST;
+		NO_REQUEST, BANNER_REQUEST, PHOTO_ALBUMREQUEST, TEAMS_REQUEST, TEAMROLE_REQUEST, VIDEOS_REQUEST, PHOTOS_REQUEST, OWNERS_LOUNGE_REQUEST, SCHEDULE_REQUEST, VIDEO_ALBUMREQUEST, NOTIFICATIONS_REQUEST, DOWNLOADS_REQUEST, TEAM_MEMBERS_REQUEST, REGIONAL_REQUEST;
 	}
 
 	RequestType mRequestType = RequestType.NO_REQUEST;
@@ -98,13 +99,13 @@ public class MenuItems implements OnClickListener {
 		RelativeLayout layoutTeams = (RelativeLayout) layout.findViewById(R.id.layout_teams);
 		RelativeLayout layoutOwner = (RelativeLayout) layout.findViewById(R.id.layout_ownerslounge);
 		RelativeLayout layoutHome = (RelativeLayout) layout.findViewById(R.id.layout_home);
-		// RelativeLayout layoutNews = (RelativeLayout) layout.findViewById(R.id.layout_news);
+		RelativeLayout layoutNews = (RelativeLayout) layout.findViewById(R.id.layout_news);
 		RelativeLayout layoutVideo = (RelativeLayout) layout.findViewById(R.id.layout_videos);
 		// RelativeLayout layoutScore = (RelativeLayout) layout.findViewById(R.id.layout_scores);
 		// RelativeLayout layoutDownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
 
 		TextView photoTxt = (TextView) layout.findViewById(R.id.txt_photo);
-		// TextView newsTxt = (TextView) layout.findViewById(R.id.txt_news);
+		TextView newsTxt = (TextView) layout.findViewById(R.id.txt_news);
 		TextView homeTxt = (TextView) layout.findViewById(R.id.txt_home);
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
 		// TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
@@ -115,7 +116,7 @@ public class MenuItems implements OnClickListener {
 		// TextView notificationsTxt = (TextView) layout.findViewById(R.id.txt_notifications);
 
 		Util.setTextFont(activity, photoTxt);
-		// Util.setTextFont(activity, newsTxt);
+		Util.setTextFont(activity, newsTxt);
 		Util.setTextFont(activity, homeTxt);
 		Util.setTextFont(activity, ownersTxt);
 		// Util.setTextFont(activity, downloadsTxt);
@@ -134,7 +135,7 @@ public class MenuItems implements OnClickListener {
 		// layoutDownloads.setOnClickListener(this);
 		layoutHome.setOnClickListener(this);
 		// layoutScore.setOnClickListener(this);
-		// layoutNews.setOnClickListener(this);
+		layoutNews.setOnClickListener(this);
 
 		/*
 		 * chennaiTeamMembersList = Util.getInstance().getChnnaiTeamMembersList(); teluguTeamMembersList = Util.getInstance().getTeluguWarriorsTeamMembersList(); karnatakaTeamMembersList = Util.getInstance().getKarnatakaTeamMembersList(); keralaTeamMembersList =
@@ -162,7 +163,7 @@ public class MenuItems implements OnClickListener {
 				else {
 					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, list);
-					//photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					// photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					activity.startActivity(photoGalleryIntent);
 
 				}
@@ -251,7 +252,7 @@ public class MenuItems implements OnClickListener {
 				else {
 					Intent photoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, list);
-				//	photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					// photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					activity.startActivity(photoGalleryIntent);
 				}
 
@@ -286,9 +287,30 @@ public class MenuItems implements OnClickListener {
 							Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 						}
 					}
-
 				}
 
+				break;
+
+			case R.id.layout_news:
+				cursor = activity.getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null, DataProviderContract.NEWS_CATEGORY +" = 1", null, null);
+				if(cursor != null && cursor.getCount()>0){
+					list = NewsItemsCursor.getItems(cursor);
+					Intent newsIntent = new Intent(activity, NewsActivity.class);
+					newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, list);
+					//newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					activity.startActivity(newsIntent);
+				}else{
+					if (Util.getInstance().isOnline(activity)) {
+						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.news_url)));
+						activity.startService(mServiceIntent);			
+						
+					  mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.nation_news_url)));
+					  activity.startService(mServiceIntent);
+					}
+					else {
+						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
+				}
 				break;
 			default:
 				break;
@@ -303,5 +325,28 @@ public class MenuItems implements OnClickListener {
 		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
 		activity.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
 	}
+
+/*	private void getRegionallNewsResponse (String result) {
+
+		JSONArray jsonArray = new JSONArray(result);
+		for (int i = 0; i < jsonArray.length(); i++) {
+			regionalNewsItems = new Items();
+			JSONObject jsonObject = jsonArray.getJSONObject(i);
+			if (jsonObject.has("news_id")) {
+				int id = jsonObject.getInt("news_id");
+				regionalNewsItems.setId(id);
+			}
+			if (jsonObject.has("news_title")) {
+				String title = jsonObject.getString("news_title");
+				regionalNewsItems.setTitle(title);
+			}
+			if (jsonObject.has("news_url")) {
+				String url = jsonObject.getString("news_url");
+				regionalNewsItems.setThumbUrl(url);
+			}
+			regionalNewsItemsArrayList.add(regionalNewsItems);
+		}
+
+	}*/
 
 }

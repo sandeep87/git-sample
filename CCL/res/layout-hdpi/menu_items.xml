@@ -203,6 +203,38 @@
         android:layout_height="1dp"
         android:padding="1dp" />
 
+    <RelativeLayout
+        android:id="@+id/layout_news"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#242a38" >
+
+        <ImageView
+            android:id="@+id/news_icon"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/schedule" />
+
+        <TextView
+            android:id="@+id/txt_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/news_icon"
+            android:padding="12dp"
+            android:text="@string/news"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:padding="1dp" />
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
