@@ -32,7 +32,7 @@
 	<string name="home">HOME</string>
 	<string name="news">NEWS</string>
 	<string name="teams">TEAMS</string>
-	<string name="team_title">THE TEAM</string>
+	<string name="team_title">TEAM</string>
 	<string name="ambassadors_title">BRAND AMBASSADORS</string>
 	<string name="photos">PHOTOS</string>
 	<string name="videos">VIDEOS</string>
@@ -59,7 +59,7 @@
 
 	<string name="director">Director</string>
 	
-	<string name="founder_director">Founder \nand \n Managing Director</string>
+	<string name="founder_director">Founder\nand\nManaging Director</string>
 	
 	<string name="owner_one_data_mumbai">A prominent film production and distribution company of full length feature films in Hindi. Produced many large format events and has organised exhibition matches in various sports with Bollywood artists in India and Abroad.</string>
 

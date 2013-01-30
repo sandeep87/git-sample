@@ -1,6 +1,8 @@
 package in.ccl.ui;
 
 import in.ccl.adapters.GridAdapter;
+import in.ccl.database.CCLPullService;
+import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.helper.Util;
 import in.ccl.imageloader.EndlessScrollListener;
 import in.ccl.model.Items;
@@ -12,7 +14,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,6 +35,8 @@ public class PhotoAlbumActivity extends TopActivity {
 
 	private IntentFilter statusIntentFilter;
 
+	private int photoGalleryId;
+
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -48,7 +54,7 @@ public class PhotoAlbumActivity extends TopActivity {
 		mDownloadStateReceiver = new DownloadStateReceiver();
 
 		String albumTitle = getIntent().getStringExtra(Constants.EXTRA_ALBUM_TITLE);
-		int photoGalleryId = getIntent().getIntExtra(Constants.EXTRA_ALBUM_ID, 1);
+		photoGalleryId = getIntent().getIntExtra(Constants.EXTRA_ALBUM_ID, 1);
 		TextView txtAlbumTitle = (TextView) findViewById(R.id.txt_album_title);
 		Util.setTextFont(this, txtAlbumTitle);
 		txtAlbumTitle.setText(albumTitle);
@@ -63,12 +69,9 @@ public class PhotoAlbumActivity extends TopActivity {
 		gridView = (GridView) findViewById(R.id.photos_gridview);
 		adapter = new GridAdapter(PhotoAlbumActivity.this, photoGalleryList, "photo");
 		gridView.setAdapter(adapter);
-		
-		System.out.println("Rajesh album count "+photoGalleryList.size());
 
 		if (photoGalleryList != null && photoGalleryList.size() > 0) {
 			gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, photoGalleryId, EndlessScrollListener.RequestType.PHOTO_GALLERY_REQUEST, photoGalleryList.get(0).getNumberOfPages()));
-
 		}
 
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -90,6 +93,18 @@ public class PhotoAlbumActivity extends TopActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		if (Util.getInstance().isOnline(PhotoAlbumActivity.this)) {
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run () {
+					Intent mServiceIntent = new Intent(PhotoAlbumActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.photo_gallery_url) + photoGalleryId));
+					mServiceIntent.putExtra("KEY", "photo_updates");
+					startService(mServiceIntent);
+				}
+			}, 20000);
+		}
+
 	}
 
 	@Override
@@ -119,10 +134,18 @@ public class PhotoAlbumActivity extends TopActivity {
 
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 
-				case in.ccl.database.Constants.STATE_ACTION_PHOTO_COMPLETE:
+				case in.ccl.database.Constants.STATE_ACTION_PHOTO_PAGES_DOWNLOAD_COMPLETE:
 					if (intent != null && intent.hasExtra("list")) {
 						ArrayList <Items> list = intent.getParcelableArrayListExtra("list");
 						adapter.updateList(list);
+					}
+					break;
+				case in.ccl.database.Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE:
+					ArrayList <Items> list = PhotoAlbumCurosr.getPhotos(PhotoAlbumActivity.this, photoGalleryId);
+					adapter = new GridAdapter(PhotoAlbumActivity.this, list, "photo");
+					gridView.setAdapter(adapter);
+					if (list.size() > 0) {
+						gridView.setOnScrollListener(new EndlessScrollListener(PhotoAlbumActivity.this, adapter, photoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, list.get(0).getNumberOfPages()));
 					}
 					break;
 				default:

@@ -39,6 +39,7 @@ public class CCLPullService extends IntentService {
 	protected void onHandleIntent (Intent workIntent) {
 
 		Vector <ContentValues> imageValues = null;
+		int updatedRows = 0;
 		// Gets a URL to read from the incoming Intent's "data" value
 		String localUrlString = workIntent.getDataString();
 		System.out.println("Url " + localUrlString);
@@ -49,6 +50,7 @@ public class CCLPullService extends IntentService {
 		else {
 			compareKey = Uri.parse(localUrlString).getLastPathSegment();
 		}
+		System.out.println("Rajesh Keys are " + compareKey);
 		// Creates a projection to use in querying the modification date table in the provider.
 		final String[] dateProjection = new String[] { DataProviderContract.ROW_ID, DataProviderContract.DATA_DATE_COLUMN };
 
@@ -141,19 +143,19 @@ public class CCLPullService extends IntentService {
 						 */
 						JSONPullParser localDataPullParser = new JSONPullParser();
 
-						if (compareKey.equals("slidersv2")) {
+						if (compareKey.equals("slidersv2") || compareKey.equals("update-banner")) {
 							localDataPullParser.parseBannerJson(localURLConnection.getInputStream(), mBroadcaster);
 						}
-						else if (compareKey.equals("albums")) {
+						else if (compareKey.equals("albums") || compareKey.equals("update-photos")) {
 							localDataPullParser.parsePhotoAlbumJson(localURLConnection.getInputStream(), mBroadcaster);
 						}
-						else if (compareKey.equals("videoalbums")) {
+						else if (compareKey.equals("videoalbums") || compareKey.equals("update-videos")) {
 							localDataPullParser.parseVideoAlbumJson(localURLConnection.getInputStream(), mBroadcaster);
 						}
-						else if (compareKey.equals("photos")) {
+						else if (compareKey.equals("photos") || compareKey.equals("photos_pages") || compareKey.equals("banner-photos") || compareKey.equals("photo_updates")) {
 							localDataPullParser.parsePhotoJson(localURLConnection.getInputStream(), mBroadcaster);
 						}
-						else if (compareKey.equals("videos")) {
+						else if (compareKey.equals("videos") || compareKey.equals("videos_pages") || compareKey.equals("videos_updates")) {
 							localDataPullParser.parseVideoJson(localURLConnection.getInputStream(), mBroadcaster);
 						}else if (compareKey.equals("regional")){
 							 localDataPullParser.parseNewsJson(localURLConnection.getInputStream(),mBroadcaster,1);							 
@@ -177,19 +179,19 @@ public class CCLPullService extends IntentService {
 						/*
 						 * Stores the image data in the content provider. The content provider throws an exception if the URI is invalid.
 						 */
-						if (compareKey.equals("slidersv2")) {
+						if (compareKey.equals("slidersv2") || compareKey.equals("update-banner")) {
+							updatedRows = getContentResolver().bulkInsert(DataProviderContract.BANNERURL_TABLE_CONTENTURI, imageValuesArray);
+						}
+						else if (compareKey.equals("albums") || compareKey.equals("update-photos")) {
+							updatedRows = getContentResolver().bulkInsert(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, imageValuesArray);
+						}
+						else if (compareKey.equals("videoalbums") || compareKey.equals("update-videos")) {
+							updatedRows = getContentResolver().bulkInsert(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, imageValuesArray);
+						}
 
-							getContentResolver().bulkInsert(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, imageValuesArray);
-						}
-						else if (compareKey.equals("albums")) {
-							getContentResolver().bulkInsert(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, imageValuesArray);
-						}
-						else if (compareKey.equals("videoalbums")) {
-							getContentResolver().bulkInsert(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, imageValuesArray);
-						}
-						else if (compareKey.equals("photos")) {
-							int result = getContentResolver().bulkInsert(DataProviderContract.RAW_TABLE_CONTENTURI, imageValuesArray);
-							System.out.println("Inserting value "+result);
+						else if (compareKey.equals("photos") || compareKey.equals("photos_pages") || compareKey.equals("banner-photos") || compareKey.equals("photo_updates")) {
+							getContentResolver().bulkInsert(DataProviderContract.RAW_TABLE_CONTENTURI, imageValuesArray);
+
 							// Gets image data from the parser
 							Vector <ContentValues> pageValues = localDataPullParser.getPages();
 							if (pageValues != null) {
@@ -207,7 +209,7 @@ public class CCLPullService extends IntentService {
 								}
 							}
 						}
-						else if (compareKey.equals("videos")) {
+						else if (compareKey.equals("videos") || compareKey.equals("videos_pages") || compareKey.equals("videos_updates")) {
 							getContentResolver().bulkInsert(DataProviderContract.RAW_TABLE_CONTENTURI, imageValuesArray);
 							// Gets image data from the parser
 							Vector <ContentValues> pageValues = localDataPullParser.getPages();
@@ -245,12 +247,12 @@ public class CCLPullService extends IntentService {
 						}
 						break;
 					default:
+						System.out.println("Rajesh server response not ok and code "+responseCode);
 						break;
 				}
 
 				// Reports that the feed retrieval is complete.
-				mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_COMPLETE, null);
-				if (compareKey.equals("sliders")) {
+				if (compareKey.equals("slidersv2")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_BANNER_COMPLETE, null);
 				}
 				else if (compareKey.equals("albums")) {
@@ -260,18 +262,49 @@ public class CCLPullService extends IntentService {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_ALBUM_COMPLETE, null);
 				}
 				else if (compareKey.equals("photos")) {
-					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_COMPLETE, getArrayOfItems(imageValues));
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_COMPLETE, null);
 				}
 				else if (compareKey.equals("videos")) {
-					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_COMPLETE, getArrayOfItems(imageValues));
-					
+   		  mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_COMPLETE, null);
+				}
+				else if (compareKey.equals("update-banner")) {
+					if (updatedRows > 0) {
+						// database updated, should notify home activity to upate banner items.
+						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_BANNER_UPDATES_COMPLETE, null);
+					}
+				}
+				else if (compareKey.equals("update-photos")) {
+					if (updatedRows > 0) {
+						// database updated, should notify home activity to update photos items.
+						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_ALBUM_UPDATES_COMPLETE, null);
+					}
+				}
+				else if (compareKey.equals("update-videos")) {
+					if (updatedRows > 0) {
+						// database updated, should notify home activity to update videos items.
+						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_ALBUM_UPDATES_COMPLETE, null);
+					}
+				}
+				else if (compareKey.equals("photos_pages")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_PAGES_DOWNLOAD_COMPLETE, getArrayOfItems(imageValues));
+				}
+				else if (compareKey.equals("videos_pages")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_PAGES_DOWNLOAD_COMPLETE, getArrayOfItems(imageValues));
+				}
+				else if (compareKey.equals("banner-photos")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_BANNER_PAGES_DOWNLOAD_COMPLETE, null);
+				}
+				else if (compareKey.equals("videos_updates")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_UPDATES_COMPLETE, null);
 				}else if (compareKey.equals("regional") || compareKey.equals("national")) {
 					
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_NEWS_COMPLETE, null);
 				}
+				else if (compareKey.equals("photo_updates")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE, null);
 
+				}
 			}
-
 			// Handles possible exceptions
 		}
 		catch (MalformedURLException localMalformedURLException) {

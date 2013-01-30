@@ -178,6 +178,8 @@ public class PhotoView extends ImageView {
 	 */
 	@Override
 	protected void onDetachedFromWindow () {
+		super.onDetachedFromWindow();
+/*
 
 		// Clears out the image drawable, turns off the cache, disconnects the view from a URL
 		setImageURL(null, false, null, null);
@@ -200,7 +202,7 @@ public class PhotoView extends ImageView {
 
 		// Always call the super method last
 		super.onDetachedFromWindow();
-	}
+	*/}
 
 	/*
 	 * This callback is invoked when the system tells the View to draw itself. If the View isn't already drawn, and its URL isn't null, it invokes a Thread to download the image. Otherwise, it simply passes the existing Canvas to the super method
@@ -225,9 +227,9 @@ public class PhotoView extends ImageView {
 	 * 
 	 * @param view the View to use as the new WeakReference
 	 */
-	public void setHideView (View view) {
+	/*public void setHideView (View view) {
 		this.mThisView = new WeakReference <View>(view);
-	}
+	}*/
 
 	@Override
 	public void setImageBitmap (Bitmap paramBitmap) {
@@ -289,13 +291,16 @@ public class PhotoView extends ImageView {
 	 * @param errorTxt
 	 */
 	public void setImageURL (String pictureUrl, boolean cacheFlag, Drawable imageDrawable, TextView errorTxt) {
+		
 		errorTitleTxt = errorTxt;
 		URL pictureURL = null;
 		try {
-			pictureURL = new URL(pictureUrl);
+			if (pictureUrl != null) {
+				pictureURL = new URL(pictureUrl.replace(" ", "%20"));
+			}
 		}
 		catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Malformed exception " + pictureUrl);
 			e.printStackTrace();
 		}
 

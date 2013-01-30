@@ -259,7 +259,7 @@ public class MenuItems implements OnClickListener {
 				break;
 			case R.id.layout_home:
 				if (mLayout.isShown()) {
-					cursor = activity.getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
+					cursor = activity.getContentResolver().query(DataProviderContract.BANNERURL_TABLE_CONTENTURI, null, null, null, null);
 					if (cursor.getCount() > 0) {
 						ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
 						cursor = activity.getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);

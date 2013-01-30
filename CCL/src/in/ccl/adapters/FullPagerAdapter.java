@@ -1,8 +1,8 @@
 package in.ccl.adapters;
 
 import in.ccl.helper.Category;
-import in.ccl.imageloader.DisplayImage;
 import in.ccl.model.Items;
+import in.ccl.photo.PhotoView;
 import in.ccl.ui.R;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 public class FullPagerAdapter extends PagerAdapter {
 
@@ -45,15 +45,18 @@ public class FullPagerAdapter extends PagerAdapter {
 	@Override
 	public View instantiateItem (View view, int position) {
 		View imageLayout = null;
-		ImageView imageView = null;
-		ImageView spinner = null;
+		PhotoView imageView = null;
+		// ImageView spinner = null;
 
 		imageLayout = inflater.inflate(R.layout.item_pager_image, null);
-		imageView = (ImageView) imageLayout.findViewById(R.id.image);
-		spinner = (ImageView) imageLayout.findViewById(R.id.loading);
+		imageView = (PhotoView) imageLayout.findViewById(R.id.image);
+		// spinner = (ImageView) imageLayout.findViewById(R.id.loading);
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-		DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "fullview");
-		displayImage.show();
+		TextView errorTxt = (TextView) imageLayout.findViewById(R.id.error_title);
+		// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
+
+		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
+		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.photo_preview_preloader), errorTxt);
 
 		((ViewPager) view).addView(imageLayout, 0);
 		return imageLayout;

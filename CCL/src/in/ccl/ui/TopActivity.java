@@ -1,10 +1,7 @@
 package in.ccl.ui;
 
-import in.ccl.database.BannerCursor;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.NewsItemsCursor;
-import in.ccl.database.PhotoAlbumCurosr;
-import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
@@ -29,10 +26,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SlidingDrawer;
-import android.widget.SlidingDrawer.OnDrawerCloseListener;
-import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
 
 public class TopActivity extends Activity implements AnimationLayout.Listener {
 
@@ -70,14 +68,17 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	private LinearLayout menuLayout;
 
-	private TextView notificationTxt;
-
-	private TextView notificationTitle;
-
-	// private LinearLayout animationLayoutSlider;
 	private DownloadStateReceiver mDownloadStateReceiver;
 
 	private IntentFilter statusIntentFilter;
+
+	/*
+	 * private TextView notificationTxt;
+	 * 
+	 * private TextView notificationTitle;
+	 */
+	// for displaying adds.
+	private AdView adView;
 
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
@@ -94,24 +95,30 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		mDownloadStateReceiver = new DownloadStateReceiver();
 
 		mLayout = (AnimationLayout) findViewById(R.id.animation_layout);
+
 		// animationLayoutSlider = (LinearLayout) findViewById(R.id.animation_layout_sidebar);
 		menuLayout = (LinearLayout) findViewById(R.id.menu_layout);
 
-		notificationTxt = (TextView) findViewById(R.id.notification_textview);
-		notificationTitle = (TextView) findViewById(R.id.notification_title_textview);
-		TextView notificationOneTxt = (TextView) findViewById(R.id.notification_item1);
-		TextView notificationTwoTxt = (TextView) findViewById(R.id.notification_item2);
-		TextView notificationThreeTxt = (TextView) findViewById(R.id.notification_item3);
-		TextView notificationFourTxt = (TextView) findViewById(R.id.notification_item4);
+		// for adds
+		adView = new AdView(this, AdSize.BANNER, Constants.MY_AD_UNIT_ID);
+		LinearLayout layout = (LinearLayout) findViewById(R.id.admob_layout);
+		layout.setVisibility(View.VISIBLE);
+		// Add the adView to it
+		layout.addView(adView);
 
-		Util.setTextFont(this, notificationTitle);
-		Util.setTextFont(this, notificationTxt);
-		Util.setTextFont(this, notificationOneTxt);
-		Util.setTextFont(this, notificationTwoTxt);
-		Util.setTextFont(this, notificationThreeTxt);
-		Util.setTextFont(this, notificationFourTxt);
+		// Initiate a generic request to load it with an ad
+		AdRequest adRequest = new AdRequest();
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
 
-		mLayout.setListener(this);
+		adView.loadAd(adRequest);// new AdRequest()
+
+		/*
+		 * notificationTxt = (TextView) findViewById(R.id.notification_textview); notificationTitle = (TextView) findViewById(R.id.notification_title_textview); TextView notificationOneTxt = (TextView) findViewById(R.id.notification_item1); TextView notificationTwoTxt = (TextView)
+		 * findViewById(R.id.notification_item2); TextView notificationThreeTxt = (TextView) findViewById(R.id.notification_item3); TextView notificationFourTxt = (TextView) findViewById(R.id.notification_item4);
+		 */
+		/*
+		 * Util.setTextFont(this, notificationTitle); Util.setTextFont(this, notificationTxt); Util.setTextFont(this, notificationOneTxt); Util.setTextFont(this, notificationTwoTxt); Util.setTextFont(this, notificationThreeTxt); Util.setTextFont(this, notificationFourTxt);
+		 */mLayout.setListener(this);
 
 		// for user menu selection from top activity.
 		ImageButton imgBtnMenu = (ImageButton) findViewById(R.id.img_btn_menu);
@@ -120,24 +127,18 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		TextView menuTitleTxt = (TextView) findViewById(R.id.menu_title);
 		Util.setTextFont(this, menuTitleTxt);
 
-		SlidingDrawer slidingDrawer = (SlidingDrawer) findViewById(R.id.slidingDrawer);
-		slidingDrawer.setOnDrawerOpenListener(new OnDrawerOpenListener() {
-
-			@Override
-			public void onDrawerOpened () {
-				notificationTxt.setVisibility(View.GONE);
-			}
-		});
-
-		slidingDrawer.setOnDrawerCloseListener(new OnDrawerCloseListener() {
-
-			@Override
-			public void onDrawerClosed () {
-				notificationTxt.setVisibility(View.VISIBLE);
-
-			}
-		});
-
+		// SlidingDrawer slidingDrawer = (SlidingDrawer) findViewById(R.id.slidingDrawer);
+		/*
+		 * slidingDrawer.setOnDrawerOpenListener(new OnDrawerOpenListener() {
+		 * 
+		 * @Override public void onDrawerOpened () { // notificationTxt.setVisibility(View.GONE); } });
+		 * 
+		 * slidingDrawer.setOnDrawerCloseListener(new OnDrawerCloseListener() {
+		 * 
+		 * @Override public void onDrawerClosed () { // notificationTxt.setVisibility(View.VISIBLE);
+		 * 
+		 * } });
+		 */
 		txtScore = (TextView) findViewById(R.id.score_textview);
 		txtScoreTitle = (TextView) findViewById(R.id.score_title_textview);
 		Util.setTextFont(this, txtScore);
@@ -232,6 +233,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 	}
 
 	@Override
+	public void onDestroy () {
+		if (adView != null) {
+			adView.destroy();
+		}
+		super.onDestroy();
+	}
+
+	@Override
 	public void onBackPressed () {
 
 		if (mLayout.isOpening()) {
@@ -276,6 +285,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		mLayout.closeSidebar();
 		// animationLayoutSlider.setVisibility(View.GONE);
 		return true;
+
 	}
 
 	@Override
@@ -304,41 +314,12 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 
-				case in.ccl.database.Constants.STATE_ACTION_PHOTO_ALBUM_COMPLETE:
-					Cursor cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-					ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
-					Intent photoGalleryIntent = new Intent(TopActivity.this, PhotoGalleryActivity.class);
-					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
-					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					startActivity(photoGalleryIntent);
-					break;
-				case in.ccl.database.Constants.STATE_ACTION_VIDEO_ALBUM_COMPLETE:
-					cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-					ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
-
-					Intent videoGalleryIntent = new Intent(TopActivity.this, VideoGalleryActivity.class);
-					videoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
-					videoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					startActivity(videoGalleryIntent);
-					break;
-				case in.ccl.database.Constants.STATE_ACTION_BANNER_COMPLETE:
-					cursor = getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
-					if (cursor.getCount() > 0) {
-						ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
-						cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-						photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
-						cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-						videoAlbumItems = VideoAlbumCursor.getItems(cursor);
-						cursor.close();
-						callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
-					}
-					break;
 				case in.ccl.database.Constants.STATE_ACTION_NEWS_COMPLETE:
-					
-					cursor = getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null,null, null,null);
+
+					Cursor cursor = getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null, null, null, null);
 					ArrayList <Items> newsItems = NewsItemsCursor.getItems(cursor);
 					Intent newsIntent = new Intent(TopActivity.this, NewsActivity.class);
-					if(newsItems != null){
+					if (newsItems != null) {
 						newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, newsItems);
 					}
 					newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -348,14 +329,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 					break;
 			}
 		}
-	}
-
-	private void callHomeIntent (ArrayList <Items> bannerItems, ArrayList <Items> photoAlbumItems, ArrayList <Items> videoAlbumItems) {
-		Intent homeActivityIntent = new Intent(this, HomeActivity.class);
-		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_BANNER_KEY, bannerItems);
-		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
-		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
-		startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
 	}
 
 }

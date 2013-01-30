@@ -84,7 +84,28 @@ public class JSONPullParser {
 					}
 					mImages.add(item);
 				}
-			}
+				// Testing for Banner items updates.
+				/*item  = new ContentValues();				
+				item.put(DataProviderContract.ROW_ID, 13);
+				item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28203%29.jpg");
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update ONE");
+				item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1234);
+				mImages.add(item);
+				
+				item  = new ContentValues();				
+				item.put(DataProviderContract.ROW_ID, 14);
+				item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28100%29.jpg");
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update TWO");
+				item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1235);
+				mImages.add(item);
+			
+				item  = new ContentValues();				
+				item.put(DataProviderContract.ROW_ID, 15);
+				item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%2860%29.jpg");
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update THREE");
+				item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1236);
+				mImages.add(item);
+			*/}
 			catch (JSONException e) {
 				Log.i(TAG, "Banner items parsing exception");
 			}
@@ -155,6 +176,25 @@ public class JSONPullParser {
 					}
 					mImages.add(item);
 				}
+				
+				// TESTING FOR UPDATES OF PHOTO GALLERY
+				/*item = new ContentValues();
+				item.put(DataProviderContract.ROW_ID, 111);
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 ONE");
+				item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg");
+				mImages.add(item);
+				item = new ContentValues();
+				item.put(DataProviderContract.ROW_ID, 112);
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Two");
+				item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(215).jpg");
+				mImages.add(item);
+				item = new ContentValues();
+				item.put(DataProviderContract.ROW_ID, 113);
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Three");
+				item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
+				mImages.add(item);
+*/
+
 			}
 			catch (JSONException e) {
 				Log.i(TAG, "Photo album json parsing exception");
@@ -194,7 +234,25 @@ public class JSONPullParser {
 					}
 					mImages.add(item);
 				}
-			}
+				// testing for updates
+				/*item = new ContentValues();
+				item.put(DataProviderContract.ROW_ID, 111);
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video One");
+				item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
+				mImages.add(item);
+				item = new ContentValues();
+				item.put(DataProviderContract.ROW_ID, 112);
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video Two");
+				item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
+				mImages.add(item);
+				item = new ContentValues();
+				item.put(DataProviderContract.ROW_ID, 113);
+				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video THree");
+				item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
+				mImages.add(item);
+
+
+*/			}
 			catch (JSONException e) {
 				e.printStackTrace();
 				Log.i(TAG, "Video album parsing exception.");

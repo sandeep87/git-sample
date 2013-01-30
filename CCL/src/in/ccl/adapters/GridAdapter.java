@@ -1,7 +1,6 @@
 package in.ccl.adapters;
 
 import in.ccl.helper.Util;
-import in.ccl.imageloader.DisplayImage;
 import in.ccl.model.Items;
 import in.ccl.photo.PhotoView;
 import in.ccl.ui.R;

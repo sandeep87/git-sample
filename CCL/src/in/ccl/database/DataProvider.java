@@ -250,7 +250,7 @@ public class DataProvider extends ContentProvider {
 			// If the query is for a picture URL
 			case BANNER_IMAGE_URL_QUERY:
 				// Does the query against a read-only version of the database
-				Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null, null);
+				Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -258,7 +258,7 @@ public class DataProvider extends ContentProvider {
 				// If the query is for a picture URL
 			case PHOTO_ALBUM_URL_QUERY:
 				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, projection, null, null, null, null, null);
+				returnCursor = db.query(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -266,14 +266,14 @@ public class DataProvider extends ContentProvider {
 
 			case VIDEO_ALBUM_URL_QUERY:
 				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, projection, null, null, null, null, null);
+				returnCursor = db.query(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 			case PHOTO_URL_QUERY:
 				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, null);
+				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -281,7 +281,7 @@ public class DataProvider extends ContentProvider {
 
 			case VIDEO_URL_QUERY:
 				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, null);
+				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -395,7 +395,7 @@ public class DataProvider extends ContentProvider {
 
 			// picture URLs table
 			case BANNER_IMAGE_URL_QUERY:
-
+				long count = 0;
 				// Gets a writeable database instance if one is not already cached
 				SQLiteDatabase localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -414,7 +414,7 @@ public class DataProvider extends ContentProvider {
 
 				for (int i = 0; i < numImages; i++) {
 					try {
-						localSQLiteDatabase.insertOrThrow(DataProviderContract.BANNERURL_TABLE_NAME, DataProviderContract.BANNER_IMAGE_URL_COLUMN, insertValuesArray[i]);
+						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.BANNERURL_TABLE_NAME, DataProviderContract.BANNER_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
 					}
@@ -434,9 +434,9 @@ public class DataProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
-				return numImages;
+				return (int) count;
 			case PHOTO_ALBUM_URL_QUERY:
-
+				long updatedRows = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -455,7 +455,7 @@ public class DataProvider extends ContentProvider {
 
 				for (int i = 0; i < numImages; i++) {
 					try {
-						localSQLiteDatabase.insertOrThrow(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, insertValuesArray[i]);
+						updatedRows = localSQLiteDatabase.insertOrThrow(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
 					}
@@ -475,9 +475,9 @@ public class DataProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
-				return numImages;
+				return (int) updatedRows;
 			case VIDEO_ALBUM_URL_QUERY:
-
+				updatedRows = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -496,7 +496,7 @@ public class DataProvider extends ContentProvider {
 				for (int i = 0; i < numImages; i++) {
 					try {
 
-						localSQLiteDatabase.insertOrThrow(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, insertValuesArray[i]);
+						updatedRows = localSQLiteDatabase.insertOrThrow(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
 					}
@@ -516,7 +516,7 @@ public class DataProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
-				return numImages;
+				return (int) updatedRows;
 
 			case PHOTO_URL_QUERY:
 			case VIDEO_URL_QUERY:

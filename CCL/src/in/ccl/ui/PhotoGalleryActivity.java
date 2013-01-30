@@ -2,7 +2,9 @@ package in.ccl.ui;
 
 import in.ccl.adapters.GridAdapter;
 import in.ccl.database.CCLPullService;
+import in.ccl.database.DataProviderContract;
 import in.ccl.database.PhotoAlbumCurosr;
+import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
 import in.ccl.util.Constants;
@@ -13,8 +15,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,7 +37,7 @@ public class PhotoGalleryActivity extends TopActivity /* implements AbsListView.
 
 	private int photoGalleryId;
 
-	private boolean loading = true;
+	// private boolean loading = true;
 
 	private GridAdapter adapter;
 
@@ -143,8 +147,21 @@ public class PhotoGalleryActivity extends TopActivity /* implements AbsListView.
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
 					startActivity(photoAlbumIntent);
-
 					break;
+				case in.ccl.database.Constants.STATE_ACTION_PHOTO_ALBUM_UPDATES_COMPLETE:
+					Cursor cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor != null && cursor.getCount() > 0) {
+						ArrayList <Items> photoAlbumItems = VideoAlbumCursor.getItems(cursor);
+						if (photoAlbumItems.size() > 0) {
+							gridView.setAdapter(new GridAdapter(PhotoGalleryActivity.this, photoAlbumItems, "photo_gallery"));
+						}
+						else {
+							// display no items message.
+						}
+						cursor.close();
+					}
+					break;
+
 				default:
 					break;
 			}
@@ -156,6 +173,17 @@ public class PhotoGalleryActivity extends TopActivity /* implements AbsListView.
 		// TODO Auto-generated method stub
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		if (Util.getInstance().isOnline(PhotoGalleryActivity.this)) {
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run () {
+					Intent mServiceIntent = new Intent(PhotoGalleryActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.photo_album_url)));
+					mServiceIntent.putExtra("KEY", "update-photos");
+					startService(mServiceIntent);
+				}
+			}, 20000);
+		}
 	}
 
 	@Override

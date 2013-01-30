@@ -26,13 +26,15 @@ public class VideoAlbumCursor {
 
 	public static ArrayList <Items> getVideos (Context ctx, int albumId) {
 		String condition = DataProviderContract.ALBUM_ID_COLUMN + " = " + albumId + " and " + DataProviderContract.CATEGORY_ID + " = 2";
-		System.out.println("Video condition " + condition);
 		Cursor cursor = ctx.getContentResolver().query(DataProviderContract.PAGES_TABLE_CONTENTURI, new String[] { DataProviderContract.TOTAL_PAGES }, condition, null, null);
 		int totalPages = 0;
 		if (cursor != null && cursor.getCount() > 0) {
 			if (cursor.moveToFirst()) {
 				totalPages = cursor.getInt(0);
 			}
+		}
+		if(cursor != null){
+			cursor.close();
 		}
 		cursor = ctx.getContentResolver().query(DataProviderContract.RAW_TABLE_CONTENTURI, null, condition, null, null);
 		ArrayList <Items> list = new ArrayList <Items>();

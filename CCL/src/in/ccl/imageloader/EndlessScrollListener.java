@@ -41,6 +41,9 @@ public class EndlessScrollListener implements OnScrollListener {
 		this.itemId = itemId;
 		this.activity = activity;
 		this.totalPages = pages;
+		if (adapter != null) {
+			currentPage = (int) Math.ceil((double) adapter.getCount() / 25);
+		}
 	}
 
 	@Override
@@ -61,7 +64,7 @@ public class EndlessScrollListener implements OnScrollListener {
 						Intent mServiceIntent = new Intent(activity, CCLPullService.class);
 						String url = activity.getResources().getString(R.string.photo_gallery_url) + itemId + "?page=" + (currentPage + 1);
 						mServiceIntent.setData(Uri.parse(url));
-						mServiceIntent.putExtra("KEY", "photos");
+						mServiceIntent.putExtra("KEY", "photos_pages");
 						activity.startService(mServiceIntent);
 					}
 					else {
@@ -71,7 +74,7 @@ public class EndlessScrollListener implements OnScrollListener {
 				case VIDEO_REQUEST:
 					if (Util.getInstance().isOnline(activity)) {
 						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.video_gallery_url) + itemId + "?page=" + (currentPage + 1)));
-						mServiceIntent.putExtra("KEY", "videos");
+						mServiceIntent.putExtra("KEY", "videos_pages");
 						activity.startService(mServiceIntent);
 
 					}

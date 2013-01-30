@@ -4,7 +4,6 @@ import in.ccl.database.BannerCursor;
 import in.ccl.database.CCLPullService;
 import in.ccl.database.Constants;
 import in.ccl.database.DataProviderContract;
-import in.ccl.database.DisplayActivity;
 import in.ccl.database.JSONPullParser;
 import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
@@ -17,6 +16,7 @@ import in.ccl.util.AppPropertiesUtil;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -50,17 +50,11 @@ public class SplashScreenActivity extends FragmentActivity {
 
 	private boolean isInitialDataLoaded;
 
-	public enum RequestType {
-		NO_REQUEST, BANNER_REQUEST, PHOTO_ALBUMREQUEST, VIDEO_ALBUMREQUEST;
-	}
-
-	RequestType mRequestType = RequestType.NO_REQUEST;
+	private DownloadStateReceiver mDownloadStateReceiver;
 
 	/**
 	 * Called when the activity is first created.
 	 */
-	// Intent for starting the IntentService that downloads the Picasa featured picture RSS feed
-	private Intent mServiceIntent;
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -90,58 +84,111 @@ public class SplashScreenActivity extends FragmentActivity {
 		statusIntentFilter.addCategory(Intent.CATEGORY_DEFAULT);
 
 		// Instantiates a new DownloadStateReceiver
-		DownloadStateReceiver mDownloadStateReceiver = new DownloadStateReceiver();
+		mDownloadStateReceiver = new DownloadStateReceiver();
 
 		// Registers the DownloadStateReceiver and its intent filters
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
-		Cursor cursor = getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
-		if (cursor.getCount() > 0) {
-			ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
-			cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-			ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
-			cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-			ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+
+		// loading previously stored data from the database.
+		ArrayList <Items> photoAlbumItems = null;
+		ArrayList <Items> videoAlbumItems = null;
+		ArrayList <Items> bannerItems = null;
+
+		// loading banner data from the database.
+		Cursor cursor = getContentResolver().query(DataProviderContract.BANNERURL_TABLE_CONTENTURI, null, null, null, null);
+		if (cursor != null) {
+			bannerItems = BannerCursor.getItems(cursor);
+			cursor.close();
+		}
+
+		// loading photo gallery data from database.
+		cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+		if (cursor != null) {
+			photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+			cursor.close();
+		}
+
+		// loading video gallery data from the database.
+		cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+		if (cursor != null) {
+			videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+			cursor.close();
+		}
+		if ((bannerItems != null && bannerItems.size() > 0) || (photoAlbumItems != null && photoAlbumItems.size() > 0) || (videoAlbumItems != null && videoAlbumItems.size() > 0)) {
 			callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
 		}
 		else {
-			if (cursor != null) {
-				cursor.close();
-			}
 			if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
-				mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.banner_url)));
-				startService(mServiceIntent);
-
-				mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.photo_album_url)));
-				startService(mServiceIntent);
-
-				mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.video_album_url)));
-				startService(mServiceIntent);
-
-				cursor = getContentResolver().query(DataProviderContract.CATEGORY_TABLE_CONTENTURI, null, null, null, null);
-				if (cursor.getCount() <= 0) {
-					// Initilization of Category table.
-					Vector <ContentValues> mValues = new Vector <ContentValues>(JSONPullParser.VECTOR_INITIAL_SIZE);
-					ContentValues values = new ContentValues();
-					values.put(DataProviderContract.ROW_ID, 1);
-					values.put(DataProviderContract.CATEGORY_TITLE, "photos");
-					mValues.add(values);
-					values = new ContentValues();
-					values.put(DataProviderContract.ROW_ID, 2);
-					values.put(DataProviderContract.CATEGORY_TITLE, "videos");
-					mValues.add(values);
-					// Stores the number of images
-					int imageVectorSize = mValues.size();
-					// Creates one ContentValues for each image
-					ContentValues[] imageValuesArray = new ContentValues[imageVectorSize];
-					imageValuesArray = mValues.toArray(imageValuesArray);
-					getContentResolver().bulkInsert(DataProviderContract.CATEGORY_TABLE_CONTENTURI, imageValuesArray);
-				}
-
+				// Initialize of Category table.
+				InitializeCategoryTable();
+				callDataServices(SplashScreenActivity.this, 0);
 			}
 			else {
+				// to stop animation.
 				animationRotateCenter = null;
 				Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 			}
+		}
+	}
+
+	/**
+	 * Mode zero means initial download from server Mode one means updates from the server.
+	 * 
+	 * @param ctx
+	 * @param mode
+	 */
+	public static void callDataServices (Activity ctx, int mode) {
+		// Intent for starting the IntentService that downloads data.
+		Intent mServiceIntent;
+		if (Util.getInstance().isOnline(ctx)) {
+			// starting services for getting home screen data.
+			mServiceIntent = new Intent(ctx, CCLPullService.class).setData(Uri.parse(ctx.getResources().getString(R.string.banner_url)));
+			if (mode == 1) {
+				mServiceIntent.putExtra("KEY", "update-banner");
+			}
+			ctx.startService(mServiceIntent);
+
+			mServiceIntent = new Intent(ctx, CCLPullService.class).setData(Uri.parse(ctx.getResources().getString(R.string.photo_album_url)));
+			if (mode == 1) {
+				mServiceIntent.putExtra("KEY", "update-photos");
+			}
+			ctx.startService(mServiceIntent);
+
+			mServiceIntent = new Intent(ctx, CCLPullService.class).setData(Uri.parse(ctx.getResources().getString(R.string.video_album_url)));
+			if (mode == 1) {
+				mServiceIntent.putExtra("KEY", "update-videos");
+			}
+			ctx.startService(mServiceIntent);
+		}
+	}
+
+	@Override
+	protected void onPause () {
+		super.onPause();
+		// unregister receiver
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
+	}
+
+	private void InitializeCategoryTable () {
+		Cursor cursor = getContentResolver().query(DataProviderContract.CATEGORY_TABLE_CONTENTURI, null, null, null, null);
+		if (cursor != null && cursor.getCount() <= 0) {
+			cursor.close();
+			Vector <ContentValues> mValues = new Vector <ContentValues>(JSONPullParser.VECTOR_INITIAL_SIZE);
+
+			ContentValues values = new ContentValues();
+			values.put(DataProviderContract.ROW_ID, 1);
+			values.put(DataProviderContract.CATEGORY_TITLE, "photos");
+			mValues.add(values);
+
+			values = new ContentValues();
+			values.put(DataProviderContract.ROW_ID, 2);
+			values.put(DataProviderContract.CATEGORY_TITLE, "videos");
+			mValues.add(values);
+
+			int categoryVectorSize = mValues.size();
+			ContentValues[] categoryValuesArray = new ContentValues[categoryVectorSize];
+			categoryValuesArray = mValues.toArray(categoryValuesArray);
+			getContentResolver().bulkInsert(DataProviderContract.CATEGORY_TABLE_CONTENTURI, categoryValuesArray);
 		}
 	}
 
@@ -160,7 +207,6 @@ public class SplashScreenActivity extends FragmentActivity {
 
 		public void onAnimationRepeat (Animation animation) {
 			// download initial data from server.
-
 			floatingLogoImage.startAnimation(animation);
 		}
 
@@ -168,15 +214,7 @@ public class SplashScreenActivity extends FragmentActivity {
 			// Here it should get data from server for home screen.
 			// isInitialDataLoaded is true when all required home screen data is downloaded from the server.
 			// in this case it should navigate to home screen.
-			if (isInitialDataLoaded) {
-				Intent homeActivityIntent = new Intent(SplashScreenActivity.this, DisplayActivity.class);
-				startActivity(homeActivityIntent);
-
-				/*
-				 * Intent homeActivityIntent = new Intent(SplashScreenActivity.this, HomeActivity.class); homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_BANNER_KEY, bannerList); homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, photoGalleryList);
-				 * homeActivityIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, videoGalleryList); SplashScreenActivity.this.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
-				 */}
-			else {
+			if (!isInitialDataLoaded) {
 				// if initial data is not received from the server to show on home screen.
 				// here it repeat the animation, until it gets the data.
 				if (animationRotateCenter != null) {
@@ -223,8 +261,6 @@ public class SplashScreenActivity extends FragmentActivity {
 
 	private class DownloadStateReceiver extends BroadcastReceiver {
 
-		private static final String CLASS_TAG = "DisplayActivity";
-
 		private DownloadStateReceiver () {
 			// prevents instantiation by other packages.
 		}
@@ -243,13 +279,27 @@ public class SplashScreenActivity extends FragmentActivity {
 
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 				case Constants.STATE_ACTION_VIDEO_ALBUM_COMPLETE:
-					Cursor cursor = getContentResolver().query(DataProviderContract.PICTUREURL_TABLE_CONTENTURI, null, null, null, null);
-					ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
+					ArrayList <Items> bannerItems = null;
+					ArrayList <Items> photoAlbumItems = null;
+					ArrayList <Items> videoAlbumItems = null;
+					Cursor cursor = getContentResolver().query(DataProviderContract.BANNERURL_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor != null) {
+						bannerItems = BannerCursor.getItems(cursor);
+						cursor.close();
+					}
+
 					cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-					ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+					if (cursor != null) {
+						photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+						cursor.close();
+					}
+
 					cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-					ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
-					cursor.close();
+					if (cursor != null) {
+						videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+						cursor.close();
+					}
+
 					callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
 					break;
 				default:

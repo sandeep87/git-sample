@@ -14,13 +14,17 @@ public class PageChangeListener implements OnPageChangeListener {
 
 	private int currentState;
 
-	public PageChangeListener(LinearLayout pageIndicatorLayout, ViewPager pager) {
+	public PageChangeListener (LinearLayout pageIndicatorLayout, ViewPager pager) {
 		IndicatorLayout = pageIndicatorLayout;
 		viewPager = pager;
+		if (IndicatorLayout != null) {
+			Util.setPageIndicator(0, IndicatorLayout);
+		}
+
 	}
 
 	@Override
-	public void onPageScrollStateChanged(int state) {
+	public void onPageScrollStateChanged (int state) {
 		int currentPage = viewPager.getCurrentItem();
 		if (currentPage == 2 || currentPage == 0) {
 			previousState = currentState;
@@ -32,11 +36,11 @@ public class PageChangeListener implements OnPageChangeListener {
 	}
 
 	@Override
-	public void onPageScrolled(int position, float arg1, int arg2) {
+	public void onPageScrolled (int position, float arg1, int arg2) {
 	}
 
 	@Override
-	public void onPageSelected(int position) {
+	public void onPageSelected (int position) {
 		if (IndicatorLayout != null) {
 			Util.setPageIndicator(position, IndicatorLayout);
 		}
