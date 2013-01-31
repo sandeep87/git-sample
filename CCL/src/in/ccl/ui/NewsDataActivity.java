@@ -39,6 +39,7 @@ public class NewsDataActivity extends Activity {
 		mProgressDialog = new ProgressDialog(this);
 		// showing loading text ina progress
 		mProgressDialog.setMessage(getResources().getString(R.string.loading));
+		mProgressDialog.setCancelable(false);
 		// get the setting from the webview set zoom controls
 		WebSettings settings = newsDownloadImagewebView.getSettings();
 		settings.setBuiltInZoomControls(true);

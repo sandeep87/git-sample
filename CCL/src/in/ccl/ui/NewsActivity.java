@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -68,10 +69,19 @@ public class NewsActivity extends TopActivity implements OnClickListener, OnItem
 		btnNational = (Button) findViewById(R.id.btn_national);
 		btnRegional = (Button) findViewById(R.id.btn_regional);
 		newsListview = (ListView) findViewById(R.id.news_listview);
+
 		// on click listener for required controls
 		btnNational.setOnClickListener(this);
 		btnRegional.setOnClickListener(this);
 		// get data from calling activity
+
+		TextView txtNews = (TextView)findViewById(R.id.txt_news_title);
+		//on click listener for required controls
+	
+		    Util.setTextFont(NewsActivity.this,txtNews);
+        Util.setTextFont(NewsActivity.this,btnRegional);
+        Util.setTextFont(NewsActivity.this,btnNational);
+		//get data from calling activity
 		if (getIntent().hasExtra(Constants.EXTRA_NEWS_KEY)) {
 			newsArrayListItems = getIntent().getParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY);
 		}

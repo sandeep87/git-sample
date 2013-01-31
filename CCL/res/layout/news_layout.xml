@@ -10,7 +10,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/txt_news"
+            android:id="@+id/txt_news_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -34,7 +34,8 @@
             android:background="@drawable/inningstab_tapped"
             android:singleLine="true"
             android:text="@string/regional_title"
-            android:textSize="20sp" />
+            android:textSize="20sp" 
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_national"
@@ -44,7 +45,8 @@
             android:background="@drawable/innings_tab"
             android:singleLine="true"
             android:text="@string/national_title"
-            android:textSize="20sp" />
+            android:textSize="20sp" 
+            android:textStyle="bold"/>
     </RelativeLayout>
 
     <ListView

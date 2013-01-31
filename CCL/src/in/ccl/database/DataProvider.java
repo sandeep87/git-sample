@@ -532,7 +532,7 @@ public class DataProvider extends ContentProvider {
 
 			case PHOTO_URL_QUERY:
 			case VIDEO_URL_QUERY:
-
+         int numberOfRowsUpdated = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -551,7 +551,7 @@ public class DataProvider extends ContentProvider {
 
 				for (int i = 0; i < numImages; i++) {
 					try {
-						localSQLiteDatabase.insertOrThrow(DataProviderContract.RAW_TABLE_NAME, DataProviderContract.URL, insertValuesArray[i]);
+						numberOfRowsUpdated = (int) localSQLiteDatabase.insertOrThrow(DataProviderContract.RAW_TABLE_NAME, DataProviderContract.URL, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
 					}
@@ -571,7 +571,7 @@ public class DataProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
-				return numImages;
+				return numberOfRowsUpdated;
 
 			case DOWNLOAD_IMAGE_URL_QUERY:
          int insertedRowsCount = 0;
@@ -616,6 +616,7 @@ public class DataProvider extends ContentProvider {
 				return insertedRowsCount;
 
 			case PAGES_QUERY:
+				count =0;
 
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
@@ -635,7 +636,7 @@ public class DataProvider extends ContentProvider {
 
 				for (int i = 0; i < numImages; i++) {
 					try {
-						localSQLiteDatabase.insertOrThrow(DataProviderContract.PAGES_TABLE_NAME, DataProviderContract.TOTAL_PAGES, insertValuesArray[i]);
+						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.PAGES_TABLE_NAME, DataProviderContract.TOTAL_PAGES, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
 					}
@@ -655,9 +656,9 @@ public class DataProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
-				return numImages;
+				return (int) count;
 			case CATEGORY_QUERY:
-
+         count = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -676,7 +677,7 @@ public class DataProvider extends ContentProvider {
 
 				for (int i = 0; i < numImages; i++) {
 					try {
-						localSQLiteDatabase.insertOrThrow(DataProviderContract.CATEGORY_TABLE_NAME, DataProviderContract.CATEGORY_ID, insertValuesArray[i]);
+						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.CATEGORY_TABLE_NAME, DataProviderContract.CATEGORY_ID, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
 					}
@@ -696,7 +697,7 @@ public class DataProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
-				return numImages;
+				return (int) count;
 
 				// modification date table
 			case URL_DATE_QUERY:
@@ -705,7 +706,7 @@ public class DataProvider extends ContentProvider {
 				return super.bulkInsert(uri, insertValuesArray);
 
 			case NEWS_URL_QUERY:
-
+         count = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -724,7 +725,7 @@ public class DataProvider extends ContentProvider {
 
 				for (int i = 0; i < numImages; i++) {
 					try {
-						localSQLiteDatabase.insertOrThrow(DataProviderContract.NEWS_TABLE_NAME, DataProviderContract.NEWS_ID, insertValuesArray[i]);
+						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.NEWS_TABLE_NAME, DataProviderContract.NEWS_ID, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
 					}
@@ -744,7 +745,7 @@ public class DataProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
-				return numImages;
+				return (int) count;
 
 			case INVALID_URI:
 

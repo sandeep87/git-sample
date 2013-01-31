@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import com.amazonaws.services.simpledb.model.Item;
 
 import android.content.ContentValues;
+import android.net.Uri;
 import android.util.Log;
 
 public class JSONPullParser {
@@ -32,8 +33,6 @@ public class JSONPullParser {
 	private Vector <ContentValues> mPages;
 
 	private static final String TAG = "JSONPullParser";
-	
-	
 
 	/**
 	 * A getter that returns the banner photos data Vector
@@ -85,27 +84,16 @@ public class JSONPullParser {
 					mImages.add(item);
 				}
 				// Testing for Banner items updates.
-				/*item  = new ContentValues();				
-				item.put(DataProviderContract.ROW_ID, 13);
-				item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28203%29.jpg");
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update ONE");
-				item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1234);
-				mImages.add(item);
-				
-				item  = new ContentValues();				
-				item.put(DataProviderContract.ROW_ID, 14);
-				item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28100%29.jpg");
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update TWO");
-				item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1235);
-				mImages.add(item);
-			
-				item  = new ContentValues();				
-				item.put(DataProviderContract.ROW_ID, 15);
-				item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%2860%29.jpg");
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update THREE");
-				item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1236);
-				mImages.add(item);
-			*/}
+				/*
+				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 13); item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28203%29.jpg");
+				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update ONE"); item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1234); mImages.add(item);
+				 * 
+				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 14); item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28100%29.jpg");
+				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update TWO"); item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1235); mImages.add(item);
+				 * 
+				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 15); item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%2860%29.jpg");
+				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update THREE"); item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1236); mImages.add(item);
+				 */}
 			catch (JSONException e) {
 				Log.i(TAG, "Banner items parsing exception");
 			}
@@ -176,24 +164,14 @@ public class JSONPullParser {
 					}
 					mImages.add(item);
 				}
-				
+
 				// TESTING FOR UPDATES OF PHOTO GALLERY
-				/*item = new ContentValues();
-				item.put(DataProviderContract.ROW_ID, 111);
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 ONE");
-				item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg");
-				mImages.add(item);
-				item = new ContentValues();
-				item.put(DataProviderContract.ROW_ID, 112);
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Two");
-				item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(215).jpg");
-				mImages.add(item);
-				item = new ContentValues();
-				item.put(DataProviderContract.ROW_ID, 113);
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Three");
-				item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
-				mImages.add(item);
-*/
+				/*
+				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 111); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 ONE"); item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN,
+				 * "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 112); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Two");
+				 * item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(215).jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 113);
+				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Three"); item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item);
+				 */
 
 			}
 			catch (JSONException e) {
@@ -235,24 +213,12 @@ public class JSONPullParser {
 					mImages.add(item);
 				}
 				// testing for updates
-				/*item = new ContentValues();
-				item.put(DataProviderContract.ROW_ID, 111);
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video One");
-				item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
-				mImages.add(item);
-				item = new ContentValues();
-				item.put(DataProviderContract.ROW_ID, 112);
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video Two");
-				item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
-				mImages.add(item);
-				item = new ContentValues();
-				item.put(DataProviderContract.ROW_ID, 113);
-				item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video THree");
-				item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg");
-				mImages.add(item);
-
-
-*/			}
+				/*
+				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 111); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video One"); item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN,
+				 * "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 112); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video Two");
+				 * item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 113);
+				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video THree"); item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item);
+				 */}
 			catch (JSONException e) {
 				e.printStackTrace();
 				Log.i(TAG, "Video album parsing exception.");
@@ -262,10 +228,10 @@ public class JSONPullParser {
 
 	public void parsePhotoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 		String result = readStream(inputStream);
-		System.out.println("Result "+result);
+		System.out.println("Result " + result);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-    ContentValues pages = new ContentValues();
+		ContentValues pages = new ContentValues();
 		if (result != null) {
 			try {
 				JSONObject jsonObject = new JSONObject(result);
@@ -276,15 +242,15 @@ public class JSONPullParser {
 				}
 				if (jsonObject.has("total_pages")) {
 					pages.put(DataProviderContract.TOTAL_PAGES, jsonObject.getInt("total_pages"));
-            
+
 				}
 				if (jsonObject.has("result")) {
 					JSONArray jsonArray = jsonObject.getJSONArray("result");
 
 					for (int i = 0; i < jsonArray.length(); i++) {
-					   item = new ContentValues();
-					   item.put(DataProviderContract.ALBUM_ID_COLUMN, pages.getAsInteger(DataProviderContract.ALBUM_ID_COLUMN));
-					   item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
+						item = new ContentValues();
+						item.put(DataProviderContract.ALBUM_ID_COLUMN, pages.getAsInteger(DataProviderContract.ALBUM_ID_COLUMN));
+						item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
 
 						JSONObject resultJsonObject = jsonArray.getJSONObject(i);
 						if (resultJsonObject.has("photo_id")) {
@@ -293,7 +259,7 @@ public class JSONPullParser {
 						}
 						if (resultJsonObject.has("photo_url")) {
 							String photoUrl = resultJsonObject.getString("photo_url");
-							item.put(DataProviderContract.URL,photoUrl);
+							item.put(DataProviderContract.URL, photoUrl);
 						}
 						if (resultJsonObject.has("photo_thumb")) {
 							String photoThumb = resultJsonObject.getString("photo_thumb");
@@ -311,29 +277,31 @@ public class JSONPullParser {
 	}
 
 	public void parseVideoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+		int albumId = 0;
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-    ContentValues pages = new ContentValues();
+		ContentValues pages = new ContentValues();
 		if (result != null) {
 			try {
 				JSONObject jsonObject = new JSONObject(result);
 				if (jsonObject.has("album_id")) {
 					pages.put(DataProviderContract.ALBUM_ID_COLUMN, jsonObject.getInt("album_id"));
+					albumId = jsonObject.getInt("album_id");
 					pages.put(DataProviderContract.CATEGORY_ID, 2);
 
 				}
 				if (jsonObject.has("total_pages")) {
 					pages.put(DataProviderContract.TOTAL_PAGES, jsonObject.getInt("total_pages"));
-            
+
 				}
 				if (jsonObject.has("result")) {
 					JSONArray jsonArray = jsonObject.getJSONArray("result");
 
 					for (int i = 0; i < jsonArray.length(); i++) {
-					   item = new ContentValues();
-					   item.put(DataProviderContract.ALBUM_ID_COLUMN, pages.getAsInteger(DataProviderContract.ALBUM_ID_COLUMN));
-					   item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
+						item = new ContentValues();
+						item.put(DataProviderContract.ALBUM_ID_COLUMN, pages.getAsInteger(DataProviderContract.ALBUM_ID_COLUMN));
+						item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
 
 						JSONObject resultJsonObject = jsonArray.getJSONObject(i);
 						if (resultJsonObject.has("video_id")) {
@@ -342,10 +310,14 @@ public class JSONPullParser {
 						}
 						if (resultJsonObject.has("video_url")) {
 							String photoUrl = resultJsonObject.getString("video_url");
-							item.put(DataProviderContract.URL,photoUrl);
+							item.put(DataProviderContract.URL, photoUrl);
 						}
 						if (resultJsonObject.has("video_thumb")) {
 							String photoThumb = resultJsonObject.getString("video_thumb");
+							if (albumId == 26) {
+								photoThumb = Uri.parse(photoThumb).getLastPathSegment();
+								photoThumb = "https://s3.amazonaws.com/celebrity_cricket_league/images/videos/ccl3-curtain-raiser/" + photoThumb;
+							}
 							item.put(DataProviderContract.THUMB_IMAGE_URL, photoThumb);
 						}
 						mImages.add(item);
@@ -359,8 +331,8 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parseNewsJson (InputStream inputStream, BroadcastNotifier mBroadcaster,int categoryId) {
-		
+	public void parseNewsJson (InputStream inputStream, BroadcastNotifier mBroadcaster, int categoryId) {
+
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		JSONArray jsonArray;
@@ -368,7 +340,7 @@ public class JSONPullParser {
 			jsonArray = new JSONArray(result);
 			for (int i = 0; i < jsonArray.length(); i++) {
 				item = new ContentValues();
-				//regionalNewsItems = new Items();
+				// regionalNewsItems = new Items();
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
 				if (jsonObject.has("news_id")) {
 					int id = jsonObject.getInt("news_id");
@@ -385,113 +357,76 @@ public class JSONPullParser {
 				item.put(DataProviderContract.NEWS_CATEGORY, categoryId);
 				mImages.add(item);
 			}
-			//testing for updates
-			/*item = new ContentValues();
-			item.put(DataProviderContract.NEWS_ID, 111111);
-			item.put(DataProviderContract.NEWS_TITLE, "venky.................");
-			item.put(DataProviderContract.NEWS_URL, "dynamic updates");
-			item.put(DataProviderContract.NEWS_CATEGORY, 1);
-			mImages.add(item);
-			
-			item = new ContentValues();
-			item.put(DataProviderContract.NEWS_ID, 22222);
-			item.put(DataProviderContract.NEWS_TITLE, "phani.................");
-			item.put(DataProviderContract.NEWS_URL, "dynamic updates");
-			item.put(DataProviderContract.NEWS_CATEGORY, 2);
-			mImages.add(item);*/
+			// testing for updates
+			/*
+			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 111111); item.put(DataProviderContract.NEWS_TITLE, "venky................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 1); mImages.add(item);
+			 * 
+			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 22222); item.put(DataProviderContract.NEWS_TITLE, "phani................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 2); mImages.add(item);
+			 */
 		}
 		catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
-	
-	
-	public void  parseDownloadJson(InputStream inputStream, BroadcastNotifier mBroadcaster){
+
+	public void parseDownloadJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-		//mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-		
+		// mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+
 		ContentValues pages = new ContentValues();
 		if (result != null) {
 			int noofpages = 0;
-		try {
-			JSONObject object = new JSONObject(result);			
-			
-			if (object.has("album_id")) {
-				pages.put(DataProviderContract.ALBUM_ID_COLUMN, 0);
-				pages.put(DataProviderContract.CATEGORY_ID, 3);
+			try {
+				JSONObject object = new JSONObject(result);
 
-			}
-			if (object.has("total_pages")) {
-				pages.put(DataProviderContract.TOTAL_PAGES, object.getInt("total_pages"));
-				noofpages =  object.getInt("total_pages");
+				if (object.has("album_id")) {
+					pages.put(DataProviderContract.ALBUM_ID_COLUMN, 0);
+					pages.put(DataProviderContract.CATEGORY_ID, 3);
 
-        
-			}
-			
-			JSONArray jsonArray = new JSONArray(object.getString("result"));
-			
-			for (int i = 0; i < jsonArray.length(); i++) {
-				
-				item = new ContentValues();
-				//item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
-				
-				JSONObject jsonObject = jsonArray.getJSONObject(i);
-				
-				item.put(DataProviderContract.DOWNLOAD_IMAGE_NO_OF_PAGES, noofpages);
-				
-				if (jsonObject.has("photo_id")) {
-					int id = jsonObject.getInt("photo_id");
-					item.put(DataProviderContract.DOWNLOAD_IMAGE_ID, id);
 				}
-				if (jsonObject.has("photo_url")) {
-					String photo_url = jsonObject.getString("photo_url");
+				if (object.has("total_pages")) {
+					pages.put(DataProviderContract.TOTAL_PAGES, object.getInt("total_pages"));
+					noofpages = object.getInt("total_pages");
 
-					item.put(DataProviderContract.DOWNLOAD_IMAGE_URL, photo_url);
-				}
-				if (jsonObject.has("photo_thumb")) {
-					String photo_thumb = jsonObject.getString("photo_thumb");
-
-					item.put(DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL, photo_thumb);
 				}
 
-				mImages.add(item);
+				JSONArray jsonArray = new JSONArray(object.getString("result"));
+
+				for (int i = 0; i < jsonArray.length(); i++) {
+
+					item = new ContentValues();
+					// item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
+
+					JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+					item.put(DataProviderContract.DOWNLOAD_IMAGE_NO_OF_PAGES, noofpages);
+
+					if (jsonObject.has("photo_id")) {
+						int id = jsonObject.getInt("photo_id");
+						item.put(DataProviderContract.DOWNLOAD_IMAGE_ID, id);
+					}
+					if (jsonObject.has("photo_url")) {
+						String photo_url = jsonObject.getString("photo_url");
+
+						item.put(DataProviderContract.DOWNLOAD_IMAGE_URL, photo_url);
+					}
+					if (jsonObject.has("photo_thumb")) {
+						String photo_thumb = jsonObject.getString("photo_thumb");
+
+						item.put(DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL, photo_thumb);
+					}
+
+					mImages.add(item);
+				}
 			}
-			//mPages.add(pages);
-      //testing download updates
-			
-			item = new ContentValues();
-			item.put(DataProviderContract.DOWNLOAD_IMAGE_ID, 445);
-			item.put(DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg");
-			item.put(DataProviderContract.DOWNLOAD_IMAGE_URL, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg");
-			mImages.add(item);
-			
-		} catch (JSONException e) {
-			System.out.println("catch");
-			e.printStackTrace();
+			catch (JSONException e) {
+				e.printStackTrace();
+
+			}
 		}
+
 	}
-	
-	
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
