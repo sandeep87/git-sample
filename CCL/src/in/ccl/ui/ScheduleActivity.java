@@ -31,7 +31,9 @@ public class ScheduleActivity extends TopActivity {
 		//TextView scheduleTitle =  (TextView)findViewById(R.id.schedule_title);
 	//	Util.setTextFont(this, scheduleTitle);
 		listSchedule = (ListView) findViewById(R.id.list_schedule);
-		
+		TextView schedule_title = (TextView)findViewById(R.id.schedule_title);
+	/*	Util.setTextFont(this, schedule_title);
+		schedule_title.setText(getResources().getString(R.string.schedule));*/
 		scheduleItem = new ScheduleItem();
 		scheduleItem.setDate("09 FEB");
 		scheduleItem.setDay("SATURDAY");
