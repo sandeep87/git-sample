@@ -158,13 +158,13 @@ public class CCLPullService extends IntentService {
 						else if (compareKey.equals("videos") || compareKey.equals("videos_pages") || compareKey.equals("videos_updates")) {
 							localDataPullParser.parseVideoJson(localURLConnection.getInputStream(), mBroadcaster);
 						}
-						else if (compareKey.equals("regional")) {
+						else if (compareKey.equals("regional") || compareKey.equals("news_updates")) {
 							localDataPullParser.parseNewsJson(localURLConnection.getInputStream(), mBroadcaster, 1);
 						}
-						else if (compareKey.equals("national")) {
+						else if (compareKey.equals("national") || compareKey.equals("national_news_updates")) {
 							localDataPullParser.parseNewsJson(localURLConnection.getInputStream(), mBroadcaster, 2);
 						}
-						else if (compareKey.equals("downloads")) {
+						else if (compareKey.equals("downloads") || compareKey.equals("download_updates")) {
 							localDataPullParser.parseDownloadJson(localURLConnection.getInputStream(), mBroadcaster);
 						}
 
@@ -232,10 +232,10 @@ public class CCLPullService extends IntentService {
 							}
 
 						}
-						else if (compareKey.equals("regional") || compareKey.equals("national")) {
+						else if (compareKey.equals("regional") || compareKey.equals("national") || compareKey.equals("news_updates") || compareKey.equals("national_news_updates")) {
 							getContentResolver().bulkInsert(DataProviderContract.NEWS_TABLE_CONTENTURI, imageValuesArray);
 						}
-						else if (compareKey.equals("downloads")) {
+						else if (compareKey.equals("downloads") || compareKey.equals("download_updates")) {
 							getContentResolver().bulkInsert(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, imageValuesArray);
 							Vector <ContentValues> pageValues = localDataPullParser.getPages();
 
@@ -322,10 +322,21 @@ public class CCLPullService extends IntentService {
 
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_NEWS_COMPLETE, null);
 				}
+				else if (compareKey.equals("news_updates")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_NEWS_UPDATE_COMPLETE, null);
+				}
+				else if (compareKey.equals("national_news_updates")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_NATIONAL_NEWS_UPDATE_COMPLETE, null);
+				}
 				else if (compareKey.equals("photo_updates")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE, null);
-				}else if (compareKey.equals("downloads")) {
-					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE,null);
+				}
+				else if (compareKey.equals("downloads")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE, null);
+				}
+				else if (compareKey.equals("download_updates")){
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_UPDATE_DOWNLOAD_IMAGE_COMPLETE, null);
+
 				}
 			}
 			// Handles possible exceptions

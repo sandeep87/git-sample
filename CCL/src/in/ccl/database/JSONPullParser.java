@@ -385,9 +385,22 @@ public class JSONPullParser {
 				item.put(DataProviderContract.NEWS_CATEGORY, categoryId);
 				mImages.add(item);
 			}
+			//testing for updates
+			/*item = new ContentValues();
+			item.put(DataProviderContract.NEWS_ID, 111111);
+			item.put(DataProviderContract.NEWS_TITLE, "venky.................");
+			item.put(DataProviderContract.NEWS_URL, "dynamic updates");
+			item.put(DataProviderContract.NEWS_CATEGORY, 1);
+			mImages.add(item);
+			
+			item = new ContentValues();
+			item.put(DataProviderContract.NEWS_ID, 22222);
+			item.put(DataProviderContract.NEWS_TITLE, "phani.................");
+			item.put(DataProviderContract.NEWS_URL, "dynamic updates");
+			item.put(DataProviderContract.NEWS_CATEGORY, 2);
+			mImages.add(item);*/
 		}
 		catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -448,7 +461,14 @@ public class JSONPullParser {
 				mImages.add(item);
 			}
 			//mPages.add(pages);
-
+      //testing download updates
+			
+			item = new ContentValues();
+			item.put(DataProviderContract.DOWNLOAD_IMAGE_ID, 445);
+			item.put(DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg");
+			item.put(DataProviderContract.DOWNLOAD_IMAGE_URL, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg");
+			mImages.add(item);
+			
 		} catch (JSONException e) {
 			System.out.println("catch");
 			e.printStackTrace();

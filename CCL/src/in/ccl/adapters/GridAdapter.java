@@ -33,12 +33,18 @@ public class GridAdapter extends BaseAdapter {
 
 	private String isFrom;
 
-	//private int reqImageWidth;
+	// private int reqImageWidth;
 
 	private int reqImageHeight;
 
 	// A Drawable for a grid cell that's empty
 	private Drawable mEmptyDrawable;
+
+	public DownloaderImage mDownloaderImage;
+
+	private String downloadUrl = "";
+
+	private int image_id = 0;
 
 	public GridAdapter (Context context, ArrayList <Items> listOfItems, String from) {
 		mcontext = context;
@@ -131,31 +137,36 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.title.setVisibility(View.VISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);
 			// displayImage.setPlayIcon(null);
-		}else if(isFrom.equals("downloads")){
+		}
+		else if (isFrom.equals("downloads")) {
 			mViewHolder.title.setText("Download");
 			mViewHolder.title.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
-				public void onClick(View arg0) {
-					//check the condition null or not
-					if(gridItemsList.get(position).getPhotoOrVideoUrl() != null &&  gridItemsList.get(position).getId() != 0){
-						//checking network available or not
-					if(Util.getInstance().isOnline(mcontext)){
-						//call the DownloaderImage and passing the url and id.
-						if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
-							new DownloaderImage(mcontext, gridItemsList.get(position).getId()).execute(gridItemsList.get(position).getPhotoOrVideoUrl());
-						}else{
-							Toast.makeText(mcontext, mcontext.getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT).show();
-						}					
-					}else{
-						//Network not available display the network error toast.
-						Toast.makeText(mcontext, mcontext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
+				public void onClick (View arg0) {
+					// check the condition null or not
+					if (gridItemsList.get(position).getPhotoOrVideoUrl() != null && gridItemsList.get(position).getId() != 0) {
+						// checking network available or not
+						if (Util.getInstance().isOnline(mcontext)) {
+							// call the DownloaderImage and passing the url and id.
+							if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+								downloadUrl = gridItemsList.get(position).getPhotoOrVideoUrl();
+								image_id = gridItemsList.get(position).getId();
+								downloadStart(mcontext, gridItemsList.get(position).getId(), gridItemsList.get(position).getPhotoOrVideoUrl());
+							}
+							else {
+								Toast.makeText(mcontext, mcontext.getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT).show();
+							}
+						}
+						else {
+							// Network not available display the network error toast.
+							Toast.makeText(mcontext, mcontext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+						}
 					}
 				}
 			});
 			mViewHolder.title.setVisibility(View.VISIBLE);
-		}			
+		}
 		else {
 			mViewHolder.title.setVisibility(View.INVISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);
@@ -185,5 +196,19 @@ public class GridAdapter extends BaseAdapter {
 			gridItemsList.add(items2);
 		}
 		notifyDataSetChanged();
+	}
+
+	public void downloadStop () {
+		mDownloaderImage.cancel(true);
+	}
+
+	public void downloadStartOnResume () {
+		downloadStart(mcontext, image_id, downloadUrl);
+	}
+
+	public void downloadStart (Context mcontext, int id, String image_url) {
+		mDownloaderImage = new DownloaderImage(mcontext, id);
+		mDownloaderImage.execute(image_url);
+
 	}
 }

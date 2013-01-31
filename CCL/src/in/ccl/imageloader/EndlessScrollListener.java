@@ -22,7 +22,7 @@ public class EndlessScrollListener implements OnScrollListener {
 	private boolean loading = true;
 
 	public static enum RequestType {
-		NO_REQUEST, VIDEO_REQUEST, ALBUM_REQUEST, PHOTO_GALLERY_REQUEST,DOWNLOAD_IMAGE_REQUEST;
+		NO_REQUEST, VIDEO_REQUEST, ALBUM_REQUEST, PHOTO_GALLERY_REQUEST, DOWNLOAD_IMAGE_REQUEST;
 	}
 
 	RequestType mRequestType = RequestType.NO_REQUEST;
@@ -55,7 +55,7 @@ public class EndlessScrollListener implements OnScrollListener {
 				currentPage++;
 			}
 		}
-		if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold) && totalPages > currentPage) {
+		if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold) && totalPages >= currentPage) {
 			// I load the next page of gigs using a background task,
 			// but you can call any function here.
 			switch (mRequestType) {
@@ -82,6 +82,21 @@ public class EndlessScrollListener implements OnScrollListener {
 					}
 					break;
 
+				case DOWNLOAD_IMAGE_REQUEST:
+
+					if (Util.getInstance().isOnline(activity)) {
+						Intent downloadServiceIntent = new Intent(activity, CCLPullService.class);
+						String murl = activity.getResources().getString(R.string.downloads_url) + "?page=" + (currentPage + 1);
+						
+						downloadServiceIntent.setData(Uri.parse(murl));
+						downloadServiceIntent.putExtra("KEY", "downloads");
+						activity.startService(downloadServiceIntent);
+
+					}
+					else {
+						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
+					break;
 				default:
 					break;
 			}
