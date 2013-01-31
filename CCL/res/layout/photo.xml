@@ -17,16 +17,22 @@
  */
 -->
 <!-- Defines a single full-screen image -->
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:image="http://schemas.android.com/apk/res/com.example.android.threadsample"
     android:layout_width="0.0dip"
     android:layout_height="fill_parent"
-    android:layout_weight="3.0"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:image="http://schemas.android.com/apk/res/com.example.android.threadsample">
-    <ProgressBar android:layout_gravity="center" android:id="@+id/photoProgress"
-        android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    android:layout_weight="3.0" >
+
+    <ProgressBar
+        android:id="@+id/photoProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
     <com.example.android.threadsample.PhotoView
-        android:id="@+id/photoView" android:layout_width="fill_parent"
-        android:layout_height="fill_parent" android:scaleType="centerInside"
-         />
+        android:id="@+id/photoView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerInside" />
+
 </FrameLayout>
