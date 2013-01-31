@@ -74,7 +74,8 @@ public class ScheduleAdapter extends BaseAdapter {
 			viewHolder.txtScndVs = (TextView) convertView.findViewById(R.id.txt_scnd_vs);
 
 			viewHolder.scndTeamLayout = (RelativeLayout) convertView.findViewById(R.id.scnd_team_layout);
-			// viewHolder.viewSeparator = (View) convertView.findViewById(R.id.view_separator);
+			
+			 viewHolder.viewSeparator = (View) convertView.findViewById(R.id.seperator);
 
 			convertView.setTag(viewHolder);
 		}
@@ -116,9 +117,9 @@ public class ScheduleAdapter extends BaseAdapter {
 		else {
 			viewHolder.txtScndTeam.setText("");
 			viewHolder.txtScndTime.setText("");
-			viewHolder.layoutTeams.setBackgroundResource(R.drawable.schedule_final_txt_bg);
+			//viewHolder.layoutTeams.setBackgroundResource(R.drawable.schedule_final_txt_bg);
 			viewHolder.scndLayout.setVisibility(View.GONE);
-		
+			viewHolder.viewSeparator.setVisibility(View.INVISIBLE);
 		//	viewHolder.imgScndBtnInfo.setVisibility(View.INVISIBLE);
 
 			// viewHolder.scndTeamLayout.setVisibility(View.INVISIBLE);
@@ -164,7 +165,7 @@ public class ScheduleAdapter extends BaseAdapter {
 		public TextView txtOpponentTeam;
 
 		public TextView txtScndTime;
-
+    public View viewSeparator;
 	//	public ImageButton imgScndBtnInfo;
 
 		public RelativeLayout scndTeamLayout;
