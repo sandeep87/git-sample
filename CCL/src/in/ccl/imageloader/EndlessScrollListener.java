@@ -22,7 +22,7 @@ public class EndlessScrollListener implements OnScrollListener {
 	private boolean loading = true;
 
 	public static enum RequestType {
-		NO_REQUEST, VIDEO_REQUEST, ALBUM_REQUEST, PHOTO_GALLERY_REQUEST;
+		NO_REQUEST, VIDEO_REQUEST, ALBUM_REQUEST, PHOTO_GALLERY_REQUEST,DOWNLOAD_IMAGE_REQUEST;
 	}
 
 	RequestType mRequestType = RequestType.NO_REQUEST;

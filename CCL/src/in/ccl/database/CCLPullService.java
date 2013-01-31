@@ -157,10 +157,15 @@ public class CCLPullService extends IntentService {
 						}
 						else if (compareKey.equals("videos") || compareKey.equals("videos_pages") || compareKey.equals("videos_updates")) {
 							localDataPullParser.parseVideoJson(localURLConnection.getInputStream(), mBroadcaster);
-						}else if (compareKey.equals("regional")){
-							 localDataPullParser.parseNewsJson(localURLConnection.getInputStream(),mBroadcaster,1);							 
-						}else if (compareKey.equals("national")){
-							 localDataPullParser.parseNewsJson(localURLConnection.getInputStream(),mBroadcaster,2);
+						}
+						else if (compareKey.equals("regional")) {
+							localDataPullParser.parseNewsJson(localURLConnection.getInputStream(), mBroadcaster, 1);
+						}
+						else if (compareKey.equals("national")) {
+							localDataPullParser.parseNewsJson(localURLConnection.getInputStream(), mBroadcaster, 2);
+						}
+						else if (compareKey.equals("downloads")) {
+							localDataPullParser.parseDownloadJson(localURLConnection.getInputStream(), mBroadcaster);
 						}
 
 						// Reports that the service is now writing data to the content provider.
@@ -226,9 +231,25 @@ public class CCLPullService extends IntentService {
 								getContentResolver().bulkInsert(DataProviderContract.PAGES_TABLE_CONTENTURI, pageValuesArray);
 							}
 
-						}else if (compareKey.equals("regional") || compareKey.equals("national")) {
+						}
+						else if (compareKey.equals("regional") || compareKey.equals("national")) {
 							getContentResolver().bulkInsert(DataProviderContract.NEWS_TABLE_CONTENTURI, imageValuesArray);
 						}
+						else if (compareKey.equals("downloads")) {
+							getContentResolver().bulkInsert(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, imageValuesArray);
+							Vector <ContentValues> pageValues = localDataPullParser.getPages();
+
+							if (pageValues != null) {
+								// Stores the number of images
+								int pageVectorSize = pageValues.size();
+								// Creates one ContentValues for each image
+								ContentValues[] pageValuesArray = new ContentValues[pageVectorSize];
+								pageValuesArray = pageValues.toArray(pageValuesArray);
+								getContentResolver().bulkInsert(DataProviderContract.PAGES_TABLE_CONTENTURI, pageValuesArray);
+							}
+
+						}
+
 						// Creates another ContentValues for storing date information
 						ContentValues dateValues = new ContentValues();
 
@@ -247,7 +268,7 @@ public class CCLPullService extends IntentService {
 						}
 						break;
 					default:
-						System.out.println("Rajesh server response not ok and code "+responseCode);
+						System.out.println("Rajesh server response not ok and code " + responseCode);
 						break;
 				}
 
@@ -265,7 +286,7 @@ public class CCLPullService extends IntentService {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_COMPLETE, null);
 				}
 				else if (compareKey.equals("videos")) {
-   		  mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_COMPLETE, null);
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_COMPLETE, null);
 				}
 				else if (compareKey.equals("update-banner")) {
 					if (updatedRows > 0) {
@@ -296,13 +317,15 @@ public class CCLPullService extends IntentService {
 				}
 				else if (compareKey.equals("videos_updates")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_UPDATES_COMPLETE, null);
-				}else if (compareKey.equals("regional") || compareKey.equals("national")) {
-					
+				}
+				else if (compareKey.equals("regional") || compareKey.equals("national")) {
+
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_NEWS_COMPLETE, null);
 				}
 				else if (compareKey.equals("photo_updates")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE, null);
-
+				}else if (compareKey.equals("downloads")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE,null);
 				}
 			}
 			// Handles possible exceptions

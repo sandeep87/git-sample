@@ -394,4 +394,84 @@ public class JSONPullParser {
 		
 		
 	}
+	
+	
+	public void  parseDownloadJson(InputStream inputStream, BroadcastNotifier mBroadcaster){
+		String result = readStream(inputStream);
+		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+		//mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+		
+		ContentValues pages = new ContentValues();
+		if (result != null) {
+			int noofpages = 0;
+		try {
+			JSONObject object = new JSONObject(result);			
+			
+			if (object.has("album_id")) {
+				pages.put(DataProviderContract.ALBUM_ID_COLUMN, 0);
+				pages.put(DataProviderContract.CATEGORY_ID, 3);
+
+			}
+			if (object.has("total_pages")) {
+				pages.put(DataProviderContract.TOTAL_PAGES, object.getInt("total_pages"));
+				noofpages =  object.getInt("total_pages");
+
+        
+			}
+			
+			JSONArray jsonArray = new JSONArray(object.getString("result"));
+			
+			for (int i = 0; i < jsonArray.length(); i++) {
+				
+				item = new ContentValues();
+				//item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
+				
+				JSONObject jsonObject = jsonArray.getJSONObject(i);
+				
+				item.put(DataProviderContract.DOWNLOAD_IMAGE_NO_OF_PAGES, noofpages);
+				
+				if (jsonObject.has("photo_id")) {
+					int id = jsonObject.getInt("photo_id");
+					item.put(DataProviderContract.DOWNLOAD_IMAGE_ID, id);
+				}
+				if (jsonObject.has("photo_url")) {
+					String photo_url = jsonObject.getString("photo_url");
+
+					item.put(DataProviderContract.DOWNLOAD_IMAGE_URL, photo_url);
+				}
+				if (jsonObject.has("photo_thumb")) {
+					String photo_thumb = jsonObject.getString("photo_thumb");
+
+					item.put(DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL, photo_thumb);
+				}
+
+				mImages.add(item);
+			}
+			//mPages.add(pages);
+
+		} catch (JSONException e) {
+			System.out.println("catch");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

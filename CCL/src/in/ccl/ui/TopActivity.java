@@ -1,6 +1,7 @@
 package in.ccl.ui;
 
 import in.ccl.database.DataProviderContract;
+import in.ccl.database.DownloadItemsCursor;
 import in.ccl.database.NewsItemsCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
@@ -106,17 +107,15 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.admob_layout);
 		layout.setVisibility(View.VISIBLE);
 		// Add the adView to it
-		LinearLayout.LayoutParams  lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
 		lp.gravity = Gravity.CENTER_HORIZONTAL;
-		layout.addView(adView,lp);
+		layout.addView(adView, lp);
 
 		// Initiate a generic request to load it with an ad
 		AdRequest adRequest = new AdRequest();
-/*<<<<<<< HEAD
-		//adRequest.addTestDevice(AdRequest.TEST_EMULATOR);               // Emulator
-		adRequest.addTestDevice("TEST_DEVICE_ID");                      // Test Android Device
-		adView.loadAd(adRequest);//new AdRequest()
-=======*/
+		/*
+		 * <<<<<<< HEAD //adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator adRequest.addTestDevice("TEST_DEVICE_ID"); // Test Android Device adView.loadAd(adRequest);//new AdRequest() =======
+		 */
 		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
 
 		adView.loadAd(adRequest);// new AdRequest()
@@ -333,7 +332,21 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 					}
 					newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					startActivity(newsIntent);
+					break;
+				case in.ccl.database.Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE:
 
+					cursor = getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> downloadImageItems = DownloadItemsCursor.getItems(cursor);
+					if (cursor != null) {
+						cursor.close();
+					}
+					Intent downloadImageIntent = new Intent(TopActivity.this, DownloadActivity.class);
+					if (downloadImageItems.size() > 0 && downloadImageItems != null) {
+						downloadImageIntent.putParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY, downloadImageItems);
+						downloadImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+						startActivity(downloadImageIntent);
+					}
+					break;
 				default:
 					break;
 			}

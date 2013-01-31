@@ -2,6 +2,7 @@ package in.ccl.adapters;
 
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
+import in.ccl.net.DownloaderImage;
 import in.ccl.photo.PhotoView;
 import in.ccl.ui.R;
 
@@ -9,19 +10,18 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GridAdapter extends BaseAdapter {
 
@@ -33,7 +33,7 @@ public class GridAdapter extends BaseAdapter {
 
 	private String isFrom;
 
-	private int reqImageWidth;
+	//private int reqImageWidth;
 
 	private int reqImageHeight;
 
@@ -70,7 +70,7 @@ public class GridAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView (int position, View convertView, ViewGroup parent) {
+	public View getView (final int position, View convertView, ViewGroup parent) {
 		ViewHolder mViewHolder;
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.gallery_item, null);
@@ -96,7 +96,7 @@ public class GridAdapter extends BaseAdapter {
 		// Util.setTextFont((Activity) mcontext, mViewHolder.title);
 		mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
 		// DisplayImage displayImage = null;
-		if (isFrom.equals("video")) {
+		if (isFrom.equals("video") || isFrom.equals("downloads")) {
 			mViewHolder.image.setImageURL(gridItemsList.get(position).getThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt);
 
 			// displayImage = new DisplayImage(gridItemsList.get(position).getThumbUrl(), mViewHolder.image, (Activity) mcontext, null);
@@ -131,7 +131,31 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.title.setVisibility(View.VISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);
 			// displayImage.setPlayIcon(null);
-		}
+		}else if(isFrom.equals("downloads")){
+			mViewHolder.title.setText("Download");
+			mViewHolder.title.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					//check the condition null or not
+					if(gridItemsList.get(position).getPhotoOrVideoUrl() != null &&  gridItemsList.get(position).getId() != 0){
+						//checking network available or not
+					if(Util.getInstance().isOnline(mcontext)){
+						//call the DownloaderImage and passing the url and id.
+						if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+							new DownloaderImage(mcontext, gridItemsList.get(position).getId()).execute(gridItemsList.get(position).getPhotoOrVideoUrl());
+						}else{
+							Toast.makeText(mcontext, mcontext.getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT).show();
+						}					
+					}else{
+						//Network not available display the network error toast.
+						Toast.makeText(mcontext, mcontext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
+					}
+				}
+			});
+			mViewHolder.title.setVisibility(View.VISIBLE);
+		}			
 		else {
 			mViewHolder.title.setVisibility(View.INVISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);

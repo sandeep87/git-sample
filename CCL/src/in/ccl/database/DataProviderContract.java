@@ -5,7 +5,7 @@ import android.provider.BaseColumns;
 
 public class DataProviderContract {
 
-	public static final String DATABASE_NAME ="CCLDB";
+	public static final String DATABASE_NAME = "CCLDB";
 
 	public static final int DATABASE_VERSION = 1;
 
@@ -15,18 +15,31 @@ public class DataProviderContract {
 
 	public static final String THUMB_IMAGE_URL = "thumbImageUrl";
 
-	public static final String ALBUM_ID_COLUMN  = "album_id";
-	public static final String CATEGORY_ID  = "cat_id";
+	public static final String ALBUM_ID_COLUMN = "album_id";
+
+	public static final String CATEGORY_ID = "cat_id";
 
 	public static final String PAGES_TABLE_NAME = "Pages";
 
 	public static final String TOTAL_PAGES = "total_pages";
 
 	public static final String NEWS_ID = "news_id";
+
 	public static final String NEWS_TITLE = "news_title";
+
 	public static final String NEWS_URL = "news_url";
+
 	public static final String NEWS_CATEGORY = "news_category";
 
+	// downnload_image_table fields
+
+	public static final String DOWNLOAD_IMAGE_ID = "image_id";
+
+	public static final String DOWNLOAD_IMAGE_URL = "downloadImage_url";
+
+	public static final String DOWNLOAD_IMAGE_THUMB_URL = "downloadImage_thumb_url";
+
+	public static final String DOWNLOAD_IMAGE_NO_OF_PAGES = "downloadImage_no_of_pages";
 
 	private DataProviderContract () {
 	}
@@ -56,19 +69,34 @@ public class DataProviderContract {
 	 * Modification date table name
 	 */
 	public static final String DATE_TABLE_NAME = "DateMetadatData";
-	
+
 	/**
 	 * News date table name
 	 */
 	public static final String NEWS_TABLE_NAME = "NewsMetadatData";
-	
-	
+
 	/**
 	 * Content URI for news table
 	 */
 	public static final Uri NEWS_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, NEWS_TABLE_NAME);
 
 
+	/**
+	 * Download image data table name
+	 */
+
+	public static final String DOWNLOAD_IMAGE_TABLE_NAME = "DownloadImageData";
+
+
+	/**
+	 * Content URI for Download image table
+	 */
+
+	public static final Uri DOWNLOAD_IMAGE_TABLE_CONTENTURI = Uri
+			.withAppendedPath(CONTENT_URI, DOWNLOAD_IMAGE_TABLE_NAME);
+
+	
+	
 	/**
 	 * Content URI for modification date table
 	 */
@@ -93,12 +121,12 @@ public class DataProviderContract {
 	 * It stores photo items data as well video items data.
 	 */
 	public static final String RAW_TABLE_NAME = "RawData";
-	
+
 	/**
 	 * It stores photo items data as well video items data.
 	 */
 	public static final String CATEGORY_TABLE_NAME = "CategoriesData";
-	
+
 	/**
 	 * Banner table content URI
 	 */
@@ -118,10 +146,12 @@ public class DataProviderContract {
 	 * Raw table content URI
 	 */
 	public static final Uri RAW_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, RAW_TABLE_NAME);
+
 	/**
 	 * Pages table content URI
 	 */
 	public static final Uri PAGES_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, PAGES_TABLE_NAME);
+
 	/**
 	 * category table content URI
 	 */
@@ -133,10 +163,12 @@ public class DataProviderContract {
 	 * Banner table image URL column name
 	 */
 	public static final String BANNER_IMAGE_URL_COLUMN = "BannerimageUrl";
+
 	/**
 	 * Photo album table image URL column name
 	 */
 	public static final String PHOTO_ALBUM_IMAGE_URL_COLUMN = "photoalbumimageUrl";
+
 	/**
 	 * Video album table image URL column name
 	 */
