@@ -65,6 +65,8 @@ public class PhotoView extends ImageView {
 	// The Thread that will be used to download the image for this ImageView
 	private PhotoTask mDownloadThread;
 
+	private boolean backgroundChange;
+
 	/**
 	 * Creates an ImageDownloadView with no settings
 	 * 
@@ -290,8 +292,8 @@ public class PhotoView extends ImageView {
 	 * @param imageDrawable The Drawable to use for this ImageView
 	 * @param errorTxt
 	 */
-	public void setImageURL (String pictureUrl, boolean cacheFlag, Drawable imageDrawable, TextView errorTxt) {
-
+	public void setImageURL (String pictureUrl, boolean cacheFlag, Drawable imageDrawable, TextView errorTxt, boolean backgroundChange) {
+		this.backgroundChange = backgroundChange;
 		errorTitleTxt = errorTxt;
 		URL pictureURL = null;
 		try {
@@ -361,20 +363,44 @@ public class PhotoView extends ImageView {
 	 * @param resId
 	 */
 	public void setStatusResource (int resId) {
-
+    if(errorTitleTxt != null){
+    	errorTitleTxt.setTextColor(Color.LTGRAY);
+    }
 		// If the View is empty, provides it with a Drawable resource as its content
 		if (mThisView == null) {
 			if (resId == PhotoManager.DOWNLOAD_FAILED) {
 				if (errorTitleTxt != null) {
-					setImageResource(R.drawable.decodequeued);
+					if (backgroundChange) {
+						setImageResource(R.drawable.blackbackground);
+					}
+					else {
+						setImageResource(R.drawable.decodequeued);
+					}
 					errorTitleTxt.setVisibility(View.VISIBLE);
+					errorTitleTxt.setText("Unable to retrieve content at this moment");
 				}
 			}
-			else {
+			else if (resId == PhotoManager.DOWNLOAD_STARTED) {
+				if (backgroundChange) {
+					setImageResource(R.drawable.blackbackground);
+				}
+				else {
+					setImageResource(R.drawable.decodequeued);
+				}
+				errorTitleTxt.setVisibility(View.VISIBLE);
+				errorTitleTxt.setText("Loading...");
+			}else if(resId == PhotoManager.TASK_COMPLETE){
 				if (errorTitleTxt != null) {
 					errorTitleTxt.setVisibility(View.GONE);
 				}
-				setImageResource(resId);
+			}
+			else {				
+				if (backgroundChange) {
+					setImageResource(R.drawable.blackbackground);
+				}
+				else {
+					setImageResource(resId);
+				}
 			}
 		}
 	}

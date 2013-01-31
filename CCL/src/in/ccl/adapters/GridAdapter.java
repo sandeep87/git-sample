@@ -97,12 +97,12 @@ public class GridAdapter extends BaseAdapter {
 		mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
 		// DisplayImage displayImage = null;
 		if (isFrom.equals("video") || isFrom.equals("downloads")) {
-			mViewHolder.image.setImageURL(gridItemsList.get(position).getThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt);
+			mViewHolder.image.setImageURL(gridItemsList.get(position).getThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt,false);
 
 			// displayImage = new DisplayImage(gridItemsList.get(position).getThumbUrl(), mViewHolder.image, (Activity) mcontext, null);
 		}
 		else {
-			mViewHolder.image.setImageURL(gridItemsList.get(position).getPhotoOrVideoUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt);
+			mViewHolder.image.setImageURL(gridItemsList.get(position).getPhotoOrVideoUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt,false);
 
 			// displayImage = new DisplayImage(gridItemsList.get(position).getPhotoOrVideoUrl(), mViewHolder.image, (Activity) mcontext, null);
 		}
