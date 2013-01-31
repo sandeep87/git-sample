@@ -281,27 +281,27 @@ public class JSONPullParser {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-    ContentValues pages = new ContentValues();
+		ContentValues pages = new ContentValues();
 		if (result != null) {
 			try {
 				JSONObject jsonObject = new JSONObject(result);
 				if (jsonObject.has("album_id")) {
 					pages.put(DataProviderContract.ALBUM_ID_COLUMN, jsonObject.getInt("album_id"));
-					albumId =  jsonObject.getInt("album_id");
+					albumId = jsonObject.getInt("album_id");
 					pages.put(DataProviderContract.CATEGORY_ID, 2);
 
 				}
 				if (jsonObject.has("total_pages")) {
 					pages.put(DataProviderContract.TOTAL_PAGES, jsonObject.getInt("total_pages"));
-            
+
 				}
 				if (jsonObject.has("result")) {
 					JSONArray jsonArray = jsonObject.getJSONArray("result");
 
 					for (int i = 0; i < jsonArray.length(); i++) {
-					   item = new ContentValues();
-					   item.put(DataProviderContract.ALBUM_ID_COLUMN, pages.getAsInteger(DataProviderContract.ALBUM_ID_COLUMN));
-					   item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
+						item = new ContentValues();
+						item.put(DataProviderContract.ALBUM_ID_COLUMN, pages.getAsInteger(DataProviderContract.ALBUM_ID_COLUMN));
+						item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
 
 						JSONObject resultJsonObject = jsonArray.getJSONObject(i);
 						if (resultJsonObject.has("video_id")) {
@@ -310,13 +310,13 @@ public class JSONPullParser {
 						}
 						if (resultJsonObject.has("video_url")) {
 							String photoUrl = resultJsonObject.getString("video_url");
-							item.put(DataProviderContract.URL,photoUrl);
+							item.put(DataProviderContract.URL, photoUrl);
 						}
 						if (resultJsonObject.has("video_thumb")) {
 							String photoThumb = resultJsonObject.getString("video_thumb");
-							if(albumId == 26){
-								photoThumb =  Uri.parse(photoThumb).getLastPathSegment();
-								photoThumb = "https://s3.amazonaws.com/celebrity_cricket_league/images/videos/ccl3-curtain-raiser/"+photoThumb;
+							if (albumId == 26) {
+								photoThumb = Uri.parse(photoThumb).getLastPathSegment();
+								photoThumb = "https://s3.amazonaws.com/celebrity_cricket_league/images/videos/ccl3-curtain-raiser/" + photoThumb;
 							}
 							item.put(DataProviderContract.THUMB_IMAGE_URL, photoThumb);
 						}
@@ -357,9 +357,14 @@ public class JSONPullParser {
 				item.put(DataProviderContract.NEWS_CATEGORY, categoryId);
 				mImages.add(item);
 			}
+			// testing for updates
+			/*
+			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 111111); item.put(DataProviderContract.NEWS_TITLE, "venky................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 1); mImages.add(item);
+			 * 
+			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 22222); item.put(DataProviderContract.NEWS_TITLE, "phani................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 2); mImages.add(item);
+			 */
 		}
 		catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -415,12 +420,10 @@ public class JSONPullParser {
 
 					mImages.add(item);
 				}
-				// mPages.add(pages);
-
 			}
 			catch (JSONException e) {
-				System.out.println("catch");
 				e.printStackTrace();
+
 			}
 		}
 

@@ -70,4 +70,10 @@ public class Constants {
 
 	public static final boolean LOGD = true;
 
+	public static final int STATE_ACTION_NEWS_UPDATE_COMPLETE = 20;
+
+	public static final int STATE_ACTION_NATIONAL_NEWS_UPDATE_COMPLETE = 23;
+
+	public static final int STATE_ACTION_UPDATE_DOWNLOAD_IMAGE_COMPLETE = 24;
+
 }
