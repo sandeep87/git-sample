@@ -53,7 +53,10 @@ public class Constants {
 	public static final int STATE_ACTION_NEWS_COMPLETE = 18;
 
 	public static final int STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE = 19;
-
+//The team logos thread is done
+	public static final int STATE_ACTION_TEAM_LOGO_COMPLETE = 21;
+//The team members thread is done
+	public static final int STATE_ACTION_TEAM_MEMBERS_COMPLETE = 22;
 	/*
 	 * A user-agent string that's sent to the HTTP site. It includes information about the device and the build that the device is running.
 	 */

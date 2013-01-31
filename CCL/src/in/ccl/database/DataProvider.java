@@ -44,6 +44,10 @@ public class DataProvider extends ContentProvider {
 
 	public static final int DOWNLOAD_IMAGE_URL_QUERY = 13;
 
+	public static final int TEAM_LOGO_URL_QUERY = 15;
+
+	public static final int TEAM_MEMBERS_URL_QUERY = 16;
+
 	// Constants for building SQLite tables during initialization
 	private static final String TEXT_TYPE = "TEXT";
 
@@ -70,6 +74,10 @@ public class DataProvider extends ContentProvider {
 	private static final String CREATE_NEWS_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.NEWS_TABLE_NAME + " " + "(" + " " + DataProviderContract.NEWS_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.NEWS_TITLE + " " + TEXT_TYPE + " ," + DataProviderContract.NEWS_URL + " " + TEXT_TYPE + " ," + DataProviderContract.NEWS_CATEGORY + " " + INTEGER_TYPE + ");";
 
 	private static final String CREATE_DOWNLOAD_IMAGE_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME + " " + "(" + " " + DataProviderContract.DOWNLOAD_IMAGE_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.DOWNLOAD_IMAGE_URL + " " + TEXT_TYPE + " ," + DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL + " " + TEXT_TYPE + " ," + DataProviderContract.DOWNLOAD_IMAGE_NO_OF_PAGES + " " + INTEGER_TYPE + ");";
+
+	private static final String CREATE_TEAM_LOGO_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.TEAMS_LOGO_TABLE_NAME + " " + "(" + " " + DataProviderContract.TEAM_ID_COLUMN + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.TEAM_NAME_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_LOGO_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_BANNER_IMAGE_URL_COLUMN + " " + TEXT_TYPE + ");";
+
+	private static final String CREATE_TEAM_MEMBERS_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.TEAM_MEMBERS_TABLE_NAME + " " + "(" + " " + DataProviderContract.TEAM_PERSON_ID_COLUMN + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.TEAM_PERSON_NAME_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_MEMBER_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_NAME_MEMBER_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_PERSON_ROLE_COLUMN + " " + TEXT_TYPE + ");";
 
 	// Identifies log statements issued by this component
 	public static final String LOG_TAG = "DataProvider";
@@ -105,6 +113,9 @@ public class DataProvider extends ContentProvider {
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.RAW_TABLE_NAME, PHOTO_URL_QUERY);
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.RAW_TABLE_NAME, VIDEO_URL_QUERY);
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME, DOWNLOAD_IMAGE_URL_QUERY);
+		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.TEAMS_LOGO_TABLE_NAME, TEAM_LOGO_URL_QUERY);
+		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.TEAM_MEMBERS_TABLE_NAME, TEAM_MEMBERS_URL_QUERY);
+
 		// Adds a URI "match" entry that maps modification date content URIs to a numeric code
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.DATE_TABLE_NAME, URL_DATE_QUERY);
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.PAGES_TABLE_NAME, PAGES_QUERY);
@@ -121,6 +132,8 @@ public class DataProvider extends ContentProvider {
 		sMimeTypes.put(PAGES_QUERY, "vnd.android.cursor.dir/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.PAGES_TABLE_NAME);
 		sMimeTypes.put(CATEGORY_QUERY, "vnd.android.cursor.dir/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.CATEGORY_TABLE_NAME);
 		sMimeTypes.put(DOWNLOAD_IMAGE_URL_QUERY, "vnd.android.cursor.dir/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME);
+		sMimeTypes.put(TEAM_LOGO_URL_QUERY, "vnd.android.cursor.dir/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.TEAMS_LOGO_TABLE_NAME);
+		sMimeTypes.put(TEAM_MEMBERS_URL_QUERY, "vnd.android.cursor.dir/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.TEAM_MEMBERS_TABLE_NAME);
 
 		// Specifies the custom MIME type for a single modification date row
 		sMimeTypes.put(URL_DATE_QUERY, "vnd.android.cursor.item/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.DATE_TABLE_NAME);
@@ -163,6 +176,8 @@ public class DataProvider extends ContentProvider {
 			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.DATE_TABLE_NAME);
 			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.NEWS_TABLE_NAME);
 			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.TEAMS_LOGO_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.TEAM_MEMBERS_TABLE_NAME);
 
 		}
 
@@ -183,6 +198,9 @@ public class DataProvider extends ContentProvider {
 			db.execSQL(CREATE_DATE_TABLE_SQL);
 			db.execSQL(CREATE_NEWS_TABLE_SQL);
 			db.execSQL(CREATE_DOWNLOAD_IMAGE_TABLE_SQL);
+			db.execSQL(CREATE_TEAM_LOGO_TABLE_SQL);
+			db.execSQL(CREATE_TEAM_MEMBERS_TABLE_SQL);
+
 		}
 
 		/**
@@ -317,6 +335,7 @@ public class DataProvider extends ContentProvider {
 				returnCursor = db.query(DataProviderContract.NEWS_TABLE_NAME, projection, selection, null, null, null, null);
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
+
 			case DOWNLOAD_IMAGE_URL_QUERY:
 				// Does the query against a read-only version of the database
 				returnCursor = db.query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME, projection, null, null, null, null, DataProviderContract.DOWNLOAD_IMAGE_ID + " DESC");
@@ -325,6 +344,22 @@ public class DataProvider extends ContentProvider {
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 
+				// If the query is for a teams logos URL
+			case TEAM_LOGO_URL_QUERY:
+				// Does the query against a read-only version of the database
+				returnCursor = db.query(DataProviderContract.TEAMS_LOGO_TABLE_NAME, projection, null, null, null, null, null);
+
+				// Sets the ContentResolver to watch this content URI for data changes
+				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				return returnCursor;
+
+			case TEAM_MEMBERS_URL_QUERY:
+				// Does the query against a read-only version of the database
+				returnCursor = db.query(DataProviderContract.TEAM_MEMBERS_TABLE_NAME, projection, null, null, null, null, null);
+
+				// Sets the ContentResolver to watch this content URI for data changes
+				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				return returnCursor;
 			case INVALID_URI:
 
 				throw new IllegalArgumentException("Query -- Invalid URI:" + uri);
@@ -385,6 +420,8 @@ public class DataProvider extends ContentProvider {
 			case PHOTO_URL_QUERY:
 			case VIDEO_URL_QUERY:
 			case DOWNLOAD_IMAGE_URL_QUERY:
+			case TEAM_LOGO_URL_QUERY:
+			case TEAM_MEMBERS_URL_QUERY:
 				throw new IllegalArgumentException("Insert: Invalid URI" + uri);
 		}
 
@@ -574,7 +611,7 @@ public class DataProvider extends ContentProvider {
 				return numImages;
 
 			case DOWNLOAD_IMAGE_URL_QUERY:
-         int insertedRowsCount = 0;
+				int insertedRowsCount = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -746,6 +783,89 @@ public class DataProvider extends ContentProvider {
 				// The semantics of bulkInsert is to return the number of rows inserted.
 				return numImages;
 
+			case TEAM_LOGO_URL_QUERY:
+
+				// Gets a writeable database instance if one is not already cached
+				localSQLiteDatabase = mHelper.getWritableDatabase();
+
+				/*
+				 * Begins a transaction in "exclusive" mode. No other mutations can occur on the db until this transaction finishes.
+				 */
+				localSQLiteDatabase.beginTransaction();
+
+				// Deletes all the existing rows in the table
+				// localSQLiteDatabase.delete(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, null, null);
+
+				// Gets the size of the bulk insert
+				numImages = insertValuesArray.length;
+
+				// Inserts each ContentValues entry in the array as a row in the database
+
+				for (int i = 0; i < numImages; i++) {
+					try {
+						localSQLiteDatabase.insertOrThrow(DataProviderContract.TEAMS_LOGO_TABLE_NAME, DataProviderContract.TEAM_LOGO_IMAGE_URL_COLUMN, insertValuesArray[i]);
+					}
+					catch (SQLiteConstraintException e) {
+					}
+				}
+
+				// Reports that the transaction was successful and should not be backed out.
+				localSQLiteDatabase.setTransactionSuccessful();
+
+				// Ends the transaction and closes the current db instances
+				localSQLiteDatabase.endTransaction();
+				localSQLiteDatabase.close();
+
+				/*
+				 * Notifies the current ContentResolver that the data associated with "uri" has changed.
+				 */
+
+				getContext().getContentResolver().notifyChange(uri, null);
+
+				// The semantics of bulkInsert is to return the number of rows inserted.
+				return numImages;
+			case TEAM_MEMBERS_URL_QUERY:
+
+				// Gets a writeable database instance if one is not already cached
+				localSQLiteDatabase = mHelper.getWritableDatabase();
+
+				/*
+				 * Begins a transaction in "exclusive" mode. No other mutations can occur on the db until this transaction finishes.
+				 */
+				localSQLiteDatabase.beginTransaction();
+
+				// Deletes all the existing rows in the table
+				// localSQLiteDatabase.delete(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, null, null);
+
+				// Gets the size of the bulk insert
+				numImages = insertValuesArray.length;
+
+				// Inserts each ContentValues entry in the array as a row in the database
+
+				for (int i = 0; i < numImages; i++) {
+					try {
+						localSQLiteDatabase.insertOrThrow(DataProviderContract.TEAM_MEMBERS_TABLE_NAME, DataProviderContract.TEAM_MEMBER_IMAGE_URL_COLUMN, insertValuesArray[i]);
+					}
+					catch (SQLiteConstraintException e) {
+					}
+				}
+
+				// Reports that the transaction was successful and should not be backed out.
+				localSQLiteDatabase.setTransactionSuccessful();
+
+				// Ends the transaction and closes the current db instances
+				localSQLiteDatabase.endTransaction();
+				localSQLiteDatabase.close();
+
+				/*
+				 * Notifies the current ContentResolver that the data associated with "uri" has changed.
+				 */
+
+				getContext().getContentResolver().notifyChange(uri, null);
+
+				// The semantics of bulkInsert is to return the number of rows inserted.
+				return numImages;
+
 			case INVALID_URI:
 
 				// An invalid URI was passed. Throw an exception
@@ -816,6 +936,8 @@ public class DataProvider extends ContentProvider {
 			case PHOTO_URL_QUERY:
 			case VIDEO_URL_QUERY:
 			case DOWNLOAD_IMAGE_URL_QUERY:
+			case TEAM_LOGO_URL_QUERY:
+			case TEAM_MEMBERS_URL_QUERY:
 				throw new IllegalArgumentException("Update: Invalid URI: " + uri);
 		}
 

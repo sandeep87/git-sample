@@ -22,6 +22,8 @@
     <string name="splash_loading_title">Loading&#8230;</string>
     <string name="photos_gallery">PHOTO GALLERY</string>
     <string name="videos_gallery">VIDEO GALLERY</string>
+     <string name="image_error_msg">Unable to retrieve content at this moment</string>
+    
 
     <!-- TODO: -->
     <string name="sample_score">CELEBRITY CRICKET LEAGUE</string>
@@ -70,5 +72,18 @@
     <string name="downloading_succuss">Downloading succussfully completed</string>
     <string name="no_sdcard">Not available sdcard. Please insert the sdcard</string>
     <string name="downloading_image">Downloading Image</string>
+    <!-- Teams -->
+    <string name="mumbai">mumbai team</string>
+    <string name="chennai">chennai-rhinos</string>
+    <string name="telugu">telugu-warrios</string>
+    <string name="karanataka">karanataka-bulldozers</string>
+    <string name="kerala">kerala-strikers</string>
+    <string name="bengal">bengal-tigers</string>
+    <string name="veer">veer-marathi</string>
+    <string name="bhojpuri">bhojpuri-dabanggs</string>
+    <string name="no_role">norole</string>
+
+    <!-- End Teams -->
+    <string name="ambassadors">Ambassadors</string>
 
 </resources>

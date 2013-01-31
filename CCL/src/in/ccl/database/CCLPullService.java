@@ -166,6 +166,12 @@ public class CCLPullService extends IntentService {
 						}
 						else if (compareKey.equals("downloads")) {
 							localDataPullParser.parseDownloadJson(localURLConnection.getInputStream(), mBroadcaster);
+						}else if (compareKey.equals("teams")) {
+							localDataPullParser.parseTeamsLogoJson(localURLConnection.getInputStream(), mBroadcaster);
+						}
+						else if (compareKey.equals("team_members")) {
+							localDataPullParser.parseTeamMembersJson(localURLConnection.getInputStream(), mBroadcaster);
+
 						}
 
 						// Reports that the service is now writing data to the content provider.
@@ -248,6 +254,13 @@ public class CCLPullService extends IntentService {
 								getContentResolver().bulkInsert(DataProviderContract.PAGES_TABLE_CONTENTURI, pageValuesArray);
 							}
 
+						}else if (compareKey.equals("teams")) {
+							getContentResolver().bulkInsert(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, imageValuesArray);
+						}
+						else if (compareKey.equals("team_members")) {
+							System.out.println("kranthi team members bulk insert");
+
+							getContentResolver().bulkInsert(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, imageValuesArray);
 						}
 
 						// Creates another ContentValues for storing date information
@@ -326,6 +339,11 @@ public class CCLPullService extends IntentService {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE, null);
 				}else if (compareKey.equals("downloads")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE,null);
+				}else if (compareKey.equals("teams")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_TEAM_LOGO_COMPLETE, null);
+				}
+				else if (compareKey.equals("team_members")) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE, null);
 				}
 			}
 			// Handles possible exceptions
