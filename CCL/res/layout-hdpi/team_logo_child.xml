@@ -13,7 +13,7 @@
         android:layout_height="fill_parent"
         android:gravity="center_vertical|center_horizontal"
         android:paddingTop="30dp"
-        android:text="Unable to retrieve content at this moment"
+        android:text="@string/image_error_msg"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:visibility="gone" />

@@ -1,11 +1,14 @@
 package in.ccl.ui;
 
+import in.ccl.database.BannerCursor;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.DownloadItemsCursor;
 import in.ccl.database.NewsItemsCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
+import in.ccl.model.TeamMember;
+import in.ccl.model.Teams;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
@@ -350,10 +353,47 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 						startActivity(downloadImageIntent);
 					}
 					break;
+				case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
+					ArrayList <Teams> teamLogoItems = null;
+					ArrayList <TeamMember> teamMemberItems = null;
+					System.out.println("kranthi STATE_ACTION_TEAM_MEMBERS_COMPLETE ");
+
+					cursor = getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor.getCount() > 0) {
+						teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
+						System.out.println("kranthi teamLogoItems size " + " " + teamLogoItems.size());
+
+					}
+					if (cursor != null) {
+						cursor.close();
+					}
+					cursor = getContentResolver().query(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor.getCount() > 0) {
+						teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
+						System.out.println("kranthi teamMemberItems size " + " " + teamMemberItems.size());
+
+					}
+					if (cursor != null) {
+						cursor.close();
+					}
+					if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
+
+						callTeamIntent(teamLogoItems, teamMemberItems);
+
+					}
+					else {
+						Log.e(TAG, "Team Data is not availble");
+					}
+					break;
 				default:
 					break;
 			}
 		}
 	}
-
+	private void callTeamIntent (ArrayList <Teams> teamLogoItems, ArrayList <TeamMember> teamMemberItems) {
+		Intent teamActivityIntent = new Intent(this, TeamActivity.class);
+		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
+		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_MEMBER_KEY, teamMemberItems);
+		startActivityForResult(teamActivityIntent, in.ccl.util.Constants.TEAM_RESULT);
+	}
 }

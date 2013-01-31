@@ -10,6 +10,8 @@ import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
+import in.ccl.model.TeamMember;
+import in.ccl.model.Teams;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.BadTokenException;
@@ -195,25 +198,56 @@ public class MenuItems implements OnClickListener {
 			 * Intent notificationIntent = new Intent(activity, NotificationActivity.class); activity.startActivity(notificationIntent);
 			 * 
 			 * break;
-			 */case R.id.layout_teams:
-				progressDialog = new ProgressDialog(activity);
-				progressDialog.setMessage(activity.getResources().getString(R.string.loading));
-				try {
-					progressDialog.show();
-				}
-				catch (BadTokenException e) {
-				}
-				new Handler().postDelayed(new Runnable() {
+			 */	case R.id.layout_teams:
+					cursor = activity.getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor != null && cursor.getCount() > 0) {
 
-					@Override
-					public void run () {
-						progressDialog.dismiss();
-						Intent teamIntent = new Intent(activity, TeamActivity.class);
-						teamIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-						activity.startActivity(teamIntent);
+						ArrayList <Teams> teamLogoItems = null;
+						ArrayList <TeamMember> teamMemberItems = null;
+
+						teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
+						
+						if (cursor != null) {
+							cursor.close();
+						}
+						cursor = activity.getContentResolver().query(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, null, null, null, null);
+						if (cursor.getCount() > 0) {
+							teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
+
+						}
+						if (cursor != null) {
+							cursor.close();
+						}
+						if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
+
+							callTeamIntent(teamLogoItems, teamMemberItems);
+
+						}
+						else {
+							Log.e("MenuItems", "Problem Occured While Retriving Team Data From DB ");
+						}
 					}
-				}, 200);
+					else {
+						if(cursor != null){
+							cursor.close();
+						}
 
+						if (Util.getInstance().isOnline(activity)) {
+
+						Intent	mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_url)));
+							activity.startService(mServiceIntent);
+
+							for (int i = 1; i <= 8; i++) {
+								mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_members_url) + i));
+								mServiceIntent.putExtra("KEY", "team_members");
+								activity.startService(mServiceIntent);
+							}
+
+						}
+						else {
+							Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+						}
+					}
 				break;
 
 			case R.id.layout_ownerslounge:
@@ -348,27 +382,10 @@ public class MenuItems implements OnClickListener {
 		activity.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
 	}
 
-/*	private void getRegionallNewsResponse (String result) {
-
-		JSONArray jsonArray = new JSONArray(result);
-		for (int i = 0; i < jsonArray.length(); i++) {
-			regionalNewsItems = new Items();
-			JSONObject jsonObject = jsonArray.getJSONObject(i);
-			if (jsonObject.has("news_id")) {
-				int id = jsonObject.getInt("news_id");
-				regionalNewsItems.setId(id);
-			}
-			if (jsonObject.has("news_title")) {
-				String title = jsonObject.getString("news_title");
-				regionalNewsItems.setTitle(title);
-			}
-			if (jsonObject.has("news_url")) {
-				String url = jsonObject.getString("news_url");
-				regionalNewsItems.setThumbUrl(url);
-			}
-			regionalNewsItemsArrayList.add(regionalNewsItems);
-		}
-
-	}*/
-
+	private void callTeamIntent (ArrayList <Teams> teamLogoItems, ArrayList <TeamMember> teamMemberItems) {
+		Intent teamActivityIntent = new Intent(activity, TeamActivity.class);
+		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
+		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_MEMBER_KEY, teamMemberItems);
+		activity.startActivityForResult(teamActivityIntent, in.ccl.util.Constants.TEAM_RESULT);
+	}
 }
