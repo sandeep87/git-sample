@@ -41,6 +41,28 @@ public class DataProviderContract {
 
 	public static final String DOWNLOAD_IMAGE_NO_OF_PAGES = "downloadImage_no_of_pages";
 
+//team logo table column names
+	public static final String TEAM_ID_COLUMN = "team_id";
+
+	public static final String TEAM_NAME_COLUMN = "team_name";
+
+	public static final String TEAM_LOGO_IMAGE_URL_COLUMN = "team_logo_url";
+
+	public static final String TEAM_BANNER_IMAGE_URL_COLUMN = "team_banner_url";
+
+	// team members table column names
+	public static final String TEAM_PERSON_ID_COLUMN = "team_persion_id";
+
+	public static final String TEAM_PERSON_NAME_COLUMN = "team_person_name";
+
+	public static final String TEAM_MEMBER_IMAGE_URL_COLUMN = "team_person_thumbUrl";
+	
+	public static final String TEAM_NAME_MEMBER_COLUMN = "team_name_member";
+
+
+	public static final String TEAM_PERSON_ROLE_COLUMN = "team_person_role";
+
+	
 	private DataProviderContract () {
 	}
 
@@ -74,6 +96,16 @@ public class DataProviderContract {
 	 * News date table name
 	 */
 	public static final String NEWS_TABLE_NAME = "NewsMetadatData";
+	
+	/**
+	 * teams logo table name
+	 */
+	public static final String TEAMS_LOGO_TABLE_NAME = "TeamsLogoData";
+
+	/**
+	 * team members table name
+	 */
+	public static final String TEAM_MEMBERS_TABLE_NAME = "TeamsMembersData";
 
 	/**
 	 * Content URI for news table
@@ -87,6 +119,15 @@ public class DataProviderContract {
 
 	public static final String DOWNLOAD_IMAGE_TABLE_NAME = "DownloadImageData";
 
+	/**
+	 * Team logo table content URI
+	 */
+	public static final Uri TEAMS_LOGO_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, TEAMS_LOGO_TABLE_NAME);
+
+	/**
+	 * Team Member table content URI
+	 */
+	public static final Uri TEAM_MEMBERS_TABLE_CONTENTURI = Uri.withAppendedPath(CONTENT_URI, TEAM_MEMBERS_TABLE_NAME);
 
 	/**
 	 * Content URI for Download image table

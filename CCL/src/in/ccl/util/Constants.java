@@ -5,6 +5,8 @@ import java.util.Locale;
 public class Constants {
 
 	public static final int SPLASH_SCREEN_RESULT = 1;
+	
+	public static int TEAM_RESULT = 111;
 
 	public static final int PHOTO_PARSER = 100;
 
@@ -53,6 +55,11 @@ public class Constants {
 	public static final String EXTRA_TEAMNAME = "extra_teamname";
 	
 	public static final String EXTRA_LOGO_POSITION = "extra_logo_position";
+	
+	public static final String EXTRA_TEAM_LOGO_KEY = "extra_team_logo_key";
+
+	public static final String EXTRA_TEAM_MEMBER_KEY = "extra_team_members_key";
+
 
 	public static final int PHOTO_GALLERY = 1;
 

@@ -67,26 +67,66 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/team_view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="80dp"
                     android:paddingLeft="5dp" />
             </RelativeLayout>
-
-            <include layout="@layout/team_pointer" />
 
             <RelativeLayout
                 android:id="@+id/team_desc"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="67dp"
-                android:background="@drawable/mumbai_desc" >
+                android:layout_marginTop="55dp" >
 
-                <ImageView
-                    android:id="@+id/team_player"
-                    android:layout_width="wrap_content"
+                <include layout="@layout/team_pointer" />
+
+                <TextView
+                    android:id="@+id/txt_team_name"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="70dp"
-                    android:background="@drawable/mumbai" />
+                    android:layout_marginTop="10dp"
+                    android:padding="5dip"
+                    android:background="@drawable/menu_tabs"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/txt_theteam"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_team_name"
+                    android:padding="6dip"
+                    android:text="@string/team_title" 
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/gray_bg"/>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/team_member_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="140dip"
+                    android:layout_below="@id/txt_theteam"
+                    android:background="@android:color/background_light" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_team_ambassadors"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/team_member_pager" >
+
+                    <TextView
+                        android:id="@+id/txt_brand_ambassadors"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/gray_bg"
+                        android:padding="6dip"
+                        android:text="@string/ambassadors_title"
+                        android:textColor="@android:color/black" />
+                </RelativeLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/team_ambassadors_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="130dip"
+                    android:layout_below="@id/layout_team_ambassadors"
+                    android:background="@android:color/background_light" />
             </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>

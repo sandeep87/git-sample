@@ -1,19 +1,14 @@
 package in.ccl.database;
 
-import in.ccl.model.Items;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.amazonaws.services.simpledb.model.Item;
 
 import android.content.ContentValues;
 import android.net.Uri;
@@ -425,8 +420,115 @@ public class JSONPullParser {
 				e.printStackTrace();
 
 			}
+
 		}
 
 	}
 
+	public void parseTeamsLogoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+
+		String result = readStream(inputStream);
+		System.out.println("kranthi teams logo Result " + result);
+
+		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+
+		if (result != null) {
+			try {
+				JSONArray jsonArray = new JSONArray(result);
+				for (int i = 0; i < jsonArray.length(); i++) {
+					item = new ContentValues();
+					JSONObject jsonObject = jsonArray.getJSONObject(i);
+					if (!jsonObject.isNull("team_id")) {
+						if (jsonObject.has("team_id")) {
+							int teamId = jsonObject.getInt("team_id");
+							item.put(DataProviderContract.TEAM_ID_COLUMN, teamId);
+						}
+					}
+					if (!jsonObject.isNull("team_name")) {
+						if (jsonObject.has("team_name")) {
+							String teamName = jsonObject.getString("team_name");
+							item.put(DataProviderContract.TEAM_NAME_COLUMN, teamName.trim());
+
+						}
+					}
+					if (!jsonObject.isNull("team_logo")) {
+						if (jsonObject.has("team_logo")) {
+							String teamLogoThumbUrl = jsonObject.getString("team_logo");
+							item.put(DataProviderContract.TEAM_LOGO_IMAGE_URL_COLUMN, teamLogoThumbUrl);
+						}
+					}
+					if (!jsonObject.isNull("team_banner")) {
+						if (jsonObject.has("team_banner")) {
+							String teamBannerUrl = jsonObject.getString("team_banner");
+							item.put(DataProviderContract.TEAM_BANNER_IMAGE_URL_COLUMN, teamBannerUrl);
+						}
+					}
+					mImages.add(item);
+				}
+			}
+			catch (JSONException e) {
+				Log.i(TAG, "Photo album json parsing exception");
+			}
+		}
+	}
+	public void parseTeamMembersJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+
+		String result = readStream(inputStream);
+		System.out.println("kranthi teams members Result " + result);
+
+		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+
+		if (result != null) {
+			try {
+				JSONArray jsonArray = new JSONArray(result);
+				for (int i = 0; i < jsonArray.length(); i++) {
+					item = new ContentValues();
+					JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+					if (!jsonObject.isNull("person_id")) {
+						if (jsonObject.has("person_id")) {
+							int teamPersonId = jsonObject.getInt("person_id");
+							item.put(DataProviderContract.TEAM_PERSON_ID_COLUMN, teamPersonId);
+						}
+					}
+					if (!jsonObject.isNull("person_name")) {
+						if (jsonObject.has("person_name")) {
+							String teamPersonName = jsonObject.getString("person_name");
+							item.put(DataProviderContract.TEAM_PERSON_NAME_COLUMN, teamPersonName.trim());
+
+						}
+					}
+					if (!jsonObject.isNull("s3_person_image")) {
+						if (jsonObject.has("s3_person_image")) {
+							String teamPersonThumbUrl = jsonObject.getString("s3_person_image");
+							item.put(DataProviderContract.TEAM_MEMBER_IMAGE_URL_COLUMN, teamPersonThumbUrl);
+						}
+					}
+					if (!jsonObject.isNull("team_name")) {
+						if (jsonObject.has("team_name")) {
+							String teamName = jsonObject.getString("team_name");
+							item.put(DataProviderContract.TEAM_NAME_MEMBER_COLUMN, teamName.trim());
+						}
+					}
+					if (!jsonObject.isNull("person_roles")) {
+						if (jsonObject.has("person_roles")) {
+							String teamPersonalRole = jsonObject.getString("person_roles");
+							String[] roleArray;
+							if (teamPersonalRole.contains(",")) {
+								roleArray = teamPersonalRole.split(",");
+								teamPersonalRole = String.format("%s (%s)", roleArray[0].trim(), roleArray[1].trim());
+
+							}
+							System.out.println("kranthi role parser:" + " " + teamPersonalRole);
+							item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, teamPersonalRole);
+						}
+					}
+					mImages.add(item);
+				}
+			}
+			catch (JSONException e) {
+				Log.i(TAG, "Photo album json parsing exception");
+			}
+		}
+	}
 }
