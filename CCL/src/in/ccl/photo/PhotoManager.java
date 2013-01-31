@@ -219,7 +219,7 @@ public class PhotoManager {
 
                             // If the download has started, sets background color to dark green
                             case DOWNLOAD_STARTED:
-                                localView.setStatusResource(R.drawable.imagedownloading);
+                                localView.setStatusResource(DOWNLOAD_STARTED);
                                 break;
 
                             /*
@@ -243,6 +243,8 @@ public class PhotoManager {
                             	  Bitmap bmp = photoTask.getImage();
                             	 // Bitmap newBmp = Bitmap.createBitmap(bmp, 0, 0, photoTask.getTargetWidth(), photoTask.getTargetHeight());
                                 localView.setImageBitmap(bmp);
+                                localView.setStatusResource(TASK_COMPLETE);
+
                                 recycleTask(photoTask);
                                 break;
                             // The download failed, sets the background color to dark red

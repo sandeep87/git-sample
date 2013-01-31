@@ -28,8 +28,9 @@ public class ScheduleActivity extends TopActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.shedule_layout);
-		//TextView scheduleTitle =  (TextView)findViewById(R.id.schedule_title);
-	//	Util.setTextFont(this, scheduleTitle);
+  	TextView scheduleTitle =  (TextView)findViewById(R.id.schedule_title);
+		Util.setTextFont(this, scheduleTitle);
+		
 		listSchedule = (ListView) findViewById(R.id.list_schedule);
 		TextView schedule_title = (TextView)findViewById(R.id.schedule_title);
 	/*	Util.setTextFont(this, schedule_title);
