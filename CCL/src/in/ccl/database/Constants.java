@@ -33,6 +33,8 @@ public class Constants {
 
 	// The video album thread is done
 	public static final int STATE_ACTION_VIDEO_COMPLETE = 9;
+	
+	
 
 	public static final int STATE_ACTION_BANNER_UPDATES_COMPLETE = 10;
 
@@ -49,6 +51,7 @@ public class Constants {
 	public static final int STATE_ACTION_VIDEO_UPDATES_COMPLETE = 16;
 
 	public static final int STATE_ACTION_PHOTO_UPDATES_COMPLETE = 17;
+	public static final int STATE_ACTION_NEWS_COMPLETE = 18;
 
 	/*
 	 * A user-agent string that's sent to the HTTP site. It includes information about the device and the build that the device is running.

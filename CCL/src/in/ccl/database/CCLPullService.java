@@ -157,6 +157,10 @@ public class CCLPullService extends IntentService {
 						}
 						else if (compareKey.equals("videos") || compareKey.equals("videos_pages") || compareKey.equals("videos_updates")) {
 							localDataPullParser.parseVideoJson(localURLConnection.getInputStream(), mBroadcaster);
+						}else if (compareKey.equals("regional")){
+							 localDataPullParser.parseNewsJson(localURLConnection.getInputStream(),mBroadcaster,1);							 
+						}else if (compareKey.equals("national")){
+							 localDataPullParser.parseNewsJson(localURLConnection.getInputStream(),mBroadcaster,2);
 						}
 
 						// Reports that the service is now writing data to the content provider.
@@ -184,8 +188,10 @@ public class CCLPullService extends IntentService {
 						else if (compareKey.equals("videoalbums") || compareKey.equals("update-videos")) {
 							updatedRows = getContentResolver().bulkInsert(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, imageValuesArray);
 						}
+
 						else if (compareKey.equals("photos") || compareKey.equals("photos_pages") || compareKey.equals("banner-photos") || compareKey.equals("photo_updates")) {
 							getContentResolver().bulkInsert(DataProviderContract.RAW_TABLE_CONTENTURI, imageValuesArray);
+
 							// Gets image data from the parser
 							Vector <ContentValues> pageValues = localDataPullParser.getPages();
 							if (pageValues != null) {
@@ -220,6 +226,8 @@ public class CCLPullService extends IntentService {
 								getContentResolver().bulkInsert(DataProviderContract.PAGES_TABLE_CONTENTURI, pageValuesArray);
 							}
 
+						}else if (compareKey.equals("regional") || compareKey.equals("national")) {
+							getContentResolver().bulkInsert(DataProviderContract.NEWS_TABLE_CONTENTURI, imageValuesArray);
 						}
 						// Creates another ContentValues for storing date information
 						ContentValues dateValues = new ContentValues();
@@ -257,8 +265,7 @@ public class CCLPullService extends IntentService {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_COMPLETE, null);
 				}
 				else if (compareKey.equals("videos")) {
-					System.out.println("Rajesh sending broad cast for videos");
-					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_COMPLETE, null);
+   		  mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_COMPLETE, null);
 				}
 				else if (compareKey.equals("update-banner")) {
 					if (updatedRows > 0) {
@@ -289,9 +296,13 @@ public class CCLPullService extends IntentService {
 				}
 				else if (compareKey.equals("videos_updates")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_UPDATES_COMPLETE, null);
+				}else if (compareKey.equals("regional") || compareKey.equals("national")) {
+					
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_NEWS_COMPLETE, null);
 				}
 				else if (compareKey.equals("photo_updates")) {
 					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE, null);
+
 				}
 			}
 			// Handles possible exceptions

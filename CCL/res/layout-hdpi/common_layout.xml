@@ -106,7 +106,7 @@
         <LinearLayout
             android:id="@+id/admob_layout"
             android:layout_width="fill_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:content="@+id/content"
             android:handle="@+id/handle"

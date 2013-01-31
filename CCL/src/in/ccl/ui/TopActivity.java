@@ -1,15 +1,23 @@
 package in.ccl.ui;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
-
+import in.ccl.database.DataProviderContract;
+import in.ccl.database.NewsItemsCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
+import in.ccl.model.Items;
 import in.ccl.util.Constants;
+
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.InflateException;
@@ -20,10 +28,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import android.widget.SlidingDrawer;
-import android.widget.SlidingDrawer.OnDrawerCloseListener;
-import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
 
 public class TopActivity extends Activity implements AnimationLayout.Listener {
 
@@ -61,6 +70,10 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	private LinearLayout menuLayout;
 
+	private DownloadStateReceiver mDownloadStateReceiver;
+
+	private IntentFilter statusIntentFilter;
+
 	/*
 	 * private TextView notificationTxt;
 	 * 
@@ -73,6 +86,16 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.common_layout);
+
+		// The filter's action is BROADCAST_ACTION
+		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
+
+		// Sets the filter's category to DEFAULT
+		statusIntentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+
+		// Instantiates a new DownloadStateReceiver
+		mDownloadStateReceiver = new DownloadStateReceiver();
+
 		mLayout = (AnimationLayout) findViewById(R.id.animation_layout);
 
 		// animationLayoutSlider = (LinearLayout) findViewById(R.id.animation_layout_sidebar);
@@ -89,9 +112,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 		// Initiate a generic request to load it with an ad
 		AdRequest adRequest = new AdRequest();
+/*<<<<<<< HEAD
 		//adRequest.addTestDevice(AdRequest.TEST_EMULATOR);               // Emulator
 		adRequest.addTestDevice("TEST_DEVICE_ID");                      // Test Android Device
 		adView.loadAd(adRequest);//new AdRequest()
+=======*/
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+
+		adView.loadAd(adRequest);// new AdRequest()
 
 		/*
 		 * notificationTxt = (TextView) findViewById(R.id.notification_textview); notificationTitle = (TextView) findViewById(R.id.notification_title_textview); TextView notificationOneTxt = (TextView) findViewById(R.id.notification_item1); TextView notificationTwoTxt = (TextView)
@@ -196,6 +224,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	@Override
 	protected void onPause () {
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
+
 		new Handler().postDelayed(new Runnable() {
 
 			@Override
@@ -265,6 +295,49 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		// animationLayoutSlider.setVisibility(View.GONE);
 		return true;
 
+	}
+
+	@Override
+	protected void onResume () {
+		super.onResume();
+		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+
+	}
+
+	private class DownloadStateReceiver extends BroadcastReceiver {
+
+		private DownloadStateReceiver () {
+		}
+
+		/**
+		 * 
+		 * This method is called by the system when a broadcast Intent is matched by this class' intent filters
+		 * 
+		 * @param context An Android context
+		 * @param intent The incoming broadcast Intent
+		 */
+		@Override
+		public void onReceive (Context context, Intent intent) {
+
+			// Gets the status from the Intent's extended data, and chooses the appropriate action
+
+			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
+
+				case in.ccl.database.Constants.STATE_ACTION_NEWS_COMPLETE:
+
+					Cursor cursor = getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> newsItems = NewsItemsCursor.getItems(cursor);
+					Intent newsIntent = new Intent(TopActivity.this, NewsActivity.class);
+					if (newsItems != null) {
+						newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, newsItems);
+					}
+					newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					startActivity(newsIntent);
+
+				default:
+					break;
+			}
+		}
 	}
 
 }

@@ -1,14 +1,19 @@
 package in.ccl.database;
 
+import in.ccl.model.Items;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.amazonaws.services.simpledb.model.Item;
 
 import android.content.ContentValues;
 import android.util.Log;
@@ -27,6 +32,8 @@ public class JSONPullParser {
 	private Vector <ContentValues> mPages;
 
 	private static final String TAG = "JSONPullParser";
+	
+	
 
 	/**
 	 * A getter that returns the banner photos data Vector
@@ -350,5 +357,41 @@ public class JSONPullParser {
 				Log.i(TAG, e.toString());
 			}
 		}
+	}
+
+	public void parseNewsJson (InputStream inputStream, BroadcastNotifier mBroadcaster,int categoryId) {
+		
+		String result = readStream(inputStream);
+		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+		JSONArray jsonArray;
+		try {
+			jsonArray = new JSONArray(result);
+			for (int i = 0; i < jsonArray.length(); i++) {
+				item = new ContentValues();
+				//regionalNewsItems = new Items();
+				JSONObject jsonObject = jsonArray.getJSONObject(i);
+				if (jsonObject.has("news_id")) {
+					int id = jsonObject.getInt("news_id");
+					item.put(DataProviderContract.NEWS_ID, id);
+				}
+				if (jsonObject.has("news_title")) {
+					String title = jsonObject.getString("news_title");
+					item.put(DataProviderContract.NEWS_TITLE, title);
+				}
+				if (jsonObject.has("news_url")) {
+					String url = jsonObject.getString("news_url");
+					item.put(DataProviderContract.NEWS_URL, url);
+				}
+				item.put(DataProviderContract.NEWS_CATEGORY, categoryId);
+				mImages.add(item);
+			}
+		}
+		catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 }
