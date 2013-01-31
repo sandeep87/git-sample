@@ -306,9 +306,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	}
 
-	private class DownloadStateReceiver extends BroadcastReceiver {
+	class DownloadStateReceiver extends BroadcastReceiver {
 
-		private DownloadStateReceiver () {
+		DownloadStateReceiver () {
 		}
 
 		/**
@@ -333,7 +333,10 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 					if (newsItems != null) {
 						newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, newsItems);
 					}
-					newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					if (cursor != null) {
+						cursor.close();
+					}
+					// newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					startActivity(newsIntent);
 					break;
 				case in.ccl.database.Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE:

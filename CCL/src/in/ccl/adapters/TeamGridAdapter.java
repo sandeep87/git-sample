@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -69,7 +70,7 @@ public class TeamGridAdapter extends BaseAdapter {
 
 		// teamLogoImg.setBackgroundResource(teamLogo[position]);
 		if (mViewHolder.teamLogoImg != null) {
-			 mViewHolder.teamLogoImg.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
+			 mViewHolder.teamLogoImg.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
 			mViewHolder.teamLogoImg.setScaleType(ImageView.ScaleType.MATRIX);
 
 			mViewHolder.teamLogoImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.imagenotqueued));
