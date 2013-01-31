@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.ContentValues;
+import android.net.Uri;
 import android.util.Log;
 
 public class JSONPullParser {
@@ -271,6 +272,7 @@ public class JSONPullParser {
 	}
 
 	public void parseVideoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+		int albumId = 0;
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -280,6 +282,7 @@ public class JSONPullParser {
 				JSONObject jsonObject = new JSONObject(result);
 				if (jsonObject.has("album_id")) {
 					pages.put(DataProviderContract.ALBUM_ID_COLUMN, jsonObject.getInt("album_id"));
+					albumId =  jsonObject.getInt("album_id");
 					pages.put(DataProviderContract.CATEGORY_ID, 2);
 
 				}
@@ -306,6 +309,10 @@ public class JSONPullParser {
 						}
 						if (resultJsonObject.has("video_thumb")) {
 							String photoThumb = resultJsonObject.getString("video_thumb");
+							if(albumId == 26){
+								photoThumb =  Uri.parse(photoThumb).getLastPathSegment();
+								photoThumb = "https://s3.amazonaws.com/celebrity_cricket_league/images/videos/ccl3-curtain-raiser/"+photoThumb;
+							}
 							item.put(DataProviderContract.THUMB_IMAGE_URL, photoThumb);
 						}
 						mImages.add(item);
@@ -410,6 +417,7 @@ public class JSONPullParser {
 				System.out.println("catch");
 				e.printStackTrace();
 			}
+
 		}
 
 	}
@@ -459,9 +467,7 @@ public class JSONPullParser {
 				Log.i(TAG, "Photo album json parsing exception");
 			}
 		}
-
 	}
-
 	public void parseTeamMembersJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 
 		String result = readStream(inputStream);
@@ -521,7 +527,5 @@ public class JSONPullParser {
 				Log.i(TAG, "Photo album json parsing exception");
 			}
 		}
-
 	}
-
 }

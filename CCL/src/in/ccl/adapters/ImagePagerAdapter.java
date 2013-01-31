@@ -136,7 +136,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 				});
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText);
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText,false);
 				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
 				// displayImage.show();
 				break;
@@ -155,7 +155,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTxt);
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTxt,false);
 				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, null);
 				// displayImage.show();
 				break;

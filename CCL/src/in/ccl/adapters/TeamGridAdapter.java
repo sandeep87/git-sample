@@ -75,7 +75,7 @@ public class TeamGridAdapter extends BaseAdapter {
 			mViewHolder.teamLogoImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.imagenotqueued));
 			mViewHolder.teamLogoImg.setTag(teamLogo[position]);
 
-			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.imagenotqueued), mViewHolder.errorTxt);
+			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.imagenotqueued), mViewHolder.errorTxt,false);
 		}
 		return convertView;
 	}
