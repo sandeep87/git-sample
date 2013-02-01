@@ -50,7 +50,7 @@ public class Constants {
 
 	public static final int STATE_ACTION_PHOTO_UPDATES_COMPLETE = 17;
 
-	public static final int STATE_ACTION_NEWS_COMPLETE = 18;
+	//public static final int STATE_ACTION_NEWS_COMPLETE = 18;
 
 	public static final int STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE = 19;
 //The team logos thread is done
@@ -73,9 +73,9 @@ public class Constants {
 
 	public static final boolean LOGD = true;
 
-	public static final int STATE_ACTION_NEWS_UPDATE_COMPLETE = 20;
+	//public static final int STATE_ACTION_NEWS_UPDATE_COMPLETE = 20;
 
-	public static final int STATE_ACTION_NATIONAL_NEWS_UPDATE_COMPLETE = 23;
+	//public static final int STATE_ACTION_NATIONAL_NEWS_UPDATE_COMPLETE = 23;
 
 	public static final int STATE_ACTION_UPDATE_DOWNLOAD_IMAGE_COMPLETE = 24;
 
