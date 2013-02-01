@@ -1,2 +1,0 @@
-CCIL Android Application
-===================

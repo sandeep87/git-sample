@@ -321,49 +321,9 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parseNewsJson (InputStream inputStream, BroadcastNotifier mBroadcaster, int categoryId) {
-
-		String result = readStream(inputStream);
-		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-		JSONArray jsonArray;
-		try {
-			jsonArray = new JSONArray(result);
-			for (int i = 0; i < jsonArray.length(); i++) {
-				item = new ContentValues();
-				// regionalNewsItems = new Items();
-				JSONObject jsonObject = jsonArray.getJSONObject(i);
-				if (jsonObject.has("news_id")) {
-					int id = jsonObject.getInt("news_id");
-					item.put(DataProviderContract.NEWS_ID, id);
-				}
-				if (jsonObject.has("news_title")) {
-					String title = jsonObject.getString("news_title");
-					item.put(DataProviderContract.NEWS_TITLE, title);
-				}
-				if (jsonObject.has("news_url")) {
-					String url = jsonObject.getString("news_url");
-					item.put(DataProviderContract.NEWS_URL, url);
-				}
-				item.put(DataProviderContract.NEWS_CATEGORY, categoryId);
-				mImages.add(item);
-			}
-			// testing for updates
-			/*
-			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 111111); item.put(DataProviderContract.NEWS_TITLE, "venky................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 1); mImages.add(item);
-			 * 
-			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 22222); item.put(DataProviderContract.NEWS_TITLE, "phani................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 2); mImages.add(item);
-			 */
-		}
-		catch (JSONException e) {
-			e.printStackTrace();
-		}
-
-	}
-
 	public void parseDownloadJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-		// mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
 		ContentValues pages = new ContentValues();
 		if (result != null) {
@@ -466,6 +426,7 @@ public class JSONPullParser {
 			}
 		}
 	}
+
 	public void parseTeamMembersJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 
 		String result = readStream(inputStream);
