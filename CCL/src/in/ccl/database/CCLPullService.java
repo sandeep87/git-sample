@@ -50,7 +50,7 @@ public class CCLPullService extends IntentService {
 		else {
 			compareKey = Uri.parse(localUrlString).getLastPathSegment();
 		}
-		System.out.println("Rajesh Keys are " + compareKey);
+		//System.out.println("Rajesh Keys are " + compareKey);
 		// Creates a projection to use in querying the modification date table in the provider.
 		final String[] dateProjection = new String[] { DataProviderContract.ROW_ID, DataProviderContract.DATA_DATE_COLUMN };
 
@@ -267,7 +267,6 @@ public class CCLPullService extends IntentService {
 							getContentResolver().bulkInsert(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, imageValuesArray);
 						}
 						else if (compareKey.equals("team_members")) {
-							System.out.println("kranthi team members bulk insert");
 
 							getContentResolver().bulkInsert(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, imageValuesArray);
 						}

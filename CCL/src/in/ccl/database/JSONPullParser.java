@@ -223,7 +223,6 @@ public class JSONPullParser {
 
 	public void parsePhotoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 		String result = readStream(inputStream);
-		System.out.println("Result " + result);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		ContentValues pages = new ContentValues();
@@ -428,7 +427,6 @@ public class JSONPullParser {
 	public void parseTeamsLogoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 
 		String result = readStream(inputStream);
-		System.out.println("kranthi teams logo Result " + result);
 
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
@@ -474,7 +472,6 @@ public class JSONPullParser {
 	public void parseTeamMembersJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 
 		String result = readStream(inputStream);
-		System.out.println("kranthi teams members Result " + result);
 
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
@@ -519,7 +516,6 @@ public class JSONPullParser {
 								teamPersonalRole = String.format("%s (%s)", roleArray[0].trim(), roleArray[1].trim());
 
 							}
-							System.out.println("kranthi role parser:" + " " + teamPersonalRole);
 							item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, teamPersonalRole);
 						}
 					}
