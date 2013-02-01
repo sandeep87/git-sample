@@ -41,7 +41,7 @@ public class TeamMemberGridAdapter extends BaseAdapter {
 		mEmptyDrawable = context.getResources().getDrawable(R.drawable.imagenotqueued);
 		Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
 		int height = display.getHeight();
-		reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+		reqImageHeight = (int) (((float) 15 / 100) * (height - 50));
 	}
 
 	@Override
