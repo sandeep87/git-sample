@@ -103,7 +103,7 @@
             android:background="@drawable/home_bg" >
         </RelativeLayout>
 
-        <LinearLayout
+        <LinearLayout xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
             android:id="@+id/admob_layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -219,6 +219,13 @@
             </LinearLayout>
         </SlidingDrawer>
             -->
+             <com.google.ads.AdView
+                android:id="@+id/adMob"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                ads:adSize="BANNER"
+                ads:adUnitId="a15108b4f6bb5fe" />
+        
         </LinearLayout>
     </RelativeLayout>
 

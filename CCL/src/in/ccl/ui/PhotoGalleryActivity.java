@@ -151,9 +151,9 @@ public class PhotoGalleryActivity extends TopActivity /* implements AbsListView.
 				case in.ccl.database.Constants.STATE_ACTION_PHOTO_ALBUM_UPDATES_COMPLETE:
 					Cursor cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
 					if (cursor != null && cursor.getCount() > 0) {
-						ArrayList <Items> photoAlbumItems = VideoAlbumCursor.getItems(cursor);
-						if (photoAlbumItems.size() > 0) {
-							gridView.setAdapter(new GridAdapter(PhotoGalleryActivity.this, photoAlbumItems, "photo_gallery"));
+						photoGalleryList = VideoAlbumCursor.getItems(cursor);
+						if (photoGalleryList.size() > 0) {
+							gridView.setAdapter(new GridAdapter(PhotoGalleryActivity.this, photoGalleryList, "photo_gallery"));
 						}
 						else {
 							// display no items message.

@@ -78,6 +78,7 @@ public class PhotoAlbumActivity extends TopActivity {
 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View view, int position, long arg3) {
+				//arg0.getAdapter().getItem(position);
 				// Sending image id to FullScreenActivity
 				Intent intent = new Intent(getApplicationContext(), PhotoActivity.class);
 				// passing array index
@@ -129,9 +130,7 @@ public class PhotoAlbumActivity extends TopActivity {
 		 */
 		@Override
 		public void onReceive (Context context, Intent intent) {
-
 			// Gets the status from the Intent's extended data, and chooses the appropriate action
-
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 
 				case in.ccl.database.Constants.STATE_ACTION_PHOTO_PAGES_DOWNLOAD_COMPLETE:
@@ -141,11 +140,12 @@ public class PhotoAlbumActivity extends TopActivity {
 					}
 					break;
 				case in.ccl.database.Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE:
-					ArrayList <Items> list = PhotoAlbumCurosr.getPhotos(PhotoAlbumActivity.this, photoGalleryId);
-					adapter = new GridAdapter(PhotoAlbumActivity.this, list, "photo");
+					System.out.println("Loading data updates ");
+					photoGalleryList = PhotoAlbumCurosr.getPhotos(PhotoAlbumActivity.this, photoGalleryId);
+					adapter = new GridAdapter(PhotoAlbumActivity.this, photoGalleryList, "photo");
 					gridView.setAdapter(adapter);
-					if (list.size() > 0) {
-						gridView.setOnScrollListener(new EndlessScrollListener(PhotoAlbumActivity.this, adapter, photoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, list.get(0).getNumberOfPages()));
+					if (photoGalleryList.size() > 0) {
+						gridView.setOnScrollListener(new EndlessScrollListener(PhotoAlbumActivity.this, adapter, photoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, photoGalleryList.get(0).getNumberOfPages()));
 					}
 					break;
 				default:
