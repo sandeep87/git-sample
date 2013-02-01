@@ -158,11 +158,11 @@ public class VideoAlbumActivity extends TopActivity {
 					}
 					break;
 				case in.ccl.database.Constants.STATE_ACTION_VIDEO_UPDATES_COMPLETE:
-					ArrayList <Items> list = VideoAlbumCursor.getVideos(VideoAlbumActivity.this, videoGalleryId);
-					adapter = new GridAdapter(VideoAlbumActivity.this, list, "video");
+					videoAlbumList = VideoAlbumCursor.getVideos(VideoAlbumActivity.this, videoGalleryId);
+					adapter = new GridAdapter(VideoAlbumActivity.this, videoAlbumList, "video");
 					gridView.setAdapter(adapter);
-					if (list.size() > 0) {
-						gridView.setOnScrollListener(new EndlessScrollListener(VideoAlbumActivity.this, adapter, videoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, list.get(0).getNumberOfPages()));
+					if (videoAlbumList.size() > 0) {
+						gridView.setOnScrollListener(new EndlessScrollListener(VideoAlbumActivity.this, adapter, videoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, videoAlbumList.get(0).getNumberOfPages()));
 					}
 					break;
 				default:

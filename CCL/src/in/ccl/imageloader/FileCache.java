@@ -1,6 +1,7 @@
 package in.ccl.imageloader;
 
 import java.io.File;
+
 import android.content.Context;
 
 public class FileCache {

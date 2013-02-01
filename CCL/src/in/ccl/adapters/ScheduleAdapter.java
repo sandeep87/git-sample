@@ -1,14 +1,11 @@
 package in.ccl.adapters;
 
-import in.ccl.helper.Util;
 import in.ccl.model.ScheduleItem;
 import in.ccl.ui.R;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;

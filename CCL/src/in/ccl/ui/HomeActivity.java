@@ -13,10 +13,6 @@ import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

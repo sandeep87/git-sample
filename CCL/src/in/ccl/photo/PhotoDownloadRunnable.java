@@ -17,6 +17,7 @@
 package in.ccl.photo;
 
 import in.ccl.database.Constants;
+import in.ccl.photo.PhotoDecodeRunnable.TaskRunnableDecodeMethods;
 
 import java.io.EOFException;
 import java.io.IOException;

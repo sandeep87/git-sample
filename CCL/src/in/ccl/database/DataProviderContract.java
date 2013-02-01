@@ -7,7 +7,7 @@ public class DataProviderContract {
 
 	public static final String DATABASE_NAME = "CCLDB";
 
-	public static final int DATABASE_VERSION = 1;
+	public static final int DATABASE_VERSION = 2;
 
 	public static final String CATEGORY_TITLE = "categoryTitle";
 
