@@ -70,7 +70,7 @@
                     android:id="@+id/team_view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:paddingLeft="5dp" />
+                    android:paddingRight="15dp" />
             </RelativeLayout>
 
             <RelativeLayout
