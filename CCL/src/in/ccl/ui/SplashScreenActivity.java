@@ -131,6 +131,26 @@ public class SplashScreenActivity extends FragmentActivity {
 		}
 	}
 
+	@Override
+	protected void onResume () {
+		super.onResume();
+		if (Util.getInstance().isOnline(this)) {
+
+			Intent mServiceIntent = new Intent(SplashScreenActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.team_url)));
+			startService(mServiceIntent);
+
+			for (int i = 1; i <= 8; i++) {
+				mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.team_members_url) + i));
+				mServiceIntent.putExtra("KEY", "team_members_updates");
+				startService(mServiceIntent);
+			}
+		}
+		else {
+			Toast.makeText(this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+		}
+
+	}
+
 	/**
 	 * Mode zero means initial download from server Mode one means updates from the server.
 	 * 
