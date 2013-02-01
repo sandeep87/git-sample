@@ -161,9 +161,9 @@ public class VideoGalleryActivity extends TopActivity {
 				case in.ccl.database.Constants.STATE_ACTION_VIDEO_ALBUM_UPDATES_COMPLETE:
 					Cursor cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
 					if (cursor != null && cursor.getCount() > 0) {
-						ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
-						if (videoAlbumItems.size() > 0) {
-							gridView.setAdapter(new GridAdapter(VideoGalleryActivity.this, videoAlbumItems, "video_gallery"));
+						videoGalleryList = VideoAlbumCursor.getItems(cursor);
+						if (videoGalleryList.size() > 0) {
+							gridView.setAdapter(new GridAdapter(VideoGalleryActivity.this, videoGalleryList, "video_gallery"));
 						}
 						else {
 							// display no items message.
