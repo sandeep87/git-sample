@@ -1,15 +1,18 @@
 package in.ccl.net;
 
 import in.ccl.ui.R;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;

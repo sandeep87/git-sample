@@ -4,7 +4,6 @@ import in.ccl.database.BannerCursor;
 import in.ccl.database.CCLPullService;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.DownloadItemsCursor;
-import in.ccl.database.NewsItemsCursor;
 import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.AnimationLayout;
@@ -322,30 +321,6 @@ public class MenuItems implements OnClickListener {
 				}
 
 				break;
-
-			case R.id.layout_news:
-				cursor = activity.getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null, DataProviderContract.NEWS_CATEGORY + " = 1", null, null);
-				if (cursor != null && cursor.getCount() > 0) {
-					list = NewsItemsCursor.getItems(cursor);
-					Intent newsIntent = new Intent(activity, NewsActivity.class);
-					newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, list);
-					// newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					activity.startActivity(newsIntent);
-				}
-				else {
-					if (Util.getInstance().isOnline(activity)) {
-						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.news_url)));
-						activity.startService(mServiceIntent);
-
-						mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.nation_news_url)));
-						activity.startService(mServiceIntent);
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
-				}
-				break;
-
 			case R.id.layout_downloads:
 				cursor = activity.getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
 				System.out.println("cursor lenght" + cursor.getCount());

@@ -1,13 +1,10 @@
 package in.ccl.ui;
 
-import in.ccl.adapters.ImagePagerAdapter;
 import in.ccl.adapters.TeamGridAdapter;
 import in.ccl.adapters.TeamImagePagerAdapter;
 import in.ccl.helper.Category;
 import in.ccl.helper.PageChangeListener;
 import in.ccl.helper.Util;
-import in.ccl.model.Items;
-import in.ccl.model.TeamItems;
 import in.ccl.model.TeamMember;
 import in.ccl.model.Teams;
 import in.ccl.util.Constants;
