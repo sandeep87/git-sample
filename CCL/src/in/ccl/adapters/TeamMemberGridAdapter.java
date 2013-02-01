@@ -73,8 +73,8 @@ public class TeamMemberGridAdapter extends BaseAdapter {
 			mViewHolder.txtPersonName = (TextView) convertView.findViewById(R.id.txt_person_name);
 			mViewHolder.txtRole = (TextView) convertView.findViewById(R.id.txt_role);
 			mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
-			Util.setTextFont((Activity) mContext, mViewHolder.txtRole);
-			Util.setTextFont((Activity) mContext, mViewHolder.txtPersonName);
+			//Util.setTextFont((Activity) mContext, mViewHolder.txtRole);
+			//Util.setTextFont((Activity) mContext, mViewHolder.txtPersonName);
 
 			mViewHolder.txtPersonName.setText(gridItemsList.get(position).getPersonName());
 			String role = gridItemsList.get(position).getRole().trim().toLowerCase().replaceAll("\\s+","");

@@ -132,16 +132,16 @@ public class TeamActivity extends TopActivity {
 		indicatorFourImage = (ImageView) findViewById(R.id.indicator_four);
 		IndicatorLayout = (LinearLayout) findViewById(R.id.team_page_indicator_layout);
 		teamName = (TextView) findViewById(R.id.txt_team_name);
-		Util.setTextFont(this, teamName);
+		//Util.setTextFont(this, teamName);
 
 		teamTitle = (TextView) findViewById(R.id.team_title);
-		// Util.setTextFont(this, teamTitle);
+		//Util.setTextFont(this, teamTitle);
 
 		TextView txtTheTeam = (TextView) findViewById(R.id.txt_theteam);
-		// Util.setTextFont(this, txtTheTeam);
+		//Util.setTextFont(this, txtTheTeam);
 		TextView txtBrandTitle = (TextView) findViewById(R.id.txt_brand_ambassadors);
-		// Util.setTextFont(this, txtBrandTitle);
-
+		//Util.setTextFont(this, txtBrandTitle);
+		
 		if (getIntent().hasExtra(Constants.EXTRA_TEAM_LOGO_KEY)) {
 			teamLogosList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_TEAM_LOGO_KEY);
 			teamName.setText(teamLogosList.get(0).getName().toUpperCase());

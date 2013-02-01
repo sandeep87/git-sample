@@ -10,7 +10,7 @@
                     android:id="@+id/indicator_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="30dp"
                     android:background="@drawable/teams_indicator_bg" >
                 </ImageView>
 
