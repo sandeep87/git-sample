@@ -85,8 +85,8 @@
                     android:layout_toRightOf="@id/txt_fst_team"
                     android:padding="3dip"
                     android:text="vs"
-                    android:textSize="10sp"
-    />
+                  
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/txt_second_team"
@@ -94,9 +94,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_vs"
                     android:padding="3dip"
-                    android:textSize="12sp"
                     android:textColor="@android:color/black"
-                    
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -106,8 +105,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/team_layout"
                 android:padding="3dip"
-                android:textSize="12sp"
                 android:paddingTop="5dip"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <View
@@ -115,10 +114,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0.5dp"
                 android:layout_below="@+id/txt_time"
-                android:background="@android:color/black"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                />
+                android:background="@android:color/black" />
             <!--
                  <ImageButton
                 android:id="@+id/img_fstteam_info"
@@ -152,8 +150,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="3dip"
-                    android:textSize="12sp"
                     android:textColor="@android:color/black"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -163,8 +161,7 @@
                     android:layout_toRightOf="@id/txt_scnd_team"
                     android:padding="3dip"
                     android:text="vs"
-                    android:textSize="12sp"
-                     />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/txt_opponent_team"
@@ -172,8 +169,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_scnd_vs"
                     android:padding="3dip"
-                    android:textSize="12sp"
                     android:textColor="@android:color/black"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 

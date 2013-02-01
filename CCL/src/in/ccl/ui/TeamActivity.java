@@ -137,10 +137,10 @@ public class TeamActivity extends TopActivity {
 		teamTitle = (TextView) findViewById(R.id.team_title);
 		Util.setTextFont(this, teamTitle);
 
-		TextView txtTheTeam = (TextView) findViewById(R.id.txt_theteam);
+		/*TextView txtTheTeam = (TextView) findViewById(R.id.txt_theteam);
 		Util.setTextFont(this, txtTheTeam);
 		TextView txtBrandTitle = (TextView) findViewById(R.id.txt_brand_ambassadors);
-		Util.setTextFont(this, txtBrandTitle);
+		Util.setTextFont(this, txtBrandTitle);*/
 
 		if (getIntent().hasExtra(Constants.EXTRA_TEAM_LOGO_KEY)) {
 			teamLogosList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_TEAM_LOGO_KEY);
