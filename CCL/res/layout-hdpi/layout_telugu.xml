@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_team_owners"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light" >
+
+    <RelativeLayout
+        android:id="@+id/main_layout_telugu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <!-- owner one -->
+
+        <RelativeLayout
+            android:id="@+id/owner_one_description_telugu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" >
+
+            <TextView
+                android:id="@+id/entire_team_title_telugu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dip"
+                android:text="TELUGU WARRIORS"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/owner_one_name_one_telugu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/entire_team_title_telugu"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:text="Mr. Mahesh Reddy"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_one_data_telugu"
+                android:layout_width="240dip"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/owner_one_name_one_telugu"
+                android:layout_marginLeft="2dp"
+                android:paddingRight="5dip"
+                android:text="AMR Constructions was established in the year 1992 and has diversified into mining, irrigation and construction. AMR has successfully executed various civil projects across India and Nepal."
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/owner_one_image_telugu"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/entire_team_title_telugu"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/owner_one_data_telugu"
+                android:src="@raw/mahesh_reddy" />
+
+          <!--   <TextView
+                android:id="@+id/owner_one_name_two_telugu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/owner_one_image_telugu"
+                android:layout_marginRight="3dip"
+                android:layout_toRightOf="@+id/owner_one_data_telugu"
+                android:paddingTop="1dip"
+                android:singleLine="false"
+                android:text="Mr. Mahesh Reddy"
+                android:textColor="@android:color/black" /> -->
+        </RelativeLayout>
+
+        <!-- Owner two -->
+
+        <RelativeLayout
+            android:id="@+id/owner_two_description_telugu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/owner_one_description_telugu"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dip" >
+
+            <TextView
+                android:id="@+id/owner_two_name_one_telugu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:text="Mr. A. Tirumal Reddy"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_two_data_telugu"
+                android:layout_width="240dip"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/owner_two_name_one_telugu"
+                android:layout_marginLeft="2dp"
+                android:text="Mr A. Tirumal Reddy is a media -sales entrepreneur with over 10 years of experience in electronic media. Sprint tele films is one of the leading compaines in Electronic media sales in South India."
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/owner_two_image_telugu"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@+id/owner_two_data_telugu"
+                android:src="@raw/tirumal_reddy" />
+
+            <!-- <TextView
+                android:id="@+id/owner_two_name_two_telugu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/owner_two_image_telugu"
+                android:layout_marginRight="3dip"
+                android:layout_toRightOf="@+id/owner_two_data_telugu"
+                android:paddingTop="1dip"
+                android:singleLine="false"
+                android:text="Mr. A. Tirumal Reddy"
+                android:textColor="@android:color/black" /> -->
+        </RelativeLayout>
+
+     
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip" >
+
+    <RelativeLayout
+        android:id="@+id/layout_scoreboard_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/titlescoreboard" >
+
+        <TextView
+            android:id="@+id/txt_participated_team_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip"
+            android:text="BENGAL TIGERS"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txt_vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txt_participated_team_one"
+            android:padding="5dip"
+            android:text="vs"
+            android:textColor="@color/dark_grey"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_participated_team_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txt_vs"
+            android:padding="5dip"
+            android:text="TELUGU WARRIORS"
+            android:textColor="@color/green"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+  
+    <RelativeLayout
+        android:id="@+id/layout_innings_btns"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_scoreboard_title"
+        android:paddingTop="3dip" >
+
+        <Button
+            android:id="@+id/btn_first_innings"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/inningstab_tapped"
+            android:paddingLeft="35dip"
+            android:paddingRight="34dip"
+            android:text="1ST INNINGS" />
+
+        <Button
+            android:id="@+id/btn_second_innings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_first_innings"
+            android:background="@drawable/innings_tab"
+            android:paddingLeft="35dip"
+            android:paddingRight="35dip"
+            android:text="2ND INNINGS" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_innings_scoreview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_innings_btns"
+        android:paddingTop="10dip" >
+
+        <TextView
+            android:id="@+id/txt_inningsteam_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:text="TELUGU WARRIORS"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/img_innings_logo"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/teluguwarriors_logo_scoreboard_bowling"
+            android:padding="20dip" />
+
+        <TextView
+            android:id="@+id/txt_innings_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:text="130/9"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <ListView
+            android:id="@+id/list_innings"
+            android:layout_width="wrap_content"
+            android:layout_height="200dip"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dip"
+            android:fadingEdge="none"
+            android:listSelector="@android:color/transparent"
+            android:paddingTop="40dip"
+            android:scrollbars="none" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_bowling_teamdetails"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_innings_scoreview"
+        android:paddingTop="10dip" >
+
+        <TextView
+            android:id="@+id/txt_bowlingteam_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:text="BENGAL TIGERS"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/img_bowlingteam_logo"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bengaltigerslogo_fullscoreboard"
+            android:padding="20dip" />
+
+        <TextView
+            android:id="@+id/txt_bowling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:text="BOWLING"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_bowler_innings"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_bowling_teamdetails"
+        android:paddingTop="10dip" >
+
+        <RelativeLayout
+            android:id="@+id/layout_bowler_innings_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bowlerstitle_scorecard" >
+
+            <TextView
+                android:id="@+id/layout_bowler_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dip"
+                android:text="BOWLER"
+                android:textColor="@color/dark_grey" />
+
+            <TextView
+                android:id="@+id/layout_bowler_overs_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/layout_bowler_name_title"
+                android:paddingBottom="10dip"
+                android:paddingLeft="35dip"
+                android:paddingTop="10dip"
+                android:text="OVERS"
+                android:textColor="@color/dark_grey" />
+
+            <TextView
+                android:id="@+id/layout_bowler_runs_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/layout_bowler_overs_title"
+                android:paddingBottom="10dip"
+                android:paddingLeft="30dip"
+                android:paddingTop="10dip"
+                android:text="RUNS"
+                android:textColor="@color/dark_grey" />
+
+            <TextView
+                android:id="@+id/layout_bowler_extras_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/layout_bowler_runs_title"
+                android:paddingBottom="10dip"
+                android:paddingLeft="30dip"
+                android:paddingTop="10dip"
+                android:text="EXTRAS"
+                android:textColor="@color/dark_grey" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_bowler_details"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_bowler_innings_title" >
+
+            <TextView
+                android:id="@+id/layout_bowler_name_detail"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:padding="10dip"
+                android:text="JEET"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/layout_bowler_overs_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/layout_bowler_name_detail"
+                android:paddingBottom="10dip"
+                android:paddingLeft="30dip"
+                android:paddingTop="10dip"
+                android:text="3.2"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/layout_bowler_runs_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/layout_bowler_overs_details"
+                android:paddingBottom="10dip"
+                android:paddingLeft="50dip"
+                android:paddingTop="10dip"
+                android:text="27"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
+                android:id="@+id/layout_bowler_extras_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/layout_bowler_runs_details"
+                android:paddingBottom="10dip"
+                android:paddingLeft="55dip"
+                android:paddingTop="10dip"
+                android:text="07"
+                android:textColor="@android:color/background_light" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

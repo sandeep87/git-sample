@@ -1,0 +1,183 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light" >
+
+    <RelativeLayout
+        android:id="@+id/main_layout_bengal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <!-- owner one -->
+
+        <RelativeLayout
+            android:id="@+id/owner_one_description_bengal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" >
+
+            <TextView
+                android:id="@+id/entire_team_title_bengal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dip"
+                android:text="BENGAL TIGERS"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_one_name_one_bengal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/entire_team_title_bengal"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:text="Mr. Boney Kapoor"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_one_data_bengal"
+                android:layout_width="240dip"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/owner_one_name_one_bengal"
+                android:layout_marginLeft="2dp"
+                android:paddingRight="5dip"
+                android:text="Mr. Boney Kapoor is one of the most high profile Bollywood producers who has delivered a number of huge successful hits. Boney Kapoor's journey began in 1980 in the industry and some of his biggest hits have been movies like Mr.India, No entry, Company, Wanted and national award winning movie 'Pukar'."
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/owner_one_image_bengal"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/entire_team_title_bengal"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@+id/owner_one_data_bengal"
+                android:src="@raw/boney_kapoor" />
+
+           <!--  <TextView
+                android:id="@+id/owner_one_name_two_bengal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/owner_one_image_bengal"
+                android:layout_marginRight="3dip"
+                android:layout_toRightOf="@+id/owner_one_data_bengal"
+                android:paddingTop="1dip"
+                android:singleLine="false"
+                android:text="Mr. Boney Kapoor"
+                android:textColor="@android:color/black" /> -->
+        </RelativeLayout>
+
+        <!-- Owner two -->
+
+        <RelativeLayout
+            android:id="@+id/owner_two_description_bengal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/owner_one_description_bengal"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dip" >
+
+            <TextView
+                android:id="@+id/owner_two_name_one_bengal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:text="Mr. Arjun Kapoor"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_two_data_bengal"
+                android:layout_width="240dip"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/owner_two_name_one_bengal"
+                android:layout_marginLeft="2dp"
+                android:text="Mr. Arjun Kapoor, the son of Boney Kapoor is an upcoming Bollywood actor. He won a lot of critical acclaim for his acting in his debut movie ishaqzaade."
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/owner_two_image_bengal"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/owner_two_data_bengal"
+                android:src="@raw/arjun_kapoor" />
+
+           <!--  <TextView
+                android:id="@+id/owner_two_name_two_bengal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/owner_two_image_bengal"
+                android:layout_marginRight="3dip"
+                android:layout_toRightOf="@+id/owner_two_data_bengal"
+                android:paddingTop="1dip"
+                android:singleLine="false"
+                android:text="Mr. Arjun Kapoor"
+                android:textColor="@android:color/black" /> -->
+        </RelativeLayout>
+
+        <!-- Owner three -->
+
+        <RelativeLayout
+            android:id="@+id/owner_three_description_bengal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/owner_two_description_bengal"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dip" >
+
+            <TextView
+                android:id="@+id/owner_three_name_one_bengal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:text="Mr. Raj Shah"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_three_data_bengal"
+                android:layout_width="240dip"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/owner_three_name_one_bengal"
+                android:layout_marginLeft="2dp"
+                android:text="Mr. Raj Shah started his career as a Management Consultant and then diversified into distribution of Indian films in North America, Event management and then on to Line Producing all over North America. Actively involved in the media world, sports was the next field to diversify."
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/owner_three_image_bengal"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@+id/owner_three_data_bengal"
+                android:src="@raw/raj_shah" />
+
+            <!-- <TextView
+                android:id="@+id/owner_three_name_two_bengal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/owner_three_image_bengal"
+                android:layout_marginRight="3dip"
+                android:layout_toRightOf="@+id/owner_three_data_bengal"
+                android:paddingTop="1dip"
+                android:singleLine="false"
+                android:text="Mr. Raj Shah"
+                android:textColor="@android:color/black" /> -->
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

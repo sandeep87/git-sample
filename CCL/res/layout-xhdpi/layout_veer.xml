@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light" >
+
+    <RelativeLayout
+        android:id="@+id/main_layout_veer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <!-- owner one -->
+
+        <RelativeLayout
+            android:id="@+id/owner_one_description_veer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" >
+
+            <TextView
+                android:id="@+id/entire_team_title_veer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dip"
+                android:text="VEER MARATHI"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_one_name_one_veer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/entire_team_title_veer"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:text="Mr. Riteish Deshmukh"
+                android:textColor="@android:color/black" 
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/owner_one_data_veer"
+                android:layout_width="240dip"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/owner_one_name_one_veer"
+                android:layout_marginLeft="2dp"
+                android:paddingRight="5dip"
+                android:text="Mr. Riteish Deshmukh is a highly successful and popular Bollywood actor who has acted in several Bollywood movies over the past 10 years. He has been a part of many commercial as well critically acclaimed films. Apart from his acting skills, Riteish is also well known for his cricketing abilities."
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/owner_one_image_veer"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/entire_team_title_veer"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/owner_one_data_veer"
+                android:src="@raw/ritesh_deshmukh_ow" />
+
+            <!-- <TextView
+                android:id="@+id/owner_one_name_two_veer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/owner_one_image_veer"
+                android:layout_marginRight="3dip"
+                android:layout_toRightOf="@+id/owner_one_data_veer"
+                android:paddingTop="1dip"
+                android:singleLine="false"
+                android:paddingLeft="20dp"
+                android:text="Mr. Riteish Deshmukh"
+                android:textColor="@android:color/black" /> -->
+        </RelativeLayout>
+
+      
+    </RelativeLayout>
+
+</RelativeLayout>
