@@ -89,7 +89,6 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
 			mViewHolder.imageLoader = (ImageView) convertView.findViewById(R.id.loading);
 			mViewHolder.image.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
-			mViewHolder.image.setImageDrawable(this.mEmptyDrawable);
 			mViewHolder.image.setScaleType(ImageView.ScaleType.MATRIX);
 
 			// mViewHolder.image.setPadding(5, 5, 5, 5);
@@ -98,9 +97,10 @@ public class GridAdapter extends BaseAdapter {
 		else {
 			mViewHolder = (ViewHolder) convertView.getTag();
 		}
+		mViewHolder.image.setImageDrawable(this.mEmptyDrawable);
 
 		// Util.setTextFont((Activity) mcontext, mViewHolder.title);
-		mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
+	//	mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
 		// DisplayImage displayImage = null;
 		if (isFrom.equals("video") || isFrom.equals("downloads")) {
 			mViewHolder.image.setImageURL(gridItemsList.get(position).getThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt,false);

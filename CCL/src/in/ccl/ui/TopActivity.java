@@ -105,13 +105,13 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		menuLayout = (LinearLayout) findViewById(R.id.menu_layout);
 
 		// for adds
-		adView = new AdView(this, AdSize.BANNER, Constants.MY_AD_UNIT_ID);
+		adView = (AdView)findViewById(R.id.adMob);
 		LinearLayout layout = (LinearLayout) findViewById(R.id.admob_layout);
 		layout.setVisibility(View.VISIBLE);
 		// Add the adView to it
-		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-		lp.gravity = Gravity.CENTER_HORIZONTAL;
-		layout.addView(adView, lp);
+	//	LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+	//	lp.gravity = Gravity.CENTER_HORIZONTAL;
+	//	layout.addView(adView, lp);
 
 		// Initiate a generic request to load it with an ad
 		AdRequest adRequest = new AdRequest();
