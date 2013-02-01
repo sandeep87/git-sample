@@ -170,5 +170,4 @@ public class VideoAlbumActivity extends TopActivity {
 			}
 		}
 	}
-
 }

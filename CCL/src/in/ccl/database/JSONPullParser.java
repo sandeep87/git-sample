@@ -77,17 +77,7 @@ public class JSONPullParser {
 					}
 					mImages.add(item);
 				}
-				// Testing for Banner items updates.
-				/*
-				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 13); item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28203%29.jpg");
-				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update ONE"); item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1234); mImages.add(item);
-				 * 
-				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 14); item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%28100%29.jpg");
-				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update TWO"); item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1235); mImages.add(item);
-				 * 
-				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 15); item.put(DataProviderContract.BANNER_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event/CCL%203%20Curtain%20Raiser%20Event%20%2860%29.jpg");
-				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "CCL 3 : Curtain Raiser Event update THREE"); item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, 1236); mImages.add(item);
-				 */}
+				}
 			catch (JSONException e) {
 				Log.i(TAG, "Banner items parsing exception");
 			}
@@ -159,14 +149,6 @@ public class JSONPullParser {
 					mImages.add(item);
 				}
 
-				// TESTING FOR UPDATES OF PHOTO GALLERY
-				/*
-				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 111); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 ONE"); item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN,
-				 * "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20%28217%29.jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 112); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Two");
-				 * item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(215).jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 113);
-				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Three"); item.put(DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item);
-				 */
-
 			}
 			catch (JSONException e) {
 				Log.i(TAG, "Photo album json parsing exception");
@@ -206,13 +188,7 @@ public class JSONPullParser {
 					}
 					mImages.add(item);
 				}
-				// testing for updates
-				/*
-				 * item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 111); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video One"); item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN,
-				 * "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 112); item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video Two");
-				 * item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item); item = new ContentValues(); item.put(DataProviderContract.ROW_ID, 113);
-				 * item.put(DataProviderContract.IMAGE_NAME_COLUMN, "New CCL3 Video THree"); item.put(DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, "http://www.ccl.in/images/gallery/CCL%203%20Curtain%20Raiser%20Event%20thumb/CCL%203%20Curtain%20Raiser%20Event%20(213).jpg"); mImages.add(item);
-				 */}
+			}
 			catch (JSONException e) {
 				e.printStackTrace();
 				Log.i(TAG, "Video album parsing exception.");
@@ -222,7 +198,6 @@ public class JSONPullParser {
 
 	public void parsePhotoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 		String result = readStream(inputStream);
-		System.out.println("Result " + result);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		ContentValues pages = new ContentValues();
@@ -319,46 +294,7 @@ public class JSONPullParser {
 				Log.i(TAG, e.toString());
 			}
 		}
-	}
-
-	public void parseNewsJson (InputStream inputStream, BroadcastNotifier mBroadcaster, int categoryId) {
-
-		String result = readStream(inputStream);
-		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
-		JSONArray jsonArray;
-		try {
-			jsonArray = new JSONArray(result);
-			for (int i = 0; i < jsonArray.length(); i++) {
-				item = new ContentValues();
-				// regionalNewsItems = new Items();
-				JSONObject jsonObject = jsonArray.getJSONObject(i);
-				if (jsonObject.has("news_id")) {
-					int id = jsonObject.getInt("news_id");
-					item.put(DataProviderContract.NEWS_ID, id);
-				}
-				if (jsonObject.has("news_title")) {
-					String title = jsonObject.getString("news_title");
-					item.put(DataProviderContract.NEWS_TITLE, title);
-				}
-				if (jsonObject.has("news_url")) {
-					String url = jsonObject.getString("news_url");
-					item.put(DataProviderContract.NEWS_URL, url);
-				}
-				item.put(DataProviderContract.NEWS_CATEGORY, categoryId);
-				mImages.add(item);
-			}
-			// testing for updates
-			/*
-			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 111111); item.put(DataProviderContract.NEWS_TITLE, "venky................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 1); mImages.add(item);
-			 * 
-			 * item = new ContentValues(); item.put(DataProviderContract.NEWS_ID, 22222); item.put(DataProviderContract.NEWS_TITLE, "phani................."); item.put(DataProviderContract.NEWS_URL, "dynamic updates"); item.put(DataProviderContract.NEWS_CATEGORY, 2); mImages.add(item);
-			 */
-		}
-		catch (JSONException e) {
-			e.printStackTrace();
-		}
-
-	}
+	}	
 
 	public void parseDownloadJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 		String result = readStream(inputStream);
@@ -387,7 +323,6 @@ public class JSONPullParser {
 				for (int i = 0; i < jsonArray.length(); i++) {
 
 					item = new ContentValues();
-					// item.put(DataProviderContract.CATEGORY_ID, pages.getAsInteger(DataProviderContract.CATEGORY_ID));
 
 					JSONObject jsonObject = jsonArray.getJSONObject(i);
 
