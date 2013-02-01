@@ -41,7 +41,7 @@ public class TeamMemberGridAdapter extends BaseAdapter {
 		mEmptyDrawable = context.getResources().getDrawable(R.drawable.imagenotqueued);
 		Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
 		int height = display.getHeight();
-		reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+		reqImageHeight = (int) (((float) 15 / 100) * (height - 50));
 	}
 
 	@Override
@@ -73,8 +73,8 @@ public class TeamMemberGridAdapter extends BaseAdapter {
 			mViewHolder.txtPersonName = (TextView) convertView.findViewById(R.id.txt_person_name);
 			mViewHolder.txtRole = (TextView) convertView.findViewById(R.id.txt_role);
 			mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
-			Util.setTextFont((Activity) mContext, mViewHolder.txtRole);
-			Util.setTextFont((Activity) mContext, mViewHolder.txtPersonName);
+			//Util.setTextFont((Activity) mContext, mViewHolder.txtRole);
+			//Util.setTextFont((Activity) mContext, mViewHolder.txtPersonName);
 
 			mViewHolder.txtPersonName.setText(gridItemsList.get(position).getPersonName());
 			String role = gridItemsList.get(position).getRole().trim().toLowerCase().replaceAll("\\s+","");
