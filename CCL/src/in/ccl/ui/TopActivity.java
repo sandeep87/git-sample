@@ -3,6 +3,7 @@ package in.ccl.ui;
 import in.ccl.database.BannerCursor;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.DownloadItemsCursor;
+import in.ccl.database.NewsItemsCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
 import in.ccl.model.Items;
@@ -114,13 +115,13 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		layout.addView(adView, lp);
 
 		// Initiate a generic request to load it with an ad
-		// AdRequest adRequest = new AdRequest();
+	//	AdRequest adRequest = new AdRequest();
 		/*
 		 * <<<<<<< HEAD //adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator adRequest.addTestDevice("TEST_DEVICE_ID"); // Test Android Device adView.loadAd(adRequest);//new AdRequest() =======
 		 */
-		// adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+		//adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
 
-		// adView.loadAd(adRequest);// new AdRequest()
+	//	adView.loadAd(adRequest);// new AdRequest()
 		adView.loadAd(new AdRequest());
 		/*
 		 * notificationTxt = (TextView) findViewById(R.id.notification_textview); notificationTitle = (TextView) findViewById(R.id.notification_title_textview); TextView notificationOneTxt = (TextView) findViewById(R.id.notification_item1); TextView notificationTwoTxt = (TextView)
@@ -324,9 +325,23 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 			switch (intent.getIntExtra(Constants.EXTENDED_DATA_STATUS, Constants.STATE_ACTION_COMPLETE)) {
 
+				case in.ccl.database.Constants.STATE_ACTION_NEWS_COMPLETE:
+
+					Cursor cursor = getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null, null, null, null);
+					ArrayList <Items> newsItems = NewsItemsCursor.getItems(cursor);
+					Intent newsIntent = new Intent(TopActivity.this, NewsActivity.class);
+					if (newsItems != null) {
+						newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, newsItems);
+					}
+					if (cursor != null) {
+						cursor.close();
+					}
+					// newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					startActivity(newsIntent);
+					break;
 				case in.ccl.database.Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE:
 
-					Cursor cursor = getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
+					cursor = getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
 					ArrayList <Items> downloadImageItems = DownloadItemsCursor.getItems(cursor);
 					if (cursor != null) {
 						cursor.close();
@@ -375,7 +390,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 			}
 		}
 	}
-
 	private void callTeamIntent (ArrayList <Teams> teamLogoItems, ArrayList <TeamMember> teamMemberItems) {
 		Intent teamActivityIntent = new Intent(this, TeamActivity.class);
 		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
