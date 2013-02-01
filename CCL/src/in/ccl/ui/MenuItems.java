@@ -36,7 +36,7 @@ public class MenuItems implements OnClickListener {
 	private static MenuItems singleInstance;
 
 	private Activity activity;
-	
+
 	private AnimationLayout mLayout;
 
 	public static ArrayList <Items> teamLogosList;
@@ -106,13 +106,13 @@ public class MenuItems implements OnClickListener {
 		RelativeLayout layoutNews = (RelativeLayout) layout.findViewById(R.id.layout_news);
 		RelativeLayout layoutVideo = (RelativeLayout) layout.findViewById(R.id.layout_videos);
 		// RelativeLayout layoutScore = (RelativeLayout) layout.findViewById(R.id.layout_scores);
-		 RelativeLayout layoutDownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
+		RelativeLayout layoutDownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
 
 		TextView photoTxt = (TextView) layout.findViewById(R.id.txt_photo);
 		TextView newsTxt = (TextView) layout.findViewById(R.id.txt_news);
 		TextView homeTxt = (TextView) layout.findViewById(R.id.txt_home);
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
-		 TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
+		TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
 		TextView scheduleTxt = (TextView) layout.findViewById(R.id.txt_schedule);
 		// TextView scoreTxt = (TextView) layout.findViewById(R.id.txt_score);
 		TextView teamsTxt = (TextView) layout.findViewById(R.id.txt_tems);
@@ -123,7 +123,7 @@ public class MenuItems implements OnClickListener {
 		Util.setTextFont(activity, newsTxt);
 		Util.setTextFont(activity, homeTxt);
 		Util.setTextFont(activity, ownersTxt);
-		 Util.setTextFont(activity, downloadsTxt);
+		Util.setTextFont(activity, downloadsTxt);
 		Util.setTextFont(activity, scheduleTxt);
 		// Util.setTextFont(activity, scoreTxt);
 		Util.setTextFont(activity, videosTxt);
@@ -136,7 +136,7 @@ public class MenuItems implements OnClickListener {
 		layoutTeams.setOnClickListener(this);
 		layoutOwner.setOnClickListener(this);
 		layoutVideo.setOnClickListener(this);
-		 layoutDownloads.setOnClickListener(this);
+		layoutDownloads.setOnClickListener(this);
 		layoutHome.setOnClickListener(this);
 		// layoutScore.setOnClickListener(this);
 		layoutNews.setOnClickListener(this);
@@ -198,56 +198,53 @@ public class MenuItems implements OnClickListener {
 			 * Intent notificationIntent = new Intent(activity, NotificationActivity.class); activity.startActivity(notificationIntent);
 			 * 
 			 * break;
-			 */	case R.id.layout_teams:
-					cursor = activity.getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
-					if (cursor != null && cursor.getCount() > 0) {
+			 */case R.id.layout_teams:
+				cursor = activity.getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
+				if (cursor != null && cursor.getCount() > 0) {
 
-						ArrayList <Teams> teamLogoItems = null;
-						ArrayList <TeamMember> teamMemberItems = null;
+					ArrayList <Teams> teamLogoItems = null;
+					ArrayList <TeamMember> teamMemberItems = null;
 
-						teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
-						
-						if (cursor != null) {
-							cursor.close();
-						}
-						cursor = activity.getContentResolver().query(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, null, null, null, null);
-						if (cursor.getCount() > 0) {
-							teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
+					teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
 
-						}
-						if (cursor != null) {
-							cursor.close();
-						}
-						if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
+					if (cursor != null) {
+						cursor.close();
+					}
+					cursor = activity.getContentResolver().query(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor.getCount() > 0) {
+						teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
 
-							callTeamIntent(teamLogoItems, teamMemberItems);
+					}
+					if (cursor != null) {
+						cursor.close();
+					}
+					if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
 
-						}
-						else {
-							Log.e("MenuItems", "Problem Occured While Retriving Team Data From DB ");
-						}
+						callTeamIntent(teamLogoItems, teamMemberItems);
+
 					}
 					else {
-						if(cursor != null){
-							cursor.close();
-						}
-
-						if (Util.getInstance().isOnline(activity)) {
-
-						Intent	mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_url)));
-							activity.startService(mServiceIntent);
-
-							for (int i = 1; i <= 8; i++) {
-								mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_members_url) + i));
-								mServiceIntent.putExtra("KEY", "team_members");
-								activity.startService(mServiceIntent);
-							}
-
-						}
-						else {
-							Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-						}
+						Log.e("MenuItems", "Problem Occured While Retriving Team Data From DB ");
 					}
+				}
+				else {
+					if (cursor != null) {
+						cursor.close();
+					}
+					if (Util.getInstance().isOnline(activity)) {
+						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_url)));
+						activity.startService(mServiceIntent);
+						for (int i = 1; i <= 8; i++) {
+							mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_members_url) + i));
+							mServiceIntent.putExtra("KEY", "team_members");
+							activity.startService(mServiceIntent);
+						}
+
+					}
+					else {
+						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
+				}
 				break;
 
 			case R.id.layout_ownerslounge:
@@ -327,37 +324,38 @@ public class MenuItems implements OnClickListener {
 				break;
 
 			case R.id.layout_news:
-				cursor = activity.getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null, DataProviderContract.NEWS_CATEGORY +" = 1", null, null);
-				if(cursor != null && cursor.getCount()>0){
+				cursor = activity.getContentResolver().query(DataProviderContract.NEWS_TABLE_CONTENTURI, null, DataProviderContract.NEWS_CATEGORY + " = 1", null, null);
+				if (cursor != null && cursor.getCount() > 0) {
 					list = NewsItemsCursor.getItems(cursor);
 					Intent newsIntent = new Intent(activity, NewsActivity.class);
 					newsIntent.putParcelableArrayListExtra(Constants.EXTRA_NEWS_KEY, list);
-					//newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					// newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					activity.startActivity(newsIntent);
-				}else{
+				}
+				else {
 					if (Util.getInstance().isOnline(activity)) {
 						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.news_url)));
-						activity.startService(mServiceIntent);			
-						
-					  mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.nation_news_url)));
-					  activity.startService(mServiceIntent);
+						activity.startService(mServiceIntent);
+
+						mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.nation_news_url)));
+						activity.startService(mServiceIntent);
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 					}
 				}
 				break;
-				
-				
+
 			case R.id.layout_downloads:
 				cursor = activity.getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
-				System.out.println("cursor lenght"+cursor.getCount());
-				if(cursor != null && cursor.getCount()>0){
+				System.out.println("cursor lenght" + cursor.getCount());
+				if (cursor != null && cursor.getCount() > 0) {
 					list = DownloadItemsCursor.getItems(cursor);
 					Intent downloadImageIntent = new Intent(activity, DownloadActivity.class);
 					downloadImageIntent.putParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY, list);
 					activity.startActivity(downloadImageIntent);
-				}else{
+				}
+				else {
 					if (Util.getInstance().isOnline(activity)) {
 						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.downloads_url)));
 						activity.startService(mServiceIntent);
@@ -366,8 +364,7 @@ public class MenuItems implements OnClickListener {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 					}
 				}
-			
-				
+
 			default:
 				break;
 		}

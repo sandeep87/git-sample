@@ -11,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.ContentValues;
-import android.net.Uri;
 import android.util.Log;
 
 public class JSONPullParser {
@@ -308,10 +307,6 @@ public class JSONPullParser {
 						}
 						if (resultJsonObject.has("video_thumb")) {
 							String photoThumb = resultJsonObject.getString("video_thumb");
-							if (albumId == 26) {
-								photoThumb = Uri.parse(photoThumb).getLastPathSegment();
-								photoThumb = "https://s3.amazonaws.com/celebrity_cricket_league/images/videos/ccl3-curtain-raiser/" + photoThumb;
-							}
 							item.put(DataProviderContract.THUMB_IMAGE_URL, photoThumb);
 						}
 						mImages.add(item);
