@@ -18,7 +18,7 @@
         android:layout_below="@+id/img_team_member"
         android:paddingLeft="3dp"
         android:textColor="@android:color/black"
-       android:textSize="10sp" />
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/txt_role"
@@ -28,7 +28,6 @@
         android:paddingLeft="3dp"
         android:textColor="@android:color/black"
         android:textSize="10sp" />
-
 
     <TextView
         android:id="@+id/error_title"
