@@ -102,13 +102,13 @@ public class MenuItems implements OnClickListener {
 		RelativeLayout layoutTeams = (RelativeLayout) layout.findViewById(R.id.layout_teams);
 		RelativeLayout layoutOwner = (RelativeLayout) layout.findViewById(R.id.layout_ownerslounge);
 		RelativeLayout layoutHome = (RelativeLayout) layout.findViewById(R.id.layout_home);
-		RelativeLayout layoutNews = (RelativeLayout) layout.findViewById(R.id.layout_news);
+		
 		RelativeLayout layoutVideo = (RelativeLayout) layout.findViewById(R.id.layout_videos);
 		// RelativeLayout layoutScore = (RelativeLayout) layout.findViewById(R.id.layout_scores);
 		RelativeLayout layoutDownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
 
 		TextView photoTxt = (TextView) layout.findViewById(R.id.txt_photo);
-		TextView newsTxt = (TextView) layout.findViewById(R.id.txt_news);
+		
 		TextView homeTxt = (TextView) layout.findViewById(R.id.txt_home);
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
 		TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
@@ -119,7 +119,7 @@ public class MenuItems implements OnClickListener {
 		// TextView notificationsTxt = (TextView) layout.findViewById(R.id.txt_notifications);
 
 		Util.setTextFont(activity, photoTxt);
-		Util.setTextFont(activity, newsTxt);
+	
 		Util.setTextFont(activity, homeTxt);
 		Util.setTextFont(activity, ownersTxt);
 		Util.setTextFont(activity, downloadsTxt);
@@ -138,7 +138,7 @@ public class MenuItems implements OnClickListener {
 		layoutDownloads.setOnClickListener(this);
 		layoutHome.setOnClickListener(this);
 		// layoutScore.setOnClickListener(this);
-		layoutNews.setOnClickListener(this);
+	
 
 		/*
 		 * chennaiTeamMembersList = Util.getInstance().getChnnaiTeamMembersList(); teluguTeamMembersList = Util.getInstance().getTeluguWarriorsTeamMembersList(); karnatakaTeamMembersList = Util.getInstance().getKarnatakaTeamMembersList(); keralaTeamMembersList =
