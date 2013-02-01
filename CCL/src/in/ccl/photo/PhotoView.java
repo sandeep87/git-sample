@@ -233,7 +233,7 @@ public class PhotoView extends ImageView {
 	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {
 		Matrix matrix = getImageMatrix();
 		float scaleFactor = getWidth() / (float) getDrawable().getIntrinsicWidth();
-		matrix.setScale(scaleFactor, scaleFactor, 0, 0);
+		matrix.setScale(scaleFactor, scaleFactor, 5, 5);
 		setImageMatrix(matrix);
 		return super.setFrame(frameLeft, frameTop, frameRight, frameBottom);
 	}
