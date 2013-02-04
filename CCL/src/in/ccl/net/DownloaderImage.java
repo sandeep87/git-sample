@@ -39,7 +39,6 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	private ProgressDialog mProgressDialog;
 
 	private int imageId;
-	
 
 	public final static String APP_THUMBNAIL_PATH_SD_CARD = "/download";
 

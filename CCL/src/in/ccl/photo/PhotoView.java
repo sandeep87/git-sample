@@ -230,7 +230,6 @@ public class PhotoView extends ImageView {
 	}
 
 	@Override
-
 	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {/*
 		Matrix matrix = getImageMatrix();
 		float scaleFactor = getWidth() / (float) getDrawable().getIntrinsicWidth();
@@ -254,8 +253,6 @@ public class PhotoView extends ImageView {
 		 matrix.setScale(scale, scale);
 		 setImageMatrix(matrix);
 		 return super.setFrame(frameLeft, frameTop,  frameRight,  frameBottom);
-	
-
 	}
 	@Override
 	public void setImageDrawable (Drawable drawable) {
