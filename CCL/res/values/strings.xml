@@ -85,5 +85,8 @@
 
     <!-- End Teams -->
     <string name="ambassadors">Ambassadors</string>
-<string name="schedule_title">TENTATIVE SCHEDULE</string>
+    <string name="schedule_title">TENTATIVE SCHEDULE</string>
+    
+    <string name="error_title">Unable to retrieve content at this moment</string>
+    
 </resources>
