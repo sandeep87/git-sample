@@ -253,7 +253,6 @@ public class PhotoView extends ImageView {
 		 matrix.setScale(scale, scale);
 		 setImageMatrix(matrix);
 		 return super.setFrame(frameLeft, frameTop,  frameRight,  frameBottom);
-	
 	}
 	@Override
 	public void setImageDrawable (Drawable drawable) {
