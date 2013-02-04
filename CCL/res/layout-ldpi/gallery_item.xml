@@ -17,6 +17,7 @@
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/overlay"
+        android:gravity="center_vertical|center_horizontal"
         android:paddingLeft="3dp"
         android:textColor="@android:color/white"
         android:textSize="10sp" />
