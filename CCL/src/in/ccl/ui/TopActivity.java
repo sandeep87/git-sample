@@ -77,6 +77,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	private IntentFilter statusIntentFilter;
 
+	private 	LinearLayout adsLayout;
 	/*
 	 * private TextView notificationTxt;
 	 * 
@@ -106,8 +107,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 		// for adds
 		adView = (AdView)findViewById(R.id.adMob);
-		LinearLayout layout = (LinearLayout) findViewById(R.id.admob_layout);
-		layout.setVisibility(View.VISIBLE);
+		adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
+		adsLayout.setVisibility(View.VISIBLE);
 		// Add the adView to it
 	//	LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
 	//	lp.gravity = Gravity.CENTER_HORIZONTAL;
@@ -341,13 +342,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 				case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
 					ArrayList <Teams> teamLogoItems = null;
 					ArrayList <TeamMember> teamMemberItems = null;
-					System.out.println("kranthi STATE_ACTION_TEAM_MEMBERS_COMPLETE ");
-
 					cursor = getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
 					if (cursor.getCount() > 0) {
 						teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
-						System.out.println("kranthi teamLogoItems size " + " " + teamLogoItems.size());
-
 					}
 					if (cursor != null) {
 						cursor.close();
@@ -355,16 +352,12 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 					cursor = getContentResolver().query(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, null, null, null, null);
 					if (cursor.getCount() > 0) {
 						teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
-						System.out.println("kranthi teamMemberItems size " + " " + teamMemberItems.size());
-
 					}
 					if (cursor != null) {
 						cursor.close();
 					}
 					if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
-
 						callTeamIntent(teamLogoItems, teamMemberItems);
-
 					}
 					else {
 						Log.e(TAG, "Team Data is not availble");
@@ -375,7 +368,11 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 			}
 		}
 	}
-
+  public void disableAds(){
+  	if(adsLayout != null){
+  		adsLayout.setVisibility(View.GONE);
+  	}
+  }
 	private void callTeamIntent (ArrayList <Teams> teamLogoItems, ArrayList <TeamMember> teamMemberItems) {
 		Intent teamActivityIntent = new Intent(this, TeamActivity.class);
 		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
