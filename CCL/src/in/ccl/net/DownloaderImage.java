@@ -1,5 +1,6 @@
 package in.ccl.net;
 
+import in.ccl.database.DownloadItemsCursor;
 import in.ccl.ui.R;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -44,7 +46,6 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	public DownloaderImage(Context mcontext2, int id) {
 		mContext = mcontext2;
 		imageId = id;
-
 	}
 
 	@Override
@@ -58,8 +59,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 		/*mProgressDialog  = new ProgressDialog(mContext);
 		mProgressDialog.setTitle(mContext.getResources().getString(R.string.downloading_image));
 		mProgressDialog.show();*/
-		mProgressDialog = ProgressDialog.show(mContext, "Wait", mContext.getResources().getString(R.string.downloading_image));
-
+		mProgressDialog = ProgressDialog.show(mContext,null, mContext.getResources().getString(R.string.downloading_image));
 	}
 
 	@Override

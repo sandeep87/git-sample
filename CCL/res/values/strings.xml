@@ -71,7 +71,7 @@
     <string name="downloading_fail">Fail to DownloadImage .Please try again</string>
     <string name="downloading_succuss">Download  Completed Successfully</string>
     <string name="no_sdcard">Not available sdcard. Please insert the sdcard</string>
-    <string name="downloading_image">Downloading Image</string>
+    <string name="downloading_image">Please wait, while downloading...</string>
     <!-- Teams -->
     <string name="mumbai">mumbai team</string>
     <string name="chennai">chennai-rhinos</string>
