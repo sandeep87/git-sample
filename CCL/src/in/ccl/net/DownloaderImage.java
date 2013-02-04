@@ -39,8 +39,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	private ProgressDialog mProgressDialog;
 
 	private int imageId;
-	
-	public final static String APP_PATH_SD_CARD = "/CCL/";
+
 	public final static String APP_THUMBNAIL_PATH_SD_CARD = "/download";
 
 	public DownloaderImage(Context mcontext2, int id) {
@@ -135,7 +134,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	
 	public boolean saveImageToExternalStorage(Bitmap image) {
 		String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + APP_THUMBNAIL_PATH_SD_CARD;
-   System.out.println("nagesh download image path"+fullPath);
+
 		try {
 		File dir = new File(fullPath);
 		if (!dir.exists()) {

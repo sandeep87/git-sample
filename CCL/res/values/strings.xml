@@ -75,7 +75,7 @@
     <!-- Teams -->
     <string name="mumbai">mumbai team</string>
     <string name="chennai">chennai-rhinos</string>
-    <string name="telugu">telugu-warrios</string>
+    <string name="telugu">telugu warriors</string>
     <string name="karanataka">karanataka-bulldozers</string>
     <string name="kerala">kerala-strikers</string>
     <string name="bengal">bengal-tigers</string>
@@ -85,5 +85,8 @@
 
     <!-- End Teams -->
     <string name="ambassadors">Ambassadors</string>
-<string name="schedule_title">TENTATIVE SCHEDULE</string>
+    <string name="schedule_title">TENTATIVE SCHEDULE</string>
+    
+    <string name="error_title">Unable to retrieve content at this moment</string>
+    
 </resources>

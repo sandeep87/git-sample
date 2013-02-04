@@ -13,11 +13,12 @@
         android:horizontalSpacing="5dp"
         android:listSelector="@android:color/transparent"
         android:numColumns="4"
-        android:paddingLeft="15dp"
+      
         android:paddingTop="4dp"
         android:scrollbars="none"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="2dp" >
+        android:verticalSpacing="2dp" 
+        >
     </GridView>
 
 </FrameLayout>
