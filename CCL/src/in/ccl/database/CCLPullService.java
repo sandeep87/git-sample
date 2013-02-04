@@ -1,6 +1,7 @@
 package in.ccl.database;
 
 import in.ccl.model.Items;
+import in.ccl.ui.R;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -253,6 +254,20 @@ public class CCLPullService extends IntentService {
 						}
 						else if (compareKey.equals("teams")) {
 							getContentResolver().bulkInsert(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, imageValuesArray);
+							Cursor teamCursor = getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
+							if (teamCursor != null && teamCursor.getCount() > 0) {
+								if (teamCursor.moveToFirst()) {
+									do {
+										Intent mServiceIntent = new Intent(CCLPullService.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.team_members_url) + teamCursor.getInt(0)));
+										mServiceIntent.putExtra("KEY", "team_members_updates");
+										startService(mServiceIntent);
+									}
+									while (teamCursor.moveToNext());
+								}
+							}
+							if (teamCursor != null) {
+								teamCursor.close();
+							}
 						}
 						else {
 							if (compareKey.equals("team_members") || compareKey.equals("team_members_updates")) {
@@ -270,7 +285,6 @@ public class CCLPullService extends IntentService {
 
 							// No previous metadata existed, so insert the data
 							getContentResolver().insert(DataProviderContract.DATE_TABLE_CONTENTURI, dateValues);
-
 						}
 						else {
 							// Previous metadata existed, so update it.
@@ -322,7 +336,8 @@ public class CCLPullService extends IntentService {
 					}
 					else if (compareKey.equals("videos_updates")) {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_VIDEO_UPDATES_COMPLETE, null);
-					}else if (compareKey.equals("photo_updates")) {
+					}
+					else if (compareKey.equals("photo_updates")) {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE, null);
 					}
 					else if (compareKey.equals("downloads")) {
