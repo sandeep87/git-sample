@@ -83,41 +83,41 @@ public class TeamActivity extends TopActivity {
 	private ArrayList <TeamMember> teluguTeamMembersList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> teluguTeamAmbassadorsList = new ArrayList <TeamMember>();
-	
-	
+
 	private ArrayList <TeamMember> karanatakaTeamMembersTotalList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> karanatakaTeamMembersList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> karanatakaTeamAmbassadorsList = new ArrayList <TeamMember>();
-	
-	//kerala
+
+	// kerala
 	private ArrayList <TeamMember> keralaTeamMembersTotalList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> keralaTeamMembersList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> keralaTeamAmbassadorsList = new ArrayList <TeamMember>();
-	
-	//bengal
+
+	// bengal
 	private ArrayList <TeamMember> bengalTeamMembersTotalList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> bengalTeamMembersList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> bengalTeamAmbassadorsList = new ArrayList <TeamMember>();
-	
-	//veer
+
+	// veer
 	private ArrayList <TeamMember> veerTeamMembersTotalList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> veerTeamMembersList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> veerTeamAmbassadorsList = new ArrayList <TeamMember>();
-	
-	//bhojpuri
+
+	// bhojpuri
 	private ArrayList <TeamMember> bhojpuriTeamMembersTotalList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> bhojpuriTeamMembersList = new ArrayList <TeamMember>();
 
 	private ArrayList <TeamMember> bhojpuriTeamAmbassadorsList = new ArrayList <TeamMember>();
+
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -132,16 +132,16 @@ public class TeamActivity extends TopActivity {
 		indicatorFourImage = (ImageView) findViewById(R.id.indicator_four);
 		IndicatorLayout = (LinearLayout) findViewById(R.id.team_page_indicator_layout);
 		teamName = (TextView) findViewById(R.id.txt_team_name);
-		Util.setTextFont(this, teamName);
+		//Util.setTextFont(this, teamName);
 
 		teamTitle = (TextView) findViewById(R.id.team_title);
-		Util.setTextFont(this, teamTitle);
+		//Util.setTextFont(this, teamTitle);
 
 		TextView txtTheTeam = (TextView) findViewById(R.id.txt_theteam);
-		Util.setTextFont(this, txtTheTeam);
+		//Util.setTextFont(this, txtTheTeam);
 		TextView txtBrandTitle = (TextView) findViewById(R.id.txt_brand_ambassadors);
-		Util.setTextFont(this, txtBrandTitle);
-
+		//Util.setTextFont(this, txtBrandTitle);
+		
 		if (getIntent().hasExtra(Constants.EXTRA_TEAM_LOGO_KEY)) {
 			teamLogosList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_TEAM_LOGO_KEY);
 			teamName.setText(teamLogosList.get(0).getName().toUpperCase());
@@ -292,7 +292,7 @@ public class TeamActivity extends TopActivity {
 	}
 
 	private void setTeamAmbassadorsToAdapter (ArrayList <TeamMember> teamAmbassadorsList) {
-		if (teamAmbassadorsList != null ) {
+		if (teamAmbassadorsList != null) {
 			teamAmbassadorViewPager.setAdapter(new TeamImagePagerAdapter(this, teamAmbassadorsList, Category.TEAM_AMBASSADORS));
 			teamAmbassadorViewPager.setOnClickListener(null);
 			teamAmbassadorViewPager.setOnPageChangeListener(new PageChangeListener(null, teamAmbassadorViewPager));
@@ -449,9 +449,7 @@ public class TeamActivity extends TopActivity {
 
 					int index = (3 * position) + (position + pos);
 					/*
-					 * teamLayout.setBackgroundResource(items.get(index).getTeamDetailsResource());
-					 * ImageView teamPlayers = (ImageView) teamLayout.findViewById(R.id.team_player); 
-					 * teamPlayers.setBackgroundResource(items.get(index).getTeamPlayersResource());
+					 * teamLayout.setBackgroundResource(items.get(index).getTeamDetailsResource()); ImageView teamPlayers = (ImageView) teamLayout.findViewById(R.id.team_player); teamPlayers.setBackgroundResource(items.get(index).getTeamPlayersResource());
 					 */
 				}
 			});

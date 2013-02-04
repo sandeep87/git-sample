@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp" >
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -22,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/teams"
                 android:textColor="@android:color/black"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:id="@+id/team_page_indicator_layout"
@@ -68,7 +71,7 @@
                     android:id="@+id/team_view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:paddingLeft="5dp" />
+                    android:paddingLeft="0dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -84,8 +87,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:padding="5dip"
-                    android:background="@drawable/menu_tabs"
+                    android:padding="3dip"
+                    android:background="@android:color/background_light"
                     android:textColor="@android:color/black" />
 
                 <TextView
@@ -93,7 +96,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_team_name"
-                    android:padding="6dip"
+                    android:padding="3dip"
                     android:text="@string/team_title" 
                     android:textColor="@android:color/black"
                     android:background="@drawable/gray_bg"/>
@@ -101,7 +104,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/team_member_pager"
                     android:layout_width="fill_parent"
-                    android:layout_height="140dip"
+                    android:layout_height="125dip"
                     android:layout_below="@id/txt_theteam"
                     android:background="@android:color/background_light" />
 
@@ -115,8 +118,8 @@
                         android:id="@+id/txt_brand_ambassadors"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/gray_bg"
-                        android:padding="6dip"
+                        android:background="#C0C0C0"
+                        android:padding="3dip"
                         android:text="@string/ambassadors_title"
                         android:textColor="@android:color/black" />
                 </RelativeLayout>

@@ -28,9 +28,11 @@ public class TeamGridAdapter extends BaseAdapter {
 	public TeamGridAdapter (Context ctx, String[] teamLogoUrls) {
 		mContext = ctx;
 		teamLogo = teamLogoUrls;
-		Display display = ((Activity) mContext).getWindowManager().getDefaultDisplay();
-		int height = display.getHeight();
-		reqImageHeight = (int) (((float) 15/ 100) * (height - 50));
+
+		/*
+		 * Display display = ((Activity) mContext).getWindowManager().getDefaultDisplay(); int height = display.getHeight(); reqImageHeight = (int) (((float) 15/ 100) * (height - 50));
+		 */
+
 	}
 
 	@Override
@@ -69,13 +71,17 @@ public class TeamGridAdapter extends BaseAdapter {
 
 		// teamLogoImg.setBackgroundResource(teamLogo[position]);
 		if (mViewHolder.teamLogoImg != null) {
-			 mViewHolder.teamLogoImg.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
-			mViewHolder.teamLogoImg.setScaleType(ImageView.ScaleType.MATRIX);
+
+			// mViewHolder.teamLogoImg.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
+
+			// mViewHolder.teamLogoImg.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
+
+			// mViewHolder.teamLogoImg.setScaleType(ImageView.ScaleType.MATRIX);
 
 			mViewHolder.teamLogoImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.imagenotqueued));
 			mViewHolder.teamLogoImg.setTag(teamLogo[position]);
 
-			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.imagenotqueued), mViewHolder.errorTxt,false);
+			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.imagenotqueued), mViewHolder.errorTxt, false);
 		}
 		return convertView;
 	}

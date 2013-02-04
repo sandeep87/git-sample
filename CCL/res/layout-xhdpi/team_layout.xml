@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:paddingLeft="10dp" 
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -84,7 +87,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:padding="5dip"
+                    android:padding="3dip"
                     android:background="@drawable/menu_tabs"
                     android:textColor="@android:color/black" />
 
@@ -93,7 +96,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_team_name"
-                    android:padding="6dip"
+                    android:padding="3dip"
                     android:text="@string/team_title" 
                     android:textColor="@android:color/black"
                     android:background="@drawable/gray_bg"/>
@@ -101,7 +104,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/team_member_pager"
                     android:layout_width="fill_parent"
-                    android:layout_height="160dip"
+                    android:layout_height="145dip"
                     android:layout_below="@id/txt_theteam"
                     android:background="@android:color/background_light" />
 
@@ -116,7 +119,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gray_bg"
-                        android:padding="6dip"
+                        android:padding="3dip"
                         android:text="@string/ambassadors_title"
                         android:textColor="@android:color/black" />
                 </RelativeLayout>
