@@ -76,7 +76,6 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 			}
 
 		} else {
-
 			Toast.makeText(mContext, mContext.getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT).show();
 		}
 
