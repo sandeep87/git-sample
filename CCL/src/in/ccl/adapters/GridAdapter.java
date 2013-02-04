@@ -198,6 +198,7 @@ public class GridAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
+	
 	public void downloadStop () {
 		mDownloaderImage.cancel(true);
 	}
