@@ -376,8 +376,8 @@ public class PhotoView extends ImageView {
 					else {
 						setImageResource(R.drawable.decodequeued);
 					}
-				//	errorTitleTxt.setVisibility(View.VISIBLE);
-				//	errorTitleTxt.setText("Unable to retrieve content at this moment");
+					errorTitleTxt.setVisibility(View.VISIBLE);
+					errorTitleTxt.setText("Loading...");
 				}
 			}
 			else if (resId == PhotoManager.DOWNLOAD_STARTED) {

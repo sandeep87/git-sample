@@ -113,7 +113,7 @@ public class HomeActivity extends TopActivity {
 			new Handler().postDelayed(new Runnable() {
 
 				@Override
-				public void run () {
+				public void run () {	
 					checkForUpdates();
 				}
 			}, 20000);
