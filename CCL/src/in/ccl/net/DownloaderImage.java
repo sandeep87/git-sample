@@ -38,8 +38,8 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 
 	private int imageId;
 	
-	public final static String APP_PATH_SD_CARD = "/CCL/";
-	public final static String APP_THUMBNAIL_PATH_SD_CARD = "Downloadimages";
+	//public final static String APP_PATH_SD_CARD = "/CCL/";
+	public final static String APP_THUMBNAIL_PATH_SD_CARD = "/download";
 
 	public DownloaderImage(Context mcontext2, int id) {
 		mContext = mcontext2;
@@ -135,7 +135,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	 */
 	
 	public boolean saveImageToExternalStorage(Bitmap image) {
-		String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + APP_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD;
+		String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + APP_THUMBNAIL_PATH_SD_CARD;
 
 		try {
 		File dir = new File(fullPath);
