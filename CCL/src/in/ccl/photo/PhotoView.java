@@ -230,9 +230,16 @@ public class PhotoView extends ImageView {
 	}
 
 	@Override
-	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {
-	
 
+	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {/*
+		Matrix matrix = getImageMatrix();
+		float scaleFactor = getWidth() / (float) getDrawable().getIntrinsicWidth();
+		//float scaleFactor = fitScreenBitmap();
+		//float scaleFactorHeight = getHeight()/(float)getDrawable().getIntrinsicHeight();
+		matrix.setScale(scaleFactor, scaleFactor, fitScreenBitmap(), fitScreenBitmap());
+		setImageMatrix(matrix);
+		return super.setFrame(frameLeft, frameTop, frameRight, frameBottom);
+	*/
 		 Matrix matrix = getImageMatrix();
 		 float scale;
 		 int viewWidth = getWidth() - getPaddingLeft() - getPaddingRight();

@@ -40,11 +40,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 
 	private int imageId;
 	
-<<<<<<< .merge_file_isaXRi
-	//public final static String APP_PATH_SD_CARD = "/CCL/";
-=======
-	public final static String APP_PATH_SD_CARD = "/CCL/";
->>>>>>> .merge_file_Fj1rhf
+
 	public final static String APP_THUMBNAIL_PATH_SD_CARD = "/download";
 
 	public DownloaderImage(Context mcontext2, int id) {
@@ -140,11 +136,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	
 	public boolean saveImageToExternalStorage(Bitmap image) {
 		String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + APP_THUMBNAIL_PATH_SD_CARD;
-<<<<<<< .merge_file_isaXRi
 
-=======
-   System.out.println("nagesh download image path"+fullPath);
->>>>>>> .merge_file_Fj1rhf
 		try {
 		File dir = new File(fullPath);
 		if (!dir.exists()) {
