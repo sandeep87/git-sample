@@ -171,7 +171,6 @@ public class DownloadActivity extends TopActivity {
 					if (cursor != null) {
 						cursor.close();
 					}
-
 					if (downloadlList.size() > 0 && downloadlList != null) {
 						adapter = new GridAdapter(DownloadActivity.this, downloadlList, "downloads");
 						gridviewDownload.setAdapter(adapter);
@@ -182,5 +181,4 @@ public class DownloadActivity extends TopActivity {
 			}
 		}
 	}
-
 }
