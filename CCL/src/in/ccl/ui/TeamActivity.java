@@ -2,6 +2,7 @@ package in.ccl.ui;
 
 import in.ccl.adapters.TeamGridAdapter;
 import in.ccl.adapters.TeamImagePagerAdapter;
+import in.ccl.database.CCLPullService;
 import in.ccl.helper.Category;
 import in.ccl.helper.PageChangeListener;
 import in.ccl.helper.Util;
@@ -12,6 +13,8 @@ import in.ccl.util.Constants;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -27,6 +30,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
@@ -122,6 +126,7 @@ public class TeamActivity extends TopActivity {
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.team_layout);
+		super.disableAds();
 		pager = (ViewPager) findViewById(R.id.team_view_pager);
 		teamMemberViewPager = (ViewPager) findViewById(R.id.team_member_pager);
 		teamAmbassadorViewPager = (ViewPager) findViewById(R.id.team_ambassadors_pager);
@@ -132,16 +137,16 @@ public class TeamActivity extends TopActivity {
 		indicatorFourImage = (ImageView) findViewById(R.id.indicator_four);
 		IndicatorLayout = (LinearLayout) findViewById(R.id.team_page_indicator_layout);
 		teamName = (TextView) findViewById(R.id.txt_team_name);
-		//Util.setTextFont(this, teamName);
+		// Util.setTextFont(this, teamName);
 
 		teamTitle = (TextView) findViewById(R.id.team_title);
-		//Util.setTextFont(this, teamTitle);
+		// Util.setTextFont(this, teamTitle);
 
 		TextView txtTheTeam = (TextView) findViewById(R.id.txt_theteam);
-		//Util.setTextFont(this, txtTheTeam);
+		// Util.setTextFont(this, txtTheTeam);
 		TextView txtBrandTitle = (TextView) findViewById(R.id.txt_brand_ambassadors);
-		//Util.setTextFont(this, txtBrandTitle);
-		
+		// Util.setTextFont(this, txtBrandTitle);
+
 		if (getIntent().hasExtra(Constants.EXTRA_TEAM_LOGO_KEY)) {
 			teamLogosList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_TEAM_LOGO_KEY);
 			teamName.setText(teamLogosList.get(0).getName().toUpperCase());
@@ -161,8 +166,6 @@ public class TeamActivity extends TopActivity {
 		if (allTeamMembersTotalList != null && allTeamMembersTotalList.size() > 0) {
 			for (int i = 0; i < allTeamMembersTotalList.size(); i++) {
 				String teamName = allTeamMembersTotalList.get(i).getTeamName();
-				System.out.println("kranthi teamName" + teamName);
-
 				if (teamName != null) {
 					if (teamName.equals(getResources().getString(R.string.mumbai))) {
 						mumbaiTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
@@ -264,6 +267,18 @@ public class TeamActivity extends TopActivity {
 				}
 			}
 		});
+	}
+
+	@Override
+	protected void onResume () {
+		super.onResume();
+		if (Util.getInstance().isOnline(this)) {
+			Intent mServiceIntent = new Intent(this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.team_url)));
+			startService(mServiceIntent);
+		}
+		else {
+			Toast.makeText(this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+		}
 	}
 
 	private void setTeamMembersList (ArrayList <TeamMember> totalTeamMembersList, ArrayList <TeamMember> teamMembersList, ArrayList <TeamMember> teamAmbassadorsList) {

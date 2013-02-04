@@ -233,12 +233,6 @@ public class MenuItems implements OnClickListener {
 					if (Util.getInstance().isOnline(activity)) {
 						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_url)));
 						activity.startService(mServiceIntent);
-						for (int i = 1; i <= 8; i++) {
-							mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_members_url) + i));
-							mServiceIntent.putExtra("KEY", "team_members");
-							activity.startService(mServiceIntent);
-						}
-
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
