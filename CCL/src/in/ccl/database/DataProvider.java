@@ -296,7 +296,7 @@ public class DataProvider extends ContentProvider {
 				return returnCursor;
 			case PHOTO_URL_QUERY:
 				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC;");
+				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " DESC;");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
