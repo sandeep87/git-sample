@@ -27,6 +27,8 @@ import java.util.concurrent.TimeUnit;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -242,7 +244,9 @@ public class PhotoManager {
                             case TASK_COMPLETE:
                             	  Bitmap bmp = photoTask.getImage();
                             	 // Bitmap newBmp = Bitmap.createBitmap(bmp, 0, 0, photoTask.getTargetWidth(), photoTask.getTargetHeight());
-                                localView.setImageBitmap(bmp);
+                               // localView.setImageBitmap(bmp);
+                            	  Drawable drawable = new BitmapDrawable(bmp);
+                            	  localView.setBackgroundDrawable(drawable);
                                 localView.setStatusResource(TASK_COMPLETE);
 
                                 recycleTask(photoTask);

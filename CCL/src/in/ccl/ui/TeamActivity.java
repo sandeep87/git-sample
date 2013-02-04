@@ -273,6 +273,7 @@ public class TeamActivity extends TopActivity {
 				String role = totalTeamMembersList.get(i).getRole().trim();
 				String dummyRole = getResources().getString(R.string.ambassadors);
 				if (role.equals(dummyRole)) {
+					System.out.println("nagesh team ambassidors list"+totalTeamMembersList.get(i));
 					teamAmbassadorsList.add(totalTeamMembersList.get(i));
 				}
 				else {
