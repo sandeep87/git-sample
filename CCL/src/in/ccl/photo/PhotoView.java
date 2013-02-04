@@ -230,14 +230,31 @@ public class PhotoView extends ImageView {
 	}
 
 	@Override
-	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {
+	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {/*
 		Matrix matrix = getImageMatrix();
 		float scaleFactor = getWidth() / (float) getDrawable().getIntrinsicWidth();
-		matrix.setScale(scaleFactor, scaleFactor, 5, 5);
+		//float scaleFactor = fitScreenBitmap();
+		//float scaleFactorHeight = getHeight()/(float)getDrawable().getIntrinsicHeight();
+		matrix.setScale(scaleFactor, scaleFactor, fitScreenBitmap(), fitScreenBitmap());
 		setImageMatrix(matrix);
 		return super.setFrame(frameLeft, frameTop, frameRight, frameBottom);
+	*/
+		 Matrix matrix = getImageMatrix();
+		 float scale;
+		 int viewWidth = getWidth() - getPaddingLeft() - getPaddingRight();
+		 int viewHeight = getHeight() - getPaddingTop() - getPaddingBottom();
+		 int drawableWidth = getDrawable().getIntrinsicWidth();
+		 int drawableHeight = getDrawable().getIntrinsicHeight();
+		 if (drawableWidth * viewHeight > drawableHeight * viewWidth) {
+		 scale = (float) viewHeight / (float) drawableHeight;
+		 } else {
+		 scale = (float) viewWidth / (float) drawableWidth;
+		 }
+		 matrix.setScale(scale, scale);
+		 setImageMatrix(matrix);
+		 return super.setFrame(frameLeft, frameTop,  frameRight,  frameBottom);
+	
 	}
-
 	@Override
 	public void setImageDrawable (Drawable drawable) {
 		// The visibility of the View
