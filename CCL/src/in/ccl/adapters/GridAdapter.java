@@ -140,6 +140,7 @@ public class GridAdapter extends BaseAdapter {
 		}
 		else if (isFrom.equals("downloads")) {
 			mViewHolder.title.setText("Download");
+			Util.setTextFont((Activity) mcontext, mViewHolder.title);
 			mViewHolder.title.setOnClickListener(new OnClickListener() {
 
 				@Override
