@@ -140,15 +140,9 @@ public class TeamActivity extends TopActivity {
 		// Util.setTextFont(this, teamName);
 
 		teamTitle = (TextView) findViewById(R.id.team_title);
-<<<<<<< .merge_file_hO9hoE
-<<<<<<< .merge_file_5lc9Bt
+
 		Util.setTextFont(this, teamTitle);
-=======
-		// Util.setTextFont(this, teamTitle);
->>>>>>> .merge_file_I52Jpt
-=======
-		// Util.setTextFont(this, teamTitle);
->>>>>>> .merge_file_LVqPzD
+
 
 		TextView txtTheTeam = (TextView) findViewById(R.id.txt_theteam);
 		// Util.setTextFont(this, txtTheTeam);

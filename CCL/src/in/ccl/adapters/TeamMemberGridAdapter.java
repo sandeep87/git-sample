@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,17 +43,52 @@ public class TeamMemberGridAdapter extends BaseAdapter {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mEmptyDrawable = context.getResources().getDrawable(
 				R.drawable.imagenotqueued);
+		int deviceDisplayDensity = ((Activity) mContext).getResources()
+				.getDisplayMetrics().densityDpi;
+
 		if (isFrom.equals("team_members")) {
 
 			Display display = ((Activity) context).getWindowManager()
 					.getDefaultDisplay();
-			int height = display.getHeight();
-			reqImageHeight = (int) (((float) 15 / 100) * (height - 50));
+			if (deviceDisplayDensity == DisplayMetrics.DENSITY_LOW) {
+
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 16/ 100) * (height - 50));
+
+			} else if (deviceDisplayDensity == DisplayMetrics.DENSITY_MEDIUM) {
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+
+			} else if (deviceDisplayDensity == DisplayMetrics.DENSITY_HIGH) {
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+
+			} else if (deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH) {
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+
+			}
 		} else {
 			Display display = ((Activity) context).getWindowManager()
 					.getDefaultDisplay();
-			int height = display.getHeight();
-			reqImageHeight = (int) (((float) 14 / 100) * (height - 50));
+			if (deviceDisplayDensity == DisplayMetrics.DENSITY_LOW) {
+
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 17 / 100) * (height - 50));
+
+			} else if (deviceDisplayDensity == DisplayMetrics.DENSITY_MEDIUM) {
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+
+			} else if (deviceDisplayDensity == DisplayMetrics.DENSITY_HIGH) {
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+
+			} else if (deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH) {
+				int height = display.getHeight();
+				reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
+
+			}
 		}
 	}
 
