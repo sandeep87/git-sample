@@ -73,4 +73,6 @@ public class Constants {
 
 	public static final int STATE_ACTION_UPDATE_DOWNLOAD_IMAGE_COMPLETE = 24;
 
+	public static final int STATE_CURRENT_SCORE_TASK_COMPLETED = 25;
+
 }

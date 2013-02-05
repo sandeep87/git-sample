@@ -43,6 +43,22 @@ public class BroadcastNotifier {
 
 	}
 
+	public void broadcastIntentWithCurrentScore (int status, String message) {
+
+		Intent localIntent = new Intent();
+
+		// The Intent contains the custom broadcast action for this app
+		localIntent.setAction(Constants.BROADCAST_ACTION);
+
+		// Puts the status into the Intent
+		localIntent.putExtra(Constants.EXTENDED_DATA_STATUS, status);
+		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
+		localIntent.putExtra("current_score", message);
+		// Broadcasts the Intent
+		mBroadcaster.sendBroadcast(localIntent);
+
+	}
+
 	/**
 	 * Uses LocalBroadcastManager to send an {@link String} containing a logcat message. {@link Intent} has the action {@code BROADCAST_ACTION} and the category {@code DEFAULT}.
 	 * 

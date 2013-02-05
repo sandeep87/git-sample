@@ -1,10 +1,12 @@
 package in.ccl.ui;
 
 import in.ccl.database.BannerCursor;
+import in.ccl.database.CCLPullService;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.DownloadItemsCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.Util;
+import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.model.Items;
 import in.ccl.model.TeamMember;
 import in.ccl.model.Teams;
@@ -13,28 +15,27 @@ import in.ccl.util.Constants;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.IntentService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
 import com.google.ads.AdView;
 
 public class TopActivity extends Activity implements AnimationLayout.Listener {
@@ -77,7 +78,24 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 
 	private IntentFilter statusIntentFilter;
 
-	private 	LinearLayout adsLayout;
+	private LinearLayout adsLayout;
+
+	private TextView txtScoreHeader;
+
+	private TextView txtCurrentScore;
+
+	private static String mCurrentScore;
+
+	private static boolean isCurrentScoreTimerStarted;
+
+	public static boolean isCurrentScoreTimerStarted () {
+		return isCurrentScoreTimerStarted;
+	}
+
+	public static void setCurrentScoreTimerStarted (boolean isCurrentScoreTimerStarted) {
+		TopActivity.isCurrentScoreTimerStarted = isCurrentScoreTimerStarted;
+	}
+
 	/*
 	 * private TextView notificationTxt;
 	 * 
@@ -90,6 +108,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.common_layout);
+
+		txtScoreHeader = (TextView) findViewById(R.id.score_title_textview);
+		txtCurrentScore = (TextView) findViewById(R.id.score_textview);
 
 		// The filter's action is BROADCAST_ACTION
 		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
@@ -106,23 +127,23 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 		menuLayout = (LinearLayout) findViewById(R.id.menu_layout);
 
 		// for adds
-		adView = (AdView)findViewById(R.id.adMob);
+		adView = (AdView) findViewById(R.id.adMob);
 		adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
 		adsLayout.setVisibility(View.VISIBLE);
 		// Add the adView to it
-	//	LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-	//	lp.gravity = Gravity.CENTER_HORIZONTAL;
-	//	layout.addView(adView, lp);
+		// LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		// lp.gravity = Gravity.CENTER_HORIZONTAL;
+		// layout.addView(adView, lp);
 
 		// Initiate a generic request to load it with an ad
-		//AdRequest adRequest = new AdRequest();
+		AdRequest adRequest = new AdRequest();
 		/*
 		 * <<<<<<< HEAD //adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator adRequest.addTestDevice("TEST_DEVICE_ID"); // Test Android Device adView.loadAd(adRequest);//new AdRequest() =======
 		 */
-	//	adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
 
-//		adView.loadAd(adRequest);// new AdRequest()
-		 adView.loadAd(new AdRequest());
+		adView.loadAd(adRequest);// new AdRequest()
+		// adView.loadAd(new AdRequest());
 		/*
 		 * notificationTxt = (TextView) findViewById(R.id.notification_textview); notificationTitle = (TextView) findViewById(R.id.notification_title_textview); TextView notificationOneTxt = (TextView) findViewById(R.id.notification_item1); TextView notificationTwoTxt = (TextView)
 		 * findViewById(R.id.notification_item2); TextView notificationThreeTxt = (TextView) findViewById(R.id.notification_item3); TextView notificationFourTxt = (TextView) findViewById(R.id.notification_item4);
@@ -303,7 +324,27 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 	protected void onResume () {
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		if (mCurrentScore == null) {
+			txtScoreHeader.setVisibility(View.GONE);
+			txtCurrentScore.setText(getResources().getString(R.string.score));
+		}
+		else {
+			txtScoreHeader.setVisibility(View.VISIBLE);
+			txtScoreHeader.setText("Score : ");
+			txtCurrentScore.setText(mCurrentScore);
+		}
+		if (!isCurrentScoreTimerStarted) {
+			// send request to get live matches schedule
+			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_livematches_url)));
+			startService(mServiceIntent);
 
+		}
+		// CallLiveScoreService();
+	}
+
+	private void CallLiveScoreService () {
+		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_currentscore_url)));
+		startService(mServiceIntent);
 	}
 
 	class DownloadStateReceiver extends BroadcastReceiver {
@@ -363,16 +404,34 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 						Log.e(TAG, "Team Data is not availble");
 					}
 					break;
+				case in.ccl.database.Constants.STATE_CURRENT_SCORE_TASK_COMPLETED:
+					if (intent != null && intent.hasExtra("current_score")) {
+						String currentScore = intent.getStringExtra("current_score");
+						if (currentScore == null) {
+							txtScoreHeader.setVisibility(View.GONE);
+							mCurrentScore = null;
+							txtCurrentScore.setText(getResources().getString(R.string.score));
+						}
+						else {
+							txtScoreHeader.setVisibility(View.VISIBLE);
+							txtScoreHeader.setText("Score : ");
+							mCurrentScore = currentScore;
+							txtCurrentScore.setText(currentScore);
+						}
+					}
+					break;
 				default:
 					break;
 			}
 		}
 	}
-  public void disableAds(){
-  	if(adsLayout != null){
-  		adsLayout.setVisibility(View.GONE);
-  	}
-  }
+
+	public void disableAds () {
+		if (adsLayout != null) {
+			adsLayout.setVisibility(View.GONE);
+		}
+	}
+
 	private void callTeamIntent (ArrayList <Teams> teamLogoItems, ArrayList <TeamMember> teamMemberItems) {
 		Intent teamActivityIntent = new Intent(this, TeamActivity.class);
 		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
