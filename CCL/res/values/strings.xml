@@ -22,8 +22,7 @@
     <string name="splash_loading_title">Loading&#8230;</string>
     <string name="photos_gallery">PHOTO GALLERY</string>
     <string name="videos_gallery">VIDEO GALLERY</string>
-     <string name="image_error_msg">Unable to retrieve content at this moment</string>
-    
+    <string name="image_error_msg">Unable to retrieve content at this moment</string>
 
     <!-- TODO: -->
     <string name="sample_score">CELEBRITY CRICKET LEAGUE</string>
@@ -85,5 +84,37 @@
 
     <!-- End Teams -->
     <string name="ambassadors">Ambassadors</string>
-<string name="schedule_title">TENTATIVE SCHEDULE</string>
+    <string name="schedule_title">TENTATIVE SCHEDULE</string>
+    <!-- Live score -->
+    <string name="target">Target:</string>
+    <string name="batting">BATTING</string>
+    <string name="runs">RUNS</string>
+    <string name="balls">BALLS</string>
+    <string name="strikerate">STRIKE RATE</string>
+    <string name="bowling">BOWLING</string>
+    <string name="overs">OVERS</string>
+    <string name="mdns">MDNS</string>
+    <string name="wickets">WKTS</string>
+    <string name="livematches">LIVEMATCHES</string>
+    <string name="first_match">MATCH A</string>
+    <string name="first_date">09 AUG</string>
+     <string name="first_day">SATURDAY</string>
+     
+      <string name="second_match">MATCH A</string>
+    <string name="second_date">09 AUG</string>
+     <string name="second_day">SATURDAY</string>
+    
+    <!-- end LiveScore -->
+
+
+    <!-- ScoreBoard -->
+    <string name="first_inns">1ST INNINGS</string>
+    <string name="second_inns">2ND INNINGS</string>
+    <string name="bowler">BOWLER</string>
+    <string name="extras">EXTRAS</string>
+        <string name="vs">Vs</string>
+    
+    <!-- end ScoreBoard -->
+    
+
 </resources>

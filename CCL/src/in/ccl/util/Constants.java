@@ -125,5 +125,9 @@ public class Constants {
 	public static final String MY_AD_UNIT_ID = "a15108b4f6bb5fe";
 
 	public static final String EXTRA_DOWNLOAD_KEY = "extra_downlods_key";
+	
+	public static final String FIRST_INNINGS_KEY = "first_innings_key";
+	public static final String SECOND_INNINGS_KEY = "second_innings_key";
+	public static final String SECOND_INNINGS_STATUS = "second_innings_status";
 
 }
