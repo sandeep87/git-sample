@@ -1,7 +1,6 @@
 package in.ccl.adapters;
 
-import in.ccl.logging.Logger;
-import in.ccl.model.Innings;
+import in.ccl.score.Innings;
 import in.ccl.ui.R;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class InningsAdapter extends BaseAdapter {
 
 	private LayoutInflater inflater;
 
-	public InningsAdapter (Context context, ArrayList <Innings> inninsList, String from) {
+	public InningsAdapter (Context context, ArrayList <Innings> inninsList) {
 
 		this.inningsList = inninsList;
 
@@ -29,30 +28,28 @@ public class InningsAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount () {
-		// TODO Auto-generated method stub
-		return inningsList.size();
+		return inningsList.get(0).getBatting_info().size();
+
 	}
 
 	@Override
 	public Innings getItem (int position) {
-		// TODO Auto-generated method stub
 		return inningsList.get(position);
 	}
 
 	@Override
 	public long getItemId (int position) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public View getView (int position, View convertView, ViewGroup parent) {
-		ViewHolder mViewHolder;	
+		ViewHolder mViewHolder;
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.row_innings, null);
 			mViewHolder = new ViewHolder();
-			mViewHolder.txtPlayerName = (TextView) convertView.findViewById(R.id.txt_player_name);
-			mViewHolder.txtPlayerRuns = (TextView) convertView.findViewById(R.id.txt_player_runs);
+			mViewHolder.txtPlayerName        = (TextView) convertView.findViewById(R.id.txt_player_name);
+			mViewHolder.txtPlayerRuns        = (TextView) convertView.findViewById(R.id.txt_player_runs);
 			mViewHolder.txtPlayerPlayedBalls = (TextView) convertView.findViewById(R.id.txt_player_playedballs);
 			convertView.setTag(mViewHolder);
 		}
@@ -60,12 +57,15 @@ public class InningsAdapter extends BaseAdapter {
 			mViewHolder = (ViewHolder) convertView.getTag();
 		}
 		try {
-			mViewHolder.txtPlayerName.setText(inningsList.get(position).getPlayerNameOne());
-			mViewHolder.txtPlayerRuns.setText(inningsList.get(position).getFirstPlayerScore());
-			mViewHolder.txtPlayerPlayedBalls.setText(inningsList.get(position).getFirstPlayedBalls());
+
+			mViewHolder.txtPlayerName.setText(inningsList.get(0).getBatting_info().get(position).getName());
+			String score = String.valueOf(inningsList.get(0).getBatting_info().get(position).getScore());
+			mViewHolder.txtPlayerRuns.setText(score);
+			mViewHolder.txtPlayerPlayedBalls.setText(" (" + String.valueOf(inningsList.get(0).getBatting_info().get(position).getBalls()).trim() + ")");
+
 		}
 		catch (Exception e) {
-			Logger.info("INNINGS ADAPTER", e.toString());
+			// e.printStackTrace();
 		}
 
 		return convertView;
