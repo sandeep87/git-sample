@@ -7,7 +7,7 @@ public class DataProviderContract {
 
 	public static final String DATABASE_NAME = "CCLDB";
 
-	public static final int DATABASE_VERSION = 2;
+	public static final int DATABASE_VERSION = 3;
 
 	public static final String CATEGORY_TITLE = "categoryTitle";
 
@@ -224,5 +224,8 @@ public class DataProviderContract {
 	 * Banner table album id column name
 	 */
 	public static final String BANNER_ALBUM_ID_COLUMN = "bannerAlbumId";
+	
+	public static final String BANNER_LAST_MODIFIED_COLUMN = "LastModifiedTime";
 
+	
 }

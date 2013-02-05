@@ -41,7 +41,7 @@ public class TeamGridAdapter extends BaseAdapter {
 			 int height = display.getHeight(); reqImageHeight = (int) (((float) 13/ 100) * (height - 50));
 
 		 }else if(deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH){
-			 int height = display.getHeight(); reqImageHeight = (int) (((float) 16/ 100) * (height - 50));
+			 int height = display.getHeight(); reqImageHeight = (int) (((float) 13/ 100) * (height - 50));
 
 		 }
 		
@@ -88,10 +88,10 @@ public class TeamGridAdapter extends BaseAdapter {
 
 			 mViewHolder.teamLogoImg.setScaleType(ImageView.ScaleType.MATRIX);
 
-			mViewHolder.teamLogoImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.imagenotqueued));
+			mViewHolder.teamLogoImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.photo_imagenotqueued));
 			mViewHolder.teamLogoImg.setTag(teamLogo[position]);
 
-			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.imagenotqueued), mViewHolder.errorTxt, false);
+			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.photo_imagenotqueued), mViewHolder.errorTxt, false);
 		}
 		return convertView;
 	}

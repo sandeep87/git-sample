@@ -1,6 +1,5 @@
 package in.ccl.net;
 
-import in.ccl.database.DownloadItemsCursor;
 import in.ccl.ui.R;
 
 import java.io.File;
@@ -14,7 +13,6 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;

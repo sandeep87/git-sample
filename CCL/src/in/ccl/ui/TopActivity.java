@@ -115,14 +115,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 	//	layout.addView(adView, lp);
 
 		// Initiate a generic request to load it with an ad
-		AdRequest adRequest = new AdRequest();
+		//AdRequest adRequest = new AdRequest();
 		/*
 		 * <<<<<<< HEAD //adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator adRequest.addTestDevice("TEST_DEVICE_ID"); // Test Android Device adView.loadAd(adRequest);//new AdRequest() =======
 		 */
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+	//	adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
 
-		adView.loadAd(adRequest);// new AdRequest()
-		// adView.loadAd(new AdRequest());
+//		adView.loadAd(adRequest);// new AdRequest()
+		 adView.loadAd(new AdRequest());
 		/*
 		 * notificationTxt = (TextView) findViewById(R.id.notification_textview); notificationTitle = (TextView) findViewById(R.id.notification_title_textview); TextView notificationOneTxt = (TextView) findViewById(R.id.notification_item1); TextView notificationTwoTxt = (TextView)
 		 * findViewById(R.id.notification_item2); TextView notificationThreeTxt = (TextView) findViewById(R.id.notification_item3); TextView notificationFourTxt = (TextView) findViewById(R.id.notification_item4);

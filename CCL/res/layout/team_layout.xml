@@ -118,7 +118,6 @@
                         android:id="@+id/txt_brand_ambassadors"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/layout_team_members"
                         android:background="#C0C0C0"
                         android:padding="3dip"
                         android:text="@string/ambassadors_title"

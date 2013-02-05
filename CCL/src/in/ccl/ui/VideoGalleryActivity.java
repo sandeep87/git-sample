@@ -105,7 +105,10 @@ public class VideoGalleryActivity extends TopActivity {
 			}
 		});
 	}
-
+	@Override
+	public void onBackPressed () {
+		super.onBackPressed();
+	}
 	@Override
 	protected void onResume () {
 		// TODO Auto-generated method stub

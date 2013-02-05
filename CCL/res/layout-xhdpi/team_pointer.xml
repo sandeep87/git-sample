@@ -19,7 +19,7 @@
                     android:id="@+id/indicator_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="55dp"
+                    android:layout_marginLeft="65dp"
                     android:layout_toRightOf="@id/indicator_one"
                     android:background="@drawable/teams_indicator_bg"
                     android:visibility="invisible" >
@@ -29,7 +29,7 @@
                     android:id="@+id/indicator_three"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="58dp"
+                    android:layout_marginLeft="60dp"
                     android:layout_toRightOf="@id/indicator_two"
                     android:background="@drawable/teams_indicator_bg"
                     android:visibility="invisible" >
