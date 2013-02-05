@@ -243,6 +243,8 @@ public class PhotoManager {
                             	  Bitmap bmp = photoTask.getImage();
                             	 // Bitmap newBmp = Bitmap.createBitmap(bmp, 0, 0, photoTask.getTargetWidth(), photoTask.getTargetHeight());
                                 localView.setImageBitmap(bmp);
+                                //Drawable drawable = new BitmapDrawable(bmp);
+                            	  //localView.setBackgroundDrawable(drawable);
                                 localView.setStatusResource(TASK_COMPLETE);
 
                                 recycleTask(photoTask);

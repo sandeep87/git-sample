@@ -101,8 +101,6 @@ public class PhotoGalleryActivity extends TopActivity /* implements AbsListView.
 						Intent mServiceIntent = new Intent(PhotoGalleryActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.photo_gallery_url) + photoGalleryList.get(position).getId()));
 						mServiceIntent.putExtra("KEY", "photos");
 						startService(mServiceIntent);
-
-						// asyncTask.execute(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(index).getId());
 					}
 					else {
 						Toast.makeText(PhotoGalleryActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -113,7 +111,7 @@ public class PhotoGalleryActivity extends TopActivity /* implements AbsListView.
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ITEMS, list);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, photoGalleryId);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, AlbumTitle);
-					startActivity(photoAlbumIntent);
+					startActivityForResult(photoAlbumIntent,1);
 				}
 
 			}

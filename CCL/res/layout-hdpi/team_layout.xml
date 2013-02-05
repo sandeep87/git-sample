@@ -78,7 +78,7 @@
                 android:id="@+id/team_desc"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="55dp" >
+                android:layout_marginTop="60dp" >
 
                 <include layout="@layout/team_pointer" />
 
@@ -104,7 +104,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/team_member_pager"
                     android:layout_width="fill_parent"
-                    android:layout_height="125dip"
+                    android:layout_height="145dip"
                     android:layout_below="@id/txt_theteam"
                     android:background="@android:color/background_light" />
 
@@ -127,7 +127,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/team_ambassadors_pager"
                     android:layout_width="fill_parent"
-                    android:layout_height="130dip"
+                    android:layout_height="145dip"
                     android:layout_below="@id/layout_team_ambassadors"
                     android:background="@android:color/background_light" />
             </RelativeLayout>

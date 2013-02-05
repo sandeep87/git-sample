@@ -70,11 +70,11 @@
     <string name="downloading_fail">Fail to DownloadImage .Please try again</string>
     <string name="downloading_succuss">Download  Completed Successfully</string>
     <string name="no_sdcard">Not available sdcard. Please insert the sdcard</string>
-    <string name="downloading_image">Downloading Image</string>
+    <string name="downloading_image">Please wait, while downloading...</string>
     <!-- Teams -->
     <string name="mumbai">mumbai team</string>
     <string name="chennai">chennai-rhinos</string>
-    <string name="telugu">telugu-warrios</string>
+    <string name="telugu">telugu warriors</string>
     <string name="karanataka">karanataka-bulldozers</string>
     <string name="kerala">kerala-strikers</string>
     <string name="bengal">bengal-tigers</string>
@@ -95,14 +95,14 @@
     <string name="overs">OVERS</string>
     <string name="mdns">MDNS</string>
     <string name="wickets">WKTS</string>
-    <string name="livematches">LIVEMATCHES</string>
     <string name="first_match">MATCH A</string>
     <string name="first_date">09 AUG</string>
      <string name="first_day">SATURDAY</string>
      
-      <string name="second_match">MATCH A</string>
+      <string name="second_match">MATCH B</string>
     <string name="second_date">09 AUG</string>
      <string name="second_day">SATURDAY</string>
+     <string name="livematches">Live Matches</string>
     
     <!-- end LiveScore -->
 
@@ -117,4 +117,7 @@
     <!-- end ScoreBoard -->
     
 
+
+    
+    <string name="error_title">Unable to retrieve content at this moment</string>
 </resources>

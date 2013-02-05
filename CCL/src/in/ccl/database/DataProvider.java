@@ -56,7 +56,7 @@ public class DataProvider extends ContentProvider {
 	private static final String INTEGER_TYPE = "INTEGER";
 
 	// Defines an SQLite statement that builds the Picasa picture URL table
-	private static final String CREATE_BANNER_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.BANNERURL_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.BANNER_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.IMAGE_NAME_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.BANNER_ALBUM_ID_COLUMN + " " + INTEGER_TYPE + ");";
+	private static final String CREATE_BANNER_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.BANNERURL_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.BANNER_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.IMAGE_NAME_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.BANNER_ALBUM_ID_COLUMN + " " + INTEGER_TYPE + ",LastModifiedTime DATETIME);";
 
 	private static final String CREATE_PHOTO_ALBUM_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.PHOTO_ALBUM_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.IMAGE_NAME_COLUMN + " " + TEXT_TYPE + ");";
 
@@ -64,7 +64,7 @@ public class DataProvider extends ContentProvider {
 
 	private static final String CREATE_CATEGORY_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.CATEGORY_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.CATEGORY_TITLE + " " + TEXT_TYPE + ");";
 
-	private static final String CREATE_RAW_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.RAW_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.URL + " " + TEXT_TYPE + " ," + DataProviderContract.THUMB_IMAGE_URL + " " + TEXT_TYPE + "," + DataProviderContract.ALBUM_ID_COLUMN + " " + INTEGER_TYPE + "," + DataProviderContract.CATEGORY_ID + " " + INTEGER_TYPE + ");";
+	private static final String CREATE_RAW_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.RAW_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + "," + DataProviderContract.URL + " " + TEXT_TYPE + " ," + DataProviderContract.THUMB_IMAGE_URL + " " + TEXT_TYPE + "," + DataProviderContract.ALBUM_ID_COLUMN + " " + INTEGER_TYPE + "," + DataProviderContract.CATEGORY_ID + " " + INTEGER_TYPE + ");";
 
 	private static final String CREATE_PAGES_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.PAGES_TABLE_NAME + " " + "( " + DataProviderContract.ALBUM_ID_COLUMN + " " + INTEGER_TYPE + " ," + DataProviderContract.CATEGORY_ID + " " + INTEGER_TYPE + "," + DataProviderContract.TOTAL_PAGES + " " + INTEGER_TYPE + ",PRIMARY KEY(" + DataProviderContract.ALBUM_ID_COLUMN + "," + DataProviderContract.CATEGORY_ID + "));";
 
@@ -273,7 +273,7 @@ public class DataProvider extends ContentProvider {
 			// If the query is for a picture URL
 			case BANNER_IMAGE_URL_QUERY:
 				// Does the query against a read-only version of the database
-				Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
+				Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null,DataProviderContract.BANNER_LAST_MODIFIED_COLUMN+" ASC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -292,22 +292,22 @@ public class DataProvider extends ContentProvider {
 				returnCursor = db.query(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				//returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 			case PHOTO_URL_QUERY:
 				// Does the query against a read-only version of the database
 				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC;");
 
 				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+			//	returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 
 			case VIDEO_URL_QUERY:
 				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " DESC");
+				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				//returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 			case CATEGORY_QUERY:
 				// Does the query against a read-only version of the database

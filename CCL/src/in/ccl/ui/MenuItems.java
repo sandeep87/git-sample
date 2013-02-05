@@ -166,7 +166,8 @@ public class MenuItems implements OnClickListener {
 				else {
 					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, list);
-					// photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					 photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					// photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 					activity.startActivity(photoGalleryIntent);
 
 				}
@@ -233,12 +234,6 @@ public class MenuItems implements OnClickListener {
 					if (Util.getInstance().isOnline(activity)) {
 						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_url)));
 						activity.startService(mServiceIntent);
-						for (int i = 1; i <= 8; i++) {
-							mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_members_url) + i));
-							mServiceIntent.putExtra("KEY", "team_members");
-							activity.startService(mServiceIntent);
-						}
-
 					}
 					else {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
@@ -283,7 +278,7 @@ public class MenuItems implements OnClickListener {
 				else {
 					Intent photoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, list);
-					// photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					activity.startActivity(photoGalleryIntent);
 				}
 
@@ -328,6 +323,8 @@ public class MenuItems implements OnClickListener {
 					list = DownloadItemsCursor.getItems(cursor);
 					Intent downloadImageIntent = new Intent(activity, DownloadActivity.class);
 					downloadImageIntent.putParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY, list);
+					downloadImageIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
 					activity.startActivity(downloadImageIntent);
 				}
 				else {
@@ -358,6 +355,7 @@ public class MenuItems implements OnClickListener {
 		Intent teamActivityIntent = new Intent(activity, TeamActivity.class);
 		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
 		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_MEMBER_KEY, teamMemberItems);
+		teamActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		activity.startActivityForResult(teamActivityIntent, in.ccl.util.Constants.TEAM_RESULT);
 	}
 }

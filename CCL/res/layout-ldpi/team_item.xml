@@ -6,7 +6,7 @@
 
     <in.ccl.photo.PhotoView
         android:id="@+id/img_team_member"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:adjustViewBounds="true" />

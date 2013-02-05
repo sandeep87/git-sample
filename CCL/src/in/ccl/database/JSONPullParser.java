@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Vector;
 
 import org.json.JSONArray;
@@ -75,6 +77,8 @@ public class JSONPullParser {
 							item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, slide_album_id);
 						}
 					}
+				 	 java.util.Date date= new java.util.Date();
+					item.put(DataProviderContract.BANNER_LAST_MODIFIED_COLUMN, new Timestamp(date.getTime())+"");
 					mImages.add(item);
 				}
 				}
@@ -84,7 +88,7 @@ public class JSONPullParser {
 		}
 	}
 
-	private String readStream (InputStream inputStream) {
+	public static String readStream (InputStream inputStream) {
 		String value = null;
 
 		StringBuilder sb = null;
@@ -358,7 +362,6 @@ public class JSONPullParser {
 	public void parseTeamsLogoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 
 		String result = readStream(inputStream);
-
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
 		if (result != null) {
@@ -403,7 +406,6 @@ public class JSONPullParser {
 	public void parseTeamMembersJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
 
 		String result = readStream(inputStream);
-
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
 		if (result != null) {
@@ -445,7 +447,6 @@ public class JSONPullParser {
 							if (teamPersonalRole.contains(",")) {
 								roleArray = teamPersonalRole.split(",");
 								teamPersonalRole = String.format("%s (%s)", roleArray[0].trim(), roleArray[1].trim());
-
 							}
 							item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, teamPersonalRole);
 						}

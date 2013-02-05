@@ -51,7 +51,7 @@ public class CCLPullService extends IntentService {
 		else {
 			compareKey = Uri.parse(localUrlString).getLastPathSegment();
 		}
-		//System.out.println("Rajesh Keys are " + compareKey);
+
 		// Creates a projection to use in querying the modification date table in the provider.
 		final String[] dateProjection = new String[] { DataProviderContract.ROW_ID, DataProviderContract.DATA_DATE_COLUMN };
 

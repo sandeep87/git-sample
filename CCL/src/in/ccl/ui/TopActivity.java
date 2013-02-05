@@ -6,6 +6,7 @@ import in.ccl.database.DownloadItemsCursor;
 import in.ccl.helper.AnimationLayout;
 import in.ccl.helper.ServerResponse;
 import in.ccl.helper.Util;
+import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.model.Items;
 import in.ccl.model.TeamMember;
 import in.ccl.model.Teams;
@@ -14,17 +15,8 @@ import in.ccl.score.MatchesResponse;
 import in.ccl.score.ScoreParser;
 import in.ccl.util.Constants;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -32,8 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -47,12 +39,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -103,6 +92,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	private IntentFilter statusIntentFilter;
 
+
 	private boolean isLiveScore = true;
 	private boolean isSingleMatch;
 
@@ -126,6 +116,30 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 																													 * private TextView notificationTitle;
 																													 */
 
+
+	private LinearLayout adsLayout;
+
+	private TextView txtScoreHeader;
+
+	private TextView txtCurrentScore;
+
+	private static String mCurrentScore;
+
+	private static boolean isCurrentScoreTimerStarted;
+
+	public static boolean isCurrentScoreTimerStarted () {
+		return isCurrentScoreTimerStarted;
+	}
+
+	public static void setCurrentScoreTimerStarted (boolean isCurrentScoreTimerStarted) {
+		TopActivity.isCurrentScoreTimerStarted = isCurrentScoreTimerStarted;
+	}
+
+	/*
+	 * private TextView notificationTxt;
+	 * 
+	 * private TextView notificationTitle;
+	 */
 	// for displaying adds.
 	private AdView adView;
 
@@ -134,6 +148,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.common_layout);
 		parser = new ScoreParser();
+
+		txtScoreHeader = (TextView) findViewById(R.id.score_title_textview);
+		txtCurrentScore = (TextView) findViewById(R.id.score_textview);
 
 		// The filter's action is BROADCAST_ACTION
 		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
@@ -151,8 +168,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 		// for adds
 		adView = (AdView) findViewById(R.id.adMob);
-		LinearLayout layout = (LinearLayout) findViewById(R.id.admob_layout);
-		layout.setVisibility(View.VISIBLE);
+		adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
+		adsLayout.setVisibility(View.VISIBLE);
 		// Add the adView to it
 		// LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
 		// lp.gravity = Gravity.CENTER_HORIZONTAL;
@@ -275,36 +292,35 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 				RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
 				matcheswDetailsscoreView = inflate.inflate(R.layout.livematches_layout, null);
 				// prepareAnimation(matcheswDetailsscoreView, 0.0f, -380.f, true);
+				
+				Button second_live_score = (Button)matcheswDetailsscoreView.findViewById(R.id.second_matches_livescore_btn);
+				Button first_live_score = (Button)matcheswDetailsscoreView.findViewById(R.id.first_matches_livescore_btn);
 
-				TextView first_matches_details = (TextView) matcheswDetailsscoreView.findViewById(R.id.first_matches_details);
-				TextView second_matches_details = (TextView) matcheswDetailsscoreView.findViewById(R.id.second_matches_details);
-
-				RadioButton first_matches_radiobutton = (RadioButton) matcheswDetailsscoreView.findViewById(R.id.first_matches_radiobutton);
-				RadioButton second_matches_radiobutton = (RadioButton) matcheswDetailsscoreView.findViewById(R.id.second_matches_radiobutton);
-				first_matches_details.setText(matcheslist.get(0).getMathesName());
-				second_matches_details.setText(matcheslist.get(1).getMathesName());
-
-				first_matches_radiobutton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
+				first_live_score.setOnClickListener(new OnClickListener() {
+					
 					@Override
-					public void onCheckedChanged (CompoundButton buttonView, boolean isChecked) {
-						if (isChecked) {
-							
-							displayLiveScore();
-							// callAsyncTask(getString(R.string.livescore_url)+matcheslist.get(0).getMathesName());
-						}
+					public void onClick (View v) {
+						displayLiveScore();
+						
 					}
 				});
+				
+				
+				
 
-				second_matches_radiobutton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
+				second_live_score.setOnClickListener(new OnClickListener() {
+					
 					@Override
-					public void onCheckedChanged (CompoundButton buttonView, boolean isChecked) {
-						if (isChecked) {
-							System.out.println("second radio button");
-						}
+					public void onClick (View v) {
+						displayLiveScore();
+						
 					}
 				});
+				
+				
+				
+
+			
 
 				layoutContent.addView(matcheswDetailsscoreView, lp);
 				prepareAnimation(matcheswDetailsscoreView, -380.0f, 0.0f, false);
@@ -464,7 +480,27 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	protected void onResume () {
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		if (mCurrentScore == null) {
+			txtScoreHeader.setVisibility(View.GONE);
+			txtCurrentScore.setText(getResources().getString(R.string.score));
+		}
+		else {
+			txtScoreHeader.setVisibility(View.VISIBLE);
+			txtScoreHeader.setText("Score : ");
+			txtCurrentScore.setText(mCurrentScore);
+		}
+		if (!isCurrentScoreTimerStarted) {
+			// send request to get live matches schedule
+			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_livematches_url)));
+			startService(mServiceIntent);
 
+		}
+		// CallLiveScoreService();
+	}
+
+	private void CallLiveScoreService () {
+		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_currentscore_url)));
+		startService(mServiceIntent);
 	}
 
 	class DownloadStateReceiver extends BroadcastReceiver {
@@ -507,7 +543,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					cursor = getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
 					if (cursor.getCount() > 0) {
 						teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
-
 					}
 					if (cursor != null) {
 						cursor.close();
@@ -521,17 +556,37 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						cursor.close();
 					}
 					if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
-
 						callTeamIntent(teamLogoItems, teamMemberItems);
-
 					}
 					else {
 						Log.e(TAG, "Team Data is not availble");
 					}
 					break;
+				case in.ccl.database.Constants.STATE_CURRENT_SCORE_TASK_COMPLETED:
+					if (intent != null && intent.hasExtra("current_score")) {
+						String currentScore = intent.getStringExtra("current_score");
+						if (currentScore == null) {
+							txtScoreHeader.setVisibility(View.GONE);
+							mCurrentScore = null;
+							txtCurrentScore.setText(getResources().getString(R.string.score));
+						}
+						else {
+							txtScoreHeader.setVisibility(View.VISIBLE);
+							txtScoreHeader.setText("Score : ");
+							mCurrentScore = currentScore;
+							txtCurrentScore.setText(currentScore);
+						}
+					}
+					break;
 				default:
 					break;
 			}
+		}
+	}
+
+	public void disableAds () {
+		if (adsLayout != null) {
+			adsLayout.setVisibility(View.GONE);
 		}
 	}
 

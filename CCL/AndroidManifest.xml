@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="in.ccl.ui"
-    android:versionCode="3"
+    android:versionCode="5"
     android:versionName="1.2" >
 
     <uses-sdk
@@ -109,6 +109,9 @@
         -->
         <service
             android:name="in.ccl.database.CCLPullService"
+            android:exported="false" />
+        <service
+            android:name="in.ccl.livescore.service.LiveScoreService"
             android:exported="false" />
 
         <!--

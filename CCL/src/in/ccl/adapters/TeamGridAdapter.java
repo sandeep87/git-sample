@@ -5,6 +5,7 @@ import in.ccl.ui.R;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,27 +30,36 @@ public class TeamGridAdapter extends BaseAdapter {
 		mContext = ctx;
 		teamLogo = teamLogoUrls;
 
-		/*
-		 * Display display = ((Activity) mContext).getWindowManager().getDefaultDisplay(); int height = display.getHeight(); reqImageHeight = (int) (((float) 15/ 100) * (height - 50));
-		 */
+		
+		 Display display = ((Activity) mContext).getWindowManager().getDefaultDisplay(); 
+		   int deviceDisplayDensity = ((Activity) mContext).getResources().getDisplayMetrics().densityDpi;
+		 if(deviceDisplayDensity == DisplayMetrics.DENSITY_LOW || deviceDisplayDensity == DisplayMetrics.DENSITY_MEDIUM){
+			 
+			 int height = display.getHeight(); reqImageHeight = (int) (((float) 13/ 100) * (height - 50));
+
+		 }else if(deviceDisplayDensity == DisplayMetrics.DENSITY_HIGH){
+			 int height = display.getHeight(); reqImageHeight = (int) (((float) 13/ 100) * (height - 50));
+
+		 }else if(deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH){
+			 int height = display.getHeight(); reqImageHeight = (int) (((float) 13/ 100) * (height - 50));
+
+		 }
+		
 
 	}
 
 	@Override
 	public int getCount () {
-		// TODO Auto-generated method stub
 		return teamLogo.length;
 	}
 
 	@Override
 	public Object getItem (int position) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public long getItemId (int position) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -74,14 +84,14 @@ public class TeamGridAdapter extends BaseAdapter {
 
 			// mViewHolder.teamLogoImg.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
 
-			// mViewHolder.teamLogoImg.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
+			 mViewHolder.teamLogoImg.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
 
-			// mViewHolder.teamLogoImg.setScaleType(ImageView.ScaleType.MATRIX);
+			 mViewHolder.teamLogoImg.setScaleType(ImageView.ScaleType.MATRIX);
 
-			mViewHolder.teamLogoImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.imagenotqueued));
+			mViewHolder.teamLogoImg.setImageDrawable(mContext.getResources().getDrawable(R.drawable.photo_imagenotqueued));
 			mViewHolder.teamLogoImg.setTag(teamLogo[position]);
 
-			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.imagenotqueued), mViewHolder.errorTxt, false);
+			mViewHolder.teamLogoImg.setImageURL(teamLogo[position], true, mContext.getResources().getDrawable(R.drawable.photo_imagenotqueued), mViewHolder.errorTxt, false);
 		}
 		return convertView;
 	}

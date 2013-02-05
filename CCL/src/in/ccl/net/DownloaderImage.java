@@ -37,14 +37,12 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	private ProgressDialog mProgressDialog;
 
 	private int imageId;
-	
-	public final static String APP_PATH_SD_CARD = "/CCL/";
-	public final static String APP_THUMBNAIL_PATH_SD_CARD = "Downloadimages";
+
+	public final static String APP_THUMBNAIL_PATH_SD_CARD = "/download";
 
 	public DownloaderImage(Context mcontext2, int id) {
 		mContext = mcontext2;
 		imageId = id;
-
 	}
 
 	@Override
@@ -58,8 +56,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 		/*mProgressDialog  = new ProgressDialog(mContext);
 		mProgressDialog.setTitle(mContext.getResources().getString(R.string.downloading_image));
 		mProgressDialog.show();*/
-		mProgressDialog = ProgressDialog.show(mContext, "Wait", mContext.getResources().getString(R.string.downloading_image));
-
+		mProgressDialog = ProgressDialog.show(mContext,null, mContext.getResources().getString(R.string.downloading_image));
 	}
 
 	@Override
@@ -76,7 +73,6 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 			}
 
 		} else {
-
 			Toast.makeText(mContext, mContext.getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT).show();
 		}
 
@@ -135,7 +131,7 @@ public class DownloaderImage extends AsyncTask<String, Void, Bitmap> {
 	 */
 	
 	public boolean saveImageToExternalStorage(Bitmap image) {
-		String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + APP_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD;
+		String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + APP_THUMBNAIL_PATH_SD_CARD;
 
 		try {
 		File dir = new File(fullPath);

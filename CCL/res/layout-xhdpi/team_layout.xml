@@ -70,7 +70,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/team_view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
                     android:paddingLeft="5dp" />
             </RelativeLayout>
 
@@ -78,7 +78,7 @@
                 android:id="@+id/team_desc"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="55dp" >
+                android:layout_marginTop="65dp" >
 
                 <include layout="@layout/team_pointer" />
 
@@ -86,7 +86,7 @@
                     android:id="@+id/txt_team_name"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:padding="3dip"
                     android:background="@drawable/menu_tabs"
                     android:textColor="@android:color/black" />
@@ -104,7 +104,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/team_member_pager"
                     android:layout_width="fill_parent"
-                    android:layout_height="145dip"
+                    android:layout_height="190dip"
                     android:layout_below="@id/txt_theteam"
                     android:background="@android:color/background_light" />
 

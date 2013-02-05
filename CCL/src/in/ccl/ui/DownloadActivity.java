@@ -11,6 +11,7 @@ import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
+import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -72,7 +73,7 @@ public class DownloadActivity extends TopActivity {
 			gridviewDownload.setAdapter(adapter);
 		}
 
-		System.out.println("no of  list is" + downloadItemsArrayList.size());
+//		System.out.println("no of  list is" + downloadItemsArrayList.size());
 
 		if (downloadItemsArrayList != null && downloadItemsArrayList.size() > 0) {
 			gridviewDownload.setOnScrollListener(new EndlessScrollListener(DownloadActivity.this, adapter, 0, EndlessScrollListener.RequestType.DOWNLOAD_IMAGE_REQUEST, downloadItemsArrayList.get(0).getNumberOfPages()));
@@ -90,6 +91,20 @@ public class DownloadActivity extends TopActivity {
 				startActivity(intent);
 			}
 		});
+		BroadcastReceiver receiver = new BroadcastReceiver() {
+      @Override
+      public void onReceive(Context context, Intent intent) {
+          String action = intent.getAction();
+          if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+    				Toast.makeText(DownloadActivity.this, getResources().getString(R.string.downloading_succuss),Toast.LENGTH_SHORT).show();
+
+          }
+      }
+  };
+
+    registerReceiver(receiver, new IntentFilter(
+        DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
 	}
 
 	@Override
@@ -98,7 +113,7 @@ public class DownloadActivity extends TopActivity {
 
 		if (Util.getInstance().isOnline(DownloadActivity.this)) {
 			if (isAsyncTask) {
-				System.out.println("onresume is" + "isAynctask");
+				//System.out.println("onresume is" + "isAynctask");
 				adapter.downloadStartOnResume();
 				isAsyncTask = false;
 			}
@@ -128,7 +143,7 @@ public class DownloadActivity extends TopActivity {
 		if (adapter != null && adapter.mDownloaderImage != null) {
 			if (this.adapter.mDownloaderImage.getStatus() == AsyncTask.Status.RUNNING) {
 				isAsyncTask = true;
-				System.out.println("onpause in if block is running");
+			//	System.out.println("onpause in if block is running");
 				adapter.downloadStop();
 			}
 		}
@@ -136,6 +151,7 @@ public class DownloadActivity extends TopActivity {
 	}
 
 	protected boolean isAppInstalled (String packageName) {
+		
 		Intent mIntent = getPackageManager().getLaunchIntentForPackage(packageName);
 		if (mIntent != null) {
 			return true;
@@ -171,7 +187,6 @@ public class DownloadActivity extends TopActivity {
 					if (cursor != null) {
 						cursor.close();
 					}
-
 					if (downloadlList.size() > 0 && downloadlList != null) {
 						adapter = new GridAdapter(DownloadActivity.this, downloadlList, "downloads");
 						gridviewDownload.setAdapter(adapter);
@@ -182,5 +197,4 @@ public class DownloadActivity extends TopActivity {
 			}
 		}
 	}
-
 }
