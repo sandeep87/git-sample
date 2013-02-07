@@ -84,16 +84,6 @@
             android:theme="@style/noAnimTheme" >
         </activity>
         <activity
-            android:name=".NewsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/noAnimTheme" >
-        </activity>
-        <activity
-            android:name="in.ccl.ui.NewsDataActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/noAnimTheme" >
-        </activity>
-        <activity
             android:name="in.ccl.ui.DownloadActivity"
             android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme" >

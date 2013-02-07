@@ -84,8 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_fst_team"
                     android:padding="3dip"
-                    android:text="vs"
-                    android:textColor="@android:color/darker_gray"   
+                    android:text="@string/vs"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="12sp" />
 
                 <TextView
@@ -106,37 +106,23 @@
                 android:layout_below="@+id/team_layout"
                 android:padding="3dip"
                 android:paddingTop="5dip"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
-                 android:textColor="@android:color/darker_gray"
                 android:textStyle="bold" />
-
-            <View
+        </RelativeLayout>
+		<View
                 android:id="@+id/seperator"
                 android:layout_width="wrap_content"
                 android:layout_height="0.5dp"
-                android:layout_below="@+id/txt_time"
+                android:layout_below="@+id/fst_layout"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@android:color/black" />
-            <!--
-                 <ImageButton
-                android:id="@+id/img_fstteam_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/info_schedule"
-                android:paddingTop="3dip" />
-            -->
-        </RelativeLayout>
-
         <RelativeLayout
             android:id="@+id/scnd_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fst_layout"
+            android:layout_below="@+id/seperator"
             android:layout_marginTop="5dip" >
 
             <RelativeLayout
@@ -161,8 +147,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/txt_scnd_team"
                     android:padding="3dip"
-                    android:text="vs"
-                    android:textColor="@android:color/darker_gray"   
+                    android:text="@string/vs"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="12sp" />
 
                 <TextView
@@ -183,22 +169,9 @@
                 android:layout_below="@+id/scnd_team_layout"
                 android:padding="3dip"
                 android:paddingTop="5dip"
-                android:textColor="@android:color/darker_gray"   
+                android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 android:textStyle="bold" />
-
-            <!--
-                 <ImageButton
-                android:id="@+id/img_scnd_btn_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/info_schedule"
-                android:paddingTop="3dip" />
-            -->
         </RelativeLayout>
     </RelativeLayout>
 

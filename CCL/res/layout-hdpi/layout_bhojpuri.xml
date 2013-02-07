@@ -34,7 +34,7 @@
                 android:layout_below="@+id/entire_team_title_bhojpuri"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="Mr. Prateek Kanakia"
+                android:text="AVIKA GROUP LTD"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
                 android:layout_below="@+id/owner_one_name_one_bhojpuri"
                 android:layout_marginLeft="2dp"
                 android:paddingRight="5dip"
-                android:text="Group Delphoenix has made far-reaching inroads into technology (e-commerce/e-retail/digital marketing), infrastructure, film&amp;music production, talent management, special events and lifestyle cafes in the short time since its inception. Under the purview of the lifestyle arm; Delphoenix Lifestyles; Internet portals such as 24x7style.com and c4cycle.com have been developed. Group Delphoenix is now foraying into Sports."
+                android:text="@string/owners_lounge_bhojpuri"
                 android:textColor="@android:color/black" />
 
             <ImageView
@@ -57,21 +57,30 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/owner_one_data_bhojpuri"
-                android:src="@raw/prateek_kanakia" />
-
-           <!--  <TextView
-                android:id="@+id/owner_one_name_two_bhojpuri"
+                android:src="@raw/anandbihari_yadav" />
+			<ImageView
+                android:id="@+id/owner_two_image_bhojpuri"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@id/owner_one_data_bhojpuri"
+                android:layout_below="@id/owner_one_image_bhojpuri"
+                android:src="@raw/manoj_tiwari" />
+           <TextView
+                android:id="@+id/owner_two_name_one_bhojpuri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/owner_one_image_bhojpuri"
-                android:layout_marginRight="3dip"
-                android:layout_toRightOf="@+id/owner_one_data_bhojpuri"
-                android:paddingTop="1dip"
-                android:singleLine="false"
-                android:text="Mr. Prateek Kanakia"
-                android:textColor="@android:color/black" /> -->
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@id/owner_one_data_bhojpuri"
+                android:textStyle="bold" />
         </RelativeLayout>
+    
+
+     
     </RelativeLayout>
 
 </RelativeLayout>
