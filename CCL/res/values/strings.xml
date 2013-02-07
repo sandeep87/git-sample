@@ -13,7 +13,7 @@
     <string name="ccl_menu">CCL menu</string>
     <string name="ccl_logo">CCL logo</string>
     <string name="notification_title">NOTIFICATIONS </string>
-    <string name="score">CELEBRITY CRICKET LEAGUE</string>
+    <string name="app_title">CELEBRITY CRICKET LEAGUE</string>
     <string name="banner_title">UPDATES</string>
     <string name="loading">Please wait, while loading&#8230;</string>
     <string name="log_folder">ccl-logs</string>
@@ -25,7 +25,6 @@
     <string name="image_error_msg">Unable to retrieve content at this moment</string>
 
     <!-- TODO: -->
-    <string name="sample_score">CELEBRITY CRICKET LEAGUE</string>
     <string name="sample_notification">INDRAJIT SCORES A SIX</string>
     <!--  -->
 
