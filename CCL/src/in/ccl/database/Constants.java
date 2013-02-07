@@ -75,4 +75,10 @@ public class Constants {
 
 	public static final int STATE_CURRENT_SCORE_TASK_COMPLETED = 25;
 
+	public static final int STATE_MATCHES_TASK_COMPLETED = 26;
+
+	public static final int STATE_LIVE_SCORE_TASK_COMPLETED = 27;
+
+	public static final int STATE_LIVE_SCORE_UPDATE_TASK_COMPLETED = 28;
+
 }

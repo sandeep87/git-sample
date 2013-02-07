@@ -12,6 +12,7 @@ import in.ccl.ui.MenuItems;
 import in.ccl.ui.PhotoAlbumActivity;
 import in.ccl.ui.R;
 import in.ccl.ui.TeamActivity;
+import in.ccl.ui.TopActivity;
 import in.ccl.ui.VideoAlbumActivity;
 import in.ccl.util.Constants;
 
@@ -101,6 +102,10 @@ public class ImagePagerAdapter extends PagerAdapter {
 
 					@Override
 					public void onClick (View v) {
+						TopActivity ta = (TopActivity) activity;
+						if (ta.getDrawer() != null && ta.getDrawer().isOpened()) {
+							return;
+						}
 
 						try {
 							AlbumTitle = itemsList.get(position).getTitle();
@@ -136,7 +141,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 				});
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText,false);
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText, false);
 				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
 				// displayImage.show();
 				break;
@@ -155,7 +160,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTxt,false);
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTxt, false);
 				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, null);
 				// displayImage.show();
 				break;
@@ -195,6 +200,10 @@ public class ImagePagerAdapter extends PagerAdapter {
 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View arg1, int pos, long arg3) {
+				TopActivity ta = (TopActivity) activity;
+				if (ta.getDrawer() != null && ta.getDrawer().isOpened()) {
+					return;
+				}
 				int index = (2 * position) + (position + pos);
 				if (from.equals("video_gallery")) {
 					try {

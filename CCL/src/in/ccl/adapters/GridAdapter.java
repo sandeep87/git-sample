@@ -160,6 +160,7 @@ public class GridAdapter extends BaseAdapter {
 							}
 						}
 						else {
+							
 							// Network not available display the network error toast.
 							Toast.makeText(mcontext, mcontext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 						}
