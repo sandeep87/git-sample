@@ -340,6 +340,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener {
 					}
 					break;
 				case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
+					System.out.println("kranthi STATE_ACTION_TEAM_MEMBERS_COMPLETE...");
 					ArrayList <Teams> teamLogoItems = null;
 					ArrayList <TeamMember> teamMemberItems = null;
 					cursor = getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
