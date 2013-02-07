@@ -8,6 +8,7 @@ import in.ccl.database.JSONPullParser;
 import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Util;
+import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.logging.Logger;
 import in.ccl.logging.ParadigmExceptionHandler;
 import in.ccl.model.Items;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -270,6 +273,14 @@ public class SplashScreenActivity extends FragmentActivity {
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
 		// if user press back from Home activity splash screen should not be appear.
 		// so here it finishes the splash screen activity.
+ 
+		// when the application is going to close should stop current score service.
+		
+		Intent mServiceIntent = new Intent(SplashScreenActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_currentscore_url)));
+		AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		alarmManager.cancel(pendingIntent);
+
 		finish();
 	}
 

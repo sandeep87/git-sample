@@ -1,6 +1,8 @@
 package in.ccl.database;
 
 import in.ccl.model.Items;
+import in.ccl.score.LiveScore;
+import in.ccl.score.MatchesResponse;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,22 @@ public class BroadcastNotifier {
 
 	}
 
+	public void broadcastIntentWithCurrentScore (int status, String message) {
+
+		Intent localIntent = new Intent();
+
+		// The Intent contains the custom broadcast action for this app
+		localIntent.setAction(Constants.BROADCAST_ACTION);
+
+		// Puts the status into the Intent
+		localIntent.putExtra(Constants.EXTENDED_DATA_STATUS, status);
+		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
+		localIntent.putExtra("current_score", message);
+		// Broadcasts the Intent
+		mBroadcaster.sendBroadcast(localIntent);
+
+	}
+
 	/**
 	 * Uses LocalBroadcastManager to send an {@link String} containing a logcat message. {@link Intent} has the action {@code BROADCAST_ACTION} and the category {@code DEFAULT}.
 	 * 
@@ -61,6 +79,46 @@ public class BroadcastNotifier {
 		localIntent.putExtra(Constants.EXTENDED_STATUS_LOG, logData);
 		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
+		// Broadcasts the Intent
+		mBroadcaster.sendBroadcast(localIntent);
+
+	}
+
+	public void broadcastIntentWithMatches (int status, ArrayList <MatchesResponse> matchesResponse) {
+
+		Intent localIntent = new Intent();
+
+		// The Intent contains the custom broadcast action for this app
+		localIntent.setAction(Constants.BROADCAST_ACTION);
+
+		// Puts the status into the Intent
+		localIntent.putExtra(Constants.EXTENDED_DATA_STATUS, status);
+
+		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
+		if (matchesResponse != null) {
+			System.out.println("maches size in broadcast "+matchesResponse.size());
+			localIntent.putParcelableArrayListExtra("matches_list", matchesResponse);
+		}
+
+		// Broadcasts the Intent
+		mBroadcaster.sendBroadcast(localIntent);
+
+	}
+
+	public void broadcastIntentWithLiveScore (int status, LiveScore liveScore) {
+
+		Intent localIntent = new Intent();
+
+		// The Intent contains the custom broadcast action for this app
+		localIntent.setAction(Constants.BROADCAST_ACTION);
+
+		// Puts the status into the Intent
+		localIntent.putExtra(Constants.EXTENDED_DATA_STATUS, status);
+
+		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
+		if (liveScore != null) {
+			localIntent.putExtra("livescore", liveScore);
+		}
 		// Broadcasts the Intent
 		mBroadcaster.sendBroadcast(localIntent);
 

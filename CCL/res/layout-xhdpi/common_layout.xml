@@ -56,14 +56,13 @@
 
             <TextView
                 android:id="@+id/score_title_textview"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_toRightOf="@id/img_btn_menu"
-                android:gravity="center"
-                android:paddingLeft="5dp"
-                android:text="@string/score"
+                android:text="@string/app_title"
                 android:textColor="@color/red"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 android:visibility="gone" >
             </TextView>
 
@@ -71,11 +70,18 @@
                 android:id="@+id/score_textview"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/imgbtn_score_dropdown"
                 android:layout_toRightOf="@id/score_title_textview"
-                android:paddingLeft="25dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:scrollHorizontally="true"
                 android:singleLine="true"
-                android:text="@string/sample_score"
+                android:text="@string/app_title"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" >
             </TextView>
@@ -98,27 +104,66 @@
             android:id="@+id/layout_content"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@id/header"
             android:layout_above="@+id/admob_layout"
+            android:layout_below="@id/header"
             android:background="@drawable/home_bg" >
         </RelativeLayout>
 
-        <LinearLayout xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-            android:id="@+id/admob_layout"            
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/header"
+            android:orientation="vertical" >
+
+            <in.ccl.adapters.LiveScoreSlidingDrawer
+                xmlns:my="http://schemas.android.com/apk/res/in.ccl.ui"
+                android:id="@+id/drawer"
+                android:layout_width="fill_parent"
+                android:layout_height="500dp"
+                android:layout_below="@id/imgbtn_score_dropdown"
+                my:content="@+id/content"
+                my:direction="topToBottom"
+                my:handle="@+id/handle" >
+
+                <LinearLayout
+                    android:id="@id/content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="400dp" >
+
+                    <include
+                        layout="@layout/score_view"
+                        android:visibility="visible" />
+
+                    <include
+                        layout="@layout/livematches_layout"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@id/handle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </in.ccl.adapters.LiveScoreSlidingDrawer>
+        </RelativeLayout>
+
+        <LinearLayout
+            xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+            android:id="@+id/admob_layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:visibility="gone">
+            android:visibility="gone" >
+
             <com.google.ads.AdView
                 android:id="@+id/adMob"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 ads:adSize="BANNER"
                 ads:adUnitId="a15108b4f6bb5fe" />
-        
-            </LinearLayout>
-            
-            <!--
+        </LinearLayout>
+
+        <!--
  android:id="@+id/slidingDrawer"
                       android:layout_height="150dp"
                       android:content="@+id/content"
@@ -228,7 +273,7 @@
                 </TextView>
             </LinearLayout>
  </SlidingDrawer>
-            -->
+        -->
     </RelativeLayout>
 
 </in.ccl.helper.AnimationLayout>

@@ -51,6 +51,7 @@ public class CCLPullService extends IntentService {
 		else {
 			compareKey = Uri.parse(localUrlString).getLastPathSegment();
 		}
+
 		// Creates a projection to use in querying the modification date table in the provider.
 		final String[] dateProjection = new String[] { DataProviderContract.ROW_ID, DataProviderContract.DATA_DATE_COLUMN };
 
@@ -268,6 +269,7 @@ public class CCLPullService extends IntentService {
 								teamCursor.close();
 							}
 						}
+
 						else {
 							if (compareKey.equals("team_members") || compareKey.equals("team_members_updates")) {
 								updatedRows = 0;

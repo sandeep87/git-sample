@@ -88,7 +88,7 @@ public class JSONPullParser {
 		}
 	}
 
-	private String readStream (InputStream inputStream) {
+	public static String readStream (InputStream inputStream) {
 		String value = null;
 
 		StringBuilder sb = null;
