@@ -7,8 +7,6 @@ import java.io.InputStream;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.amazonaws.util.json.JSONArray;
-
 public class LiveScoreParser {
 
 	public static String parseCurrentScore (InputStream inputStream) {

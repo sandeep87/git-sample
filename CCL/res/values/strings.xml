@@ -98,7 +98,7 @@
     <string name="first_match">MATCH A</string>
     <string name="first_date">09 AUG</string>
      <string name="first_day">SATURDAY</string>
-     
+        <string name="liveScore">live score</string>
       <string name="second_match">MATCH B</string>
     <string name="second_date">09 AUG</string>
      <string name="second_day">SATURDAY</string>
@@ -112,7 +112,7 @@
     <string name="second_inns">2ND INNINGS</string>
     <string name="bowler">BOWLER</string>
     <string name="extras">EXTRAS</string>
-        <string name="vs">Vs</string>
+        <string name="vs"> vs </string>
     
     <!-- end ScoreBoard -->
     

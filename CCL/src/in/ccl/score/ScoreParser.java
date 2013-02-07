@@ -52,7 +52,7 @@ public class ScoreParser {
 			ArrayList <Innings> secondInnings = new ArrayList <Innings>();
 			// System.out.println("" + builder.toString().trim());
 			JSONObject mainJsonObject = new JSONObject(builder.toString().trim());
-		
+
 			String firstInn = mainJsonObject.getString("innings1");
 			// System.out.println("firstInn" + firstInn);
 
@@ -109,64 +109,146 @@ public class ScoreParser {
 	private Innings parseFirstInnings (JSONObject inningsObject) {
 		Innings innings = new Innings();
 		try {
-
-			innings.setBowling_team(inningsObject.getString("bowling_team"));
-			innings.setBatting_team(inningsObject.getString("batting_team"));
-
-			JSONObject totalObject = inningsObject.getJSONObject("total");
-
-			innings.setRuns(totalObject.getInt("runs"));
-			innings.setOvers(totalObject.getDouble("overs"));
-			innings.setWickets(totalObject.getInt("wickets"));
-
-			JSONObject extraObject = inningsObject.getJSONObject("extras");
-
-			innings.setLegbyes(extraObject.getInt("legbyes"));
-			innings.setWides(extraObject.getInt("wides"));
-			innings.setByes(extraObject.getInt("byes"));
-			innings.setNoballs(extraObject.getInt("noballs"));
-
-			JSONArray battingArrary = inningsObject.getJSONArray("batting");
-			ArrayList <Batting> battingList = new ArrayList <Batting>();
-			for (int i = 0; i < battingArrary.length(); i++) {
-				JSONObject battJsonObject = new JSONObject();
-				battJsonObject = battingArrary.getJSONObject(i);
-				Batting batting = new Batting();
-				batting.setName(battJsonObject.getString("name"));
-				batting.setScore(battJsonObject.getInt("score"));
-				batting.setBalls(battJsonObject.getInt("balls"));
-				batting.setFours(battJsonObject.getInt("fours"));
-				batting.setSixes(battJsonObject.getInt("sixes"));
-				batting.setCaught(battJsonObject.getString("caught"));
-				batting.setBowled(battJsonObject.getString("bowled"));
-				batting.setHitwicket(battJsonObject.getString("hitwicket"));
-				batting.setRetiredhurt(battJsonObject.getString("retiredhurt"));
-				batting.setRunout(battJsonObject.getString("runout"));
-				batting.setNotout(battJsonObject.getString("notout"));
-				batting.setStumped(battJsonObject.getString("stumped"));
-				batting.setCandb(battJsonObject.getString("candb"));
-				batting.setLbw(battJsonObject.getString("lbw"));
-				batting.setDidnotbat(battJsonObject.getString("handledtheball"));
-				batting.setDidnotbat(battJsonObject.getString("didnotbat"));
-				battingList.add(batting);
+			if (!inningsObject.isNull("bowling_team")) {
+				if (inningsObject.has("bowling_team")) {
+					innings.setBowling_team(inningsObject.getString("bowling_team"));
+				}
 			}
-			innings.setBatting_info(battingList);
 
-			JSONArray bowlerArrary = inningsObject.getJSONArray("bowling");
-			ArrayList <Bowler> bowerList = new ArrayList <Bowler>();
-			for (int i = 0; i < bowlerArrary.length(); i++) {
-				JSONObject bowlerJsonObject = new JSONObject();
-				bowlerJsonObject = bowlerArrary.getJSONObject(i);
-				Bowler bowler = new Bowler();
-
-				bowler.setBowlerName(bowlerJsonObject.getString("name"));
-				bowler.setBowlerOvers(bowlerJsonObject.getDouble("overs"));
-				bowler.setMadiens(bowlerJsonObject.getInt("madiens"));
-				bowler.setBowlerRuns(bowlerJsonObject.getInt("runs"));
-				bowler.setBowlerWickets(bowlerJsonObject.getInt("wickets"));
-				bowerList.add(bowler);
+			if (!inningsObject.isNull("batting_team")) {
+				if (inningsObject.has("batting_team")) {
+					innings.setBatting_team(inningsObject.getString("batting_team"));
+				}
 			}
-			innings.setBowler_info(bowerList);
+
+			if (!inningsObject.isNull("total")) {
+				if (inningsObject.has("total")) {
+					JSONObject totalObject = inningsObject.getJSONObject("total");
+					if (totalObject.has("runs")) {
+						innings.setRuns(totalObject.getInt("runs"));
+					}
+					if (totalObject.has("overs")) {
+						innings.setOvers(totalObject.getDouble("overs"));
+					}
+					if (totalObject.has("wickets")) {
+						innings.setWickets(totalObject.getInt("wickets"));
+					}
+
+				}
+			}
+
+			if (!inningsObject.isNull("extras")) {
+				if (inningsObject.has("extras")) {
+					JSONObject extraObject = inningsObject.getJSONObject("extras");
+					if (extraObject.has("legbyes")) {
+						innings.setLegbyes(extraObject.getInt("legbyes"));
+					}
+					if (extraObject.has("wides")) {
+						innings.setWides(extraObject.getInt("legbyes"));
+					}
+					if (extraObject.has("byes")) {
+						innings.setByes(extraObject.getInt("byes"));
+					}
+					if (extraObject.has("noballs")) {
+						innings.setNoballs(extraObject.getInt("noballs"));
+					}
+
+				}
+
+			}
+			if (!inningsObject.isNull("batting")) {
+				if (inningsObject.has("batting")) {
+					JSONArray battingArrary = inningsObject.getJSONArray("batting");
+					ArrayList <Batting> battingList = new ArrayList <Batting>();
+					for (int i = 0; i < battingArrary.length(); i++) {
+						JSONObject battJsonObject = new JSONObject();
+						battJsonObject = battingArrary.getJSONObject(i);
+						Batting batting = new Batting();
+						if (battJsonObject.has("name")) {
+							batting.setName(battJsonObject.getString("name"));
+						}
+						if (battJsonObject.has("balls")) {
+							batting.setBalls(battJsonObject.getInt("balls"));
+						}
+						if (battJsonObject.has("score")) {
+							batting.setScore(battJsonObject.getInt("score"));
+						}
+						if (battJsonObject.has("fours")) {
+							batting.setFours(battJsonObject.getInt("fours"));
+						}
+						if (battJsonObject.has("sixes")) {
+							batting.setSixes(battJsonObject.getInt("sixes"));
+						}
+						if (battJsonObject.has("caught")) {
+							batting.setCaught(battJsonObject.getString("caught"));
+						}
+						if (battJsonObject.has("bowled")) {
+							batting.setBowled(battJsonObject.getString("bowled"));
+						}
+						if (battJsonObject.has("hitwicket")) {
+							batting.setHitwicket(battJsonObject.getString("hitwicket"));
+						}
+						if (battJsonObject.has("retiredhurt")) {
+							batting.setRetiredhurt(battJsonObject.getString("retiredhurt"));
+						}
+						if (battJsonObject.has("runout")) {
+							batting.setRunout(battJsonObject.getString("runout"));
+						}
+						if (battJsonObject.has("notout")) {
+							batting.setNotout(battJsonObject.getString("notout"));
+						}
+						if (battJsonObject.has("stumped")) {
+							batting.setStumped(battJsonObject.getString("stumped"));
+						}
+						if (battJsonObject.has("candb")) {
+							batting.setCandb(battJsonObject.getString("candb"));
+						}
+						if (battJsonObject.has("handledtheball")) {
+							batting.setHandledtheball(battJsonObject.getString("handledtheball"));
+						}
+						if (battJsonObject.has("didnotbat")) {
+							batting.setDidnotbat(battJsonObject.getString("didnotbat"));
+						}
+
+						battingList.add(batting);
+					}
+					innings.setBatting_info(battingList);
+				}
+
+			}
+			if (!inningsObject.isNull("bowling")) {
+				if (inningsObject.has("bowling")) {
+					JSONArray bowlerArrary = inningsObject.getJSONArray("bowling");
+					ArrayList <Bowler> bowerList = new ArrayList <Bowler>();
+					for (int i = 0; i < bowlerArrary.length(); i++) {
+						JSONObject bowlerJsonObject = new JSONObject();
+						bowlerJsonObject = bowlerArrary.getJSONObject(i);
+						Bowler bowler = new Bowler();
+						if (bowlerJsonObject.has("name")) {
+							bowler.setBowlerName(bowlerJsonObject.getString("name"));
+						}
+						if (bowlerJsonObject.has("madiens")) {
+							bowler.setMadiens(bowlerJsonObject.getInt("madiens"));
+						}
+						if (bowlerJsonObject.has("runs")) {
+							bowler.setBowlerRuns(bowlerJsonObject.getInt("runs"));
+						}
+						if (bowlerJsonObject.has("wickets")) {
+							bowler.setBowlerWickets(bowlerJsonObject.getInt("wickets"));
+						}
+						if (bowlerJsonObject.has("name")) {
+							bowler.setBowlerName(bowlerJsonObject.getString("name"));
+						}
+						if (bowlerJsonObject.has("overs")) {
+							bowler.setBowlerOvers(bowlerJsonObject.getDouble("overs"));
+						}
+
+						bowerList.add(bowler);
+					}
+					innings.setBowler_info(bowerList);
+				}
+			}
+
 		}
 		catch (JSONException e) {
 			// e.printStackTrace();
@@ -312,9 +394,9 @@ public class ScoreParser {
 			if (object.has("bowler2")) {
 
 				JSONObject previousBowlerObject = object.getJSONObject("bowler2");
-			
+
 				if (previousBowlerObject.has("name")) {
-				
+
 					liveScore.setPrevious_bowler_name(previousBowlerObject.getString("name"));
 				}
 				if (previousBowlerObject.has("overs")) {
@@ -374,21 +456,21 @@ public class ScoreParser {
 		JSONObject responseObject = null;
 		try {
 			responseObject = new JSONObject(matchresponsebuilder.toString());
-			 if(responseObject.has("data")){
-			JSONArray matchesList = responseObject.getJSONArray("data");
-			matchesResponseList = new ArrayList <MatchesResponse>();
-			for (int i = 0; i < matchesList.length(); i++) {
-				MatchesResponse matchesResponse = new MatchesResponse();
-				JSONObject matchId = matchesList.getJSONObject(i);
-				if(matchId.has("id")){
-				matchesResponse.setId(matchId.getInt("id"));
+			if (responseObject.has("data")) {
+				JSONArray matchesList = responseObject.getJSONArray("data");
+				matchesResponseList = new ArrayList <MatchesResponse>();
+				for (int i = 0; i < matchesList.length(); i++) {
+					MatchesResponse matchesResponse = new MatchesResponse();
+					JSONObject matchId = matchesList.getJSONObject(i);
+					if (matchId.has("id")) {
+						matchesResponse.setId(matchId.getInt("id"));
+					}
+					if (matchId.has("name")) {
+						matchesResponse.setMathesName(matchId.getString("name"));
+					}
+					matchesResponseList.add(matchesResponse);
 				}
-				if(matchId.has("name")){
-				matchesResponse.setMathesName(matchId.getString("name"));
-				}
-				matchesResponseList.add(matchesResponse);
 			}
-		}
 		}
 		catch (org.json.JSONException e) {
 			// TODO Auto-generated catch block
