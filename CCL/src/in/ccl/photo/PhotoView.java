@@ -30,6 +30,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -231,29 +232,27 @@ public class PhotoView extends ImageView {
 
 	@Override
 	protected boolean setFrame (int frameLeft, int frameTop, int frameRight, int frameBottom) {/*
+																																															 * Matrix matrix = getImageMatrix(); float scaleFactor = getWidth() / (float) getDrawable().getIntrinsicWidth(); //float scaleFactor = fitScreenBitmap(); //float scaleFactorHeight =
+																																															 * getHeight()/(float)getDrawable().getIntrinsicHeight(); matrix.setScale(scaleFactor, scaleFactor, fitScreenBitmap(), fitScreenBitmap()); setImageMatrix(matrix); return super.setFrame(frameLeft, frameTop,
+																																															 * frameRight, frameBottom);
+																																															 */
 		Matrix matrix = getImageMatrix();
-		float scaleFactor = getWidth() / (float) getDrawable().getIntrinsicWidth();
-		//float scaleFactor = fitScreenBitmap();
-		//float scaleFactorHeight = getHeight()/(float)getDrawable().getIntrinsicHeight();
-		matrix.setScale(scaleFactor, scaleFactor, fitScreenBitmap(), fitScreenBitmap());
+		float scale;
+		int viewWidth = getWidth() - getPaddingLeft() - getPaddingRight();
+		int viewHeight = getHeight() - getPaddingTop() - getPaddingBottom();
+		int drawableWidth = getDrawable().getIntrinsicWidth();
+		int drawableHeight = getDrawable().getIntrinsicHeight();
+		if (drawableWidth * viewHeight > drawableHeight * viewWidth) {
+			scale = (float) viewHeight / (float) drawableHeight;
+		}
+		else {
+			scale = (float) viewWidth / (float) drawableWidth;
+		}
+		matrix.setScale(scale, scale);
 		setImageMatrix(matrix);
 		return super.setFrame(frameLeft, frameTop, frameRight, frameBottom);
-	*/
-		 Matrix matrix = getImageMatrix();
-		 float scale;
-		 int viewWidth = getWidth() - getPaddingLeft() - getPaddingRight();
-		 int viewHeight = getHeight() - getPaddingTop() - getPaddingBottom();
-		 int drawableWidth = getDrawable().getIntrinsicWidth();
-		 int drawableHeight = getDrawable().getIntrinsicHeight();
-		 if (drawableWidth * viewHeight > drawableHeight * viewWidth) {
-		 scale = (float) viewHeight / (float) drawableHeight;
-		 } else {
-		 scale = (float) viewWidth / (float) drawableWidth;
-		 }
-		 matrix.setScale(scale, scale);
-		 setImageMatrix(matrix);
-		 return super.setFrame(frameLeft, frameTop,  frameRight,  frameBottom);
 	}
+
 	@Override
 	public void setImageDrawable (Drawable drawable) {
 		// The visibility of the View
@@ -313,7 +312,7 @@ public class PhotoView extends ImageView {
 		errorTitleTxt = errorTxt;
 		URL pictureURL = null;
 		try {
-			if (pictureUrl != null) {
+			if (pictureUrl != null && !TextUtils.isEmpty(pictureUrl)) {
 				pictureURL = new URL(pictureUrl.replace(" ", "%20"));
 			}
 		}
@@ -379,9 +378,9 @@ public class PhotoView extends ImageView {
 	 * @param resId
 	 */
 	public void setStatusResource (int resId) {
-    if(errorTitleTxt != null){
-    	errorTitleTxt.setTextColor(Color.LTGRAY);
-    }
+		if (errorTitleTxt != null) {
+			errorTitleTxt.setTextColor(Color.LTGRAY);
+		}
 		// If the View is empty, provides it with a Drawable resource as its content
 		if (mThisView == null) {
 			if (resId == PhotoManager.DOWNLOAD_FAILED) {
@@ -405,12 +404,13 @@ public class PhotoView extends ImageView {
 				}
 				errorTitleTxt.setVisibility(View.VISIBLE);
 				errorTitleTxt.setText("Loading...");
-			}else if(resId == PhotoManager.TASK_COMPLETE){
+			}
+			else if (resId == PhotoManager.TASK_COMPLETE) {
 				if (errorTitleTxt != null) {
 					errorTitleTxt.setVisibility(View.GONE);
 				}
 			}
-			else {				
+			else {
 				if (backgroundChange) {
 					setImageResource(R.drawable.blackbackground);
 				}

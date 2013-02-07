@@ -158,7 +158,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		TopActivity.isCurrentScoreTimerStarted = isCurrentScoreTimerStarted;
 	}
 
-	
 	public LiveScoreSlidingDrawer getDrawer () {
 		return mDrawer;
 	}
@@ -550,9 +549,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		previous_bowler_wkts = (TextView) findViewById(R.id.non_bowler_wkts);
 
 		previous_bowler_mnds = (TextView) findViewById(R.id.non_bowler_mdns);
-		// layoutContent.addView(scoreView, lp);
-		// prepareAnimation(scoreView, -380.0f, 0.0f, false);
-
 	}
 
 	private void displayLiveScore (LiveScore liveScore) {

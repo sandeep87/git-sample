@@ -99,7 +99,7 @@ public class LiveScoreService extends IntentService {
 						LiveScore liveScore = LiveScoreParser.parseLiveScore(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithLiveScore(Constants.STATE_LIVE_SCORE_UPDATE_TASK_COMPLETED, liveScore);
 						PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-						long trigger = System.currentTimeMillis() + 3000;
+						long trigger = System.currentTimeMillis() + 60000;
 						alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 						if (liveScore == null) {
 							alarmManager.cancel(pendingIntent);
@@ -115,7 +115,7 @@ public class LiveScoreService extends IntentService {
 						TopActivity.setCurrentScore(currentMessage);
 						mBroadcaster.broadcastIntentWithCurrentScore(Constants.STATE_CURRENT_SCORE_TASK_COMPLETED, currentMessage);
 						PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-						long trigger = System.currentTimeMillis() + 30000;
+						long trigger = System.currentTimeMillis() + 60000;
 						alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 						if (currentMessage == null) {
 							alarmManager.cancel(pendingIntent);

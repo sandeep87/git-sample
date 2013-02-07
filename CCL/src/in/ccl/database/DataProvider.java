@@ -1,5 +1,6 @@
 package in.ccl.database;
 
+import in.ccl.ui.SplashScreenActivity;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
@@ -55,7 +56,7 @@ public class DataProvider extends ContentProvider {
 
 	private static final String INTEGER_TYPE = "INTEGER";
 
-	// Defines an SQLite statement that builds the Picasa picture URL table
+	// Defines an SQLite statement that builds the CCL data URL table
 	private static final String CREATE_BANNER_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.BANNERURL_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.BANNER_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.IMAGE_NAME_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.BANNER_ALBUM_ID_COLUMN + " " + INTEGER_TYPE + ",LastModifiedTime DATETIME);";
 
 	private static final String CREATE_PHOTO_ALBUM_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.PHOTO_ALBUM_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.IMAGE_NAME_COLUMN + " " + TEXT_TYPE + ");";
@@ -70,8 +71,6 @@ public class DataProvider extends ContentProvider {
 
 	// Defines an SQLite statement that builds the URL modification date table
 	private static final String CREATE_DATE_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.DATE_TABLE_NAME + " " + "(" + " " + DataProviderContract.ROW_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.DATA_DATE_COLUMN + " " + INTEGER_TYPE + ")";
-
-	private static final String CREATE_NEWS_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.NEWS_TABLE_NAME + " " + "(" + " " + DataProviderContract.NEWS_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.NEWS_TITLE + " " + TEXT_TYPE + " ," + DataProviderContract.NEWS_URL + " " + TEXT_TYPE + " ," + DataProviderContract.NEWS_CATEGORY + " " + INTEGER_TYPE + ");";
 
 	private static final String CREATE_DOWNLOAD_IMAGE_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME + " " + "(" + " " + DataProviderContract.DOWNLOAD_IMAGE_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.DOWNLOAD_IMAGE_URL + " " + TEXT_TYPE + " ," + DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL + " " + TEXT_TYPE + " ," + DataProviderContract.DOWNLOAD_IMAGE_NO_OF_PAGES + " " + INTEGER_TYPE + ");";
 
@@ -150,13 +149,17 @@ public class DataProvider extends ContentProvider {
 	 */
 	private class DataProviderHelper extends SQLiteOpenHelper {
 
+		private Context mContext;
+
 		/**
 		 * Instantiates a new SQLite database using the supplied database name and version
 		 * 
 		 * @param context The current context
 		 */
 		DataProviderHelper (Context context) {
+
 			super(context, DataProviderContract.DATABASE_NAME, null, DataProviderContract.DATABASE_VERSION);
+			mContext = context;
 		}
 
 		/**
@@ -196,10 +199,14 @@ public class DataProvider extends ContentProvider {
 			db.execSQL(CREATE_RAW_TABLE_SQL);
 			db.execSQL(CREATE_PAGES_TABLE_SQL);
 			db.execSQL(CREATE_DATE_TABLE_SQL);
-			db.execSQL(CREATE_NEWS_TABLE_SQL);
 			db.execSQL(CREATE_DOWNLOAD_IMAGE_TABLE_SQL);
 			db.execSQL(CREATE_TEAM_LOGO_TABLE_SQL);
 			db.execSQL(CREATE_TEAM_MEMBERS_TABLE_SQL);
+			// once the tables are created starting background service for checking home screen info;
+			// It is run every 24 hours.
+			if (mContext != null) {
+				SplashScreenActivity.schedule(mContext);
+			}
 
 		}
 
@@ -273,7 +280,7 @@ public class DataProvider extends ContentProvider {
 			// If the query is for a picture URL
 			case BANNER_IMAGE_URL_QUERY:
 				// Does the query against a read-only version of the database
-				Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null,DataProviderContract.BANNER_LAST_MODIFIED_COLUMN+" ASC");
+				Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null, DataProviderContract.BANNER_LAST_MODIFIED_COLUMN + " ASC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -292,14 +299,14 @@ public class DataProvider extends ContentProvider {
 				returnCursor = db.query(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
-				//returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 			case PHOTO_URL_QUERY:
 				// Does the query against a read-only version of the database
 				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC;");
 
 				// Sets the ContentResolver to watch this content URI for data changes
-			//	returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 
 			case VIDEO_URL_QUERY:
@@ -307,7 +314,7 @@ public class DataProvider extends ContentProvider {
 				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC");
 
 				// Sets the ContentResolver to watch this content URI for data changes
-				//returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
 			case CATEGORY_QUERY:
 				// Does the query against a read-only version of the database
@@ -466,6 +473,11 @@ public class DataProvider extends ContentProvider {
 						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.BANNERURL_TABLE_NAME, DataProviderContract.BANNER_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.ROW_ID)) {
+							int id = values.getAsInteger(DataProviderContract.ROW_ID);
+							update(uri, values, DataProviderContract.ROW_ID + " = " + id, null);
+						}
 					}
 				}
 
@@ -507,6 +519,11 @@ public class DataProvider extends ContentProvider {
 						updatedRows = localSQLiteDatabase.insertOrThrow(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, DataProviderContract.PHOTO_ALBUM_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.ROW_ID)) {
+							int id = values.getAsInteger(DataProviderContract.ROW_ID);
+							update(uri, values, DataProviderContract.ROW_ID + " = " + id, null);
+						}
 					}
 				}
 
@@ -548,6 +565,11 @@ public class DataProvider extends ContentProvider {
 						updatedRows = localSQLiteDatabase.insertOrThrow(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, DataProviderContract.VIDEO_ALBUM_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.ROW_ID)) {
+							int id = values.getAsInteger(DataProviderContract.ROW_ID);
+							update(uri, values, DataProviderContract.ROW_ID + " = " + id, null);
+						}
 					}
 				}
 
@@ -569,7 +591,7 @@ public class DataProvider extends ContentProvider {
 
 			case PHOTO_URL_QUERY:
 			case VIDEO_URL_QUERY:
-         int numberOfRowsUpdated = 0;
+				int numberOfRowsUpdated = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -591,6 +613,11 @@ public class DataProvider extends ContentProvider {
 						numberOfRowsUpdated = (int) localSQLiteDatabase.insertOrThrow(DataProviderContract.RAW_TABLE_NAME, DataProviderContract.URL, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.ROW_ID)) {
+							int id = values.getAsInteger(DataProviderContract.ROW_ID);
+							update(uri, values, DataProviderContract.ROW_ID + " = " + id, null);
+						}
 					}
 				}
 
@@ -633,6 +660,11 @@ public class DataProvider extends ContentProvider {
 						insertedRowsCount = (int) localSQLiteDatabase.insertOrThrow(DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME, DataProviderContract.DOWNLOAD_IMAGE_ID, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.DOWNLOAD_IMAGE_ID)) {
+							int id = values.getAsInteger(DataProviderContract.DOWNLOAD_IMAGE_ID);
+							update(uri, values, DataProviderContract.DOWNLOAD_IMAGE_ID + " = " + id, null);
+						}
 					}
 				}
 
@@ -653,7 +685,7 @@ public class DataProvider extends ContentProvider {
 				return insertedRowsCount;
 
 			case PAGES_QUERY:
-				count =0;
+				count = 0;
 
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
@@ -676,6 +708,11 @@ public class DataProvider extends ContentProvider {
 						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.PAGES_TABLE_NAME, DataProviderContract.TOTAL_PAGES, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.ALBUM_ID_COLUMN)) {
+							int id = values.getAsInteger(DataProviderContract.ALBUM_ID_COLUMN);
+							update(uri, values, DataProviderContract.ALBUM_ID_COLUMN + " = " + id, null);
+						}
 					}
 				}
 
@@ -695,7 +732,7 @@ public class DataProvider extends ContentProvider {
 				// The semantics of bulkInsert is to return the number of rows inserted.
 				return (int) count;
 			case CATEGORY_QUERY:
-         count = 0;
+				count = 0;
 				// Gets a writeable database instance if one is not already cached
 				localSQLiteDatabase = mHelper.getWritableDatabase();
 
@@ -717,6 +754,11 @@ public class DataProvider extends ContentProvider {
 						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.CATEGORY_TABLE_NAME, DataProviderContract.CATEGORY_ID, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.ROW_ID)) {
+							int id = values.getAsInteger(DataProviderContract.ROW_ID);
+							update(uri, values, DataProviderContract.ROW_ID + " = " + id, null);
+						}
 					}
 				}
 
@@ -742,48 +784,6 @@ public class DataProvider extends ContentProvider {
 				// Do inserts by calling SQLiteDatabase.insert on each row in insertValuesArray
 				return super.bulkInsert(uri, insertValuesArray);
 
-			case NEWS_URL_QUERY:
-         count = 0;
-				// Gets a writeable database instance if one is not already cached
-				localSQLiteDatabase = mHelper.getWritableDatabase();
-
-				/*
-				 * Begins a transaction in "exclusive" mode. No other mutations can occur on the db until this transaction finishes.
-				 */
-				localSQLiteDatabase.beginTransaction();
-
-				// Deletes all the existing rows in the table
-				// localSQLiteDatabase.delete(DataProviderContract.NEWS_TABLE_NAME, null, null);
-
-				// Gets the size of the bulk insert
-				numImages = insertValuesArray.length;
-
-				// Inserts each ContentValues entry in the array as a row in the database
-
-				for (int i = 0; i < numImages; i++) {
-					try {
-						count = localSQLiteDatabase.insertOrThrow(DataProviderContract.NEWS_TABLE_NAME, DataProviderContract.NEWS_ID, insertValuesArray[i]);
-					}
-					catch (SQLiteConstraintException e) {
-					}
-				}
-
-				// Reports that the transaction was successful and should not be backed out.
-				localSQLiteDatabase.setTransactionSuccessful();
-
-				// Ends the transaction and closes the current db instances
-				localSQLiteDatabase.endTransaction();
-				localSQLiteDatabase.close();
-
-				/*
-				 * Notifies the current ContentResolver that the data associated with "uri" has changed.
-				 */
-
-				getContext().getContentResolver().notifyChange(uri, null);
-
-				// The semantics of bulkInsert is to return the number of rows inserted.
-				return (int) count;
-
 			case TEAM_LOGO_URL_QUERY:
 
 				// Gets a writeable database instance if one is not already cached
@@ -807,6 +807,11 @@ public class DataProvider extends ContentProvider {
 						localSQLiteDatabase.insertOrThrow(DataProviderContract.TEAMS_LOGO_TABLE_NAME, DataProviderContract.TEAM_LOGO_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.TEAM_ID_COLUMN)) {
+							int id = values.getAsInteger(DataProviderContract.TEAM_ID_COLUMN);
+							update(uri, values, DataProviderContract.TEAM_ID_COLUMN + " = " + id, null);
+						}
 					}
 				}
 
@@ -848,6 +853,11 @@ public class DataProvider extends ContentProvider {
 						localSQLiteDatabase.insertOrThrow(DataProviderContract.TEAM_MEMBERS_TABLE_NAME, DataProviderContract.TEAM_MEMBER_IMAGE_URL_COLUMN, insertValuesArray[i]);
 					}
 					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.TEAM_PERSON_ID_COLUMN)) {
+							int id = values.getAsInteger(DataProviderContract.TEAM_PERSON_ID_COLUMN);
+							update(uri, values, DataProviderContract.TEAM_PERSON_ID_COLUMN + " = " + id, null);
+						}
 					}
 				}
 
@@ -907,15 +917,14 @@ public class DataProvider extends ContentProvider {
 	 */
 	@Override
 	public int update (Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+		// Creats a new writeable database or retrieves a cached one
+		SQLiteDatabase localSQLiteDatabase = mHelper.getWritableDatabase();
 
 		// Decodes the content URI and choose which insert to use
 		switch (sUriMatcher.match(uri)) {
 
 			// A picture URL content URI
 			case URL_DATE_QUERY:
-
-				// Creats a new writeable database or retrieves a cached one
-				SQLiteDatabase localSQLiteDatabase = mHelper.getWritableDatabase();
 
 				// Updates the table
 				int rows = localSQLiteDatabase.update(DataProviderContract.DATE_TABLE_NAME, values, selection, selectionArgs);
@@ -931,15 +940,84 @@ public class DataProvider extends ContentProvider {
 				}
 
 			case BANNER_IMAGE_URL_QUERY:
+
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.BANNERURL_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
 			case PHOTO_ALBUM_URL_QUERY:
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
+
 			case PAGES_QUERY:
-			case CATEGORY_QUERY:
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.PAGES_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
+
+			case CATEGORY_QUERY:// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.CATEGORY_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
+
 			case PHOTO_URL_QUERY:
 			case VIDEO_URL_QUERY:
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.RAW_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
+
 			case DOWNLOAD_IMAGE_URL_QUERY:
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
+
 			case TEAM_LOGO_URL_QUERY:
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.TEAMS_LOGO_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
+
 			case TEAM_MEMBERS_URL_QUERY:
-				throw new IllegalArgumentException("Update: Invalid URI: " + uri);
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.TEAM_MEMBERS_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}
 		}
 
 		return -1;

@@ -19,7 +19,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.widget.LinearLayout;
@@ -109,7 +108,7 @@ public class HomeActivity extends TopActivity {
 	protected void onResume () {
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
-		if (Util.getInstance().isOnline(HomeActivity.this)) {
+		/*if (Util.getInstance().isOnline(HomeActivity.this)) {
 			new Handler().postDelayed(new Runnable() {
 
 				@Override
@@ -118,7 +117,7 @@ public class HomeActivity extends TopActivity {
 				}
 			}, 20000);
 		}
-	}
+*/	}
 
 	@Override
 	protected void onStop () {
@@ -126,10 +125,11 @@ public class HomeActivity extends TopActivity {
 		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
 
 	}
-	private void checkForUpdates () {
+/*	private void checkForUpdates () {
+		System.out.println("Checking for home updates....");
 		SplashScreenActivity.callDataServices(HomeActivity.this, 1);
 	}
-
+*/
 	private class DownloadStateReceiver extends BroadcastReceiver {
 
 		private DownloadStateReceiver () {
