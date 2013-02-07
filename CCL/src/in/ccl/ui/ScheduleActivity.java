@@ -2,9 +2,11 @@ package in.ccl.ui;
 
 import in.ccl.adapters.ScheduleAdapter;
 import in.ccl.helper.Util;
-import in.ccl.model.ScheduleItem;
+import in.ccl.model.DayMatches;
+import in.ccl.model.Match;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,176 +18,247 @@ public class ScheduleActivity extends TopActivity {
 	private ListView listSchedule;
 
 	private ScheduleAdapter scheduleAdapter;
-	
-	private ScheduleItem scheduleItem;
-
-	private ArrayList <ScheduleItem> scheduleList = new ArrayList <ScheduleItem>();
-
-
 
 	@Override
-	public void onCreate (Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.shedule_layout);
-  	TextView scheduleTitle =  (TextView)findViewById(R.id.schedule_title);
+		TextView scheduleTitle = (TextView) findViewById(R.id.schedule_title);
 		Util.setTextFont(this, scheduleTitle);
 		
 		listSchedule = (ListView) findViewById(R.id.list_schedule);
-		TextView schedule_title = (TextView)findViewById(R.id.schedule_title);
-	/*	Util.setTextFont(this, schedule_title);
-		schedule_title.setText(getResources().getString(R.string.schedule));*/
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("09 FEB");
-		scheduleItem.setDay("SATURDAY");
-		scheduleItem.setPalce("KOCHI");
-		scheduleItem.setFirstMatchTeamOne("Chennai Rhinos".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Bhojpuri Dabangs".toUpperCase());
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Kerala Strikers".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Mumbai Heroes".toUpperCase());
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
+		ArrayList<DayMatches> totalNumberOfMatches = new ArrayList<DayMatches>();
+
+		DayMatches matches = new DayMatches();
+		matches.setDate("09 FEB");
+		matches.setDay("SATURDAY");
+		matches.setPalce("KOCHI");
+
+		ArrayList<Match> noOfMatches = new ArrayList<Match>();
+		Match match = new Match();
+		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bhojpuri Dabangs".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Kerala Strikers".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Mumbai Heroes".toUpperCase(Locale.getDefault()));
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("10 FEB");
+		matches.setDay("SUNDAY");
+		matches.setPalce("Siliguri".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("1:00pm - 5:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Telugu Warriors".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
+		match.setTime("5:00pm - 9:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("16 FEB");
+		matches.setDay("SATURDAY".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Hyderabad".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam(" Kerala Strikers".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bhojpuri Dabanggs".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("17 FEB");
+		matches.setDay("Sunday".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Hyderabad".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
+		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Telugu Warriors".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Mumbai Heroes".toUpperCase(Locale.getDefault()));
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("23 FEB");
+		matches.setDay("Saturday".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Dubai".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Kerala Strikers ".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
+		match.setTime("4:30pm - 8:30pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam(" Mumbai Heroes".toUpperCase(Locale.getDefault()));
+		match.setTime("8:30pm - 0:30pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("24 FEB");
+		matches.setDay("Sunday".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Ranchi".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Telugu Warriors ".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bhojpuri Dabanggs".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("2 MAR");
+		matches.setDay("Saturday".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Chennai".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Kerala Strikers".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("3 MAR");
+		matches.setDay("Sunday".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Pune".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Telugu warriors".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Bhojpuri Dabanggs".toUpperCase(Locale
+				.getDefault()));
+		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("Mumbai Heroes".toUpperCase(Locale.getDefault()));
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("9 MAR");
+		matches.setDay("Saturday".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Hyderabad".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Semi Final 1".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("");
+		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+
+		match = new Match();
+		match.setHostingTeam("Semi Final 2".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("");
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		matches = new DayMatches();
+		matches.setDate("10 MAR");
+		matches.setDay("Sunday".toUpperCase(Locale.getDefault()));
+		matches.setPalce("Bengaluru".toUpperCase(Locale.getDefault()));
+		noOfMatches = new ArrayList<Match>();
+
+		match = new Match();
+		match.setHostingTeam("Final".toUpperCase(Locale.getDefault()));
+		match.setOpponentTeam("");
+		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
 		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("10 FEB");
-		scheduleItem.setDay("SUNDAY");
-		scheduleItem.setPalce("Siliguri".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Veer Marathi".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Karnataka Bulldozers".toUpperCase());
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Telugu Warriors".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Bengal Tigers".toUpperCase());
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
+		noOfMatches.add(match);
 		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("16 FEB");
-		scheduleItem.setDay("SATURDAY".toUpperCase());
-		scheduleItem.setPalce("Vizag".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne(" Kerala Strikers".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Bhojpuri Dabanggs".toUpperCase());
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Chennai Rhinos".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Karnataka Bulldozers".toUpperCase());
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
+		match = new Match();
+		match.setHostingTeam("");
+		match.setOpponentTeam("");
+		match.setTime("");
 		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("17 FEB");
-		scheduleItem.setDay("Sunday".toUpperCase());
-		scheduleItem.setPalce("Vizag".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Veer Marathi".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Bengal Tigers".toUpperCase());
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Telugu Warriors".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Mumbai Heroes".toUpperCase());
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
-		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("23 FEB");
-		scheduleItem.setDay("Saturday".toUpperCase());
-		scheduleItem.setPalce("Dubai".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Chennai Rhinos".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Mumbai Heroes".toUpperCase());
-		scheduleItem.setFirstMatchTime("4:30pm - 8:30pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Kerala Strikers".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Bengal Tigers ".toUpperCase());
-		scheduleItem.setSecondMatchTime("8:30pm - 0:30pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
-		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("24 FEB");
-		scheduleItem.setDay("Sunday".toUpperCase());
-		scheduleItem.setPalce("Kanpur".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Telugu Warriors ".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Karnataka Bulldozers".toUpperCase());
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Veer Marathi".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Bhojpuri Dabanggs".toUpperCase());
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
-		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("2 MAR");
-		scheduleItem.setDay("Saturday".toUpperCase());
-		scheduleItem.setPalce("Chennai".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Kerala Strikers".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Karnataka Bulldozers".toUpperCase());
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Chennai Rhinos".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Bengal Tigers".toUpperCase());
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
-		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("3 MAR");
-		scheduleItem.setDay("Sunday".toUpperCase());
-		scheduleItem.setPalce("Pune".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Telugu warriors".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("Bhojpuri Dabanggs".toUpperCase());
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Veer Marathi".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("Mumbai Heroes".toUpperCase());
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
-		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("9 MAR");
-		scheduleItem.setDay("Saturday".toUpperCase());
-		scheduleItem.setPalce("Hyderabad".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Semi Final 1".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("");
-		scheduleItem.setFirstMatchTime("3:00pm - 7:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("Semi Final 2".toUpperCase());
-		scheduleItem.setSecondMatchTeamTwo("");
-		scheduleItem.setSecondMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
-		
-		scheduleItem = new ScheduleItem();
-		scheduleItem.setDate("10 MAR");
-		scheduleItem.setDay("Sunday".toUpperCase());
-		scheduleItem.setPalce("Bengaluru".toUpperCase());
-		scheduleItem.setFirstMatchTeamOne("Final".toUpperCase());
-		scheduleItem.setFirstMatchTeamTwo("");
-		scheduleItem.setFirstMatchTime("7:00pm - 11:00pm".toUpperCase());
-		scheduleItem.setSecondMatchTeamOne("");
-		scheduleItem.setSecondMatchTeamTwo("");
-		scheduleItem.setSecondMatchTime("");
-		scheduleItem.setThirdMatchTeamOne("");
-		scheduleItem.setThirdMatchTeamTwo("");
-		scheduleItem.setThirdMatchTime("");		
-		scheduleList.add(scheduleItem);
-		
-		scheduleAdapter = new ScheduleAdapter(ScheduleActivity.this, scheduleList);
+		noOfMatches.add(match);
+		matches.setDayMatches(noOfMatches);
+		totalNumberOfMatches.add(matches);
+
+		scheduleAdapter = new ScheduleAdapter(ScheduleActivity.this,
+				totalNumberOfMatches);
 		listSchedule.setAdapter(scheduleAdapter);
 		listSchedule.setFadingEdgeLength(1);
 		listSchedule.setCacheColorHint(Color.TRANSPARENT);

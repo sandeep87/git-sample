@@ -48,7 +48,6 @@ public class LiveScoreParser {
 				}
 			}
 			catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -78,7 +77,6 @@ public class LiveScoreParser {
 			}
 		}
 		catch (org.json.JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return matchesResponseList;
