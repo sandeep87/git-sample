@@ -83,6 +83,8 @@ public class VideoGalleryActivity extends TopActivity {
 
 				albumTitle = videoGalleryList.get(position).getTitle();
 				videoGalleryId = videoGalleryList.get(position).getId();
+				System.out.println("Selected Video ID"+videoGalleryList.get(position).getId());
+				System.out.println("Selected Video Url"+videoGalleryList.get(position).getPhotoOrVideoUrl());
 				ArrayList <Items> list = VideoAlbumCursor.getVideos(VideoGalleryActivity.this, videoGalleryId);
 				if (list == null || list.size() <= 0) {
 					if (Util.getInstance().isOnline(VideoGalleryActivity.this)) {
@@ -97,6 +99,10 @@ public class VideoGalleryActivity extends TopActivity {
 				else {
 					Intent photoAlbumIntent = new Intent(VideoGalleryActivity.this, VideoAlbumActivity.class);
 					photoAlbumIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, list);
+					for(int i = 0;i<list.size();i++){
+						System.out.println("Selected Videos Album List"+list.get(i).getPhotoOrVideoUrl());
+						System.out.println("Selected Videos Thumb List"+list.get(i).getThumbUrl());
+					}
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, videoGalleryId);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, albumTitle);
 					startActivity(photoAlbumIntent);
@@ -156,6 +162,10 @@ public class VideoGalleryActivity extends TopActivity {
 				case in.ccl.database.Constants.STATE_ACTION_VIDEO_COMPLETE:
 					ArrayList <Items> list = VideoAlbumCursor.getVideos(VideoGalleryActivity.this, videoGalleryId);
 					Intent photoAlbumIntent = new Intent(VideoGalleryActivity.this, VideoAlbumActivity.class);
+					for(int i = 0;i<list.size();i++){
+						System.out.println("Selected Videos Album List"+list.get(i).getPhotoOrVideoUrl());
+						System.out.println("Selected Videos Thumb List"+list.get(i).getThumbUrl());
+					}
 					photoAlbumIntent.putExtra(Constants.EXTRA_VIDEO_ITEMS, list);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_ID, videoGalleryId);
 					photoAlbumIntent.putExtra(Constants.EXTRA_ALBUM_TITLE, albumTitle);
