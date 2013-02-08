@@ -273,7 +273,13 @@ public class CCLPullService extends IntentService {
 						else {
 							if (compareKey.equals("team_members") || compareKey.equals("team_members_updates")) {
 								updatedRows = 0;
-								updatedRows = getContentResolver().bulkInsert(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, imageValuesArray);
+								try{
+								
+									updatedRows = getContentResolver().bulkInsert(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, imageValuesArray);
+							        System.out.println("updatedRows "+updatedRows);
+								}catch(Exception e){
+								e.printStackTrace();
+							}
 							}
 						}
 						// Creates another ContentValues for storing date information
@@ -349,6 +355,7 @@ public class CCLPullService extends IntentService {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_TEAM_LOGO_COMPLETE, null);
 					}
 					else if (compareKey.equals("team_members")) {
+						System.out.println("kranthi completeteam_members");
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE, null);
 
 					}

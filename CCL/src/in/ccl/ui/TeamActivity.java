@@ -166,28 +166,28 @@ public class TeamActivity extends TopActivity {
 			for (int i = 0; i < allTeamMembersTotalList.size(); i++) {
 				String teamName = allTeamMembersTotalList.get(i).getTeamName();
 				if (teamName != null) {
-					if (teamName.equals(getResources().getString(R.string.mumbai))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(0).getName())) {
 						mumbaiTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
-					if (teamName.equals(getResources().getString(R.string.chennai))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(1).getName())) {
 						chennaiTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
-					if (teamName.equals(getResources().getString(R.string.telugu))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(2).getName())) {
 						teluguTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
-					if (teamName.equals(getResources().getString(R.string.karanataka))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(3).getName())) {
 						karanatakaTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
-					if (teamName.equals(getResources().getString(R.string.kerala))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(4).getName())) {
 						keralaTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
-					if (teamName.equals(getResources().getString(R.string.bengal))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(5).getName())) {
 						bengalTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
-					if (teamName.equals(getResources().getString(R.string.veer))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(6).getName())) {
 						veerTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
-					if (teamName.equals(getResources().getString(R.string.bhojpuri))) {
+					if (teamName.equalsIgnoreCase(teamLogosList.get(7).getName())) {
 						bhojpuriTeamMembersTotalList.add(allTeamMembersTotalList.get(i));
 					}
 				}
@@ -284,10 +284,10 @@ public class TeamActivity extends TopActivity {
 		if (totalTeamMembersList != null && totalTeamMembersList.size() > 0) {
 
 			for (int i = 0; i < totalTeamMembersList.size(); i++) {
-				String role = totalTeamMembersList.get(i).getRole().trim();
+				
+				String role = totalTeamMembersList.get(i).getRole();
 				String dummyRole = getResources().getString(R.string.ambassadors);
-				if (role.equals(dummyRole)) {
-					System.out.println("nagesh team ambassidors list"+totalTeamMembersList.get(i));
+				if (role != null && role.trim().equalsIgnoreCase(dummyRole)) {
 					teamAmbassadorsList.add(totalTeamMembersList.get(i));
 				}
 				else {
@@ -299,7 +299,7 @@ public class TeamActivity extends TopActivity {
 	}
 
 	private void setTeamMembersToAdapter (ArrayList <TeamMember> teamMembersList) {
-		if (teamMembersList != null && teamMembersList.size() > 0) {
+		if (teamMembersList != null) {
 			teamMemberViewPager.setAdapter(new TeamImagePagerAdapter(this, teamMembersList, Category.TEAM_MEMBERS));
 			teamMemberViewPager.setOnClickListener(null);
 			teamMemberViewPager.setOnPageChangeListener(new PageChangeListener(null, teamMemberViewPager));
