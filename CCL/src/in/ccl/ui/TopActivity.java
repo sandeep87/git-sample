@@ -36,11 +36,6 @@ import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -482,7 +477,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						displayLiveScore(liveScore);
 					}
 					break;
-				case in.ccl.database.Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED:	
+				case in.ccl.database.Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED:	
 					if(intent != null && intent.hasExtra("scoreboard")){
 						ScoreBoard scoreBoard = intent.getParcelableExtra("scoreboard");	
 				
@@ -739,7 +734,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
      	switch(v.getId()){
      		case R.id.btn_view_score_board :
      			Toast.makeText(TopActivity.this, "scoreboard", Toast.LENGTH_LONG).show();
-     			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
+     			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_score_board_url)));
     			startService(mServiceIntent);
      	}
 	}

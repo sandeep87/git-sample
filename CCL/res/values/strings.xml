@@ -96,13 +96,13 @@
     <string name="wickets">WKTS</string>
     <string name="first_match">MATCH A</string>
     <string name="first_date">09 AUG</string>
-     <string name="first_day">SATURDAY</string>
-        <string name="liveScore">live score</string>
-      <string name="second_match">MATCH B</string>
+    <string name="first_day">SATURDAY</string>
+    <string name="liveScore">live score</string>
+    <string name="second_match">MATCH B</string>
     <string name="second_date">09 AUG</string>
-     <string name="second_day">SATURDAY</string>
-     <string name="livematches">Live Matches</string>
-    
+    <string name="second_day">SATURDAY</string>
+    <string name="livematches">Live Matches</string>
+
     <!-- end LiveScore -->
 
 
@@ -111,12 +111,17 @@
     <string name="second_inns">2ND INNINGS</string>
     <string name="bowler">BOWLER</string>
     <string name="extras">EXTRAS</string>
-        <string name="vs"> vs </string>
-    
+    <string name="vs"> vs </string>
+     <string name="wickets_score">WICKETS</string>
+
     <!-- end ScoreBoard -->
-    
 
 
-    
+    <!-- end ScoreBoard -->
+
     <string name="error_title">Unable to retrieve content at this moment</string>
+    <string name="owners_lounge_bhojpuri">AVIKA GROUP Ltd. is into diverse businesses like Information Technology, Marine Development, Airlines, Movies, Finance, Infrastructure and Sports . The company with its partners works with small, medium, and large firms, including many Fortune 1000 companies to help them solve business challenges.
+\n\n The Group is headquartered in the Central Business District of Mumbai with Regional offices in New Delhi, Bhopal and Chennai. Avika Group Ltd. has delivery, sales, support offices, consultant and sales partnerships with domain-expertise based consulting companies worldwide including Australia, USA, UK &amp; Hong Kong and development centers in Bhopal, Pune and Nashik.
+\n\n Raise the Bar Together-with our Customers, Employees and Shareholders is the Avika Group Ltd. mantra. With a strong, reputed and experienced management team, we promote a solution oriented business culture and an excellent working environment through our focus on customer care.</string>
+
 </resources>

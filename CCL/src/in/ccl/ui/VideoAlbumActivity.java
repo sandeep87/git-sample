@@ -77,7 +77,7 @@ public class VideoAlbumActivity extends TopActivity {
 			gridView.setOnScrollListener(new EndlessScrollListener(this, adapter, videoGalleryId, EndlessScrollListener.RequestType.VIDEO_REQUEST, videoAlbumList.get(0).getNumberOfPages()));
 		}
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+             
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View view, int position, long arg3) {
 				String packageName = "com.google.android.youtube";

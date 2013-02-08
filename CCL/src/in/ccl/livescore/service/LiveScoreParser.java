@@ -53,7 +53,6 @@ public class LiveScoreParser {
 				}
 			}
 			catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -83,7 +82,6 @@ public class LiveScoreParser {
 			}
 		}
 		catch (org.json.JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return matchesResponseList;
@@ -249,6 +247,7 @@ public class LiveScoreParser {
 					scoreBoardItems = new ScoreBoard();
    			if(dataObject.has("data")){
    				JSONObject object = dataObject.getJSONObject("data");
+   				
 						if(object.has("innings1")){
 							String firstInn = object.getString("innings1");
 							JSONObject firstInningsObject = new JSONObject(firstInn.trim());
@@ -282,15 +281,15 @@ public class LiveScoreParser {
 	private static Innings parseInningsData (JSONObject inningsObject) {
 		Innings innings = new Innings();
 		try {
-			if (!inningsObject.isNull("bowling_team")) {
-				if (inningsObject.has("bowling_team")) {
-					innings.setBowling_team(inningsObject.getString("bowling_team"));
+			if (!inningsObject.isNull("bowlingteam")) {
+				if (inningsObject.has("bowlingteam")) {
+					innings.setBowling_team(inningsObject.getString("bowlingteam"));
 				}
 			}
 
-			if (!inningsObject.isNull("batting_team")) {
-				if (inningsObject.has("batting_team")) {
-					innings.setBatting_team(inningsObject.getString("batting_team"));
+			if (!inningsObject.isNull("battingteam")) {
+				if (inningsObject.has("battingteam")) {
+					innings.setBatting_team(inningsObject.getString("battingteam"));
 				}
 			}
 

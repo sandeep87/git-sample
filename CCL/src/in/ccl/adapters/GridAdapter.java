@@ -87,7 +87,6 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.playImage = (ImageView) convertView.findViewById(R.id.img_play_icon);
 			mViewHolder.title = (TextView) convertView.findViewById(R.id.title);
 			mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
-			mViewHolder.imageLoader = (ImageView) convertView.findViewById(R.id.loading);
 			mViewHolder.image.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
 			mViewHolder.image.setScaleType(ImageView.ScaleType.MATRIX);
 
@@ -116,6 +115,7 @@ public class GridAdapter extends BaseAdapter {
 
 		if (isFrom.equals("video")) {
 			mViewHolder.title.setVisibility(View.INVISIBLE);
+			mViewHolder.title.setEnabled(true);
 			mViewHolder.playImage.setVisibility(View.VISIBLE);
 			// displayImage.setPlayIcon(mViewHolder.playImage);
 		}

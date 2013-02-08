@@ -20,6 +20,6 @@
     <string name="dummy_livematscore_url_one">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/livescoreone.html</string>
     <string name="dummy_livematscore_url_two">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/livescoretwo.html</string>
     <string name="dummy_matches_url">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/onematch.html</string>
-    <string name="dummy_score_board_url">http://10.0.0.18/score_board</string>
+    <string name="dummy_score_board_url">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/score_board.html</string>
 
 </resources>

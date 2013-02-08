@@ -49,7 +49,7 @@ public class BowlerListAdapter extends BaseAdapter {
 			mViewHolder                  = new ViewHolder();
 			mViewHolder.txtBowlerName    = (TextView) convertView.findViewById(R.id.bowler_name);
 			mViewHolder.txtBowlerRuns    = (TextView) convertView.findViewById(R.id.bowler_runs);
-			mViewHolder.txtBowlerExtras  = (TextView) convertView.findViewById(R.id.bowler_extras);
+			mViewHolder.txtBowlerExtras  = (TextView) convertView.findViewById(R.id.bowler_wickets);
 			mViewHolder.txtBowlerOvers   = (TextView) convertView.findViewById(R.id.bowler_overs);
 
 			convertView.setTag(mViewHolder);
@@ -62,7 +62,7 @@ public class BowlerListAdapter extends BaseAdapter {
 			mViewHolder.txtBowlerName.setText(bowlerList.getBowler_info().get(position).getBowlerName());
 			mViewHolder.txtBowlerRuns.setText(String.valueOf(bowlerList.getBowler_info().get(position).getBowlerRuns()));
 			// int extras = bowlerList.get(position).getByes() + bowlerList.get(position).getLegbyes() + bowlerList.get(position).getWides() + bowlerList.get(position).getNoballs();
-			// mViewHolder.txtBowlerExtras.setText(String.valueOf(extras));
+			 mViewHolder.txtBowlerExtras.setText(String.valueOf(bowlerList.getBowler_info().get(position).getBowlerWickets()));
 			mViewHolder.txtBowlerOvers.setText(String.valueOf(bowlerList.getBowler_info().get(position).getBowlerOvers()));
 
 		}

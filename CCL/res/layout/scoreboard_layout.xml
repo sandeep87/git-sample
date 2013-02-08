@@ -220,7 +220,7 @@
                         android:paddingBottom="10dip"
                         android:paddingLeft="30dip"
                         android:paddingTop="10dip"
-                        android:text="@string/extras"
+                        android:text="@string/wickets_score"
                         android:textColor="@color/dark_grey" />
                 </RelativeLayout>
 
