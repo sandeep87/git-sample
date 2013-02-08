@@ -1,10 +1,13 @@
 package in.ccl.livescore.service;
 
 import in.ccl.database.JSONPullParser;
+import in.ccl.model.MatchSchedule;
 import in.ccl.score.LiveScore;
 import in.ccl.score.MatchesResponse;
 
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.json.JSONException;
@@ -30,7 +33,7 @@ public class LiveScoreParser {
 		return null;
 	}
 
-	public static String parseCurrentMatchSchedule (InputStream inputStream) {
+	public static MatchSchedule parseCurrentMatchSchedule (InputStream inputStream) {
 		String result = JSONPullParser.readStream(inputStream);
 		String matchSchedule = null;
 		if (result != null) {
@@ -40,9 +43,26 @@ public class LiveScoreParser {
 					org.json.JSONArray jsonArray = object.getJSONArray("schedule");
 					for (int i = 0; i < jsonArray.length(); i++) {
 						JSONObject innerObject = jsonArray.getJSONObject(i);
-						if (innerObject.has("status") && !(innerObject.getString("status").equals("over"))) {
-							matchSchedule = innerObject.getString("start_date");
-							break;
+						if (innerObject.has("status") && !(innerObject.getString("status").equalsIgnoreCase("OVER"))) {
+
+							MatchSchedule matchInfo = new MatchSchedule();
+							matchInfo.setStatus(innerObject.getString("status"));
+							try {
+								SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+								if (innerObject.has("enddate")) {
+									matchInfo.setEndDate(sdf.parse(innerObject.getString("enddate")));
+								}
+								if (innerObject.has("startdate")) {
+									matchInfo.setStartTime(sdf.parse(innerObject.getString("startdate")));
+								}
+							}
+							catch (ParseException e) {
+								// TODO: handle exception
+							}
+							if (innerObject.has("id")) {
+								matchInfo.setMatchId(innerObject.getInt("id"));
+							}
+							return matchInfo;
 						}
 					}
 				}
@@ -51,7 +71,7 @@ public class LiveScoreParser {
 				e.printStackTrace();
 			}
 		}
-		return matchSchedule;
+		return null;
 	}
 
 	public static ArrayList <MatchesResponse> parseMatches (InputStream inputStream) {

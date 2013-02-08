@@ -275,15 +275,17 @@ public class SplashScreenActivity extends FragmentActivity {
 
 	@Override
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-		// if user press back from Home activity splash screen should not be appear.
-		// so here it finishes the splash screen activity.
 
-		// when the application is going to close should stop current score service.
-
-		Intent mServiceIntent = new Intent(SplashScreenActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_currentscore_url)));
+		// when the application is going to close should stop current score service
+		System.out.println("Stopping all the services.");
+    TopActivity.setCurrentScoreTimerStarted(false);
+		Intent mServiceIntent = new Intent(SplashScreenActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 		AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager.cancel(pendingIntent);
+		
+		// if user press back from Home activity splash screen should not be appear.
+		// so here it finishes the splash screen activity.
 
 		finish();
 	}

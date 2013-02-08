@@ -18,50 +18,9 @@
             android:layout_marginTop="8dp"
             android:text="@string/target"
             android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/target_team_score"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/first_innings_wickets"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/first_innings_overs"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/req_runs"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dip"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/bg_score"
-        android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="12dp"
-        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -85,28 +44,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/score_one"
-                android:visibility="gone"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/score_second_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:visibility="gone"
                 android:layout_toRightOf="@id/score_first_position"
                 android:background="@drawable/score_one"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/score_third_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_marginLeft="3dp"
                 android:layout_toRightOf="@id/score_second_position"
                 android:background="@drawable/score_two"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -118,7 +77,6 @@
                 android:id="@+id/slash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
                 android:background="@drawable/slash" />
 
             <ImageView
@@ -126,16 +84,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
-                android:visibility="gone"
                 android:layout_toRightOf="@id/slash"
-                />
+                android:visibility="gone" />
+
             <ImageView
                 android:id="@+id/second_wicket_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_toRightOf="@id/first_wicket_img"
-          />
+                android:visibility="gone" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -163,168 +120,9 @@
     </LinearLayout>
 
     <include layout="@layout/score_batting_stats" />
-     <include layout="@layout/bowler_status" />
 
-   <!--  <RelativeLayout
-        android:id="@+id/bowling_team_statistics"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dip"
-        android:layout_marginRight="5dip"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_score" >
+    <include layout="@layout/bowler_status" />
 
-        <TextView
-            android:id="@+id/bowling_statistics"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingLeft="5dp"
-            android:text="BOWLING"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/overs_statistics"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dip"
-            android:layout_toRightOf="@+id/bowling_statistics"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="OVERS"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/mdns_statistics"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/overs_statistics"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="MDNS"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/runs_statistics"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/mdns_statistics"
-            android:gravity="center_vertical|center_horizontal"
-            android:singleLine="true"
-            android:text="RUNS"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/wkts_statistics"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/runs_statistics"
-            android:gravity="center_vertical|center_horizontal"
-            android:singleLine="true"
-            android:text="WKTS"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/striking_bowler_statistics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@android:color/white" >
-
-        <TextView
-            android:id="@+id/bowler_statics"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:gravity="center_vertical"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/bowler_overs"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/bowler_statics"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/bowler_wkts"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/bowler_overs"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/bowler_mdns"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/bowler_wkts"
-            android:gravity="center_vertical|center_horizontal"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/non_striking_bowler_statistics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp" >
-
-        <TextView
-            android:id="@+id/non_bowler_statics"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/non_bowler_overs"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/non_bowler_statics"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/non_bowler_extras"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/non_bowler_overs"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/non_bowler_wkts"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/non_bowler_extras"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/non_bowler_mdns"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/non_bowler_wkts"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-    </RelativeLayout>
- -->
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
