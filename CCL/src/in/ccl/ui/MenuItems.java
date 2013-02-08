@@ -71,7 +71,7 @@ public class MenuItems implements OnClickListener {
 	/**
 	 * private constructor
 	 */
-	private MenuItems () {
+	public MenuItems () {
 	}
 
 	/**

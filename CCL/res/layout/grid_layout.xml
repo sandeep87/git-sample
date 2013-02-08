@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_hover"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    tools:ignore="ContentDescription" >
 
     <RelativeLayout
         android:id="@+id/layout_content"
@@ -22,7 +23,8 @@
             android:layout_height="35dip"
             android:layout_alignParentLeft="true"
             android:paddingTop="10dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            />
 
         <TextView
             android:id="@+id/txt_album_header"
