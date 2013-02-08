@@ -3,8 +3,10 @@ package in.ccl.livescore.service;
 import in.ccl.database.BroadcastNotifier;
 import in.ccl.database.Constants;
 import in.ccl.logging.Logger;
+import in.ccl.score.Innings;
 import in.ccl.score.LiveScore;
 import in.ccl.score.MatchesResponse;
+import in.ccl.score.ScoreBoard;
 import in.ccl.ui.R;
 import in.ccl.ui.TopActivity;
 
@@ -107,6 +109,20 @@ public class LiveScoreService extends IntentService {
 						else {
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
+					}else if (compareKey.equals("fullscore")){
+		          	ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
+								mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED, scoreBoard);
+								
+								PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+								long trigger = System.currentTimeMillis() + 30000;
+								alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+								if (scoreBoard == null) {
+									alarmManager.cancel(pendingIntent);
+								}
+								else {
+									alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
+								}
+
 					}
 					else {
 						System.out.println("LIve current score callling....");
@@ -127,6 +143,10 @@ public class LiveScoreService extends IntentService {
 				}else{
 					if(compareKey.equals("currentscore.html")){
 					mBroadcaster.broadcastIntentWithCurrentScore(Constants.STATE_CURRENT_SCORE_TASK_COMPLETED, null);
+					
+					}else if(compareKey.equals("fullscore")){
+						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED, null);
+
 					}
 				}
 			}

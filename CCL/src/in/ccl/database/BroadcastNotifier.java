@@ -1,8 +1,10 @@
 package in.ccl.database;
 
 import in.ccl.model.Items;
+import in.ccl.score.Innings;
 import in.ccl.score.LiveScore;
 import in.ccl.score.MatchesResponse;
+import in.ccl.score.ScoreBoard;
 
 import java.util.ArrayList;
 
@@ -118,6 +120,25 @@ public class BroadcastNotifier {
 		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
 		if (liveScore != null) {
 			localIntent.putExtra("livescore", liveScore);
+		}
+		// Broadcasts the Intent
+		mBroadcaster.sendBroadcast(localIntent);
+
+	}
+
+	public void broadcastIntentWithScoreBoard (int status, ScoreBoard scoreBoard) {
+
+		Intent localIntent = new Intent();
+
+		// The Intent contains the custom broadcast action for this app
+		localIntent.setAction(Constants.BROADCAST_ACTION);
+
+		// Puts the status into the Intent
+		localIntent.putExtra(Constants.EXTENDED_DATA_STATUS, status);
+
+		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
+		if (scoreBoard != null) {
+			localIntent.putExtra("scoreboard", scoreBoard);
 		}
 		// Broadcasts the Intent
 		mBroadcaster.sendBroadcast(localIntent);

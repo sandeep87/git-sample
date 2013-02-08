@@ -14,11 +14,11 @@ import android.widget.TextView;
 
 public class InningsAdapter extends BaseAdapter {
 
-	private ArrayList <Innings> inningsList;
+	private Innings inningsList;
 
 	private LayoutInflater inflater;
 
-	public InningsAdapter (Context context, ArrayList <Innings> inninsList) {
+	public InningsAdapter (Context context, Innings inninsList) {
 
 		this.inningsList = inninsList;
 
@@ -28,13 +28,14 @@ public class InningsAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount () {
-		return inningsList.get(0).getBatting_info().size();
+		return inningsList.getBatting_info().size();
 
 	}
 
 	@Override
 	public Innings getItem (int position) {
-		return inningsList.get(position);
+		
+		return inningsList;
 	}
 
 	@Override
@@ -58,10 +59,10 @@ public class InningsAdapter extends BaseAdapter {
 		}
 		try {
 
-			mViewHolder.txtPlayerName.setText(inningsList.get(0).getBatting_info().get(position).getName());
-			String score = String.valueOf(inningsList.get(0).getBatting_info().get(position).getScore());
+			mViewHolder.txtPlayerName.setText(inningsList.getBatting_info().get(position).getName());
+			String score = String.valueOf(inningsList.getBatting_info().get(position).getScore());
 			mViewHolder.txtPlayerRuns.setText(score);
-			mViewHolder.txtPlayerPlayedBalls.setText(" (" + String.valueOf(inningsList.get(0).getBatting_info().get(position).getBalls()).trim() + ")");
+			mViewHolder.txtPlayerPlayedBalls.setText(" (" + String.valueOf(inningsList.getBatting_info().get(position).getBalls()).trim() + ")");
 
 		}
 		catch (Exception e) {

@@ -1,4 +1,4 @@
-package in.ccl.score;
+/*package in.ccl.score;
 
 import in.ccl.ui.ScoreBoardActivity;
 import in.ccl.util.Constants;
@@ -58,7 +58,7 @@ public class ScoreParser {
 
 			JSONObject firstInningsObject = new JSONObject(firstInn.trim());
 
-			Innings firstInningsItems = parseFirstInnings(firstInningsObject);
+			Innings firstInningsItems = parseInningsData(firstInningsObject);
 
 			firstInnings.add(firstInningsItems);
 			if (mainJsonObject.has("innings2")) {
@@ -66,9 +66,9 @@ public class ScoreParser {
 
 				String secondInn = mainJsonObject.getString("innings2");
 
-				JSONObject secondInningsObject = new JSONObject(secondInn.trim());
+				JSONObject secondInningsObject = new JSONObject("innings2");
 
-				Innings secondInningsItems = parseFirstInnings(secondInningsObject);
+				Innings secondInningsItems = parseInningsData(secondInningsObject);
 
 				secondInnings.add(secondInningsItems);
 			}
@@ -106,7 +106,7 @@ public class ScoreParser {
 		}
 	}
 
-	private Innings parseFirstInnings (JSONObject inningsObject) {
+	private Innings parseInningsData (JSONObject inningsObject) {
 		Innings innings = new Innings();
 		try {
 			if (!inningsObject.isNull("bowling_team")) {
@@ -481,3 +481,4 @@ public class ScoreParser {
 	}
 
 }
+*/
