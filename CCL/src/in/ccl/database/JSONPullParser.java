@@ -449,7 +449,13 @@ public class JSONPullParser {
 								teamPersonalRole = String.format("%s (%s)", roleArray[0].trim(), roleArray[1].trim());
 							}
 							item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, teamPersonalRole);
+							//System.out.println("kranthi person role "+teamPersonalRole);
+
 						}
+					}else{
+						//System.out.println("json person role null");
+						item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, "");
+
 					}
 					mImages.add(item);
 				}
