@@ -107,10 +107,19 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/bowler_runs"
+                android:id="@+id/bowler_mdns"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/bowler_overs"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bowler_runs"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/bowler_mdns"
                 android:gravity="center_vertical|center_horizontal"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
@@ -119,16 +128,7 @@
                 android:id="@+id/bowler_wkts"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/bowler_overs"
-                android:gravity="center_vertical|center_horizontal"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/bowler_mdns"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/bowler_wkts"
+                android:layout_toRightOf="@id/bowler_runs"
                 android:gravity="center_vertical|center_horizontal"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
@@ -168,10 +168,19 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/non_bowler_runs"
+                android:id="@+id/non_bowler_mdns"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/non_bowler_overs"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/non_bowler_runs"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/non_bowler_mdns"
                 android:gravity="center_vertical|center_horizontal"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
@@ -181,15 +190,6 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/non_bowler_runs"
-                android:gravity="center_vertical|center_horizontal"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/non_bowler_mdns"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/non_bowler_wkts"
                 android:gravity="center_vertical|center_horizontal"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />

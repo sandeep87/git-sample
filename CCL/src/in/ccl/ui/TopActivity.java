@@ -139,7 +139,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private PhotoView battingLogo;
 
 	private AnimationLayout mLayout;
-	
+
 	private Button scoreBoard_btn;
 
 	public static String getCurrentScore () {
@@ -264,7 +264,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void callLiveScoreService (int liveMatchId) {
-		Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_score_url)));
+		Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_score_url)+liveMatchId));
 		mServiceIntent.putExtra("KEY", "livescore");
 		startService(mServiceIntent);
 
@@ -406,7 +406,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					}
 					break;
 				case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
-					System.out.println("kranthi STATE_ACTION_TEAM_MEMBERS_COMPLETE...");
 					ArrayList <Teams> teamLogoItems = null;
 					ArrayList <TeamMember> teamMemberItems = null;
 
@@ -466,7 +465,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					}
 					break;
 				case in.ccl.database.Constants.STATE_LIVE_SCORE_TASK_COMPLETED:
-					System.out.println("Live score from topact");
 					if (intent != null && intent.hasExtra("livescore")) {
 						LiveScore liveScore = intent.getParcelableExtra("livescore");
 						if (imgBtnScoreDropDown != null) {
@@ -474,7 +472,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						}
 						addLiveScoreView();
 						displayLiveScore(liveScore);
-						System.out.println("Live top " + mDrawer.isOpened());
 						if (mDrawer != null) {
 							mDrawer.animateOpen();
 						}
@@ -486,18 +483,19 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						displayLiveScore(liveScore);
 					}
 					break;
-				case in.ccl.database.Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED:	
-					if(intent != null && intent.hasExtra("scoreboard")){
-						ScoreBoard scoreBoard = intent.getParcelableExtra("scoreboard");	
-				
-						  if(scoreBoard != null){
-						  	Intent scoreBoardIntent = new Intent(TopActivity.this,ScoreBoardActivity.class);
-								scoreBoardIntent.putExtra("scoreboard", scoreBoard);
-								startActivity(scoreBoardIntent);
-						  }
-					  
+				case in.ccl.database.Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED:
+					if (intent != null && intent.hasExtra("scoreboard")) {
+						ScoreBoard scoreBoard = intent.getParcelableExtra("scoreboard");
+
+						if (scoreBoard != null) {
+							Intent scoreBoardIntent = new Intent(TopActivity.this, ScoreBoardActivity.class);
+							scoreBoardIntent.putExtra("scoreboard", scoreBoard);
+							scoreBoardIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+							startActivity(scoreBoardIntent);
+						}
+
 					}
-					
+
 				default:
 					break;
 			}
@@ -564,17 +562,15 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 		previous_bowler_wkts = (TextView) findViewById(R.id.non_bowler_wkts);
 
-		previous_bowler_mnds = (TextView) findViewById(R.id.non_bowler_mdns);		
-		
-		scoreBoard_btn       = (Button) findViewById(R.id.btn_view_score_board);
-		
+		previous_bowler_mnds = (TextView) findViewById(R.id.non_bowler_mdns);
+
+		scoreBoard_btn = (Button) findViewById(R.id.btn_view_score_board);
+
 		scoreBoard_btn.setOnClickListener(this);
-	
 
 		striker_strike_rate = (TextView) findViewById(R.id.striker_strike_rate);
 
 		non_striker_strike_rate = (TextView) findViewById(R.id.non_striker_strike_rate);
-
 
 	}
 
@@ -601,19 +597,19 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 			updateWickets(liveScore.getCurrent_score_wickets());
 			second_innings_overs.setText(liveScore.getCurrent_score_overs() + "");
 
-			striker_name.setText(liveScore.getStriker_name());
+			striker_name.setText((liveScore.getStriker_name() == null ? "" : liveScore.getStriker_name()));
 
 			striker_runs_batsman.setText(liveScore.getStriker_score() + "");
 
 			striker_balls.setText(liveScore.getStriker_balls() + "");
 
-			non_striker_batsman.setText(liveScore.getNonstriker_name());
+			non_striker_batsman.setText((liveScore.getNonstriker_name() == null ? "" : liveScore.getNonstriker_name()));
 
 			non_striker_runs_batsman.setText(liveScore.getNonstriker_score() + "");
 
 			non_striker_balls.setText(liveScore.getNonstriker_balls() + "");
 
-			current_bowler_name.setText(liveScore.getCurrent_bowler_name());
+			current_bowler_name.setText((liveScore.getCurrent_bowler_name() == null ? "" : liveScore.getCurrent_bowler_name()));
 
 			current_bowler_overs.setText(liveScore.getCurrent_bowler_overs() + "");
 
@@ -623,7 +619,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 			current_bowler_mnds.setText(liveScore.getCurrent_bowler_madiens() + "");
 
-			previous_bowler_name.setText(liveScore.getPrevious_bowler_name());
+			previous_bowler_name.setText((liveScore.getPrevious_bowler_name() == null ? "" : liveScore.getPrevious_bowler_name()));
 
 			previous_bowler_runs.setText(liveScore.getPrevious_bowler_runs() + "");
 
@@ -756,11 +752,13 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	@Override
 	public void onClick (View v) {
-     	switch(v.getId()){
-     		case R.id.btn_view_score_board :
-     			Toast.makeText(TopActivity.this, "scoreboard", Toast.LENGTH_LONG).show();
-     			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
-    			startService(mServiceIntent);
-     	}
+		switch (v.getId()) {
+			case R.id.btn_view_score_board:
+				if (mDrawer != null) {
+					mDrawer.animateClose();
+				}
+				Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
+				startService(mServiceIntent);
+		}
 	}
 }

@@ -78,7 +78,7 @@ public class LiveScoreService extends IntentService {
 				int responseCode = localHttpURLConnection.getResponseCode();
 				// Handles possible exceptions
 				if (responseCode == HttpStatus.SC_OK) {
-					if (compareKey.equals("match_schedule.html")) {
+					if (compareKey.equals("match_schedule")) {
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", new Locale("in"));
 						SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd", new Locale("in"));
 						MatchSchedule matchSchedule = LiveScoreParser.parseCurrentMatchSchedule(localHttpURLConnection.getInputStream());
@@ -88,11 +88,6 @@ public class LiveScoreService extends IntentService {
 							try {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
-								System.out.println("Compare "+scheduleDate.compareTo(todayDate));
-								System.out.println("FIrst check "+(date.getTime() >= matchSchedule.getStartTime().getTime() ));
-								System.out.println("Second check "+(date.getTime() <= matchSchedule.getEndDate().getTime() ));
-								System.out.println("Status "+matchSchedule.getStatus().equalsIgnoreCase("live"));
-								
 								if (scheduleDate.compareTo(todayDate) == 0 && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("live")) {
 									Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -121,14 +116,11 @@ public class LiveScoreService extends IntentService {
 						dateSdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 						java.util.Date date = new java.util.Date();
 						MatchSchedule matchSchedule = LiveScoreParser.parseCurrentMatchSchedule(localHttpURLConnection.getInputStream());
-						System.out.println("Match schedule "+matchSchedule);
 						if (matchSchedule != null && matchSchedule.getStartTime() != null && matchSchedule.getEndDate() != null && matchSchedule.getStatus() != null) {
-						System.out.println("All are not null");
 							try {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
 								if (scheduleDate.compareTo(todayDate) == 0 && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("live")) {
-									System.out.println("Call for current score");
 									Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 									long trigger = getScheduleTimeInMills(matchSchedule.getStartTime());
@@ -137,13 +129,11 @@ public class LiveScoreService extends IntentService {
 								}
 								else {
 									if (date.getTime() <= matchSchedule.getEndDate().getTime()) {
-										System.out.println("Call for match schedule after 30 mins");
 										PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 										alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 										long trigger = System.currentTimeMillis() + 30 * 60000;
 										alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
-									}else{
-										System.out.println("Match over");
+										TopActivity.setCurrentScoreTimerStarted(false);
 									}
 								}
 							}
@@ -152,7 +142,7 @@ public class LiveScoreService extends IntentService {
 							}
 						}
 					}
-					else if (compareKey.equals("livematches.html")) {
+					else if (compareKey.equals("livematches")) {
 						ArrayList <MatchesResponse> matches = LiveScoreParser.parseMatches(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithMatches(Constants.STATE_MATCHES_TASK_COMPLETED, matches);
 					}
@@ -176,17 +166,14 @@ public class LiveScoreService extends IntentService {
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
 					}
-					else if (compareKey.equals("fullscore.html")) {
+					else if (compareKey.equals("fullscore")) {
 						System.out.println("phani calling score board....");
 						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED, scoreBoard);
 					}
 					else if (compareKey.equals("score_board_update")) {
-						System.out.println("phani scoreboard update....");
-            ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
-
+						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED, scoreBoard);
-						
 						PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 						long trigger = System.currentTimeMillis() + 60000;
 						alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -197,9 +184,8 @@ public class LiveScoreService extends IntentService {
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
 
-					}	else if (compareKey.equals("currentscore.html")) {
-						System.out.println("LIve current score callling....");
-
+					}
+					else if (compareKey.equals("currentscore")) {
 						TopActivity.setCurrentScoreTimerStarted(true);
 						String currentMessage = LiveScoreParser.parseCurrentScore(localHttpURLConnection.getInputStream());
 						TopActivity.setCurrentScore(currentMessage);
@@ -222,10 +208,10 @@ public class LiveScoreService extends IntentService {
 					}
 				}
 				else {
-					if (compareKey.equals("currentscore.html")) {
+					if (compareKey.equals("currentscore")) {
 						mBroadcaster.broadcastIntentWithCurrentScore(Constants.STATE_CURRENT_SCORE_TASK_COMPLETED, null);
 					}
-					else if (compareKey.equals("score_board.html")) {
+					else if (compareKey.equals("score_board")) {
 						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED, null);
 					}
 				}

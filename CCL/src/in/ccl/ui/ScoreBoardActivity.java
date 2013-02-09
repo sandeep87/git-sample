@@ -8,6 +8,7 @@ import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.score.Innings;
 import in.ccl.score.ScoreBoard;
 import in.ccl.util.Constants;
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -17,6 +18,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
@@ -43,19 +45,19 @@ public class ScoreBoardActivity extends TopActivity {
 
 	private TextView txtBowlingTeamTitle;
 
-	//private ImageView imgInningsLogo;
+	// private ImageView imgInningsLogo;
 
 	private TextView txtInningsScore;
 
 	private ListView listInnings;
 
 	private ListView bowlerListView;
-	
+
 	private ScoreBoard scoreBoard;
 
-	//private RelativeLayout layoutBowlerBetails;
+	// private RelativeLayout layoutBowlerBetails;
 
-	//private RelativeLayout layoutBowlingTeamDetatils;
+	// private RelativeLayout layoutBowlingTeamDetatils;
 	private DownloadStateReceiver mDownloadStateReceiver;
 
 	private IntentFilter statusIntentFilter;
@@ -63,26 +65,26 @@ public class ScoreBoardActivity extends TopActivity {
 	private Innings firstInnings;
 
 	private Innings secondInnings;
-	
+
 	private boolean isSecondInnings = true;
 
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.scoreboard_layout);
 
-		btnFirstInnings                = (Button) findViewById(R.id.btn_first_innings);
-		btnSecondInnings               = (Button) findViewById(R.id.btn_second_innings);
-		txtFirstInningsTeamTitle       = (TextView) findViewById(R.id.first_inns_team_txt);
-		txtSecondInningsTeamTitle      = (TextView) findViewById(R.id.second_inns_team_txt);
-		txtInningsTeamTitle            = (TextView) findViewById(R.id.txt_inningsteam_title);
-	//	imgInningsLogo                 = (ImageView) findViewById(R.id.img_innings_logo);
-		txtInningsScore                = (TextView) findViewById(R.id.txt_innings_score);
-		listInnings                    = (ListView) findViewById(R.id.list_innings);
-	//	layoutBowlerBetails            = (RelativeLayout) findViewById(R.id.layout_bowler_innings);
-	//	layoutBowlingTeamDetatils      = (RelativeLayout) findViewById(R.id.layout_bowling_teamdetails);
-		txtBowlingTeamTitle            = (TextView) findViewById(R.id.txt_bowlingteam_title);
-		bowlerListView                 = (ListView) findViewById(R.id.bowler_list);
-		
+		btnFirstInnings = (Button) findViewById(R.id.btn_first_innings);
+		btnSecondInnings = (Button) findViewById(R.id.btn_second_innings);
+		txtFirstInningsTeamTitle = (TextView) findViewById(R.id.first_inns_team_txt);
+		txtSecondInningsTeamTitle = (TextView) findViewById(R.id.second_inns_team_txt);
+		txtInningsTeamTitle = (TextView) findViewById(R.id.txt_inningsteam_title);
+		// imgInningsLogo = (ImageView) findViewById(R.id.img_innings_logo);
+		txtInningsScore = (TextView) findViewById(R.id.txt_innings_score);
+		listInnings = (ListView) findViewById(R.id.list_innings);
+		// layoutBowlerBetails = (RelativeLayout) findViewById(R.id.layout_bowler_innings);
+		// layoutBowlingTeamDetatils = (RelativeLayout) findViewById(R.id.layout_bowling_teamdetails);
+		txtBowlingTeamTitle = (TextView) findViewById(R.id.txt_bowlingteam_title);
+		bowlerListView = (ListView) findViewById(R.id.bowler_list);
+
 		// The filter's action is BROADCAST_ACTION
 		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
 
@@ -92,56 +94,42 @@ public class ScoreBoardActivity extends TopActivity {
 		// Instantiates a new DownloadStateReceiver
 		mDownloadStateReceiver = new DownloadStateReceiver();
 
-     scoreBoard                     = getIntent().getParcelableExtra("scoreboard");
-     
-    Util.setTextFont(this, txtFirstInningsTeamTitle);
- 		Util.setTextFont(this, txtSecondInningsTeamTitle);
- 		Util.setTextFont(this, btnFirstInnings);
- 		Util.setTextFont(this, btnSecondInnings);
- 		
-        insertDatainList(scoreBoard);
-    /* if(scoreBoard.getFirstInningsList()!= null){
-    	 firstInnings                   = scoreBoard.getFirstInningsList();
-    	 
-    	  txtFirstInningsTeamTitle.setText(firstInnings.getBatting_team());
-   	  	txtSecondInningsTeamTitle.setText(firstInnings.getBowling_team());
-     }
-     if(scoreBoard.getSecondInningsList()!=null) {
-    	 secondInnings                  = scoreBoard.getSecondInningsList();       
-     }else{
-    	 isSecondInnings = false;
-     }
-    
-		
-		
-		//Her we Checked whether match is First innings or not.
-		if(isSecondInnings){
-			showDetailsInView(firstInnings);
-		}else{
-			btnSecondInnings.setVisibility(View.GONE); // Gone the Second innings Button
-			//here we load the screen Controls and first innings data.
-		  showDetailsInView(firstInnings);
-			//change firstInningsButton to fillparent
-			btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT));
-		}*/
-		
-		//firstInnings Button OnCLickListener.
-		// here we show the FirstInnings Data in screen ,when user taps FirstInnings Button 
+		scoreBoard = getIntent().getParcelableExtra("scoreboard");
+
+		Util.setTextFont(this, txtFirstInningsTeamTitle);
+		Util.setTextFont(this, txtSecondInningsTeamTitle);
+		Util.setTextFont(this, btnFirstInnings);
+		Util.setTextFont(this, btnSecondInnings);
+
+		insertDatainList(scoreBoard);
+		/*
+		 * if(scoreBoard.getFirstInningsList()!= null){ firstInnings = scoreBoard.getFirstInningsList();
+		 * 
+		 * txtFirstInningsTeamTitle.setText(firstInnings.getBatting_team()); txtSecondInningsTeamTitle.setText(firstInnings.getBowling_team()); } if(scoreBoard.getSecondInningsList()!=null) { secondInnings = scoreBoard.getSecondInningsList(); }else{ isSecondInnings = false; }
+		 * 
+		 * 
+		 * 
+		 * //Her we Checked whether match is First innings or not. if(isSecondInnings){ showDetailsInView(firstInnings); }else{ btnSecondInnings.setVisibility(View.GONE); // Gone the Second innings Button //here we load the screen Controls and first innings data. showDetailsInView(firstInnings);
+		 * //change firstInningsButton to fillparent btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT)); }
+		 */
+
+		// firstInnings Button OnCLickListener.
+		// here we show the FirstInnings Data in screen ,when user taps FirstInnings Button
 		btnFirstInnings.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick (View v) {
 				btnFirstInnings.setBackgroundResource(R.drawable.inningstab_tapped);
 				btnSecondInnings.setBackgroundResource(R.drawable.innings_tab);
-				//here we load the screen Controls and first innings data.
+				// here we load the screen Controls and first innings data.
 				showDetailsInView(firstInnings);
 
 			}
 
 		});
-		
-	  //SecondInnings Button OnCLickListener.
-		// here we show the SecondInnings Data in screen ,when user taps SecondInnings Button 
+
+		// SecondInnings Button OnCLickListener.
+		// here we show the SecondInnings Data in screen ,when user taps SecondInnings Button
 		btnSecondInnings.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -149,9 +137,9 @@ public class ScoreBoardActivity extends TopActivity {
 
 				btnSecondInnings.setBackgroundResource(R.drawable.inningstab_tapped);
 				btnFirstInnings.setBackgroundResource(R.drawable.innings_tab);
-				
-				//here we load the screen Controls and Second innings data.
-		      showDetailsInView(secondInnings);
+
+				// here we load the screen Controls and Second innings data.
+				showDetailsInView(secondInnings);
 
 			}
 
@@ -162,7 +150,6 @@ public class ScoreBoardActivity extends TopActivity {
 	private void insertDatainList (ScoreBoard scoreBoard) {
 		if (scoreBoard.getFirstInningsList() != null) {
 			firstInnings = scoreBoard.getFirstInningsList();
-
 			txtFirstInningsTeamTitle.setText(firstInnings.getBatting_team());
 			txtSecondInningsTeamTitle.setText(firstInnings.getBowling_team());
 		}
@@ -175,6 +162,22 @@ public class ScoreBoardActivity extends TopActivity {
 
 		// Her we Checked whether match is First innings or not.
 		if (isSecondInnings) {
+			btnSecondInnings.setVisibility(View.VISIBLE); // Gone the Second innings Button
+			int width = 0;
+			int deviceDisplayDensity = getResources().getDisplayMetrics().densityDpi;
+			if (deviceDisplayDensity == DisplayMetrics.DENSITY_LOW) {
+				width = 115;
+			}
+			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_MEDIUM) {
+				width = 155;
+			}
+			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_HIGH) {
+				width = 155;
+			}
+			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH) {
+				width = android.app.ActionBar.LayoutParams.WRAP_CONTENT;
+			}
+			btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(width, LayoutParams.WRAP_CONTENT));
 			showDetailsInView(firstInnings);
 		}
 		else {
@@ -182,15 +185,17 @@ public class ScoreBoardActivity extends TopActivity {
 			// here we load the screen Controls and first innings data.
 			showDetailsInView(firstInnings);
 			// change firstInningsButton to fillparent
-			btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+			btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		}
 	}
-/**
- * These method used to find the height of ListView Item
- * @param listView  ListView
- * @param items      listItem
- * @return            height of the ListView item.
- */
+
+	/**
+	 * These method used to find the height of ListView Item
+	 * 
+	 * @param listView ListView
+	 * @param items listItem
+	 * @return height of the ListView item.
+	 */
 	public static int getItemHightofListView (ListView listView, int items) {
 
 		ListAdapter mAdapter = listView.getAdapter();
@@ -209,10 +214,12 @@ public class ScoreBoardActivity extends TopActivity {
 		return listviewElementsheight;
 
 	}
-/**
- * These Method used to show Screen Controls and Innings Data in ListView
- * @param listItems Innings ListItems
- */
+
+	/**
+	 * These Method used to show Screen Controls and Innings Data in ListView
+	 * 
+	 * @param listItems Innings ListItems
+	 */
 	public void showDetailsInView (Innings listItems) {
 
 		txtFirstInningsTeamTitle.setText(listItems.getBatting_team());
@@ -231,23 +238,23 @@ public class ScoreBoardActivity extends TopActivity {
 
 		int listSize = height * (listItems.getBatting_info().size());
 
-		listInnings.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, height));
+		listInnings.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, height));
 		if (listItems != null) {
 			bowlerListView.setAdapter(new BowlerListAdapter(ScoreBoardActivity.this, listItems));
 
 		}
 		height = getItemHightofListView(bowlerListView, listItems.getBowler_info().size());
 		listSize = height * (listItems.getBowler_info().size());
-		bowlerListView.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, height));
+		bowlerListView.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, height));
 
 	}
-	
+
 	@Override
 	protected void onResume () {
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
 		if (Util.getInstance().isOnline(this)) {
-	     
+
 			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
 			mServiceIntent.putExtra("KEY", "score_board_update");
 			startService(mServiceIntent);
@@ -255,8 +262,9 @@ public class ScoreBoardActivity extends TopActivity {
 		else {
 			Toast.makeText(this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 		}
-		
+
 	}
+
 	@Override
 	protected void onPause () {
 		super.onPause();
@@ -267,7 +275,7 @@ public class ScoreBoardActivity extends TopActivity {
 		LocalBroadcastManager.getInstance(this).unregisterReceiver(mDownloadStateReceiver);
 
 	}
-	
+
 	private class DownloadStateReceiver extends BroadcastReceiver {
 
 		private DownloadStateReceiver () {
@@ -280,36 +288,12 @@ public class ScoreBoardActivity extends TopActivity {
 				case in.ccl.database.Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED:
 					if (intent != null && intent.hasExtra("scoreboard")) {
 						scoreBoard = intent.getParcelableExtra("scoreboard");
-
 						if (scoreBoard != null) {
-							if (scoreBoard.getFirstInningsList() != null) {
-								firstInnings = scoreBoard.getFirstInningsList();
-
-								txtFirstInningsTeamTitle.setText(firstInnings.getBatting_team());
-								txtSecondInningsTeamTitle.setText(firstInnings.getBowling_team());
-							}
-							if (scoreBoard.getSecondInningsList() != null) {
-								secondInnings = scoreBoard.getSecondInningsList();
-							}
-							else {
-								isSecondInnings = false;
-							}
-							if (isSecondInnings) {
-								showDetailsInView(firstInnings);
-							}
-							else {
-								btnSecondInnings.setVisibility(View.GONE); // Gone the Second innings Button
-								// here we load the screen Controls and first innings data.
-								showDetailsInView(firstInnings);
-								// change firstInningsButton to fillparent
-								btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-							}
-
+							insertDatainList(scoreBoard);
 						}
 
 					}
 			}
 		}
-
 	}
 }

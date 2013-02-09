@@ -41,7 +41,7 @@ public class LiveScoreSlidingDrawer extends ViewGroup {
 	private static final int			VELOCITY_UNITS					= 10000;
 
 	//private static final int			ANIMATION_FRAME_DURATION	= 1000 / 60;
-	private static final int			ANIMATION_FRAME_DURATION	= 10000 / 60;
+	private static final int			ANIMATION_FRAME_DURATION	= 5000 / 60;
 	private static final int			EXPANDED_FULL_OPEN			= -10001;
 	private static final int			COLLAPSED_FULL_CLOSED		= -10002;
 	
