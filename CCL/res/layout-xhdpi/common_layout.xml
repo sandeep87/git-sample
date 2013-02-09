@@ -120,7 +120,7 @@
                 xmlns:my="http://schemas.android.com/apk/res/in.ccl.ui"
                 android:id="@+id/drawer"
                 android:layout_width="fill_parent"
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_below="@id/imgbtn_score_dropdown"
                 my:content="@+id/content"
                 my:direction="topToBottom"
@@ -134,10 +134,6 @@
                     <include
                         layout="@layout/score_view"
                         android:visibility="visible" />
-
-                    <include
-                        layout="@layout/livematches_layout"
-                        android:visibility="gone" />
                 </LinearLayout>
 
                 <ImageView

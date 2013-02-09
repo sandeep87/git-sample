@@ -29,10 +29,13 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bengalore_tigers_logo" />
+        <in.ccl.photo.PhotoView
+            android:id="@+id/batting_logo"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
         <RelativeLayout
             android:layout_width="wrap_content"

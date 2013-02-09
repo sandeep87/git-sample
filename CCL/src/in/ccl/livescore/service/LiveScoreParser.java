@@ -121,18 +121,21 @@ public class LiveScoreParser {
 					if (object.has("teams")) {
 						JSONObject teamObject = object.getJSONObject("teams");
 
-						if (teamObject.has("team1")) {
-							liveScore.setTeam1(teamObject.getString("team1"));
+						if (teamObject.has("battingteam")) {
+							liveScore.setTeam1(teamObject.getString("battingteam"));
 						}
-						if (teamObject.has("team2")) {
-							liveScore.setTeam2(teamObject.getString("team2"));
+						if (teamObject.has("bowlingteam")) {
+							liveScore.setTeam2(teamObject.getString("bowlingteam"));
+						}
+						if (teamObject.has("battingteamlogo")) {
+							liveScore.setTeamLogo(teamObject.getString("battingteamlogo"));
 						}
 					}
 
 					if (object.has("target")) {
 						JSONObject targetObject = object.getJSONObject("target");
-						if (targetObject.has("score")) {
-							liveScore.setTarget_score(targetObject.getInt("score"));
+						if (targetObject.has("runs")) {
+							liveScore.setTarget_score(targetObject.getInt("runs"));
 						}
 						if (targetObject.has("wickets")) {
 							liveScore.setTarget_wickets(targetObject.getInt("wickets"));
@@ -171,9 +174,9 @@ public class LiveScoreParser {
 
 							liveScore.setStriker_balls(strikerObject.getInt("balls"));
 						}
-						if (strikerObject.has("strikerrate")) {
+						if (strikerObject.has("strikerate")) {
 
-							liveScore.setStriker_strikerate(strikerObject.getDouble("strikerrate"));
+							liveScore.setStriker_strikerate(strikerObject.getDouble("strikerate"));
 						}
 					}
 					if (object.has("batsman2")) {

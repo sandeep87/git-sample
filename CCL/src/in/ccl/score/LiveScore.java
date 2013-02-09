@@ -10,6 +10,8 @@ public class LiveScore implements Parcelable {
 
 	private String team2;
 
+	private String teamLogo;
+
 	// first inning score details variables;
 	private int target_score;
 
@@ -65,6 +67,14 @@ public class LiveScore implements Parcelable {
 	private int previous_bowler_runs;
 
 	private int previous_bowler_wickets;
+
+	public String getTeamLogo () {
+		return teamLogo;
+	}
+
+	public void setTeamLogo (String teamLogo) {
+		this.teamLogo = teamLogo;
+	}
 
 	public String getTeam1 () {
 		return team1;
@@ -334,6 +344,7 @@ public class LiveScore implements Parcelable {
 		setPrevious_bowler_madiens(in.readInt());
 		setPrevious_bowler_runs(previous_bowler_runs);
 		setPrevious_bowler_wickets(in.readInt());
+		setTeamLogo(in.readString());
 	}
 
 	public LiveScore () {
@@ -372,6 +383,7 @@ public class LiveScore implements Parcelable {
 		dest.writeInt(getPrevious_bowler_madiens());
 		dest.writeInt(getPrevious_bowler_runs());
 		dest.writeInt(getPrevious_bowler_wickets());
+		dest.writeString(getTeamLogo());
 	}
 
 }

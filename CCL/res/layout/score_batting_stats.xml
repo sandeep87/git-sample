@@ -99,6 +99,16 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+            
+            <TextView
+                android:id="@+id/striker_strike_rate"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/striker_balls"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        
         </RelativeLayout>
     </TableRow>
 
@@ -140,6 +150,16 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+            
+            <TextView
+                android:id="@+id/non_striker_strike_rate"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/non_striker_balls"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        
         </RelativeLayout>
     </TableRow>
 

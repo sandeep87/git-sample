@@ -99,7 +99,7 @@ public class GridAdapter extends BaseAdapter {
 		mViewHolder.image.setImageDrawable(this.mEmptyDrawable);
 
 		// Util.setTextFont((Activity) mcontext, mViewHolder.title);
-	//	mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
+		mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
 		// DisplayImage displayImage = null;
 		if (isFrom.equals("video") || isFrom.equals("downloads")) {
 			mViewHolder.image.setImageURL(gridItemsList.get(position).getThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt,false);

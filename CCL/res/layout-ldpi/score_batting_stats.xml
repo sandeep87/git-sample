@@ -23,38 +23,40 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="5dp"
                 android:text="@string/batting"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/run_statistics"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dip"
                 android:layout_toRightOf="@+id/batting_title"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/runs"
+                android:text="R"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/balls_statistics"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dip"
                 android:layout_toRightOf="@+id/run_statistics"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/balls"
+                android:text="B"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
-
-
 
             <TextView
                 android:id="@+id/strikerate_statistics"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/balls_statistics"
                 android:gravity="center_vertical"
-                android:text="@string/strikerate"
+                android:text="STR"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </RelativeLayout>
     </TableRow>
@@ -77,25 +79,36 @@
                 android:layout_marginLeft="8dp"
                 android:gravity="center_vertical"
                 android:singleLine="true"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/striker_runs_batsman"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
                 android:layout_toRightOf="@id/striker_batsman"
                 android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/striker_balls"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@id/striker_runs_batsman"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="120"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/striker_strike_rate"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/striker_balls"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </RelativeLayout>
     </TableRow>
@@ -118,27 +131,36 @@
                 android:layout_marginLeft="8dp"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="JOY"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/non_striker_runs_batsman"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
                 android:layout_toRightOf="@id/non_striker_batsman"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="12"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/non_striker_balls"
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@id/non_striker_runs_batsman"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="20"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/non_striker_strike_rate"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/non_striker_balls"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </RelativeLayout>
     </TableRow>
