@@ -8,6 +8,7 @@ import in.ccl.database.JSONPullParser;
 import in.ccl.database.PhotoAlbumCurosr;
 import in.ccl.database.VideoAlbumCursor;
 import in.ccl.helper.Util;
+import in.ccl.livescore.service.CheckUpdateService;
 import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.logging.Logger;
 import in.ccl.logging.ParadigmExceptionHandler;
@@ -62,9 +63,9 @@ public class SplashScreenActivity extends FragmentActivity {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		// Setting the default layout
 		setContentView(R.layout.splash_screen);
+		
 		// getting reference of ccl logo for animated splash screen
 		floatingLogoImage = (ImageView) findViewById(R.id.logo_image);
 		// getting reference of loading text in splash screen
@@ -122,7 +123,6 @@ public class SplashScreenActivity extends FragmentActivity {
 		}
 		else {
 			if (Util.getInstance().isOnline(SplashScreenActivity.this)) {
-				// Initialize of Category table.
 				InitializeCategoryTable();
 				callDataServices(SplashScreenActivity.this, 0);
 			}
@@ -134,11 +134,15 @@ public class SplashScreenActivity extends FragmentActivity {
 		}
 	}
 
+	public static void schedule (Context ctx) {
+		CheckUpdateService.schedule(ctx);
+	}
+
 	@Override
 	protected void onResume () {
 		super.onResume();
 		if (Util.getInstance().isOnline(this)) {
-     
+
 			Intent mServiceIntent = new Intent(SplashScreenActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.team_url)));
 			startService(mServiceIntent);
 		}
@@ -271,15 +275,17 @@ public class SplashScreenActivity extends FragmentActivity {
 
 	@Override
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-		// if user press back from Home activity splash screen should not be appear.
-		// so here it finishes the splash screen activity.
- 
-		// when the application is going to close should stop current score service.
-		
-		Intent mServiceIntent = new Intent(SplashScreenActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.dummy_currentscore_url)));
+
+		// when the application is going to close should stop current score service
+		System.out.println("Stopping all the services.");
+    TopActivity.setCurrentScoreTimerStarted(false);
+		Intent mServiceIntent = new Intent(SplashScreenActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 		AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager.cancel(pendingIntent);
+		
+		// if user press back from Home activity splash screen should not be appear.
+		// so here it finishes the splash screen activity.
 
 		finish();
 	}
@@ -327,7 +333,8 @@ public class SplashScreenActivity extends FragmentActivity {
 
 					callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
 					break;
-				default:;
+				default:
+					;
 					break;
 			}
 		}

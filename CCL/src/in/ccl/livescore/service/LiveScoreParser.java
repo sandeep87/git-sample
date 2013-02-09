@@ -1,6 +1,7 @@
 package in.ccl.livescore.service;
 
 import in.ccl.database.JSONPullParser;
+import in.ccl.model.MatchSchedule;
 import in.ccl.score.Batting;
 import in.ccl.score.Bowler;
 import in.ccl.score.Innings;
@@ -9,6 +10,8 @@ import in.ccl.score.MatchesResponse;
 import in.ccl.score.ScoreBoard;
 
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -35,9 +38,8 @@ public class LiveScoreParser {
 		return null;
 	}
 
-	public static String parseCurrentMatchSchedule (InputStream inputStream) {
+	public static MatchSchedule parseCurrentMatchSchedule (InputStream inputStream) {
 		String result = JSONPullParser.readStream(inputStream);
-		String matchSchedule = null;
 		if (result != null) {
 			try {
 				JSONObject object = new JSONObject(result);
@@ -45,9 +47,26 @@ public class LiveScoreParser {
 					org.json.JSONArray jsonArray = object.getJSONArray("schedule");
 					for (int i = 0; i < jsonArray.length(); i++) {
 						JSONObject innerObject = jsonArray.getJSONObject(i);
-						if (innerObject.has("status") && !(innerObject.getString("status").equals("over"))) {
-							matchSchedule = innerObject.getString("start_date");
-							break;
+						if (innerObject.has("status") && !(innerObject.getString("status").equalsIgnoreCase("OVER"))) {
+
+							MatchSchedule matchInfo = new MatchSchedule();
+							matchInfo.setStatus(innerObject.getString("status"));
+							try {
+								SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+								if (innerObject.has("enddate")) {
+									matchInfo.setEndDate(sdf.parse(innerObject.getString("enddate")));
+								}
+								if (innerObject.has("startdate")) {
+									matchInfo.setStartTime(sdf.parse(innerObject.getString("startdate")));
+								}
+							}
+							catch (ParseException e) {
+								// TODO: handle exception
+							}
+							if (innerObject.has("id")) {
+								matchInfo.setMatchId(innerObject.getInt("id"));
+							}
+							return matchInfo;
 						}
 					}
 				}
@@ -56,7 +75,7 @@ public class LiveScoreParser {
 				e.printStackTrace();
 			}
 		}
-		return matchSchedule;
+		return null;
 	}
 
 	public static ArrayList <MatchesResponse> parseMatches (InputStream inputStream) {
@@ -236,45 +255,44 @@ public class LiveScoreParser {
 	}
 
 	public static ScoreBoard parseScoreBoard (InputStream inputStream) {
-		
+
 		String result = JSONPullParser.readStream(inputStream);
-      ScoreBoard scoreBoardItems = null;
-  
-      if(result != null){
-      	JSONObject dataObject ;
-      	try {
-					dataObject = new JSONObject(result);
-					scoreBoardItems = new ScoreBoard();
-   			if(dataObject.has("data")){
-   				JSONObject object = dataObject.getJSONObject("data");
-   				
-						if(object.has("innings1")){
-							String firstInn = object.getString("innings1");
-							JSONObject firstInningsObject = new JSONObject(firstInn.trim());
-							Innings firstInningsItems = parseInningsData(firstInningsObject);
-							scoreBoardItems.setFirstInningsList(firstInningsItems);
-						}else{
-							System.out.println("phani no firstInn");
-						}
-						if(object.has("innings2")){
-							String secondInn = object.getString("innings2");
-							JSONObject secondInningsObject = new JSONObject(secondInn.trim());
-							Innings secondInningsItems = parseInningsData(secondInningsObject);
-							scoreBoardItems.setSecondInningsList(secondInningsItems);
-						}else{
-							System.out.println("phani no secondInn");
-						}
-					}else{
-						System.out.println("phani no data");
+		ScoreBoard scoreBoardItems = null;
+
+		if (result != null) {
+			JSONObject dataObject;
+			try {
+				dataObject = new JSONObject(result);
+				scoreBoardItems = new ScoreBoard();
+				if (dataObject.has("data")) {
+					JSONObject object = dataObject.getJSONObject("data");
+
+					if (object.has("innings1")) {
+						String firstInn = object.getString("innings1");
+						JSONObject firstInningsObject = new JSONObject(firstInn.trim());
+						Innings firstInningsItems = parseInningsData(firstInningsObject);
+						scoreBoardItems.setFirstInningsList(firstInningsItems);
 					}
-   			return scoreBoardItems;
-					
+
+					if (object.has("innings2")) {
+						String secondInn = object.getString("innings2");
+						JSONObject secondInningsObject = new JSONObject(secondInn.trim());
+						Innings secondInningsItems = parseInningsData(secondInningsObject);
+						scoreBoardItems.setSecondInningsList(secondInningsItems);
+					}
+
 				}
-				catch (JSONException e) {
-					e.printStackTrace();
+				else {
+					System.out.println("No data");
 				}
-      }
-		 
+				return scoreBoardItems;
+
+			}
+			catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+
 		return null;
 	}
 
@@ -308,7 +326,6 @@ public class LiveScoreParser {
 
 				}
 			}
-			System.out.println("data :"+inningsObject.toString());
 
 			if (!inningsObject.isNull("extras")) {
 				if (inningsObject.has("extras")) {
@@ -339,7 +356,6 @@ public class LiveScoreParser {
 						Batting batting = new Batting();
 						if (battJsonObject.has("name")) {
 							batting.setName(battJsonObject.getString("name"));
-							System.out.println("phani batsman "+battJsonObject.getString("name"));
 						}
 						if (battJsonObject.has("balls")) {
 							batting.setBalls(battJsonObject.getInt("balls"));
@@ -387,13 +403,14 @@ public class LiveScoreParser {
 						battingList.add(batting);
 					}
 					innings.setBatting_info(battingList);
-					System.out.println("phaniBattlistSize"+battingList.size());
-				}else{
-					System.out.println("phani no batting");
+				}
+				else {
+					System.out.println("No batting Array tag ");
 				}
 
-			}else{
-				System.out.println("phani battingnull");
+			}
+			else {
+				System.out.println("batting Array is Null");
 			}
 			if (!inningsObject.isNull("bowling")) {
 				if (inningsObject.has("bowling")) {
@@ -425,10 +442,10 @@ public class LiveScoreParser {
 						bowerList.add(bowler);
 					}
 					innings.setBowler_info(bowerList);
-					System.out.println("phaniBowllistSize"+bowerList.size());
 				}
-			}else{
-				System.out.println("phani no bowl info");
+			}
+			else {
+				System.out.println("Bowling Array is Null");
 			}
 
 		}

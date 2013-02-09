@@ -103,6 +103,9 @@
         <service
             android:name="in.ccl.livescore.service.LiveScoreService"
             android:exported="false" />
+        <service
+            android:name="in.ccl.livescore.service.CheckUpdateService"
+            android:exported="false" />
 
         <!--
             The attribute "android:exported" must be set to "false" to restrict this content
