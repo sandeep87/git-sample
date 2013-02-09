@@ -1,6 +1,5 @@
 package in.ccl.adapters;
 
-import in.ccl.helper.Util;
 import in.ccl.model.TeamMember;
 import in.ccl.photo.PhotoView;
 import in.ccl.ui.R;

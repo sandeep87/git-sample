@@ -6,6 +6,7 @@ import in.ccl.logging.Logger;
 import in.ccl.model.MatchSchedule;
 import in.ccl.score.LiveScore;
 import in.ccl.score.MatchesResponse;
+import in.ccl.score.ScoreBoard;
 import in.ccl.ui.R;
 import in.ccl.ui.TopActivity;
 
@@ -82,7 +83,6 @@ public class LiveScoreService extends IntentService {
 						SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd", new Locale("in"));
 						MatchSchedule matchSchedule = LiveScoreParser.parseCurrentMatchSchedule(localHttpURLConnection.getInputStream());
 						if (matchSchedule != null && matchSchedule.getStartTime() != null && matchSchedule.getEndDate() != null && matchSchedule.getStatus() != null) {
-
 							dateSdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 							java.util.Date date = new java.util.Date();
 							try {
@@ -176,7 +176,30 @@ public class LiveScoreService extends IntentService {
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
 					}
-					else if (compareKey.equals("currentscore.html")) {
+					else if (compareKey.equals("fullscore.html")) {
+						System.out.println("phani calling score board....");
+						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
+						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED, scoreBoard);
+					}
+					else if (compareKey.equals("score_board_update")) {
+						System.out.println("phani scoreboard update....");
+            ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
+
+						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED, scoreBoard);
+						
+						PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+						long trigger = System.currentTimeMillis() + 60000;
+						alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+						if (scoreBoard == null) {
+							alarmManager.cancel(pendingIntent);
+						}
+						else {
+							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
+						}
+
+					}	else if (compareKey.equals("currentscore.html")) {
+						System.out.println("LIve current score callling....");
+
 						TopActivity.setCurrentScoreTimerStarted(true);
 						String currentMessage = LiveScoreParser.parseCurrentScore(localHttpURLConnection.getInputStream());
 						TopActivity.setCurrentScore(currentMessage);
@@ -201,6 +224,9 @@ public class LiveScoreService extends IntentService {
 				else {
 					if (compareKey.equals("currentscore.html")) {
 						mBroadcaster.broadcastIntentWithCurrentScore(Constants.STATE_CURRENT_SCORE_TASK_COMPLETED, null);
+					}
+					else if (compareKey.equals("score_board.html")) {
+						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED, null);
 					}
 				}
 			}

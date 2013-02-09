@@ -14,6 +14,7 @@ import in.ccl.model.Teams;
 import in.ccl.photo.PhotoView;
 import in.ccl.score.LiveScore;
 import in.ccl.score.MatchesResponse;
+import in.ccl.score.ScoreBoard;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
@@ -38,17 +39,19 @@ import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
-public class TopActivity extends Activity implements AnimationLayout.Listener, ServerResponse {
+public class TopActivity extends Activity implements AnimationLayout.Listener, ServerResponse, OnClickListener {
 
 	// used as key of the logs.
 	private static final String TAG = "MainActivity";
@@ -136,6 +139,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private PhotoView battingLogo;
 
 	private AnimationLayout mLayout;
+	
+	private Button scoreBoard_btn;
 
 	public static String getCurrentScore () {
 		return mCurrentScore;
@@ -481,6 +486,18 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						displayLiveScore(liveScore);
 					}
 					break;
+				case in.ccl.database.Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED:	
+					if(intent != null && intent.hasExtra("scoreboard")){
+						ScoreBoard scoreBoard = intent.getParcelableExtra("scoreboard");	
+				
+						  if(scoreBoard != null){
+						  	Intent scoreBoardIntent = new Intent(TopActivity.this,ScoreBoardActivity.class);
+								scoreBoardIntent.putExtra("scoreboard", scoreBoard);
+								startActivity(scoreBoardIntent);
+						  }
+					  
+					}
+					
 				default:
 					break;
 			}
@@ -547,10 +564,17 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 		previous_bowler_wkts = (TextView) findViewById(R.id.non_bowler_wkts);
 
-		previous_bowler_mnds = (TextView) findViewById(R.id.non_bowler_mdns);
+		previous_bowler_mnds = (TextView) findViewById(R.id.non_bowler_mdns);		
+		
+		scoreBoard_btn       = (Button) findViewById(R.id.btn_view_score_board);
+		
+		scoreBoard_btn.setOnClickListener(this);
+	
+
 		striker_strike_rate = (TextView) findViewById(R.id.striker_strike_rate);
 
 		non_striker_strike_rate = (TextView) findViewById(R.id.non_striker_strike_rate);
+
 
 	}
 
@@ -728,5 +752,15 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 			first_wicket_image_position.setImageDrawable(getResources().getDrawable(wicketsMap.get(digits[0])));
 			second_wicket_image_position.setImageDrawable(getResources().getDrawable(wicketsMap.get(digits[1])));
 		}
+	}
+
+	@Override
+	public void onClick (View v) {
+     	switch(v.getId()){
+     		case R.id.btn_view_score_board :
+     			Toast.makeText(TopActivity.this, "scoreboard", Toast.LENGTH_LONG).show();
+     			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
+    			startService(mServiceIntent);
+     	}
 	}
 }
