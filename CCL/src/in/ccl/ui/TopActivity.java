@@ -11,6 +11,7 @@ import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.model.Items;
 import in.ccl.model.TeamMember;
 import in.ccl.model.Teams;
+import in.ccl.photo.PhotoView;
 import in.ccl.score.LiveScore;
 import in.ccl.score.MatchesResponse;
 import in.ccl.util.Constants;
@@ -30,7 +31,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +41,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -113,6 +117,10 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	private TextView previous_bowler_mnds;
 
+	private TextView striker_strike_rate;
+
+	private TextView non_striker_strike_rate;
+
 	public LiveScoreSlidingDrawer mDrawer;
 
 	private ArrayList <MatchesResponse> matcheslist;
@@ -124,6 +132,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private TextView txtCurrentScore;
 
 	private static String mCurrentScore;
+
+	private PhotoView battingLogo;
 
 	private AnimationLayout mLayout;
 
@@ -444,7 +454,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					if (intent != null && intent.hasExtra("matches_list")) {
 						matcheslist = intent.getParcelableArrayListExtra("matches_list");
 						if (matcheslist != null) {
-							if (matcheslist.size() == 1) {
+							if (matcheslist.size() > 0) {
 								callLiveScoreService(matcheslist.get(0).getId());
 							}
 						}
@@ -493,6 +503,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private void addLiveScoreView () {
 		target_score = (TextView) findViewById(R.id.team_score);
 
+		battingLogo = (PhotoView) findViewById(R.id.batting_logo);
+		battingLogo.setImageDrawable(getResources().getDrawable(R.drawable.imagenotqueued));
 		first_score_image_position = (ImageView) findViewById(R.id.score_first_position);
 
 		second_score_image_position = (ImageView) findViewById(R.id.score_second_position);
@@ -536,19 +548,29 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		previous_bowler_wkts = (TextView) findViewById(R.id.non_bowler_wkts);
 
 		previous_bowler_mnds = (TextView) findViewById(R.id.non_bowler_mdns);
+		striker_strike_rate = (TextView) findViewById(R.id.striker_strike_rate);
+
+		non_striker_strike_rate = (TextView) findViewById(R.id.non_striker_strike_rate);
+
 	}
 
 	private void displayLiveScore (LiveScore liveScore) {
 		if (target_score != null) {
 			if (liveScore.getTarget_score() == 0) {
-
 				target_score.setVisibility(View.GONE);
 			}
 			else {
 				String first_inning_overs = "(" + liveScore.getTarget_overs() + " Overs" + ")";
+				target_score.setText("Target  :  " + liveScore.getTarget_score() + "" + "/" + liveScore.getTarget_wickets() + " " + first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
+			}
+			TextView txtErrrorMessage = new TextView(this);
 
-				target_score.setText("Target" + liveScore.getTarget_score() + "" + "/" + liveScore.getTarget_wickets() + " " + first_inning_overs + "" + "\n" + "\n" + "SCORE : " + liveScore.getNeed_score());
-
+			battingLogo.setScaleType(ImageView.ScaleType.MATRIX);
+			if (liveScore.getTeamLogo() != null) {
+				battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage, false);
+			}
+			else {
+				battingLogo.setVisibility(View.INVISIBLE);
 			}
 			updateScore(liveScore.getCurrent_score_score());
 
@@ -586,12 +608,24 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 			previous_bowler_wkts.setText(liveScore.getPrevious_bowler_wickets() + "");
 
 			previous_bowler_mnds.setText(liveScore.getPrevious_bowler_madiens() + "");
+			striker_strike_rate.setText(liveScore.getStriker_strikerate() != 0 ? String.format("%.2f", liveScore.getStriker_strikerate()) : "0");
+			non_striker_strike_rate.setText(liveScore.getNonstriker_strikerate() != 0 ? String.format("%.2f", liveScore.getNonstriker_strikerate()) : "0");
 
 			if (mDrawer.isOpened()) {
 				txtScoreTitle.setVisibility(View.GONE);
 				imgBtnScoreDropDown.setVisibility(View.VISIBLE);
 				imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown_up);
-				txtScore.setText(liveScore.getTeam1() + " vs " + liveScore.getTeam2());
+				if (liveScore.getTeam1() != null && liveScore.getTeam2() != null) {
+					txtScore.setText(liveScore.getTeam1() + " vs " + liveScore.getTeam2());
+				}
+				else {
+					if (mCurrentScore != null) {
+						txtScore.setText(mCurrentScore);
+					}
+					else {
+						txtScore.setText(getResources().getString(R.string.app_title));
+					}
+				}
 			}
 		}
 	}
