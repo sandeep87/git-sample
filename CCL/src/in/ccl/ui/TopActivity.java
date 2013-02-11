@@ -17,8 +17,14 @@ import in.ccl.score.MatchesResponse;
 import in.ccl.score.ScoreBoard;
 import in.ccl.util.Constants;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -262,6 +268,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	private void showOrHideLiveScore () {
 		if (!mDrawer.isOpened()) {
+			// callLiveScoreService(1);
 			if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
 				Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
 				startService(mServiceIntent);
@@ -609,7 +616,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 			}
 			else {
 				String first_inning_overs = "(" + liveScore.getTarget_overs() + " Overs" + ")";
-				target_score.setText("Target  :  " + liveScore.getTarget_score() +" "+ first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
+				target_score.setText("Target  :  " + liveScore.getTarget_score() + " " + first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
 			}
 			TextView txtErrrorMessage = new TextView(this);
 

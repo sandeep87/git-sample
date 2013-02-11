@@ -18,6 +18,7 @@ import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -240,18 +241,11 @@ public class LiveScoreService extends IntentService {
 		}
 	}
 
-	private long getScheduleTimeInMills (Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", new Locale("in"));
-		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-		java.util.Date dates;
-		try {
-			dates = sdf.parse(sdf.format(date));
-			return dates.getTime();
-		}
-		catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return 0;
+	public static long getScheduleTimeInMills (Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
+		Calendar calendar = sdf.getCalendar();
+		return calendar.getTime().getTime();		
 	}
 
 }
