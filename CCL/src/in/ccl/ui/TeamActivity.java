@@ -302,7 +302,7 @@ public class TeamActivity extends TopActivity {
 		if (teamMembersList != null) {
 			teamMemberViewPager.setAdapter(new TeamImagePagerAdapter(this, teamMembersList, Category.TEAM_MEMBERS));
 			teamMemberViewPager.setOnClickListener(null);
-			teamMemberViewPager.setOnPageChangeListener(new PageChangeListener(null, teamMemberViewPager));
+			teamMemberViewPager.setOnPageChangeListener(new PageChangeListener(null, teamMemberViewPager,3));
 		}
 	}
 
@@ -310,7 +310,7 @@ public class TeamActivity extends TopActivity {
 		if (teamAmbassadorsList != null) {
 			teamAmbassadorViewPager.setAdapter(new TeamImagePagerAdapter(this, teamAmbassadorsList, Category.TEAM_AMBASSADORS));
 			teamAmbassadorViewPager.setOnClickListener(null);
-			teamAmbassadorViewPager.setOnPageChangeListener(new PageChangeListener(null, teamAmbassadorViewPager));
+			teamAmbassadorViewPager.setOnPageChangeListener(new PageChangeListener(null, teamAmbassadorViewPager,3));
 		}
 	}
 
