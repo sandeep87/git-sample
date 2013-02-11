@@ -1,5 +1,6 @@
 package in.ccl.database;
 
+import in.ccl.logging.Logger;
 import in.ccl.model.Items;
 import in.ccl.score.Innings;
 import in.ccl.score.LiveScore;
@@ -10,15 +11,24 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment.InstantiationException;
 import android.support.v4.content.LocalBroadcastManager;
 
 public class BroadcastNotifier {
+
+	private static final String TAG = "BroadcastNotifier";
 
 	private LocalBroadcastManager mBroadcaster;
 
 	public BroadcastNotifier (Context context) {
 		// Gets an instance of the support library local broadcastmanager
-		mBroadcaster = LocalBroadcastManager.getInstance(context);
+		try {
+			mBroadcaster = LocalBroadcastManager.getInstance(context);
+		}
+		catch (RuntimeException e) {
+			System.out.println("CCL Error " + "Unable to instan  java.lang.RuntimeException: Unable to instantiate service");
+			Logger.info(TAG, "Unable to instan  java.lang.RuntimeException: Unable to instantiate service");
+		}
 	}
 
 	/**
@@ -43,7 +53,9 @@ public class BroadcastNotifier {
 		}
 
 		// Broadcasts the Intent
-		mBroadcaster.sendBroadcast(localIntent);
+		if (mBroadcaster != null) {
+			mBroadcaster.sendBroadcast(localIntent);
+		}
 
 	}
 
@@ -59,7 +71,9 @@ public class BroadcastNotifier {
 		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
 		localIntent.putExtra("current_score", message);
 		// Broadcasts the Intent
-		mBroadcaster.sendBroadcast(localIntent);
+		if (mBroadcaster != null) {
+			mBroadcaster.sendBroadcast(localIntent);
+		}
 
 	}
 
@@ -82,8 +96,9 @@ public class BroadcastNotifier {
 		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
 		// Broadcasts the Intent
-		mBroadcaster.sendBroadcast(localIntent);
-
+		if (mBroadcaster != null) {
+			mBroadcaster.sendBroadcast(localIntent);
+		}
 	}
 
 	public void broadcastIntentWithMatches (int status, ArrayList <MatchesResponse> matchesResponse) {
@@ -98,13 +113,15 @@ public class BroadcastNotifier {
 
 		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
 		if (matchesResponse != null) {
-			System.out.println("maches size in broadcast "+matchesResponse.size());
+			System.out.println("maches size in broadcast " + matchesResponse.size());
 			localIntent.putParcelableArrayListExtra("matches_list", matchesResponse);
 		}
 
 		// Broadcasts the Intent
-		mBroadcaster.sendBroadcast(localIntent);
+		if (mBroadcaster != null) {
 
+			mBroadcaster.sendBroadcast(localIntent);
+		}
 	}
 
 	public void broadcastIntentWithLiveScore (int status, LiveScore liveScore) {
@@ -122,8 +139,10 @@ public class BroadcastNotifier {
 			localIntent.putExtra("livescore", liveScore);
 		}
 		// Broadcasts the Intent
-		mBroadcaster.sendBroadcast(localIntent);
+		if (mBroadcaster != null) {
 
+			mBroadcaster.sendBroadcast(localIntent);
+		}
 	}
 
 	public void broadcastIntentWithScoreBoard (int status, ScoreBoard scoreBoard) {
@@ -141,8 +160,10 @@ public class BroadcastNotifier {
 			localIntent.putExtra("scoreboard", scoreBoard);
 		}
 		// Broadcasts the Intent
-		mBroadcaster.sendBroadcast(localIntent);
+		if (mBroadcaster != null) {
 
+			mBroadcaster.sendBroadcast(localIntent);
+		}
 	}
 
 }

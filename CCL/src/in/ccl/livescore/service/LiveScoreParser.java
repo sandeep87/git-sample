@@ -428,11 +428,9 @@ public class LiveScoreParser {
 						JSONObject bowlerJsonObject = new JSONObject();
 						bowlerJsonObject = bowlerArrary.getJSONObject(i);
 						Bowler bowler = new Bowler();
-						if (bowlerJsonObject.has("name")) {
-							bowler.setBowlerName(bowlerJsonObject.getString("name"));
-						}
+						
 						if (bowlerJsonObject.has("madiens")) {
-							bowler.setMadiens(bowlerJsonObject.getInt("madiens"));
+							bowler.setBowlerMaidens(bowlerJsonObject.getInt("madiens"));
 						}
 						if (bowlerJsonObject.has("runs")) {
 							bowler.setBowlerRuns(bowlerJsonObject.getInt("runs"));
