@@ -81,24 +81,25 @@ public class LiveScoreParser {
 	public static ArrayList <MatchesResponse> parseMatches (InputStream inputStream) {
 		ArrayList <MatchesResponse> matchesResponseList = null;
 		String result = JSONPullParser.readStream(inputStream);
-		JSONObject responseObject = null;
+		// JSONObject responseObject = null;
 		try {
-			responseObject = new JSONObject(result);
-			if (responseObject.has("data")) {
-				org.json.JSONArray matchesList = responseObject.getJSONArray("data");
-				matchesResponseList = new ArrayList <MatchesResponse>();
-				for (int i = 0; i < matchesList.length(); i++) {
-					MatchesResponse matchesResponse = new MatchesResponse();
-					JSONObject matchId = matchesList.getJSONObject(i);
-					if (matchId.has("id")) {
-						matchesResponse.setId(matchId.getInt("id"));
-					}
-					if (matchId.has("name")) {
-						matchesResponse.setMathesName(matchId.getString("name"));
-					}
-					matchesResponseList.add(matchesResponse);
+			// responseObject = new JSONObject(result);
+			// if (responseObject.has("data")) {
+			// org.json.JSONArray matchesList = responseObject.getJSONArray("data");
+			org.json.JSONArray matchesList = new JSONArray(result);
+			matchesResponseList = new ArrayList <MatchesResponse>();
+			for (int i = 0; i < matchesList.length(); i++) {
+				MatchesResponse matchesResponse = new MatchesResponse();
+				JSONObject matchId = matchesList.getJSONObject(i);
+				if (matchId.has("id")) {
+					matchesResponse.setId(matchId.getInt("id"));
 				}
+				if (matchId.has("name")) {
+					matchesResponse.setMathesName(matchId.getString("name"));
+				}
+				matchesResponseList.add(matchesResponse);
 			}
+			// }
 		}
 		catch (org.json.JSONException e) {
 			e.printStackTrace();
@@ -332,20 +333,22 @@ public class LiveScoreParser {
 
 			if (!inningsObject.isNull("extras")) {
 				if (inningsObject.has("extras")) {
-					JSONObject extraObject = inningsObject.getJSONObject("extras");
-					if (extraObject.has("legbyes")) {
-						innings.setLegbyes(extraObject.getInt("legbyes"));
+					JSONArray jsonArray = inningsObject.getJSONArray("extras");
+					if (jsonArray != null && jsonArray.length() > 0) {
+						JSONObject extraObject = jsonArray.getJSONObject(0);
+						if (extraObject.has("legbyes")) {
+							innings.setLegbyes(extraObject.getInt("legbyes"));
+						}
+						if (extraObject.has("wides")) {
+							innings.setWides(extraObject.getInt("legbyes"));
+						}
+						if (extraObject.has("byes")) {
+							innings.setByes(extraObject.getInt("byes"));
+						}
+						if (extraObject.has("noballs")) {
+							innings.setNoballs(extraObject.getInt("noballs"));
+						}
 					}
-					if (extraObject.has("wides")) {
-						innings.setWides(extraObject.getInt("legbyes"));
-					}
-					if (extraObject.has("byes")) {
-						innings.setByes(extraObject.getInt("byes"));
-					}
-					if (extraObject.has("noballs")) {
-						innings.setNoballs(extraObject.getInt("noballs"));
-					}
-
 				}
 
 			}
@@ -367,7 +370,9 @@ public class LiveScoreParser {
 							batting.setScore(battJsonObject.getInt("score"));
 						}
 						if (battJsonObject.has("fours")) {
+
 							batting.setFours(battJsonObject.getInt("fours"));
+
 						}
 						if (battJsonObject.has("sixes")) {
 							batting.setSixes(battJsonObject.getInt("sixes"));
@@ -448,12 +453,12 @@ public class LiveScoreParser {
 				}
 			}
 			else {
-				System.out.println("Bowling Array is Null");
+				// System.out.println("Bowling Array is Null");
 			}
 
 		}
 		catch (JSONException e) {
-			// e.printStackTrace();
+			e.printStackTrace();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

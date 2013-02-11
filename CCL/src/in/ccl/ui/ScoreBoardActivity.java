@@ -55,6 +55,8 @@ public class ScoreBoardActivity extends TopActivity {
 
 	private ScoreBoard scoreBoard;
 
+	private int liveMatchId;
+
 	// private RelativeLayout layoutBowlerBetails;
 
 	// private RelativeLayout layoutBowlingTeamDetatils;
@@ -95,25 +97,13 @@ public class ScoreBoardActivity extends TopActivity {
 		mDownloadStateReceiver = new DownloadStateReceiver();
 
 		scoreBoard = getIntent().getParcelableExtra("scoreboard");
-
+		liveMatchId = getIntent().getIntExtra("match_id", 0);
 		Util.setTextFont(this, txtFirstInningsTeamTitle);
 		Util.setTextFont(this, txtSecondInningsTeamTitle);
 		Util.setTextFont(this, btnFirstInnings);
 		Util.setTextFont(this, btnSecondInnings);
 
 		insertDatainList(scoreBoard);
-		/*
-		 * if(scoreBoard.getFirstInningsList()!= null){ firstInnings = scoreBoard.getFirstInningsList();
-		 * 
-		 * txtFirstInningsTeamTitle.setText(firstInnings.getBatting_team()); txtSecondInningsTeamTitle.setText(firstInnings.getBowling_team()); } if(scoreBoard.getSecondInningsList()!=null) { secondInnings = scoreBoard.getSecondInningsList(); }else{ isSecondInnings = false; }
-		 * 
-		 * 
-		 * 
-		 * //Her we Checked whether match is First innings or not. if(isSecondInnings){ showDetailsInView(firstInnings); }else{ btnSecondInnings.setVisibility(View.GONE); // Gone the Second innings Button //here we load the screen Controls and first innings data. showDetailsInView(firstInnings);
-		 * //change firstInningsButton to fillparent btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT)); }
-		 */
-
-		// firstInnings Button OnCLickListener.
 		// here we show the FirstInnings Data in screen ,when user taps FirstInnings Button
 		btnFirstInnings.setOnClickListener(new OnClickListener() {
 
@@ -155,6 +145,9 @@ public class ScoreBoardActivity extends TopActivity {
 		}
 		if (scoreBoard.getSecondInningsList() != null) {
 			secondInnings = scoreBoard.getSecondInningsList();
+			if(secondInnings.getBatting_info() == null){
+				isSecondInnings = false;
+			}
 		}
 		else {
 			isSecondInnings = false;
@@ -172,7 +165,7 @@ public class ScoreBoardActivity extends TopActivity {
 				width = 155;
 			}
 			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_HIGH) {
-				width = 155;
+				width = 225;
 			}
 			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH) {
 				width = android.app.ActionBar.LayoutParams.WRAP_CONTENT;
@@ -222,31 +215,34 @@ public class ScoreBoardActivity extends TopActivity {
 	 */
 	public void showDetailsInView (Innings listItems) {
 
-		txtFirstInningsTeamTitle.setText(listItems.getBatting_team());
-		txtSecondInningsTeamTitle.setText(listItems.getBowling_team());
-		txtInningsTeamTitle.setText(listItems.getBatting_team());
-		// imgInningsLogo.setBackgroundResource(R.drawable.teluguwarriors_logo_scoreboard_bowling);
-		String score = listItems.getRuns() + "/" + listItems.getWickets();
-		txtInningsScore.setText(score);
-		txtBowlingTeamTitle.setText(listItems.getBowling_team());
-		// System.out.println("batting team size "+listItems.getBatting_info().get(0).getName());
 		if (listItems != null) {
-			listInnings.setAdapter(new InningsAdapter(ScoreBoardActivity.this, listItems));
+			txtFirstInningsTeamTitle.setText(listItems.getBatting_team());
+			txtSecondInningsTeamTitle.setText(listItems.getBowling_team());
+			txtInningsTeamTitle.setText(listItems.getBatting_team());
+			// imgInningsLogo.setBackgroundResource(R.drawable.teluguwarriors_logo_scoreboard_bowling);
+			String score = listItems.getRuns() + "/" + listItems.getWickets();
+			txtInningsScore.setText(score);
+			txtBowlingTeamTitle.setText(listItems.getBowling_team());
+			// System.out.println("batting team size "+listItems.getBatting_info().get(0).getName());
+			if (listItems != null && listItems.getBatting_info() != null) {
+				listInnings.setAdapter(new InningsAdapter(ScoreBoardActivity.this, listItems));
 
+			}
+			if (listInnings != null && listItems.getBatting_info() != null) {
+				int height = getItemHightofListView(listInnings, listItems.getBatting_info().size());
+
+				int listSize = height * (listItems.getBatting_info().size());
+
+				listInnings.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, height));
+				if (listItems != null) {
+					bowlerListView.setAdapter(new BowlerListAdapter(ScoreBoardActivity.this, listItems));
+
+				}
+				height = getItemHightofListView(bowlerListView, listItems.getBowler_info().size());
+				listSize = height * (listItems.getBowler_info().size());
+				bowlerListView.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, height));
+			}
 		}
-		int height = getItemHightofListView(listInnings, listItems.getBatting_info().size());
-
-		int listSize = height * (listItems.getBatting_info().size());
-
-		listInnings.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, height));
-		if (listItems != null) {
-			bowlerListView.setAdapter(new BowlerListAdapter(ScoreBoardActivity.this, listItems));
-
-		}
-		height = getItemHightofListView(bowlerListView, listItems.getBowler_info().size());
-		listSize = height * (listItems.getBowler_info().size());
-		bowlerListView.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, height));
-
 	}
 
 	@Override
@@ -255,7 +251,7 @@ public class ScoreBoardActivity extends TopActivity {
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
 		if (Util.getInstance().isOnline(this)) {
 
-			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
+			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)+liveMatchId));
 			mServiceIntent.putExtra("KEY", "score_board_update");
 			startService(mServiceIntent);
 		}
@@ -268,7 +264,7 @@ public class ScoreBoardActivity extends TopActivity {
 	@Override
 	protected void onPause () {
 		super.onPause();
-		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
+		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)+liveMatchId));
 		AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager.cancel(pendingIntent);

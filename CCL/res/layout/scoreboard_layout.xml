@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/txt_vs"
                     android:padding="5dip"
-                    android:textColor="@color/green"
+                    android:textColor="@android:color/black"
                     android:textSize="24sp" />
             </RelativeLayout>
 
@@ -218,7 +218,8 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/layout_bowler_runs_title"
                         android:paddingBottom="10dip"
-                        android:paddingLeft="30dip"
+                        android:paddingLeft="28dip"
+                        android:singleLine="true"
                         android:paddingTop="10dip"
                         android:text="@string/wickets_score"
                         android:textColor="@color/dark_grey" />

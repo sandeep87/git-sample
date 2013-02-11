@@ -35,6 +35,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -142,6 +143,18 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	private Button scoreBoard_btn;
 
+	private int currentMatchId;
+
+	private static boolean isTopHeaderSelected;
+
+	public static boolean isTopHeaderSelected () {
+		return isTopHeaderSelected;
+	}
+
+	public static void setTopHeaderSelected (boolean isTopHeaderSelected) {
+		TopActivity.isTopHeaderSelected = isTopHeaderSelected;
+	}
+
 	public static String getCurrentScore () {
 		return mCurrentScore;
 	}
@@ -196,10 +209,10 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
 		adsLayout.setVisibility(View.VISIBLE);
 		// Initiate a generic request to load it with an ad
-		AdRequest adRequest = new AdRequest();
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
-		adView.loadAd(adRequest);// new AdRequest()
-		// adView.loadAd(new AdRequest());
+		// AdRequest adRequest = new AdRequest();
+		// adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+		// adView.loadAd(adRequest);// new AdRequest()
+		adView.loadAd(new AdRequest());
 		// for user menu selection from top activity.
 		ImageButton imgBtnMenu = (ImageButton) findViewById(R.id.img_btn_menu);
 
@@ -220,14 +233,20 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		scoreLayout.setOnClickListener(new OnClickListener() {
 
 			public void onClick (View v) {
-				showOrHideLiveScore();
+				if (!isTopHeaderSelected()) {
+					setTopHeaderSelected(true);
+					showOrHideLiveScore();
+				}
 			}
 		});
 
 		imgBtnScoreDropDown.setOnClickListener(new OnClickListener() {
 
 			public void onClick (View v) {
-				showOrHideLiveScore();
+				if (!isTopHeaderSelected()) {
+					setTopHeaderSelected(true);
+					showOrHideLiveScore();
+				}
 			}
 		});
 		MenuItems.getInstance().loadMenu(this, menuLayout, mLayout);
@@ -264,7 +283,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void callLiveScoreService (int liveMatchId) {
-		Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_score_url)+liveMatchId));
+		currentMatchId = liveMatchId;
+		Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_score_url) + liveMatchId));
 		mServiceIntent.putExtra("KEY", "livescore");
 		startService(mServiceIntent);
 
@@ -362,12 +382,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 			txtScoreHeader.setVisibility(View.GONE);
 			imgBtnScoreDropDown.setVisibility(View.GONE);
 			txtCurrentScore.setText(getResources().getString(R.string.app_title));
+			txtCurrentScore.setGravity((Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL));
 		}
 		else {
 			txtScoreHeader.setVisibility(View.VISIBLE);
 			txtScoreHeader.setText("Score : ");
 			imgBtnScoreDropDown.setVisibility(View.VISIBLE);
 			imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown);
+			txtCurrentScore.setGravity(Gravity.LEFT);
 			txtCurrentScore.setText(mCurrentScore);
 		}
 	}
@@ -441,6 +463,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 								txtScoreHeader.setVisibility(View.GONE);
 								imgBtnScoreDropDown.setVisibility(View.GONE);
 								txtCurrentScore.setText(getResources().getString(R.string.app_title));
+								txtCurrentScore.setGravity((Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL));
 							}
 						}
 						else if (!mDrawer.isOpened()) {
@@ -450,6 +473,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 								imgBtnScoreDropDown.setVisibility(View.VISIBLE);
 								imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown);
 								txtCurrentScore.setText(currentScore);
+								txtCurrentScore.setGravity(Gravity.LEFT);
 							}
 						}
 					}
@@ -472,6 +496,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						}
 						addLiveScoreView();
 						displayLiveScore(liveScore);
+						setTopHeaderSelected(false);
 						if (mDrawer != null) {
 							mDrawer.animateOpen();
 						}
@@ -490,6 +515,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						if (scoreBoard != null) {
 							Intent scoreBoardIntent = new Intent(TopActivity.this, ScoreBoardActivity.class);
 							scoreBoardIntent.putExtra("scoreboard", scoreBoard);
+							scoreBoardIntent.putExtra("match_id", currentMatchId);
 							scoreBoardIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 							startActivity(scoreBoardIntent);
 						}
@@ -575,13 +601,15 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void displayLiveScore (LiveScore liveScore) {
+		// allow user to select again
+
 		if (target_score != null) {
 			if (liveScore.getTarget_score() == 0) {
 				target_score.setVisibility(View.GONE);
 			}
 			else {
 				String first_inning_overs = "(" + liveScore.getTarget_overs() + " Overs" + ")";
-				target_score.setText("Target  :  " + liveScore.getTarget_score() + "" + "/" + liveScore.getTarget_wickets() + " " + first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
+				target_score.setText("Target  :  " + liveScore.getTarget_score() +" "+ first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
 			}
 			TextView txtErrrorMessage = new TextView(this);
 
@@ -757,7 +785,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 				if (mDrawer != null) {
 					mDrawer.animateClose();
 				}
-				Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)));
+				System.out.println("Score board match id is " + currentMatchId);
+				Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url) + currentMatchId));
+				mServiceIntent.putExtra("KEY", "fullscore");
 				startService(mServiceIntent);
 		}
 	}

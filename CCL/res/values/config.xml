@@ -25,7 +25,7 @@
     <string name="match_schedule_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/match_schedule</string>
     <string name="live_score_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livescore?match_id=</string>
     <string name="live_matches_urls">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livematches</string>
-    <string name="score_board_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/fullscore</string>
+    <string name="score_board_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/fullscore?match_id=</string>
  
     
     

@@ -43,7 +43,7 @@ public class CCLPullService extends IntentService {
 		int updatedRows = 0;
 		// Gets a URL to read from the incoming Intent's "data" value
 		String localUrlString = workIntent.getDataString();
-		System.out.println("Url " + localUrlString);
+	//	System.out.println("Url " + localUrlString);
 		String compareKey = null;
 		if (workIntent.hasExtra("KEY")) {
 			compareKey = workIntent.getStringExtra("KEY");
