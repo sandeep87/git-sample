@@ -233,6 +233,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		scoreLayout.setOnClickListener(new OnClickListener() {
 
 			public void onClick (View v) {
+				
 				if (!isTopHeaderSelected()) {
 					setTopHeaderSelected(true);
 					showOrHideLiveScore();
@@ -261,11 +262,13 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void showOrHideLiveScore () {
+		
 		if (!mDrawer.isOpened()) {
-			if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
+			callLiveScoreService(1);
+			/*if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
 				Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
 				startService(mServiceIntent);
-			}
+			}*/
 		}
 		else {
 			cancleUpdateLiveScore();
