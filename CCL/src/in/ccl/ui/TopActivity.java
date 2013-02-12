@@ -230,7 +230,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 		// if layout select for score view should start animation.
 		// click event to visible and invisible of score view.
 		scoreLayout.setOnClickListener(new OnClickListener() {
-
+			@Override
 			public void onClick(View v) {
 				if (!isTopHeaderSelected()) {
 					setTopHeaderSelected(true);
@@ -240,7 +240,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 		});
 
 		imgBtnScoreDropDown.setOnClickListener(new OnClickListener() {
-
+			@Override
 			public void onClick(View v) {
 				if (!isTopHeaderSelected()) {
 					setTopHeaderSelected(true);
@@ -264,7 +264,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 	}
 
 	private void showOrHideLiveScore() {
+
 		if (!mDrawer.isOpened()) {
+
 			if (!(txtCurrentScore.getText().equals(getResources().getString(
 					R.string.app_title)))) {
 				Intent mServiceIntent = new Intent(TopActivity.this,
