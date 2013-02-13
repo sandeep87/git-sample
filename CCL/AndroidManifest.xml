@@ -14,7 +14,8 @@
     <application
         android:icon="@drawable/ccl_logo"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        android:allowBackup="true" >
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait" >

@@ -18,8 +18,6 @@ import in.ccl.score.ScoreBoard;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -262,7 +260,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 				PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager.cancel(pendingIntent);
 	}
-
+	
 	private void showOrHideLiveScore() {
 
 		if (!mDrawer.isOpened()) {
@@ -771,7 +769,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 
 	private void updateScore(int score) {
 
-		HashMap<Integer, Integer> numberMap = new HashMap<Integer, Integer>();
+		SparseIntArray numberMap = new SparseIntArray();
 		numberMap.put(0, R.drawable.score_zero);
 		numberMap.put(1, R.drawable.score_one);
 		numberMap.put(2, R.drawable.score_two);

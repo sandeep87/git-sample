@@ -1,10 +1,8 @@
 package in.ccl.score;
 
-import java.util.ArrayList;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 
 public class ScoreBoard implements Parcelable {
 

@@ -10,7 +10,7 @@ public class PageChangeListener implements OnPageChangeListener {
 
 	private ViewPager viewPager;
 
-	private static int previousState;
+	private int previousState;
 
 	private int currentState;
 
@@ -30,12 +30,7 @@ public class PageChangeListener implements OnPageChangeListener {
 	public void onPageScrollStateChanged(int state) {
 		int currentPage = viewPager.getCurrentItem();
 		if (currentPage == size - 1 || currentPage == 0) {
-			if(previousState != 0) {
-				previousState = currentState;
-			}
-			else {
-				previousState = size;
-			}
+			previousState = currentState;
 			currentState = state;
 			if (previousState == 1 && currentState == 0) {
 				viewPager.setCurrentItem(currentPage == 0 ? size : 0);
