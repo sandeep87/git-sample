@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +54,8 @@ public class LiveScoreParser {
 							matchInfo.setStatus(innerObject.getString("status"));
 							try {
 								SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+								sdf.setTimeZone(TimeZone.getTimeZone("GMT+05:30"));
+
 								if (innerObject.has("enddate")) {
 									matchInfo.setEndDate(sdf.parse(innerObject.getString("enddate")));
 								}
@@ -428,11 +431,9 @@ public class LiveScoreParser {
 						JSONObject bowlerJsonObject = new JSONObject();
 						bowlerJsonObject = bowlerArrary.getJSONObject(i);
 						Bowler bowler = new Bowler();
-						if (bowlerJsonObject.has("name")) {
-							bowler.setBowlerName(bowlerJsonObject.getString("name"));
-						}
+						
 						if (bowlerJsonObject.has("madiens")) {
-							bowler.setMadiens(bowlerJsonObject.getInt("madiens"));
+							bowler.setBowlerMaidens(bowlerJsonObject.getInt("madiens"));
 						}
 						if (bowlerJsonObject.has("runs")) {
 							bowler.setBowlerRuns(bowlerJsonObject.getInt("runs"));

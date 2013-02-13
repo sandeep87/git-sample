@@ -69,6 +69,8 @@ public class ScoreBoardActivity extends TopActivity {
 	private Innings secondInnings;
 
 	private boolean isSecondInnings = true;
+	
+	private boolean IsSecondInningsBtnClkd = false;
 
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -111,6 +113,7 @@ public class ScoreBoardActivity extends TopActivity {
 			public void onClick (View v) {
 				btnFirstInnings.setBackgroundResource(R.drawable.inningstab_tapped);
 				btnSecondInnings.setBackgroundResource(R.drawable.innings_tab);
+				IsSecondInningsBtnClkd = false;
 				// here we load the screen Controls and first innings data.
 				showDetailsInView(firstInnings);
 
@@ -127,6 +130,7 @@ public class ScoreBoardActivity extends TopActivity {
 
 				btnSecondInnings.setBackgroundResource(R.drawable.inningstab_tapped);
 				btnFirstInnings.setBackgroundResource(R.drawable.innings_tab);
+				IsSecondInningsBtnClkd = true;
 
 				// here we load the screen Controls and Second innings data.
 				showDetailsInView(secondInnings);
@@ -171,7 +175,12 @@ public class ScoreBoardActivity extends TopActivity {
 				width = android.app.ActionBar.LayoutParams.WRAP_CONTENT;
 			}
 			btnFirstInnings.setLayoutParams(new RelativeLayout.LayoutParams(width, LayoutParams.WRAP_CONTENT));
-			showDetailsInView(firstInnings);
+			if(IsSecondInningsBtnClkd){
+				showDetailsInView(secondInnings);
+			}else{
+				showDetailsInView(firstInnings);
+			}
+			
 		}
 		else {
 			btnSecondInnings.setVisibility(View.GONE); // Gone the Second innings Button
@@ -189,19 +198,33 @@ public class ScoreBoardActivity extends TopActivity {
 	 * @param items listItem
 	 * @return height of the ListView item.
 	 */
-	public static int getItemHightofListView (ListView listView, int items) {
+	public static int getItemHightofListView (ListView listView,Context ctx) {
 
 		ListAdapter mAdapter = listView.getAdapter();
 
 		int listviewElementsheight = 0;
 		// for listview total item hight
-		// items = mAdapter.getCount();
+		 int items = mAdapter.getCount();
 
 		for (int i = 0; i < items; i++) {
 
 			View childView = mAdapter.getView(i, null, listView);
 			childView.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-			listviewElementsheight += childView.getMeasuredHeight();
+			int width = 0;
+			int deviceDisplayDensity = ctx.getResources().getDisplayMetrics().densityDpi;
+			if (deviceDisplayDensity == DisplayMetrics.DENSITY_LOW) {
+				width = 24;
+			}
+			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_MEDIUM) {
+				width = 28;
+			}
+			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_HIGH) {
+				width = 39;
+			}
+			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH) {
+				width = 43;
+			}
+			listviewElementsheight +=width;
 		}
 
 		return listviewElementsheight;
@@ -229,7 +252,7 @@ public class ScoreBoardActivity extends TopActivity {
 
 			}
 			if (listInnings != null && listItems.getBatting_info() != null) {
-				int height = getItemHightofListView(listInnings, listItems.getBatting_info().size());
+				int height = getItemHightofListView(listInnings, this);
 
 				int listSize = height * (listItems.getBatting_info().size());
 
@@ -238,7 +261,7 @@ public class ScoreBoardActivity extends TopActivity {
 					bowlerListView.setAdapter(new BowlerListAdapter(ScoreBoardActivity.this, listItems));
 
 				}
-				height = getItemHightofListView(bowlerListView, listItems.getBowler_info().size());
+				height = getItemHightofListView(bowlerListView, this);
 				listSize = height * (listItems.getBowler_info().size());
 				bowlerListView.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, height));
 			}

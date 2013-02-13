@@ -3,6 +3,7 @@ package in.ccl.adapters;
 import in.ccl.helper.Category;
 import in.ccl.model.Items;
 import in.ccl.photo.PhotoView;
+import in.ccl.photo.ScaleImageView;
 import in.ccl.ui.R;
 
 import java.util.ArrayList;
@@ -45,18 +46,18 @@ public class FullPagerAdapter extends PagerAdapter {
 	@Override
 	public View instantiateItem (View view, int position) {
 		View imageLayout = null;
-		PhotoView imageView = null;
+		ScaleImageView imageView = null;
 		// ImageView spinner = null;
 
-		imageLayout = inflater.inflate(R.layout.item_pager_image, null);
-		imageView = (PhotoView) imageLayout.findViewById(R.id.image);
+		imageLayout = inflater.inflate(R.layout.full_image, null);
+		imageView = (ScaleImageView) imageLayout.findViewById(R.id.image);
 		// spinner = (ImageView) imageLayout.findViewById(R.id.loading);
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 		TextView errorTxt = (TextView) imageLayout.findViewById(R.id.error_title);
 		// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
     imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.blackbackground));
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt,true);
+		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt);
 
 		((ViewPager) view).addView(imageLayout, 0);
 		return imageLayout;

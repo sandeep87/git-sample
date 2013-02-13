@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" 
-       android:scrollbars="none">
+    android:layout_height="fill_parent"
+    android:scrollbars="none" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,13 +95,15 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-             <!--    <ImageView
+                <!--
+                     <ImageView
                     android:id="@+id/img_innings_logo"
                     android:layout_width="30dip"
                     android:layout_height="30dip"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/teluguwarriors_logo_scoreboard_bowling"
-                    android:padding="20dip" /> -->
+                    android:padding="20dip" />
+                -->
 
                 <TextView
                     android:id="@+id/txt_innings_score"
@@ -149,14 +151,16 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-               <!--  <ImageView
+                <!--
+                     <ImageView
                     android:id="@+id/img_bowlingteam_logo"
                     android:layout_width="30dip"
                     android:layout_height="30dip"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bengaltigerslogo_fullscoreboard"
                     android:padding="20dip" />
- -->
+                -->
+
                 <TextView
                     android:id="@+id/txt_bowling"
                     android:layout_width="wrap_content"
@@ -176,6 +180,83 @@
                 android:layout_below="@+id/layout_bowling_teamdetails"
                 android:paddingTop="5dip" >
 
+                <TableLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/layout_bowler_innings_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bowlerstitle_scorecard"
+                    android:paddingTop="5dip"
+                    android:shrinkColumns="*"
+                    
+                    android:stretchColumns="*" >
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+              >
+
+                        <!--
+             <RelativeLayout
+            android:id="@+id/bowling_team_statistics"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_score"
+            android:paddingRight="5dp" >
+                        -->
+
+                        <TextView
+                            android:id="@+id/bowling_statistics"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/bowling"
+                            android:textColor="@color/dark_grey" />
+
+                        <TextView
+                            android:id="@+id/overs_statistics"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/bowling_statistics"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="@string/overs"
+                           android:textColor="@color/dark_grey"/>
+
+                        <TextView
+                            android:id="@+id/mdns_statistics"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/overs_statistics"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="@string/mdns"
+                                 android:textColor="@color/dark_grey" />
+
+                        <TextView
+                            android:id="@+id/runs_statistics"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/mdns_statistics"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/runs"
+                                  android:textColor="@color/dark_grey" />
+
+                        <TextView
+                            android:id="@+id/wkts_statistics"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/runs_statistics"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/wickets"
+                                   android:textColor="@color/dark_grey" />
+                        <!-- </RelativeLayout> -->
+                    </TableRow>
+                </TableLayout>
+                <!--
                 <RelativeLayout
                     android:id="@+id/layout_bowler_innings_title"
                     android:layout_width="fill_parent"
@@ -196,7 +277,17 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/layout_bowler_name_title"
                         android:paddingBottom="10dip"
-                        android:paddingLeft="35dip"
+                        android:paddingLeft="15dip"
+                        android:paddingTop="10dip"
+                        android:text="@string/overs"
+                        android:textColor="@color/dark_grey" />
+                     <TextView
+                        android:id="@+id/layout_bowler_maidens_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/layout_bowler_overs_title"
+                        android:paddingBottom="10dip"
+                        android:paddingLeft="15dip"
                         android:paddingTop="10dip"
                         android:text="@string/overs"
                         android:textColor="@color/dark_grey" />
@@ -205,9 +296,9 @@
                         android:id="@+id/layout_bowler_runs_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/layout_bowler_overs_title"
+                        android:layout_toRightOf="@+id/layout_bowler_maidens_title"
                         android:paddingBottom="10dip"
-                        android:paddingLeft="30dip"
+                        android:paddingLeft="15dip"
                         android:paddingTop="10dip"
                         android:text="@string/runs"
                         android:textColor="@color/dark_grey" />
@@ -218,12 +309,13 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/layout_bowler_runs_title"
                         android:paddingBottom="10dip"
-                        android:paddingLeft="28dip"
+                        android:paddingLeft="10dip"
                         android:singleLine="true"
                         android:paddingTop="10dip"
                         android:text="@string/wickets_score"
                         android:textColor="@color/dark_grey" />
                 </RelativeLayout>
+                -->
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

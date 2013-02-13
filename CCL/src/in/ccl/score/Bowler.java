@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class Bowler implements Parcelable {
 
-	private int madiens;
+	private int bowlerMaidens;
 
 	private int bowlerRuns;
 
@@ -47,13 +47,19 @@ public class Bowler implements Parcelable {
 		this.bowlerOvers = bowlerOvers;
 	}
 
-	public int getMadiens () {
-		return madiens;
+	
+
+	
+	public int getBowlerMaidens () {
+		return bowlerMaidens;
 	}
 
-	public void setMadiens (int madiens) {
-		this.madiens = madiens;
+	
+	public void setBowlerMaidens (int bowlerMadiens) {
+		this.bowlerMaidens = bowlerMadiens;
 	}
+
+
 
 	public static final Creator <Bowler> CREATOR = new Creator <Bowler>() {
 
@@ -74,7 +80,7 @@ public class Bowler implements Parcelable {
 	}
 
 	public Bowler (Parcel source) {
-		setMadiens(source.readInt());
+		setBowlerMaidens(source.readInt());
 		setBowlerName(source.readString());
 		setBowlerOvers(source.readDouble());
 		setBowlerRuns(source.readInt());
@@ -86,7 +92,7 @@ public class Bowler implements Parcelable {
 
 	@Override
 	public void writeToParcel (Parcel dest, int flags) {
-		dest.writeInt(madiens);
+		dest.writeInt(bowlerMaidens);
 		dest.writeString(bowlerName);
 		dest.writeDouble(bowlerOvers);
 		dest.writeInt(bowlerRuns);

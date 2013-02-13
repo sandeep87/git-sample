@@ -23,7 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import android.app.Activity;
@@ -239,6 +241,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		scoreLayout.setOnClickListener(new OnClickListener() {
 
 			public void onClick (View v) {
+
 				if (!isTopHeaderSelected()) {
 					setTopHeaderSelected(true);
 					showOrHideLiveScore();
@@ -267,8 +270,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void showOrHideLiveScore () {
+
 		if (!mDrawer.isOpened()) {
-			// callLiveScoreService(1);
 			if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
 				Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
 				startService(mServiceIntent);
@@ -622,7 +625,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 			battingLogo.setScaleType(ImageView.ScaleType.MATRIX);
 			if (liveScore.getTeamLogo() != null) {
-				battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage, false);
+				battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage);
 			}
 			else {
 				battingLogo.setVisibility(View.INVISIBLE);
