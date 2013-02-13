@@ -85,4 +85,5 @@ public class Constants {
 	public static final int STATE_LIVE_SCOREBOARD_TASK_COMPLETED = 30;
 
 
+	public static final int STATE_LIVE_SCORE_ACTIVITY_TASK_COMPLETED = 31;
 }

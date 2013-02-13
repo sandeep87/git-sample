@@ -32,9 +32,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -44,10 +42,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
@@ -144,7 +140,11 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private Button scoreBoard_btn;
 
 	private int currentMatchId;
-
+	
+	public static boolean isLiveScore; 
+ 
+	public static int live_match_id ;
+  
 	private static boolean isTopHeaderSelected;
 
 	public static boolean isTopHeaderSelected () {
@@ -234,20 +234,20 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 			public void onClick (View v) {
 				
-				if (!isTopHeaderSelected()) {
+				/*if (!isTopHeaderSelected()) {
 					setTopHeaderSelected(true);
 					showOrHideLiveScore();
-				}
+				}*/
 			}
 		});
 
 		imgBtnScoreDropDown.setOnClickListener(new OnClickListener() {
 
 			public void onClick (View v) {
-				if (!isTopHeaderSelected()) {
+				/*if (!isTopHeaderSelected()) {
 					setTopHeaderSelected(true);
 					showOrHideLiveScore();
-				}
+				}*/
 			}
 		});
 		MenuItems.getInstance().loadMenu(this, menuLayout, mLayout);
@@ -264,13 +264,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private void showOrHideLiveScore () {
 		
 		if (!mDrawer.isOpened()) {
-		
-			if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
-				Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
-				startService(mServiceIntent);
-			}
+	//	callLiveScoreService(1);
+			//if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
+			//	Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
+			//   startService(mServiceIntent);
+			//}
 		}
 		else {
+
 			cancleUpdateLiveScore();
 			showCurrentHeader();
 			mDrawer.animateClose();
@@ -382,12 +383,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	private void showCurrentHeader () {
 		if (mCurrentScore == null) {
+			isLiveScore = false;
 			txtScoreHeader.setVisibility(View.GONE);
 			imgBtnScoreDropDown.setVisibility(View.GONE);
 			txtCurrentScore.setText(getResources().getString(R.string.app_title));
 			txtCurrentScore.setGravity((Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL));
 		}
 		else {
+			isLiveScore = true;
 			txtScoreHeader.setVisibility(View.VISIBLE);
 			txtScoreHeader.setText("Score : ");
 			imgBtnScoreDropDown.setVisibility(View.VISIBLE);
@@ -487,6 +490,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						if (matcheslist != null) {
 							if (matcheslist.size() > 0) {
 								callLiveScoreService(matcheslist.get(0).getId());
+								live_match_id = matcheslist.get(0).getId();
 							}
 						}
 					}
@@ -545,6 +549,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void addLiveScoreView () {
+		
 		target_score = (TextView) findViewById(R.id.team_score);
 
 		battingLogo = (PhotoView) findViewById(R.id.batting_logo);

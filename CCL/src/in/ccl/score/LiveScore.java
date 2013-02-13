@@ -4,6 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class LiveScore implements Parcelable {
+	
+	private String status ;
+
+	
+	
 
 	// team details variables
 	private String team1;
@@ -287,6 +292,14 @@ public class LiveScore implements Parcelable {
 	public int getPrevious_bowler_wickets () {
 		return previous_bowler_wickets;
 	}
+	public String getStatus () {
+		return status;
+	}
+
+	
+	public void setStatus (String status) {
+		this.status = status;
+	}
 
 	public void setPrevious_bowler_wickets (int previous_bowler_wickets) {
 		this.previous_bowler_wickets = previous_bowler_wickets;
@@ -345,6 +358,7 @@ public class LiveScore implements Parcelable {
 		setPrevious_bowler_runs(previous_bowler_runs);
 		setPrevious_bowler_wickets(in.readInt());
 		setTeamLogo(in.readString());
+		setStatus(in.readString());
 	}
 
 	public LiveScore () {
@@ -384,6 +398,7 @@ public class LiveScore implements Parcelable {
 		dest.writeInt(getPrevious_bowler_runs());
 		dest.writeInt(getPrevious_bowler_wickets());
 		dest.writeString(getTeamLogo());
+		dest.writeString(status);
 	}
 
 }

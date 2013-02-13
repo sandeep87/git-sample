@@ -160,6 +160,7 @@ public class LiveScoreService extends IntentService {
 						startService(updateLIVEScoreIntent);
 					}
 					else if (compareKey.equals("update-livescore")) {
+
 						LiveScore liveScore = LiveScoreParser.parseLiveScore(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithLiveScore(Constants.STATE_LIVE_SCORE_UPDATE_TASK_COMPLETED, liveScore);
 						PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -171,6 +172,11 @@ public class LiveScoreService extends IntentService {
 						else {
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
+					}else if(compareKey.equals("livescore-activity")){
+						
+						LiveScore liveScore = LiveScoreParser.parseLiveScore(localHttpURLConnection.getInputStream());
+						mBroadcaster.broadcastIntentWithLiveScore(Constants.STATE_LIVE_SCORE_ACTIVITY_TASK_COMPLETED, liveScore);
+						
 					}
 					else if (compareKey.equals("fullscore")) {
 						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
@@ -178,6 +184,7 @@ public class LiveScoreService extends IntentService {
 					}
 					else if (compareKey.equals("score_board_update")) {
 						System.out.println("score_board_update");
+						System.out.println("intent"+workIntent);
 						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED, scoreBoard);
 						workIntent.putExtra("KEY", "score_board_update");

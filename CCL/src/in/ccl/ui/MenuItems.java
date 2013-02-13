@@ -57,7 +57,6 @@ public class MenuItems implements OnClickListener {
 	public static ArrayList <Items> marathiTeamMembersList;
 
 	public static ArrayList <Items> bhojpuriTeamMembersList;
-
 	// private Items membersItem;
 
 	private ProgressDialog progressDialog;
@@ -104,7 +103,7 @@ public class MenuItems implements OnClickListener {
 		RelativeLayout layoutHome = (RelativeLayout) layout.findViewById(R.id.layout_home);
 		
 		RelativeLayout layoutVideo = (RelativeLayout) layout.findViewById(R.id.layout_videos);
-		// RelativeLayout layoutScore = (RelativeLayout) layout.findViewById(R.id.layout_scores);
+	  RelativeLayout layoutLiveScore = (RelativeLayout) layout.findViewById(R.id.layout_live_score);
 		RelativeLayout layoutDownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
 
 		TextView photoTxt = (TextView) layout.findViewById(R.id.txt_photo);
@@ -113,18 +112,22 @@ public class MenuItems implements OnClickListener {
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
 		TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
 		TextView scheduleTxt = (TextView) layout.findViewById(R.id.txt_schedule);
-		// TextView scoreTxt = (TextView) layout.findViewById(R.id.txt_score);
+		TextView liveScoreTxt = (TextView) layout.findViewById(R.id.txt_livescore);
 		TextView teamsTxt = (TextView) layout.findViewById(R.id.txt_tems);
 		TextView videosTxt = (TextView) layout.findViewById(R.id.txt_video);
 		// TextView notificationsTxt = (TextView) layout.findViewById(R.id.txt_notifications);
-
+		 if(TopActivity.isLiveScore){
+			 System.out.println("phani livescore icon");
+       layoutLiveScore.setVisibility(View.VISIBLE);
+   }
+		 //layoutLiveScore.setVisibility(View.VISIBLE);
 		Util.setTextFont(activity, photoTxt);
 	
 		Util.setTextFont(activity, homeTxt);
 		Util.setTextFont(activity, ownersTxt);
 		Util.setTextFont(activity, downloadsTxt);
 		Util.setTextFont(activity, scheduleTxt);
-		// Util.setTextFont(activity, scoreTxt);
+		 Util.setTextFont(activity, liveScoreTxt);
 		Util.setTextFont(activity, videosTxt);
 		// Util.setTextFont(activity, notificationsTxt);
 		Util.setTextFont(activity, teamsTxt);
@@ -137,7 +140,7 @@ public class MenuItems implements OnClickListener {
 		layoutVideo.setOnClickListener(this);
 		layoutDownloads.setOnClickListener(this);
 		layoutHome.setOnClickListener(this);
-		// layoutScore.setOnClickListener(this);
+		layoutLiveScore.setOnClickListener(this);
 	
 
 		/*
@@ -336,7 +339,12 @@ public class MenuItems implements OnClickListener {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 					}
 				}
-
+              break;
+			case R.id.layout_live_score:
+				System.out.println("Livescore");
+				Intent liveScoreIntent = new Intent(activity, LiveScoreActivity.class);
+				 activity.startActivity(liveScoreIntent);
+				    
 			default:
 				break;
 		}

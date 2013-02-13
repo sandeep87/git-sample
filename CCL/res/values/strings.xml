@@ -42,6 +42,8 @@
     <string name="scores">SCORES</string>
     <string name="notifications">NOTIFICATIONS</string>
     <string name="downloads">DOWNLOADS</string>
+    <string name="livescore">LIVE SCORE</string>
+    
     <!-- end of menu items -->
     <string name="owners_lounge">OWNERS LOUNGE</string>
     <string name="owners_info">VISHNU VARDHAN INDURI </string>

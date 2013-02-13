@@ -287,7 +287,7 @@ public class ScoreBoardActivity extends TopActivity {
 	@Override
 	protected void onPause () {
 		super.onPause();
-		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)+liveMatchId));
+		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_score_url)+liveMatchId));
 		AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager.cancel(pendingIntent);

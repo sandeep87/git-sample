@@ -118,7 +118,9 @@ public class LiveScoreParser {
 				liveScore = new LiveScore();
 				if (dataObject.has("data")) {
 					JSONObject object = dataObject.getJSONObject("data");
-
+					if(object.has("status")){
+				     liveScore.setStatus(object.getString("status"));
+					}
 					if (object.has("teams")) {
 						JSONObject teamObject = object.getJSONObject("teams");
 
