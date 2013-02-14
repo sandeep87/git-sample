@@ -9,10 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-         android:scaleType="fitCenter"
-        android:src="@drawable/banner_item_preloader"
         android:adjustViewBounds="true"
-        android:background="#FFFFFF" />
+        android:background="#FFFFFF"
+        android:scaleType="fitCenter"
+        android:src="@drawable/banner_item_preloader" />
 
     <TextView
         android:id="@+id/error_title"

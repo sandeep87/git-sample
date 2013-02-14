@@ -141,11 +141,11 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private Button scoreBoard_btn;
 
 	private int currentMatchId;
-	
-	public static boolean isLiveScore; 
- 
-	public static int live_match_id ;
-  
+
+	public static boolean isLiveScore;
+
+	public static int live_match_id;
+
 	private static boolean isTopHeaderSelected;
 
 	public static boolean isTopHeaderSelected () {
@@ -210,10 +210,10 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
 		adsLayout.setVisibility(View.VISIBLE);
 		// Initiate a generic request to load it with an ad
-		// AdRequest adRequest = new AdRequest();
-		// adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
-		// adView.loadAd(adRequest);// new AdRequest()
-		adView.loadAd(new AdRequest());
+		AdRequest adRequest = new AdRequest();
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+		adView.loadAd(adRequest);// new AdRequest()
+		// adView.loadAd(new AdRequest());
 		// for user menu selection from top activity.
 		ImageButton imgBtnMenu = (ImageButton) findViewById(R.id.img_btn_menu);
 
@@ -227,7 +227,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 			public void onClick (View v) {
 				mLayout.toggleSidebar();
-				//MenuItems.getInstance().blink();
+				// MenuItems.getInstance().blink();
 				System.out.println("Menu btn clikc");
 			}
 		});
@@ -237,23 +237,18 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 			public void onClick (View v) {
 
-				
-
-
-			/*	if (!isTopHeaderSelected()) {
-					setTopHeaderSelected(true);
-					showOrHideLiveScore();
-				}*/
+				/*
+				 * if (!isTopHeaderSelected()) { setTopHeaderSelected(true); showOrHideLiveScore(); }
+				 */
 			}
 		});
 
 		imgBtnScoreDropDown.setOnClickListener(new OnClickListener() {
 
 			public void onClick (View v) {
-				/*if (!isTopHeaderSelected()) {
-					setTopHeaderSelected(true);
-					showOrHideLiveScore();
-				}*/
+				/*
+				 * if (!isTopHeaderSelected()) { setTopHeaderSelected(true); showOrHideLiveScore(); }
+				 */
 			}
 		});
 		MenuItems.getInstance().loadMenu(this, menuLayout, mLayout);
@@ -271,11 +266,11 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 		if (!mDrawer.isOpened()) {
 
-	//	callLiveScoreService(1);
-			//if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
-			//	Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
-			//   startService(mServiceIntent);
-			//}
+			// callLiveScoreService(1);
+			// if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
+			// Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
+			// startService(mServiceIntent);
+			// }
 			if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
 				Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
 				startService(mServiceIntent);
@@ -442,31 +437,29 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					Intent downloadImageIntent = new Intent(TopActivity.this, DownloadActivity.class);
 					if (downloadImageItems.size() > 0 && downloadImageItems != null) {
 						downloadImageIntent.putParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY, downloadImageItems);
-						downloadImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+						// downloadImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 						startActivity(downloadImageIntent);
 					}
 					break;
-					
-					
+
 				case in.ccl.database.Constants.STATE_ACTION_CALENDAR_IMAGE_COMPLETE:
-                                          System.out.println("nagesh broad cast calender complete called in top");
-                                          Cursor	 cursor1 = getContentResolver().query(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null, null, null, null);
-					 CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
-					 ArrayList <Items> calenderImageItems = mCalendarItemsCursor.getItems(cursor1);
-					 System.out.println("calenderImageItems "+calenderImageItems.size());
+					System.out.println("nagesh broad cast calender complete called in top");
+					Cursor cursor1 = getContentResolver().query(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null, null, null, null);
+					CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
+					ArrayList <Items> calenderImageItems = mCalendarItemsCursor.getItems(cursor1);
+					System.out.println("calenderImageItems " + calenderImageItems.size());
 					if (cursor1 != null) {
 						cursor1.close();
 					}
 					Intent calenderImageIntent = new Intent(TopActivity.this, CalendarActivity.class);
 					if (calenderImageItems.size() > 0 && calenderImageItems != null) {
-					    
-					    calenderImageIntent.putParcelableArrayListExtra(Constants.EXTRA_CALENDAR_KEY, calenderImageItems);
-					    calenderImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					startActivity(calenderImageIntent);
+
+						calenderImageIntent.putParcelableArrayListExtra(Constants.EXTRA_CALENDAR_KEY, calenderImageItems);
+						// calenderImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+						startActivity(calenderImageIntent);
 					}
 					break;
-					
-					
+
 				case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
 					ArrayList <Teams> teamLogoItems = null;
 					ArrayList <TeamMember> teamMemberItems = null;
@@ -497,7 +490,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					if (intent != null && intent.hasExtra("current_score")) {
 						String currentScore = intent.getStringExtra("current_score");
 						mCurrentScore = currentScore;
-                     System.out.println("current score"+mCurrentScore);
+						System.out.println("current score" + mCurrentScore);
 						if (currentScore == null && !mDrawer.isOpened()) {
 							if (txtScoreHeader != null && imgBtnScoreDropDown != null && txtCurrentScore != null) {
 								txtScoreHeader.setVisibility(View.GONE);
@@ -538,9 +531,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						addLiveScoreView();
 						displayLiveScore(liveScore);
 						setTopHeaderSelected(false);
-						/*if (mDrawer != null) {
-							mDrawer.animateOpen();
-						}*/
+						/*
+						 * if (mDrawer != null) { mDrawer.animateOpen(); }
+						 */
 					}
 					break;
 				case in.ccl.database.Constants.STATE_LIVE_SCORE_UPDATE_TASK_COMPLETED:
@@ -583,7 +576,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void addLiveScoreView () {
-		
+
 		target_score = (TextView) findViewById(R.id.team_score);
 
 		battingLogo = (PhotoView) findViewById(R.id.batting_logo);

@@ -135,10 +135,11 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt);
 
 		((ViewPager) view).addView(imageLayout, 0);
-		imageView.setOnLongClickListener(new OnLongClickListener() {
+	/*	imageView.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
 			public boolean onLongClick (View v) {
+		     Toast.makeText(v.getContext(), "imageView.setOnLongClickListener", Toast.LENGTH_LONG).show();
 
 				shareDialog = new Dialog(activity);
 				shareDialog.setContentView(R.layout.dialog_layout);
@@ -207,7 +208,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 				return true;
 			}
 
-		});
+		});*/
 
 		return imageLayout;
 

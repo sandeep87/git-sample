@@ -119,7 +119,7 @@ public class MenuItems implements OnClickListener {
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
 		TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
 		blinkMenuText(downloadsTxt);
-		TextView calenderTxt = (TextView) layout.findViewById(R.id.txt_calender);
+		TextView calenderTxt = (TextView) layout.findViewById(R.id.txt_celebrity_calender);
 		blinkMenuText(calenderTxt);
 		TextView scheduleTxt = (TextView) layout.findViewById(R.id.txt_schedule);
 		TextView liveScoreTxt = (TextView) layout.findViewById(R.id.txt_livescore);
@@ -354,7 +354,7 @@ public class MenuItems implements OnClickListener {
 				}
 
 				break;
-			case R.id.layout_celebrity_calender:
+			case R.id.layout_downloads:
 
 				cursor = activity.getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
 				if (cursor != null && cursor.getCount() > 0) {

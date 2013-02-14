@@ -267,9 +267,9 @@ public class SplashScreenActivity extends FragmentActivity {
 		// all the uncaught exceptions
 		String logDirectoryPath = AppPropertiesUtil.getAppDirectory(context) + getResources().getString(R.string.log_folder);
 
-		ParadigmExceptionHandler paradigmException = new ParadigmExceptionHandler(this, logDirectoryPath);
-		Thread.setDefaultUncaughtExceptionHandler(paradigmException);
-		Logger.info("Initialization components " + initialized);
+	//	ParadigmExceptionHandler paradigmException = new ParadigmExceptionHandler(this, logDirectoryPath);
+		//Thread.setDefaultUncaughtExceptionHandler(paradigmException);
+		//Logger.info("Initialization components " + initialized);
 		return initialized;
 	}
 
