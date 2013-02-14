@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +54,8 @@ public class LiveScoreParser {
 							matchInfo.setStatus(innerObject.getString("status"));
 							try {
 								SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+								sdf.setTimeZone(TimeZone.getTimeZone("GMT+05:30"));
+
 								if (innerObject.has("enddate")) {
 									matchInfo.setEndDate(sdf.parse(innerObject.getString("enddate")));
 								}

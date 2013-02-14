@@ -88,12 +88,20 @@
             android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme" >
         </activity>
+
 <activity
             android:name=".LiveScoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme" >
         </activity>
         
+
+        <activity
+            android:name="in.ccl.ui.TestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/noAnimTheme" >
+        </activity>
+
         <receiver
             android:name="in.ccl.logging.PeriodicLogUpload"
             android:process=":remote" >

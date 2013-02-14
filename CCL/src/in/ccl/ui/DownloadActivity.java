@@ -62,7 +62,7 @@ public class DownloadActivity extends TopActivity {
 		txt_download_header = (TextView) findViewById(R.id.txt_download_header);
 
 		Util.setTextFont(this, txt_download_header);
-		txt_download_header.setText(getResources().getString(R.string.downloads));
+		txt_download_header.setText(getResources().getString(R.string.celebrity_calender));
 
 		if (getIntent().hasExtra(Constants.EXTRA_DOWNLOAD_KEY)) {
 			downloadItemsArrayList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY);

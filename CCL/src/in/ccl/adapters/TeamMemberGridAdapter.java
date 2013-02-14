@@ -176,11 +176,11 @@ public class TeamMemberGridAdapter extends BaseAdapter {
 		mViewHolder.imgTeamMember.setTag(gridItemsList.get(position).getMemberThumbUrl());
 
 		if (isFrom.equals("team_members")) {
-			mViewHolder.imgTeamMember.setImageURL(gridItemsList.get(position).getMemberThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt, false);
+			mViewHolder.imgTeamMember.setImageURL(gridItemsList.get(position).getMemberThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt);
 
 		}
 		else {
-			mViewHolder.imgTeamMember.setImageURL(gridItemsList.get(position).getMemberThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt, false);
+			mViewHolder.imgTeamMember.setImageURL(gridItemsList.get(position).getMemberThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt);
 
 		}
 

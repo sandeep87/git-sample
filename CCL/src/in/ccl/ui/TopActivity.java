@@ -226,6 +226,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 			public void onClick (View v) {
 				mLayout.toggleSidebar();
+				//MenuItems.getInstance().blink();
+				System.out.println("Menu btn clikc");
 			}
 		});
 		// if layout select for score view should start animation.
@@ -233,8 +235,11 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		scoreLayout.setOnClickListener(new OnClickListener() {
 
 			public void onClick (View v) {
+
 				
-				/*if (!isTopHeaderSelected()) {
+
+
+			/*	if (!isTopHeaderSelected()) {
 					setTopHeaderSelected(true);
 					showOrHideLiveScore();
 				}*/
@@ -262,13 +267,18 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	}
 
 	private void showOrHideLiveScore () {
-		
+
 		if (!mDrawer.isOpened()) {
+
 	//	callLiveScoreService(1);
 			//if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
 			//	Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
 			//   startService(mServiceIntent);
 			//}
+			if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
+				Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
+				startService(mServiceIntent);
+			}
 		}
 		else {
 
@@ -375,6 +385,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
 		showCurrentHeader();
 		if (!isCurrentScoreTimerStarted) {
+			System.out.println("phani...");
 			// send request to get live matches schedule
 			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.match_schedule_url)));
 			startService(mServiceIntent);
@@ -463,7 +474,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					if (intent != null && intent.hasExtra("current_score")) {
 						String currentScore = intent.getStringExtra("current_score");
 						mCurrentScore = currentScore;
-
+                     System.out.println("current score"+mCurrentScore);
 						if (currentScore == null && !mDrawer.isOpened()) {
 							if (txtScoreHeader != null && imgBtnScoreDropDown != null && txtCurrentScore != null) {
 								txtScoreHeader.setVisibility(View.GONE);
@@ -504,9 +515,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						addLiveScoreView();
 						displayLiveScore(liveScore);
 						setTopHeaderSelected(false);
-						if (mDrawer != null) {
+						/*if (mDrawer != null) {
 							mDrawer.animateOpen();
-						}
+						}*/
 					}
 					break;
 				case in.ccl.database.Constants.STATE_LIVE_SCORE_UPDATE_TASK_COMPLETED:
@@ -617,13 +628,13 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 			}
 			else {
 				String first_inning_overs = "(" + liveScore.getTarget_overs() + " Overs" + ")";
-				target_score.setText("Target  :  " + liveScore.getTarget_score() +" "+ first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
+				target_score.setText("Target  :  " + liveScore.getTarget_score() + " " + first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
 			}
 			TextView txtErrrorMessage = new TextView(this);
 
 			battingLogo.setScaleType(ImageView.ScaleType.MATRIX);
 			if (liveScore.getTeamLogo() != null) {
-				battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage, false);
+				battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage);
 			}
 			else {
 				battingLogo.setVisibility(View.INVISIBLE);

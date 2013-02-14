@@ -74,13 +74,10 @@
         android:layout_height="1dp"
         android:padding="1dp" />
 
-    
-    
-     <RelativeLayout
+    <RelativeLayout
         android:id="@+id/layout_live_score"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:background="#242a38" >
 
         <ImageView
@@ -91,7 +88,8 @@
             android:layout_marginLeft="7dp"
             android:src="@drawable/livescores" />
 
-        <TextView
+
+            <TextView
             android:id="@+id/txt_livescore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,14 +98,18 @@
             android:layout_toRightOf="@id/livescore_icon"
             android:padding="12dp"
             android:text="@string/livescore"
-            android:textColor="@android:color/background_light"
+ 
+             android:textColor="@color/blue"
             android:textSize="20sp" />
+        
+
     </RelativeLayout>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:padding="1dp" />
+
     <RelativeLayout
         android:id="@+id/layout_videos"
         android:layout_width="fill_parent"
@@ -172,6 +174,41 @@
         android:layout_height="1dp"
         android:padding="1dp" />
 
+    
+    
+    <RelativeLayout
+        android:id="@+id/layout_celebrity_calender"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#242a38" >
+
+        <ImageView
+            android:id="@+id/celebrity_calender_icon"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/celebritycalendar" />
+
+        <TextView
+            android:id="@+id/txt_celebrity_calender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/celebrity_calender_icon"
+            android:padding="12dp"
+            android:text="@string/celebrity_calender"
+            android:textColor="@color/hot_red"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:padding="1dp" />
+    
     <RelativeLayout
         android:id="@+id/layout_ownerslounge"
         android:layout_width="fill_parent"
@@ -236,39 +273,6 @@
         android:layout_height="1dp"
         android:padding="1dp" />
 
-    <RelativeLayout
-        android:id="@+id/layout_downloads"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#242a38" >
 
-        <ImageView
-            android:id="@+id/downloads_icon"
-            android:layout_width="30dip"
-            android:layout_height="30dip"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="7dp"
-            android:src="@drawable/downloads" />
-
-        <TextView
-            android:id="@+id/txt_downloads"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/downloads_icon"
-            android:padding="12dp"
-            android:text="@string/downloads"
-            android:textColor="@android:color/background_light"
-            android:textSize="20sp" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:padding="1dp" />
-    
-
-   
 
 </LinearLayout>

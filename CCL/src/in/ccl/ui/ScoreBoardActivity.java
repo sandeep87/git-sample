@@ -2,13 +2,11 @@ package in.ccl.ui;
 
 import in.ccl.adapters.BowlerListAdapter;
 import in.ccl.adapters.InningsAdapter;
-import in.ccl.database.CCLPullService;
 import in.ccl.helper.Util;
 import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.score.Innings;
 import in.ccl.score.ScoreBoard;
 import in.ccl.util.Constants;
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;

@@ -187,9 +187,9 @@ public class LiveScoreActivity extends TopActivity {
 		super.onClick(v);
 		switch (v.getId()) {
 			case R.id.btn_score_board:
-				//Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url) + currentMatchId));
-		//		mServiceIntent.putExtra("KEY", "fullscore");
-				//startService(mServiceIntent);
+				Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url) + currentMatchId));
+				mServiceIntent.putExtra("KEY", "fullscore");
+				startService(mServiceIntent);
 		}
 	}
 
@@ -277,7 +277,7 @@ public class LiveScoreActivity extends TopActivity {
 
 			battingLogo.setScaleType(ImageView.ScaleType.MATRIX);
 			if (liveScore.getTeamLogo() != null) {
-				battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage, false);
+			//	battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage, false);
 			}
 			else {
 				battingLogo.setVisibility(View.INVISIBLE);

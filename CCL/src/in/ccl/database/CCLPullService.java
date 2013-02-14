@@ -43,7 +43,7 @@ public class CCLPullService extends IntentService {
 		int updatedRows = 0;
 		// Gets a URL to read from the incoming Intent's "data" value
 		String localUrlString = workIntent.getDataString();
-	//	System.out.println("Url " + localUrlString);
+		// System.out.println("Url " + localUrlString);
 		String compareKey = null;
 		if (workIntent.hasExtra("KEY")) {
 			compareKey = workIntent.getStringExtra("KEY");
@@ -78,8 +78,9 @@ public class CCLPullService extends IntentService {
 			if ((localURLConnection instanceof HttpURLConnection)) {
 
 				// Broadcasts an Intent indicating that processing has started.
-				mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_STARTED, null);
-
+				if (mBroadcaster != null) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_STARTED, null);
+				}
 				// Casts the connection to a HTTP connection
 				HttpURLConnection localHttpURLConnection = (HttpURLConnection) localURLConnection;
 
@@ -123,8 +124,9 @@ public class CCLPullService extends IntentService {
 				}
 
 				// Reports that the service is about to connect to the RSS feed
-				mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_CONNECTING, null);
-
+				if (mBroadcaster != null) {
+					mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_CONNECTING, null);
+				}
 				// Gets a response code from the RSS server
 				int responseCode = localHttpURLConnection.getResponseCode();
 
@@ -137,41 +139,43 @@ public class CCLPullService extends IntentService {
 						long lastModifiedDate = localHttpURLConnection.getLastModified();
 
 						// Reports that the service is parsing
-						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PARSING, null);
-
+						if (mBroadcaster != null) {
+							mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PARSING, null);
+						}
 						/*
 						 * Instantiates a pull parser and uses it to parse XML from the RSS feed. The mBroadcaster argument send a broadcaster utility object to the parser.
 						 */
 						JSONPullParser localDataPullParser = new JSONPullParser();
 
 						if (compareKey.equals("slidersv2") || compareKey.equals("update-banner")) {
-							localDataPullParser.parseBannerJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parseBannerJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("albums") || compareKey.equals("update-photos")) {
-							localDataPullParser.parsePhotoAlbumJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parsePhotoAlbumJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("videoalbums") || compareKey.equals("update-videos")) {
-							localDataPullParser.parseVideoAlbumJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parseVideoAlbumJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("photos") || compareKey.equals("photos_pages") || compareKey.equals("banner-photos") || compareKey.equals("photo_updates")) {
-							localDataPullParser.parsePhotoJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parsePhotoJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("videos") || compareKey.equals("videos_pages") || compareKey.equals("videos_updates")) {
-							localDataPullParser.parseVideoJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parseVideoJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("downloads") || compareKey.equals("download_updates")) {
-							localDataPullParser.parseDownloadJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parseDownloadJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("teams")) {
-							localDataPullParser.parseTeamsLogoJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parseTeamsLogoJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("team_members") || compareKey.equals("team_members_updates")) {
-							localDataPullParser.parseTeamMembersJson(localURLConnection.getInputStream(), mBroadcaster);
+							localDataPullParser.parseTeamMembersJson(localURLConnection.getInputStream());
 						}
 
 						// Reports that the service is now writing data to the content provider.
-						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_WRITING, null);
-
+						if (mBroadcaster != null) {
+							mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_WRITING, null);
+						}
 						// Gets image data from the parser
 						imageValues = localDataPullParser.getparsedData();
 						// Stores the number of images
@@ -273,13 +277,14 @@ public class CCLPullService extends IntentService {
 						else {
 							if (compareKey.equals("team_members") || compareKey.equals("team_members_updates")) {
 								updatedRows = 0;
-								try{
-								
+								try {
+
 									updatedRows = getContentResolver().bulkInsert(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, imageValuesArray);
-							        System.out.println("updatedRows "+updatedRows);
-								}catch(Exception e){
-								e.printStackTrace();
-							}
+									System.out.println("updatedRows " + updatedRows);
+								}
+								catch (Exception e) {
+									e.printStackTrace();
+								}
 							}
 						}
 						// Creates another ContentValues for storing date information
@@ -303,7 +308,7 @@ public class CCLPullService extends IntentService {
 				}
 
 				// Reports that the feed retrieval is complete.
-				if (updatedRows > 0) {
+				if (updatedRows > 0 && mBroadcaster != null) {
 					if (compareKey.equals("slidersv2")) {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_BANNER_COMPLETE, null);
 					}

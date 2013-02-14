@@ -22,11 +22,21 @@
     -->
     <!-- Production live score urls, need to change later -->
 
-    <string name="currentscore_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/currentscore</string>
-    <string name="match_schedule_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/match_schedule</string>
-    <!-- <string name="live_score_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livescore?match_id=</string> -->
-    <string name="live_score_url">  http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/livescore?match_id=</string>
-    <string name="live_matches_urls">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livematches</string>
-    <string name="score_board_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/fullscore?match_id=</string>
 
+ 
+        <!-- Production live score urls, need to change later -->
+ <!--     
+
+
+
+  --> <!-- ec2 test server  http://ec2-54-234-80-86.compute-1.amazonaws.com/-->
+    
+       
+    <string name="currentscore_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/currentscore</string>
+    <string name="match_schedule_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/match_schedule</string>
+    <string name="live_score_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/livescore?match_id=</string>
+    <string name="live_matches_urls">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/livematches</string>
+    <string name="score_board_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/fullscore?match_id=</string>
+  
+    
 </resources>

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.Vector;
 
 import org.json.JSONArray;
@@ -43,7 +42,7 @@ public class JSONPullParser {
 		return mPages;
 	}
 
-	public void parseBannerJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseBannerJson (InputStream inputStream) {
 		// Creates a new store for image URL data
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		String result = readStream(inputStream);
@@ -77,11 +76,11 @@ public class JSONPullParser {
 							item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, slide_album_id);
 						}
 					}
-				 	 java.util.Date date= new java.util.Date();
-					item.put(DataProviderContract.BANNER_LAST_MODIFIED_COLUMN, new Timestamp(date.getTime())+"");
+					java.util.Date date = new java.util.Date();
+					item.put(DataProviderContract.BANNER_LAST_MODIFIED_COLUMN, new Timestamp(date.getTime()) + "");
 					mImages.add(item);
 				}
-				}
+			}
 			catch (JSONException e) {
 				Log.i(TAG, "Banner items parsing exception");
 			}
@@ -121,7 +120,7 @@ public class JSONPullParser {
 		return null;
 	}
 
-	public void parsePhotoAlbumJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parsePhotoAlbumJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
@@ -160,7 +159,7 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parseVideoAlbumJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseVideoAlbumJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
@@ -200,7 +199,7 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parsePhotoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parsePhotoJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -249,7 +248,7 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parseVideoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseVideoJson (InputStream inputStream) {
 		int albumId = 0;
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -298,9 +297,9 @@ public class JSONPullParser {
 				Log.i(TAG, e.toString());
 			}
 		}
-	}	
+	}
 
-	public void parseDownloadJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseDownloadJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		// mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -359,7 +358,7 @@ public class JSONPullParser {
 
 	}
 
-	public void parseTeamsLogoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseTeamsLogoJson (InputStream inputStream) {
 
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -403,7 +402,8 @@ public class JSONPullParser {
 			}
 		}
 	}
-	public void parseTeamMembersJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+
+	public void parseTeamMembersJson (InputStream inputStream) {
 
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -449,11 +449,12 @@ public class JSONPullParser {
 								teamPersonalRole = String.format("%s (%s)", roleArray[0].trim(), roleArray[1].trim());
 							}
 							item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, teamPersonalRole);
-							//System.out.println("kranthi person role "+teamPersonalRole);
+							// System.out.println("kranthi person role "+teamPersonalRole);
 
 						}
-					}else{
-						//System.out.println("json person role null");
+					}
+					else {
+						// System.out.println("json person role null");
 						item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, "");
 
 					}

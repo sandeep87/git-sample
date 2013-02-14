@@ -58,7 +58,7 @@ public class MenuItems implements OnClickListener {
 
 	public static ArrayList <Items> bhojpuriTeamMembersList;
 	// private Items membersItem;
-
+	private static TextView celebrity_calender ;
 	private ProgressDialog progressDialog;
 
 	private enum RequestType {
@@ -101,31 +101,30 @@ public class MenuItems implements OnClickListener {
 		RelativeLayout layoutTeams = (RelativeLayout) layout.findViewById(R.id.layout_teams);
 		RelativeLayout layoutOwner = (RelativeLayout) layout.findViewById(R.id.layout_ownerslounge);
 		RelativeLayout layoutHome = (RelativeLayout) layout.findViewById(R.id.layout_home);
-		
+
 		RelativeLayout layoutVideo = (RelativeLayout) layout.findViewById(R.id.layout_videos);
 	  RelativeLayout layoutLiveScore = (RelativeLayout) layout.findViewById(R.id.layout_live_score);
-		RelativeLayout layoutDownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
+		RelativeLayout layoutCelebrityCalender = (RelativeLayout) layout.findViewById(R.id.layout_celebrity_calender);
 
 		TextView photoTxt = (TextView) layout.findViewById(R.id.txt_photo);
-		
+
 		TextView homeTxt = (TextView) layout.findViewById(R.id.txt_home);
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
-		TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
+		 celebrity_calender = (TextView) layout.findViewById(R.id.txt_celebrity_calender);
 		TextView scheduleTxt = (TextView) layout.findViewById(R.id.txt_schedule);
 		TextView liveScoreTxt = (TextView) layout.findViewById(R.id.txt_livescore);
 		TextView teamsTxt = (TextView) layout.findViewById(R.id.txt_tems);
 		TextView videosTxt = (TextView) layout.findViewById(R.id.txt_video);
 		// TextView notificationsTxt = (TextView) layout.findViewById(R.id.txt_notifications);
 		 if(TopActivity.isLiveScore){
-			 System.out.println("phani livescore icon");
        layoutLiveScore.setVisibility(View.VISIBLE);
    }
-		 //layoutLiveScore.setVisibility(View.VISIBLE);
+		// layoutLiveScore.setVisibility(View.VISIBLE);
 		Util.setTextFont(activity, photoTxt);
-	
+
 		Util.setTextFont(activity, homeTxt);
 		Util.setTextFont(activity, ownersTxt);
-		Util.setTextFont(activity, downloadsTxt);
+		Util.setTextFont(activity, celebrity_calender);
 		Util.setTextFont(activity, scheduleTxt);
 		 Util.setTextFont(activity, liveScoreTxt);
 		Util.setTextFont(activity, videosTxt);
@@ -138,15 +137,23 @@ public class MenuItems implements OnClickListener {
 		layoutTeams.setOnClickListener(this);
 		layoutOwner.setOnClickListener(this);
 		layoutVideo.setOnClickListener(this);
-		layoutDownloads.setOnClickListener(this);
+		layoutCelebrityCalender.setOnClickListener(this);
 		layoutHome.setOnClickListener(this);
+
 		layoutLiveScore.setOnClickListener(this);
-	
+	           
+
+		// layoutScore.setOnClickListener(this);
+
 
 		/*
 		 * chennaiTeamMembersList = Util.getInstance().getChnnaiTeamMembersList(); teluguTeamMembersList = Util.getInstance().getTeluguWarriorsTeamMembersList(); karnatakaTeamMembersList = Util.getInstance().getKarnatakaTeamMembersList(); keralaTeamMembersList =
 		 * Util.getInstance().getKeralaTeamMembersList(); bengalTeamMembersList = Util.getInstance().getBangalTeamMembersList(); marathiTeamMembersList = Util.getInstance().getMarathiTeamMembersList(); bhojpuriTeamMembersList = Util.getInstance().getBhojpuriTeamMembersList();
 		 */}
+	
+	
+
+	
 
 	@Override
 	public void onClick (View v) {
@@ -154,6 +161,7 @@ public class MenuItems implements OnClickListener {
 		int key = v.getId();
 		switch (key) {
 			case R.id.layout_photos:
+				
 				mRequestType = RequestType.PHOTOS_REQUEST;
 				Cursor cursor = activity.getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
 				ArrayList <Items> list = PhotoAlbumCurosr.getItems(cursor);
@@ -169,7 +177,7 @@ public class MenuItems implements OnClickListener {
 				else {
 					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
 					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, list);
-					 photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					// photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 					activity.startActivity(photoGalleryIntent);
 
@@ -187,7 +195,14 @@ public class MenuItems implements OnClickListener {
 
 					@Override
 					public void run () {
-						progressDialog.dismiss();
+						if (progressDialog != null) {
+							try {
+								progressDialog.dismiss();
+							}
+							catch (IllegalStateException e) {
+								// TODO: handle exception
+							}
+						}
 						Intent scheduleIntent = new Intent(activity, ScheduleActivity.class);
 						scheduleIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 						activity.startActivity(scheduleIntent);
@@ -256,7 +271,14 @@ public class MenuItems implements OnClickListener {
 
 					@Override
 					public void run () {
-						progressDialog.dismiss();
+						if (progressDialog != null) {
+							try {
+								progressDialog.dismiss();
+							}
+							catch (IllegalStateException e) {
+								// TODO: handle exception
+							}
+						}
 
 						Intent ownerIntent = new Intent(activity, OwnersLoungueActivity.class);
 						ownerIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -319,7 +341,8 @@ public class MenuItems implements OnClickListener {
 				}
 
 				break;
-			case R.id.layout_downloads:
+			case R.id.layout_celebrity_calender:
+				
 				cursor = activity.getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
 				System.out.println("cursor lenght" + cursor.getCount());
 				if (cursor != null && cursor.getCount() > 0) {
