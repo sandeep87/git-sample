@@ -61,7 +61,16 @@ public class DataProviderContract {
 
 
 	public static final String TEAM_PERSON_ROLE_COLUMN = "team_person_role";
+	
+	//calender table  fields
 
+	public static final String CALENDAR_IMAGE_ID = "calendarimage_id";
+
+	public static final String CALENDAR_IMAGE_URL = "calendarImage_url";
+
+	public static final String CALENDAR_IMAGE_THUMB_URL = "calendarImage_thumb_url";
+
+	public static final String CALENDAR_IMAGE_NO_OF_PAGES = "calendarImage_no_of_pages";
 	
 	private DataProviderContract () {
 	}
@@ -118,6 +127,11 @@ public class DataProviderContract {
 	 */
 
 	public static final String DOWNLOAD_IMAGE_TABLE_NAME = "DownloadImageData";
+	
+	/**
+	 * Calender image data table name
+	 */
+	public static final String CALENDAR_IMAGE_TABLE_NAME = "CalendarImageData";
 
 	/**
 	 * Team logo table content URI
@@ -137,6 +151,14 @@ public class DataProviderContract {
 			.withAppendedPath(CONTENT_URI, DOWNLOAD_IMAGE_TABLE_NAME);
 
 	
+	
+	/**
+	 * Content URI for Download image table
+	 */
+
+	public static final Uri CALENDAR_IMAGE_TABLE_CONTENTURI = Uri
+			.withAppendedPath(CONTENT_URI, CALENDAR_IMAGE_TABLE_NAME);
+
 	
 	/**
 	 * Content URI for modification date table

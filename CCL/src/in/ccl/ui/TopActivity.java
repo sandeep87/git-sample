@@ -2,6 +2,7 @@ package in.ccl.ui;
 
 import in.ccl.adapters.LiveScoreSlidingDrawer;
 import in.ccl.database.BannerCursor;
+import in.ccl.database.CalendarItemsCursor;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.DownloadItemsCursor;
 import in.ccl.helper.AnimationLayout;
@@ -433,7 +434,8 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 				case in.ccl.database.Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE:
 
 					Cursor cursor = getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
-					ArrayList <Items> downloadImageItems = DownloadItemsCursor.getItems(cursor);
+					DownloadItemsCursor mDownloadItemsCursor = new DownloadItemsCursor();
+					ArrayList <Items> downloadImageItems = mDownloadItemsCursor.getItems(cursor);
 					if (cursor != null) {
 						cursor.close();
 					}
@@ -444,6 +446,27 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						startActivity(downloadImageIntent);
 					}
 					break;
+					
+					
+				case in.ccl.database.Constants.STATE_ACTION_CALENDAR_IMAGE_COMPLETE:
+                                          System.out.println("nagesh broad cast calender complete called in top");
+                                          Cursor	 cursor1 = getContentResolver().query(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null, null, null, null);
+					 CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
+					 ArrayList <Items> calenderImageItems = mCalendarItemsCursor.getItems(cursor1);
+					 System.out.println("calenderImageItems "+calenderImageItems.size());
+					if (cursor1 != null) {
+						cursor1.close();
+					}
+					Intent calenderImageIntent = new Intent(TopActivity.this, CalendarActivity.class);
+					if (calenderImageItems.size() > 0 && calenderImageItems != null) {
+					    
+					    calenderImageIntent.putParcelableArrayListExtra(Constants.EXTRA_CALENDAR_KEY, calenderImageItems);
+					    calenderImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					startActivity(calenderImageIntent);
+					}
+					break;
+					
+					
 				case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
 					ArrayList <Teams> teamLogoItems = null;
 					ArrayList <TeamMember> teamMemberItems = null;

@@ -24,7 +24,6 @@ public class BroadcastNotifier {
 			mBroadcaster = LocalBroadcastManager.getInstance(context);
 		}
 		catch (RuntimeException e) {
-			System.out.println("CCL Error " + "Unable to instan  java.lang.RuntimeException: Unable to instantiate service");
 			Logger.info(TAG, "Unable to instan  java.lang.RuntimeException: Unable to instantiate service");
 		}
 	}
@@ -37,7 +36,7 @@ public class BroadcastNotifier {
 	 * @param list
 	 */
 	public void broadcastIntentWithState (int status, ArrayList <Items> list) {
-
+                System.out.println("nagehs broadcast notifier");
 		Intent localIntent = new Intent();
 
 		// The Intent contains the custom broadcast action for this app

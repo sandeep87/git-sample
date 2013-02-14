@@ -43,15 +43,15 @@ public class CCLPullService extends IntentService {
 		int updatedRows = 0;
 		// Gets a URL to read from the incoming Intent's "data" value
 		String localUrlString = workIntent.getDataString();
-		// System.out.println("Url " + localUrlString);
 		String compareKey = null;
 		if (workIntent.hasExtra("KEY")) {
 			compareKey = workIntent.getStringExtra("KEY");
 		}
+		
 		else {
 			compareKey = Uri.parse(localUrlString).getLastPathSegment();
 		}
-
+            
 		// Creates a projection to use in querying the modification date table in the provider.
 		final String[] dateProjection = new String[] { DataProviderContract.ROW_ID, DataProviderContract.DATA_DATE_COLUMN };
 
@@ -141,6 +141,8 @@ public class CCLPullService extends IntentService {
 						// Reports that the service is parsing
 						if (mBroadcaster != null) {
 							mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PARSING, null);
+							System.out
+								.println("nagehs broad cast parsing");
 						}
 						/*
 						 * Instantiates a pull parser and uses it to parse XML from the RSS feed. The mBroadcaster argument send a broadcaster utility object to the parser.
@@ -162,7 +164,7 @@ public class CCLPullService extends IntentService {
 						else if (compareKey.equals("videos") || compareKey.equals("videos_pages") || compareKey.equals("videos_updates")) {
 							localDataPullParser.parseVideoJson(localURLConnection.getInputStream());
 						}
-						else if (compareKey.equals("downloads") || compareKey.equals("download_updates")) {
+						else if (compareKey.equals("17") || compareKey.equals("download_updates")) {
 							localDataPullParser.parseDownloadJson(localURLConnection.getInputStream());
 						}
 						else if (compareKey.equals("teams")) {
@@ -170,6 +172,9 @@ public class CCLPullService extends IntentService {
 						}
 						else if (compareKey.equals("team_members") || compareKey.equals("team_members_updates")) {
 							localDataPullParser.parseTeamMembersJson(localURLConnection.getInputStream());
+						}else if (compareKey.equals("43") || compareKey.equals("calendar_updates")) {
+						  
+							localDataPullParser.parseCalendarJson(localURLConnection.getInputStream());
 						}
 
 						// Reports that the service is now writing data to the content provider.
@@ -177,14 +182,19 @@ public class CCLPullService extends IntentService {
 							mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_WRITING, null);
 						}
 						// Gets image data from the parser
+						
 						imageValues = localDataPullParser.getparsedData();
-						// Stores the number of images
-						int imageVectorSize = imageValues.size();
+						ContentValues[] imageValuesArray = null;
+						if(imageValues != null ){
+						 // Stores the number of images
+							int imageVectorSize = imageValues.size();
+							// Creates one ContentValues for each image
+							 imageValuesArray = new ContentValues[imageVectorSize];
 
-						// Creates one ContentValues for each image
-						ContentValues[] imageValuesArray = new ContentValues[imageVectorSize];
-
-						imageValuesArray = imageValues.toArray(imageValuesArray);
+							imageValuesArray = imageValues.toArray(imageValuesArray);
+						}
+						
+						
 
 						/*
 						 * Stores the image data in the content provider. The content provider throws an exception if the URI is invalid.
@@ -242,8 +252,24 @@ public class CCLPullService extends IntentService {
 							}
 
 						}
-						else if (compareKey.equals("downloads") || compareKey.equals("download_updates")) {
-							getContentResolver().bulkInsert(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, imageValuesArray);
+						else if (compareKey.equals("17") || compareKey.equals("download_updates")) {
+						    updatedRows = 0;
+						    updatedRows = getContentResolver().bulkInsert(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, imageValuesArray);
+							Vector <ContentValues> pageValues = localDataPullParser.getPages();
+                                                         if (pageValues != null) {
+								// Stores the number of images
+								int pageVectorSize = pageValues.size();
+								// Creates one ContentValues for each image
+								ContentValues[] pageValuesArray = new ContentValues[pageVectorSize];
+								pageValuesArray = pageValues.toArray(pageValuesArray);
+								 int insertedCount = getContentResolver().bulkInsert(DataProviderContract.PAGES_TABLE_CONTENTURI, pageValuesArray);
+								 
+							}
+
+						}else if (compareKey.equals("43") || compareKey.equals("calendar_updates")) {
+						    
+						    updatedRows = 0;
+						    updatedRows = getContentResolver().bulkInsert(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, imageValuesArray);
 							Vector <ContentValues> pageValues = localDataPullParser.getPages();
 
 							if (pageValues != null) {
@@ -256,6 +282,7 @@ public class CCLPullService extends IntentService {
 							}
 
 						}
+						
 						else if (compareKey.equals("teams")) {
 							getContentResolver().bulkInsert(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, imageValuesArray);
 							Cursor teamCursor = getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
@@ -280,7 +307,6 @@ public class CCLPullService extends IntentService {
 								try {
 
 									updatedRows = getContentResolver().bulkInsert(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, imageValuesArray);
-									System.out.println("updatedRows " + updatedRows);
 								}
 								catch (Exception e) {
 									e.printStackTrace();
@@ -352,7 +378,7 @@ public class CCLPullService extends IntentService {
 					else if (compareKey.equals("photo_updates")) {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_PHOTO_UPDATES_COMPLETE, null);
 					}
-					else if (compareKey.equals("downloads")) {
+					else if (compareKey.equals("17")) {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE, null);
 					}
 
@@ -360,13 +386,20 @@ public class CCLPullService extends IntentService {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_TEAM_LOGO_COMPLETE, null);
 					}
 					else if (compareKey.equals("team_members")) {
-						System.out.println("kranthi completeteam_members");
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE, null);
 
 					}
 					else if (compareKey.equals("download_updates")) {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_UPDATE_DOWNLOAD_IMAGE_COMPLETE, null);
+					}else if (compareKey.equals("43")) {
+
+						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_CALENDAR_IMAGE_COMPLETE, null);
 					}
+					else if (compareKey.equals("calendar_updates")) {
+						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_UPDATE_CALENDAR_IMAGE_COMPLETE, null);
+					}
+				}else{
+				    System.out.println("error");
 				}
 			}
 

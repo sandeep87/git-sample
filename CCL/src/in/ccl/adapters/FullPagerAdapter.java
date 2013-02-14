@@ -130,7 +130,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 		TextView errorTxt = (TextView) imageLayout.findViewById(R.id.error_title);
 		// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
-		imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.blackbackground));
+    imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.blackbackground));
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt);
 
