@@ -73,13 +73,12 @@ public class DownloadActivity extends TopActivity {
 			gridviewDownload.setAdapter(adapter);
 		}
 
-//		System.out.println("no of  list is" + downloadItemsArrayList.size());
 
 		if (downloadItemsArrayList != null && downloadItemsArrayList.size() > 0) {
 			gridviewDownload.setOnScrollListener(new EndlessScrollListener(DownloadActivity.this, adapter, 0, EndlessScrollListener.RequestType.DOWNLOAD_IMAGE_REQUEST, downloadItemsArrayList.get(0).getNumberOfPages()));
 
 		}
-
+		registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 		gridviewDownload.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
@@ -90,22 +89,20 @@ public class DownloadActivity extends TopActivity {
 				intent.putExtra(Constants.EXTRA_PHOTO_POSITION_ID, position);
 				startActivity(intent);
 			}
-		});
-		BroadcastReceiver receiver = new BroadcastReceiver() {
-      @Override
-      public void onReceive(Context context, Intent intent) {
-          String action = intent.getAction();
-          if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
-    				Toast.makeText(DownloadActivity.this, getResources().getString(R.string.downloading_succuss),Toast.LENGTH_SHORT).show();
-
-          }
-      }
-  };
-
-    registerReceiver(receiver, new IntentFilter(
-        DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+		});    
 
 	}
+	
+	BroadcastReceiver receiver = new BroadcastReceiver() {
+	      @Override
+	      public void onReceive(Context context, Intent intent) {
+	          String action = intent.getAction();
+	          if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+	    				Toast.makeText(DownloadActivity.this, getResources().getString(R.string.downloading_succuss),Toast.LENGTH_SHORT).show();
+
+	          }
+	      }
+	  };
 
 	@Override
 	protected void onResume () {
@@ -183,11 +180,9 @@ public class DownloadActivity extends TopActivity {
 				case in.ccl.database.Constants.STATE_ACTION_UPDATE_DOWNLOAD_IMAGE_COMPLETE:
 
 					Cursor cursor = getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
-					ArrayList <Items> downloadlList = DownloadItemsCursor.getItems(cursor);
-					if (cursor != null) {
-						cursor.close();
-					}
-					if (downloadlList.size() > 0 && downloadlList != null) {
+					DownloadItemsCursor downloadItemCursor = new DownloadItemsCursor();
+					ArrayList <Items> downloadlList = downloadItemCursor.getItems(cursor);
+					if (downloadlList != null && downloadlList.size() > 0) {
 						adapter = new GridAdapter(DownloadActivity.this, downloadlList, "downloads");
 						gridviewDownload.setAdapter(adapter);
 					}

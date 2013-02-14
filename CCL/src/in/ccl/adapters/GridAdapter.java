@@ -169,6 +169,11 @@ public class GridAdapter extends BaseAdapter {
 			});
 			mViewHolder.title.setVisibility(View.VISIBLE);
 		}
+		else if(isFrom.equals("calendar")){
+			
+			mViewHolder.title.setVisibility(View.INVISIBLE);
+
+		}
 		else {
 			mViewHolder.title.setVisibility(View.INVISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);
