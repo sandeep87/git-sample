@@ -2,6 +2,7 @@ package in.ccl.ui;
 
 import in.ccl.database.BannerCursor;
 import in.ccl.database.CCLPullService;
+import in.ccl.database.CalendarItemsCursor;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.DownloadItemsCursor;
 import in.ccl.database.PhotoAlbumCurosr;
@@ -25,6 +26,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.BadTokenException;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -59,6 +62,7 @@ public class MenuItems implements OnClickListener {
 	public static ArrayList <Items> bhojpuriTeamMembersList;
 
 	// private Items membersItem;
+	private static TextView celebrity_calender;
 
 	private ProgressDialog progressDialog;
 
@@ -104,27 +108,32 @@ public class MenuItems implements OnClickListener {
 		RelativeLayout layoutHome = (RelativeLayout) layout.findViewById(R.id.layout_home);
 
 		RelativeLayout layoutVideo = (RelativeLayout) layout.findViewById(R.id.layout_videos);
-		// RelativeLayout layoutScore = (RelativeLayout) layout.findViewById(R.id.layout_scores);
-		RelativeLayout layoutDownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
+		RelativeLayout layoutLiveScore = (RelativeLayout) layout.findViewById(R.id.layout_live_score);
+		RelativeLayout layoutdownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
+
+		RelativeLayout layoutcalender = (RelativeLayout) layout.findViewById(R.id.layout_calender);
 
 		TextView photoTxt = (TextView) layout.findViewById(R.id.txt_photo);
 
 		TextView homeTxt = (TextView) layout.findViewById(R.id.txt_home);
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
 		TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
+		blinkMenuText(downloadsTxt);
+		TextView calenderTxt = (TextView) layout.findViewById(R.id.txt_celebrity_calender);
+		blinkMenuText(calenderTxt);
 		TextView scheduleTxt = (TextView) layout.findViewById(R.id.txt_schedule);
-		// TextView scoreTxt = (TextView) layout.findViewById(R.id.txt_score);
+		TextView liveScoreTxt = (TextView) layout.findViewById(R.id.txt_livescore);
 		TextView teamsTxt = (TextView) layout.findViewById(R.id.txt_tems);
 		TextView videosTxt = (TextView) layout.findViewById(R.id.txt_video);
 		// TextView notificationsTxt = (TextView) layout.findViewById(R.id.txt_notifications);
-
 		Util.setTextFont(activity, photoTxt);
 
 		Util.setTextFont(activity, homeTxt);
 		Util.setTextFont(activity, ownersTxt);
 		Util.setTextFont(activity, downloadsTxt);
+		Util.setTextFont(activity, calenderTxt);
 		Util.setTextFont(activity, scheduleTxt);
-		// Util.setTextFont(activity, scoreTxt);
+		Util.setTextFont(activity, liveScoreTxt);
 		Util.setTextFont(activity, videosTxt);
 		// Util.setTextFont(activity, notificationsTxt);
 		Util.setTextFont(activity, teamsTxt);
@@ -135,8 +144,12 @@ public class MenuItems implements OnClickListener {
 		layoutTeams.setOnClickListener(this);
 		layoutOwner.setOnClickListener(this);
 		layoutVideo.setOnClickListener(this);
-		layoutDownloads.setOnClickListener(this);
+		layoutcalender.setOnClickListener(this);
+		layoutdownloads.setOnClickListener(this);
 		layoutHome.setOnClickListener(this);
+
+		layoutLiveScore.setOnClickListener(this);
+
 		// layoutScore.setOnClickListener(this);
 
 		/*
@@ -144,12 +157,24 @@ public class MenuItems implements OnClickListener {
 		 * Util.getInstance().getKeralaTeamMembersList(); bengalTeamMembersList = Util.getInstance().getBangalTeamMembersList(); marathiTeamMembersList = Util.getInstance().getMarathiTeamMembersList(); bhojpuriTeamMembersList = Util.getInstance().getBhojpuriTeamMembersList();
 		 */}
 
+	private void blinkMenuText (TextView txt) {
+		Animation anim = new AlphaAnimation(0.0f, 1.0f);
+		anim.setDuration(80); // You can manage the time of the blink with this parameter
+		anim.setStartOffset(20);
+		anim.setRepeatMode(Animation.REVERSE);
+		anim.setRepeatCount(Animation.INFINITE);
+		txt.startAnimation(anim);
+		Util.setTextFont(activity, txt);
+
+	}
+
 	@Override
 	public void onClick (View v) {
 
 		int key = v.getId();
 		switch (key) {
 			case R.id.layout_photos:
+
 				mRequestType = RequestType.PHOTOS_REQUEST;
 				Cursor cursor = activity.getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
 				ArrayList <Items> list = PhotoAlbumCurosr.getItems(cursor);
@@ -330,10 +355,11 @@ public class MenuItems implements OnClickListener {
 
 				break;
 			case R.id.layout_downloads:
+
 				cursor = activity.getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
-				System.out.println("cursor lenght" + cursor.getCount());
 				if (cursor != null && cursor.getCount() > 0) {
-					list = DownloadItemsCursor.getItems(cursor);
+					DownloadItemsCursor downloadItemsCursor = new DownloadItemsCursor();
+					list = downloadItemsCursor.getItems(cursor);
 					Intent downloadImageIntent = new Intent(activity, DownloadActivity.class);
 					downloadImageIntent.putParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY, list);
 					downloadImageIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -349,7 +375,35 @@ public class MenuItems implements OnClickListener {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 					}
 				}
+				break;
+			case R.id.layout_live_score:
+				Intent liveScoreIntent = new Intent(activity, LiveScoreActivity.class);
+				activity.startActivity(liveScoreIntent);
+				break;
 
+			case R.id.layout_calender:
+				cursor = activity.getContentResolver().query(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null, null, null, null);
+
+				if (cursor != null && cursor.getCount() > 0) {
+					CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
+					list = mCalendarItemsCursor.getItems(cursor);
+					Intent calendarImageIntent = new Intent(activity, CalendarActivity.class);
+					calendarImageIntent.putParcelableArrayListExtra(Constants.EXTRA_CALENDAR_KEY, list);
+					calendarImageIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+					activity.startActivity(calendarImageIntent);
+				}
+				else {
+					if (Util.getInstance().isOnline(activity)) {
+
+						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.calender_url)));
+						activity.startService(mServiceIntent);
+					}
+					else {
+						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
+				}
+				break;
 			default:
 				break;
 		}

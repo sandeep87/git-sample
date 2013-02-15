@@ -2,13 +2,11 @@ package in.ccl.ui;
 
 import in.ccl.adapters.BowlerListAdapter;
 import in.ccl.adapters.InningsAdapter;
-import in.ccl.database.CCLPullService;
 import in.ccl.helper.Util;
 import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.score.Innings;
 import in.ccl.score.ScoreBoard;
 import in.ccl.util.Constants;
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -287,7 +285,7 @@ public class ScoreBoardActivity extends TopActivity {
 	@Override
 	protected void onPause () {
 		super.onPause();
-		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)+liveMatchId));
+		Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_score_url)+liveMatchId));
 		AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager.cancel(pendingIntent);

@@ -1,7 +1,6 @@
 package in.ccl.adapters;
 
 import in.ccl.model.DayMatches;
-
 import in.ccl.ui.R;
 
 import java.util.ArrayList;

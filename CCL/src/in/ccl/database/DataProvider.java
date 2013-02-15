@@ -48,6 +48,9 @@ public class DataProvider extends ContentProvider {
 	public static final int TEAM_LOGO_URL_QUERY = 15;
 
 	public static final int TEAM_MEMBERS_URL_QUERY = 16;
+	
+	public static final int CALENDAR_IMAGE_URL_QUERY = 17;
+
 
 	// Constants for building SQLite tables during initialization
 	private static final String TEXT_TYPE = "TEXT";
@@ -78,6 +81,10 @@ public class DataProvider extends ContentProvider {
 
 	private static final String CREATE_TEAM_MEMBERS_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.TEAM_MEMBERS_TABLE_NAME + " " + "(" + " " + DataProviderContract.TEAM_PERSON_ID_COLUMN + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.TEAM_PERSON_NAME_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_MEMBER_IMAGE_URL_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_NAME_MEMBER_COLUMN + " " + TEXT_TYPE + " ," + DataProviderContract.TEAM_PERSON_ROLE_COLUMN + " " + TEXT_TYPE + ");";
 
+	private static final String CREATE_CALENDAR_IMAGE_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.CALENDAR_IMAGE_TABLE_NAME + " " + "(" + " " + DataProviderContract.CALENDAR_IMAGE_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.CALENDAR_IMAGE_URL + " " + TEXT_TYPE + " ," + DataProviderContract.CALENDAR_IMAGE_THUMB_URL + " " + TEXT_TYPE + " ," + DataProviderContract.CALENDAR_IMAGE_NO_OF_PAGES + " " + INTEGER_TYPE + ");";
+
+	
+	
 	// Identifies log statements issued by this component
 	public static final String LOG_TAG = "DataProvider";
 
@@ -119,8 +126,9 @@ public class DataProvider extends ContentProvider {
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.DATE_TABLE_NAME, URL_DATE_QUERY);
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.PAGES_TABLE_NAME, PAGES_QUERY);
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.CATEGORY_TABLE_NAME, CATEGORY_QUERY);
-
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.NEWS_TABLE_NAME, NEWS_URL_QUERY);
+		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, CALENDAR_IMAGE_URL_QUERY);
+
 
 		// Specifies a custom MIME type for the picture URL table
 		sMimeTypes.put(BANNER_IMAGE_URL_QUERY, "vnd.android.cursor.dir/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.BANNERURL_TABLE_NAME);
@@ -137,6 +145,8 @@ public class DataProvider extends ContentProvider {
 		// Specifies the custom MIME type for a single modification date row
 		sMimeTypes.put(URL_DATE_QUERY, "vnd.android.cursor.item/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.DATE_TABLE_NAME);
 		sMimeTypes.put(URL_DATE_QUERY, "vnd.android.cursor.item/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.NEWS_TABLE_NAME);
+		sMimeTypes.put(URL_DATE_QUERY, "vnd.android.cursor.item/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.CALENDAR_IMAGE_TABLE_NAME);
+
 	}
 
 	// Closes the SQLite database helper class, to avoid memory leaks
@@ -181,6 +191,7 @@ public class DataProvider extends ContentProvider {
 			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME);
 			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.TEAMS_LOGO_TABLE_NAME);
 			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.TEAM_MEMBERS_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + DataProviderContract.CALENDAR_IMAGE_TABLE_NAME);
 
 		}
 
@@ -202,6 +213,8 @@ public class DataProvider extends ContentProvider {
 			db.execSQL(CREATE_DOWNLOAD_IMAGE_TABLE_SQL);
 			db.execSQL(CREATE_TEAM_LOGO_TABLE_SQL);
 			db.execSQL(CREATE_TEAM_MEMBERS_TABLE_SQL);
+			db.execSQL(CREATE_CALENDAR_IMAGE_TABLE_SQL);
+
 			// once the tables are created starting background service for checking home screen info;
 			// It is run every 24 hours.
 			if (mContext != null) {
@@ -367,6 +380,14 @@ public class DataProvider extends ContentProvider {
 				// Sets the ContentResolver to watch this content URI for data changes
 				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
 				return returnCursor;
+				
+			case CALENDAR_IMAGE_URL_QUERY:
+				// Does the query against a read-only version of the database
+				returnCursor = db.query(DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, projection, null, null, null, null, DataProviderContract.CALENDAR_IMAGE_ID + " DESC");
+				// Sets the ContentResolver to watch this content URI for data changes
+				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+				return returnCursor;	
+				
 			case INVALID_URI:
 
 				throw new IllegalArgumentException("Query -- Invalid URI:" + uri);
@@ -429,6 +450,8 @@ public class DataProvider extends ContentProvider {
 			case DOWNLOAD_IMAGE_URL_QUERY:
 			case TEAM_LOGO_URL_QUERY:
 			case TEAM_MEMBERS_URL_QUERY:
+			case CALENDAR_IMAGE_URL_QUERY:
+
 				throw new IllegalArgumentException("Insert: Invalid URI" + uri);
 		}
 
@@ -876,7 +899,54 @@ public class DataProvider extends ContentProvider {
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
 				return numImages;
+				
+			case CALENDAR_IMAGE_URL_QUERY:
+				System.out.println("nagesh CALENDAR_IMAGE_URL_QUERY.....called");
+				insertedRowsCount = 0;
+				// Gets a writeable database instance if one is not already cached
+				localSQLiteDatabase = mHelper.getWritableDatabase();
 
+				/*
+				 * Begins a transaction in "exclusive" mode. No other mutations can occur on the db until this transaction finishes.
+				 */
+				localSQLiteDatabase.beginTransaction();
+
+				// Deletes all the existing rows in the table
+				// localSQLiteDatabase.delete(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, null, null);
+
+				// Gets the size of the bulk insert
+				numImages = insertValuesArray.length;
+
+				// Inserts each ContentValues entry in the array as a row in the database
+
+				for (int i = 0; i < numImages; i++) {
+					try {
+						insertedRowsCount = (int) localSQLiteDatabase.insertOrThrow(DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, DataProviderContract.CALENDAR_IMAGE_ID, insertValuesArray[i]);
+					}
+					catch (SQLiteConstraintException e) {
+						ContentValues values = insertValuesArray[i];
+						if (values.containsKey(DataProviderContract.CALENDAR_IMAGE_ID)) {
+							int id = values.getAsInteger(DataProviderContract.CALENDAR_IMAGE_ID);
+							update(uri, values, DataProviderContract.CALENDAR_IMAGE_ID + " = " + id, null);
+						}
+					}
+				}
+
+				// Reports that the transaction was successful and should not be backed out.
+				localSQLiteDatabase.setTransactionSuccessful();
+
+				// Ends the transaction and closes the current db instances
+				localSQLiteDatabase.endTransaction();
+				localSQLiteDatabase.close();
+
+				/*
+				 * Notifies the current ContentResolver that the data associated with "uri" has changed.
+				 */
+
+				getContext().getContentResolver().notifyChange(uri, null);
+
+				// The semantics of bulkInsert is to return the number of rows inserted.
+				return insertedRowsCount;
 			case INVALID_URI:
 
 				// An invalid URI was passed. Throw an exception
@@ -1018,6 +1088,18 @@ public class DataProvider extends ContentProvider {
 					getContext().getContentResolver().notifyChange(uri, null);
 					return rows;
 				}
+				
+			case CALENDAR_IMAGE_URL_QUERY:
+				// Updates the table
+				rows = localSQLiteDatabase.update(DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, values, selection, selectionArgs);
+
+				// If the update succeeded, notify a change and return the number of updated rows.
+				if (0 != rows) {
+					getContext().getContentResolver().notifyChange(uri, null);
+					return rows;
+				}	
+					
+				
 		}
 
 		return -1;

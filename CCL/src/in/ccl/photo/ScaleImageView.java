@@ -6,6 +6,7 @@ import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -19,9 +20,15 @@ import android.util.AttributeSet;
 import android.util.FloatMath;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ScaleImageView extends ImageView implements OnTouchListener {
 
@@ -48,12 +55,6 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 
 	// The Thread that will be used to download the image for this ImageView
 	private PhotoTask mDownloadThread;
-
-	/**
-	 * Creates an ImageDownloadView with no settings
-	 * 
-	 * @param context A context for the View
-	 */
 
 	// for zoom in and Zoom out
 
@@ -95,6 +96,13 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 
 	private int mPrevMoveY;
 
+	private Context mContext;
+
+	/**
+	 * Creates an ImageDownloadView with no settings
+	 * 
+	 * @param context A context for the View
+	 */
 	public ScaleImageView (Context context) {
 		super(context);
 		// getAttributes(attributeSet);
@@ -111,6 +119,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	public ScaleImageView (Context context, AttributeSet attributeSet) {
 		super(context, attributeSet);
 		getAttributes(attributeSet);
+		mContext = context;
 		initialize();
 		// Gets attributes associated with the attribute set
 		setOnTouchListener(this);
@@ -125,6 +134,8 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	 */
 	public ScaleImageView (Context context, AttributeSet attributeSet, int defaultStyle) {
 		super(context, attributeSet, defaultStyle);
+		mContext = context;
+
 		getAttributes(attributeSet);
 		initialize();
 		setOnTouchListener(this);
@@ -249,6 +260,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	public void setImageBitmap (Bitmap paramBitmap) {
 		System.out.println("Setting view  from scale Image view" + paramBitmap);
 		super.setImageBitmap(paramBitmap);
+		this.initialize(); // phani
 	}
 
 	@Override
@@ -279,6 +291,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 		mMinScale = mScale;
 		zoomTo(mScale, mWidth / 2, mHeight / 2);
 		cutting();
+
 		return super.setFrame(l, t, r, b);
 	}
 
@@ -417,9 +430,11 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 				}
 			}
 			else if (resId == PhotoManager.DOWNLOAD_STARTED) {
+				if (errorTitleTxt != null) {
+					errorTitleTxt.setVisibility(View.VISIBLE);
+					errorTitleTxt.setText("Loading...");
+				}
 
-				errorTitleTxt.setVisibility(View.VISIBLE);
-				errorTitleTxt.setText("Loading...");
 			}
 			else if (resId == PhotoManager.TASK_COMPLETE) {
 				System.out.println("TASK COMPLETED OOOOOOOO");
@@ -470,6 +485,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	}
 
 	public void cutting () {
+
 		int width = (int) (mIntrinsicWidth * getScale());
 		int height = (int) (mIntrinsicHeight * getScale());
 		if (getTranslateX() < -(width - mWidth)) {
@@ -491,6 +507,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 			mMatrix.postTranslate(0, (mHeight - height) / 2);
 		}
 		setImageMatrix(mMatrix);
+
 	}
 
 	private float distance (float x0, float x1, float y0, float y1) {
@@ -518,6 +535,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	@Override
 	public boolean onTouchEvent (MotionEvent event) {
 		int touchCount = event.getPointerCount();
+
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
 			case MotionEvent.ACTION_POINTER_1_DOWN:
@@ -568,17 +586,24 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 						if (30 > Math.abs(mDoubleTapX - event.getX()) + Math.abs(mDoubleTapY - event.getY())) {
 							maxZoomTo(mDoubleTapX, mDoubleTapY);
 							cutting();
+						}else{
+							System.out.println("ON click and long click");
+							Toast.makeText(mContext,"On click event list", Toast.LENGTH_LONG).show();
 						}
+					
 					}
+					isDoubleTap = false;
+
+					break;
 				}
-				isDoubleTap = false;
-				break;
 		}
 		return true;
 	}
 
 	@Override
 	public boolean onTouch (View v, MotionEvent event) {
-		return super.onTouchEvent(event);
+		return false;
 	}
+
+
 }
