@@ -35,6 +35,22 @@
     <string name="live_score_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/livescore?match_id=</string>
     <string name="live_matches_urls">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/livematches</string>
     <string name="score_board_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/fullscore?match_id=</string>
-  
+    <string name="currentscore_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/currentscore</string>
+    <string name="match_schedule_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/match_schedule</string>
+    <string name="live_score_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livescore?match_id=</string>
+    <string name="live_matches_urls">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livematches</string>
+    <string name="score_board_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/fullscore?match_id=</string>
     
+  <!-- Production notification urls -->
+  
+    <string name="push_status_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/push_status?user_id=</string>
+    <string name="push_notification_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/push_notifications</string>
+    <string name="notification_metadata_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/notifications_metadata</string>
+    <string name="get_notification_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/get_notifications?social_uid=</string>
+    <string name="set_notification_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/set_notifications</string>
+   <string name="social_user_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/user?social_uid=</string>
+   <string name="facebook_graph_url">https://graph.facebook.com/me?access_token=</string>
+    
+   
+     <!--end of the  Production notification urls -->
 </resources>

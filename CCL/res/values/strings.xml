@@ -126,6 +126,11 @@
 \n\nThe Group is headquartered in the Central Business District of Mumbai with Regional offices in New Delhi, Bhopal and Chennai. Avika Group Ltd. has delivery, sales, support offices, consultant and sales partnerships with domain-expertise based consulting companies worldwide including Australia, USA, UK &amp; Hong Kong and development centers in Bhopal, Pune and Nashik.
 \n\nRaise the Bar Together-with our Customers, Employees and Shareholders is the Avika Group Ltd. mantra. With a strong, reputed and experienced management team, we promote a solution oriented business culture and an excellent working environment through our focus on customer care.</string>
     <string name="signin">Facebook sign in</string>
-    <string name="calender">HOT CALENDER</string>
-
-</resources>
+	<string name="calender">HOT CALENDER</string>
+	<string name="ok">Allow</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="notification_messsage">Push Notifications must be allowed for notifications to work, Allow?</string>
+    <string name="options_data_changed_not_saved_message">You have not saved your changed settings.Do you wish to save?</string>
+    <string name="text_save">To save your settings</string>
+    <string name="fielding">FIELDING</string></resources>

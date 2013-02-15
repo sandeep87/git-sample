@@ -340,11 +340,7 @@ public class TeamActivity extends TopActivity {
 			View imageLayout = null;
 			imageLayout = inflater.inflate(R.layout.team_grid_view, null);
 			GridView gridView = (GridView) imageLayout.findViewById(R.id.grid_view);
-			/*
-			 * final ArrayList <TeamItems> items = new ArrayList <TeamItems>();
-			 * 
-			 * items.add(teamItems.get(NO_OF_PAGES * position)); items.add(teamItems.get((NO_OF_PAGES * position) + 1)); items.add(teamItems.get((NO_OF_PAGES * position) + 2)); items.add(teamItems.get((NO_OF_PAGES * position) + 3));
-			 */// int[] teams = new int[4];
+			
 			String[] teamLogoUrls = new String[4];
 
 			if (position == 0) {
@@ -386,11 +382,7 @@ public class TeamActivity extends TopActivity {
 								teamName.setText(teamLogosList.get(pos).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(mumbaiTeamMembersList);
 								setTeamAmbassadorsToAdapter(mumbaiTeamAmbassadorsList);
-								/*
-								 * if (mumbaiTeamMembersList != null && mumbaiTeamMembersList.size() > 0) { teamMemberViewPager.setAdapter(new TeamImagePagerAdapter(TeamActivity.this, mumbaiTeamMembersList, Category.TEAM_MEMBERS)); teamMemberViewPager.setOnClickListener(null);
-								 * teamMemberViewPager.setOnPageChangeListener(new PageChangeListener(null, teamMemberViewPager)); } if (mumbaiTeamAmbassadorsList != null && mumbaiTeamAmbassadorsList.size() > 0) { teamAmbassadorViewPager.setAdapter(new TeamImagePagerAdapter(TeamActivity.this,
-								 * mumbaiTeamAmbassadorsList, Category.TEAM_AMBASSADORS)); teamAmbassadorViewPager.setOnClickListener(null); teamAmbassadorViewPager.setOnPageChangeListener(new PageChangeListener(null, teamAmbassadorViewPager)); }
-								 */
+								
 							}
 							else {
 								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase(Locale.getDefault()));
@@ -407,17 +399,7 @@ public class TeamActivity extends TopActivity {
 								teamName.setText(teamLogosList.get(pos).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(chennaiTeamMembersList);
 								setTeamAmbassadorsToAdapter(chennaiTeamAmbassadorsList);
-								/*
-								 * System.out.println("kranthi chennai team list"+chennaiTeamMembersList); System.out.println("kranthi chennai team amblist size"+chennaiTeamAmbassadorsList);
-								 * 
-								 * if (chennaiTeamMembersList != null && chennaiTeamMembersList.size() > 0) { System.out.println("kranthi chennai team list size"+chennaiTeamMembersList.size());
-								 * 
-								 * teamMemberViewPager.setAdapter(new TeamImagePagerAdapter(TeamActivity.this, chennaiTeamMembersList, Category.TEAM_MEMBERS)); teamMemberViewPager.setOnClickListener(null); teamMemberViewPager.setOnPageChangeListener(new PageChangeListener(null, teamMemberViewPager)); } if
-								 * (chennaiTeamAmbassadorsList != null && chennaiTeamAmbassadorsList.size() > 0) { System.out.println("kranthi chennai team amblist size"+chennaiTeamAmbassadorsList.size());
-								 * 
-								 * teamAmbassadorViewPager.setAdapter(new TeamImagePagerAdapter(TeamActivity.this, chennaiTeamAmbassadorsList, Category.TEAM_AMBASSADORS)); teamAmbassadorViewPager.setOnClickListener(null); teamAmbassadorViewPager.setOnPageChangeListener(new PageChangeListener(null,
-								 * teamAmbassadorViewPager)); }
-								 */
+								
 							}
 							else {
 								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase(Locale.getDefault()));

@@ -11,7 +11,6 @@ import in.ccl.helper.Util;
 import in.ccl.livescore.service.CheckUpdateService;
 import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.logging.Logger;
-import in.ccl.logging.ParadigmExceptionHandler;
 import in.ccl.model.Items;
 import in.ccl.util.AppPropertiesUtil;
 

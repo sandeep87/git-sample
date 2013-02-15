@@ -8,5 +8,6 @@
     <color name="white">#FFFFFF</color>
     <color name="blue">#0000FF</color>
     <color name="hot_red">#932126</color>
-    
+     <color name= "black">#000000</color>
+    <color name="menu_item_color">#242a38</color>
 </resources>
