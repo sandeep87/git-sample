@@ -78,8 +78,7 @@
         android:id="@+id/layout_live_score"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#242a38"
-        android:visibility="gone" >
+        android:background="#242a38" >
 
         <ImageView
             android:id="@+id/livescore_icon"

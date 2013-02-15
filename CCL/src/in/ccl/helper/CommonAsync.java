@@ -36,7 +36,6 @@ public class CommonAsync extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPreExecute() {
-		super.onPreExecute();
 		mProgressDialog = new ProgressDialog(mContext);
 		mProgressDialog.setMessage(mContext.getResources().getString(R.string.signin));
 		mProgressDialog.setCancelable(false);

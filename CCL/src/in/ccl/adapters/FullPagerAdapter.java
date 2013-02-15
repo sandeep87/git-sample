@@ -1,6 +1,5 @@
 package in.ccl.adapters;
 
-import in.ccl.helper.Category;
 import in.ccl.helper.CommonAsync;
 import in.ccl.helper.DelegatesResponse;
 import in.ccl.model.Items;
@@ -99,10 +98,9 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		((ViewPager) container).removeView((View) object);
 	}
 
-	public FullPagerAdapter (Activity ctx, ArrayList <Items> list, Category category) {
+	public FullPagerAdapter (Activity ctx, ArrayList <Items> list) {
 		activity = ctx;
 		itemsList = list;
-		context = ctx;
 		// mCategory = category;
 		inflater = activity.getLayoutInflater();
 	}
@@ -130,6 +128,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt);
 
 		((ViewPager) view).addView(imageLayout, 0);
+
 		imageView.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
@@ -208,7 +207,6 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 	@Override
 	public boolean isViewFromObject (View view, Object object) {
 		return view.equals(object);
-
 	}
 
 	@Override

@@ -61,6 +61,9 @@ public class LiveScoreParser {
 								}
 								if (innerObject.has("startdate")) {
 									matchInfo.setStartTime(sdf.parse(innerObject.getString("startdate")));
+									System.out.println("startdate =="+innerObject.getString("startdate"));
+									System.out.println("parse startdate =="+sdf.parse(innerObject.getString("startdate")));
+
 								}
 							}
 							catch (ParseException e) {

@@ -32,6 +32,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.format.DateUtils;
 
 public class LiveScoreService extends IntentService {
 
@@ -85,12 +86,21 @@ public class LiveScoreService extends IntentService {
 						SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd", new Locale("in"));
 						MatchSchedule matchSchedule = LiveScoreParser.parseCurrentMatchSchedule(localHttpURLConnection.getInputStream());
 						if (matchSchedule != null && matchSchedule.getStartTime() != null && matchSchedule.getEndDate() != null && matchSchedule.getStatus() != null) {
-							dateSdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+							dateSdf.setTimeZone(TimeZone.getTimeZone("GMT+05:30"));
 							java.util.Date date = new java.util.Date();
 							try {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
-								if (scheduleDate.compareTo(todayDate) == 0 && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("started")) {
+
+								/*Date questionDate = matchSchedule.getStartTime();
+								Date today = new Date();
+
+								SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd");
+
+								String questionDateStr = dateFormatter.format(questionDate);
+								String todayStr = dateFormatter.format(today);
+*/
+								if (scheduleDate.equals(todayDate) && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("started") && matchSchedule.getEndDate().compareTo(todayDate) > 0) {
 									System.out.println("Calling for current score");
 									Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -126,6 +136,7 @@ public class LiveScoreService extends IntentService {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
 								if (scheduleDate.compareTo(todayDate) == 0 && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("started")) {
+									System.out.println("phani update livescore");
 									Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 									long trigger = getScheduleTimeInMills(matchSchedule.getStartTime());
@@ -174,11 +185,12 @@ public class LiveScoreService extends IntentService {
 						else {
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
-					}else if(compareKey.equals("livescore-activity")){
-						
+					}
+					else if (compareKey.equals("livescore-activity")) {
+
 						LiveScore liveScore = LiveScoreParser.parseLiveScore(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithLiveScore(Constants.STATE_LIVE_SCORE_ACTIVITY_TASK_COMPLETED, liveScore);
-						
+
 					}
 					else if (compareKey.equals("fullscore")) {
 						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
@@ -244,7 +256,7 @@ public class LiveScoreService extends IntentService {
 		}
 	}
 
-	public static long getScheduleTimeInMills (Date lv_localDate) { 
+	public static long getScheduleTimeInMills (Date lv_localDate) {
 		// Time Zone Problem testing
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -257,12 +269,12 @@ public class LiveScoreService extends IntentService {
 			SimpleDateFormat lv_formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			lv_formatter.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
 
-			//System.out.println(" The Date in the local time zone " + lv_formatter.format(lv_localDate));
+			// System.out.println(" The Date in the local time zone " + lv_formatter.format(lv_localDate));
 
 			// Convert the date from the local timezone to UTC timezone
 			lv_formatter.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
 			String lv_dateFormateInUTC = lv_formatter.format(lv_localDate);
-		//	System.out.println(" The Date in the UTC time zone " + lv_dateFormateInUTC);
+			// System.out.println(" The Date in the UTC time zone " + lv_dateFormateInUTC);
 
 			gregorianCalendar.setTime(formatter.parse(lv_formatter.format(lv_localDate)));
 			return gregorianCalendar.getTimeInMillis();
@@ -284,4 +296,5 @@ public class LiveScoreService extends IntentService {
 
 		return dates.getTime();
 	}
+
 }

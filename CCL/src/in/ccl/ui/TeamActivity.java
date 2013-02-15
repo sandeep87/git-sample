@@ -11,6 +11,7 @@ import in.ccl.model.Teams;
 import in.ccl.util.Constants;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -126,7 +127,6 @@ public class TeamActivity extends TopActivity {
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.team_layout);
-		super.disableAds();
 		pager = (ViewPager) findViewById(R.id.team_view_pager);
 		teamMemberViewPager = (ViewPager) findViewById(R.id.team_member_pager);
 		teamAmbassadorViewPager = (ViewPager) findViewById(R.id.team_ambassadors_pager);
@@ -148,7 +148,7 @@ public class TeamActivity extends TopActivity {
 
 		if (getIntent().hasExtra(Constants.EXTRA_TEAM_LOGO_KEY)) {
 			teamLogosList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_TEAM_LOGO_KEY);
-			teamName.setText(teamLogosList.get(0).getName().toUpperCase());
+			teamName.setText(teamLogosList.get(0).getName().toUpperCase(Locale.getDefault()));
 
 			allTeamMembersTotalList = getIntent().getParcelableArrayListExtra(Constants.EXTRA_TEAM_MEMBER_KEY);
 		}
@@ -234,13 +234,13 @@ public class TeamActivity extends TopActivity {
 				indicatorFourImage.setVisibility(View.INVISIBLE);
 
 				if (pageno == 0) {
-					teamName.setText(teamLogosList.get(0).getName().toUpperCase());
+					teamName.setText(teamLogosList.get(0).getName().toUpperCase(Locale.getDefault()));
 
 					setTeamMembersToAdapter(mumbaiTeamMembersList);
 					setTeamAmbassadorsToAdapter(mumbaiTeamAmbassadorsList);
 				}
 				else {
-					teamName.setText(teamLogosList.get(4).getName().toUpperCase());
+					teamName.setText(teamLogosList.get(4).getName().toUpperCase(Locale.getDefault()));
 
 					setTeamMembersToAdapter(keralaTeamMembersList);
 					setTeamAmbassadorsToAdapter(keralaTeamAmbassadorsList);
@@ -302,7 +302,7 @@ public class TeamActivity extends TopActivity {
 		if (teamMembersList != null) {
 			teamMemberViewPager.setAdapter(new TeamImagePagerAdapter(this, teamMembersList, Category.TEAM_MEMBERS));
 			teamMemberViewPager.setOnClickListener(null);
-			teamMemberViewPager.setOnPageChangeListener(new PageChangeListener(null, teamMemberViewPager,teamMembersList.size()));
+			teamMemberViewPager.setOnPageChangeListener(new PageChangeListener(null, teamMemberViewPager,3));
 		}
 	}
 
@@ -310,7 +310,7 @@ public class TeamActivity extends TopActivity {
 		if (teamAmbassadorsList != null) {
 			teamAmbassadorViewPager.setAdapter(new TeamImagePagerAdapter(this, teamAmbassadorsList, Category.TEAM_AMBASSADORS));
 			teamAmbassadorViewPager.setOnClickListener(null);
-			teamAmbassadorViewPager.setOnPageChangeListener(new PageChangeListener(null, teamAmbassadorViewPager,teamAmbassadorsList.size()));
+			teamAmbassadorViewPager.setOnPageChangeListener(new PageChangeListener(null, teamAmbassadorViewPager,3));
 		}
 	}
 
@@ -383,7 +383,7 @@ public class TeamActivity extends TopActivity {
 							indicatorThreeImage.setVisibility(View.INVISIBLE);
 							indicatorFourImage.setVisibility(View.INVISIBLE);
 							if (position == 0) {
-								teamName.setText(teamLogosList.get(pos).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(mumbaiTeamMembersList);
 								setTeamAmbassadorsToAdapter(mumbaiTeamAmbassadorsList);
 								/*
@@ -393,7 +393,7 @@ public class TeamActivity extends TopActivity {
 								 */
 							}
 							else {
-								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(keralaTeamMembersList);
 								setTeamAmbassadorsToAdapter(keralaTeamAmbassadorsList);
 							}
@@ -404,7 +404,7 @@ public class TeamActivity extends TopActivity {
 							indicatorThreeImage.setVisibility(View.INVISIBLE);
 							indicatorFourImage.setVisibility(View.INVISIBLE);
 							if (position == 0) {
-								teamName.setText(teamLogosList.get(pos).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(chennaiTeamMembersList);
 								setTeamAmbassadorsToAdapter(chennaiTeamAmbassadorsList);
 								/*
@@ -420,7 +420,7 @@ public class TeamActivity extends TopActivity {
 								 */
 							}
 							else {
-								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(bengalTeamMembersList);
 								setTeamAmbassadorsToAdapter(bengalTeamAmbassadorsList);
 							}
@@ -431,12 +431,12 @@ public class TeamActivity extends TopActivity {
 							indicatorThreeImage.setVisibility(View.VISIBLE);
 							indicatorFourImage.setVisibility(View.INVISIBLE);
 							if (position == 0) {
-								teamName.setText(teamLogosList.get(pos).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(teluguTeamMembersList);
 								setTeamAmbassadorsToAdapter(teluguTeamAmbassadorsList);
 							}
 							else {
-								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(veerTeamMembersList);
 								setTeamAmbassadorsToAdapter(veerTeamAmbassadorsList);
 							}
@@ -447,12 +447,12 @@ public class TeamActivity extends TopActivity {
 							indicatorThreeImage.setVisibility(View.INVISIBLE);
 							indicatorFourImage.setVisibility(View.VISIBLE);
 							if (position == 0) {
-								teamName.setText(teamLogosList.get(pos).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(karanatakaTeamMembersList);
 								setTeamAmbassadorsToAdapter(karanatakaTeamAmbassadorsList);
 							}
 							else {
-								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase());
+								teamName.setText(teamLogosList.get(pos + 4).getName().toUpperCase(Locale.getDefault()));
 								setTeamMembersToAdapter(bhojpuriTeamMembersList);
 								setTeamAmbassadorsToAdapter(bhojpuriTeamAmbassadorsList);
 							}

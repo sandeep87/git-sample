@@ -184,7 +184,6 @@ public class LiveScoreActivity extends TopActivity {
 
 	@Override
 	public void onClick (View v) {
-		super.onClick(v);
 		switch (v.getId()) {
 			case R.id.btn_score_board:
 				Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url) + currentMatchId));
@@ -277,7 +276,7 @@ public class LiveScoreActivity extends TopActivity {
 
 			battingLogo.setScaleType(ImageView.ScaleType.MATRIX);
 			if (liveScore.getTeamLogo() != null) {
-			//	battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage, false);
+		       battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage);
 			}
 			else {
 				battingLogo.setVisibility(View.INVISIBLE);

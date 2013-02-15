@@ -64,8 +64,7 @@ public class CustomAdaptor extends BaseAdapter {
 	@Override
 	public View getView (int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
-			System.out.println("null");
-			convertView = (View) inflator.inflate(R.layout.lounge_row, null);
+					convertView = (View) inflator.inflate(R.layout.lounge_row, null);
 
 		}
 		logo = (ImageView) convertView.findViewById(R.id.logo);

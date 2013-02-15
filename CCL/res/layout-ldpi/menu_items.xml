@@ -79,7 +79,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#242a38"
-        android:visibility="gone" >
+         >
 
         <ImageView
             android:id="@+id/livescore_icon"
@@ -90,7 +90,7 @@
             android:src="@drawable/livescores" />
 
         <TextView
-            android:id="@+id/txt_livescores"
+            android:id="@+id/txt_livescore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -204,7 +204,7 @@
         android:padding="1dp" />
 
     <RelativeLayout
-        android:id="@+id/layout_celebrity_calender"
+        android:id="@+id/layout_calender"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#242a38" >

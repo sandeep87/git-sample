@@ -73,8 +73,8 @@
                     android:layout_height="60dp"
                     android:layout_alignRight="@+id/owner_one_image_bhojpuri"
                     android:layout_below="@+id/owner_one_image_bhojpuri"
-                  
-                android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                android:layout_marginTop="20dp"
                     android:src="@raw/manoj_tiwari" />
 
         </RelativeLayout>

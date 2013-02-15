@@ -111,7 +111,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 							AlbumTitle = itemsList.get(position).getTitle();
 							photoGalleryId = itemsList.get(position).getAlbumId();
 							ArrayList <Items> list = PhotoAlbumCurosr.getPhotos(activity, photoGalleryId);
-							if (list == null || list.size() <= 0) {
+							if (list == null || list.size() <= 0)  {
 								if (Util.getInstance().isOnline(activity)) {
 									Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_gallery_url) + itemsList.get(position).getAlbumId()));
 									mServiceIntent.putExtra("KEY", "banner-photos");
@@ -200,8 +200,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View arg1, int pos, long arg3) {
-				System.out.println("OnItem click called...");
-				TopActivity ta = (TopActivity) activity;
+					TopActivity ta = (TopActivity) activity;
 				if (ta.getDrawer() != null && ta.getDrawer().isOpened()) {
 					return;
 				}

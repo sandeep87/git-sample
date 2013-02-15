@@ -185,8 +185,6 @@ public class PhotoManager {
 				else {
 					scalelocalView = photoTask.getScaleImageView();
 				}
-         System.out.println("SCLAE OBJE "+scalelocalView);
-         System.out.println("URL "+photoTask.getImageURL());
 				// If this input view isn't null
 				if (localView != null || scalelocalView != null) {
 
@@ -209,7 +207,6 @@ public class PhotoManager {
 						/*
 						 * Chooses the action to take, based on the incoming message
 						 */
-            System.out.println("input message what "+inputMessage.what);
 
 						switch (inputMessage.what) {
 							// If the download has started, sets background color to dark green
@@ -232,7 +229,6 @@ public class PhotoManager {
 									localView.setStatusResource(R.drawable.decodequeued);
 								}
 								else if (scalelocalView != null) {
-									System.out.println("Download completed");
 									scalelocalView.setStatusResource(R.drawable.decodequeued);
 
 								}
@@ -243,7 +239,6 @@ public class PhotoManager {
 									localView.setStatusResource(R.drawable.decodedecoding);
 								}
 								else if (scalelocalView != null) {
-									System.out.println("Decode started");
 									scalelocalView.setStatusResource(R.drawable.decodedecoding);
 								}
 								break;
@@ -261,8 +256,6 @@ public class PhotoManager {
 								}
 								else if (scalelocalView != null) {
 									scalelocalView.setImageBitmap(bmp);
-									System.out.println(scalelocalView.getVisibility()+" Task completed "+bmp);
-
 									// Drawable drawable = new BitmapDrawable(bmp);
 									//scalelocalView.setImageDrawable(drawable);
 									scalelocalView.setStatusResource(TASK_COMPLETE);
@@ -276,7 +269,6 @@ public class PhotoManager {
 									localView.setStatusResource(DOWNLOAD_FAILED);
 								}
 								else if (scalelocalView != null) {
-									System.out.println("Download failed");
 									scalelocalView.setStatusResource(DOWNLOAD_FAILED);
 
 								}

@@ -97,8 +97,9 @@
                 android:background="@drawable/dropdown"
                 android:contentDescription="@string/ccl_logo"
                 android:focusableInTouchMode="false"
+                android:visibility="gone"
                 android:paddingRight="12dp"
-                android:visibility="gone" />
+              />
         </RelativeLayout>
 
         <RelativeLayout
