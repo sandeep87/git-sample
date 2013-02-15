@@ -1,5 +1,6 @@
 package in.ccl.database;
 
+import in.ccl.helper.Util;
 import in.ccl.model.Items;
 import in.ccl.ui.R;
 
@@ -332,7 +333,7 @@ public class CCLPullService extends IntentService {
 					default:
 						break;
 				}
-
+				Util.getInstance().removeOverlay();
 				// Reports that the feed retrieval is complete.
 				if (updatedRows > 0 && mBroadcaster != null) {
 					if (compareKey.equals("slidersv2")) {

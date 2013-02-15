@@ -41,25 +41,25 @@ public class MenuItems implements OnClickListener {
 
 	private AnimationLayout mLayout;
 
-	public static ArrayList <Items> teamLogosList;
+	public static ArrayList<Items> teamLogosList;
 
-	public static ArrayList <Items> teamRolesList;
+	public static ArrayList<Items> teamRolesList;
 
-	public static ArrayList <Items> teamMembersList;
+	public static ArrayList<Items> teamMembersList;
 
-	public static ArrayList <Items> chennaiTeamMembersList;
+	public static ArrayList<Items> chennaiTeamMembersList;
 
-	public static ArrayList <Items> teluguTeamMembersList;
+	public static ArrayList<Items> teluguTeamMembersList;
 
-	public static ArrayList <Items> karnatakaTeamMembersList;
+	public static ArrayList<Items> karnatakaTeamMembersList;
 
-	public static ArrayList <Items> keralaTeamMembersList;
+	public static ArrayList<Items> keralaTeamMembersList;
 
-	public static ArrayList <Items> bengalTeamMembersList;
+	public static ArrayList<Items> bengalTeamMembersList;
 
-	public static ArrayList <Items> marathiTeamMembersList;
+	public static ArrayList<Items> marathiTeamMembersList;
 
-	public static ArrayList <Items> bhojpuriTeamMembersList;
+	public static ArrayList<Items> bhojpuriTeamMembersList;
 
 	// private Items membersItem;
 	private static TextView celebrity_calender;
@@ -77,15 +77,16 @@ public class MenuItems implements OnClickListener {
 	/**
 	 * private constructor
 	 */
-	public MenuItems () {
+	public MenuItems() {
 	}
 
 	/**
-	 * Creating single object of this class. not required to create a new object each time when it was invoked.
+	 * Creating single object of this class. not required to create a new object
+	 * each time when it was invoked.
 	 * 
 	 * @return single object of MenuItems class.
 	 */
-	public static MenuItems getInstance () {
+	public static MenuItems getInstance() {
 
 		if (singleInstance == null) {
 			synchronized (Util.class) {
@@ -97,38 +98,55 @@ public class MenuItems implements OnClickListener {
 		return singleInstance;
 	}
 
-	public void loadMenu (Activity activity, LinearLayout layout, AnimationLayout mLayout) {
+	public void loadMenu(Activity activity, LinearLayout layout,
+			AnimationLayout mLayout) {
 		this.activity = activity;
 		this.mLayout = mLayout;
 		// getting menu image button id for invisible button when user in menu
 		// screen.
-		RelativeLayout layoutPhotos = (RelativeLayout) layout.findViewById(R.id.layout_photos);
-		RelativeLayout layoutSchedule = (RelativeLayout) layout.findViewById(R.id.layout_schedule);
-		// RelativeLayout layoutNotifications = (RelativeLayout) layout.findViewById(R.id.layout_notifications);
-		RelativeLayout layoutTeams = (RelativeLayout) layout.findViewById(R.id.layout_teams);
-		RelativeLayout layoutOwner = (RelativeLayout) layout.findViewById(R.id.layout_ownerslounge);
-		RelativeLayout layoutHome = (RelativeLayout) layout.findViewById(R.id.layout_home);
+		RelativeLayout layoutPhotos = (RelativeLayout) layout
+				.findViewById(R.id.layout_photos);
+		RelativeLayout layoutSchedule = (RelativeLayout) layout
+				.findViewById(R.id.layout_schedule);
+		RelativeLayout layoutNotifications = (RelativeLayout) layout
+				.findViewById(R.id.layout_notifications);
+		RelativeLayout layoutTeams = (RelativeLayout) layout
+				.findViewById(R.id.layout_teams);
+		RelativeLayout layoutOwner = (RelativeLayout) layout
+				.findViewById(R.id.layout_ownerslounge);
+		RelativeLayout layoutHome = (RelativeLayout) layout
+				.findViewById(R.id.layout_home);
 
-		RelativeLayout layoutVideo = (RelativeLayout) layout.findViewById(R.id.layout_videos);
-		RelativeLayout layoutLiveScore = (RelativeLayout) layout.findViewById(R.id.layout_live_score);
-		RelativeLayout layoutdownloads = (RelativeLayout) layout.findViewById(R.id.layout_downloads);
+		RelativeLayout layoutVideo = (RelativeLayout) layout
+				.findViewById(R.id.layout_videos);
+		RelativeLayout layoutLiveScore = (RelativeLayout) layout
+				.findViewById(R.id.layout_live_score);
+		RelativeLayout layoutdownloads = (RelativeLayout) layout
+				.findViewById(R.id.layout_downloads);
 
-		RelativeLayout layoutcalender = (RelativeLayout) layout.findViewById(R.id.layout_calender);
+		RelativeLayout layoutcalender = (RelativeLayout) layout
+				.findViewById(R.id.layout_calender);
 
 		TextView photoTxt = (TextView) layout.findViewById(R.id.txt_photo);
 
 		TextView homeTxt = (TextView) layout.findViewById(R.id.txt_home);
 		TextView ownersTxt = (TextView) layout.findViewById(R.id.txt_owners);
-		TextView downloadsTxt = (TextView) layout.findViewById(R.id.txt_downloads);
+		TextView downloadsTxt = (TextView) layout
+				.findViewById(R.id.txt_downloads);
 		blinkMenuText(downloadsTxt);
-		TextView calenderTxt = (TextView) layout.findViewById(R.id.txt_celebrity_calender);
+		TextView calenderTxt = (TextView) layout
+				.findViewById(R.id.txt_celebrity_calender);
 		blinkMenuText(calenderTxt);
-		TextView scheduleTxt = (TextView) layout.findViewById(R.id.txt_schedule);
+		TextView scheduleTxt = (TextView) layout
+				.findViewById(R.id.txt_schedule);
 		liveScoreTxt = (TextView) layout.findViewById(R.id.txt_livescore);
-	
+
 		TextView teamsTxt = (TextView) layout.findViewById(R.id.txt_tems);
 		TextView videosTxt = (TextView) layout.findViewById(R.id.txt_video);
-		// TextView notificationsTxt = (TextView) layout.findViewById(R.id.txt_notifications);
+		// TextView notificationsTxt = (TextView)
+		// layout.findViewById(R.id.txt_notifications);
+		TextView notificationsTxt = (TextView) layout
+				.findViewById(R.id.txt_notifications);
 		Util.setTextFont(activity, photoTxt);
 
 		Util.setTextFont(activity, homeTxt);
@@ -138,12 +156,12 @@ public class MenuItems implements OnClickListener {
 		Util.setTextFont(activity, scheduleTxt);
 		Util.setTextFont(activity, liveScoreTxt);
 		Util.setTextFont(activity, videosTxt);
-		// Util.setTextFont(activity, notificationsTxt);
+		Util.setTextFont(activity, notificationsTxt);
 		Util.setTextFont(activity, teamsTxt);
 
 		layoutPhotos.setOnClickListener(this);
 		layoutSchedule.setOnClickListener(this);
-		// layoutNotifications.setOnClickListener(this);
+		layoutNotifications.setOnClickListener(this);
 		layoutTeams.setOnClickListener(this);
 		layoutOwner.setOnClickListener(this);
 		layoutVideo.setOnClickListener(this);
@@ -156,13 +174,24 @@ public class MenuItems implements OnClickListener {
 		// layoutScore.setOnClickListener(this);
 
 		/*
-		 * chennaiTeamMembersList = Util.getInstance().getChnnaiTeamMembersList(); teluguTeamMembersList = Util.getInstance().getTeluguWarriorsTeamMembersList(); karnatakaTeamMembersList = Util.getInstance().getKarnatakaTeamMembersList(); keralaTeamMembersList =
-		 * Util.getInstance().getKeralaTeamMembersList(); bengalTeamMembersList = Util.getInstance().getBangalTeamMembersList(); marathiTeamMembersList = Util.getInstance().getMarathiTeamMembersList(); bhojpuriTeamMembersList = Util.getInstance().getBhojpuriTeamMembersList();
+		 * chennaiTeamMembersList =
+		 * Util.getInstance().getChnnaiTeamMembersList(); teluguTeamMembersList
+		 * = Util.getInstance().getTeluguWarriorsTeamMembersList();
+		 * karnatakaTeamMembersList =
+		 * Util.getInstance().getKarnatakaTeamMembersList();
+		 * keralaTeamMembersList =
+		 * Util.getInstance().getKeralaTeamMembersList(); bengalTeamMembersList
+		 * = Util.getInstance().getBangalTeamMembersList();
+		 * marathiTeamMembersList =
+		 * Util.getInstance().getMarathiTeamMembersList();
+		 * bhojpuriTeamMembersList =
+		 * Util.getInstance().getBhojpuriTeamMembersList();
 		 */}
 
-	private void blinkMenuText (TextView txt) {
+	private void blinkMenuText(TextView txt) {
 		Animation anim = new AlphaAnimation(0.0f, 1.0f);
-		anim.setDuration(150); // You can manage the time of the blink with this parameter
+		anim.setDuration(150); // You can manage the time of the blink with this
+								// parameter
 
 		anim.setStartOffset(20);
 		anim.setRepeatMode(Animation.REVERSE);
@@ -172,9 +201,10 @@ public class MenuItems implements OnClickListener {
 
 	}
 
-	public void blinkMenuLiveText (boolean status) {
+	public void blinkMenuLiveText(boolean status) {
 		Animation anim = new AlphaAnimation(0.0f, 1.0f);
-		anim.setDuration(150); // You can manage the time of the blink with this parameter
+		anim.setDuration(150); // You can manage the time of the blink with this
+								// parameter
 		anim.setStartOffset(20);
 		anim.setRepeatMode(Animation.REVERSE);
 		anim.setRepeatCount(Animation.INFINITE);
@@ -187,260 +217,302 @@ public class MenuItems implements OnClickListener {
 	}
 
 	@Override
-	public void onClick (View v) {
+	public void onClick(View v) {
 
 		int key = v.getId();
 		switch (key) {
-			case R.id.layout_photos:
-
-				mRequestType = RequestType.PHOTOS_REQUEST;
-				Cursor cursor = activity.getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-				ArrayList <Items> list = PhotoAlbumCurosr.getItems(cursor);
-				if (list == null || list.size() <= 0) {
-					if (Util.getInstance().isOnline(activity)) {
-						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_album_url)));
-						activity.startService(mServiceIntent);
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
+		case R.id.layout_photos:
+			mRequestType = RequestType.PHOTOS_REQUEST;
+			Util.getInstance().showOverlay(activity);
+			Cursor cursor = activity.getContentResolver().query(
+					DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null,
+					null, null, null);
+			ArrayList<Items> list = PhotoAlbumCurosr.getItems(cursor);
+			if (list == null || list.size() <= 0) {
+				if (Util.getInstance().isOnline(activity)) {					
+					Intent mServiceIntent = new Intent(activity,
+							CCLPullService.class).setData(Uri
+							.parse(activity.getResources().getString(
+									R.string.photo_album_url)));
+					activity.startService(mServiceIntent);
+				} else {
+					Util.getInstance().removeOverlay();
+					Toast.makeText(
+							activity,
+							activity.getResources().getString(
+									R.string.network_error_message),
+							Toast.LENGTH_LONG).show();
 				}
-				else {
-					Intent photoGalleryIntent = new Intent(activity, PhotoGalleryActivity.class);
-					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_PHOTO_KEY, list);
-					photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					// photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-					activity.startActivity(photoGalleryIntent);
+			} else {
+				Util.getInstance().removeOverlay();
+				Intent photoGalleryIntent = new Intent(activity,
+						PhotoGalleryActivity.class);
+				photoGalleryIntent.putParcelableArrayListExtra(
+						Constants.EXTRA_PHOTO_KEY, list);
+				photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				// photoGalleryIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+				activity.startActivity(photoGalleryIntent);
 
+			}
+			break;
+		case R.id.layout_schedule:
+			Intent scheduleIntent = new Intent(activity, ScheduleActivity.class);
+			scheduleIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			activity.startActivity(scheduleIntent);
+			break;
+
+		case R.id.layout_notifications:
+			Intent notificationIntent = new Intent(activity,
+					NotificationActivity.class);
+			activity.startActivity(notificationIntent);
+			break;
+		case R.id.layout_teams:
+			Util.getInstance().showOverlay(activity);
+			cursor = activity.getContentResolver().query(
+					DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null,
+					null, null, null);
+			if (cursor != null && cursor.getCount() > 0) {
+				ArrayList<Teams> teamLogoItems = null;
+				ArrayList<TeamMember> teamMemberItems = null;
+				teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
+				if (cursor != null) {
+					cursor.close();
 				}
-				break;
-			case R.id.layout_schedule:
-				progressDialog = new ProgressDialog(activity);
-				progressDialog.setMessage(activity.getResources().getString(R.string.loading));
-				try {
-					progressDialog.show();
+				cursor = activity.getContentResolver().query(
+						DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI,
+						null, null, null, null);
+				if (cursor.getCount() > 0) {
+					teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
 				}
-				catch (BadTokenException e) {
+				if (cursor != null) {
+					cursor.close();
 				}
-				new Handler().postDelayed(new Runnable() {
+				if ((teamLogoItems != null && teamLogoItems.size() > 0)
+						&& (teamMemberItems != null && teamMemberItems.size() > 0)) {
+					Util.getInstance().removeOverlay();
+					callTeamIntent(teamLogoItems, teamMemberItems);
+				} else {
+					Util.getInstance().removeOverlay();
+					Log.e("MenuItems",
+							"Problem Occured While Retriving Team Data From DB ");
+				}
+			} else {
+				if (cursor != null) {
+					cursor.close();
+				}
+				if (Util.getInstance().isOnline(activity)) {
+					Intent mServiceIntent = new Intent(activity,
+							CCLPullService.class).setData(Uri.parse(activity
+							.getResources().getString(R.string.team_url)));
+					activity.startService(mServiceIntent);
+				} else {
+					Util.getInstance().removeOverlay();
+					Toast.makeText(
+							activity,
+							activity.getResources().getString(
+									R.string.network_error_message),
+							Toast.LENGTH_LONG).show();
+				}
+			}
+			break;
 
-					@Override
-					public void run () {
-						if (progressDialog != null) {
-							try {
-								progressDialog.dismiss();
-							}
-							catch (IllegalStateException e) {
-								// TODO: handle exception
-							}
-						}
-						Intent scheduleIntent = new Intent(activity, ScheduleActivity.class);
-						scheduleIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-						activity.startActivity(scheduleIntent);
-					}
-				}, 200);
+		case R.id.layout_ownerslounge:
+			Intent ownerIntent = new Intent(activity,
+					OwnersLoungueActivity.class);
+			ownerIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			activity.startActivity(ownerIntent);
 
-				break;
-			/*
-			 * case R.id.layout_notifications: Toast.makeText(activity, "Need to implement", Toast.LENGTH_LONG).show();
-			 * 
-			 * Intent notificationIntent = new Intent(activity, NotificationActivity.class); activity.startActivity(notificationIntent);
-			 * 
-			 * break;
-			 */case R.id.layout_teams:
-				cursor = activity.getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
-				if (cursor != null && cursor.getCount() > 0) {
+			break;
+		case R.id.layout_videos:
+			Util.getInstance().showOverlay(activity);
+			mRequestType = RequestType.VIDEOS_REQUEST;
+			cursor = activity.getContentResolver().query(
+					DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null,
+					null, null, null);
+			list = VideoAlbumCursor.getItems(cursor);
+			if (list == null || list.size() <= 0) {
+				if (Util.getInstance().isOnline(activity)) {
+					Intent mServiceIntent = new Intent(activity,
+							CCLPullService.class).setData(Uri
+							.parse(activity.getResources().getString(
+									R.string.photo_album_url)));
+					activity.startService(mServiceIntent);
+				} else {
+					Util.getInstance().removeOverlay();
+					Toast.makeText(
+							activity,
+							activity.getResources().getString(
+									R.string.network_error_message),
+							Toast.LENGTH_LONG).show();
+				}
+			} else {
+				Util.getInstance().removeOverlay();
+				Intent photoGalleryIntent = new Intent(activity,
+						VideoGalleryActivity.class);
+				photoGalleryIntent.putParcelableArrayListExtra(
+						Constants.EXTRA_VIDEO_KEY, list);
+				photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				activity.startActivity(photoGalleryIntent);
+			}
 
-					ArrayList <Teams> teamLogoItems = null;
-					ArrayList <TeamMember> teamMemberItems = null;
-
-					teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
-
+			break;
+		case R.id.layout_home:
+			if (mLayout.isShown()) {
+				Util.getInstance().showOverlay(activity);
+				cursor = activity.getContentResolver().query(
+						DataProviderContract.BANNERURL_TABLE_CONTENTURI, null,
+						null, null, null);
+				if (cursor.getCount() > 0) {
+					ArrayList<Items> bannerItems = BannerCursor
+							.getItems(cursor);
+					cursor = activity.getContentResolver().query(
+							DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI,
+							null, null, null, null);
+					ArrayList<Items> photoAlbumItems = PhotoAlbumCurosr
+							.getItems(cursor);
+					cursor = activity.getContentResolver().query(
+							DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI,
+							null, null, null, null);
+					ArrayList<Items> videoAlbumItems = VideoAlbumCursor
+							.getItems(cursor);
+					cursor.close();
+					Util.getInstance().removeOverlay();
+					callHomeIntent(bannerItems, photoAlbumItems,
+							videoAlbumItems);
+				} else {
 					if (cursor != null) {
 						cursor.close();
 					}
-					cursor = activity.getContentResolver().query(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, null, null, null, null);
-					if (cursor.getCount() > 0) {
-						teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
-
-					}
-					if (cursor != null) {
-						cursor.close();
-					}
-					if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
-
-						callTeamIntent(teamLogoItems, teamMemberItems);
-
-					}
-					else {
-						Log.e("MenuItems", "Problem Occured While Retriving Team Data From DB ");
-					}
-				}
-				else {
-					if (cursor != null) {
-						cursor.close();
-					}
 					if (Util.getInstance().isOnline(activity)) {
-						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.team_url)));
+						Intent mServiceIntent = new Intent(activity,
+								CCLPullService.class).setData(Uri
+								.parse(activity.getResources().getString(
+										R.string.banner_url)));
 						activity.startService(mServiceIntent);
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
-				}
-				break;
 
-			case R.id.layout_ownerslounge:
-				progressDialog = new ProgressDialog(activity);
-				progressDialog.setMessage(activity.getResources().getString(R.string.loading));
-				try {
-					progressDialog.show();
-				}
-				catch (BadTokenException e) {
-				}
-				new Handler().postDelayed(new Runnable() {
-
-					@Override
-					public void run () {
-						if (progressDialog != null) {
-							try {
-								progressDialog.dismiss();
-							}
-							catch (IllegalStateException e) {
-								// TODO: handle exception
-							}
-						}
-
-						Intent ownerIntent = new Intent(activity, OwnersLoungueActivity.class);
-						ownerIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-						activity.startActivity(ownerIntent);
-					}
-				}, 200);
-
-				break;
-			case R.id.layout_videos:
-				mRequestType = RequestType.VIDEOS_REQUEST;
-				cursor = activity.getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-				list = VideoAlbumCursor.getItems(cursor);
-				if (list == null || list.size() <= 0) {
-					if (Util.getInstance().isOnline(activity)) {
-						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_album_url)));
+						mServiceIntent = new Intent(activity,
+								CCLPullService.class).setData(Uri
+								.parse(activity.getResources().getString(
+										R.string.photo_album_url)));
 						activity.startService(mServiceIntent);
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
-				}
-				else {
-					Intent photoGalleryIntent = new Intent(activity, VideoGalleryActivity.class);
-					photoGalleryIntent.putParcelableArrayListExtra(Constants.EXTRA_VIDEO_KEY, list);
-					photoGalleryIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					activity.startActivity(photoGalleryIntent);
-				}
 
-				break;
-			case R.id.layout_home:
-				if (mLayout.isShown()) {
-					cursor = activity.getContentResolver().query(DataProviderContract.BANNERURL_TABLE_CONTENTURI, null, null, null, null);
-					if (cursor.getCount() > 0) {
-						ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
-						cursor = activity.getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-						ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
-						cursor = activity.getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-						ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
-						cursor.close();
-						callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
-					}
-					else {
-						if (cursor != null) {
-							cursor.close();
-						}
-						if (Util.getInstance().isOnline(activity)) {
-							Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.banner_url)));
-							activity.startService(mServiceIntent);
-
-							mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.photo_album_url)));
-							activity.startService(mServiceIntent);
-
-							mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.video_album_url)));
-							activity.startService(mServiceIntent);
-						}
-						else {
-							Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-						}
-					}
-				}
-
-				break;
-			case R.id.layout_downloads:
-
-				cursor = activity.getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
-				if (cursor != null && cursor.getCount() > 0) {
-					DownloadItemsCursor downloadItemsCursor = new DownloadItemsCursor();
-					list = downloadItemsCursor.getItems(cursor);
-					Intent downloadImageIntent = new Intent(activity, DownloadActivity.class);
-					downloadImageIntent.putParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY, list);
-					downloadImageIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-
-					activity.startActivity(downloadImageIntent);
-				}
-				else {
-					if (Util.getInstance().isOnline(activity)) {
-						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.downloads_url)));
+						mServiceIntent = new Intent(activity,
+								CCLPullService.class).setData(Uri
+								.parse(activity.getResources().getString(
+										R.string.video_album_url)));
 						activity.startService(mServiceIntent);
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
-					}
-				}
-				break;
-			case R.id.layout_live_score:
-				Intent liveScoreIntent = new Intent(activity, LiveScoreActivity.class);
-				activity.startActivity(liveScoreIntent);
-				break;
-
-			case R.id.layout_calender:
-				cursor = activity.getContentResolver().query(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null, null, null, null);
-
-				if (cursor != null && cursor.getCount() > 0) {
-					CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
-					list = mCalendarItemsCursor.getItems(cursor);
-					Intent calendarImageIntent = new Intent(activity, CalendarActivity.class);
-					calendarImageIntent.putParcelableArrayListExtra(Constants.EXTRA_CALENDAR_KEY, list);
-					calendarImageIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-
-					activity.startActivity(calendarImageIntent);
-				}
-				else {
-					if (Util.getInstance().isOnline(activity)) {
-
-						Intent mServiceIntent = new Intent(activity, CCLPullService.class).setData(Uri.parse(activity.getResources().getString(R.string.calender_url)));
-						activity.startService(mServiceIntent);
-					}
-					else {
-						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					} else {
+						Util.getInstance().removeOverlay();
+						Toast.makeText(
+								activity,
+								activity.getResources().getString(
+										R.string.network_error_message),
+								Toast.LENGTH_LONG).show();
 					}
 				}
-				break;
-			default:
-				break;
+			}
+
+			break;
+		case R.id.layout_downloads:
+			Util.getInstance().showOverlay(activity);
+			cursor = activity.getContentResolver().query(
+					DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null,
+					null, null, null);
+			if (cursor != null && cursor.getCount() > 0) {
+				DownloadItemsCursor downloadItemsCursor = new DownloadItemsCursor();
+				list = downloadItemsCursor.getItems(cursor);
+				Util.getInstance().removeOverlay();
+				Intent downloadImageIntent = new Intent(activity,
+						DownloadActivity.class);
+				downloadImageIntent.putParcelableArrayListExtra(
+						Constants.EXTRA_DOWNLOAD_KEY, list);
+				downloadImageIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+				activity.startActivity(downloadImageIntent);
+			} else {
+				if (Util.getInstance().isOnline(activity)) {
+					Intent mServiceIntent = new Intent(activity,
+							CCLPullService.class).setData(Uri.parse(activity
+							.getResources().getString(R.string.downloads_url)));
+					activity.startService(mServiceIntent);
+				} else {
+					Util.getInstance().removeOverlay();
+					Toast.makeText(
+							activity,
+							activity.getResources().getString(
+									R.string.network_error_message),
+							Toast.LENGTH_LONG).show();
+				}
+			}
+			break;
+		case R.id.layout_live_score:
+			Intent liveScoreIntent = new Intent(activity,
+					LiveScoreActivity.class);
+			activity.startActivity(liveScoreIntent);
+			break;
+
+		case R.id.layout_calender:
+			Util.getInstance().showOverlay(activity);
+			cursor = activity.getContentResolver().query(
+					DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null,
+					null, null, null);
+			if (cursor != null && cursor.getCount() > 0) {
+				CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
+				list = mCalendarItemsCursor.getItems(cursor);
+				Util.getInstance().removeOverlay();
+				Intent calendarImageIntent = new Intent(activity,
+						CalendarActivity.class);
+				calendarImageIntent.putParcelableArrayListExtra(
+						Constants.EXTRA_CALENDAR_KEY, list);
+				calendarImageIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				
+				activity.startActivity(calendarImageIntent);
+			} else {
+				if (Util.getInstance().isOnline(activity)) {
+
+					Intent mServiceIntent = new Intent(activity,
+							CCLPullService.class).setData(Uri.parse(activity
+							.getResources().getString(R.string.calender_url)));
+					activity.startService(mServiceIntent);
+				} else {
+					Util.getInstance().removeOverlay();
+					Toast.makeText(
+							activity,
+							activity.getResources().getString(
+									R.string.network_error_message),
+							Toast.LENGTH_LONG).show();
+				}
+			}
+			break;
+		default:
+			break;
 		}
 
 	}
 
-	private void callHomeIntent (ArrayList <Items> bannerItems, ArrayList <Items> photoAlbumItems, ArrayList <Items> videoAlbumItems) {
+	private void callHomeIntent(ArrayList<Items> bannerItems,
+			ArrayList<Items> photoAlbumItems, ArrayList<Items> videoAlbumItems) {
 		Intent homeActivityIntent = new Intent(activity, HomeActivity.class);
-		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_BANNER_KEY, bannerItems);
-		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
-		homeActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
-		activity.startActivityForResult(homeActivityIntent, in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
+		homeActivityIntent.putParcelableArrayListExtra(
+				in.ccl.util.Constants.EXTRA_BANNER_KEY, bannerItems);
+		homeActivityIntent.putParcelableArrayListExtra(
+				in.ccl.util.Constants.EXTRA_PHOTO_KEY, photoAlbumItems);
+		homeActivityIntent.putParcelableArrayListExtra(
+				in.ccl.util.Constants.EXTRA_VIDEO_KEY, videoAlbumItems);
+		activity.startActivityForResult(homeActivityIntent,
+				in.ccl.util.Constants.SPLASH_SCREEN_RESULT);
 	}
 
-	private void callTeamIntent (ArrayList <Teams> teamLogoItems, ArrayList <TeamMember> teamMemberItems) {
+	private void callTeamIntent(ArrayList<Teams> teamLogoItems,
+			ArrayList<TeamMember> teamMemberItems) {
 		Intent teamActivityIntent = new Intent(activity, TeamActivity.class);
-		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
-		teamActivityIntent.putParcelableArrayListExtra(in.ccl.util.Constants.EXTRA_TEAM_MEMBER_KEY, teamMemberItems);
+		teamActivityIntent.putParcelableArrayListExtra(
+				in.ccl.util.Constants.EXTRA_TEAM_LOGO_KEY, teamLogoItems);
+		teamActivityIntent.putParcelableArrayListExtra(
+				in.ccl.util.Constants.EXTRA_TEAM_MEMBER_KEY, teamMemberItems);
 		teamActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-		activity.startActivityForResult(teamActivityIntent, in.ccl.util.Constants.TEAM_RESULT);
+		activity.startActivityForResult(teamActivityIntent,
+				in.ccl.util.Constants.TEAM_RESULT);
 	}
+
 }

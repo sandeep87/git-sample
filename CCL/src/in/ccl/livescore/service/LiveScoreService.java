@@ -90,21 +90,21 @@ public class LiveScoreService extends IntentService {
 							try {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
-                System.out.println("Match date "+scheduleDate);
-                System.out.println("today date "+todayDate);
-								/*Date questionDate = matchSchedule.getStartTime();
-								Date today = new Date();
-
-								SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd");
-
-								String questionDateStr = dateFormatter.format(questionDate);
-								String todayStr = dateFormatter.format(today);
-*/
+								System.out.println("Match date " + scheduleDate);
+								System.out.println("today date " + todayDate);
+								/*
+								 * Date questionDate = matchSchedule.getStartTime(); Date today = new Date();
+								 * 
+								 * SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd");
+								 * 
+								 * String questionDateStr = dateFormatter.format(questionDate); String todayStr = dateFormatter.format(today);
+								 */
 								if (scheduleDate.equals(todayDate) && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("started") && matchSchedule.getEndDate().compareTo(todayDate) > 0) {
 									System.out.println("Calling for current score");
 									Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 									long trigger = getScheduleTimeInMills(matchSchedule.getStartTime());
+
 									alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 									alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 								}
@@ -269,12 +269,14 @@ public class LiveScoreService extends IntentService {
 			SimpleDateFormat lv_formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			lv_formatter.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
 
-			// System.out.println(" The Date in the local time zone " + lv_formatter.format(lv_localDate));
+			// System.out.println(" The Date in the local time zone " +
+			// lv_formatter.format(lv_localDate));
 
 			// Convert the date from the local timezone to UTC timezone
 			lv_formatter.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
 			String lv_dateFormateInUTC = lv_formatter.format(lv_localDate);
-			// System.out.println(" The Date in the UTC time zone " + lv_dateFormateInUTC);
+			// System.out.println(" The Date in the UTC time zone " +
+			// lv_dateFormateInUTC);
 
 			gregorianCalendar.setTime(formatter.parse(lv_formatter.format(lv_localDate)));
 			return gregorianCalendar.getTimeInMillis();
