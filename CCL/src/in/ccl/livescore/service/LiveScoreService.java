@@ -32,7 +32,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.text.format.DateUtils;
 
 public class LiveScoreService extends IntentService {
 
@@ -82,8 +81,8 @@ public class LiveScoreService extends IntentService {
 				// Handles possible exceptions
 				if (responseCode == HttpStatus.SC_OK) {
 					if (compareKey.equals("match_schedule")) {
-						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", new Locale("in"));
-						SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd", new Locale("in"));
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+						SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd");
 						MatchSchedule matchSchedule = LiveScoreParser.parseCurrentMatchSchedule(localHttpURLConnection.getInputStream());
 						if (matchSchedule != null && matchSchedule.getStartTime() != null && matchSchedule.getEndDate() != null && matchSchedule.getStatus() != null) {
 							dateSdf.setTimeZone(TimeZone.getTimeZone("GMT+05:30"));
@@ -91,7 +90,8 @@ public class LiveScoreService extends IntentService {
 							try {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
-
+                System.out.println("Match date "+scheduleDate);
+                System.out.println("today date "+todayDate);
 								/*Date questionDate = matchSchedule.getStartTime();
 								Date today = new Date();
 
@@ -128,7 +128,7 @@ public class LiveScoreService extends IntentService {
 					else if (compareKey.equals("match_schedule_update")) {
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", new Locale("in"));
 						SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd", new Locale("in"));
-						dateSdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+						dateSdf.setTimeZone(TimeZone.getTimeZone("GMT+05:30"));
 						java.util.Date date = new java.util.Date();
 						MatchSchedule matchSchedule = LiveScoreParser.parseCurrentMatchSchedule(localHttpURLConnection.getInputStream());
 						if (matchSchedule != null && matchSchedule.getStartTime() != null && matchSchedule.getEndDate() != null && matchSchedule.getStatus() != null) {
