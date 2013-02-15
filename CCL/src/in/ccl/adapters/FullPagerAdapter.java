@@ -27,19 +27,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.android.AsyncFacebookRunner;
-import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
-import com.facebook.android.Facebook.DialogListener;
-import com.facebook.android.FacebookError;
 
 public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse {
 
@@ -135,6 +129,15 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt);
 
 		((ViewPager) view).addView(imageLayout, 0);
+		
+    /*  imageView.setOnLongClickListener(new OnLongClickListener() {
+				
+				@Override
+				public boolean onLongClick (View v) {
+					Toast.makeText(activity, "LongClick", Toast.LENGTH_LONG).show();
+					return true;
+				}
+			});*/
 	/*	imageView.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override

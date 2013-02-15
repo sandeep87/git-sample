@@ -228,7 +228,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 			public void onClick (View v) {
 				mLayout.toggleSidebar();
 				// MenuItems.getInstance().blink();
-				System.out.println("Menu btn clikc");
 			}
 		});
 		// if layout select for score view should start animation.
@@ -381,7 +380,6 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
 		showCurrentHeader();
 		if (!isCurrentScoreTimerStarted) {
-			System.out.println("phani...");
 			// send request to get live matches schedule
 			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.match_schedule_url)));
 			startService(mServiceIntent);
@@ -391,17 +389,20 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 	private void showCurrentHeader () {
 		if (mCurrentScore == null) {
 			isLiveScore = false;
+			System.out.println("phani livescore"+isLiveScore);
 			txtScoreHeader.setVisibility(View.GONE);
-			imgBtnScoreDropDown.setVisibility(View.GONE);
-			txtCurrentScore.setText(getResources().getString(R.string.app_title));
+		//	imgBtnScoreDropDown.setVisibility(View.GONE);
+			MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
+		 txtCurrentScore.setText(getResources().getString(R.string.app_title));
 			txtCurrentScore.setGravity((Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL));
 		}
 		else {
 			isLiveScore = true;
+			System.out.println("phani livescore...."+isLiveScore);
 			txtScoreHeader.setVisibility(View.VISIBLE);
 			txtScoreHeader.setText("Score : ");
-			imgBtnScoreDropDown.setVisibility(View.VISIBLE);
-			imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown);
+		//	imgBtnScoreDropDown.setVisibility(View.VISIBLE);
+		//	imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown);
 			txtCurrentScore.setGravity(Gravity.LEFT);
 			txtCurrentScore.setText(mCurrentScore);
 		}
@@ -443,11 +444,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 					break;
 
 				case in.ccl.database.Constants.STATE_ACTION_CALENDAR_IMAGE_COMPLETE:
-					System.out.println("nagesh broad cast calender complete called in top");
 					Cursor cursor1 = getContentResolver().query(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null, null, null, null);
 					CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
 					ArrayList <Items> calenderImageItems = mCalendarItemsCursor.getItems(cursor1);
-					System.out.println("calenderImageItems " + calenderImageItems.size());
 					if (cursor1 != null) {
 						cursor1.close();
 					}
@@ -494,7 +493,9 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						if (currentScore == null && !mDrawer.isOpened()) {
 							if (txtScoreHeader != null && imgBtnScoreDropDown != null && txtCurrentScore != null) {
 								txtScoreHeader.setVisibility(View.GONE);
-								imgBtnScoreDropDown.setVisibility(View.GONE);
+								isLiveScore = false;
+								MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
+								//imgBtnScoreDropDown.setVisibility(View.GONE);
 								txtCurrentScore.setText(getResources().getString(R.string.app_title));
 								txtCurrentScore.setGravity((Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL));
 							}
@@ -502,9 +503,12 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						else if (!mDrawer.isOpened()) {
 							if (txtScoreHeader != null && imgBtnScoreDropDown != null && txtCurrentScore != null) {
 								txtScoreHeader.setVisibility(View.VISIBLE);
-								txtScoreHeader.setText("Score : ");
-								imgBtnScoreDropDown.setVisibility(View.VISIBLE);
-								imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown);
+							 	isLiveScore = true;
+							 	MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
+							 	System.out.println("phani live start"+isLiveScore);
+							   txtScoreHeader.setText("Score : ");
+							//	imgBtnScoreDropDown.setVisibility(View.VISIBLE);
+						//		imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown);
 								txtCurrentScore.setText(currentScore);
 								txtCurrentScore.setGravity(Gravity.LEFT);
 							}
