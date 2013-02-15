@@ -30,7 +30,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,8 +74,6 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 	private String access_token;
 
-	private int position;
-
 	private String[] imageDetails = { "LIKE", "COMMENT", "SHARE" };
 
 	// private Category mCategory;
@@ -102,14 +99,12 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		((ViewPager) container).removeView((View) object);
 	}
 
-	public FullPagerAdapter (Activity ctx, ArrayList <Items> list, Category category, int pos) {
+	public FullPagerAdapter (Activity ctx, ArrayList <Items> list, Category category) {
 		activity = ctx;
 		itemsList = list;
 		context = ctx;
-		position = pos;
 		// mCategory = category;
 		inflater = activity.getLayoutInflater();
-		url = itemsList.get(position).getPhotoOrVideoUrl();
 	}
 
 	@Override
@@ -130,17 +125,15 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 		TextView errorTxt = (TextView) imageLayout.findViewById(R.id.error_title);
 		// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
-    imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.blackbackground));
+		imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.blackbackground));
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt);
 
 		((ViewPager) view).addView(imageLayout, 0);
-	/*	imageView.setOnLongClickListener(new OnLongClickListener() {
+		imageView.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
-			public boolean onLongClick (View v) {
-		     Toast.makeText(v.getContext(), "imageView.setOnLongClickListener", Toast.LENGTH_LONG).show();
-
+			public boolean onLongClick (final View imageViewUrl) {
 				shareDialog = new Dialog(activity);
 				shareDialog.setContentView(R.layout.dialog_layout);
 				shareDialog.setTitle("Image displayed in FaceBook");
@@ -152,6 +145,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 					@Override
 					public void onItemClick (AdapterView <?> arg0, View arg1, int position, long arg3) {
+						url = imageViewUrl.getTag().toString();
 						myPrefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
 						myFacebookId = myPrefs.getString("FaceBook_User_Id", null);
 						access_token = myPrefs.getString("access_token", null);
@@ -170,7 +164,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 									authorization();
 								}
 								else {
-									shareOnFaceBook();
+									shareOnFaceBook(url);
 
 								}
 
@@ -203,13 +197,10 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 						});
 					}
 				});
-
-			
 				return true;
 			}
 
-		});*/
-
+		});
 		return imageLayout;
 
 	}
@@ -238,7 +229,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 				network_provider = "facebook";
 
-				shareOnFaceBook();
+				shareOnFaceBook(url);
 
 			}
 			catch (JSONException e) {
@@ -260,7 +251,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 	}
 
-	private void shareOnFaceBook () {
+	private void shareOnFaceBook (String shareImageUrl) {
 		Bundle params = new Bundle();
 		params.putString("link", url);
 		params.putString("message", " From CCL Android Application");
@@ -276,6 +267,5 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		mAsyncRunner.request("me/feed", params, "POST", new in.ccl.helper.SampleUploadListener(FullPagerAdapter.this), null);
 
 	}
-	
 
 }

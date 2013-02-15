@@ -6,7 +6,6 @@ import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -20,15 +19,9 @@ import android.util.AttributeSet;
 import android.util.FloatMath;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ScaleImageView extends ImageView implements OnTouchListener {
 
@@ -146,7 +139,6 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 		this.setScaleType(ScaleType.MATRIX);
 		this.mMatrix = new Matrix();
 		Drawable d = getDrawable();
-		System.out.println("get drawable " + d);
 		if (d != null) {
 			mIntrinsicWidth = d.getIntrinsicWidth();
 			mIntrinsicHeight = d.getIntrinsicHeight();
@@ -178,14 +170,12 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	 */
 	private void showView (int visState) {
 		// If the View contains something
-		System.out.println("Rajesh mThisView  " + mThisView);
 		if (mThisView != null) {
 
 			// Gets a local hard reference to the View
 			View localView = mThisView.get();
 
 			// If the weak reference actually contains something, set the visibility
-			System.out.println("Rajesh local view " + localView);
 			if (localView != null)
 				localView.setVisibility(visState);
 		}
@@ -258,9 +248,8 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 
 	@Override
 	public void setImageBitmap (Bitmap paramBitmap) {
-		System.out.println("Setting view  from scale Image view" + paramBitmap);
 		super.setImageBitmap(paramBitmap);
-		this.initialize(); // phani
+		this.initialize();
 	}
 
 	@Override
@@ -437,7 +426,6 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 
 			}
 			else if (resId == PhotoManager.TASK_COMPLETE) {
-				System.out.println("TASK COMPLETED OOOOOOOO");
 				if (errorTitleTxt != null) {
 					errorTitleTxt.setVisibility(View.GONE);
 				}
@@ -533,7 +521,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	}
 
 	@Override
-	public boolean onTouchEvent (MotionEvent event) {
+	public boolean onTouch (View v, MotionEvent event) {
 		int touchCount = event.getPointerCount();
 
 		switch (event.getAction()) {
@@ -586,24 +574,13 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 						if (30 > Math.abs(mDoubleTapX - event.getX()) + Math.abs(mDoubleTapY - event.getY())) {
 							maxZoomTo(mDoubleTapX, mDoubleTapY);
 							cutting();
-						}else{
-							System.out.println("ON click and long click");
-							Toast.makeText(mContext,"On click event list", Toast.LENGTH_LONG).show();
 						}
-					
 					}
-					isDoubleTap = false;
 
+					isDoubleTap = false;
 					break;
 				}
 		}
-		return true;
-	}
-
-	@Override
-	public boolean onTouch (View v, MotionEvent event) {
 		return false;
 	}
-
-
 }

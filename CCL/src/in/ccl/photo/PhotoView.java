@@ -80,7 +80,7 @@ public class PhotoView extends ImageView {
 	 * Creates an ImageDownloadView and gets attribute values
 	 * 
 	 * @param context A Context to use with the View
-	 * @param attributeSet The entire set of attributes for the View
+	 * @param attributeSet The entire set of attributes for the iew
 	 */
 	public PhotoView (Context context, AttributeSet attributeSet) {
 		super(context, attributeSet);
