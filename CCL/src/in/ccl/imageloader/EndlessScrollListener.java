@@ -22,7 +22,7 @@ public class EndlessScrollListener implements OnScrollListener {
 	private boolean loading = true;
 
 	public static enum RequestType {
-		NO_REQUEST, VIDEO_REQUEST, ALBUM_REQUEST, PHOTO_GALLERY_REQUEST, DOWNLOAD_IMAGE_REQUEST;
+		NO_REQUEST, VIDEO_REQUEST, ALBUM_REQUEST, PHOTO_GALLERY_REQUEST, DOWNLOAD_IMAGE_REQUEST,CALENDAR_IMAGE_REQUEST;
 	}
 
 	RequestType mRequestType = RequestType.NO_REQUEST;
@@ -97,6 +97,25 @@ public class EndlessScrollListener implements OnScrollListener {
 						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 					}
 					break;
+					
+					
+				case CALENDAR_IMAGE_REQUEST:
+
+					if (Util.getInstance().isOnline(activity)) {
+						Intent calendarServiceIntent = new Intent(activity, CCLPullService.class);
+						String murl = activity.getResources().getString(R.string.calender_url) + "?page=" + (currentPage + 1);
+						
+						calendarServiceIntent.setData(Uri.parse(murl));
+						calendarServiceIntent.putExtra("KEY", "calendar");
+						activity.startService(calendarServiceIntent);
+
+					}
+					else {
+						Toast.makeText(activity, activity.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+					}
+					break;	
+		
+					
 				default:
 					break;
 			}

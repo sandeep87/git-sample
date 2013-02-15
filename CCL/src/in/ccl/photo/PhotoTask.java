@@ -23,6 +23,7 @@ import java.lang.ref.WeakReference;
 import java.net.URL;
 
 import android.graphics.Bitmap;
+import android.widget.ImageView;
 
 /**
  * This class manages PhotoDownloadRunnable and PhotoDownloadRunnable objects. It does't perform the download or decode; instead, it manages persistent storage for the tasks that do the work. It does this by implementing the interfaces that the download and decode classes define, and then passing
@@ -36,6 +37,7 @@ public class PhotoTask implements TaskRunnableDownloadMethods, TaskRunnableDecod
 	 * more transitory in nature.
 	 */
 	private WeakReference <PhotoView> mImageWeakRef;
+	private WeakReference <ScaleImageView> mScaleImageWeakRef;
 
 	// The image's URL
 	private URL mImageURL;
@@ -74,6 +76,16 @@ public class PhotoTask implements TaskRunnableDownloadMethods, TaskRunnableDecod
 	 */
 	private static PhotoManager sPhotoManager;
 
+	private static boolean isViewZoom;
+
+	public boolean isViewZoom () {
+		return isViewZoom;
+	}
+
+	public static void setViewZoom (boolean isViewZoom) {
+		PhotoTask.isViewZoom = isViewZoom;
+	}
+
 	/**
 	 * Creates an PhotoTask containing a download object and a decoder object.
 	 */
@@ -90,17 +102,28 @@ public class PhotoTask implements TaskRunnableDownloadMethods, TaskRunnableDecod
 	 * @param photoManager A ThreadPool object
 	 * @param photoView An ImageView instance that shows the downloaded image
 	 * @param cacheFlag Whether caching is enabled
+	 * @param flag is for is the image support to zoom or not.
 	 */
-	void initializeDownloaderTask (PhotoManager photoManager, PhotoView photoView, boolean cacheFlag) {
+	void initializeDownloaderTask (PhotoManager photoManager, ImageView photoView, boolean cacheFlag, boolean flag) {
 		// Sets this object's ThreadPool field to be the input argument
 		sPhotoManager = photoManager;
 
 		// Gets the URL for the View
-		mImageURL = photoView.getLocation();
+		setViewZoom(flag);
 
-		// Instantiates the weak reference to the incoming view
-		mImageWeakRef = new WeakReference <PhotoView>(photoView);
+		if (!isViewZoom()) {
+			mImageURL = ((PhotoView) photoView).getLocation();
+			mImageWeakRef = new WeakReference <PhotoView>((PhotoView) photoView);
 
+			// Instantiates the weak reference to the incoming view
+
+		}
+		else {
+			mImageURL = ((ScaleImageView) photoView).getLocation();
+			mScaleImageWeakRef = new WeakReference <ScaleImageView>((ScaleImageView) photoView);
+
+			// Instantiates the weak reference to the incoming view
+		}
 		// Sets the cache flag to the input argument
 		mCacheEnabled = cacheFlag;
 
@@ -127,6 +150,10 @@ public class PhotoTask implements TaskRunnableDownloadMethods, TaskRunnableDecod
 		if (null != mImageWeakRef) {
 			mImageWeakRef.clear();
 			mImageWeakRef = null;
+		}
+		if(null != mScaleImageWeakRef){
+			mScaleImageWeakRef.clear();
+			mScaleImageWeakRef=null;
 		}
 
 		// Releases references to the byte buffer and the BitMap
@@ -190,7 +217,12 @@ public class PhotoTask implements TaskRunnableDownloadMethods, TaskRunnableDecod
 		}
 		return null;
 	}
-
+  public ScaleImageView getScaleImageView(){
+  	if(null != mScaleImageWeakRef){
+  		return mScaleImageWeakRef.get();
+  	}
+  	return null;
+  }
 	/*
 	 * Returns the Thread that this Task is running on. The method must first get a lock on a static field, in this case the ThreadPool singleton. The lock is needed because the Thread object reference is stored in the Thread object itself, and that object can be changed by processes outside of this
 	 * app.

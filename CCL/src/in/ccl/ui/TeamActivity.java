@@ -31,9 +31,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TeamActivity extends TopActivity {
 
@@ -127,7 +127,6 @@ public class TeamActivity extends TopActivity {
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addContent(R.layout.team_layout);
-		super.disableAds();
 		pager = (ViewPager) findViewById(R.id.team_view_pager);
 		teamMemberViewPager = (ViewPager) findViewById(R.id.team_member_pager);
 		teamAmbassadorViewPager = (ViewPager) findViewById(R.id.team_ambassadors_pager);

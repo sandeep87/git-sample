@@ -2,6 +2,7 @@ package in.ccl.ui;
 
 import in.ccl.adapters.LiveScoreSlidingDrawer;
 import in.ccl.database.BannerCursor;
+import in.ccl.database.CalendarItemsCursor;
 import in.ccl.database.DataProviderContract;
 import in.ccl.database.DownloadItemsCursor;
 import in.ccl.helper.AnimationLayout;
@@ -141,6 +142,10 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 
 	private int currentMatchId;
 
+	public static boolean isLiveScore;
+
+	public static int live_match_id;
+
 	private static boolean isTopHeaderSelected;
 
 	public static boolean isTopHeaderSelected() {
@@ -206,10 +211,10 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 		adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
 		adsLayout.setVisibility(View.VISIBLE);
 		// Initiate a generic request to load it with an ad
-		// AdRequest adRequest = new AdRequest();
-		// adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
-		// adView.loadAd(adRequest);// new AdRequest()
-		adView.loadAd(new AdRequest());
+		AdRequest adRequest = new AdRequest();
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+		adView.loadAd(adRequest);// new AdRequest()
+		// adView.loadAd(new AdRequest());
 		// for user menu selection from top activity.
 		ImageButton imgBtnMenu = (ImageButton) findViewById(R.id.img_btn_menu);
 
@@ -223,27 +228,28 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 
 			public void onClick(View v) {
 				mLayout.toggleSidebar();
+				// MenuItems.getInstance().blink();
+				System.out.println("Menu btn clikc");
 			}
 		});
 		// if layout select for score view should start animation.
 		// click event to visible and invisible of score view.
 		scoreLayout.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (!isTopHeaderSelected()) {
-					setTopHeaderSelected(true);
-					showOrHideLiveScore();
-				}
+
+			public void onClick (View v) {
+
+				/*
+				 * if (!isTopHeaderSelected()) { setTopHeaderSelected(true); showOrHideLiveScore(); }
+				 */
 			}
 		});
 
 		imgBtnScoreDropDown.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (!isTopHeaderSelected()) {
-					setTopHeaderSelected(true);
-					showOrHideLiveScore();
-				}
+
+			public void onClick (View v) {
+				/*
+				 * if (!isTopHeaderSelected()) { setTopHeaderSelected(true); showOrHideLiveScore(); }
+				 */
 			}
 		});
 		MenuItems.getInstance().loadMenu(this, menuLayout, mLayout);
@@ -261,19 +267,21 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 		alarmManager.cancel(pendingIntent);
 	}
 	
-	private void showOrHideLiveScore() {
+	private void showOrHideLiveScore () {
 
 		if (!mDrawer.isOpened()) {
 
-			if (!(txtCurrentScore.getText().equals(getResources().getString(
-					R.string.app_title)))) {
-				Intent mServiceIntent = new Intent(TopActivity.this,
-						LiveScoreService.class).setData(Uri
-						.parse(getResources().getString(
-								R.string.live_matches_urls)));
+			// callLiveScoreService(1);
+			// if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
+			// Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
+			// startService(mServiceIntent);
+			// }
+			if (!(txtCurrentScore.getText().equals(getResources().getString(R.string.app_title)))) {
+				Intent mServiceIntent = new Intent(TopActivity.this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.live_matches_urls)));
 				startService(mServiceIntent);
 			}
-		} else {
+		}
+		else {
 			cancleUpdateLiveScore();
 			showCurrentHeader();
 			mDrawer.animateClose();
@@ -382,6 +390,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 				mDownloadStateReceiver, statusIntentFilter);
 		showCurrentHeader();
 		if (!isCurrentScoreTimerStarted) {
+			System.out.println("phani...");
 			// send request to get live matches schedule
 			Intent mServiceIntent = new Intent(this, LiveScoreService.class)
 					.setData(Uri.parse(getResources().getString(
@@ -392,13 +401,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 
 	private void showCurrentHeader() {
 		if (mCurrentScore == null) {
+			isLiveScore = false;
 			txtScoreHeader.setVisibility(View.GONE);
 			imgBtnScoreDropDown.setVisibility(View.GONE);
-			txtCurrentScore.setText(getResources()
-					.getString(R.string.app_title));
-			txtCurrentScore
-					.setGravity((Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL));
-		} else {
+			txtCurrentScore.setText(getResources().getString(R.string.app_title));
+			txtCurrentScore.setGravity((Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL));
+		}
+		else {
+			isLiveScore = true;
 			txtScoreHeader.setVisibility(View.VISIBLE);
 			txtScoreHeader.setText("Score : ");
 			imgBtnScoreDropDown.setVisibility(View.VISIBLE);
@@ -433,71 +443,76 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 					Constants.STATE_ACTION_COMPLETE)) {
 
 			case in.ccl.database.Constants.STATE_ACTION_DOWNLOAD_IMAGE_COMPLETE:
+					Cursor cursor = getContentResolver().query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI, null, null, null, null);
+					DownloadItemsCursor mDownloadItemsCursor = new DownloadItemsCursor();
+					ArrayList <Items> downloadImageItems = mDownloadItemsCursor.getItems(cursor);
+					if (cursor != null) {
+						cursor.close();
+					}
+					Intent downloadImageIntent = new Intent(TopActivity.this, DownloadActivity.class);
+					if (downloadImageItems.size() > 0 && downloadImageItems != null) {
+						downloadImageIntent.putParcelableArrayListExtra(Constants.EXTRA_DOWNLOAD_KEY, downloadImageItems);
+						// downloadImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+						startActivity(downloadImageIntent);
+					}
+					break;
 
-				Cursor cursor = getContentResolver().query(
-						DataProviderContract.DOWNLOAD_IMAGE_TABLE_CONTENTURI,
-						null, null, null, null);
-				ArrayList<Items> downloadImageItems = DownloadItemsCursor
-						.getItems(cursor);
-				if (cursor != null) {
-					cursor.close();
-				}
-				Intent downloadImageIntent = new Intent(TopActivity.this,
-						DownloadActivity.class);
-				if (downloadImageItems.size() > 0 && downloadImageItems != null) {
-					downloadImageIntent.putParcelableArrayListExtra(
-							Constants.EXTRA_DOWNLOAD_KEY, downloadImageItems);
-					downloadImageIntent
-							.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-					startActivity(downloadImageIntent);
-				}
-				break;
-			case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
-				ArrayList<Teams> teamLogoItems = null;
-				ArrayList<TeamMember> teamMemberItems = null;
+				case in.ccl.database.Constants.STATE_ACTION_CALENDAR_IMAGE_COMPLETE:
+					System.out.println("nagesh broad cast calender complete called in top");
+					Cursor cursor1 = getContentResolver().query(DataProviderContract.CALENDAR_IMAGE_TABLE_CONTENTURI, null, null, null, null);
+					CalendarItemsCursor mCalendarItemsCursor = new CalendarItemsCursor();
+					ArrayList <Items> calenderImageItems = mCalendarItemsCursor.getItems(cursor1);
+					System.out.println("calenderImageItems " + calenderImageItems.size());
+					if (cursor1 != null) {
+						cursor1.close();
+					}
+					Intent calenderImageIntent = new Intent(TopActivity.this, CalendarActivity.class);
+					if (calenderImageItems.size() > 0 && calenderImageItems != null) {
 
-				cursor = getContentResolver().query(
-						DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null,
-						null, null, null);
-				if (cursor.getCount() > 0) {
-					teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
-				}
-				if (cursor != null) {
-					cursor.close();
-				}
-				cursor = getContentResolver().query(
-						DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI,
-						null, null, null, null);
-				if (cursor.getCount() > 0) {
-					teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
+						calenderImageIntent.putParcelableArrayListExtra(Constants.EXTRA_CALENDAR_KEY, calenderImageItems);
+						// calenderImageIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+						startActivity(calenderImageIntent);
+					}
+					break;
 
-				}
-				if (cursor != null) {
-					cursor.close();
-				}
-				if ((teamLogoItems != null && teamLogoItems.size() > 0)
-						&& (teamMemberItems != null && teamMemberItems.size() > 0)) {
-					callTeamIntent(teamLogoItems, teamMemberItems);
-				} else {
-					Log.e(TAG, "Team Data is not availble");
-				}
-				break;
-			case in.ccl.database.Constants.STATE_CURRENT_SCORE_TASK_COMPLETED:
-				if (intent != null && intent.hasExtra("current_score")) {
-					String currentScore = intent
-							.getStringExtra("current_score");
-					mCurrentScore = currentScore;
+				case in.ccl.database.Constants.STATE_ACTION_TEAM_MEMBERS_COMPLETE:
+					ArrayList <Teams> teamLogoItems = null;
+					ArrayList <TeamMember> teamMemberItems = null;
 
-					if (currentScore == null && !mDrawer.isOpened()) {
-						if (txtScoreHeader != null
-								&& imgBtnScoreDropDown != null
-								&& txtCurrentScore != null) {
-							txtScoreHeader.setVisibility(View.GONE);
-							imgBtnScoreDropDown.setVisibility(View.GONE);
-							txtCurrentScore.setText(getResources().getString(
-									R.string.app_title));
-							txtCurrentScore
-									.setGravity((Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL));
+					cursor = getContentResolver().query(DataProviderContract.TEAMS_LOGO_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor.getCount() > 0) {
+						teamLogoItems = BannerCursor.getTeamLogoItems(cursor);
+					}
+					if (cursor != null) {
+						cursor.close();
+					}
+					cursor = getContentResolver().query(DataProviderContract.TEAM_MEMBERS_TABLE_CONTENTURI, null, null, null, null);
+					if (cursor.getCount() > 0) {
+						teamMemberItems = BannerCursor.getTeamMemberItems(cursor);
+
+					}
+					if (cursor != null) {
+						cursor.close();
+					}
+					if ((teamLogoItems != null && teamLogoItems.size() > 0) && (teamMemberItems != null && teamMemberItems.size() > 0)) {
+						callTeamIntent(teamLogoItems, teamMemberItems);
+					}
+					else {
+						Log.e(TAG, "Team Data is not availble");
+					}
+					break;
+				case in.ccl.database.Constants.STATE_CURRENT_SCORE_TASK_COMPLETED:
+					if (intent != null && intent.hasExtra("current_score")) {
+						String currentScore = intent.getStringExtra("current_score");
+						mCurrentScore = currentScore;
+						System.out.println("current score" + mCurrentScore);
+						if (currentScore == null && !mDrawer.isOpened()) {
+							if (txtScoreHeader != null && imgBtnScoreDropDown != null && txtCurrentScore != null) {
+								txtScoreHeader.setVisibility(View.GONE);
+								imgBtnScoreDropDown.setVisibility(View.GONE);
+								txtCurrentScore.setText(getResources().getString(R.string.app_title));
+								txtCurrentScore.setGravity((Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL));
+							}
 						}
 					} else if (!mDrawer.isOpened()) {
 						if (txtScoreHeader != null
@@ -508,38 +523,41 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 							imgBtnScoreDropDown.setVisibility(View.VISIBLE);
 							imgBtnScoreDropDown
 									.setBackgroundResource(R.drawable.dropdown);
-							txtCurrentScore.setText(currentScore);
+//							txtCurrentScore.setText(currentScore);
 							txtCurrentScore.setGravity(Gravity.LEFT);
 						}
 					}
-				}
-				break;
-			case in.ccl.database.Constants.STATE_MATCHES_TASK_COMPLETED:
-				if (intent != null && intent.hasExtra("matches_list")) {
-					matcheslist = intent
-							.getParcelableArrayListExtra("matches_list");
-					if (matcheslist != null) {
-						if (matcheslist.size() > 0) {
-							callLiveScoreService(matcheslist.get(0).getId());
+					break;
+				case in.ccl.database.Constants.STATE_MATCHES_TASK_COMPLETED:
+					if (intent != null && intent.hasExtra("matches_list")) {
+						matcheslist = intent.getParcelableArrayListExtra("matches_list");
+						if (matcheslist != null) {
+							if (matcheslist.size() > 0) {
+								callLiveScoreService(matcheslist.get(0).getId());
+								live_match_id = matcheslist.get(0).getId();
+							}
 						}
 					}
-				}
-				break;
-			case in.ccl.database.Constants.STATE_LIVE_SCORE_TASK_COMPLETED:
-				if (intent != null && intent.hasExtra("livescore")) {
-					LiveScore liveScore = intent
-							.getParcelableExtra("livescore");
-					if (imgBtnScoreDropDown != null) {
-						imgBtnScoreDropDown
-								.setBackgroundResource(R.drawable.dropdown_up);
+					break;
+				case in.ccl.database.Constants.STATE_LIVE_SCORE_TASK_COMPLETED:
+					if (intent != null && intent.hasExtra("livescore")) {
+						LiveScore liveScore = intent.getParcelableExtra("livescore");
+						if (imgBtnScoreDropDown != null) {
+							imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown_up);
+						}
+						addLiveScoreView();
+						displayLiveScore(liveScore);
+						setTopHeaderSelected(false);
+						/*
+						 * if (mDrawer != null) { mDrawer.animateOpen(); }
+						 */
 					}
 					addLiveScoreView();
-					displayLiveScore(liveScore);
+//					displayLiveScore(liveScore);
 					setTopHeaderSelected(false);
 					if (mDrawer != null) {
 						mDrawer.animateOpen();
-					}
-				}
+					}				
 				break;
 			case in.ccl.database.Constants.STATE_LIVE_SCORE_UPDATE_TASK_COMPLETED:
 				if (intent != null && intent.hasExtra("livescore")) {
@@ -587,8 +605,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 		startActivityForResult(teamActivityIntent,
 				in.ccl.util.Constants.TEAM_RESULT);
 	}
-
-	private void addLiveScoreView() {
+	private void addLiveScoreView () {
 		target_score = (TextView) findViewById(R.id.team_score);
 
 		battingLogo = (PhotoView) findViewById(R.id.batting_logo);
@@ -654,29 +671,18 @@ public class TopActivity extends Activity implements AnimationLayout.Listener,
 		if (target_score != null) {
 			if (liveScore.getTarget_score() == 0) {
 				target_score.setVisibility(View.GONE);
-			} else {
-				String first_inning_overs = "(" + liveScore.getTarget_overs()
-						+ " Overs" + ")";
-				target_score.setText("Target  :  "
-						+ liveScore.getTarget_score()
-						+ " "
-						+ first_inning_overs
-						+ ""
-						+ "\n"
-						+ (liveScore.getNeed_score() == null ? "" : "\n"
-								+ "SCORE : " + liveScore.getNeed_score()));
+			}
+			else {
+				String first_inning_overs = "(" + liveScore.getTarget_overs() + " Overs" + ")";
+				target_score.setText("Target  :  " + liveScore.getTarget_score() + " " + first_inning_overs + "" + "\n" + (liveScore.getNeed_score() == null ? "" : "\n" + "SCORE : " + liveScore.getNeed_score()));
 			}
 			TextView txtErrrorMessage = new TextView(this);
 
 			battingLogo.setScaleType(ImageView.ScaleType.MATRIX);
 			if (liveScore.getTeamLogo() != null) {
-				battingLogo.setImageURL(
-						liveScore.getTeamLogo(),
-						true,
-						getResources().getDrawable(
-								R.drawable.photo_imagenotqueued),
-						txtErrrorMessage, false);
-			} else {
+				battingLogo.setImageURL(liveScore.getTeamLogo(), true, getResources().getDrawable(R.drawable.photo_imagenotqueued), txtErrrorMessage);
+			}
+			else {
 				battingLogo.setVisibility(View.INVISIBLE);
 			}
 			updateScore(liveScore.getCurrent_score_score());

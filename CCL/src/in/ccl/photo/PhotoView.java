@@ -66,13 +66,12 @@ public class PhotoView extends ImageView {
 	// The Thread that will be used to download the image for this ImageView
 	private PhotoTask mDownloadThread;
 
-	private boolean backgroundChange;
-
 	/**
 	 * Creates an ImageDownloadView with no settings
 	 * 
 	 * @param context A context for the View
 	 */
+
 	public PhotoView (Context context) {
 		super(context);
 	}
@@ -99,7 +98,6 @@ public class PhotoView extends ImageView {
 	 */
 	public PhotoView (Context context, AttributeSet attributeSet, int defaultStyle) {
 		super(context, attributeSet, defaultStyle);
-
 		// Gets attributes associated with the attribute set
 		getAttributes(attributeSet);
 	}
@@ -207,7 +205,7 @@ public class PhotoView extends ImageView {
 		if ((!mIsDrawn) && (mImageURL != null)) {
 
 			// Starts downloading this View, using the current cache setting
-			mDownloadThread = PhotoManager.startDownload(this, mCacheFlag);
+			mDownloadThread = PhotoManager.startDownload(this, mCacheFlag, false);
 
 			// After successfully downloading the image, this marks that it's available.
 			mIsDrawn = true;
@@ -252,6 +250,7 @@ public class PhotoView extends ImageView {
 		matrix.setScale(scale, scale);
 		setImageMatrix(matrix);
 		return super.setFrame(frameLeft, frameTop, frameRight, frameBottom);
+
 	}
 
 	@Override
@@ -308,8 +307,7 @@ public class PhotoView extends ImageView {
 	 * @param imageDrawable The Drawable to use for this ImageView
 	 * @param errorTxt
 	 */
-	public void setImageURL (String pictureUrl, boolean cacheFlag, Drawable imageDrawable, TextView errorTxt, boolean backgroundChange) {
-		this.backgroundChange = backgroundChange;
+	public void setImageURL (String pictureUrl, boolean cacheFlag, Drawable imageDrawable, TextView errorTxt) {
 		errorTitleTxt = errorTxt;
 		URL pictureURL = null;
 		try {
@@ -354,7 +352,7 @@ public class PhotoView extends ImageView {
 			/*
 			 * Starts a download of the picture file. Notice that if caching is on, the picture file's contents may be taken from the cache.
 			 */
-			mDownloadThread = PhotoManager.startDownload(this, cacheFlag);
+			mDownloadThread = PhotoManager.startDownload(this, cacheFlag, false);
 		}
 	}
 
@@ -386,23 +384,13 @@ public class PhotoView extends ImageView {
 		if (mThisView == null) {
 			if (resId == PhotoManager.DOWNLOAD_FAILED) {
 				if (errorTitleTxt != null) {
-					if (backgroundChange) {
-						setImageResource(R.drawable.blackbackground);
-					}
-					else {
-						setImageResource(R.drawable.decodequeued);
-					}
+					setImageResource(R.drawable.decodequeued);
 					errorTitleTxt.setVisibility(View.VISIBLE);
 					errorTitleTxt.setText("Loading...");
 				}
 			}
 			else if (resId == PhotoManager.DOWNLOAD_STARTED) {
-				if (backgroundChange) {
-					setImageResource(R.drawable.blackbackground);
-				}
-				else {
-					setImageResource(R.drawable.decodequeued);
-				}
+				setImageResource(R.drawable.decodequeued);
 				errorTitleTxt.setVisibility(View.VISIBLE);
 				errorTitleTxt.setText("Loading...");
 			}
@@ -412,13 +400,9 @@ public class PhotoView extends ImageView {
 				}
 			}
 			else {
-				if (backgroundChange) {
-					setImageResource(R.drawable.blackbackground);
-				}
-				else {
-					setImageResource(resId);
-				}
+				setImageResource(resId);
 			}
 		}
 	}
+
 }

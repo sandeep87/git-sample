@@ -141,7 +141,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 				});
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText, false);
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTitleText);
 				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, "banner");
 				// displayImage.show();
 				break;
@@ -160,7 +160,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 				// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
 
 				imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTxt, false);
+				imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.imagenotqueued), errorTxt);
 				// DisplayImage displayImage = new DisplayImage(itemsList.get(position).getPhotoOrVideoUrl(), imageView, activity, null);
 				// displayImage.show();
 				break;
@@ -200,7 +200,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View arg1, int pos, long arg3) {
-				TopActivity ta = (TopActivity) activity;
+					TopActivity ta = (TopActivity) activity;
 				if (ta.getDrawer() != null && ta.getDrawer().isOpened()) {
 					return;
 				}

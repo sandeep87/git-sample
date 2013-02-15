@@ -2,7 +2,6 @@ package in.ccl.database;
 
 import in.ccl.logging.Logger;
 import in.ccl.model.Items;
-import in.ccl.score.Innings;
 import in.ccl.score.LiveScore;
 import in.ccl.score.MatchesResponse;
 import in.ccl.score.ScoreBoard;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment.InstantiationException;
 import android.support.v4.content.LocalBroadcastManager;
 
 public class BroadcastNotifier {
@@ -26,7 +24,6 @@ public class BroadcastNotifier {
 			mBroadcaster = LocalBroadcastManager.getInstance(context);
 		}
 		catch (RuntimeException e) {
-			System.out.println("CCL Error " + "Unable to instan  java.lang.RuntimeException: Unable to instantiate service");
 			Logger.info(TAG, "Unable to instan  java.lang.RuntimeException: Unable to instantiate service");
 		}
 	}
@@ -39,7 +36,7 @@ public class BroadcastNotifier {
 	 * @param list
 	 */
 	public void broadcastIntentWithState (int status, ArrayList <Items> list) {
-
+                System.out.println("nagehs broadcast notifier");
 		Intent localIntent = new Intent();
 
 		// The Intent contains the custom broadcast action for this app

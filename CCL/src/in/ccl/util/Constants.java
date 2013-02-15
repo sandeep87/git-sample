@@ -125,5 +125,9 @@ public class Constants {
 	public static final String FIRST_INNINGS_KEY = "first_innings_key";
 	public static final String SECOND_INNINGS_KEY = "second_innings_key";
 	public static final String SECOND_INNINGS_STATUS = "second_innings_status";
-
+	public static final int LOGIN_SUCCESS = 50;
+	public static final int FACEBOOK_POST_SUCCESS = 51;
+	public static final int FACEBOOK_POST_UNSUCCESS = 52;
+	
+	public static final String EXTRA_CALENDAR_KEY = "extra_calendar_key";
 }

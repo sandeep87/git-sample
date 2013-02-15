@@ -42,7 +42,7 @@ public class JSONPullParser {
 		return mPages;
 	}
 
-	public void parseBannerJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseBannerJson (InputStream inputStream) {
 		// Creates a new store for image URL data
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		String result = readStream(inputStream);
@@ -76,11 +76,11 @@ public class JSONPullParser {
 							item.put(DataProviderContract.BANNER_ALBUM_ID_COLUMN, slide_album_id);
 						}
 					}
-				 	 java.util.Date date= new java.util.Date();
-					item.put(DataProviderContract.BANNER_LAST_MODIFIED_COLUMN, new Timestamp(date.getTime())+"");
+					java.util.Date date = new java.util.Date();
+					item.put(DataProviderContract.BANNER_LAST_MODIFIED_COLUMN, new Timestamp(date.getTime()) + "");
 					mImages.add(item);
 				}
-				}
+			}
 			catch (JSONException e) {
 				Log.i(TAG, "Banner items parsing exception");
 			}
@@ -120,7 +120,7 @@ public class JSONPullParser {
 		return null;
 	}
 
-	public void parsePhotoAlbumJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parsePhotoAlbumJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
@@ -159,7 +159,7 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parseVideoAlbumJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseVideoAlbumJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 
@@ -199,7 +199,7 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parsePhotoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parsePhotoJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -248,7 +248,7 @@ public class JSONPullParser {
 		}
 	}
 
-	public void parseVideoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseVideoJson (InputStream inputStream) {
 		int albumId = 0;
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -297,9 +297,9 @@ public class JSONPullParser {
 				Log.i(TAG, e.toString());
 			}
 		}
-	}	
+	}
 
-	public void parseDownloadJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseDownloadJson (InputStream inputStream) {
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
 		// mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -344,9 +344,11 @@ public class JSONPullParser {
 						String photo_thumb = jsonObject.getString("photo_thumb");
 
 						item.put(DataProviderContract.DOWNLOAD_IMAGE_THUMB_URL, photo_thumb);
+						
 					}
 
 					mImages.add(item);
+					
 				}
 			}
 			catch (JSONException e) {
@@ -358,7 +360,7 @@ public class JSONPullParser {
 
 	}
 
-	public void parseTeamsLogoJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+	public void parseTeamsLogoJson (InputStream inputStream) {
 
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -402,7 +404,8 @@ public class JSONPullParser {
 			}
 		}
 	}
-	public void parseTeamMembersJson (InputStream inputStream, BroadcastNotifier mBroadcaster) {
+
+	public void parseTeamMembersJson (InputStream inputStream) {
 
 		String result = readStream(inputStream);
 		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
@@ -448,11 +451,12 @@ public class JSONPullParser {
 								teamPersonalRole = String.format("%s (%s)", roleArray[0].trim(), roleArray[1].trim());
 							}
 							item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, teamPersonalRole);
-							//System.out.println("kranthi person role "+teamPersonalRole);
+							// System.out.println("kranthi person role "+teamPersonalRole);
 
 						}
-					}else{
-						//System.out.println("json person role null");
+					}
+					else {
+						// System.out.println("json person role null");
 						item.put(DataProviderContract.TEAM_PERSON_ROLE_COLUMN, "");
 
 					}
@@ -464,4 +468,73 @@ public class JSONPullParser {
 			}
 		}
 	}
+	
+	
+	
+	public void parseCalendarJson (InputStream inputStream) {
+		String result = readStream(inputStream);
+		mImages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+		// mPages = new Vector <ContentValues>(VECTOR_INITIAL_SIZE);
+
+		ContentValues pages = new ContentValues();
+		if (result != null) {
+			int noofpages = 0;
+			try {
+				JSONObject object = new JSONObject(result);
+
+				if (object.has("album_id")) {
+					pages.put(DataProviderContract.ALBUM_ID_COLUMN, 0);
+					pages.put(DataProviderContract.CATEGORY_ID, 3);
+
+				}
+				if (object.has("total_pages")) {
+					pages.put(DataProviderContract.TOTAL_PAGES, object.getInt("total_pages"));
+					noofpages = object.getInt("total_pages");
+
+				}
+
+				JSONArray jsonArray = new JSONArray(object.getString("result"));
+
+				for (int i = 0; i < jsonArray.length(); i++) {
+
+					item = new ContentValues();
+
+					JSONObject jsonObject = jsonArray.getJSONObject(i);
+					item.put(DataProviderContract.CALENDAR_IMAGE_NO_OF_PAGES, noofpages);
+
+					if (jsonObject.has("photo_id")) {
+						int id = jsonObject.getInt("photo_id");
+						item.put(DataProviderContract.CALENDAR_IMAGE_ID, id);
+					}
+					if (jsonObject.has("photo_url")) {
+						String photo_url = jsonObject.getString("photo_url");
+
+						item.put(DataProviderContract.CALENDAR_IMAGE_URL, photo_url);
+						
+					}
+					if (jsonObject.has("photo_thumb")) {
+						String photo_thumb = jsonObject.getString("photo_thumb");
+
+						item.put(DataProviderContract.CALENDAR_IMAGE_THUMB_URL, photo_thumb);
+					}
+
+					mImages.add(item);
+				}
+			}
+			catch (JSONException e) {
+				e.printStackTrace();
+
+			}
+
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

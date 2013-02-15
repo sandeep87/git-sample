@@ -15,10 +15,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -160,6 +162,7 @@ public class LiveScoreService extends IntentService {
 						startService(updateLIVEScoreIntent);
 					}
 					else if (compareKey.equals("update-livescore")) {
+
 						LiveScore liveScore = LiveScoreParser.parseLiveScore(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithLiveScore(Constants.STATE_LIVE_SCORE_UPDATE_TASK_COMPLETED, liveScore);
 						PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -171,13 +174,18 @@ public class LiveScoreService extends IntentService {
 						else {
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
+					}else if(compareKey.equals("livescore-activity")){
+						
+						LiveScore liveScore = LiveScoreParser.parseLiveScore(localHttpURLConnection.getInputStream());
+						mBroadcaster.broadcastIntentWithLiveScore(Constants.STATE_LIVE_SCORE_ACTIVITY_TASK_COMPLETED, liveScore);
+						
 					}
 					else if (compareKey.equals("fullscore")) {
 						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_TASK_COMPLETED, scoreBoard);
 					}
 					else if (compareKey.equals("score_board_update")) {
-						System.out.println("score_board_update");
+
 						ScoreBoard scoreBoard = LiveScoreParser.parseScoreBoard(localHttpURLConnection.getInputStream());
 						mBroadcaster.broadcastIntentWithScoreBoard(Constants.STATE_LIVE_SCOREBOARD_UPDATE_TASK_COMPLETED, scoreBoard);
 						workIntent.putExtra("KEY", "score_board_update");
@@ -185,13 +193,9 @@ public class LiveScoreService extends IntentService {
 						long trigger = System.currentTimeMillis() + 30000;
 						alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 						if (scoreBoard == null) {
-							System.out.println("Setting alaram cancled");
-
 							alarmManager.cancel(pendingIntent);
 						}
 						else {
-							System.out.println("Setting alaram ");
-
 							alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, pendingIntent);
 						}
 
@@ -240,18 +244,44 @@ public class LiveScoreService extends IntentService {
 		}
 	}
 
-	private long getScheduleTimeInMills (Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", new Locale("in"));
-		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-		java.util.Date dates;
+	public static long getScheduleTimeInMills (Date lv_localDate) { 
+		// Time Zone Problem testing
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
 		try {
-			dates = sdf.parse(sdf.format(date));
-			return dates.getTime();
+			// date = formatter.parse("2013-02-12 15:33:00");
+			TimeZone timeZone = TimeZone.getTimeZone(TimeZone.getDefault().getID());
+			GregorianCalendar gregorianCalendar = new GregorianCalendar(timeZone);
+
+			// Set output format prints "2007/10/25  18:35:07 EDT(-0400)"
+			SimpleDateFormat lv_formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			lv_formatter.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
+
+			//System.out.println(" The Date in the local time zone " + lv_formatter.format(lv_localDate));
+
+			// Convert the date from the local timezone to UTC timezone
+			lv_formatter.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
+			String lv_dateFormateInUTC = lv_formatter.format(lv_localDate);
+		//	System.out.println(" The Date in the UTC time zone " + lv_dateFormateInUTC);
+
+			gregorianCalendar.setTime(formatter.parse(lv_formatter.format(lv_localDate)));
+			return gregorianCalendar.getTimeInMillis();
 		}
 		catch (ParseException e) {
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 		return 0;
 	}
 
+	public static long getTestScheduleTimeInMills (Date date) throws ParseException {
+
+		DateFormat gmtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		TimeZone gmtTime = TimeZone.getTimeZone(TimeZone.getDefault().getID());
+		gmtFormat.setTimeZone(gmtTime);
+		System.out.println("Current Time: " + date);
+		System.out.println("GMT Time: " + gmtFormat.format(date));
+		Date dates = gmtFormat.parse(gmtFormat.format(date));
+
+		return dates.getTime();
+	}
 }
