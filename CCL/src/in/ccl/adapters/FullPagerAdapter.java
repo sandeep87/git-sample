@@ -51,7 +51,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 	private ListView imageList;
 
-	private String network_provider;
+//	private String network_provider;
 
 	static Facebook mFaceBook = new Facebook("429104203832155");
 
@@ -87,7 +87,6 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 				}
 			}
-
 		}
 	};
 
@@ -224,7 +223,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 					}
 				}
 
-				network_provider = "facebook";
+//				network_provider = "facebook";
 
 				shareOnFaceBook(url);
 
