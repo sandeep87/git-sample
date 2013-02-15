@@ -96,6 +96,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/dropdown"
+                android:visibility="gone"
                 android:contentDescription="@string/ccl_logo"
                 android:focusableInTouchMode="false"
                 android:paddingRight="12dp" />

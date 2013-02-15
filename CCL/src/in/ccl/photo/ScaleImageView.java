@@ -24,13 +24,14 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ScaleImageView extends ImageView implements OnTouchListener {
+public class ScaleImageView extends ImageView implements OnTouchListener ,OnLongClickListener,OnItemLongClickListener{
 
 	// Indicates if caching should be used
 	private boolean mCacheFlag;
@@ -602,7 +603,23 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 
 	@Override
 	public boolean onTouch (View v, MotionEvent event) {
+		
 		return false;
+	}
+
+	@Override
+	public boolean onLongClick (View v) {
+		v.setLongClickable(false);
+	
+		Toast.makeText(mContext,"On LongCLick", Toast.LENGTH_LONG).show();
+		return true;
+	}
+
+	@Override
+	public boolean onItemLongClick (AdapterView <?> arg0, View arg1, int arg2, long arg3) {
+		Toast.makeText(mContext,"On LongCLickitem", Toast.LENGTH_LONG).show();
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 

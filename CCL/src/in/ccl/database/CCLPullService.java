@@ -398,8 +398,6 @@ public class CCLPullService extends IntentService {
 					else if (compareKey.equals("calendar_updates")) {
 						mBroadcaster.broadcastIntentWithState(Constants.STATE_ACTION_UPDATE_CALENDAR_IMAGE_COMPLETE, null);
 					}
-				}else{
-				    System.out.println("error");
 				}
 			}
 
