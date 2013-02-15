@@ -88,19 +88,19 @@ public class HomeActivity extends TopActivity {
 		if (bannerItemsList != null) {
 			bannerImagePagerAdapter = new ImagePagerAdapter(this, bannerItemsList, Category.BANNER);
 			bannerViewPager.setAdapter(bannerImagePagerAdapter);
-			bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager,bannerItemsList.size()));
+			bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager,3));
 		}
 		// for photos
 		if (photoGalleryList != null) {
 			photoViewPager.setAdapter(new ImagePagerAdapter(this, photoGalleryList, Category.PHOTO));
 			photoViewPager.setOnClickListener(null);
-			photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager,photoGalleryList.size()));
+			photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager,3));
 		}
 		// for loading videos in home screen
 		if (videoGalleryList != null) {
 			videoViewPager.setAdapter(new ImagePagerAdapter(this, videoGalleryList, Category.VIDEO));
 			videoViewPager.setOnClickListener(null);
-			videoViewPager.setOnPageChangeListener(new PageChangeListener(videoPageIndicatorLayout, videoViewPager,videoGalleryList.size()));
+			videoViewPager.setOnPageChangeListener(new PageChangeListener(videoPageIndicatorLayout, videoViewPager,3));
 		}
 	}
 
@@ -153,7 +153,7 @@ public class HomeActivity extends TopActivity {
 					if (cursor != null && cursor.getCount() > 0) {
 						ArrayList <Items> bannerItems = BannerCursor.getItems(cursor);
 						bannerViewPager.setAdapter(new ImagePagerAdapter(HomeActivity.this, bannerItems, Category.BANNER));
-						bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager,bannerItems.size()));
+						bannerViewPager.setOnPageChangeListener(new PageChangeListener(bannerPageIndicatorLayout, bannerViewPager,3));
 						cursor.close();
 					}
 					break;
@@ -162,7 +162,7 @@ public class HomeActivity extends TopActivity {
 					if (cursor != null && cursor.getCount() > 0) {
 						ArrayList <Items> photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
 						photoViewPager.setAdapter(new ImagePagerAdapter(HomeActivity.this, photoAlbumItems, Category.PHOTO));
-						photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager,photoAlbumItems.size()));
+						photoViewPager.setOnPageChangeListener(new PageChangeListener(photoPageIndicatorLayout, photoViewPager,3));
 						cursor.close();
 					}
 					break;
@@ -171,7 +171,7 @@ public class HomeActivity extends TopActivity {
 					if (cursor != null && cursor.getCount() > 0) {
 						ArrayList <Items> videoAlbumItems = VideoAlbumCursor.getItems(cursor);
 						videoViewPager.setAdapter(new ImagePagerAdapter(HomeActivity.this, videoAlbumItems, Category.VIDEO));
-						videoViewPager.setOnPageChangeListener(new PageChangeListener(videoPageIndicatorLayout, videoViewPager,videoAlbumItems.size()));
+						videoViewPager.setOnPageChangeListener(new PageChangeListener(videoPageIndicatorLayout, videoViewPager,3));
 						cursor.close();
 					}
 					break;

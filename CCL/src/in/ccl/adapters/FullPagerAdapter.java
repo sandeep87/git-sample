@@ -25,27 +25,20 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.android.AsyncFacebookRunner;
-import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
-import com.facebook.android.Facebook.DialogListener;
-import com.facebook.android.FacebookError;
 
 public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse {
 
 	private LayoutInflater inflater;
 
-	private ArrayList <Items> itemsList;
+	private ArrayList<Items> itemsList;
 
 	private Activity activity;
 
@@ -98,27 +91,25 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 	};
 
 	@Override
-	public void destroyItem (ViewGroup container, int position, Object object) {
+	public void destroyItem(ViewGroup container, int position, Object object) {
 		((ViewPager) container).removeView((View) object);
 	}
-
-	public FullPagerAdapter (Activity ctx, ArrayList <Items> list, Category category, int pos) {
+	public FullPagerAdapter (Activity ctx, ArrayList <Items> list) {
 		activity = ctx;
 		itemsList = list;
-		context = ctx;
-		position = pos;
+		
 		// mCategory = category;
 		inflater = activity.getLayoutInflater();
 		url = itemsList.get(position).getPhotoOrVideoUrl();
 	}
 
 	@Override
-	public int getCount () {
+	public int getCount() {
 		return itemsList.size();
 	}
 
 	@Override
-	public View instantiateItem (View view, int position) {
+	public View instantiateItem(View view, int position) {
 		View imageLayout = null;
 		ScaleImageView imageView = null;
 		// ImageView spinner = null;
@@ -128,9 +119,11 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 		// imageView.setFullScreen(true);
 		// spinner = (ImageView) imageLayout.findViewById(R.id.loading);
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
-		TextView errorTxt = (TextView) imageLayout.findViewById(R.id.error_title);
+		TextView errorTxt = (TextView) imageLayout
+				.findViewById(R.id.error_title);
 		// loadingImage = (ImageView) imageLayout.findViewById(R.id.loading);
-    imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.blackbackground));
+		imageView.setImageDrawable(activity.getResources().getDrawable(
+				R.drawable.blackbackground));
 		imageView.setTag(itemsList.get(position).getPhotoOrVideoUrl());
 		imageView.setImageURL(itemsList.get(position).getPhotoOrVideoUrl(), true, activity.getResources().getDrawable(R.drawable.blackbackground), errorTxt);
 
@@ -215,9 +208,8 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 	}
 
 	@Override
-	public boolean isViewFromObject (View view, Object object) {
+	public boolean isViewFromObject(View view, Object object) {
 		return view.equals(object);
-
 	}
 
 	@Override
