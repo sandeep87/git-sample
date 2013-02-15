@@ -69,8 +69,6 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 	private String url = "";
 
-	private Context context;
-
 	private String access_token;
 
 	private String[] imageDetails = { "LIKE", "COMMENT", "SHARE" };
@@ -84,7 +82,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 
 				if (mFaceBook.getAccessToken() != null) {
 					String url = "https://graph.facebook.com/me?access_token=" + mFaceBook.getAccessToken();
-					CommonAsync mCommonAsync = new CommonAsync(context, FullPagerAdapter.this);
+					CommonAsync mCommonAsync = new CommonAsync(activity, FullPagerAdapter.this);
 					mCommonAsync.execute(url);
 
 				}
