@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteMisuseException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.util.Log;
@@ -48,9 +49,8 @@ public class DataProvider extends ContentProvider {
 	public static final int TEAM_LOGO_URL_QUERY = 15;
 
 	public static final int TEAM_MEMBERS_URL_QUERY = 16;
-	
-	public static final int CALENDAR_IMAGE_URL_QUERY = 17;
 
+	public static final int CALENDAR_IMAGE_URL_QUERY = 17;
 
 	// Constants for building SQLite tables during initialization
 	private static final String TEXT_TYPE = "TEXT";
@@ -83,8 +83,6 @@ public class DataProvider extends ContentProvider {
 
 	private static final String CREATE_CALENDAR_IMAGE_TABLE_SQL = "CREATE TABLE" + " " + DataProviderContract.CALENDAR_IMAGE_TABLE_NAME + " " + "(" + " " + DataProviderContract.CALENDAR_IMAGE_ID + " " + PRIMARY_KEY_TYPE + " ," + DataProviderContract.CALENDAR_IMAGE_URL + " " + TEXT_TYPE + " ," + DataProviderContract.CALENDAR_IMAGE_THUMB_URL + " " + TEXT_TYPE + " ," + DataProviderContract.CALENDAR_IMAGE_NO_OF_PAGES + " " + INTEGER_TYPE + ");";
 
-	
-	
 	// Identifies log statements issued by this component
 	public static final String LOG_TAG = "DataProvider";
 
@@ -128,7 +126,6 @@ public class DataProvider extends ContentProvider {
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.CATEGORY_TABLE_NAME, CATEGORY_QUERY);
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.NEWS_TABLE_NAME, NEWS_URL_QUERY);
 		sUriMatcher.addURI(DataProviderContract.AUTHORITY, DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, CALENDAR_IMAGE_URL_QUERY);
-
 
 		// Specifies a custom MIME type for the picture URL table
 		sMimeTypes.put(BANNER_IMAGE_URL_QUERY, "vnd.android.cursor.dir/vnd." + DataProviderContract.AUTHORITY + "." + DataProviderContract.BANNERURL_TABLE_NAME);
@@ -292,102 +289,159 @@ public class DataProvider extends ContentProvider {
 
 			// If the query is for a picture URL
 			case BANNER_IMAGE_URL_QUERY:
-				// Does the query against a read-only version of the database
-				Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null, DataProviderContract.BANNER_LAST_MODIFIED_COLUMN + " ASC");
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.BANNERURL_TABLE_NAME, projection, null, null, null, null, DataProviderContract.BANNER_LAST_MODIFIED_COLUMN + " ASC");
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-				// If the query is for a picture URL
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
+				break;
+			// If the query is for a picture URL
 			case PHOTO_ALBUM_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.PHOTO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case VIDEO_ALBUM_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.VIDEO_ALBUM_TABLE_NAME, projection, null, null, null, null, DataProviderContract.ROW_ID + " DESC");
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
+					// Sets the ContentResolver to watch this content URI for data changes
+					// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case PHOTO_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC;");
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC;");
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-
+					// Sets the ContentResolver to watch this content URI for data changes
+					// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case VIDEO_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC");
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.RAW_TABLE_NAME, projection, selection, null, null, null, DataProviderContract.ROW_ID + " ASC");
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
+					// Sets the ContentResolver to watch this content URI for data changes
+					// returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case CATEGORY_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.CATEGORY_TABLE_NAME, projection, null, null, null, null, null);
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.CATEGORY_TABLE_NAME, projection, null, null, null, null, null);
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case PAGES_QUERY:
 				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.PAGES_TABLE_NAME, projection, selection, null, null, null, null);
+				try {
+					Cursor returnCursor = db.query(DataProviderContract.PAGES_TABLE_NAME, projection, selection, null, null, null, null);
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-
-				// If the query is for a modification date URL
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+				}
+				break;
+			// If the query is for a modification date URL
 			case URL_DATE_QUERY:
-				returnCursor = db.query(DataProviderContract.DATE_TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+				try {
+					Cursor returnCursor = db.query(DataProviderContract.DATE_TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
 
-				// No notification Uri is set, because the data doesn't have to be watched.
-				return returnCursor;
-
+					// No notification Uri is set, because the data doesn't have to be watched.
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case NEWS_URL_QUERY:
-				returnCursor = db.query(DataProviderContract.NEWS_TABLE_NAME, projection, selection, null, null, null, null);
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-
+				try {
+					Cursor returnCursor = db.query(DataProviderContract.NEWS_TABLE_NAME, projection, selection, null, null, null, null);
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case DOWNLOAD_IMAGE_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME, projection, null, null, null, null, DataProviderContract.DOWNLOAD_IMAGE_ID + " DESC");
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.DOWNLOAD_IMAGE_TABLE_NAME, projection, null, null, null, null, DataProviderContract.DOWNLOAD_IMAGE_ID + " DESC");
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 				// If the query is for a teams logos URL
 			case TEAM_LOGO_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.TEAMS_LOGO_TABLE_NAME, projection, null, null, null, null, null);
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.TEAMS_LOGO_TABLE_NAME, projection, null, null, null, null, null);
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case TEAM_MEMBERS_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.TEAM_MEMBERS_TABLE_NAME, projection, null, null, null, null, null);
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.TEAM_MEMBERS_TABLE_NAME, projection, null, null, null, null, null);
 
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;
-				
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case CALENDAR_IMAGE_URL_QUERY:
-				// Does the query against a read-only version of the database
-				returnCursor = db.query(DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, projection, null, null, null, null, DataProviderContract.CALENDAR_IMAGE_ID + " DESC");
-				// Sets the ContentResolver to watch this content URI for data changes
-				returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
-				return returnCursor;	
-				
+				try {
+					// Does the query against a read-only version of the database
+					Cursor returnCursor = db.query(DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, projection, null, null, null, null, DataProviderContract.CALENDAR_IMAGE_ID + " DESC");
+					// Sets the ContentResolver to watch this content URI for data changes
+					returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
+					return returnCursor;
+				}
+				catch (SQLiteMisuseException e) {
+					// TODO: handle exception
+				}
 			case INVALID_URI:
 
 				throw new IllegalArgumentException("Query -- Invalid URI:" + uri);
@@ -899,7 +953,7 @@ public class DataProvider extends ContentProvider {
 
 				// The semantics of bulkInsert is to return the number of rows inserted.
 				return numImages;
-				
+
 			case CALENDAR_IMAGE_URL_QUERY:
 				System.out.println("nagesh CALENDAR_IMAGE_URL_QUERY.....called");
 				insertedRowsCount = 0;
@@ -1088,7 +1142,7 @@ public class DataProvider extends ContentProvider {
 					getContext().getContentResolver().notifyChange(uri, null);
 					return rows;
 				}
-				
+
 			case CALENDAR_IMAGE_URL_QUERY:
 				// Updates the table
 				rows = localSQLiteDatabase.update(DataProviderContract.CALENDAR_IMAGE_TABLE_NAME, values, selection, selectionArgs);
@@ -1097,9 +1151,8 @@ public class DataProvider extends ContentProvider {
 				if (0 != rows) {
 					getContext().getContentResolver().notifyChange(uri, null);
 					return rows;
-				}	
-					
-				
+				}
+
 		}
 
 		return -1;

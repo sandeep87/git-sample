@@ -39,6 +39,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bhojpuri Dabangs".toUpperCase(Locale.getDefault()));
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(1);
 
 		noOfMatches.add(match);
 
@@ -46,6 +47,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Kerala Strikers".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Mumbai Heroes".toUpperCase(Locale.getDefault()));
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(2);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -61,6 +63,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale.getDefault()));
 		match.setTime("1:00pm - 5:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(3);
 
 		noOfMatches.add(match);
 
@@ -68,6 +71,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Telugu Warriors".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
 		match.setTime("5:00pm - 9:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(4);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -83,6 +87,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam(" Kerala Strikers".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bhojpuri Dabanggs".toUpperCase(Locale.getDefault()));
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(5);
 
 		noOfMatches.add(match);
 
@@ -90,6 +95,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale.getDefault()));
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(6);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -105,6 +111,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(7);
 
 		noOfMatches.add(match);
 
@@ -112,6 +119,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Telugu Warriors".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Mumbai Heroes".toUpperCase(Locale.getDefault()));
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(8);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -127,6 +135,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Kerala Strikers ".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
 		match.setTime("4:30pm - 8:30pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(9);
 
 		noOfMatches.add(match);
 
@@ -134,6 +143,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam(" Mumbai Heroes".toUpperCase(Locale.getDefault()));
 		match.setTime("8:30pm - 0:30pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(10);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -149,6 +159,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Telugu Warriors ".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale.getDefault()));
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(11);
 
 		noOfMatches.add(match);
 
@@ -156,6 +167,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bhojpuri Dabanggs".toUpperCase(Locale.getDefault()));
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(12);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -171,6 +183,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Kerala Strikers".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Karnataka Bulldozers".toUpperCase(Locale.getDefault()));
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(13);
 
 		noOfMatches.add(match);
 
@@ -178,6 +191,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Chennai Rhinos".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bengal Tigers".toUpperCase(Locale.getDefault()));
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(14);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -193,6 +207,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Telugu warriors".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Bhojpuri Dabanggs".toUpperCase(Locale.getDefault()));
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(15);
 
 		noOfMatches.add(match);
 
@@ -200,6 +215,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Veer Marathi".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("Mumbai Heroes".toUpperCase(Locale.getDefault()));
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(16);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -215,6 +231,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Semi Final 1".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("");
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(17);
 
 		noOfMatches.add(match);
 
@@ -222,6 +239,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Semi Final 2".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("");
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(18);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -237,6 +255,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Final".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("");
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
+		match.setMatchId(19);
 
 		noOfMatches.add(match);
 

@@ -107,6 +107,7 @@ public class FullPagerAdapter extends PagerAdapter implements DelegatesResponse 
 	public int getCount () {
 		return itemsList.size();
 	}
+	
 
 	@Override
 	public View instantiateItem (View view, int position) {

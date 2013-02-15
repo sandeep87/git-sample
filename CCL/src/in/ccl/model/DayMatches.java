@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class DayMatches {
 	private ArrayList<Match> dayMatches;
 
+
 	private String date;
 
 	private String day;

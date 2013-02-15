@@ -91,7 +91,7 @@ public class InningsAdapter extends BaseAdapter {
 				status = "(retired hurt) ";
 			}
 			if (playerStatus.getRunout() != null && !TextUtils.isEmpty(playerStatus.getRunout())) {
-				status = "(run out) " + playerStatus.getRunout();
+				status = "(run out)";
 			}
 			if (playerStatus.getNotout() != null && !TextUtils.isEmpty(playerStatus.getNotout())) {
 				status = "(not out) ";
