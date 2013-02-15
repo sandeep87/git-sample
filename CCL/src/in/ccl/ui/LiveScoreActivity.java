@@ -184,7 +184,6 @@ public class LiveScoreActivity extends TopActivity {
 
 	@Override
 	public void onClick (View v) {
-		super.onClick(v);
 		switch (v.getId()) {
 			case R.id.btn_score_board:
 				Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url) + currentMatchId));

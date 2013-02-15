@@ -63,7 +63,8 @@ public class MenuItems implements OnClickListener {
 
 	// private Items membersItem;
 	private static TextView celebrity_calender;
-	TextView liveScoreTxt ;
+
+	TextView liveScoreTxt;
 
 	private ProgressDialog progressDialog;
 
@@ -123,12 +124,8 @@ public class MenuItems implements OnClickListener {
 		TextView calenderTxt = (TextView) layout.findViewById(R.id.txt_celebrity_calender);
 		blinkMenuText(calenderTxt);
 		TextView scheduleTxt = (TextView) layout.findViewById(R.id.txt_schedule);
-		 liveScoreTxt = (TextView) layout.findViewById(R.id.txt_livescore);
-		System.out.println("phani livescore in menu"+TopActivity.isLiveScore);
-		if (TopActivity.isLiveScore) {
-			
-			blinkMenuText(liveScoreTxt);
-		}
+		liveScoreTxt = (TextView) layout.findViewById(R.id.txt_livescore);
+	
 		TextView teamsTxt = (TextView) layout.findViewById(R.id.txt_tems);
 		TextView videosTxt = (TextView) layout.findViewById(R.id.txt_video);
 		// TextView notificationsTxt = (TextView) layout.findViewById(R.id.txt_notifications);
@@ -166,6 +163,7 @@ public class MenuItems implements OnClickListener {
 	private void blinkMenuText (TextView txt) {
 		Animation anim = new AlphaAnimation(0.0f, 1.0f);
 		anim.setDuration(150); // You can manage the time of the blink with this parameter
+
 		anim.setStartOffset(20);
 		anim.setRepeatMode(Animation.REVERSE);
 		anim.setRepeatCount(Animation.INFINITE);
@@ -173,18 +171,19 @@ public class MenuItems implements OnClickListener {
 		Util.setTextFont(activity, txt);
 
 	}
+
 	public void blinkMenuLiveText (boolean status) {
 		Animation anim = new AlphaAnimation(0.0f, 1.0f);
 		anim.setDuration(150); // You can manage the time of the blink with this parameter
 		anim.setStartOffset(20);
 		anim.setRepeatMode(Animation.REVERSE);
 		anim.setRepeatCount(Animation.INFINITE);
-		if(status){
+		if (status) {
 			liveScoreTxt.startAnimation(anim);
 		}
-	
+
 		Util.setTextFont(activity, liveScoreTxt);
-		
+
 	}
 
 	@Override

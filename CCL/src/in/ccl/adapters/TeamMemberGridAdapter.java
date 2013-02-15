@@ -5,6 +5,7 @@ import in.ccl.photo.PhotoView;
 import in.ccl.ui.R;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Context;
@@ -130,8 +131,8 @@ public class TeamMemberGridAdapter extends BaseAdapter {
 				// mViewHolder.txtPersonName);
 
 				mViewHolder.txtPersonName.setText(gridItemsList.get(position).getPersonName());
-				String role = gridItemsList.get(position).getRole().trim().toLowerCase().replaceAll("\\s+", "");
-				if (role.equals(mContext.getResources().getString(R.string.no_role)) || role.equals(mContext.getResources().getString(R.string.ambassadors).toLowerCase())) {
+				String role = gridItemsList.get(position).getRole().trim().toLowerCase(Locale.getDefault()).replaceAll("\\s+", "");
+				if (role.equals(mContext.getResources().getString(R.string.no_role)) || role.equals(mContext.getResources().getString(R.string.ambassadors).toLowerCase(Locale.getDefault()))) {
 					mViewHolder.txtRole.setText("");
 
 				}

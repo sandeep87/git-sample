@@ -1,5 +1,4 @@
 package in.ccl.score;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
