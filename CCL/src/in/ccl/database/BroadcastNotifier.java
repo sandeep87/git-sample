@@ -36,7 +36,6 @@ public class BroadcastNotifier {
 	 * @param list
 	 */
 	public void broadcastIntentWithState (int status, ArrayList <Items> list) {
-                System.out.println("nagehs broadcast notifier");
 		Intent localIntent = new Intent();
 
 		// The Intent contains the custom broadcast action for this app
@@ -110,7 +109,6 @@ public class BroadcastNotifier {
 
 		localIntent.addCategory(Intent.CATEGORY_DEFAULT);
 		if (matchesResponse != null) {
-			System.out.println("maches size in broadcast " + matchesResponse.size());
 			localIntent.putParcelableArrayListExtra("matches_list", matchesResponse);
 		}
 

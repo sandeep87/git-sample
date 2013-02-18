@@ -258,7 +258,8 @@ class PhotoDownloadRunnable implements Runnable {
 						 */
 					}
 					else {
-						byteBuffer = new byte[contentSize];
+					
+							byteBuffer = new byte[contentSize];					
 
 						// How much of the buffer still remains empty
 						int remainingLength = contentSize;

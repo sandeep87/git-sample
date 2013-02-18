@@ -406,11 +406,11 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 	 * @param resId
 	 */
 	public void setStatusResource (int resId) {
-		if (errorTitleTxt != null) {
+	/*	if (errorTitleTxt != null) {
 			errorTitleTxt.setTextColor(Color.LTGRAY);
 		}
-		// If the View is empty, provides it with a Drawable resource as its content
-		if (mThisView == null) {
+	*/	// If the View is empty, provides it with a Drawable resource as its content
+	//	if (mThisView == null) {
 			if (resId == PhotoManager.DOWNLOAD_FAILED) {
 				if (errorTitleTxt != null) {
 					setImageResource(R.drawable.blackbackground);
@@ -432,10 +432,10 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 				}
 			}
 			else {
+				errorTitleTxt.setVisibility(View.VISIBLE);
 				setImageResource(R.drawable.blackbackground);
-
 			}
-		}
+		
 	}
 
 	// for
@@ -581,7 +581,7 @@ public class ScaleImageView extends ImageView implements OnTouchListener {
 					break;
 				}
 		}
-		return false;
+		return true;
 	}
 
 }

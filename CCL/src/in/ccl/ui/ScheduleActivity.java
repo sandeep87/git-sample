@@ -231,7 +231,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Semi Final 1".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("");
 		match.setTime("3:00pm - 7:00pm".toUpperCase(Locale.getDefault()));
-		match.setMatchId(17);
+		match.setMatchId(10);
 
 		noOfMatches.add(match);
 
@@ -239,7 +239,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Semi Final 2".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("");
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
-		match.setMatchId(18);
+		match.setMatchId(10);
 
 		noOfMatches.add(match);
 		matches.setDayMatches(noOfMatches);
@@ -255,7 +255,7 @@ public class ScheduleActivity extends TopActivity {
 		match.setHostingTeam("Final".toUpperCase(Locale.getDefault()));
 		match.setOpponentTeam("");
 		match.setTime("7:00pm - 11:00pm".toUpperCase(Locale.getDefault()));
-		match.setMatchId(19);
+		match.setMatchId(10);
 
 		noOfMatches.add(match);
 
@@ -272,7 +272,6 @@ public class ScheduleActivity extends TopActivity {
 		listSchedule.setAdapter(scheduleAdapter);
 		listSchedule.setFadingEdgeLength(1);
 		listSchedule.setCacheColorHint(Color.TRANSPARENT);
-
 	}
 
 }

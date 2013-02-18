@@ -58,6 +58,9 @@ public class LiveScoreParser {
 
 								if (innerObject.has("enddate")) {
 									matchInfo.setEndDate(sdf.parse(innerObject.getString("enddate")));
+									System.out.println("enddate =="+innerObject.getString("enddate"));
+									System.out.println("parse enddate =="+sdf.parse(innerObject.getString("enddate")));
+
 								}
 								if (innerObject.has("startdate")) {
 									matchInfo.setStartTime(sdf.parse(innerObject.getString("startdate")));
@@ -267,7 +270,6 @@ public class LiveScoreParser {
 	}
 
 	public static ScoreBoard parseScoreBoard (InputStream inputStream) {
-
 		String result = JSONPullParser.readStream(inputStream);
 		ScoreBoard scoreBoardItems = null;
 

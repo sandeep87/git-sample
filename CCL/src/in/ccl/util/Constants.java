@@ -136,5 +136,5 @@ public class Constants {
 	
 	public static final String EXTRA_CALENDAR_KEY = "extra_calendar_key";
 	
-	public static final String FACEBOOK_ID = "133693783464560";
+	public static final String FACEBOOK_ID = "268702113260027";
 }

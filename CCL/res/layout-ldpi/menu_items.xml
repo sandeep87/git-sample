@@ -87,23 +87,23 @@
 
             <ImageView
                 android:id="@+id/livescore_icon"
-                android:layout_width="30dip"
-                android:layout_height="30dip"
+                android:layout_width="25dip"
+                android:layout_height="25dip"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="13dp"
                 android:src="@drawable/livescores" />
 
             <TextView
                 android:id="@+id/txt_livescore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dip"
+                android:layout_height="20dip"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="19dp"
                 android:layout_toRightOf="@id/livescore_icon"
                 android:padding="6dp"
-                android:text="@string/livescore"
-                android:textColor="@color/blue"
-                android:textSize="20sp" />
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dip"
+                android:textSize="5sp" />
         </RelativeLayout>
 
         <View
@@ -198,7 +198,7 @@
                 android:layout_toRightOf="@id/downloads_icon"
                 android:padding="6dp"
                 android:text="@string/hot_downloads"
-                android:textColor="@color/hot_red"
+                android:textColor="@android:color/background_light"
                 android:textSize="20sp" />
         </RelativeLayout>
 
@@ -223,15 +223,14 @@
 
             <TextView
                 android:id="@+id/txt_celebrity_calender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dip"
+                android:layout_height="20dip"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="12dp"
                 android:layout_toRightOf="@id/celebrity_calender_icon"
-                android:padding="6dp"
-                android:text="@string/celebrity_calender"
-                android:textColor="@color/hot_red"
-                android:textSize="20sp" />
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dip"
+               android:textSize="5sp" />
         </RelativeLayout>
 
         <View
@@ -306,6 +305,7 @@
         <RelativeLayout
             android:id="@+id/layout_notifications"
             android:layout_width="fill_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:background="@color/menu_item_color" >
 

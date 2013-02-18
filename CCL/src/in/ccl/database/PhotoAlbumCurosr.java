@@ -26,6 +26,8 @@ public class PhotoAlbumCurosr {
 	}
 
 	public static ArrayList <Items> getPhotos (Context ctx, int albumId) {
+		ArrayList <Items> list = new ArrayList <Items>();
+     try{
 		String condition = DataProviderContract.ALBUM_ID_COLUMN + " = " + albumId + " and " + DataProviderContract.CATEGORY_ID + " = 1";
 		Cursor cursor = ctx.getContentResolver().query(DataProviderContract.PAGES_TABLE_CONTENTURI, new String[] { DataProviderContract.TOTAL_PAGES }, condition, null, null);
 		int totalPages = 0;
@@ -38,7 +40,6 @@ public class PhotoAlbumCurosr {
 			cursor.close();
 		}
 		cursor = ctx.getContentResolver().query(DataProviderContract.RAW_TABLE_CONTENTURI, null, condition, null, null);
-		ArrayList <Items> list = new ArrayList <Items>();
 		if (cursor != null && cursor.moveToFirst()) {
 			do {
 				Items item = new Items();
@@ -52,8 +53,10 @@ public class PhotoAlbumCurosr {
 		}
 		if (cursor != null)
 			cursor.close();
-		return list;
-
+	
+	}catch (IllegalStateException e) {
+		// TODO: handle exception
 	}
-
+	return list;
+	} 
 }

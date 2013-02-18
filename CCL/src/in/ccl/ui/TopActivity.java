@@ -143,6 +143,14 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	public static boolean isLiveScore;
 
+	public static boolean isLiveScore () {
+		return isLiveScore;
+	}
+
+	public static void setLiveScore (boolean isLiveScore) {
+		TopActivity.isLiveScore = isLiveScore;
+	}
+
 	public static int live_match_id;
 
 	private static boolean isTopHeaderSelected;
@@ -206,13 +214,13 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 		// for adds
 		adView = (AdView) findViewById(R.id.adMob);
-		adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
-		adsLayout.setVisibility(View.VISIBLE);
+		// adsLayout = (LinearLayout) findViewById(R.id.admob_layout);
+		// adsLayout.setVisibility(View.VISIBLE);
 		// Initiate a generic request to load it with an ad
-		AdRequest adRequest = new AdRequest();
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
-		adView.loadAd(adRequest);// new AdRequest()
-		// adView.loadAd(new AdRequest());
+		// AdRequest adRequest = new AdRequest();
+		// adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // Emulator
+		// adView.loadAd(adRequest);// new AdRequest()
+		adView.loadAd(new AdRequest());
 		// for user menu selection from top activity.
 		ImageButton imgBtnMenu = (ImageButton) findViewById(R.id.img_btn_menu);
 
@@ -386,17 +394,13 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 
 	private void showCurrentHeader () {
 		if (mCurrentScore == null) {
-			isLiveScore = false;
-			System.out.println("phani livescore" + isLiveScore);
 			txtScoreHeader.setVisibility(View.GONE);
 			// imgBtnScoreDropDown.setVisibility(View.GONE);
-			MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
+			// MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
 			txtCurrentScore.setText(getResources().getString(R.string.app_title));
 			txtCurrentScore.setGravity((Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL));
 		}
 		else {
-			isLiveScore = true;
-			System.out.println("phani livescore...." + isLiveScore);
 			txtScoreHeader.setVisibility(View.VISIBLE);
 			txtScoreHeader.setText("Score : ");
 			// imgBtnScoreDropDown.setVisibility(View.VISIBLE);
@@ -491,8 +495,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						if (currentScore == null && !mDrawer.isOpened()) {
 							if (txtScoreHeader != null && imgBtnScoreDropDown != null && txtCurrentScore != null) {
 								txtScoreHeader.setVisibility(View.GONE);
-								isLiveScore = false;
-								MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
+								// MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
 								// imgBtnScoreDropDown.setVisibility(View.GONE);
 								txtCurrentScore.setText(getResources().getString(R.string.app_title));
 								txtCurrentScore.setGravity((Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL));
@@ -502,8 +505,7 @@ public class TopActivity extends Activity implements AnimationLayout.Listener, S
 						else if (!mDrawer.isOpened()) {
 							if (txtScoreHeader != null && imgBtnScoreDropDown != null && txtCurrentScore != null) {
 								txtScoreHeader.setVisibility(View.VISIBLE);
-								isLiveScore = true;
-								MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
+								// MenuItems.getInstance().blinkMenuLiveText(isLiveScore);
 								txtScoreHeader.setText("Score : ");
 								// imgBtnScoreDropDown.setVisibility(View.VISIBLE);
 								// imgBtnScoreDropDown.setBackgroundResource(R.drawable.dropdown);

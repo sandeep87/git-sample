@@ -1,18 +1,26 @@
 package in.ccl.adapters;
 
+import in.ccl.helper.Util;
+import in.ccl.livescore.service.LiveScoreService;
 import in.ccl.model.DayMatches;
+import in.ccl.ui.LiveScoreActivity;
 import in.ccl.ui.R;
 
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ScheduleAdapter extends BaseAdapter {
 
@@ -40,7 +48,7 @@ public class ScheduleAdapter extends BaseAdapter {
 		return 0;
 	}
 
-	public View getView (int position, View convertView, ViewGroup parent) {
+	public View getView (final int position, View convertView, ViewGroup parent) {
 		final ViewHolder viewHolder;
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
@@ -61,7 +69,8 @@ public class ScheduleAdapter extends BaseAdapter {
 			viewHolder.txtScndVs = (TextView) convertView.findViewById(R.id.txt_scnd_vs);
 			viewHolder.scndTeamLayout = (RelativeLayout) convertView.findViewById(R.id.scnd_team_layout);
 			viewHolder.matchSeperator = (View) convertView.findViewById(R.id.seperator);
-
+			viewHolder.viewScoreOne = (Button) convertView.findViewById(R.id.btn_view_score_board_one);
+			viewHolder.viewScoreTwo = (Button) convertView.findViewById(R.id.btn_view_score_board_two);
 			convertView.setTag(viewHolder);
 		}
 		else {
@@ -78,6 +87,30 @@ public class ScheduleAdapter extends BaseAdapter {
 		viewHolder.txtDate.setText(scheduleList.get(position).getDate());
 		viewHolder.txtDay.setText(scheduleList.get(position).getDay());
 		viewHolder.txtPlace.setText(scheduleList.get(position).getPalce());
+		viewHolder.viewScoreOne.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick (View v) {
+				if (Util.getInstance().isOnline(mContext)) {
+					callFullScore(scheduleList.get(position).getDayMatches().get(0).getMatchId());
+				}
+				else {
+					Toast.makeText(mContext, mContext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+		viewHolder.viewScoreTwo.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick (View v) {
+				if (Util.getInstance().isOnline(mContext)) {
+					callFullScore(scheduleList.get(position).getDayMatches().get(1).getMatchId());
+				}
+				else {
+					Toast.makeText(mContext, mContext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
+				}
+			}
+		});
 		if (!TextUtils.isEmpty(scheduleList.get(position).getDayMatches().get(0).getHostingTeam())) {
 			viewHolder.firstMatchHostingTeam.setText(scheduleList.get(position).getDayMatches().get(0).getHostingTeam());
 		}
@@ -121,6 +154,12 @@ public class ScheduleAdapter extends BaseAdapter {
 		return convertView;
 	}
 
+	protected void callFullScore (int matchId) {
+		Intent mServiceIntent = new Intent(mContext, LiveScoreService.class).setData(Uri.parse(mContext.getResources().getString(R.string.score_board_url) + matchId));
+		mServiceIntent.putExtra("KEY", "fullscore");
+		mContext.startService(mServiceIntent);
+	}
+
 	public static class ViewHolder {
 
 		public TextView txtDate;
@@ -152,6 +191,10 @@ public class ScheduleAdapter extends BaseAdapter {
 		public RelativeLayout layoutTeams;
 
 		public RelativeLayout scndLayout;
+
+		public Button viewScoreOne;
+
+		public Button viewScoreTwo;
 	}
 
 }

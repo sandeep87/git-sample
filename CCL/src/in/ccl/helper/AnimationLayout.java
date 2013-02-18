@@ -30,7 +30,7 @@ import android.view.animation.TranslateAnimation;
 
 public class AnimationLayout extends ViewGroup {
 
-	public final static int DURATION = 500;
+	public final static int DURATION = 100;
 
 	protected boolean mPlaceLeft = true;
 

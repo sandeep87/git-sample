@@ -27,7 +27,7 @@ public class GridAdapter extends BaseAdapter {
 
 	private Context mcontext;
 
-	private ArrayList<Items> gridItemsList;
+	private ArrayList <Items> gridItemsList;
 
 	private LayoutInflater inflater;
 
@@ -46,79 +46,66 @@ public class GridAdapter extends BaseAdapter {
 
 	private int image_id = 0;
 
-	public GridAdapter(Context context, ArrayList<Items> listOfItems,
-			String from) {
+	public GridAdapter (Context context, ArrayList <Items> listOfItems, String from) {
 		mcontext = context;
 		isFrom = from;
 		gridItemsList = listOfItems;
-		inflater = (LayoutInflater) mcontext
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mEmptyDrawable = context.getResources().getDrawable(
-				R.drawable.imagenotqueued);
-		Display display = ((Activity) context).getWindowManager()
-				.getDefaultDisplay();
+		inflater = (LayoutInflater) mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mEmptyDrawable = context.getResources().getDrawable(R.drawable.imagenotqueued);
+		Display display = ((Activity) context).getWindowManager().getDefaultDisplay();
 		int height = display.getHeight();
 		reqImageHeight = (int) (((float) 19 / 100) * (height - 50));
 	}
 
 	@Override
-	public int getCount() {
+	public int getCount () {
 		return gridItemsList.size();
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Object getItem (int position) {
 		return gridItemsList.get(position);
 	}
 
 	@Override
-	public long getItemId(int arg0) {
+	public long getItemId (int arg0) {
 		return 0;
 	}
 
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
+	public View getView (final int position, View convertView, ViewGroup parent) {
 		ViewHolder mViewHolder;
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.gallery_item, null);
 			mViewHolder = new ViewHolder();
 			// mViewHolder.image = (ImageView)
 			// convertView.findViewById(R.id.image);
-			mViewHolder.image = (PhotoView) convertView
-					.findViewById(R.id.image);
+			mViewHolder.image = (PhotoView) convertView.findViewById(R.id.image);
 
-			mViewHolder.playImage = (ImageView) convertView
-					.findViewById(R.id.img_play_icon);
+			mViewHolder.playImage = (ImageView) convertView.findViewById(R.id.img_play_icon);
 			mViewHolder.title = (TextView) convertView.findViewById(R.id.title);
-			mViewHolder.errorTxt = (TextView) convertView
-					.findViewById(R.id.error_title);
-			mViewHolder.image.setLayoutParams(new RelativeLayout.LayoutParams(
-					LayoutParams.MATCH_PARENT, reqImageHeight));
+			mViewHolder.errorTxt = (TextView) convertView.findViewById(R.id.error_title);
+			mViewHolder.image.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, reqImageHeight));
 			mViewHolder.image.setScaleType(ImageView.ScaleType.MATRIX);
-
-			// mViewHolder.image.setPadding(5, 5, 5, 5);
 			convertView.setTag(mViewHolder);
-		} else {
+		}
+		else {
 			mViewHolder = (ViewHolder) convertView.getTag();
 		}
 		mViewHolder.image.setImageDrawable(this.mEmptyDrawable);
 
 		// Util.setTextFont((Activity) mcontext, mViewHolder.title);
-		mViewHolder.image.setTag(gridItemsList.get(position)
-				.getPhotoOrVideoUrl());
+		mViewHolder.image.setTag(gridItemsList.get(position).getPhotoOrVideoUrl());
 		// DisplayImage displayImage = null;
 		if (isFrom.equals("video") || isFrom.equals("downloads")) {
-			mViewHolder.image.setImageURL(gridItemsList.get(position)
-					.getThumbUrl(), true, this.mEmptyDrawable,
-					mViewHolder.errorTxt);
+			mViewHolder.image.setImageURL(gridItemsList.get(position).getThumbUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt);
 
 			// displayImage = new
 			// DisplayImage(gridItemsList.get(position).getThumbUrl(),
 			// mViewHolder.image, (Activity) mcontext, null);
-		} else {
-			mViewHolder.image.setImageURL(gridItemsList.get(position)
-					.getPhotoOrVideoUrl(), true, this.mEmptyDrawable,
-					mViewHolder.errorTxt);
+		}
+		else {
+			mViewHolder.image.setImageURL(gridItemsList.get(position).getPhotoOrVideoUrl(), true, this.mEmptyDrawable, mViewHolder.errorTxt);
 
 			// displayImage = new
 			// DisplayImage(gridItemsList.get(position).getPhotoOrVideoUrl(),
@@ -131,109 +118,87 @@ public class GridAdapter extends BaseAdapter {
 			mViewHolder.title.setEnabled(true);
 			mViewHolder.playImage.setVisibility(View.VISIBLE);
 			// displayImage.setPlayIcon(mViewHolder.playImage);
-		} else if (isFrom.equals("photo_gallery")) {
+		}
+		else if (isFrom.equals("photo_gallery")) {
 			mViewHolder.title.setText(gridItemsList.get(position).getTitle());
 			mViewHolder.title.setVisibility(View.VISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);
 			// displayImage.setPlayIcon(null);
-		} else if (isFrom.equals("video_gallery")) {
+		}
+		else if (isFrom.equals("video_gallery")) {
 			mViewHolder.title.setText(gridItemsList.get(position).getTitle());
 			mViewHolder.title.setVisibility(View.VISIBLE);
 			mViewHolder.playImage.setVisibility(View.VISIBLE);
 			// displayImage.setPlayIcon(mViewHolder.playImage);
-		} else if (isFrom.equals("team_member_image")) {
+		}
+		else if (isFrom.equals("team_member_image")) {
 			Util.setTextFont((Activity) mcontext, mViewHolder.title);
-			mViewHolder.title.setText(gridItemsList.get(position).getTitle()
-					+ "\n" + gridItemsList.get(position).getPersonRoles());
+			mViewHolder.title.setText(gridItemsList.get(position).getTitle() + "\n" + gridItemsList.get(position).getPersonRoles());
 			mViewHolder.title.setVisibility(View.VISIBLE);
 			mViewHolder.playImage.setVisibility(View.INVISIBLE);
 			// displayImage.setPlayIcon(null);
-		} else if (isFrom.equals("downloads")) {
+		}
+		else if (isFrom.equals("downloads")) {
 			mViewHolder.title.setText("Download");
 			// Util.setTextFont((Activity) mcontext, mViewHolder.title);
 			mViewHolder.title.setOnClickListener(new OnClickListener() {
 
 				@Override
-				public void onClick(View arg0) {
+				public void onClick (View arg0) {
 					// check the condition null or not
-					if (gridItemsList.get(position).getPhotoOrVideoUrl() != null
-							&& gridItemsList.get(position).getId() != 0) {
+					if (gridItemsList.get(position).getPhotoOrVideoUrl() != null && gridItemsList.get(position).getId() != 0) {
 						// checking network available or not
 						if (Util.getInstance().isOnline(mcontext)) {
 							// call the DownloaderImage and passing the url and
 							// id.
-							if (android.os.Environment
-									.getExternalStorageState()
-									.equals(android.os.Environment.MEDIA_MOUNTED)) {
-								downloadUrl = gridItemsList.get(position)
-										.getPhotoOrVideoUrl();
+							if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+								downloadUrl = gridItemsList.get(position).getPhotoOrVideoUrl();
 								image_id = gridItemsList.get(position).getId();
-								downloadStart(mcontext,
-										gridItemsList.get(position).getId(),
-										gridItemsList.get(position)
-												.getPhotoOrVideoUrl());
-							} else {
-								Toast.makeText(
-										mcontext,
-										mcontext.getResources().getString(
-												R.string.no_sdcard),
-										Toast.LENGTH_SHORT).show();
+								downloadStart(mcontext, gridItemsList.get(position).getId(), gridItemsList.get(position).getPhotoOrVideoUrl());
 							}
-						} else {
+							else {
+								Toast.makeText(mcontext, mcontext.getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT).show();
+							}
+						}
+						else {
 
 							// Network not available display the network error
 							// toast.
-							Toast.makeText(
-									mcontext,
-									mcontext.getResources().getString(
-											R.string.network_error_message),
-									Toast.LENGTH_LONG).show();
+							Toast.makeText(mcontext, mcontext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 						}
 					}
 				}
 			});
 			mViewHolder.title.setVisibility(View.VISIBLE);
-		} else if (isFrom.equals("calendar")) {
+		}
+		else if (isFrom.equals("calendar")) {
 
 			mViewHolder.title.setText("Download");
 			// Util.setTextFont((Activity) mcontext, mViewHolder.title);
 			mViewHolder.title.setOnClickListener(new OnClickListener() {
 
 				@Override
-				public void onClick(View arg0) {
+				public void onClick (View arg0) {
 					// check the condition null or not
-					if (gridItemsList.get(position).getPhotoOrVideoUrl() != null
-							&& gridItemsList.get(position).getId() != 0) {
+					if (gridItemsList.get(position).getPhotoOrVideoUrl() != null && gridItemsList.get(position).getId() != 0) {
 						// checking network available or not
 						if (Util.getInstance().isOnline(mcontext)) {
 							// call the DownloaderImage and passing the url and
 							// id.
-							if (android.os.Environment
-									.getExternalStorageState()
-									.equals(android.os.Environment.MEDIA_MOUNTED)) {
-								downloadUrl = gridItemsList.get(position)
-										.getPhotoOrVideoUrl();
+							if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+								downloadUrl = gridItemsList.get(position).getPhotoOrVideoUrl();
 								image_id = gridItemsList.get(position).getId();
-								downloadStart(mcontext,
-										gridItemsList.get(position).getId(),
-										gridItemsList.get(position)
-												.getPhotoOrVideoUrl());
-							} else {
-								Toast.makeText(
-										mcontext,
-										mcontext.getResources().getString(
-												R.string.no_sdcard),
-										Toast.LENGTH_SHORT).show();
+								downloadStart(mcontext, gridItemsList.get(position).getId(), gridItemsList.get(position).getPhotoOrVideoUrl());
 							}
-						} else {
+							else {
+								Toast.makeText(mcontext, mcontext.getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT).show();
+							}
+						}
+						else {
 
 							// Network not available display the network error
 							// toast.
-							Toast.makeText(
-									mcontext,
-									mcontext.getResources().getString(
-											R.string.network_error_message),
-									Toast.LENGTH_LONG).show();
+							Toast.makeText(mcontext, mcontext.getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 						}
 					}
 				}
@@ -266,22 +231,22 @@ public class GridAdapter extends BaseAdapter {
 		public ImageView imageLoader;
 	}
 
-	public void updateList(ArrayList<Items> items) {
+	public void updateList (ArrayList <Items> items) {
 		for (Items item : items) {
 			gridItemsList.add(item);
 		}
 		notifyDataSetChanged();
 	}
 
-	public void downloadStop() {
+	public void downloadStop () {
 		mDownloaderImage.cancel(true);
 	}
 
-	public void downloadStartOnResume() {
+	public void downloadStartOnResume () {
 		downloadStart(mcontext, image_id, downloadUrl);
 	}
 
-	public void downloadStart(Context mcontext, int id, String image_url) {
+	public void downloadStart (Context mcontext, int id, String image_url) {
 		mDownloaderImage = new DownloaderImage(mcontext, id);
 		mDownloaderImage.execute(image_url);
 

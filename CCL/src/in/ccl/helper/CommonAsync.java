@@ -1,5 +1,6 @@
 package in.ccl.helper;
 import in.ccl.adapters.FullPagerAdapter;
+import in.ccl.ui.PhotoActivity;
 import in.ccl.ui.R;
 
 import java.io.BufferedReader;
@@ -29,7 +30,7 @@ public class CommonAsync extends AsyncTask<String, String, String> {
 	 */
 	private ProgressDialog mProgressDialog;
 
-	public CommonAsync(Context context, FullPagerAdapter fullPagerAdapter) {
+	public CommonAsync(Context context, PhotoActivity fullPagerAdapter) {
 		mContext = context;
 		mDelegatesResponse = fullPagerAdapter;
 	}

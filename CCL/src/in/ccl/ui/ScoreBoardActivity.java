@@ -52,8 +52,9 @@ public class ScoreBoardActivity extends TopActivity {
 	private ListView bowlerListView;
 
 	private ScoreBoard scoreBoard;
+	
 
-	private int liveMatchId;
+	private static int liveMatchId;
 
 	// private RelativeLayout layoutBowlerBetails;
 
@@ -86,7 +87,7 @@ public class ScoreBoardActivity extends TopActivity {
 		// layoutBowlingTeamDetatils = (RelativeLayout) findViewById(R.id.layout_bowling_teamdetails);
 		txtBowlingTeamTitle = (TextView) findViewById(R.id.txt_bowlingteam_title);
 		bowlerListView = (ListView) findViewById(R.id.bowler_list);
-
+    
 		// The filter's action is BROADCAST_ACTION
 		statusIntentFilter = new IntentFilter(Constants.BROADCAST_ACTION);
 
@@ -98,6 +99,7 @@ public class ScoreBoardActivity extends TopActivity {
 
 		scoreBoard = getIntent().getParcelableExtra("scoreboard");
 		liveMatchId = getIntent().getIntExtra("match_id", 0);
+		System.out.println("LIVE MATCH IC "+liveMatchId);
 		Util.setTextFont(this, txtFirstInningsTeamTitle);
 		Util.setTextFont(this, txtSecondInningsTeamTitle);
 		Util.setTextFont(this, btnFirstInnings);
@@ -220,7 +222,7 @@ public class ScoreBoardActivity extends TopActivity {
 				width = 39;
 			}
 			else if (deviceDisplayDensity == DisplayMetrics.DENSITY_XHIGH) {
-				width = 43;
+				width = 50;
 			}
 			listviewElementsheight +=width;
 		}
@@ -271,7 +273,6 @@ public class ScoreBoardActivity extends TopActivity {
 		super.onResume();
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
 		if (Util.getInstance().isOnline(this)) {
-
 			Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.score_board_url)+liveMatchId));
 			mServiceIntent.putExtra("KEY", "score_board_update");
 			startService(mServiceIntent);

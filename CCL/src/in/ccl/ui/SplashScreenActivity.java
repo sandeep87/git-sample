@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteMisuseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -98,24 +99,32 @@ public class SplashScreenActivity extends FragmentActivity {
 		ArrayList <Items> bannerItems = null;
 
 		// loading banner data from the database.
-		Cursor cursor = getContentResolver().query(DataProviderContract.BANNERURL_TABLE_CONTENTURI, null, null, null, null);
-		if (cursor != null) {
-			bannerItems = BannerCursor.getItems(cursor);
-			cursor.close();
-		}
+		try {
+			Cursor cursor = getContentResolver().query(DataProviderContract.BANNERURL_TABLE_CONTENTURI, null, null, null, null);
+			if (cursor != null) {
+				bannerItems = BannerCursor.getItems(cursor);
+				cursor.close();
+			}
 
-		// loading photo gallery data from database.
-		cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-		if (cursor != null) {
-			photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
-			cursor.close();
-		}
+			// loading photo gallery data from database.
+			cursor = getContentResolver().query(DataProviderContract.PHOTO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+			if (cursor != null) {
+				photoAlbumItems = PhotoAlbumCurosr.getItems(cursor);
+				cursor.close();
+			}
 
-		// loading video gallery data from the database.
-		cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
-		if (cursor != null) {
-			videoAlbumItems = VideoAlbumCursor.getItems(cursor);
-			cursor.close();
+			// loading video gallery data from the database.
+			cursor = getContentResolver().query(DataProviderContract.VIDEO_ALBUM_TABLE_CONTENTURI, null, null, null, null);
+			if (cursor != null) {
+				videoAlbumItems = VideoAlbumCursor.getItems(cursor);
+				cursor.close();
+			}
+		}
+		catch (IllegalStateException e) {
+			// TODO: handle exception
+		}
+		catch (SQLiteMisuseException e) {
+			// TODO: handle exception
 		}
 		if ((bannerItems != null && bannerItems.size() > 0) || (photoAlbumItems != null && photoAlbumItems.size() > 0) || (videoAlbumItems != null && videoAlbumItems.size() > 0)) {
 			callHomeIntent(bannerItems, photoAlbumItems, videoAlbumItems);
@@ -266,9 +275,9 @@ public class SplashScreenActivity extends FragmentActivity {
 		// all the uncaught exceptions
 		String logDirectoryPath = AppPropertiesUtil.getAppDirectory(context) + getResources().getString(R.string.log_folder);
 
-	//	ParadigmExceptionHandler paradigmException = new ParadigmExceptionHandler(this, logDirectoryPath);
-		//Thread.setDefaultUncaughtExceptionHandler(paradigmException);
-		//Logger.info("Initialization components " + initialized);
+		// ParadigmExceptionHandler paradigmException = new ParadigmExceptionHandler(this, logDirectoryPath);
+		// Thread.setDefaultUncaughtExceptionHandler(paradigmException);
+		// Logger.info("Initialization components " + initialized);
 		return initialized;
 	}
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/score_layout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/score_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:visibility="gone" >
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -15,7 +16,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/target"
             android:textColor="@android:color/white"
             android:textSize="17sp"
@@ -25,9 +26,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="2dip"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dip"
         android:orientation="horizontal" >
 
         <in.ccl.photo.PhotoView
@@ -41,7 +42,8 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp" >
+            android:layout_marginLeft="10dp" 
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/img_score_first_position"
@@ -75,7 +77,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" >
+            android:layout_marginTop="30dp" >
 
             <ImageView
                 android:id="@+id/img_slash"
@@ -103,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp" >
+            android:layout_marginTop="30dp" >
 
             <TextView
                 android:id="@+id/txt_overs"
@@ -124,10 +126,11 @@
     </LinearLayout>
 
     <include layout="@layout/score_batting_stats" />
-    <LinearLayout 
+
+    <View
         android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        ></LinearLayout>
+        android:layout_height="5dp" >
+    </View>
 
     <include layout="@layout/bowler_status" />
 
@@ -137,18 +140,30 @@
         android:layout_marginTop="2dp"
         android:background="@drawable/line" />
 
-    <LinearLayout
-        android:layout_width="120dip"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom" >
+        android:layout_marginTop="15dp" >
+
+        <Button
+            android:id="@+id/btn_livestreaming"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/livescorebtn"
+            android:text="Live Streaming" />
 
         <Button
             android:id="@+id/btn_score_board"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/view_score" />
-    </LinearLayout>
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/livescorebtn"
+            android:text="View ScoreBoard" />
+    </RelativeLayout>
 
 </LinearLayout>

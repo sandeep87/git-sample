@@ -14,6 +14,12 @@ public class SampleUploadListener extends BaseRequestListener {
 		this.delegateResponse = delegateResponse;
 	}
 
+	@Override
+	public void onFacebookError (FacebookError e, Object state) {
+		// TODO Auto-generated method stub
+		delegateResponse.setData("error","SampleUploadListener");
+	}
+
 	/**
 	 * Called when a request completes with the given response
 	 */

@@ -109,15 +109,28 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 android:textStyle="bold" />
-        </RelativeLayout>
-		<View
-                android:id="@+id/seperator"
+             <Button
+                android:id="@+id/btn_view_score_board_one"
                 android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:layout_below="@+id/fst_layout"
-                android:layout_marginLeft="10dp"
+                android:layout_height="fill_parent"
                 android:layout_marginRight="10dp"
-                android:background="@android:color/black" />
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/team_layout"
+                android:background="@drawable/view_score"
+                android:padding="3dip"
+                android:paddingTop="5dip" />
+        
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/seperator"
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/fst_layout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/black" />
+
         <RelativeLayout
             android:id="@+id/scnd_layout"
             android:layout_width="wrap_content"
@@ -164,7 +177,7 @@
 
             <TextView
                 android:id="@+id/txt_scnd_time"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/scnd_team_layout"
                 android:padding="3dip"
@@ -172,6 +185,17 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_view_score_board_two"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/scnd_team_layout"
+                android:background="@drawable/view_score"
+                android:padding="3dip"
+                android:paddingTop="5dip" />
         </RelativeLayout>
     </RelativeLayout>
 

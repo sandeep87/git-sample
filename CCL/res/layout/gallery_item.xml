@@ -37,9 +37,9 @@
         android:layout_gravity="center_horizontal"
         android:paddingTop="20dp"
         android:gravity="center"
-        android:text="Unable to retrieve content at this moment"
-        android:textColor="@android:color/black"
+        android:text="Loading..."
+        android:textColor="#ffcccccc"
         android:textSize="12sp"
-        android:visibility="gone" />
+         />
 
 </RelativeLayout>

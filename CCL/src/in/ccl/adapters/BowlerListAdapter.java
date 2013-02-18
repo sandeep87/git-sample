@@ -27,7 +27,9 @@ public class BowlerListAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount () {
+		if(bowlerList != null && bowlerList.getBowler_info()!= null)
 		return bowlerList.getBowler_info().size();
+		return 0;
 	}
 
 	@Override

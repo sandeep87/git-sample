@@ -90,17 +90,22 @@ public class LiveScoreService extends IntentService {
 							try {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
-								System.out.println("Match date " + scheduleDate);
-								System.out.println("today date " + todayDate);
 								/*
-								 * Date questionDate = matchSchedule.getStartTime(); Date today = new Date();
-								 * 
-								 * SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd");
-								 * 
-								 * String questionDateStr = dateFormatter.format(questionDate); String todayStr = dateFormatter.format(today);
-								 */
-								if (scheduleDate.equals(todayDate) && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("started") && matchSchedule.getEndDate().compareTo(todayDate) > 0) {
+								 * System.out.println("Match date " + scheduleDate); System.out.println("today date " + todayDate);
+								 *//*
+										 * Date questionDate = matchSchedule.getStartTime(); Date today = new Date();
+										 * 
+										 * SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd");
+										 * 
+										 * String questionDateStr = dateFormatter.format(questionDate); String todayStr = dateFormatter.format(today);
+										 */
+								/*
+								 * System.out.println("one " + scheduleDate); System.out.println("two " + todayDate); System.out.println("=================="); System.out.println("three " + date.getTime()); System.out.println("four " + matchSchedule.getStartTime().getTime());
+								 * System.out.println("=================="); System.out.println("five " + date.getTime()); System.out.println("six " + matchSchedule.getEndDate().getTime()); System.out.println("========================"); System.out.println("seven " +
+								 * matchSchedule.getStatus().equalsIgnoreCase("started")); System.out.println("eight " + matchSchedule.getEndDate().compareTo(todayDate)); System.out.println("nine " + matchSchedule.getEndDate());
+								 */if (scheduleDate.equals(todayDate) && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("started") && matchSchedule.getEndDate().compareTo(todayDate) > 0) {
 									System.out.println("Calling for current score");
+									TopActivity.setLiveScore(true);
 									Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 									long trigger = getScheduleTimeInMills(matchSchedule.getStartTime());
@@ -111,6 +116,7 @@ public class LiveScoreService extends IntentService {
 								else {
 									workIntent.putExtra("KEY", "match_schedule_update");
 									System.out.println("Schedule for next start date " + getScheduleTimeInMills(matchSchedule.getStartTime()));
+									TopActivity.setLiveScore(false);
 
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 									alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -136,7 +142,6 @@ public class LiveScoreService extends IntentService {
 								Date todayDate = dateSdf.parse(sdf.format(date));;
 								Date scheduleDate = dateSdf.parse(dateSdf.format(matchSchedule.getStartTime()));
 								if (scheduleDate.compareTo(todayDate) == 0 && date.getTime() >= matchSchedule.getStartTime().getTime() && date.getTime() <= matchSchedule.getEndDate().getTime() && matchSchedule.getStatus().equalsIgnoreCase("started")) {
-									System.out.println("phani update livescore");
 									Intent mServiceIntent = new Intent(this, LiveScoreService.class).setData(Uri.parse(getResources().getString(R.string.currentscore_url)));
 									PendingIntent pendingIntent = PendingIntent.getService(this, 0, mServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 									long trigger = getScheduleTimeInMills(matchSchedule.getStartTime());
@@ -145,6 +150,8 @@ public class LiveScoreService extends IntentService {
 								}
 								else {
 									if (date.getTime() <= matchSchedule.getEndDate().getTime()) {
+										TopActivity.setLiveScore(false);
+
 										System.out.println("RAJESH Setting for next 30 mins");
 										PendingIntent pendingIntent = PendingIntent.getService(this, 0, workIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 										alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -213,6 +220,7 @@ public class LiveScoreService extends IntentService {
 
 					}
 					else if (compareKey.equals("currentscore")) {
+						TopActivity.setLiveScore(true);
 						TopActivity.setCurrentScoreTimerStarted(true);
 						String currentMessage = LiveScoreParser.parseCurrentScore(localHttpURLConnection.getInputStream());
 						TopActivity.setCurrentScore(currentMessage);

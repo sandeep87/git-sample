@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="in.ccl.ui"
-    android:versionCode="7"
-    android:versionName="2.1" >
+    android:versionCode="8"
+    android:versionName="2.1.1" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -30,11 +30,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ccl_logo"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        android:label="@string/app_name" >
         <activity
             android:name=".SplashScreenActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/noAnimTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -73,14 +73,11 @@ public class DownloadActivity extends TopActivity {
 			gridviewDownload.setAdapter(adapter);
 		}
 
-
 		if (downloadItemsArrayList != null && downloadItemsArrayList.size() > 0) {
 			gridviewDownload.setOnScrollListener(new EndlessScrollListener(DownloadActivity.this, adapter, 0, EndlessScrollListener.RequestType.DOWNLOAD_IMAGE_REQUEST, downloadItemsArrayList.get(0).getNumberOfPages()));
 
 		}
-		registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 		gridviewDownload.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
 			@Override
 			public void onItemClick (AdapterView <?> arg0, View view, int position, long arg3) {
 
@@ -89,20 +86,21 @@ public class DownloadActivity extends TopActivity {
 				intent.putExtra(Constants.EXTRA_PHOTO_POSITION_ID, position);
 				startActivity(intent);
 			}
-		});    
+		});
 
 	}
-	
-	BroadcastReceiver receiver = new BroadcastReceiver() {
-	      @Override
-	      public void onReceive(Context context, Intent intent) {
-	          String action = intent.getAction();
-	          if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
-	    				Toast.makeText(DownloadActivity.this, getResources().getString(R.string.downloading_succuss),Toast.LENGTH_SHORT).show();
 
-	          }
-	      }
-	  };
+	BroadcastReceiver receiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive (Context context, Intent intent) {
+			String action = intent.getAction();
+			if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+				Toast.makeText(DownloadActivity.this, getResources().getString(R.string.downloading_succuss), Toast.LENGTH_SHORT).show();
+
+			}
+		}
+	};
 
 	@Override
 	protected void onResume () {
@@ -110,7 +108,6 @@ public class DownloadActivity extends TopActivity {
 
 		if (Util.getInstance().isOnline(DownloadActivity.this)) {
 			if (isAsyncTask) {
-				//System.out.println("onresume is" + "isAynctask");
 				adapter.downloadStartOnResume();
 				isAsyncTask = false;
 			}
@@ -118,10 +115,12 @@ public class DownloadActivity extends TopActivity {
 		else {
 			Toast.makeText(DownloadActivity.this, getResources().getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
 		}
+		
 		LocalBroadcastManager.getInstance(this).registerReceiver(mDownloadStateReceiver, statusIntentFilter);
+		registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
 		if (Util.getInstance().isOnline(DownloadActivity.this)) {
 			new Handler().postDelayed(new Runnable() {
-
 				@Override
 				public void run () {
 					Intent mServiceIntent = new Intent(DownloadActivity.this, CCLPullService.class).setData(Uri.parse(getResources().getString(R.string.downloads_url)));
@@ -136,11 +135,10 @@ public class DownloadActivity extends TopActivity {
 
 	protected void onPause () {
 		LocalBroadcastManager.getInstance(DownloadActivity.this).unregisterReceiver(mDownloadStateReceiver);
-
+		unregisterReceiver(receiver);
 		if (adapter != null && adapter.mDownloaderImage != null) {
 			if (this.adapter.mDownloaderImage.getStatus() == AsyncTask.Status.RUNNING) {
 				isAsyncTask = true;
-			//	System.out.println("onpause in if block is running");
 				adapter.downloadStop();
 			}
 		}
@@ -148,7 +146,7 @@ public class DownloadActivity extends TopActivity {
 	}
 
 	protected boolean isAppInstalled (String packageName) {
-		
+
 		Intent mIntent = getPackageManager().getLaunchIntentForPackage(packageName);
 		if (mIntent != null) {
 			return true;

@@ -15,13 +15,12 @@
         android:src="@drawable/banner_item_preloader" />
 
     <TextView
-        android:id="@+id/error_title"
+        android:id="@+id/loading"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Unable to retrieve content at this moment"
-        android:textColor="@android:color/black"
-        android:textSize="12sp"
-        android:visibility="gone" />
+        android:text="Loading..."
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
 
 </FrameLayout>
