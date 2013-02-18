@@ -3,6 +3,7 @@ package in.ccl.adapters;
 import in.ccl.model.Items;
 import in.ccl.photo.ScaleImageView;
 import in.ccl.ui.R;
+import in.ccl.util.Constants;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class FullPagerAdapter extends PagerAdapter {
 
 	// private String network_provider;
 
-	static Facebook mFaceBook = new Facebook("429104203832155");
+	static Facebook mFaceBook = new Facebook(Constants.FACEBOOK_ID);
 
 	ArrayAdapter <String> adapter;
 

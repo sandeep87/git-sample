@@ -13,27 +13,24 @@
     <string name="calender_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/photos/43</string>
     <string name="team_members_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/memberswithroles/</string>
 
-    <!-- Testing live score urls, need to change later -->
-    <!--
-    <string name="currentscore_url">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/currentscore.html</string>
+    <!-- Amazon Testing live score urls, need to change later -->
+    
+   <!--  <string name="currentscore_url">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/currentscore.html</string>
     <string name="match_schedule_url">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/match_schedule.html</string>
     <string name="live_score_url">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/livescore.html</string>
     <string name="live_matches_urls">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/livematches.html</string>
     <string name="score_board_url">https://s3.amazonaws.com/celebrity_cricket_league/logs/android/2013-01-08/fullscore.html</string>
-    -->
+    --> 
     <!-- Production live score urls, need to change later -->
-   <string name="currentscore_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/currentscore</string>
+   <!-- <string name="currentscore_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/currentscore</string>
     <string name="match_schedule_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/match_schedule</string>
     <string name="live_score_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livescore?match_id=</string>
     <string name="live_matches_urls">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/livematches</string>
     <string name="score_board_url">http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/fullscore?match_id=</string>
-    
-    <!-- Production live score urls, need to change later -->
-<!--   -->
+     -->
+     
     <!-- ec2 test server  http://ec2-54-234-80-86.compute-1.amazonaws.com/ -->
-
-
-    <!--
+    
      <string name="currentscore_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/currentscore</string>
     <string name="match_schedule_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/match_schedule</string>
     <string name="live_score_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/livescore?match_id=</string>
@@ -42,7 +39,7 @@
     
     
     
-    -->
+    
     <!-- Production notification urls -->
 
     <string name="push_status_url">http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/push_status?user_id=</string>
