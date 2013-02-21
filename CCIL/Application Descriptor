@@ -1,7 +1,0 @@
-MIDlet-Version: 1.0.0
-MIDlet-Vendor: MIDlet Suite Vendor
-MIDlet-Jar-URL: CCL1.jar
-MicroEdition-Configuration: CLDC-1.0
-MIDlet-1: CCL,/ccl_logo.png,com.paradigmcreatives.ccl.CCL
-MicroEdition-Profile: MIDP-2.1
-MIDlet-Name: CCL1 MIDlet Suite
