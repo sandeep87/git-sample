@@ -1,10 +1,6 @@
 package com.paradigmcreatives.ccl;
 
 import java.util.Vector;
-
-import javax.microedition.lcdui.Canvas;
-import javax.microedition.lcdui.Graphics;
-
 import org.json.me.JSONArray;
 import org.json.me.JSONException;
 import org.json.me.JSONObject;
@@ -17,6 +13,7 @@ public class PhotoAlbums
 	HomeScreenCanvas homeScreenCanvas;
 	CCL Midlet;
 	Vector vector;
+	PhotoAlbum mPhotoDownload;
 	String photoAlbum = "http://ec2-54-234-80-86.compute-1.amazonaws.com/restv2/albums";
 
 	public PhotoAlbums(CCL Midlet) {
@@ -37,16 +34,18 @@ public class PhotoAlbums
 				vector.addElement(mData);	
 			}
 		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}catch(ArrayIndexOutOfBoundsException e) {
 			
 			System.out.println("Array index bound exception");
 		}
 		
-		try {
+		mPhotoDownload = new PhotoAlbum(Midlet,vector);
+		
+		/*try {
 			
-		  for( int i = 0 ; i < vector.size() ; i++){
+		  for( int i = 0 ; i <5 ; i++){
 				
 				PhotoAlbumsData mData = (PhotoAlbumsData) vector.elementAt(i);
 				
@@ -66,13 +65,13 @@ public class PhotoAlbums
 		  }
 		
 		} catch (ArrayIndexOutOfBoundsException e) {
-			// TODO: handle exception
+			
 			e.printStackTrace();
-		}
+		}*/
 	}	
 
 	public PhotoAlbums(CCL ccl, boolean b) {
-		// TODO Auto-generated constructor stub
+		
 		this.Midlet = ccl;
 		
 		mServerData = new ServerData();
@@ -91,7 +90,7 @@ public class PhotoAlbums
 				vector.addElement(mData);	
 			}
 		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}catch(ArrayIndexOutOfBoundsException e) {
 			
@@ -123,7 +122,7 @@ public class PhotoAlbums
 		  }
 		
 		} catch (ArrayIndexOutOfBoundsException e) {
-			// TODO: handle exception
+			
 			e.printStackTrace();
 		}
 	

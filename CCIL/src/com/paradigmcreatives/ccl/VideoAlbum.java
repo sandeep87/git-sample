@@ -10,6 +10,7 @@ public class VideoAlbum {
 
 	private Vdownload mDownload;
 	ServerData mServerData;
+	VideoAlbums mVideoAlbums;
 	CCL Midlet;
 	Vector vector;
 	String videoAlbum = "http://ec2-23-21-38-107.compute-1.amazonaws.com/restv2/videoalbums";
@@ -38,12 +39,21 @@ public class VideoAlbum {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			for (int i = 0; i < vector.size(); i++) {
+		
+		mVideoAlbums = new VideoAlbums(Midlet,vector);
+		
+		/*try {
+			for (int i = 0; i < 5; i++) {
 
 				VideoAlbumsData mData = (VideoAlbumsData) vector.elementAt(i);
 				String thumb = mData.getValbum_thumb();
-				System.out.println(mData.getValbum_id() + " : " + thumb);
+				String replace = "celebrity_cricket_league";
+				int index = thumb.indexOf(replace);
+				thumb = thumb.substring(0, index) + "traningtest"
+						+ thumb.substring(index + replace.length());
+				thumb = thumb.substring(0, thumb.length()-4) + ".png";
+				
+				System.out.println("Video url"+thumb);
 				mDownload = new Vdownload(thumb, Midlet);
 				mDownload.start();
 			}
@@ -51,7 +61,7 @@ public class VideoAlbum {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-
+*/
 	}
 
 	public VideoAlbum(CCL midlet, boolean b) {

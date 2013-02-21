@@ -8,59 +8,66 @@ import java.util.Vector;
 import javax.microedition.io.Connector;
 import javax.microedition.io.ContentConnection;
 import javax.microedition.lcdui.Command;
+import javax.microedition.lcdui.Displayable;
 import javax.microedition.lcdui.Form;
 import javax.microedition.lcdui.Image;
 
+public class Download implements Runnable {
 
-
-public class Download implements Runnable{
-
-	String url;
-	String url1;
+	String url,hUrl;
 	String id;
 	String title;
-	private CCL MIDlet;
-	private Image image = null;
-	Form mForm = new Form("Photo Albums");
-	Command back = new Command("Exit", Command.EXIT, 1);
-	Command more = new Command("More photo albums", Command.SCREEN, 1);
-	Vector vector = new Vector(5, 2);
+	private PhotoAlbum MIDlet;
+	CCL midlet;
 	boolean value = true;
-	public Download(String url, String id, String title, CCL MIDlet) {
-		// TODO Auto-generated constructor stub
-		this.url = url;
-		this.id = id;
-		this.title = title;
-		this.MIDlet = MIDlet;
+	Form mForm;
+	Command back = new Command("Exit", Command.EXIT, 1);
+	Command more = new Command("More Albums", Command.SCREEN, 1);
+	private Image image = null;
+	
+	Vector vector = new Vector(5, 2);
+	public Download(String url, PhotoAlbum photoAlbum) {
+		
+		this.url = url;	
+		this.MIDlet = photoAlbum;
 	}
-	public Download(String url, boolean b, CCL ccl) {
-		// TODO Auto-generated constructor stub
-		this.url1 = url;
+	public Download(String thumb, boolean b, CCL ccl) {
+		hUrl = thumb;
 		value = b ;
-		this.MIDlet = ccl ;
+		midlet = ccl ;
 	}
 	public void run() {
-		// TODO Auto-generated method stub
-		try
-	    {
-			if(value){
-				 getImage(url);
-			}else{
-				System.out.println("i am in Downloading images");
-				getImage(url1);
-			}
-	     
-	     // Thread.sleep(10);
-	    }
-	     catch (IOException e) {
-			// TODO Auto-generated catch block
-			getimage1();
-		      System.err.println("Msg1: " + e.toString());
-		}  
-		catch (ArrayIndexOutOfBoundsException e)
-	    { 
-	    	e.printStackTrace();
-	    }	
+		if(value){
+			try
+		    {
+		      getImage(url);
+		     // Thread.sleep(10);
+		    }
+		    catch (ArrayIndexOutOfBoundsException e)
+		    { 
+		    	e.printStackTrace();
+		    } catch (IOException e) {
+				// TODO Auto-generated catch block
+				getimage1();
+			      System.err.println("Msg1: " + e.toString());
+			}   
+		}else{
+			try
+		    {
+		      getImage(hUrl);
+		     // Thread.sleep(10);
+		    }
+		    catch (ArrayIndexOutOfBoundsException e)
+		    { 
+		    	e.printStackTrace();
+		    } catch (IOException e) {
+				// TODO Auto-generated catch block
+				getimage1();
+			      System.err.println("Msg1: " + e.toString());
+			}   
+		}
+		
+		
 	}
 	private void getimage1() {
 		// TODO Auto-generated method stub
@@ -95,6 +102,8 @@ public class Download implements Runnable{
 	    
 	    DataInputStream iStrm = connection.openDataInputStream();    
 	    
+	    System.out.println("Datainput stream"+"  "+iStrm);
+	    
 	    ByteArrayOutputStream bStrm = null;
 	   
 	    Image im = null;
@@ -125,6 +134,9 @@ public class Download implements Runnable{
 	    }catch (OutOfMemoryError e) {
 			// TODO: handle exception
 	    	System.err.println("In out of memory error"+"  : "+e.toString()); 	
+		}catch (IllegalArgumentException e) {
+			
+			System.out.println("illegal argument exception");
 		}
 	    finally
 	    {
@@ -134,27 +146,22 @@ public class Download implements Runnable{
 	      if (iStrm != null)
 	        iStrm.close();
 	      if (bStrm != null)
-	    	  bStrm.flush();
 	        bStrm.close();                        
 	    }
 	    if (im == null)
 		      getimage1();
 		    else
 		    {		
-		    	vector.addElement(im);  	
+		    	vector.addElement(im); 
+		    	
 		    }
-	  }
-	public void Show(){
-		if(!value){
-	    	
-			System.out.println("I am for home screen");
-			MIDlet.hPhotos(vector);
-		   	
-	    }   	
-	    else{
-	    	MIDlet.showImage(vector);
+	    if(value){
+	    MIDlet.showImage(vector);
+	    }else{
+	    	midlet.hPhotos(vector);
 	    }
+	   
+	  }
+		
 	}
-	 
 
-}

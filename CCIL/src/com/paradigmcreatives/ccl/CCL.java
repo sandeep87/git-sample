@@ -34,9 +34,9 @@ public class CCL extends MIDlet implements CommandListener {
 	PhotoAlbums mPhotoAlbums;
 	VideoAlbum mVideoAlbum;
 	Slider mSlider;
-	Vector hPhotoVector = new Vector(9);
-	Vector hVideoVector = new Vector(9);
-	Vector hSliderVector = new Vector(9);
+	static Vector hPhotoVector = new Vector(9);//Holds the home screen photos
+	static Vector hVideoVector = new Vector(9);//Holds the home screen videos
+	static Vector hSliderVector = new Vector(9);//Holds the home screen photos
 
 	public CCL() {
 		// Initialization
@@ -53,22 +53,22 @@ public class CCL extends MIDlet implements CommandListener {
 	}
 
 	protected void destroyApp(boolean arg0) throws MIDletStateChangeException {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	protected void pauseApp() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	protected void startApp() throws MIDletStateChangeException {
-		// TODO Auto-generated method stub
+	
 		
 		// mDisplay.setCurrent(mForm);
-		/*mVideoAlbum = new VideoAlbum(this,false);
+		mVideoAlbum = new VideoAlbum(this,false);
 		mSlider = new Slider(this);
-		mPhotoAlbums = new PhotoAlbums(this,false);*/
+		mPhotoAlbums = new PhotoAlbums(this,false);
 		CCL.mDisplay.setCurrent(new HomeScreenCanvas());
 		mCanvas = new HomeScreenCanvas();
 		mCanvas.setTitle("Celebrity Cricket League");
@@ -113,7 +113,10 @@ public void showVImage(Vector vector){
 	
 	for(int i = 0 ; i < vector.size() ; i++){
 		
-		Vform.append((Image) vector.elementAt(i));
+		Image mImage = (Image) vector.elementAt(i);
+		
+		System.out.println("in main midlet");
+		Vform.append(mImage);
 	}
 	mDisplay.setCurrent(Vform);
 	
