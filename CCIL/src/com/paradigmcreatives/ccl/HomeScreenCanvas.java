@@ -29,8 +29,7 @@ public class HomeScreenCanvas extends MainCanvas {
 	private static int photoPointercounter = 0;
 	private static int videoPointercounter = 0;
 	private static Image frame;
-	Vector hPhotoVector = new Vector(9);
-	Vector hVideoVector = new Vector(9);
+	
 	
 	//VideoAlbum mVideoAlbum;
 
@@ -227,7 +226,7 @@ public class HomeScreenCanvas extends MainCanvas {
 		}
 	}
 
-	public void showPhotos(Vector vector) {
+	/*public void showPhotos(Vector vector) {
 		// TODO Auto-generated method stub
 		hPhotoVector = vector;
 		System.out.println(hPhotoVector.size());
@@ -237,5 +236,5 @@ public class HomeScreenCanvas extends MainCanvas {
 		// TODO Auto-generated method stub
 		hVideoVector = vector;
 		System.out.println(hVideoVector.size());
-	}
+	}*/
 }

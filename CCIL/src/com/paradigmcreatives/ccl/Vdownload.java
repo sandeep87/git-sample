@@ -13,41 +13,51 @@ public class Vdownload implements Runnable {
 
 	String url;
 	String url1;
-	private CCL MIDlet;
-	private Image image = null;
-	HomeScreenCanvas homeScreenCanvas;
-	Vector vector = new Vector(5, 1);
 	boolean value = true;
+	VideoAlbums videoAlbums;
+	CCL midlet;
+	private Image image = null;
+	static int i = 0;
+	Vector vector = new Vector(5, 1);
 
-	public Vdownload(String url, CCL MIDlet) {
+	public Vdownload(String url, VideoAlbums videoAlbums) {
 		// TODO Auto-generated constructor stub
 		this.url = url;
-		this.MIDlet = MIDlet;
+		this.videoAlbums = videoAlbums;
 	}
 
-	public Vdownload(String thumb, CCL midlet, boolean b) {
+	public Vdownload(String url, CCL midlet, boolean b) {
 
+		url1 = url;
+		this.midlet = midlet;
 		value = b;
-		url1 = thumb;
-		MIDlet = midlet;
 	}
 
 	public void run() {
-		// TODO Auto-generated method stub
-		try {
-			if (value) {
+		if(value){
+			try {
+				
 				getImage(url);
-			} else {
-				getImage(url1);
-			}
-		}
-
-		catch (Exception e) {
+			
+		} catch (Exception e) {
 
 			System.err.println("Msg: " + e.toString());
 			getimage1();
 
 		}
+		}else{
+			try {
+				
+				getImage(url1);
+			
+		} catch (Exception e) {
+
+			System.err.println("Msg: " + e.toString());
+			getimage1();
+
+		}
+		}
+		
 	}
 
 	public void start() {
@@ -59,16 +69,16 @@ public class Vdownload implements Runnable {
 	}
 
 	private void getimage1() {
-		// TODO Auto-generated method stub
+	
 		try {
 			image = Image.createImage("/ThumbnailNoData3.png");
 			vector.addElement(image);
-			// Display.getDisplay(MIDlet).setCurrent(mList);
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (ArrayIndexOutOfBoundsException e) {
-			// TODO: handle exception
+			
 			e.printStackTrace();
 		}
 
@@ -103,7 +113,7 @@ public class Vdownload implements Runnable {
 
 			im = Image.createImage(imageData, 0, imageData.length);
 		} catch (OutOfMemoryError e) {
-			// TODO: handle exception
+			
 			System.err.println("Msg2:" + "  : " + e);
 			getimage1();
 		} finally {
@@ -113,7 +123,6 @@ public class Vdownload implements Runnable {
 			if (iStrm != null)
 				iStrm.close();
 			if (bStrm != null)
-				bStrm.flush();
 				bStrm.close();
 		}
 		if (im == null)
@@ -122,12 +131,9 @@ public class Vdownload implements Runnable {
 			vector.addElement(im);
 		}
 		if (value)
-			MIDlet.hVideos(vector);
+			videoAlbums.showVImage(vector);
 		else {
-			System.out.println("in home videos");
-			MIDlet.hVideos(vector);
-			
+			midlet.hVideos(vector);
 		}
-
 	}
 }
