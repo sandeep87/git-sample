@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, SqliteDemoActivity!</string>
+    <string name="app_name">SqliteDemo</string>
+    <string name="data">Enter the data</string>
+    <string name="btn">Insert Data</string>
+    <string name="btn1">Delete Data</string>
+
+</resources>

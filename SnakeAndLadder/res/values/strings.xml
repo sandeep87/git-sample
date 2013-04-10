@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">The Snake and Ladder Game</string>
+    <string name="app_name">SnakeAndLadder</string>
+    <string name="go">Go!</string>
+    <string name="second">Selection of the game</string>
+    <string name="newtxt">New Game</string>
+    <string name="cnt">Continue</string>
+    <string name="help">Help</string>
+    <string name="exit">Exit</string>
+    <string name="helptxt">gamedetails</string>
+    <string name="player">Please enter the player details</string>
+    <string name="edt1">Player name</string>
+    <string name="edt2">Player age</string>
+    <string name="sbt">Submit</string>
+    <string name="td">Throw_Dice</string>
+    <string name="etb">Exit</string>
+
+</resources>

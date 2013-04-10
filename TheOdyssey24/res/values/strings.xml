@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TheOdyssey</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="info">Odysseus did not recognize the shore. He thought he has been abandoned yet again
+        on some faraway isle, and cursed and cried to the gods, for he did not recognize his own kingdom.
+        At that very moment, a glow appeared in the air before him and Athena appeared: 
+        \"Oh my Odysseus, my favourite mortal. Have you been away so long from home and your heart\'s desire that you do not distinguish it?\"</string>
+    <string name="page_one_info">The war lasted for 10 years with wounded worriers drowned in blood, screaming in pain and with thousands of them lying around lifeless.  The Greeks destroyed Troy and sailed home except Odysseus who could never make it back….for another ten years.</string>
+
+    <string name="page_two_info"> Odysseus, King of Sparta sailed with other Greeks to fight the Trojans leaving his wife Penelope and new born son Telemachus. </string>
+</resources>

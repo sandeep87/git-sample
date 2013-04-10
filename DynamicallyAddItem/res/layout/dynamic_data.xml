@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    	  android:layout_width="fill_parent"
+    	  android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/hinttext"
+       						 />
+
+    <Button
+        android:id="@+id/addItem_btn"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:text="@string/addItem" ></Button>
+
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textEmpty"
+        android:gravity="center_horizontal"/>
+    <ListView 
+        android:layout_below="@+id/addItem_btn"
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ></ListView>
+
+</RelativeLayout>

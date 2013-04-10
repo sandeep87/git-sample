@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image">5dp</dimen>
+    <dimen name="mtop">5dp</dimen>
+    <dimen name="mright">5dp</dimen>
+</resources>

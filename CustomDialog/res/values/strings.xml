@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, CustomDialogActivity!</string>
+    <string name="app_name">CustomDialog</string>
+    <string name="custom">Android_Custom_Dialog</string>
+    <string name="dialogbtn">OK</string>
+    <string name="desc">Android_Iamge</string>
+
+</resources>

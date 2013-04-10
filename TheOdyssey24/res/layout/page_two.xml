@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/theodyssey1" >
+
+   
+    
+    <LinearLayout
+        android:id="@+id/linear_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="220dp"
+        android:orientation="horizontal" >
+    
+    <TextView
+        android:padding="10dp"
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/page_two_info"
+        android:background="#80FFFFFF" />
+    </LinearLayout>
+    
+    <Button 
+        
+        android:id="@+id/button"
+       android:layout_width="50dp"
+       android:layout_height="50dp"
+       android:layout_marginTop="187dp"
+       android:layout_marginRight="7dp"
+       android:background="@drawable/maximize_icon"
+       android:layout_alignParentRight="true"
+       />
+    
+
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, ReverseGeoCodingActivity!</string>
+    <string name="app_name">ReverseGeoCoding</string>
+    <string name="mapit">mapit!</string>
+    <string name="text">latitude</string>
+    <string name="text1">longitude</string>
+
+</resources>

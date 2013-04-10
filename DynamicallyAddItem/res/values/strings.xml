@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, DynamicallyAddItemActivity!</string>
+    <string name="app_name">DynamicallyAddItem</string>
+    <string name="addItem">addItem</string>
+    <string name="hinttext">Enter text here</string>
+    <string name="textEmpty">List is empty</string>
+    
+</resources>
