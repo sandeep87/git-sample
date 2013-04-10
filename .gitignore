@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled source #
 ###################
 *.com
@@ -43,3 +44,11 @@ gen/
 .metadata
 local.properties
 proguard-project.txt
+=======
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> a14942414f3c458cc49ac2ffeab2ebde3424e15d

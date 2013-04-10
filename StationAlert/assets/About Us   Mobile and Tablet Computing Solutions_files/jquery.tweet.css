@@ -1,0 +1,20 @@
+.tweet, .query {
+	color: #ababab;
+	color:#eeeeee;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.tweet .tweet_list li, .query .tweet_list li {
+	overflow-y: auto;
+	overflow-x: hidden;
+
+}
+.tweet .tweet_list li a, .query .tweet_list li a {
+	font-weight:bold;
+	font-style:italic;
+}
+.tweet .tweet_list .tweet_avatar, .query .tweet_list .tweet_avatar {
+	float: left;
+}
+.tweet .tweet_list .tweet_avatar img, .query .tweet_list .tweet_avatar img {
+	vertical-align: middle;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/track_info_main"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:background="@drawable/theme_bg"
+  android:orientation="vertical">
+  
+  <TextView android:id="@+id/setting_text_info"
+  			android:layout_width="wrap_content"
+  			android:layout_height="wrap_content"
+  			android:layout_marginTop="20px"
+  			android:layout_marginLeft="20px"
+  			android:layout_marginBottom="10px"
+  			android:textColor="@color/black"
+  			android:textStyle="bold"
+  			android:textSize="16px">
+  </TextView>
+  
+  <ListView android:id="@+id/setting__info_list"
+  			android:layout_width="fill_parent"
+  			android:layout_height="wrap_content"
+  			android:background="@drawable/setting_bg_ld"
+  			android:layout_marginLeft="10px"
+  			android:layout_marginRight="10px"
+  			android:layout_marginBottom="5px"
+  			android:divider="@drawable/setting_list_view_divider_ld">
+  </ListView>
+  
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Station Alert!</string>
+    <string name="app_name">Station Alert</string>
+    <string name ="dest_loc">Please Enter Destination Location </string>
+    <string name ="curt_loc">Current Location Info:</string>
+    <string name="heading_bar_text">Add Destination Location:</string>
+    <string name="track_info">Track Info:</string>
+</resources>

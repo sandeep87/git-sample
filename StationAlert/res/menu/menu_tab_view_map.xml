@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+   <item
+  		android:id="@+id/my_location1"
+  		android:title="MY LOCATION"
+  		></item>
+  
+  	<item
+  		android:id="@+id/add_new_dest"
+  		android:title="ADD NEW DESTINATION"
+  		android:icon="@drawable/menu_add">
+  	</item>
+  	<item
+  		android:id="@+id/refresh"
+  		android:title="Refresh"
+  		android:icon="@drawable/menu_refresh">
+  	</item> 
+  	
+  	<item android:id="@+id/layers"
+			android:title="Layers">
+		
+		<menu>	
+		
+			 <item 
+               android:id="@+id/satelite"
+               android:title="Satellite"
+               android:numericShortcut="1"
+               />
+              <item 
+              android:id="@+id/traffic"
+              android:title="Traffic"
+              android:numericShortcut="2"/> 
+              <item 
+              android:id="@+id/streetView"
+              android:title="StreetView"
+              android:numericShortcut="3"/>
+     		
+		
+		</menu>
+		
+	   </item>
+</menu>

@@ -1,0 +1,17 @@
+document.write("\x3cdiv class\x3d\x22feedburnerFeedBlock\x22 id\x3d\x22ParadigmcreativescomBlogectiknkeut7dbblc1ficv5fhtk\x22\x3e");
+document.write("\x3cul\x3e");
+document.write("\x3cli\x3e\x3cspan class\x3d\x22headline\x22\x3e\x3ca href\x3d\x22http://paradigmcreatives.com/blog/2011/01/28/resolve-timeout-error-during-install-of-android-application/\x22 target\x3d\x22_blank\x22 \x3eResolve \x26lsquo;timeout\x26rsquo; error during install of Android Application\x3c/a\x3e\x3c/span\x3e");
+document.write("\x3cdiv\x3e Resolving timeout error in Eclipse while installing an Android Application Failed to install .apk on device : timeout Launch\x26#8230;\x3c/div\x3e");
+document.write("\x3c/li\x3e");
+document.write("\x3cli\x3e\x3cspan class\x3d\x22headline\x22\x3e\x3ca href\x3d\x22http://paradigmcreatives.com/blog/2011/01/20/best-firefox-plugins-for-web-design-and-developers/\x22 target\x3d\x22_blank\x22 \x3eBest Firefox plugins for Web Design and Developers\x3c/a\x3e\x3c/span\x3e");
+document.write("\x3cdiv\x3e Mozilla Firefox is becoming more and more powerful tool in these days. Using right add-ons it will start to\x26#8230;\x3c/div\x3e");
+document.write("\x3c/li\x3e");
+document.write("\x3cli\x3e\x3cspan class\x3d\x22headline\x22\x3e\x3ca href\x3d\x22http://paradigmcreatives.com/blog/2011/01/20/android-memory-architecture-and-memory-management/\x22 target\x3d\x22_blank\x22 \x3eAndroid Memory Architecture and Memory Management\x3c/a\x3e\x3c/span\x3e");
+document.write("\x3cdiv\x3e1) Android Google classifies Android as a software stack containing an operating system, middleware and key applications. The Android SDK\x26#8230;\x3c/div\x3e");
+document.write("\x3c/li\x3e");
+document.write("\x3cli\x3e\x3cspan class\x3d\x22headline\x22\x3e\x3ca href\x3d\x22http://paradigmcreatives.com/blog/2010/12/24/percipi/\x22 target\x3d\x22_blank\x22 \x3ePercipi\x3c/a\x3e\x3c/span\x3e");
+document.write("\x3cdiv\x3ePercipi as an idea is ten months old now. The idea behind Percipi is simple. How do you enable a\x26#8230;\x3c/div\x3e");
+document.write("\x3c/li\x3e");
+document.write("\x3c/ul\x3e");
+document.write(" \x3cdiv id\x3d\x22creditfooter\x22\x3e\x3ca href\x3d\x22http://www.feedburner.com\x22 target\x3d\x22_blank\x22\x3e\x3cimg src\x3d\x22http://www.feedburner.com/fb/images/buzzboost-pwrd.gif\x22 alt\x3d\x22Headlines by FeedBurner\x22 style\x3d\x22border:0\x22/\x3e\x3c/a\x3e\x3c/div\x3e");
+document.write("\x3c/div\x3e");

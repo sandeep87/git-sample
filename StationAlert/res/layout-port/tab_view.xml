@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@android:id/tabhost" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:id="@+id/linearlayout">
+		<TabWidget android:id="@android:id/tabs"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"/>
+		<FrameLayout android:id="@android:id/tabcontent"
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent">
+			<LinearLayout 
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent"
+				android:id="@+id/track_main"
+				android:orientation="vertical">
+			</LinearLayout>
+			
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/map_main"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent">
+				<com.google.android.maps.MapView
+					android:id="@+id/final_mapview" 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent" 
+					android:clickable="true"
+					                 android:apiKey="0TqoE_fzA3Pv-m8188NwttzIKcYBzhNJsYRJkKQ"
+ />
+				<RelativeLayout   
+    				 android:layout_width="35dip"
+                     android:layout_height="70dip"
+                     android:layout_below="@id/linearlayout"
+                     android:layout_alignParentRight="true"
+                     android:background="@drawable/zoombackground">
+                     
+            <TextView android:layout_height="30dip" 
+            android:gravity="center_horizontal" android:textStyle="bold" 
+            android:textColor="#000000" android:textSize="30dip"
+             android:id="@+id/zoomButton1"             
+              android:layout_width="100dip"
+               android:text="+" />
+            <TextView android:layout_height="30dip" 
+            android:layout_below="@id/zoomButton1" 
+            android:textStyle="bold"            
+            android:textColor="#000000"
+             android:gravity="center_horizontal" 
+             android:textSize="30dip" 
+             android:id="@+id/zoomButton2" 
+             android:layout_width="80dip" 
+              android:text="-"   />
+</RelativeLayout>  	
+			</RelativeLayout>
+			
+			
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent"
+				android:id="@+id/time_main">
+			</LinearLayout>
+		</FrameLayout>
+	</LinearLayout>
+</TabHost>
