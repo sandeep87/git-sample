@@ -1,0 +1,1354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Managing the Oracle Instance</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 009" />
+<meta name="Date" content="2010-08-02T19:32:58Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database 2 Day DBA 11g Release 2 (11.2)" />
+<meta name="partno" content="E10897-05" />
+<meta name="docid" content="ADMQS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="network.htm" title="Previous" type="text/html" />
+<link rel="Next" href="storage.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e10897.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database 2 Day DBA<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E10897-05</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="network.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="storage.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e10897.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CACFBJED" name="CACFBJED"></a><a id="ADMQS005" name="ADMQS005"></a>
+<h1 class="chapter"><span class="secnum">5</span> Managing the Oracle Instance</h1>
+<p>This chapter provides background information about the Oracle instance and instructions for managing the instance.</p>
+<p>This chapter contains the following sections:</p>
+<ul>
+<li>
+<p><a href="#CACEIBFA">Overview of the Oracle Instance and Instance Management</a></p>
+</li>
+<li>
+<p><a href="#CACCCCBC">Shutting Down and Starting Up the Oracle Instance</a></p>
+</li>
+<li>
+<p><a href="#CACDDIID">Viewing and Modifying Initialization Parameters</a></p>
+</li>
+<li>
+<p><a href="#CACBFIED">Managing Memory</a></p>
+</li>
+<li>
+<p><a href="#CIABDFIH">Instances: Oracle By Example Series</a></p>
+</li>
+</ul>
+<a id="CACEIBFA" name="CACEIBFA"></a><a id="ADMQS051" name="ADMQS051"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Overview of the Oracle Instance and Instance Management</h2>
+<p>An Oracle database system consists of an Oracle database and an Oracle instance.</p>
+<p>A <span class="bold">database</span> consists of a set of disk files that store user data and metadata. <span class="bold">Metadata</span>, or "data about the data," consists of structural, configuration, and control information about the database.</p>
+<p><a id="sthref153" name="sthref153"></a><a id="sthref154" name="sthref154"></a><a id="sthref155" name="sthref155"></a>An <span class="bold">Oracle instance</span> (also known as a <span class="bold">database instance</span>) contains the set of Oracle Database background processes that operate on the stored data and the shared allocated memory that those processes use to do their work.</p>
+<p>Each instance has an instance ID, also known as a system ID (SID). Because there can be multiple Oracle databases on a host computer, each with its own set of data files, you must identify the instance to which you want to connect. For a local connection, you identify the instance by setting operating system environment variables <code>ORACLE_SID</code> and <code>ORACLE_HOME</code>. For a remote connection, you identify the instance by specifying a network address and a database service name.</p>
+<p>An Oracle instance must be started to read and write information to the database. The Oracle instance creates the database upon receipt of instructions from the Oracle Database Configuration Assistant (DBCA) utility or the <code>CREATE</code> <code>DATABASE</code> SQL statement.</p>
+<p>When the Oracle instance is not available, your data is safe in the database, but it cannot be accessed by any user or application.</p>
+<p><a id="sthref156" name="sthref156"></a><a id="sthref157" name="sthref157"></a><a id="sthref158" name="sthref158"></a>The properties of an Oracle instance are specified using instance initialization parameters. When the instance is started, an initialization parameter file is read, and the instance is configured accordingly.</p>
+<p><a id="sthref159" name="sthref159"></a>This section presents some concepts of an Oracle instance and its management. It contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CACGGCJJ">About Initialization Parameters</a></p>
+</li>
+<li>
+<p><a href="#CIHIICAI">About Background Processes</a></p>
+</li>
+<li>
+<p><a href="#CIHIEBEB">About Server and Client Processes</a></p>
+</li>
+<li>
+<p><a href="#CIHJHIJD">About Instance Memory Structure</a></p>
+</li>
+<li>
+<p><a href="#CIHJIJGE">About Instance Startup and Shutdown</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink CNCPT89030" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT89030"><span class="italic">Oracle Database Concepts</span></a> for an overview of the Oracle database instance</p>
+</li>
+</ul>
+</div>
+<a id="CACGGCJJ" name="CACGGCJJ"></a><a id="ADMQS0511" name="ADMQS0511"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Initialization Parameters</h3>
+<p><a id="sthref160" name="sthref160"></a><a id="sthref161" name="sthref161"></a><a id="sthref162" name="sthref162"></a>Managing an Oracle instance includes configuring parameters that affect the basic operation of the Oracle instance. These parameters are called initialization parameters. The Oracle instance reads initialization parameters from a file at startup.</p>
+<p>During installation, when you select a preconfigured database workload available in DBCA, the initialization parameters are optimized for typical use in the environment that you specified. As the number of database users increases and the workload increases, you might have to alter some initialization parameters. You can make these changes using the Initialization Parameter page in Database Control, or by using an advisor provided by Oracle Database, such as the Memory Advisor. See <a href="montune.htm#CBBGHHJI">"Optimizing Memory Usage with the Memory Advisors"</a> for more information.</p>
+<p>After being read from a file, initialization parameters are retained in memory, where the values for many of them can be changed dynamically. There are two types of parameter files. The type of file used to start the instance determines if dynamic initialization parameter changes persist across database shutdown and startup. The parameter file types are:</p>
+<ul>
+<li>
+<p>Server parameter file</p>
+<p>The <span class="bold">server parameter file</span> is the preferred form of initialization parameter file, and is a binary file that can be written to and read by the database. It <span class="italic">must not</span> be edited manually. It is stored on the host computer on which Oracle Database is running. Changes are made when you use Database Control to modify one or more initialization parameters, or when Oracle Database itself makes changes for self-tuning purposes. Any changes to it persist across database shutdown and startup operations.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+When changing an initialization parameter in the server parameter file, you can also specify that the in-memory value be changed, so that your change is reflected immediately in the current instance. If you do not change the in-memory value, then the change does not take effect until you shut down and restart the database.</div>
+</li>
+<li>
+<p>Text initialization parameter file</p>
+<p>A <span class="bold">text initialization parameter file</span> is a text file that can be read by the Oracle instance, but it is not written to by the instance. You can change a text initialization parameter file with a text editor, but changes do not take effect until you restart the Oracle instance. When you start the instance with this type of file, you can still change many initialization parameters dynamically with Database Control, but only for the current instance. Unless you also edit the text initialization parameter file and make the same change, the change is lost when you restart the database instance.</p>
+</li>
+</ul>
+<p>You can use SQL statements to create the following:</p>
+<ul>
+<li>
+<p>A server parameter file from a text initialization file</p>
+</li>
+<li>
+<p>A server parameter file from the current (in-memory) values of all initialization parameters</p>
+</li>
+<li>
+<p>A text initialization parameter file from a server parameter file</p>
+</li>
+</ul>
+<p>When you create the database with DBCA, a server parameter file is created. This file is then used each time the database is started.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CACDDIID">"Viewing and Modifying Initialization Parameters"</a></p>
+</li>
+<li>
+<p><a class="olink ADMIN00202" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN00202"><span class="italic">Oracle Database Administrator's Guide</span></a> for information about the default name and location of the server parameter file, and for commands to create a server parameter file or text initialization parameter file</p>
+</li>
+<li>
+<p><a class="olink CNCPT1290" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT1290"><span class="italic">Oracle Database Concepts</span></a> for an overview of parameter files</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CIHIICAI" name="CIHIICAI"></a><a id="ADMQS0513" name="ADMQS0513"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Background Processes</h3>
+<p><a id="sthref163" name="sthref163"></a>The background processes of the Oracle instance manage memory structures, asynchronously perform I/O to write data to a file on a disk, and perform general maintenance tasks. The background processes consolidate functions that would otherwise be handled by multiple Oracle Database programs running for each user process. They monitor other Oracle Database processes to provide increased parallelism for better performance and reliability.</p>
+<p>The background processes that are present depend on the features that are being used in the database. Some fundamental background processes are described in <a href="#CIAFCDCF">Table 5-1</a>.</p>
+<div class="tblformal">
+<p class="titleintable"><a id="ADMQS12329" name="ADMQS12329"></a><a id="sthref164" name="sthref164"></a><a id="CIAFCDCF" name="CIAFCDCF"></a>Table 5-1 Oracle Database Background Processes</p>
+<table class="Formal" title="Oracle Database Background Processes" summary="Oracle Background Processes" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t5">Background Process</th>
+<th align="left" valign="bottom" id="r1c2-t5">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t5" headers="r1c1-t5">
+<p><a id="sthref165" name="sthref165"></a><a id="sthref166" name="sthref166"></a>Database writer (DBW<span class="italic">n</span>)</p>
+</td>
+<td align="left" headers="r2c1-t5 r1c2-t5">
+<p>The database writer writes modified blocks from the database buffer cache to the files on a disk. Oracle Database allows a maximum of 20 database writer processes.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t5" headers="r1c1-t5">
+<p><a id="sthref167" name="sthref167"></a><a id="sthref168" name="sthref168"></a>Log writer (LGWR)</p>
+</td>
+<td align="left" headers="r3c1-t5 r1c2-t5">
+<p>The log writer process writes redo log entries to disk. Redo log entries are generated in the redo log buffer of the System Global Area (SGA) and the log writer process writes the redo log entries sequentially into an online redo log file.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t5" headers="r1c1-t5">
+<p><a id="sthref169" name="sthref169"></a><a id="sthref170" name="sthref170"></a>Checkpoint (CKPT)</p>
+</td>
+<td align="left" headers="r4c1-t5 r1c2-t5">
+<p><a id="sthref171" name="sthref171"></a><a id="sthref172" name="sthref172"></a>At specific times, all modified database buffers in the SGA are written to the data files by a database writer process (DBW<span class="italic">n</span>). This event is called a <span class="bold">checkpoint</span>. The checkpoint process signals DBW<span class="italic">n</span>, updates the data files and control files of the database, and records the time of this update.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t5" headers="r1c1-t5">
+<p><a id="sthref173" name="sthref173"></a><a id="sthref174" name="sthref174"></a>System monitor (SMON)</p>
+</td>
+<td align="left" headers="r5c1-t5 r1c2-t5">
+<p>The system monitor performs instance recovery when a failed instance is restarted.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t5" headers="r1c1-t5">
+<p><a id="sthref175" name="sthref175"></a><a id="sthref176" name="sthref176"></a>Process monitor (PMON)</p>
+</td>
+<td align="left" headers="r6c1-t5 r1c2-t5">
+<p>The process monitor performs a recovery when a user process fails. It cleans up the cache and frees resources that the failed process was using.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t5" headers="r1c1-t5">
+<p><a id="sthref177" name="sthref177"></a><a id="sthref178" name="sthref178"></a>Archiver (ARC<span class="italic">n</span>)</p>
+</td>
+<td align="left" headers="r7c1-t5 r1c2-t5">
+<p>Archiver processes copy the online redo log files to archival storage when the log files are full or a log switch occurs. The database must be in archive log mode to run archive processes. For more information, see <a href="backrest.htm#CIHEHFJJ">Chapter 9, "Performing Backup and Recovery"</a>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t5" headers="r1c1-t5">
+<p><a id="sthref179" name="sthref179"></a><a id="sthref180" name="sthref180"></a>Manageability monitor (MMON)</p>
+</td>
+<td align="left" headers="r8c1-t5 r1c2-t5">
+<p>This process performs various management-related background tasks, for example:</p>
+<ul>
+<li>
+<p>Issuing alerts whenever a given metric violates its threshold value</p>
+</li>
+<li>
+<p>Taking snapshots by spawning additional processes</p>
+</li>
+<li>
+<p>Capturing statistical values for SQL objects that have been recently modified</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t5" headers="r1c1-t5">
+<p>Job Queue Processes (CJQ0 and Jnnn)</p>
+</td>
+<td align="left" headers="r9c1-t5 r1c2-t5">
+<p>Job queue processes run user jobs, often in batch mode. A <span class="bold">job</span> is a user-defined task scheduled to run one or more times.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r10c1-t5" headers="r1c1-t5">&nbsp;</td>
+<td align="left" headers="r10c1-t5 r1c2-t5">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" -->
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink REFRN104" href="http://www.oracle.com/pls/db112/lookup?id=REFRN104"><span class="italic">Oracle Database Reference</span></a> for a complete list of Oracle Database background processes</p>
+</li>
+<li>
+<p><a class="olink CNCPT1249" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT1249"><span class="italic">Oracle Database Concepts</span></a> for an overview of background processes</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CIHIEBEB" name="CIHIEBEB"></a><a id="ADMQS05142" name="ADMQS05142"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Server and Client Processes</h3>
+<p>In addition to background processes, Oracle Database creates <a id="sthref181" name="sthref181"></a>server processes that handle the connection requests of user or client processes. A user connection is composed of the following distinct pieces:</p>
+<ul>
+<li>
+<p>A client program acting on behalf of the user, such as Oracle Enterprise Manager (Enterprise Manager), SQL*Plus, or an application</p>
+</li>
+<li>
+<p>A server process that handles the connection to the database on behalf of the client program, and that performs much of the work for the client program, such as parsing and running SQL statements, and retrieving and returning results to the client program</p>
+</li>
+</ul>
+<p>Server <a id="sthref182" name="sthref182"></a><a id="sthref183" name="sthref183"></a>processes can be either dedicated or shared. When server processes are dedicated, Oracle Database is running in <span class="bold">dedicated server mode</span>. When server processes are shared, Oracle Database is running in <span class="bold">shared server mode</span>. In dedicated server mode, each client process has its own server process. Although a dedicated server process is good for long-running queries and administrative tasks, an idle process or too many dedicated processes can result in an inefficient use of resources.</p>
+<p>Using shared server mode eliminates the need for a dedicated server process for each user connection, requires less memory for each user connection, and enables more users to access the database. Shared server mode is more efficient at supporting multiple client programs making frequent short-running queries.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CIHJHIJD" name="CIHJHIJD"></a><a id="ADMQS0512" name="ADMQS0512"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Instance Memory Structure</h3>
+<p><a id="sthref184" name="sthref184"></a><a id="sthref185" name="sthref185"></a>The sizes of the instance memory structures affect database performance and are controlled by initialization parameters.</p>
+<p><a id="sthref186" name="sthref186"></a>Upon installation, you can let the database manage memory for you automatically, or you can choose to manually configure the instance memory structures. If you choose manual memory management, then Oracle Database provides advisors to help you determine appropriate values for memory parameters. For both manual and automatic memory management, Oracle Database sends alerts that identify memory sizing problems that require your attention.</p>
+<p>The following sections describe the two important memory areas that you can monitor and size:</p>
+<ul>
+<li>
+<p><a href="#CHDEDFFG">System Global Area</a></p>
+</li>
+<li>
+<p><a href="#CHDCBGJH">Program Global Area</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CACBFIED">"Managing Memory"</a></p>
+</li>
+<li>
+<p><a class="olink CNCPT007" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT007"><span class="italic">Oracle Database Concepts</span></a> for more information about Oracle Database memory architecture</p>
+</li>
+</ul>
+</div>
+<a id="CHDEDFFG" name="CHDEDFFG"></a><a id="ADMQS05121" name="ADMQS05121"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">System Global Area</h4>
+<p><a id="sthref187" name="sthref187"></a>The System Global Area (SGA) is a shared memory area that contains data and control information for the instance. Multiple users can share data within this memory area and avoid repeated, time-consuming access from a physical disk.</p>
+<p><a id="sthref188" name="sthref188"></a><a href="#BBAFBHEI">Table 5-2</a> lists the components of the SGA.</p>
+<div class="tblformal">
+<p class="titleintable"><a id="ADMQS12330" name="ADMQS12330"></a><a id="sthref189" name="sthref189"></a><a id="BBAFBHEI" name="BBAFBHEI"></a>Table 5-2 SGA Components</p>
+<table class="Formal" title="SGA Components" summary="SGA Components" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t8">Component</th>
+<th align="left" valign="bottom" id="r1c2-t8">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t8" headers="r1c1-t8">
+<p>Database buffer cache</p>
+</td>
+<td align="left" headers="r2c1-t8 r1c2-t8">
+<p>Before data stored in the database can be queried or modified, it must be read from a disk and stored in the buffer cache. All user processes connected to the database share access to the buffer cache. For optimal performance, the buffer cache should be large enough to avoid frequent disk I/O operations.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t8" headers="r1c1-t8">
+<p>Shared pool</p>
+</td>
+<td align="left" headers="r3c1-t8 r1c2-t8">
+<p>The shared pool caches information that is shared among users:</p>
+<ul>
+<li>
+<p>SQL statements that can be reused</p>
+</li>
+<li>
+<p>Information from the data dictionary such as user account data, table and index descriptions, and privileges</p>
+</li>
+<li>
+<p>Stored procedures, which are executable code that is stored in the database</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t8" headers="r1c1-t8">
+<p>Redo log buffer</p>
+</td>
+<td align="left" headers="r4c1-t8 r1c2-t8">
+<p>This buffer improves performance by caching redo information until it can be written to the physical online redo log files stored on disk. Redo information and online redo log files are discussed in <a href="storage.htm#CACDFFGG">"About Online Redo Log Files"</a>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t8" headers="r1c1-t8">
+<p>Large pool</p>
+</td>
+<td align="left" headers="r5c1-t8 r1c2-t8">
+<p>This optional area is used to buffer large I/O requests for various server processes.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t8" headers="r1c1-t8">
+<p>Java pool</p>
+</td>
+<td align="left" headers="r6c1-t8 r1c2-t8">
+<p>The Java pool is an area of memory that is used for all session-specific Java code and data within the Java Virtual Machine (JVM).</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t8" headers="r1c1-t8">
+<p>Streams pool</p>
+</td>
+<td align="left" headers="r7c1-t8 r1c2-t8">
+<p>The Streams pool is an area of memory that is used by the Oracle Streams feature. For more information about Oracle Streams, see <a class="olink STRMS" href="http://www.oracle.com/pls/db112/lookup?id=STRMS"><span class="italic">Oracle Streams Concepts and Administration</span></a>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t8" headers="r1c1-t8">
+<p>Result cache</p>
+</td>
+<td align="left" headers="r8c1-t8 r1c2-t8">
+<p>The result cache buffers query results. If a query is run for which the results are stored in the result cache, then the database returns the query results from the result cache instead of rerunning the query. This SGA component speeds the execution of frequently run queries.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect3" -->
+<a id="CHDCBGJH" name="CHDCBGJH"></a><a id="ADMQS05122" name="ADMQS05122"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Program Global Area</h4>
+<p><a id="sthref190" name="sthref190"></a>A <span class="bold">Program Global Area (PGA)</span> is a memory area used by a single Oracle Database server process. <a id="sthref191" name="sthref191"></a>When you connect to an Oracle database instance, you create a <span class="bold">session</span> that uses a server process for communication between the client and database instance. Each server process has its own PGA.</p>
+<p>The PGA is used to process SQL statements and to hold logon and other session information. A large part of the PGA is dedicated to <span class="bold">SQL work areas</span>, which are working memory areas for sorts and other SQL operations.</p>
+<p><a id="sthref192" name="sthref192"></a>The amount of PGA memory used and the contents of the PGA depend on whether the instance is running in dedicated server or shared server mode.</p>
+<p>The total memory used by all individual PGAs is known as the <span class="bold">total instance PGA memory</span>, and the collection of individual PGAs is referred to as the <span class="bold">total instance PGA</span>, or just <a id="sthref193" name="sthref193"></a><a id="sthref194" name="sthref194"></a><span class="bold">instance PGA</span>. With Database Control, you set the size of the instance PGA, not individual PGAs.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CIHJIJGE" name="CIHJIJGE"></a><a id="ADMQS0514" name="ADMQS0514"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Instance Startup and Shutdown</h3>
+<p><a id="sthref195" name="sthref195"></a>After installation, the Oracle instance is started, and the database is open for access by users with database accounts. At some point, you may want to shut down and restart the instance. This section describes the startup and shutdown processes.</p>
+<p>The phrases "starting up and shutting down the Oracle instance" are often used interchangeably with "starting up and shutting down the database."</p>
+<p>This section contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CHDDECFF">About Administration Privileges for Startup and Shutdown</a></p>
+</li>
+<li>
+<p><a href="#CIHEDGEA">About Instance Startup</a></p>
+</li>
+<li>
+<p><a href="#CHDCJJIH">About Instance Shutdown</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CACCCCBC">"Shutting Down and Starting Up the Oracle Instance"</a></p>
+</li>
+<li>
+<p><a class="olink CNCPT955" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT955"><span class="italic">Oracle Database Concepts</span></a></p>
+</li>
+</ul>
+</div>
+<a id="CHDDECFF" name="CHDDECFF"></a><a id="ADMQS05141" name="ADMQS05141"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">About Administration Privileges for Startup and Shutdown</h4>
+<p><a id="sthref196" name="sthref196"></a><a id="sthref197" name="sthref197"></a><a id="sthref198" name="sthref198"></a><a id="sthref199" name="sthref199"></a>To start or shut down the Oracle instance, you must connect to the instance with a special connection privilege. There are two of these privileges: <code>SYSDBA</code> for fully empowered database administrators and <code>SYSOPER</code> for users who start and shut down the database, but have no privileges to access user objects.</p>
+<p>When you create an Oracle database, there are two primary a<a id="sthref200" name="sthref200"></a><a id="sthref201" name="sthref201"></a><a id="sthref202" name="sthref202"></a><a id="sthref203" name="sthref203"></a><a id="sthref204" name="sthref204"></a><a id="sthref205" name="sthref205"></a><a id="sthref206" name="sthref206"></a>dministrative user accounts that are automatically created: <code>SYS</code> and <code>SYSTEM</code>. Both of these users have full database administration privileges, but initially, only user <code>SYS</code> or <code>SYSTEM</code> can connect with the <code>SYSOPER</code> privilege. Therefore, until you grant the <code>SYSOPER</code> privilege to other users, you must connect to the Oracle instance as user <code>SYS</code> or <code>SYSTEM</code> to start and shut down the instance. When connecting (logging in) as user <code>SYS</code>, you must always specify that you are connecting <code>AS</code> <code>SYSDBA</code>.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="users_secure.htm#CHDFFCIG">"About Administrative Accounts and Privileges"</a> for more information about the <code>SYS</code> and <code>SYSTEM</code> users, and the <code>SYSDBA</code> privilege</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="CIHEDGEA" name="CIHEDGEA"></a><a id="ADMQS05144" name="ADMQS05144"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">About Instance Startup</h4>
+<p><a id="sthref207" name="sthref207"></a>When you start the Oracle instance, you typically start it such that the state of the database is <code>OPEN</code> and ready for user connections. However, there are situations in which you may want to start the instance with the database in the <code>MOUNTED</code> state, but not open. An instance can also be started without the database either mounted or open. Thus, there are three stages to starting an instance:</p>
+<ol>
+<li>
+<p>You start the instance using one of the following methods:</p>
+<ul>
+<li>
+<p>Using Oracle Enterprise Manager. See <a href="#CACCCCBC">"Shutting Down and Starting Up the Oracle Instance"</a>.</p>
+</li>
+<li>
+<p>Using the SQL*Plus <code>STARTUP</code> command. See <a class="olink ADMIN10063" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN10063"><span class="italic">Oracle Database Administrator's Guide</span></a>.</p>
+</li>
+<li>
+<p>On Microsoft Windows, using the Services program in Control Panel to start the Oracle Database services. See <a href="#CHDEFDDI">"Shutting Down and Starting Up Using the Windows Services Program"</a>.</p>
+</li>
+</ul>
+<p>The instance reads the initialization parameter file, allocates SGA memory, and starts the background processes.</p>
+</li>
+<li>
+<p>If you mount the database, then the Oracle instance opens the control file for the database, but does not open the data files. The database is now considered to be in the <code>MOUNT</code> state. This state enables you to perform certain administrative functions that cannot be performed when other users are accessing the database. An example of such a function is enabling or disabling the archiving of online redo log files. See <a href="storage.htm#CACGGFIC">"About Archived Redo Log Files"</a> for information about online redo log file archiving.</p>
+</li>
+<li>
+<p>If you open the database, then, after reading the parameter file and control file, the online redo log files and data files for the database are also opened. The state of the database is now <code>OPEN</code> and user access to the data is available.</p>
+</li>
+</ol>
+<p>The default startup mode for the database (OPEN) completes the three stages in sequence. Unless you explicitly specify otherwise, the instance is started, the database is mounted, and then the database is opened.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CHDCJJIH" name="CHDCJJIH"></a><a id="ADMQS05145" name="ADMQS05145"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">About Instance Shutdown</h4>
+<p><a id="sthref208" name="sthref208"></a>Instance shutdown is the reverse of instance startup. When you shut down the Oracle instance, the default mode is a <code>NORMAL</code> shutdown, which means users are not allowed to create new connections to the database, but the shutdown process waits for all currently connected users to exit their sessions. After all the users have disconnected, then the committed transactions are written to disk, the database files are closed, and the instance is stopped. However, there are situations in which you may not want to wait for users to disconnect on their own (<code>IMMEDIATE</code> mode), or you want to let the current transactions for each user complete before they are disconnected (<code>TRANSACTIONAL</code> mode). In emergency situations you can even shut down the database without waiting for the committed transactions to be written to disk (<code>ABORT</code> mode).</p>
+<p>Shutting down an instance goes through the following stages:</p>
+<ol>
+<li>
+<p>After all the users have exited from their sessions, or been disconnected, Oracle Database writes data in the SGA to the data files and online redo log files. A checkpoint is performed on the data files and their headers are marked current as of the time of the instance shutdown. The data files and online redo log files are then closed and the state of the database is changed to <code>CLOSED</code>. The control file remains open to the instance.</p>
+</li>
+<li>
+<p>The Oracle instance dismounts the database and updates relevant entries in the control file to record a clean shutdown. The control file is closed. The database is now closed and dismounted. The instance is in the <code>NOMOUNT</code> state.</p>
+</li>
+<li>
+<p>The Oracle instance stops the background processes and deallocates the shared memory used by the SGA.</p>
+</li>
+</ol>
+<p>If a <code>SHUTDOWN ABORT</code> or abnormal termination occurs, then the instance of an open database closes and shuts down the database instantaneously. Oracle Database does not write data in the buffers of the SGA to the data files and redo log files. The subsequent reopening of the database requires instance recovery, which Oracle Database performs automatically.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CACCCCBC" name="CACCCCBC"></a><a id="ADMQS052" name="ADMQS052"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Shutting Down and Starting Up the Oracle Instance</h2>
+<p>This section provides instructions about two methods you can use to start or shut down the Oracle instance:</p>
+<ul>
+<li>
+<p><a href="#CHDHBIIE">Shutting Down and Starting Up Using Oracle Enterprise Manager Database Control</a></p>
+</li>
+<li>
+<p><a href="#CHDEFDDI">Shutting Down and Starting Up Using the Windows Services Program</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CIHJIJGE">"About Instance Startup and Shutdown"</a></p>
+</li>
+</ul>
+</div>
+<a id="CHDHBIIE" name="CHDHBIIE"></a><a id="ADMQS12037" name="ADMQS12037"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Shutting Down and Starting Up Using Oracle Enterprise Manager Database Control</h3>
+<p>You can shut down and start the Oracle instance from the Database Home page of Oracle Enterprise Manager Database Control (Database Control).</p>
+<p class="subhead2"><a id="ADMQS12152" name="ADMQS12152"></a>To shut down and start the Oracle instance using Database Control:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>In the General section of the Database Home page, click <span class="bold">Shutdown</span>.</p>
+<img width="324" height="193" src="img/hp-shutdown-r2.gif" alt="Description of hp-shutdown-r2.gif follows" title="Description of hp-shutdown-r2.gif follows" longdesc="img_text/hp-shutdown-r2.htm" /><br />
+<a id="sthref209" name="sthref209" href="img_text/hp-shutdown-r2.htm">Description of the illustration hp-shutdown-r2.gif</a><br />
+<br />
+<p>The Startup/Shutdown Credentials page appears.</p>
+<img width="755" height="408" src="img/shutdown_credentials.gif" alt="Description of shutdown_credentials.gif follows" title="Description of shutdown_credentials.gif follows" longdesc="img_text/shutdown_credentials.htm" /><br />
+<a id="sthref210" name="sthref210" href="img_text/shutdown_credentials.htm">Description of the illustration shutdown_credentials.gif</a><br />
+<br /></li>
+<li>
+<p>Enter credentials as follows:</p>
+<ol>
+<li>
+<p>Enter the host computer credentials of the user who installed Oracle Database, or of any user who is authorized to use SQL*Plus.</p>
+</li>
+<li>
+<p>Enter the database credentials consisting of the user name <code>SYS</code> and the password that you assigned to <code>SYS</code> during the installation.</p>
+</li>
+<li>
+<p>In the Connect As list, choose the value <span class="bold">SYSOPER</span>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>(Optional) Select the <span class="bold">Save as Preferred Credential</span> option if you want these credentials to be automatically filled in for you the next time that this page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">OK</span>.</p>
+<p>A confirmation page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span> to start the <code>SHUTDOWN IMMEDIATE</code> operation on the database.</p>
+<p>The Startup/Shutdown: Activity Information page appears, informing you that the database is being shut down.</p>
+</li>
+<li>
+<p>After a short period (approximately 2 minutes), click <span class="bold">Refresh</span> to be returned to the Database Home page.</p>
+<p>The Database Home page indicates that the database instance status is Down.</p>
+<img width="616" height="238" src="img/database_down.gif" alt="Description of database_down.gif follows" title="Description of database_down.gif follows" longdesc="img_text/database_down.htm" /><br />
+<a id="sthref211" name="sthref211" href="img_text/database_down.htm">Description of the illustration database_down.gif</a><br />
+<br /></li>
+<li>
+<p>Click <span class="bold">Startup</span> to start the database.</p>
+<p>The Startup/Shutdown Credential page appears again.</p>
+</li>
+<li>
+<p>Enter the credentials, and then click <span class="bold">OK</span>.</p>
+<p>A confirmation page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span>.</p>
+<p>The Startup page appears, indicating that the database is being started up. When startup is complete, the Login page appears.</p>
+</li>
+<li>
+<p>Log in to the database (and to Database Control).</p>
+<p>The Database Home page appears indicating that the database instance status is Up.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDEFDDI" name="CHDEFDDI"></a><a id="ADMQS0521" name="ADMQS0521"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Shutting Down and Starting Up Using the Windows Services Program</h3>
+<p><a id="sthref212" name="sthref212"></a><a id="sthref213" name="sthref213"></a><a id="sthref214" name="sthref214"></a><a id="sthref215" name="sthref215"></a>On Microsoft Windows, you can also start and shut down your Oracle database using the Services program in Control Panel. You must start or stop the following services:</p>
+<ul>
+<li>
+<p><code>OracleService</code><code><span class="codeinlineitalic">SID</span></code>, which is your Oracle instance.</p>
+</li>
+<li>
+<p><code>Oracle</code><code><span class="codeinlineitalic"><code><span class="codeinlineitalic">ORACLE_HOME</span></code></span></code><code>TNSListener</code>, which is your listener. The listener is required for clients to connect to your database.</p>
+</li>
+<li>
+<p><code>Oracle</code><code>DBConsole</code><code><span class="codeinlineitalic">SID</span></code>, which enables clients to connect to Database Control.</p>
+</li>
+</ul>
+<p>In the preceding service names, <code><span class="codeinlineitalic">SID</span></code> refers to the system identifier for the instance and <code><span class="codeinlineitalic">ORACLE_HOME</span></code> refers to the Oracle home name.</p>
+<p class="subhead2"><a id="ADMQS12153" name="ADMQS12153"></a>To start or stop Oracle Database services:</p>
+<ol>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>On Windows XP and Windows Server 2003, click <span class="bold">Start</span>, and then select <span class="bold">Control Panel</span>.</p>
+</li>
+<li>
+<p>On Windows 2000 Server, click <span class="bold">Start</span>, select <span class="bold">Settings</span>, and then select <span class="bold">Control Panel</span>.</p>
+</li>
+</ul>
+<p>The Control Panel window opens.</p>
+</li>
+<li>
+<p>Double-click the <span class="bold">Administrative Tools</span> icon, and then double-click the <span class="bold">Services</span> icon.</p>
+<p>The Services window opens, displaying all Windows services that are available on your system.</p>
+</li>
+<li>
+<p>Locate the Oracle Database services listed at the beginning of this section. For example, if your SID is <code>orcl</code>, then locate the following services:</p>
+<ul>
+<li>
+<p><code>OracleServiceORCL</code></p>
+</li>
+<li>
+<p><code>OracleOraDb11g_home1TNSListener</code></p>
+</li>
+<li>
+<p><code>OracleDBConsoleorcl</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Start or stop all three services, using the following steps for each service:</p>
+<ol>
+<li>
+<p>Select the service name.</p>
+</li>
+<li>
+<p>In the Action menu, click <span class="bold">Start</span> or <span class="bold">Stop</span>.</p>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CACDDIID" name="CACDDIID"></a><a id="ADMQS053" name="ADMQS053"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Viewing and Modifying Initialization Parameters</h2>
+<p><a id="sthref216" name="sthref216"></a><a id="sthref217" name="sthref217"></a><a id="sthref218" name="sthref218"></a>This section provides instructions about viewing the initialization parameter settings for your database and modifying these parameters. You can modify the initialization parameters for the database in one of three ways:</p>
+<ul>
+<li>
+<p>Until the instance is shut down: The new values for the initialization parameters are applied to the currently running instance, but, when the database is restarted, the initialization parameter values revert to their previous settings.</p>
+</li>
+<li>
+<p>From now until the initialization parameter is changed again: The changes are applied to the currently running instance and are also stored in the server parameter file. The changes made to the initialization parameters persist when the database is restarted.</p>
+</li>
+<li>
+<p>When the database is restarted: The new values for the initialization parameters are recorded in server parameter file, but are not applied to the currently running instance. The changes take effect only when the database is restarted.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+These three scenarios correspond to using the <code>SCOPE=MEMORY</code>, <code>SCOPE=BOTH</code>, and <code>SCOPE=SPFILE</code> clauses of the <code>ALTER</code> <code>SYSTEM</code> SQL statement, respectively, when you use the <code>ALTER</code> <code>SYSTEM</code> statement to change initialization parameters.</div>
+<p class="subhead2"><a id="ADMQS12154" name="ADMQS12154"></a>To view or modify initialization parameters:</p>
+<ol>
+<li>
+<p>At the top of the Database Home page, click <span class="bold">Server</span> to view the Server subpage.</p>
+</li>
+<li>
+<p>Under Database Configuration, click <span class="bold">Initialization Parameters</span>.</p>
+<p>Oracle Enterprise Manager Database Control (Database Control) displays the Initialization Parameters page.</p>
+<img width="739" height="494" src="img/init_params.gif" alt="Description of init_params.gif follows" title="Description of init_params.gif follows" longdesc="img_text/init_params.htm" /><br />
+<a id="sthref219" name="sthref219" href="img_text/init_params.htm">Description of the illustration init_params.gif</a><br />
+<br />
+<p>The Initialization Parameters page has two subpages:</p>
+<ul>
+<li>
+<p><span class="bold">Current</span>&#x2014;This subpage (the default) displays all initialization parameter values that are currently active (in memory) for the Oracle instance.</p>
+</li>
+<li>
+<p><span class="bold">SPFile</span>&#x2014;This subpage displays initialization parameter settings in the server parameter file. This subpage is present only when the current instance started up with a server parameter file. The file location is displayed at the top of the subpage.</p>
+</li>
+</ul>
+<p>See the online Help for the Initialization Parameters page for field descriptions.</p>
+</li>
+<li>
+<p><a id="CHDEIBED" name="CHDEIBED"></a>(Optional) On either subpage, reduce the number of initialization parameters displayed by doing one or both of the following, and then clicking <span class="bold">Go</span>:</p>
+<ul>
+<li>
+<p>In the <span class="bold">Name</span> field, enter text.</p>
+</li>
+<li>
+<p>Select from one or more of the lists next to the <span class="bold">Name</span> field.</p>
+</li>
+</ul>
+<p>For example, to view only initialization parameters that have the text <code>DEST</code> anywhere in the parameter name, enter <code>dest</code> in the <span class="bold">Name</span> field, and then click <span class="bold">Go</span>.</p>
+</li>
+<li>
+<p>To modify one or more initialization parameters for the currently running instance only, with the modifications being lost when the instance is restarted, complete the following steps:</p>
+<ol>
+<li>
+<p>On the Current subpage, in the <span class="bold">Value</span> column, enter new values for the initialization parameters.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If the Value column cannot be written to for a particular initialization parameter, then it means that this parameter is not dynamic&#x2014;that is, it cannot be changed for the current instance.</div>
+</li>
+<li>
+<p>Ensure that <span class="bold">Apply changes in current running instance(s) mode to SPFile</span> is not selected.</p>
+</li>
+<li>
+<p>(Optional) In the <span class="bold">Comments</span> column, enter text explaining the reasons for the changes.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>To modify initialization parameters for the currently running instance, and also record the modifications in the server parameter file that will persist when the database is restarted, complete the following steps:</p>
+<ol>
+<li>
+<p>On the Current subpage, in the <span class="bold">Value</span> column, enter new values for the initialization parameters.</p>
+</li>
+<li>
+<p>Select <span class="bold">Apply changes in current running instance(s) mode to SPFile</span>.</p>
+</li>
+<li>
+<p>(Optional) In the <span class="bold">Comments</span> column, enter text explaining the reasons for the changes.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>To modify initialization parameters in the server parameter file only, such that the current instance is not affected and changes take effect only when the database is next restarted, complete the following steps:</p>
+<ol>
+<li>
+<p>Click <span class="bold">SPFile</span> to view the SPFile subpage.</p>
+</li>
+<li>
+<p>(Optional) Reduce the number of entries in the initialization parameter list as described in Step <a href="#CHDEIBED">3</a>.</p>
+</li>
+<li>
+<p>In the <span class="bold">Value</span> column, enter new values for the initialization parameters.</p>
+</li>
+<li>
+<p>(Optional) In the <span class="bold">Comments</span> column, enter text explaining the reasons for the changes.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+</li>
+</ol>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Changes to initialization parameters are recorded in the alert log as <a id="sthref220" name="sthref220"></a><code>ALTER</code> <code>SYSTEM</code> statements. See <a class="olink ADMIN11007" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN11007"><span class="italic">Oracle Database Administrator's Guide</span></a> for information about the alert log.</div>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CACGGCJJ">"About Initialization Parameters"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect1" -->
+<a id="CACBFIED" name="CACBFIED"></a><a id="ADMQS054" name="ADMQS054"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Managing Memory</h2>
+<p><a id="sthref221" name="sthref221"></a><a id="sthref222" name="sthref222"></a>This section provides background information about managing memory for the Oracle instance, and includes instructions about how to adjust the memory allocation for the Oracle instance. It contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CHDHBJDJ">About Memory Management</a></p>
+</li>
+<li>
+<p><a href="#CHDGEFIA">Enabling Automatic Memory Management</a></p>
+</li>
+<li>
+<p><a href="#CHDBDJAJ">Modifying Memory Settings &#x2013; Automatic Memory Management</a></p>
+</li>
+<li>
+<p><a href="#CHDCBBHF">Modifying Memory Settings &#x2013; Automatic Shared Memory Management</a></p>
+</li>
+<li>
+<p><a href="#CHDBCDCC">Modifying Memory Settings &#x2013; Automatic PGA Memory Management</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CIHJHIJD">"About Instance Memory Structure"</a></p>
+</li>
+</ul>
+</div>
+<a id="CHDHBJDJ" name="CHDHBJDJ"></a><a id="ADMQS12038" name="ADMQS12038"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Memory Management</h3>
+<p><a id="sthref223" name="sthref223"></a>Memory management involves maintaining optimal sizes for the Oracle instance memory structures as demands on the database change. The memory that must be managed is the System Global Area (SGA) memory and the instance Program Global Area (PGA) memory. The instance PGA memory is the collection of memory allocations for all individual PGAs.</p>
+<p><a id="sthref224" name="sthref224"></a>Beginning with Oracle Database 11<span class="italic">g</span> release 1 (11.1), you can let the database manage the SGA memory and instance PGA memory completely. You designate only the total memory size to be used by the instance, and Oracle Database dynamically exchanges memory between the SGA and the instance PGA as needed to meet processing demands. This capability is referred to as <span class="bold">automatic memory management</span>. In this memory management mode, the database also dynamically tunes the sizes of the individual SGA components and the sizes of the individual PGAs.</p>
+<p><a id="sthref225" name="sthref225"></a>To have more direct control over the sizes of the SGA and instance PGA, use the Memory Advisors page of Database Control to disable automatic memory management and enable automatic shared memory management.</p>
+<ul>
+<li>
+<p>With <span class="bold">automatic shared memory management</span>, you set target and maximum sizes for the SGA. Oracle Database then tunes the total size of the SGA to your designated target, and dynamically tunes the sizes of all SGA components.</p>
+</li>
+<li>
+<p>When you enable automatic shared memory management, you also implicitly enable automatic PGA memory management. With <span class="bold">automatic PGA memory management</span>, you set a target size for the instance PGA. The database then tunes the size of the instance PGA to your target, and dynamically tunes the sizes of individual PGAs.</p>
+</li>
+</ul>
+<p>If you want complete control of individual SGA component sizes, then use the Memory Advisors page of Database Control to disable both automatic memory management and automatic shared memory management. This is called <span class="bold">manual shared memory management</span>. In this mode, you set the sizes of several individual SGA components, thereby determining the overall SGA size. You then manually tune these individual SGA components on an ongoing basis.</p>
+<p>Manual shared memory management mode is intended for experienced DBAs only. Note that in this mode, automatic PGA memory management remains enabled.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Although it is possible to disable automatic PGA memory management, it is not recommended, and cannot be done using the Memory Advisors page of Database Control.</div>
+<p><a href="#CHDFFHGH">Table 5-3</a> summarizes the various memory management modes that you can set using the Memory Advisors page of Database Control.</p>
+<div class="tblruleformalwide">
+<p class="titleintable"><a id="ADMQS12331" name="ADMQS12331"></a><a id="sthref226" name="sthref226"></a><a id="CHDFFHGH" name="CHDFFHGH"></a>Table 5-3 Oracle Database Memory Management Modes</p>
+<table class="RuleFormalWide" title="Oracle Database Memory Management Modes" summary="This table has 3 columns: Memory Management Mode, You Set, and Oracle Manages. It has 3 rows, one for each management mode. For each mode, a row gives the mode name, the parameters that you set, and the parameters that Oracle Database manages." dir="ltr" border="1" width="100%" frame="border" rules="all" cellpadding="3" cellspacing="0">
+<col width="*" />
+<col width="26%" />
+<col width="37%" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t18">Memory Management Mode</th>
+<th align="left" valign="bottom" id="r1c2-t18">You Set</th>
+<th align="left" valign="bottom" id="r1c3-t18">Oracle Database Automatically Tunes</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t18" headers="r1c1-t18">
+<p>Automatic memory management</p>
+</td>
+<td align="left" headers="r2c1-t18 r1c2-t18">
+<ul>
+<li>
+<p>Total memory size for this instance</p>
+</li>
+<li>
+<p>(Optional) Maximum memory size for this instance</p>
+</li>
+</ul>
+</td>
+<td align="left" headers="r2c1-t18 r1c3-t18">
+<ul>
+<li>
+<p>Total SGA size</p>
+</li>
+<li>
+<p>SGA component sizes</p>
+</li>
+<li>
+<p>Instance PGA size</p>
+</li>
+<li>
+<p>Individual PGA sizes</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t18" headers="r1c1-t18">
+<p>Automatic shared memory management and automatic PGA memory management</p>
+<p>(Automatic memory management disabled)</p>
+</td>
+<td align="left" headers="r3c1-t18 r1c2-t18">
+<ul>
+<li>
+<p>SGA target size</p>
+</li>
+<li>
+<p>(Optional) SGA maximum size</p>
+</li>
+<li>
+<p>Instance PGA target size</p>
+</li>
+</ul>
+</td>
+<td align="left" headers="r3c1-t18 r1c3-t18">
+<ul>
+<li>
+<p>SGA component sizes</p>
+</li>
+<li>
+<p>Individual PGA sizes</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t18" headers="r1c1-t18">
+<p>Manual shared memory management and automatic PGA memory management</p>
+<p>(Automatic memory management and automatic shared memory management disabled)</p>
+</td>
+<td align="left" headers="r4c1-t18 r1c2-t18">
+<ul>
+<li>
+<p>Shared pool size</p>
+</li>
+<li>
+<p>Buffer cache size</p>
+</li>
+<li>
+<p>Java pool size</p>
+</li>
+<li>
+<p>Large pool size</p>
+</li>
+<li>
+<p>Instance PGA target size</p>
+</li>
+</ul>
+</td>
+<td align="left" headers="r4c1-t18 r1c3-t18">
+<ul>
+<li>
+<p>Individual PGA sizes</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblruleformalwide" -->
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Automatic Memory Management is not available on all platforms. See <a class="olink ADMIN11236" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN11236"><span class="italic">Oracle Database Administrator's Guide</span></a> for more information about supported platforms.</div>
+<p>If you choose the basic installation option when you install the database, then automatic memory management is enabled. If you choose advanced installation, then DBCA enables you to select from the three memory management modes. Oracle recommends that you enable automatic memory management.</p>
+<p>Whichever memory management mode you choose, you may have occasion to adjust memory settings as demands on the database or on its host computer change. Reasons why you adjust memory settings include the following:</p>
+<ul>
+<li>
+<p>You receive a memory-related alert or error message.</p>
+</li>
+<li>
+<p>You receive a memory-related recommendation from Automatic Database Diagnostic Monitor (ADDM).</p>
+</li>
+<li>
+<p>You want to change the amount of memory allocated to accommodate future growth in memory demand.</p>
+</li>
+</ul>
+<p>You can use a <span class="italic">memory advisor</span> to help you adjust memory sizes. See <a href="#CHDCBBHF">"Modifying Memory Settings &#x2013; Automatic Shared Memory Management"</a> for an example of using a memory advisor.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDGEFIA">"Enabling Automatic Memory Management"</a></p>
+</li>
+<li>
+<p><a href="#CHDBDJAJ">"Modifying Memory Settings &#x2013; Automatic Memory Management"</a></p>
+</li>
+<li>
+<p><a href="#CHDBCDCC">"Modifying Memory Settings &#x2013; Automatic PGA Memory Management"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDGEFIA" name="CHDGEFIA"></a><a id="ADMQS12039" name="ADMQS12039"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Enabling Automatic Memory Management</h3>
+<p><a id="sthref227" name="sthref227"></a><a id="sthref228" name="sthref228"></a>If you did not enable automatic memory management when you installed and configured your database, then Oracle recommends that you do so after installation, unless you are an experienced DBA with specific reasons to manually tune memory sizes. With automatic memory management, the Oracle instance dynamically tunes all memory components to optimize performance as the workload changes.</p>
+<p class="subhead2"><a id="ADMQS12155" name="ADMQS12155"></a>To enable automatic memory management:</p>
+<ol>
+<li>
+<p>Go to the Database Home page, logging in as user <code>SYS</code>.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+You must log in as user <code>SYS</code> to change the maximum memory size, which is a static initialization parameter.</div>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Server</span>.</p>
+<p>The Server subpage appears.</p>
+</li>
+<li>
+<p>In the Database Configuration section, click <span class="bold">Memory Advisors</span>.</p>
+<p>The Memory Advisors page appears with the SGA subtab (in the middle of the page) displayed by default.</p>
+</li>
+<li>
+<p>If the Maximum SGA Size field contains a positive number that is greater than or equal to the desired total amount of memory to allocate to the database, then skip to Step <a href="#CHDGCCHD">10</a>.</p>
+</li>
+<li>
+<p>In the <span class="bold">Maximum SGA Size (MB)</span> field, enter the maximum permissible size for database memory.</p>
+<p>Use the sum of the current sizes of the SGA and instance PGA as a guideline, and optionally add some room for growth.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation page appears, indicating that you must restart the database.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span> and follow the guided instructions to restart the database.</p>
+</li>
+<li>
+<p>After you have initiated the database restart, wait a few minutes and then click <span class="bold">Refresh</span>.</p>
+<p>The Database Home page appears.</p>
+</li>
+<li>
+<p>Return to the Memory Advisors page.</p>
+<p>You might need to log out and log back in to Enterprise Manager to get this page to display correctly after the database restart.</p>
+</li>
+<li>
+<p><a id="CHDGCCHD" name="CHDGCCHD"></a>Next to Automatic Memory Management <span class="bold">Disabled</span>, click <span class="bold">Enable</span>.</p>
+<p>The Enable Automatic Memory Management page appears.</p>
+</li>
+<li>
+<p>In the field titled <span class="bold">Total Memory Size for Automatic Memory Management</span>, enter the desired amount of memory to allocate to the database, and then click <span class="bold">OK</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDHBJDJ">"About Memory Management"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDBDJAJ" name="CHDBDJAJ"></a><a id="ADMQS12101" name="ADMQS12101"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Modifying Memory Settings &#x2013; Automatic Memory Management</h3>
+<p><a id="sthref229" name="sthref229"></a>Modifying memory settings for automatic memory management involves using the Memory Advisors page of Database Control to change the total memory size setting. The procedure for changing this setting differs depending on whether or not your desired new setting exceeds the current setting for maximum memory size. In either case, the steps involved require that you must first have enabled Automatic Memory Management. See <a href="#CHDGEFIA">"Enabling Automatic Memory Management"</a>.</p>
+<p class="subhead2"><a id="ADMQS12156" name="ADMQS12156"></a>To modify total memory size (new value does not exceed maximum memory size):</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Server</span>.</p>
+</li>
+<li>
+<p>In the Database Configuration section, click <span class="bold">Memory Advisors</span>.</p>
+<p>The Memory Advisors page appears.</p>
+<img width="934" height="480" src="img/mem_param_auto.gif" alt="Description of mem_param_auto.gif follows" title="Description of mem_param_auto.gif follows" longdesc="img_text/mem_param_auto.htm" /><br />
+<a id="sthref230" name="sthref230" href="img_text/mem_param_auto.htm">Description of the illustration mem_param_auto.gif</a><br />
+<br /></li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>In the <span class="bold">Total Memory Size</span> field, enter a new value that is less than or equal to the value in the current Maximum Memory Size field.</p>
+</li>
+<li>
+<p>Click <span class="bold">Advice</span> to use the Memory Advisor to help you choose a new size.</p>
+<p>The Memory Size Advice page appears.</p>
+<img width="469" height="453" src="img/memory_size_advice.gif" alt="Description of memory_size_advice.gif follows" title="Description of memory_size_advice.gif follows" longdesc="img_text/memory_size_advice.htm" /><br />
+<a id="sthref231" name="sthref231" href="img_text/memory_size_advice.htm">Description of the illustration memory_size_advice.gif</a><br />
+<br /></li>
+</ul>
+</li>
+<li>
+<p>If you chose to use the Memory Advisor, then click a point on the curve to change the total memory size. Otherwise, go to Step 7.</p>
+<p>The new total memory size is displayed below the graph.</p>
+</li>
+<li>
+<p>Continue clicking the curve until the desired value is displayed, then click <span class="bold">OK</span>.</p>
+<p>You are returned to the Memory Advisors page.</p>
+</li>
+<li>
+<p><a id="CACHEJCI" name="CACHEJCI"></a>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="CHDDHGGI" name="CHDDHGGI"></a><a id="ADMQS12157" name="ADMQS12157"></a>To modify total memory size (new value exceeds maximum memory size):</p>
+<ol>
+<li>
+<p>Go to the Database Home page, and log in as user <code>SYS</code> with the <code>SYSDBA</code> privilege.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+You must log in as user <code>SYS</code> to change the maximum memory size, which is a static initialization parameter.</div>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Server</span>.</p>
+</li>
+<li>
+<p>In the Database Configuration section, click <span class="bold">Memory Advisors</span>.</p>
+<p>The Memory Advisors page appears.</p>
+</li>
+<li>
+<p>In the <span class="bold">Maximum Memory Size (MB)</span> field, enter a new value for the maximum total memory to allocate to the database.</p>
+<p>This value must be greater than or equal to the desired new value for total memory size.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation page appears, indicating that you must restart the database.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span> and follow the guided instructions to restart the database.</p>
+</li>
+<li>
+<p>After you have initiated the database restart, wait a few minutes, then click <span class="bold">Refresh</span>.</p>
+<p>The Database Home page appears.</p>
+</li>
+<li>
+<p>Return to the Memory Advisors page.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>In the <span class="bold">Total Memory Size</span> field, enter a new value that is less than or equal to the value in the current Maximum Memory Size field.</p>
+</li>
+<li>
+<p>Click <span class="bold">Advice</span> to use the Memory Advisor to help you choose a new size.</p>
+<p>The Memory Size Advice page appears.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>If you chose to use the Memory Advisor, then click a point on the curve to change the total memory size. Otherwise, go to Step 12.</p>
+<p>The new size is displayed below the graph.</p>
+</li>
+<li>
+<p>Continue clicking the curve until the desired value is displayed, then click <span class="bold">OK</span>.</p>
+<p>You are returned to the Memory Advisors page.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink PFGRF014" href="http://www.oracle.com/pls/db112/lookup?id=PFGRF014"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for more information about memory parameters and their tuning</p>
+</li>
+<li>
+<p><a href="montune.htm#CBBGHHJI">"Optimizing Memory Usage with the Memory Advisors"</a></p>
+</li>
+<li>
+<p><a href="#CHDHBJDJ">"About Memory Management"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDCBBHF" name="CHDCBBHF"></a><a id="ADMQS0541" name="ADMQS0541"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Modifying Memory Settings &#x2013; Automatic Shared Memory Management</h3>
+<p><a id="sthref232" name="sthref232"></a>Modifying memory settings for automatic shared memory management involves using the Memory Advisors page of Database Control to change the total SGA size. This section assumes that automatic memory management is disabled, that automatic shared memory management is enabled, and that the desired new value for the total SGA size does not exceed the current value for maximum SGA size.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If you want a new total SGA size that exceeds the current value for maximum SGA size, then you must first log in as user <code>SYS</code>, change the maximum SGA size, and restart the database. See <a href="#CHDDHGGI">"To modify total memory size (new value exceeds maximum memory size):"</a> for a similar procedure.</div>
+<p class="subhead2"><a id="ADMQS12158" name="ADMQS12158"></a>To modify the total SGA memory size:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Server</span> to view the Server subpage.</p>
+</li>
+<li>
+<p>In the Database Configuration section, click <span class="bold">Memory Advisors</span>.</p>
+<p>The Memory Advisors page appears. Scroll down to the SGA subpage.</p>
+<img width="966" height="697" src="img/mem_current_allocation.gif" alt="Description of mem_current_allocation.gif follows" title="Description of mem_current_allocation.gif follows" longdesc="img_text/mem_current_allocation.htm" /><br />
+<a id="sthref233" name="sthref233" href="img_text/mem_current_allocation.htm">Description of the illustration mem_current_allocation.gif</a><br />
+<br /></li>
+<li>
+<p>In the Current Allocation section, do one of the following:</p>
+<ul>
+<li>
+<p>In the <span class="bold">Total SGA Size (MB)</span> field, enter a new total size for the SGA.</p>
+</li>
+<li>
+<p>Click <span class="bold">Advice</span> to use the SGA Advisor to help you choose a new SGA size.</p>
+<p>The SGA Size Advice window opens.</p>
+<img width="416" height="440" src="img/mem_allocation_advice.gif" alt="Description of mem_allocation_advice.gif follows" title="Description of mem_allocation_advice.gif follows" longdesc="img_text/mem_allocation_advice.htm" /><br />
+<a id="sthref234" name="sthref234" href="img_text/mem_allocation_advice.htm">Description of the illustration mem_allocation_advice.gif</a><br />
+<br />
+<p>Click a point on the curve to change the total SGA size. The new SGA size is displayed below the graph. Continue clicking the curve until the desired value is displayed, and then click <span class="bold">OK</span>.</p>
+<p>This example graph shows that at the current time, increasing the total SGA size is not expected to provide any gain in performance.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The settings on this page can be modified only if Automatic Memory Management is disabled.</div>
+</li>
+</ul>
+</li>
+<li>
+<p>If you chose to use the SGA Size Advisor, then click a point on the curve to change the total memory size. Otherwise, go to Step 7.</p>
+<p>The new size is displayed below the graph.</p>
+</li>
+<li>
+<p>Continue clicking the curve until the desired value is displayed, then click <span class="bold">OK</span>.</p>
+<p>You are returned to the Memory Advisors page.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink PFGRF014" href="http://www.oracle.com/pls/db112/lookup?id=PFGRF014"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for more information about memory parameters and their tuning</p>
+</li>
+<li>
+<p><a href="montune.htm#CBBGHHJI">"Optimizing Memory Usage with the Memory Advisors"</a></p>
+</li>
+<li>
+<p><a href="#CHDHBJDJ">"About Memory Management"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDBCDCC" name="CHDBCDCC"></a><a id="ADMQS12102" name="ADMQS12102"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Modifying Memory Settings &#x2013; Automatic PGA Memory Management</h3>
+<p><a id="sthref235" name="sthref235"></a>Modifying memory settings for automatic PGA memory management involves using the Memory Advisors page of Database Control to modify the instance PGA size. This section assumes that automatic memory management is disabled, and that automatic PGA memory management is enabled.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+When you disable automatic memory management, automatic PGA memory management is enabled by default.</div>
+<p class="subhead2"><a id="ADMQS12159" name="ADMQS12159"></a>To modify the instance PGA size:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Server</span> to view the Server subpage.</p>
+</li>
+<li>
+<p>In the Database Configuration section, click <span class="bold">Memory Advisors</span>.</p>
+<p>The Memory Advisors page appears, with the SGA subpage shown.</p>
+</li>
+<li>
+<p>Click <span class="bold">PGA</span> to view the PGA subpage.</p>
+<img width="750" height="239" src="img/mem_param_pga.gif" alt="Description of mem_param_pga.gif follows" title="Description of mem_param_pga.gif follows" longdesc="img_text/mem_param_pga.htm" /><br />
+<a id="sthref236" name="sthref236" href="img_text/mem_param_pga.htm">Description of the illustration mem_param_pga.gif</a><br />
+<br /></li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>In the <span class="bold">Aggregate PGA Target</span> field, enter a new size for the instance PGA.</p>
+</li>
+<li>
+<p>Click Advice to use the PGA Advisor to help you choose a new instance PGA size.</p>
+</li>
+</ul>
+<p>See <a class="olink PFGRF01401" href="http://www.oracle.com/pls/db112/lookup?id=PFGRF01401"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for information about sizing the instance PGA.</p>
+</li>
+<li>
+<p>When you have specified the new instance PGA size, click <span class="bold">Apply</span>.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink PFGRF014" href="http://www.oracle.com/pls/db112/lookup?id=PFGRF014"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for more information about memory parameters and their tuning</p>
+</li>
+<li>
+<p><a href="#CHDHBJDJ">"About Memory Management"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CIABDFIH" name="CIABDFIH"></a><a id="ADMQS055" name="ADMQS055"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Instances: Oracle By Example Series</h2>
+<p>Oracle By Example (OBE) has a series on the <span class="italic">Oracle Database 2 Day DBA</span> guide. This OBE steps you through the tasks in this chapter, and includes annotated screenshots.</p>
+<p>To view the Instances OBE, in your browser, enter the following URL:</p>
+<p><code><a href="http://www.oracle.com/technology/obe/11gr2_2day_dba/instance/instance.htm">http://www.oracle.com/technology/obe/11gr2_2day_dba/instance/instance.htm</a></code></p>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="network.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="storage.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2004, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

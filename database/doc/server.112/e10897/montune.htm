@@ -1,0 +1,1521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Monitoring and Tuning the Database</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 009" />
+<meta name="Date" content="2010-08-02T19:33:7Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database 2 Day DBA 11g Release 2 (11.2)" />
+<meta name="partno" content="E10897-05" />
+<meta name="docid" content="ADMQS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="backrest.htm" title="Previous" type="text/html" />
+<link rel="Next" href="problems.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e10897.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database 2 Day DBA<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E10897-05</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="backrest.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="problems.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e10897.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CHDDAFBD" name="CHDDAFBD"></a><a id="ADMQS010" name="ADMQS010"></a>
+<h1 class="chapter"><span class="secnum">10</span> Monitoring and Tuning the Database</h1>
+<p>Monitoring the performance of a database and ensuring that it performs optimally is an important task for a database administrator. This chapter discusses the features and functions included in Oracle Database that make it easy to monitor database health, identify performance problems, and implement any corrective actions.</p>
+<p>This chapter contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CHDBIGAD">Proactive Database Monitoring</a></p>
+</li>
+<li>
+<p><a href="#CHDJDDBC">Diagnosing Performance Problems Using ADDM</a></p>
+</li>
+<li>
+<p><a href="#CHDGFCFJ">Using Advisors to Optimize Database Performance</a></p>
+</li>
+<li>
+<p><a href="#CACJFCDI">Monitoring and Tuning: Oracle By Example Series</a></p>
+</li>
+</ul>
+<a id="CHDBIGAD" name="CHDBIGAD"></a><a id="ADMQS1001" name="ADMQS1001"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Proactive Database Monitoring</h2>
+<p><a id="sthref655" name="sthref655"></a><a id="sthref656" name="sthref656"></a><a id="sthref657" name="sthref657"></a>Oracle Database makes it easy to monitor the health and performance of your database. It monitors the vital signs (or metrics) related to database health and performance, analyzes the workload running against the database, and automatically identifies any issues that need your attention as an administrator. The identified issues are presented as alerts and performance findings on the Database Home page. You can also configure Oracle Enterprise Manager Database Control (Database Control) to notify you of issues by e-mail.</p>
+<p>This section discusses the following topics:</p>
+<ul>
+<li>
+<p><a href="#CBBGDIBJ">About Alerts</a></p>
+</li>
+<li>
+<p><a href="#CHDEBIHB">Performance Self-Diagnostics: Automatic Database Diagnostic Monitor</a></p>
+</li>
+<li>
+<p><a href="#CBBCFEDB">Monitoring General Database State and Workload</a></p>
+</li>
+<li>
+<p><a href="#CACCIHAB">Managing Alerts</a></p>
+</li>
+</ul>
+<a id="CBBGDIBJ" name="CBBGDIBJ"></a><a id="ADMQS1011" name="ADMQS1011"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Alerts</h3>
+<p><a id="sthref658" name="sthref658"></a>A<a id="sthref659" name="sthref659"></a>lerts help you monitor your database. Most alerts notify you of when particular <a id="sthref660" name="sthref660"></a>metric thresholds are exceeded. For each alert, you can set critical and warning threshold values. These threshold values are meant to be boundary values that when exceeded, indicate that the system is in an undesirable state. For example, when a tablespace becomes 97 percent full, this can be considered undesirable, and Oracle Database generates a critical alert.</p>
+<p>Other alerts correspond to database events such as Snapshot Too Old or Resumable Session suspended. These types of alerts indicate that the event has occurred.</p>
+<p>In addition to notification, you can set alerts to perform some action such as running a script. For instance, scripts that shrink tablespace objects can be useful for a Tablespace Usage warning alert.</p>
+<p>By default, Oracle Database issues several alerts, including the following:</p>
+<ul>
+<li>
+<p>Archive Area Used (warning at 80 percent full)</p>
+</li>
+<li>
+<p>Broken Job Count and Failed Job Count (warning when goes above 0)</p>
+</li>
+<li>
+<p>Current Open Cursors Count (warning when goes above 1200)</p>
+</li>
+<li>
+<p>Dump Area Used (warning at 95 percent full)</p>
+</li>
+<li>
+<p>Session Limit Usage (warning at 90 percent, critical at 97 percent)</p>
+</li>
+<li>
+<p>Tablespace Space Used (warning at 85 percent full, critical at 97 percent full)</p>
+</li>
+</ul>
+<p>You can modify these alerts and others by setting their metrics.</p>
+<p>For more information, see <a href="#CACCIHAB">"Managing Alerts"</a>.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDEBIHB" name="CHDEBIHB"></a><a id="ADMQS1012" name="ADMQS1012"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Performance Self-Diagnostics: Automatic Database Diagnostic Monitor</h3>
+<p>Oracle Database includes a self-diagnostic engine called <a id="sthref661" name="sthref661"></a>Automatic Database Diagnostic Monitor (ADDM). ADDM makes it possible for Oracle Database to diagnose its own performance and determine how any identified problems can be resolved.</p>
+<p><a id="sthref662" name="sthref662"></a><a id="sthref663" name="sthref663"></a>To facilitate automatic performance diagnosis using ADDM, Oracle Database periodically collects snapshots of the database state and workload. <span class="bold">Snapshots</span> are sets of historical data for specific time periods that are used for performance comparisons by ADDM. The default collection interval for a snapshot is one hour. Snapshots provide a statistical summary of the state of the system at a point in time. These snapshots are stored in Automatic Workload Repository (AWR), residing in the <code>SYSAUX</code> tablespace. The snapshots are stored in this repository for a set time (8 days by default) before they are purged to make room for new snapshots.</p>
+<p><a id="sthref664" name="sthref664"></a>ADDM analyzes data captured in AWR to determine the major problems in the system, and usually recommends solutions and quantifies expected benefits. ADDM analysis results are represented as a set of <span class="bold">findings</span>.</p>
+<p>Generally, the performance problems that ADDM can call attention to include the following:</p>
+<ul>
+<li>
+<p>Resource contention (bottlenecks), such as when your database is using large amounts of CPU time or memory due to high load SQL statements</p>
+</li>
+<li>
+<p>Poor connection management, such as when your application is making too many logins to the database</p>
+</li>
+<li>
+<p>Lock contention in a multiuser environment, such as when one user process acquires a lock to safely update data in a table, causing other user processes that must acquire locks against the same table to wait, resulting in a slower database performance</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT020" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT020"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a> for more information about automatic database performance monitoring</p>
+</li>
+<li>
+<p><a href="#CHDJDDBC">"Diagnosing Performance Problems Using ADDM"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBCFEDB" name="CBBCFEDB"></a><a id="ADMQS1013" name="ADMQS1013"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Monitoring General Database State and Workload</h3>
+<p>The Database Home page (<a href="#CHDDICIF">Figure 10-1</a>) enables you to monitor the state and workload of your database. It provides a central place for general database state information and is updated periodically.</p>
+<div class="figure">
+<p class="titleinfigure"><a id="CHDDICIF" name="CHDDICIF"></a><a id="ADMQS12386" name="ADMQS12386"></a>Figure 10-1 Database Home Page</p>
+<img width="1089" height="754" src="img/addm_home_page_new.gif" alt="Description of Figure 10-1 follows" title="Description of Figure 10-1 follows" longdesc="img_text/addm_home_page_new.htm" /><br />
+<a id="sthref665" name="sthref665" href="img_text/addm_home_page_new.htm">Description of "Figure 10-1 Database Home Page"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p class="subhead2"><a id="ADMQS12242" name="ADMQS12242"></a>To monitor the general database state and workload:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>(Optional) Click the <span class="bold">Refresh</span> button to update the information displayed.</p>
+<p>By default, the Database Home page automatically refreshes every 60 seconds. You can prevent automatic refresh by selecting <span class="bold">Manually</span> in the View Data list at the top right-hand corner of the page. You must then click <span class="bold">Refresh</span> to view the latest information.</p>
+<p>The date and time that data was last collected from the database is displayed to the left of the Refresh button.</p>
+</li>
+<li>
+<p>Get a quick overview of the database state in the General section, which includes the following information:</p>
+<ul>
+<li>
+<p>Status of the database instance, Up or Down</p>
+<p>Click the <span class="bold">Status</span> link to drill down to database availability details.</p>
+</li>
+<li>
+<p>Time the database was last started</p>
+</li>
+<li>
+<p>Instance name</p>
+</li>
+<li>
+<p>Oracle Database version</p>
+</li>
+<li>
+<p>Host name</p>
+<p>Click the <span class="bold">Host</span> link to drill down to host details.</p>
+</li>
+<li>
+<p>Listener name</p>
+<p>Click the <span class="bold">Listener</span> link to drill down to listener details.</p>
+</li>
+</ul>
+<p>Click <span class="bold">View All Properties</span> to see the Oracle home path and whether the database is read-only or read/write.</p>
+</li>
+<li>
+<p>View CPU utilization in the Host CPU section, which includes the following information:</p>
+<ul>
+<li>
+<p>Bar chart</p>
+<p>This chart shows the percentage of CPU time used by the database and other processes. The chart legend contains links for the database instance and for other CPU processes.</p>
+<p>Click the <span class="bold">Other</span> link in the chart legend to see how the utilization of CPU, memory, and disk I/O change over time.</p>
+<p>Click the instance name link in the chart legend to see the Top Activity page. It includes a graph of active sessions over time, details about SQL statements issued, and the most active sessions.</p>
+</li>
+<li>
+<p>CPU load</p>
+<p>This is the average number of processes waiting to be scheduled for the CPU in the previous minute.</p>
+<p>Click the <span class="bold">Load</span> link to see how the utilization of CPU, memory, and disk I/O change over time.</p>
+</li>
+<li>
+<p>Paging</p>
+<p>This is the number of memory pages (fixed-length block of instructions, data, or both) that are paged out (moved out of active memory) each second.</p>
+<p>Click the <span class="bold">Paging</span> link to see how the utilization of CPU, memory, and disk I/O change over time.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Investigate the Active Sessions section, where you can further explore the cause of performance problems, such as your database taking up most of the CPU time on the server. This section displays a bar graph with the following information:</p>
+<ul>
+<li>
+<p>Waits</p>
+<p>This is the value for all wait classes combined, excluding user I/O and idle wait events. <span class="bold">Wait classes</span> are groupings of wait events based on the type of wait.</p>
+<p>If other processes are taking up most of your CPU time, then this indicates that some other application running on the database host computer could be causing performance problems.</p>
+<p>Click the <span class="bold">Wait</span> link to go to the Performance page to view potential problems inside and outside the database.</p>
+</li>
+<li>
+<p>User I/O</p>
+<p>This is the average number of active sessions waiting for user I/O. User I/O means that the workload originating from the user causes the database to read data from disk or write data to disk.</p>
+<p>Click the <span class="bold">User I/O</span> link to go to the Performance page to view potential problems inside and outside the database.</p>
+</li>
+<li>
+<p>CPU</p>
+<p>This is the average active sessions using CPU.</p>
+<p>Click the <span class="bold">CPU</span> link to see a chart showing more detailed information about active sessions over time.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>View the Diagnostic Summary section, which includes the following information:</p>
+<ul>
+<li>
+<p>ADDM Findings</p>
+<p>This shows the count of ADDM findings from the most recent ADDM run. Click the number adjacent to the ADDM Findings link to go to the ADDM page.</p>
+</li>
+<li>
+<p>Period Start Time</p>
+<p>This is the start time of the time period most recently analyzed by ADDM. It is shown only if there are ADDM findings.</p>
+</li>
+<li>
+<p>Alert Log</p>
+<p>This is the timestamp of the most recent alert log entry that describes an <code>ORA-</code> error.</p>
+<p>Click the <span class="bold">Alert Log</span> link to go to the Alert Log Errors page, which shows a list of log entries that contain errors.</p>
+</li>
+<li>
+<p>Active Incidents</p>
+<p>This shows the count of active <span class="italic">incidents</span>, which are occurrences of critical errors in the database. You are encouraged to investigate critical errors and report them to Oracle Support Services. Click the count to go to the Support Workbench home page.</p>
+</li>
+<li>
+<p>Database Instance Health</p>
+<p>Click <span class="bold">Database Instance Health</span> to display the Database Instance Health page, which includes graphical timelines of incidents, ADDM findings, and alerts. You can use these graphs for identifying correlations between incidents and alerts generated and performance issues on the system.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>View the SQL Response Time section.</p>
+<p><a id="sthref666" name="sthref666"></a><a id="sthref667" name="sthref667"></a><a id="sthref668" name="sthref668"></a>This is the current response time of a tracked set of SQL statements as compared to the response time for the reference collection. A <span class="bold">reference collection</span>, or SQL Tuning Set, is set of SQL statements that represents the typical SQL workload on your production system. If the current response time and reference collection response time are equal, then the system is running as it should. If the current response time is greater than the reference collection response time, then one or more SQL statements are performing more slowly than they should. The lower the current response time, the more efficiently the tracked SQL statements run.</p>
+<p>Click the <span class="bold">SQL Response Time</span> link to see response time metrics for the previous 24 hours. If the reference collection is empty, then click <span class="bold">Reset Reference Collection</span> to go to a page where you can create a reference collection.</p>
+</li>
+<li>
+<p>View the Space Summary section.</p>
+<p>If the number adjacent to the Segment Advisor Recommendations label is not zero, then it means the Segment Advisor has identified candidate segments for space defragmentation. Click the number to view recommendations for how to defragment these segments.</p>
+</li>
+<li>
+<p>View the Alerts section, which includes the following items:</p>
+<ul>
+<li>
+<p>Category list</p>
+<p>Optionally choose a category from the list to view alerts only in that category.</p>
+</li>
+<li>
+<p>Critical</p>
+<p>This is the number of metrics that have exceeded critical thresholds plus the number of other critical alerts, such as those caused by incidents (critical errors).</p>
+</li>
+<li>
+<p>Warning</p>
+<p>This is the number of metrics that have exceeded warning thresholds.</p>
+</li>
+<li>
+<p>Alerts table</p>
+<p>Click the message to learn more about the alert.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>View the ADDM Performance Analysis section, if present. This section contains the following items:</p>
+<ul>
+<li>
+<p>Period Start Time</p>
+<p>This is the start time of the period most recently analyzed by ADDM.</p>
+</li>
+<li>
+<p>Period Duration in minutes</p>
+<p>This is the duration of the period most recently analyzed by ADDM.</p>
+</li>
+<li>
+<p>Instance name</p>
+</li>
+<li>
+<p>ADDM findings table</p>
+<p>This table lists the ADDM findings, their estimated impact on database performance, a description of the finding, and the number of times the finding occurred in snapshots collected during the previous 24 hours. For example, a finding with Occurrences listed as 34 of 43 has occurred in 34 of the last 43 snapshots.</p>
+</li>
+</ul>
+<p>Click the finding to view finding details, to view recommendations, and in some cases to implement recommendations or start advisors.</p>
+<img width="745" height="178" src="img/perfanalysishpcr.gif" alt="Description of perfanalysishpcr.gif follows" title="Description of perfanalysishpcr.gif follows" longdesc="img_text/perfanalysishpcr.htm" /><br />
+<a id="sthref669" name="sthref669" href="img_text/perfanalysishpcr.htm">Description of the illustration perfanalysishpcr.gif</a><br />
+<br /></li>
+</ol>
+<p class="subhead2"><a id="ADMQS12243" name="ADMQS12243"></a>To view database performance over time:</p>
+<ol>
+<li>
+<p>At the top of the Database Home page, click <span class="bold">Performance</span>.</p>
+<p>The Performance page appears, displaying a summary of CPU utilization, average active sessions, instance disk I/O, and instance throughput for the recent time period.</p>
+</li>
+<li>
+<p>Use the Additional monitoring links to drill down to Top Activity and other data.</p>
+</li>
+</ol>
+<p>The types of actions you can take to improve host performance depends on your system, and can include eliminating unnecessary processes, adding memory, or adding CPUs.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CACCIHAB" name="CACCIHAB"></a><a id="ADMQS1014" name="ADMQS1014"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Managing Alerts</h3>
+<p>The following topics describe how to manage alerts:</p>
+<ul>
+<li>
+<p><a href="#CBBFIECF">Viewing Metrics and Thresholds</a></p>
+</li>
+<li>
+<p><a href="#CBBDGAAA">Setting Metric Thresholds</a></p>
+</li>
+<li>
+<p><a href="#CBBGJAFJ">About Responding to Alerts</a></p>
+</li>
+<li>
+<p><a href="#CBBCAJGB">Clearing Alerts</a></p>
+</li>
+<li>
+<p><a href="#CBBDBJFI">Setting Up Direct Alert Notification</a></p>
+</li>
+</ul>
+<a id="CBBFIECF" name="CBBFIECF"></a><a id="ADMQS10141" name="ADMQS10141"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Viewing Metrics and Thresholds</h4>
+<p><a id="sthref670" name="sthref670"></a>To effectively diagnose performance problems, statistics must be available. Oracle generates many types of cumulative statistics for the system, sessions, and individual SQL statements. Oracle also tracks cumulative statistics on segments and services. A <span class="bold">metric</span> is defined as the rate of change in some cumulative statistic. Metrics are computed and stored in <a id="sthref671" name="sthref671"></a>Automatic Workload Repository, and are displayed on the All Metrics page, which can be viewed by clicking <span class="bold">All Metrics</span> under Related Links on the Database Home page.</p>
+<p class="subhead2"><a id="ADMQS12244" name="ADMQS12244"></a>To view metrics for your database:</p>
+<ol>
+<li>
+<p>On the Database Home page under Related Links, click <span class="bold">All Metrics</span>.</p>
+<p>The All Metrics page appears.</p>
+</li>
+<li>
+<p>Click a specific metric link.</p>
+<p>A details page appears, with more information about the metric. Online Help for this page describes the metric.</p>
+</li>
+</ol>
+<img width="713" height="515" src="img/metrics_11gr2.gif" alt="Description of metrics_11gr2.gif follows" title="Description of metrics_11gr2.gif follows" longdesc="img_text/metrics_11gr2.htm" /><br />
+<a id="sthref672" name="sthref672" href="img_text/metrics_11gr2.htm">Description of the illustration metrics_11gr2.gif</a><br />
+<br />
+<p>For each of these metrics, you are able to define warning and critical threshold values, and whenever the threshold is exceeded, Oracle Database issues an alert. Alerts are displayed on the Database Home page under the Alerts heading (or Related Alerts for nondatabase alerts such as a component of Oracle Net).</p>
+<p>shows two warning alerts for the threshold Tablespace Space Used.</p>
+<div class="figure">
+<p class="titleinfigure"><a id="CHDIAJCD" name="CHDIAJCD"></a><a id="ADMQS12387" name="ADMQS12387"></a>Figure 10-2 Alerts Section of Database Home Page</p>
+<img width="938" height="285" src="img/alerts_with_metrics1_new.gif" alt="Description of Figure 10-2 follows" title="Description of Figure 10-2 follows" longdesc="img_text/alerts_with_metrics1_new.htm" /><br />
+<a id="sthref673" name="sthref673" href="img_text/alerts_with_metrics1_new.htm">Description of "Figure 10-2 Alerts Section of Database Home Page"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>Setting thresholds is discussed in <a href="#CBBDGAAA">"Setting Metric Thresholds"</a>. Actions you might take to respond to alerts are discussed in <a href="#CBBGJAFJ">"About Responding to Alerts"</a>.</p>
+<p>When the condition that triggered the alert is resolved and the metric value is no longer outside the boundary, Oracle Database clears the alert. Metrics are important for measuring the health of the database and serve as input for self-tuning and recommendations made by Oracle Database advisors.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CBBDGAAA" name="CBBDGAAA"></a><a id="ADMQS10142" name="ADMQS10142"></a>
+<div class="sect3">
+<h4 class="sect3"><a id="sthref674" name="sthref674"></a>Setting Metric Thresholds</h4>
+<p>Oracle Database provides a set of predefined metrics, some of which have predefined thresholds. There may be times when you want to set thresholds for other metrics, or you want to alter existing threshold settings.</p>
+<p><a href="storage.htm#CACDFDGJ">"Changing Space Usage Alert Thresholds for a Tablespace"</a> describes one means of setting a threshold, where you set warning and critical thresholds on the amount of space consumed in a tablespace. A more general means of setting thresholds is available using the Edit Thresholds page.</p>
+<p class="subhead2"><a id="ADMQS12245" name="ADMQS12245"></a>To set metric thresholds:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>Under the Related Links heading, click <span class="bold">Metric and Policy Settings</span>.</p>
+<p>The Metric and Policy Settings page appears.</p>
+<p>This page displays the existing thresholds for metrics and any response actions that have been specified.</p>
+<img width="640" height="434" src="img/editthreshold_11g.gif" alt="This is an image of the Edit Thresholds page." title="This is an image of the Edit Thresholds page." longdesc="img_text/editthreshold_11g.htm" /><br />
+<a id="sthref675" name="sthref675" href="img_text/editthreshold_11g.htm">Description of the illustration editthreshold_11g.gif</a><br />
+<br /></li>
+<li>
+<p>In the View list, do one of the following:</p>
+<ul>
+<li>
+<p>Select <span class="bold">Metrics with thresholds</span> to view only those metrics with thresholds, either predefined by Oracle or previously set by you.</p>
+</li>
+<li>
+<p>Select <span class="bold">All Metrics</span> to view all metrics, whether they have thresholds defined.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>To set or modify a warning threshold for a particular metric, enter the value you want in the <span class="bold">Warning Threshold</span> field for that metric.</p>
+</li>
+<li>
+<p>To set or modify a critical threshold for a particular metric, enter the value you want in the <span class="bold">Critical Threshold</span> field for that metric.</p>
+</li>
+<li>
+<p>To disable or reenable metric collection for a particular metric, or to change its collection schedule, complete the following steps:</p>
+<ol>
+<li>
+<p>Click the Collection Schedule link for the metric.</p>
+<p>The Edit Collection Settings page for that metric appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Disable</span> to disable collection for this metric, or click <span class="bold">Enable</span> to enable it.</p>
+</li>
+<li>
+<p>If you chose Enable, then you must choose the <span class="bold">Frequency Type</span> for the Collection Schedule and enter a numeric value in the <span class="bold">Repeat Every</span> field.</p>
+<p>If you chose Disable, then skip this step.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>Click <span class="bold">Continue</span> to save your choices and return to the Metric and Policy Settings page.</p>
+</li>
+<li>
+<p>Click <span class="bold">Cancel</span> to return to the Metric and Policy Settings page without saving your choices.</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Click a single-pencil icon to use the Edit Advanced Settings page to make changes to Corrective Actions, (Monitoring) Template Override, and Advanced Threshold Settings. Click <span class="bold">Help</span> on this page for more information about these options.</p>
+</li>
+<li>
+<p>Click a triple-pencil icon to set different threshold values for different instances of the object type being measured.</p>
+<p>For example, for each tablespace you can set different warning and critical levels for the Tablespace Space Used metric.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>Click <span class="bold">OK</span> to save your changes and return to the Database Home page.</p>
+</li>
+<li>
+<p>Click <span class="bold">Cancel</span> to return to the Database Home page without saving your changes.</p>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="CBBGJAFJ" name="CBBGJAFJ"></a><a id="ADMQS10143" name="ADMQS10143"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">About Responding to Alerts</h4>
+<p><a id="sthref676" name="sthref676"></a>When you receive an alert, follow any recommendations it provides, or consider running ADDM or another advisor, as appropriate, to get more detailed diagnostics of system or object activity.</p>
+<p>For example, if you receive a Tablespace Space Usage alert, then you might take a corrective measure by running the Segment Advisor on the tablespace to identify possible objects for shrinking. You can then shrink the objects to create available (free) space. See <a href="storage.htm#BABHEBCJ">"Reclaiming Unused Space"</a>.</p>
+<p>Additionally, as a response, you can set a corrective script to run as described in <a href="#CBBDGAAA">"Setting Metric Thresholds"</a>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CBBCAJGB" name="CBBCAJGB"></a><a id="ADMQS10144" name="ADMQS10144"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Clearing Alerts</h4>
+<p>Most alerts are cleared (removed) automatically when the cause of the problem disappears. Other alerts, such as Generic Alert Log Error, are sent to you for notification and must be acknowledged by the database administrator.</p>
+<p>After taking the necessary corrective measures, you can acknowledge an alert by clearing or purging it. Clearing an alert sends the alert to the Alert History, which can be viewed from the Database Home page under Related Links. Purging an alert removes it from the Alert History.</p>
+<p class="subhead2"><a id="ADMQS12246" name="ADMQS12246"></a>To clear or purge an alert:</p>
+<ol>
+<li>
+<p>On the Database Home page under Diagnostic Summary, click the <span class="bold">Alert Log</span> link.</p>
+<p>The Alert Log Errors page appears.</p>
+</li>
+<li>
+<p>From the View Data list, select the period for which you want information.</p>
+</li>
+<li>
+<p>Click <span class="bold">Refresh</span> to refresh the page with the latest information.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>Click <span class="bold">Show Open Alerts</span> to hide alerts that have been cleared.</p>
+</li>
+<li>
+<p>Click <span class="bold">Show Open and Cleared Alerts</span> to see all alerts.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+You will see only one or the other of these buttons, depending on what is currently displayed.</div>
+</li>
+<li>
+<p>Select one or more alerts by clicking their <span class="bold">Select</span> options.</p>
+</li>
+<li>
+<p>Click <span class="bold">Clear</span> to clear the alert.</p>
+</li>
+<li>
+<p>Click <span class="bold">Purge</span> to purge the alert.</p>
+</li>
+<li>
+<p>Click <span class="bold">Clear Every Open Alert</span> to clear all open alerts.</p>
+</li>
+<li>
+<p>Click <span class="bold">Purge Every Alert</span> to purge all alerts.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="CBBDBJFI" name="CBBDBJFI"></a><a id="ADMQS10145" name="ADMQS10145"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Setting Up Direct Alert Notification</h4>
+<p><a id="sthref677" name="sthref677"></a>Database Control displays all alerts on the Database Home page. However, you can optionally specify that Database Control provide you direct notification when specific alerts arise. For example, if you choose e-mail notification for critical alerts, and you have a critical threshold set for the <span class="italic">system response time for each call</span> metric, then you might be sent an e-mail message similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">Host Name=<span class="bold">mydb.us.example.com</span>
+Metric=<span class="bold">Response Time per Call</span>
+Timestamp=<span class="bold">08-NOV-2006 10:10:01 (GMT -7:00)</span>
+Severity=<span class="bold">Critical</span>
+Message=<span class="bold">Response time per call has exceeded the threshold. See the</span>
+<span class="bold">latest ADDM analysis</span>.
+Rule Name=
+Rule Owner=<span class="bold">SYSMAN</span>
+</pre>
+<p>The e-mail message contains a link to the host name and the latest ADDM analysis.</p>
+<p>By default, alerts in critical state such as DB Down, Generic Alert Log Error Status, and Tablespace Space Used are set up for notification. However, to receive these notifications, you must set up your e-mail information.</p>
+<p class="subhead2"><a id="ADMQS12247" name="ADMQS12247"></a>To set up your e-mail information:</p>
+<ol>
+<li>
+<p>From any Database Control page, click the <span class="bold">Setup</span> link, which is visible in the header and footer areas.</p>
+</li>
+<li>
+<p>On the Setup page, select <span class="bold">Notification Methods</span>.</p>
+</li>
+<li>
+<p>Enter the required information into the Mail Server section of the Notifications Methods page. Click <span class="bold">Help</span> at the bottom of the page for assistance.</p>
+<p>There are other methods of notification, including scripts and SNMP (Simplified Network Management Protocol) program interrupts (traps). The latter can be used to communicate with third-party applications.</p>
+<p>At this point, you have set up a method of notification, but you have not set up an e-mail address to receive the notification. To do so, complete the following steps.</p>
+</li>
+<li>
+<p>From any Database Control page, click the <span class="bold">Preferences</span> link, which is visible in the header and footer areas.</p>
+</li>
+<li>
+<p>On the Preferences page, select <span class="bold">General</span>. Click <span class="bold">Add Another Row</span> in the E-mail Addresses section to enter your e-mail address.</p>
+</li>
+<li>
+<p>Click <span class="bold">Test</span> to verify that e-mail messages can be sent using the specified information. After the test completes, click <span class="bold">OK</span>.</p>
+</li>
+<li>
+<p>(Optional) To edit notification rules, for example to change the severity state for receiving notification, select <span class="bold">Rules</span> under the heading Notification on the left-hand side of the page.</p>
+<p>The Notification Rules page appears. Click <span class="bold">Help</span> for more information about this page.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink OEMCG1201" href="http://www.oracle.com/pls/db112/lookup?id=OEMCG1201"><span class="italic">Oracle Enterprise Manager Advanced Configuration</span></a>,for more information about configuring notification rules</p>
+</li>
+<li>
+<p><a href="#CBBFIECF">"Viewing Metrics and Thresholds"</a></p>
+</li>
+<li>
+<p><a href="#CBBDGAAA">"Setting Metric Thresholds"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDJDDBC" name="CHDJDDBC"></a><a id="ADMQS102" name="ADMQS102"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Diagnosing Performance Problems Using ADDM</h2>
+<p><a id="sthref678" name="sthref678"></a>At times, database performance problems arise that require your diagnosis and correction. Usually, these problems are brought to your attention by Automatic Database Diagnostic Monitor (ADDM), which does a top-down system analysis every hour by default, and reports its most significant findings on the Database Home page.</p>
+<p>This section contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CBBJAGFJ">Viewing a Summary of ADDM Performance Findings</a></p>
+</li>
+<li>
+<p><a href="#CBBFEBAG">Responding to ADDM Performance Findings</a></p>
+</li>
+<li>
+<p><a href="#CBBDAIDI">Running ADDM Manually</a></p>
+</li>
+<li>
+<p><a href="#CBBDBGAD">Modifying AWR Snapshot Frequency and Retention</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT020" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT020"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+<a id="CBBJAGFJ" name="CBBJAGFJ"></a><a id="ADMQS1021" name="ADMQS1021"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Viewing a Summary of ADDM Performance Findings</h3>
+<p><a id="sthref679" name="sthref679"></a>ADDM analysis results consist of a description of each finding and a recommended action. You can view a summary of findings and their impacts on the system.</p>
+<p class="subhead2"><a id="ADMQS12248" name="ADMQS12248"></a>To view a summary of ADDM performance findings:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>In the Diagnostic Summary section of the Database Home page, locate the numeric link next to the ADDM Findings label.</p>
+<img width="348" height="159" src="img/diagnostic_summary_section.gif" alt="Description of diagnostic_summary_section.gif follows" title="Description of diagnostic_summary_section.gif follows" longdesc="img_text/diagnostic_summary_section.htm" /><br />
+<a id="sthref680" name="sthref680" href="img_text/diagnostic_summary_section.htm">Description of the illustration diagnostic_summary_section.gif</a><br />
+<br />
+<p>The number indicates the number of findings from the most recent ADDM run. If this number is zero, then there are no ADDM findings to investigate.</p>
+<p>If this number is not zero, then continue to Step 3.</p>
+</li>
+<li>
+<p>View the ADDM Performance Analysis section, below the Alerts section of the Database Home page.</p>
+<img width="745" height="178" src="img/perfanalysishpcr.gif" alt="Problem list in ADDM analysis." title="Problem list in ADDM analysis." longdesc="img_text/perfanalysishpcr.htm" /><br />
+<a id="sthref681" name="sthref681" href="img_text/perfanalysishpcr.htm">Description of the illustration perfanalysishpcr.gif</a><br />
+<br />
+<p>This section is present only if there are ADDM findings. It displays the first five findings from the most recent ADDM run. If there are more than five findings, then controls appear to enable you to view the next five findings, and so on.</p>
+</li>
+<li>
+<p>In the Diagnostic Summary section of the Database Home page, locate the nonzero numeric link next to the ADDM Findings label, and click it.</p>
+<p>The ADDM page appears, showing a summary of all findings from the most recent run, and a graphical timeline showing session activity over the past 24 hours.</p>
+<img width="974" height="646" src="img/performance_addm_page.gif" alt="Description of performance_addm_page.gif follows" title="Description of performance_addm_page.gif follows" longdesc="img_text/performance_addm_page.htm" /><br />
+<a id="sthref682" name="sthref682" href="img_text/performance_addm_page.htm">Description of the illustration performance_addm_page.gif</a><br />
+<br />
+<p>Click <span class="bold">Help</span> for more information about this page.</p>
+<p>Each clipboard icon beneath the graph represents a time range within the 24 hours. Click an icon to view findings for the ADDM run that took place during that icon's time range. If more than one ADDM run occurred during that time range, then you can select an individual ADDM run from the list that appears next to the Task Name label.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT020" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT020"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBFEBAG" name="CBBFEBAG"></a><a id="ADMQS1022" name="ADMQS1022"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Responding to ADDM Performance Findings</h3>
+<p>You can act upon the recommendations that accompany ADDM performance findings.</p>
+<p class="subhead2"><a id="ADMQS12249" name="ADMQS12249"></a>To respond to ADDM performance findings:</p>
+<ol>
+<li>
+<p>In the ADDM Performance Analysis section of either the Database Home page or the ADDM page, in the <span class="bold">Finding</span> column, click a finding.</p>
+<p>The Performance Finding Details page appears.</p>
+<img width="857" height="694" src="img/sqltuning_adv_2_11gr2.gif" alt="Description of sqltuning_adv_2_11gr2.gif follows" title="Description of sqltuning_adv_2_11gr2.gif follows" longdesc="img_text/sqltuning_adv_2_11gr2.htm" /><br />
+<a id="sthref683" name="sthref683" href="img_text/sqltuning_adv_2_11gr2.htm">Description of the illustration sqltuning_adv_2_11gr2.gif</a><br />
+<br /></li>
+<li>
+<p>In the Recommendations section, click <span class="bold">Show All Details</span>.</p>
+</li>
+<li>
+<p>Choose a finding to respond to, and follow the recommended action. A recommendation can include running an advisor, which you can do by clicking <span class="bold">Run Advisor Now</span>.</p>
+</li>
+<li>
+<p>(Optional) Select one or more findings, and then click the action button above the table of findings. An example of an action button might be Schedule SQL Tuning Advisor.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT031" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT031"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBDAIDI" name="CBBDAIDI"></a><a id="ADMQS1024" name="ADMQS1024"></a>
+<div class="sect2">
+<h3 class="sect2">Running ADDM Manually</h3>
+<p>By default, Oracle Database runs ADDM every hour, immediately after an AWR snapshot. Performance findings from the most recent ADDM run, if any, are listed on the Database Home page. See <a href="#CHDEBIHB">"Performance Self-Diagnostics: Automatic Database Diagnostic Monitor"</a> for more information.</p>
+<p>You can also run ADDM manually. Reasons for doing so include running it as a recommended action associated with an alert or running it across multiple snapshots.</p>
+<div align="center">
+<div class="inftblinformal"><br />
+<table class="Informal oac_no_warn" summary="" border="1" width="80%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<tbody>
+<tr align="left" valign="top">
+<td align="left">
+<p class="notep1">Note:</p>
+If you need more frequent ADDM reporting, then you can also modify the default snapshot interval. To do so, see <a href="#CBBDBGAD">"Modifying AWR Snapshot Frequency and Retention"</a>.</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblinformal" --></div>
+<p>The following steps describe how to run ADDM to analyze a period that spans multiple snapshots.</p>
+<p class="subhead2"><a id="ADMQS12250" name="ADMQS12250"></a>To run ADDM manually:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>Under Related Links at the bottom of the page, click <span class="bold">Advisor Central</span>.</p>
+<p>The Advisor Central page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">ADDM</span>.</p>
+<p>The Run ADDM page appears.</p>
+<img width="985" height="399" src="img/run-addm.gif" alt="This is a screen shot of the ADDM monitoring page." title="This is a screen shot of the ADDM monitoring page." longdesc="img_text/run-addm.htm" /><br />
+<a id="sthref684" name="sthref684" href="img_text/run-addm.htm">Description of the illustration run-addm.gif</a><br />
+<br /></li>
+<li>
+<p>Select <span class="bold">Run ADDM to analyze past performance</span>.</p>
+</li>
+<li>
+<p>Complete the following steps to choose a period start time:</p>
+<ol>
+<li>
+<p>Select the <span class="bold">Period Start Time</span> option.</p>
+</li>
+<li>
+<p>(Optional) Examine the timeline graph and note the number of snapshots available in each 2-hour period. Each snapshot is represented by a camera icon. If your snapshots occur more frequently than once each hour and you want to view the timeline of snapshots with more precision, then click the zoom-in icon at the right. (The zoom-in icon is a magnifying glass with a plus-sign.)</p>
+</li>
+<li>
+<p>(Optional) Below the timeline graph, click the left-arrow icon or right-arrow icon at the left and right sides of the page to change the period shown in the timeline graph.</p>
+</li>
+<li>
+<p>Click a camera icon.</p>
+<p>A bold right arrow indicating period start time covers the camera icon, and the Period Start Time field above the timeline graph changes to the selected date and time.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>If you want a period end time other than the default (the most recent snapshot), then complete the following steps:</p>
+<ol>
+<li>
+<p>Above the timeline graph, select the <span class="bold">Period End Time</span> option.</p>
+</li>
+<li>
+<p>(Optional) Click the left-arrow icon or right-arrow icon at the left and right sides of the page to change the period shown in the timeline graph.</p>
+</li>
+<li>
+<p>Click a camera icon.</p>
+<p>A bold square (like a stop button on a recording device) covers the camera icon, and the Period End Time field changes to the selected date and time.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Click <span class="bold">OK</span> to start the analysis.</p>
+<p>After a short delay, the Automatic Database Diagnostic Monitor page appears, showing its findings.</p>
+</li>
+<li>
+<p>(Optional) In the Task Name list, note the task name.</p>
+<p>A typical task name is "Task_52." You can return to this analysis at a later time by searching for and selecting the task name in the Advisor Central page.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT050" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT050"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBDBGAD" name="CBBDBGAD"></a><a id="ADMQS1023" name="ADMQS1023"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Modifying AWR Snapshot Frequency and Retention</h3>
+<p><a id="sthref685" name="sthref685"></a>ADDM analysis is based on AWR snapshots, which have a default frequency of once each hour and a default retention period of 8 days.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The snapshot retention period does not apply to preserved snapshots, which are retained forever. A preserved snapshot set is typically created to define a reference period for performance analysis.</div>
+<p>You can view and alter these AWR snapshot settings.</p>
+<p class="subhead2"><a id="ADMQS12251" name="ADMQS12251"></a>To modify AWR snapshot frequency and retention:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Server</span> to display the Server page.</p>
+</li>
+<li>
+<p>In the Statistics Management section, click <span class="bold">Automatic Workload Repository</span>.</p>
+<p>The Automatic Workload Repository page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Edit</span>.</p>
+<p>The Edit Settings page appears.</p>
+</li>
+<li>
+<p>Enter new snapshot retention settings or new snapshot collections settings, and then click <span class="bold">OK</span>.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT025" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT025"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDGFCFJ" name="CHDGFCFJ"></a><a id="ADMQS103" name="ADMQS103"></a>
+<div class="sect1">
+<h2 class="sect1">Using Advisors to Optimize Database Performance</h2>
+<p>Oracle Database includes a set of <span class="italic">advisors</span> to help you manage and tune your database. This section contains background information about these advisors and instructions for their use. The following topics are covered:</p>
+<ul>
+<li>
+<p><a href="#CBBECIIF">About Advisors</a></p>
+</li>
+<li>
+<p><a href="#CBBFAEDH">About the SQL Advisors</a></p>
+</li>
+<li>
+<p><a href="#CBBFAAFI">About the Automatic SQL Tuning Advisor</a></p>
+</li>
+<li>
+<p><a href="#CBBGIBCB">Configuring the Automatic SQL Tuning Advisor</a></p>
+</li>
+<li>
+<p><a href="#CBBIBHJJ">Viewing Automatic SQL Tuning Results</a></p>
+</li>
+<li>
+<p><a href="#CBBGIAHI">Running the SQL Tuning Advisor</a></p>
+</li>
+<li>
+<p><a href="#CHDEAJCC">Running the SQL Access Advisor</a></p>
+</li>
+<li>
+<p><a href="#CBBGHHJI">Optimizing Memory Usage with the Memory Advisors</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT005" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT005"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+<a id="CBBECIIF" name="CBBECIIF"></a><a id="ADMQS1031" name="ADMQS1031"></a>
+<div class="sect2">
+<h3 class="sect2">About Advisors</h3>
+<p><a id="sthref686" name="sthref686"></a><a id="sthref687" name="sthref687"></a>Advisors are powerful tools for database management. They provide specific advice on how to address key database management challenges, covering a wide range of areas including space, performance, and undo management. In general, advisors produce more comprehensive recommendations than alerts. This is because alert generation is intended to be low cost and have minimal impact on performance, whereas advisors consume more resources and perform more detailed analysis. This, along with the what-if capability of some advisors, provides vital information for tuning that cannot be procured from any other source. You run advisors from Oracle Enterprise Manager Database Control (Database Control). Some are also run automatically during maintenance windows (time periods).</p>
+<p><a id="sthref688" name="sthref688"></a><a id="sthref689" name="sthref689"></a>Advisors are provided to help you improve database performance. These advisors include Automatic Database Diagnostic Monitor (ADDM), SQL advisors, and memory advisors. For example, the Shared Pool Advisor, graphically displays the impact on performance of changing the size of this component of the System Global Area (SGA).</p>
+<p>You can run a performance advisor when faced with the following situations:</p>
+<ul>
+<li>
+<p>You want to resolve a problem in a specific area, for example, to determine why a given SQL statement is consuming 50 percent of CPU time and what to do to reduce its resource consumption.You can use the SQL Tuning Advisor.</p>
+</li>
+<li>
+<p>During application development, you want to tune a new schema and its associated SQL workload for optimal performance. You can use the SQL Access Advisor.</p>
+</li>
+<li>
+<p>You are planning to add memory to your system. You can use the Memory Advisor to determine the database performance impact of increasing your SGA or PGA (Program Global Area).</p>
+</li>
+</ul>
+<p>You can run all advisors from the Advisor Central home page, accessible through a link on the Database Home page. You can also invoke many of the advisors from the Performance page, through recommendations from ADDM, or from alerts.</p>
+<p><a href="#CHDHDGJA">Table 10-1</a> describes the performance advisors. Other advisors are listed in <a href="#CBBHBJFF">Table 10-2</a>.</p>
+<div class="tblhruleformal">
+<p class="titleintable"><a id="ADMQS12347" name="ADMQS12347"></a><a id="sthref690" name="sthref690"></a><a id="CHDHDGJA" name="CHDHDGJA"></a>Table 10-1 Performance Advisors</p>
+<table class="HRuleFormal" title="Performance Advisors" summary="This table contains three rows, one for each type of advisor. The two columns are Advisor and Description. The three rows describe ADDM, the SQL Advisors, and the Memory Advisors" dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="33%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t13">Advisor</th>
+<th align="left" valign="bottom" id="r1c2-t13">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t13" headers="r1c1-t13">
+<p>Automatic<a id="sthref691" name="sthref691"></a><a id="sthref692" name="sthref692"></a> Database Diagnostic Monitor (ADDM)</p>
+</td>
+<td align="left" headers="r2c1-t13 r1c2-t13">
+<p>ADDM makes it possible for Oracle Database to diagnose its own performance and determine how any identified problems can be resolved.See <a href="#CHDEBIHB">"Performance Self-Diagnostics: Automatic Database Diagnostic Monitor"</a> and <a href="#CHDJDDBC">"Diagnosing Performance Problems Using ADDM"</a>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t13" headers="r1c1-t13">
+<p>SQL <a id="sthref693" name="sthref693"></a><a id="sthref694" name="sthref694"></a><a id="sthref695" name="sthref695"></a>Advisors</p>
+<ul>
+<li>
+<p>SQL Tuning Advisor</p>
+</li>
+<li>
+<p>SQL Access Advisor</p>
+</li>
+</ul>
+</td>
+<td align="left" headers="r3c1-t13 r1c2-t13">
+<p>The SQL Tuning Advisor analyzes one or more SQL statements and makes recommendations for improving performance. This advisor is run automatically during the maintenance periods, but can also be run manually. See <a href="#CBBFAAFI">"About the Automatic SQL Tuning Advisor"</a> and <a href="#CBBGIAHI">"Running the SQL Tuning Advisor"</a>.</p>
+<p>The SQL Access Advisor tunes a schema to a given SQL workload. For example, the SQL Access Advisor can provide recommendations for creating indexes, materialized views, or partitioned tables for a given workload. See <a href="#CHDEAJCC">"Running the SQL Access Advisor"</a>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t13" headers="r1c1-t13">
+<p>Memory<a id="sthref696" name="sthref696"></a><a id="sthref697" name="sthref697"></a><a id="sthref698" name="sthref698"></a><a id="sthref699" name="sthref699"></a><a id="sthref700" name="sthref700"></a><a id="sthref701" name="sthref701"></a> Advisors<a id="sthref702" name="sthref702"></a><a id="sthref703" name="sthref703"></a><a id="sthref704" name="sthref704"></a><a id="sthref705" name="sthref705"></a><a id="sthref706" name="sthref706"></a><a id="sthref707" name="sthref707"></a><a id="sthref708" name="sthref708"></a><a id="sthref709" name="sthref709"></a></p>
+<ul>
+<li>
+<p>Memory Advisor</p>
+</li>
+<li>
+<p>SGA Advisor</p>
+</li>
+<li>
+<p>Shared Pool Advisor</p>
+</li>
+<li>
+<p>Buffer Cache Advisor</p>
+</li>
+<li>
+<p>PGA Advisor</p>
+</li>
+</ul>
+</td>
+<td align="left" headers="r4c1-t13 r1c2-t13">
+<p>The Memory Advisors provide graphical analyses of total memory target settings, SGA and PGA target settings, or SGA component size settings. You use these analyses to tune database performance and for what-if planning. Depending on the current memory management mode, different memory advisors are available.</p>
+<ul>
+<li>
+<p>If Automatic Memory Management is enabled, then only the Memory Advisor is available. This advisor provides advice for the total memory target for the instance.</p>
+</li>
+<li>
+<p>If Automatic Shared Memory Management is enabled, then the SGA Advisor and PGA Advisor are available.</p>
+</li>
+<li>
+<p>If Manual Shared Memory Management is enabled, then the Shared Pool Advisor, Buffer Cache Advisor, and PGA Advisor are available.</p>
+</li>
+</ul>
+<p>See <a href="#CBBGHHJI">"Optimizing Memory Usage with the Memory Advisors"</a>. See <a href="instance.htm#CACBFIED">"Managing Memory"</a> for more information about memory management modes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<div class="tblhruleformal">
+<p class="titleintable"><a id="ADMQS12348" name="ADMQS12348"></a><a id="sthref710" name="sthref710"></a><a id="CBBHBJFF" name="CBBHBJFF"></a>Table 10-2 Other Advisors</p>
+<table class="HRuleFormal" title="Other Advisors" summary="This table describes other Oracle-provided advisors." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="33%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t14">Advisor</th>
+<th align="left" valign="bottom" id="r1c2-t14">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t14" headers="r1c1-t14">
+<p>Segm<a id="sthref711" name="sthref711"></a><a id="sthref712" name="sthref712"></a>ent Advisor</p>
+</td>
+<td align="left" headers="r2c1-t14 r1c2-t14">
+<p>The Segment Advisor provides advice on whether a segment is a good candidate for a shrink operation based on the level of space fragmentation within that segment. The advisor also reports on the historical growth trend of segments. You can use this information for capacity planning and for arriving at an informed decision about which segments to shrink. See <a href="storage.htm#BABHEBCJ">"Reclaiming Unused Space"</a>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t14" headers="r1c1-t14">
+<p>Undo Adviso<a id="sthref713" name="sthref713"></a><a id="sthref714" name="sthref714"></a>r</p>
+</td>
+<td align="left" headers="r3c1-t14 r1c2-t14">
+<p>The Undo Advisor assists in correctly sizing the undo tablespace. The Undo Advisor can also be used to set the low threshold value of the undo retention period for any Oracle Flashback requirements. See <a href="storage.htm#BABDJDBF">"Computing the Minimum Undo Tablespace Size Using the Undo Advisor"</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT005" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT005"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBFAEDH" name="CBBFAEDH"></a><a id="ADMQS1036" name="ADMQS1036"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About the SQL Advisors</h3>
+<p><a id="sthref715" name="sthref715"></a><a id="sthref716" name="sthref716"></a>The SQL advisors examine a given SQL statement or a set of SQL statements and provide recommendations to improve efficiency. These advisors can make various types of recommendations, such as creating <span class="bold">SQL profiles</span> (a collection of information that enables the query optimizer to create an optimal execution plan for a SQL statement), restructuring SQL statements, creating additional indexes, materialized views, or partitions, and refreshing optimizer statistics. Oracle Enterprise Manager Database Control (Database Control) enables you to accept and implement many of these recommendations with just a few mouse clicks.</p>
+<p>The two SQL advisors are the SQL Tuning Advisor and the SQL Access Advisor.</p>
+<p class="subhead2"><a id="ADMQS12252" name="ADMQS12252"></a>SQL Tuning Advisor</p>
+<p>You use the SQL Tuning Advisor to tune a single or multiple SQL statements. Typically, you run this advisor in response to an ADDM performance finding that recommends its use. You can also run it periodically on the most resource-intensive SQL statements, and on a SQL workload.</p>
+<p>When tuning multiple SQL statements, the SQL Tuning Advisor does not recognize interdependencies between the SQL statements. It solves SQL performance problems by identifying problems with individual SQL statements, such as a poorly performing optimizer plan or the mistaken use of certain SQL structures.</p>
+<p>You can run the SQL Tuning Advisor against the following sources:</p>
+<ul>
+<li>
+<p>Top Activity&#x2014;The most resource-intensive SQL statements executed during the last hour. Use this option to tune SQL statements that might have caused recent performance problems.</p>
+</li>
+<li>
+<p>Historical SQL&#x2014; A set of SQL statements over any 24 hour window (time period). Use this option for proactive tuning of SQL statements.</p>
+</li>
+<li>
+<p>SQL Tuning Sets (STS)&#x2014;A set of SQL statements you provide. An STS can be created from SQL statements captured by AWR snapshots or from any SQL workload.</p>
+</li>
+</ul>
+<p class="subhead2"><a id="ADMQS12253" name="ADMQS12253"></a>SQL Access Advisor</p>
+<p>The SQL Access Advisor is primarily responsible for making schema modification recommendations. <a id="sthref717" name="sthref717"></a><a id="sthref718" name="sthref718"></a>It can recommend that you create access structures such as indexes and materialized views to optimize SQL queries. It can also recommend that you partition tables, indexes, or materialized views to improve query performance.</p>
+<p>The SQL Access Advisor takes a SQL workload as input. You can select your workload from different sources, including current and recent SQL activity, a SQL repository, or a user-defined workload such as from a development environment. The advisor then makes recommendations to improve the performance of the workload as a whole.</p>
+<p class="subhead2"><a id="ADMQS12254" name="ADMQS12254"></a>Statement Tuning and Workload Tuning</p>
+<p>Note that both the SQL Tuning Advisor and the SQL Access Advisor provide index creation recommendations. The SQL Tuning Advisor recommends creation of indexes only when it anticipates exceptional performance gains for the SQL statement being tuned. However, creation of new indexes may adversely impact the performance of DML insert, update, and delete operations. The SQL Tuning advisor does not take this into account while generating new index recommendations.</p>
+<p>The SQL Access Advisor, however, considers the impact of new indexes on the complete workload. As such, if an index improves performance of one SQL statement but adversely impacts the rest of the workload, then the new index is not recommended by the SQL Access Advisor. For this reason, the SQL Tuning Advisor always recommends validating its new index recommendation by running the SQL Access Advisor.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT161" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT161"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a> for more information about tuning SQL statements with the SQL Tuning Advisor</p>
+</li>
+<li>
+<p><a class="olink TDPPT170" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT170"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a> for more information about the SQL Access Advisor</p>
+</li>
+<li>
+<p><a href="#CBBGIAHI">"Running the SQL Tuning Advisor"</a></p>
+</li>
+<li>
+<p><a href="#CHDEAJCC">"Running the SQL Access Advisor"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBFAAFI" name="CBBFAAFI"></a><a id="ADMQS1037" name="ADMQS1037"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About the Automatic SQL Tuning Advisor</h3>
+<p><a id="sthref719" name="sthref719"></a>Beginning with Oracle Database 11<span class="italic">g</span>, the SQL Tuning Advisor runs automatically during system maintenance windows (time periods) as a maintenance task. During each automatic run, the advisor selects high-load SQL queries in the system and generates recommendations on how to tune these queries.</p>
+<p><a id="sthref720" name="sthref720"></a>The Automatic SQL Tuning Advisor can be configured to automatically implement SQL profile recommendations. A <span class="bold">SQL profile</span> contains additional SQL statistics that are specific to the SQL statement and enable the query optimizer to generate a significantly better execution plan at run time. If you enable automatic implementation, then the advisor creates SQL profiles for only those SQL statements where the performance increase would be at least threefold. Other types of recommendations, such as the creation of new indexes, refreshing optimizer statistics, or restructuring SQL, can be implemented only manually. DML statements are not considered for tuning by the Automatic SQL Tuning Advisor.</p>
+<p>You can view a summary of the results of automatic SQL tuning over a specified period (such as the previous 7 days), and a detailed report about recommendations made for all SQL statements that the SQL Tuning Advisor has processed. You can then implement selected recommendations. You can also view the recommendations that were automatically implemented.</p>
+<p>You can control when the Automatic SQL Tuning Advisor runs, and you can disable it if desired.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CBBIBHJJ">"Viewing Automatic SQL Tuning Results"</a></p>
+</li>
+<li>
+<p><a href="#CBBGIBCB">"Configuring the Automatic SQL Tuning Advisor"</a></p>
+</li>
+<li>
+<p><a class="olink TDPPT161" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT161"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+<li>
+<p><a class="olink ADMIN0235" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN0235"><span class="italic">Oracle Database Administrator's Guide</span></a> for more information about automated maintenance tasks</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBGIBCB" name="CBBGIBCB"></a><a id="ADMQS1038" name="ADMQS1038"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Configuring the Automatic SQL Tuning Advisor</h3>
+<p><a id="sthref721" name="sthref721"></a><a id="sthref722" name="sthref722"></a>The following are some configuration tasks that you might want to perform for the Automatic SQL Tuning Advisor:</p>
+<ul>
+<li>
+<p>Enable automatic implementation of SQL profile recommendations.</p>
+<p>Automatic implementation is disabled by default.</p>
+</li>
+<li>
+<p>Select the maintenance windows (time periods) in which the advisor runs.</p>
+<p>The Automatic SQL Tuning Advisor runs in all maintenance windows by default.</p>
+</li>
+<li>
+<p>Modify the start time and duration of existing maintenance windows or create new maintenance windows.</p>
+</li>
+</ul>
+<p class="subhead2"><a id="ADMQS12255" name="ADMQS12255"></a>To configure the Automatic SQL Tuning Advisor:</p>
+<ol>
+<li>
+<p>Go to the Database Home page, logging in as user <code>SYS</code>.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Server</span> to display the Server page.</p>
+</li>
+<li>
+<p>In the Oracle Scheduler section, click <span class="bold">Automated Maintenance Tasks</span>.</p>
+<p>The Automated Maintenance Tasks page appears.</p>
+<img width="909" height="310" src="img/auto_maint_tasks_new.gif" alt="Description of auto_maint_tasks_new.gif follows" title="Description of auto_maint_tasks_new.gif follows" longdesc="img_text/auto_maint_tasks_new.htm" /><br />
+<a id="sthref723" name="sthref723" href="img_text/auto_maint_tasks_new.htm">Description of the illustration auto_maint_tasks_new.gif</a><br />
+<br /></li>
+<li>
+<p>Click <span class="bold">Configure</span>.</p>
+<p>The Automated Maintenance Tasks Configuration page appears.</p>
+<img width="701" height="504" src="img/auto_maint_task_config.gif" alt="Description of auto_maint_task_config.gif follows" title="Description of auto_maint_task_config.gif follows" longdesc="img_text/auto_maint_task_config.htm" /><br />
+<a id="sthref724" name="sthref724" href="img_text/auto_maint_task_config.htm">Description of the illustration auto_maint_task_config.gif</a><br />
+<br /></li>
+<li>
+<p>(Optional) To disable the Automatic SQL Tuning Advisor, in the Task Settings section, click the <span class="bold">Disabled</span> option for Automatic SQL Tuning.</p>
+</li>
+<li>
+<p>(Optional) To prevent the Automatic SQL Tuning Advisor from running in particular maintenance windows, in the Maintenance Window Group Assignment section, deselect check boxes under the Automatic SQL Tuning heading.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span> to save any changes made so far.</p>
+<p>A confirmation message is displayed.</p>
+</li>
+<li>
+<p>To enable automatic implementation of SQL profile recommendations, complete the following steps:</p>
+<ol>
+<li>
+<p>In the Task Settings section, next to the Automatic SQL Tuning options, click <span class="bold">Configure</span>.</p>
+<p>The Automatic SQL Tuning Settings page appears.</p>
+<img width="600" height="229" src="img/auto_sqltuning_settings.gif" alt="Description of auto_sqltuning_settings.gif follows" title="Description of auto_sqltuning_settings.gif follows" longdesc="img_text/auto_sqltuning_settings.htm" /><br />
+<a id="sthref725" name="sthref725" href="img_text/auto_sqltuning_settings.htm">Description of the illustration auto_sqltuning_settings.gif</a><br />
+<br /></li>
+<li>
+<p>Next to Automatic Implementation of SQL Profiles, click the <span class="bold">Yes</span> option.</p>
+<p>You must be logged in as user <code>SYS</code> to change this option.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span>.</p>
+<p>A confirmation message is displayed.</p>
+</li>
+<li>
+<p>In the <span class="italic">locator links</span> at the top, left-hand side of the page, click <span class="bold">Automated Maintenance Tasks Configuration</span> to return to the Automated Maintenance Tasks Configuration page.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>(Optional) To make changes to the start time and duration of existing maintenance windows, to disable individual maintenance windows, or to create additional maintenance windows, click <span class="bold">Edit Window Group</span>.</p>
+<p>The Edit Window Group page appears. From this page you can change the settings of individual windows or you can add or remove windows to or from the window group <code>MAINTENANCE_WINDOW_GROUP</code>.</p>
+<p>See the online Help for this page for more information.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If you create a new window (time period) to run automated maintenance tasks, then you must add that window to <code>MAINTENANCE_WINDOW_GROUP</code>.</div>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink ADMIN0235" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN0235"><span class="italic">Oracle Database Administrator's Guide</span></a> for more information about maintenance windows and how to configure them</p>
+</li>
+<li>
+<p><a href="#CBBFAAFI">"About the Automatic SQL Tuning Advisor"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBIBHJJ" name="CBBIBHJJ"></a><a id="ADMQS1035" name="ADMQS1035"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Viewing Automatic SQL Tuning Results</h3>
+<p><a id="sthref726" name="sthref726"></a>You can track the activities of the Automatic SQL Tuning Advisor with Database Control.</p>
+<p class="subhead2"><a id="ADMQS12256" name="ADMQS12256"></a>To view automatic SQL tuning results:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Server</span> to display the Server page.</p>
+</li>
+<li>
+<p>In the Oracle Scheduler section, click <span class="bold">Automated Maintenance Tasks</span>.</p>
+<p>The Automated Maintenance Tasks page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Automatic SQL Tuning</span>.</p>
+<p>The Automatic SQL Tuning Result Summary page appears, showing graphical summaries of the Automatic SQL Tuning Advisor activities and findings.</p>
+<img width="1026" height="857" src="img/auto_sqltuning_r2_new.gif" alt="Description of auto_sqltuning_r2_new.gif follows" title="Description of auto_sqltuning_r2_new.gif follows" longdesc="img_text/auto_sqltuning_r2_new.htm" /><br />
+<a id="sthref727" name="sthref727" href="img_text/auto_sqltuning_r2_new.htm">Description of the illustration auto_sqltuning_r2_new.gif</a><br />
+<br /></li>
+<li>
+<p>To view recommendations, click <span class="bold">View Report</span> under the heading Task Activity Summary.</p>
+<p>The Automatic SQL Tuning Result Details page appears, showing the SQL statements for which recommendations were made during the designated period.</p>
+<img width="883" height="427" src="img/sql_tuning_auto_result_det.gif" alt="Description of sql_tuning_auto_result_det.gif follows" title="Description of sql_tuning_auto_result_det.gif follows" longdesc="img_text/sql_tuning_auto_result_det.htm" /><br />
+<a id="sthref728" name="sthref728" href="img_text/sql_tuning_auto_result_det.htm">Description of the illustration sql_tuning_auto_result_det.gif</a><br />
+<br />
+<p>A green check mark in the SQL Profile column indicates a recommendation that was automatically implemented.</p>
+<p>By default, automatic implementation is disabled. See <a href="#CBBGIBCB">"Configuring the Automatic SQL Tuning Advisor"</a> for instructions for enabling it.</p>
+</li>
+<li>
+<p>(Optional) Select a SQL statement in the Recommendations table (based on the SQL Text column), and then click <span class="bold">View Recommendations</span>.</p>
+<p>The Recommendations for SQL ID page appears, describing each recommendation for the statement in detail. On this page, you can select a recommendation and then click <span class="bold">Implement</span> to implement it.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink TDPPT331" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT331"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+<li>
+<p><a href="#CBBFAAFI">"About the Automatic SQL Tuning Advisor"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBGIAHI" name="CBBGIAHI"></a><a id="ADMQS1032" name="ADMQS1032"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Running the SQL Tuning Advisor</h3>
+<p><a id="sthref729" name="sthref729"></a><a id="sthref730" name="sthref730"></a>Use the SQL Tuning Advisor for tuning SQL statements. Typically, you run this advisor in response to an ADDM performance finding that recommends its use. You can also start the SQL Tuning Advisor manually. One reason is to tune statements that the Automatic SQL Tuning Advisor has not considered for tuning.</p>
+<p>As described in <a href="#CBBFAEDH">"About the SQL Advisors"</a>, the SQL Tuning Advisor can select SQL statements to tune from several sources. The following scenario assumes that you want to tune the SQL statements with the most activity:</p>
+<p class="subhead2"><a id="ADMQS12257" name="ADMQS12257"></a>To run the SQL Tuning Advisor:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>At the bottom of the page, under Related Links, click <span class="bold">Advisor Central</span>.</p>
+</li>
+<li>
+<p>On the Advisor Central page, click <span class="bold">SQL Advisors</span>.</p>
+</li>
+<li>
+<p>On the SQL Advisors page, click <span class="bold">SQL Tuning Advisor</span>.</p>
+<p>The Schedule SQL Tuning Advisor page appears.</p>
+</li>
+<li>
+<p>In the Overview section, select the <span class="bold">Top Activity</span> data source link.</p>
+<p>The Top Activity page appears. This page has a timeline graph showing the database activity based on the active sessions over the last hour.</p>
+<img width="1155" height="741" src="img/top_activity_new.gif" alt="Description of top_activity_new.gif follows" title="Description of top_activity_new.gif follows" longdesc="img_text/top_activity_new.htm" /><br />
+<a id="sthref731" name="sthref731" href="img_text/top_activity_new.htm">Description of the illustration top_activity_new.gif</a><br />
+<br /></li>
+<li>
+<p>(Optional) Expand the timeline by selecting <span class="bold">Historical</span> from the View Data list at the upper right-hand side of the page.</p>
+</li>
+<li>
+<p>Select an interval to analyze by clicking the bar under the timeline graph.</p>
+<p>The Top SQL and Top Sessions tables show the activity within the selected period.</p>
+</li>
+<li>
+<p>In the Top SQL section, select one or more SQL statements. Make sure the <span class="bold">Actions</span> drop-down list shows Schedule SQL Tuning Advisor, and then click <span class="bold">Go</span>.</p>
+<p>The Schedule SQL Tuning Advisor page returns, indicating the statements that are to be tuned.</p>
+</li>
+<li>
+<p>Enter a task name and description, select the scope for the analysis (<span class="bold">Comprehensive</span> or <span class="bold">Limited</span>), and select a start time for the analysis task.</p>
+</li>
+<li>
+<p>Click <span class="bold">Submit</span>.</p>
+<p>A Processing SQL Tuning Advisor Task page appears. When the task is complete, the SQL Tuning Result Summary page appears, showing a summary of the SQL Tuning Advisor findings for the SQL statements analyzed.</p>
+<p>To view the recommendations, click <span class="bold">Show all results</span>. The recommendations can include one or more of the following:</p>
+<ul>
+<li>
+<p>Accept the generated SQL profile.</p>
+</li>
+<li>
+<p>Gather optimizer statistics on objects with stale or no statistics.</p>
+</li>
+<li>
+<p>Rewrite a query for better performance.</p>
+</li>
+<li>
+<p>Create an index to offer alternate, faster access paths to the query optimizer.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>To view recommendations for a specified SQL statement, select a statement from the list of recommendations, and then click <span class="bold">View Recommendations</span>.</p>
+<p>The Recommendations for SQL ID page appears, showing one or more recommendations for the statement.</p>
+</li>
+<li>
+<p>(Optional) Select a recommendation, and then click <span class="bold">Implement</span>.</p>
+<p>After you confirm that you want to implement a new profile, you are returned to the Recommendations for SQL ID page, and a confirmation notice is printed across the top of the page.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CBBFAEDH">"About the SQL Advisors"</a></p>
+</li>
+<li>
+<p><a href="#CBBFAAFI">"About the Automatic SQL Tuning Advisor"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDEAJCC" name="CHDEAJCC"></a><a id="ADMQS1033" name="ADMQS1033"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Running the SQL Access Advisor</h3>
+<p>You run the SQL Access Advisor to get recommendations for improving the performance of a workload. You can run it on a periodic basis to avoid performance problems, or run it to verify schema change recommendations from the SQL Tuning Advisor.</p>
+<p class="subhead2"><a id="ADMQS12258" name="ADMQS12258"></a>To run the SQL Access Advisor:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>At the bottom of the page, under Related Links, click <span class="bold">Advisor Central</span>.</p>
+</li>
+<li>
+<p>On the Advisor Central page, click <span class="bold">SQL Advisors</span>.</p>
+</li>
+<li>
+<p>On the SQL Advisors page, click <span class="bold">SQL Access Advisor</span>.</p>
+<p>A page appears prompting you for initial options. Click <span class="bold">Help</span> for information about the options for this page.</p>
+</li>
+<li>
+<p>Select an option, and then click <span class="bold">Continue</span>.</p>
+</li>
+<li>
+<p><a id="sthref732" name="sthref732"></a>The Workload Source page appears. It is the first page of the SQL Access Advisor wizard.</p>
+<p>Click <span class="bold">Help</span> to obtain help for this and subsequent wizard pages. Follow directions and make the required selections for each wizard page, clicking <span class="bold">Next</span> when you are ready to proceed to the next page.</p>
+</li>
+<li>
+<p>Continue through the wizard until you reach the Review page. Review your selections and then click <span class="bold">Submit</span> to start the analysis.</p>
+<p>The Advisor Central page appears, displaying a confirmation message indicating that your task has been started successfully.</p>
+</li>
+<li>
+<p>Click the <span class="bold">Refresh</span> button (not your browser's Refresh icon) to view the status of your task.</p>
+</li>
+<li>
+<p>When your SQL Access Advisor task has completed, select <span class="bold">View Result</span>.</p>
+<p>The Result for Task page appears.</p>
+<p>The Summary subpage shows you the potential for improvement under the headings Workload I/O Cost and Query Execution Time Improvement.</p>
+<img width="702" height="408" src="img/sqlaccess_adv_results.gif" alt="Description of sqlaccess_adv_results.gif follows" title="Description of sqlaccess_adv_results.gif follows" longdesc="img_text/sqlaccess_adv_results.htm" /><br />
+<a id="sthref733" name="sthref733" href="img_text/sqlaccess_adv_results.htm">Description of the illustration sqlaccess_adv_results.gif</a><br />
+<br />
+<p>The Recommendations subpage shows the recommendations, if any, for improving performance. A recommendation might consist of, for example, a SQL script with one or more <code>CREATE INDEX</code> statements, which you can run by clicking <span class="bold">Schedule Implementation</span>.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CBBFAEDH">"About the SQL Advisors"</a></p>
+</li>
+<li>
+<p><a class="olink TDPPT170" href="http://www.oracle.com/pls/db112/lookup?id=TDPPT170"><span class="italic">Oracle Database 2 Day + Performance Tuning Guide</span></a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CBBGHHJI" name="CBBGHHJI"></a><a id="ADMQS1034" name="ADMQS1034"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Optimizing Memory Usage with the Memory Advisors</h3>
+<p>This section contains:</p>
+<ul>
+<li>
+<p><a href="#CBBJDCBB">About the Memory Advisors</a></p>
+</li>
+<li>
+<p><a href="#CBBHDIGA">Example: Obtaining Memory Sizing Advice for ASMM</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="instance.htm#CACBFIED">"Managing Memory"</a></p>
+</li>
+<li>
+<p><a href="#CBBECIIF">"About Advisors"</a></p>
+</li>
+</ul>
+</div>
+<a id="CBBJDCBB" name="CBBJDCBB"></a><a id="ADMQS12321" name="ADMQS12321"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">About the Memory Advisors</h4>
+<p>Adequate <a id="sthref734" name="sthref734"></a><a id="sthref735" name="sthref735"></a><a id="sthref736" name="sthref736"></a><a id="sthref737" name="sthref737"></a>physical memory has a significant impact on the performance of your Oracle Database. With its automatic memory management capabilities, Oracle Database can automatically adjust the memory distribution among the various SGA and PGA components for optimal performance. These adjustments are made within the boundaries of the total amount of memory that you allocate to the database.</p>
+<p>ADDM periodically evaluates the performance of your database to determine performance problems. If ADDM finds that the current amount of available memory is inadequate and adversely affecting performance, then it can recommend that you increase memory allocations. You can select new memory allocations using the Memory Advisors.</p>
+<p>Additionally, you can use the Memory Advisors to perform what-if analysis on the following:</p>
+<ul>
+<li>
+<p>The database performance benefits of adding physical memory to your database</p>
+</li>
+<li>
+<p>The database performance impact of reducing the physical memory available to your database</p>
+</li>
+</ul>
+<p>With the Memory Advisors, you can obtain memory sizing advice as follows:</p>
+<ul>
+<li>
+<p>If automatic memory management is enabled, then you can get advice for setting the target amount of memory to allocate to the Oracle instance.</p>
+</li>
+<li>
+<p>If automatic memory management is disabled and automatic shared memory management is enabled, then you can get advice on configuring the target sizes of the SGA and instance PGA.</p>
+</li>
+<li>
+<p>If only manual shared memory management is enabled, then you can get advice on sizing the shared pool, buffer cache, and instance PGA.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="CBBHDIGA" name="CBBHDIGA"></a><a id="ADMQS10342" name="ADMQS10342"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Example: Obtaining Memory Sizing Advice for ASMM</h4>
+<p>The following steps describe how to obtain memory sizing advice when automatic shared memory management (ASMM) is enabled.</p>
+<p class="subhead2"><a id="ADMQS12259" name="ADMQS12259"></a>To obtain memory sizing advice for ASMM:</p>
+<ol>
+<li>
+<p>Go to the Database Home page.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>At the bottom of the page, click <span class="bold">Advisor Central</span>.</p>
+</li>
+<li>
+<p>On the Advisor Central page, click <span class="bold">Memory Advisors</span>.</p>
+<p>The Memory Advisors page appears.</p>
+</li>
+<li>
+<p>On the SGA subpage, next to the Total SGA Size field, click <span class="bold">Advice</span>.</p>
+<p>The SGA Size Advice child page appears in a separate window.</p>
+<div class="figure">
+<p class="titleinfigure"><a id="CBBCBAAH" name="CBBCBAAH"></a><a id="ADMQS12349" name="ADMQS12349"></a>Figure 10-3 SGA Size Advice</p>
+<img width="452" height="441" src="img/sga-sizeadvice.gif" alt="Description of Figure 10-3 follows" title="Description of Figure 10-3 follows" longdesc="img_text/sga-sizeadvice.htm" /><br />
+<a id="sthref738" name="sthref738" href="img_text/sga-sizeadvice.htm">Description of "Figure 10-3 SGA Size Advice"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>Improvement in DB Time (%) is plotted against Total SGA size. A higher number for Improvement in DB Time is better for performance.</p>
+<p>In , the graph indicates that increasing the SGA size greater than 450 MB results in no performance gain. Thus, 450 MB is the recommended optimal SGA size.</p>
+<p>Click <span class="bold">OK</span> to close the SGA Size Advice child page.</p>
+</li>
+<li>
+<p>Near the top of the Memory Advisors page, click <span class="bold">PGA</span> to display the PGA subpage.</p>
+</li>
+<li>
+<p>Next to Aggregate PGA Target, click <span class="bold">Advice</span>.</p>
+<p>The PGA Target Advice page appears, plotting cache hit percentage against PGA target size.</p>
+<p>The cache hit percentage is the percentage of read requests serviced by memory, as opposed to those requests serviced by reading from disk, which is slower. A higher hit percentage indicates better cache performance. The optimal zone for cache hit percentage is between 75 and 100 percent. However, it is not safe to conclude that your database is having performance problems simply because your cache hit percentage is not within the optimal zone. When the amount of currently available PGA memory is not adequate for optimal performance, ADDM automatically recommends adjusting this value in a performance finding.</p>
+<p>Click <span class="bold">OK</span> to close the PGA Target Advice page.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="instance.htm#CACBFIED">"Managing Memory"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CACJFCDI" name="CACJFCDI"></a><a id="ADMQS104" name="ADMQS104"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Monitoring and Tuning: Oracle By Example Series</h2>
+<p>Oracle By Example (OBE) has a series on the <span class="italic">Oracle Database 2 Day DBA</span> guide. This OBE steps you through the tasks in this section, and includes annotated screenshots.</p>
+<p>To view the Monitoring OBE, in your browser, enter the following URL:</p>
+<p><code><a href="http://www.oracle.com/technology/obe/11gr2_2day_dba/monitoring/monitoring.htm">http://www.oracle.com/technology/obe/11gr2_2day_dba/monitoring/monitoring.htm</a></code></p>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="backrest.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="problems.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2004, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

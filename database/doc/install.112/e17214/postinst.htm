@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Oracle Real Application Clusters Postinstallation Procedures</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-02-18T17:43:29Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Real Application Clusters Installation Guide 11g Release 2 (11.2) for Linux and UNIX" />
+<meta name="partno" content="E17214-08" />
+<meta name="docid" content="RILIN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="dbcacrea.htm" title="Previous" type="text/html" />
+<link rel="Next" href="params.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17214.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Real Application Clusters Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux and UNIX</b><br />
+Part Number E17214-08</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="dbcacrea.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="params.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17214.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BABHHEHG" name="BABHHEHG"></a>
+<h1 class="chapter"><span class="secnum">4</span> Oracle Real Application Clusters Postinstallation Procedures</h1>
+<p>This chapter describes how to complete the postinstallation tasks after you have installed the Oracle Database 11<span class="italic">g</span> release 2 (11.2) with Oracle Real Application Clusters (Oracle RAC) software. This chapter contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#BABIAGFH">Required Postinstallation Tasks</a></p>
+</li>
+<li>
+<p><a href="#BABJDBHG">Recommended Postinstallation Tasks</a></p>
+</li>
+<li>
+<p><a href="#BABFCFGC">Oracle Configuration Manager Postinstallation Configuration for Oracle RAC</a></p>
+</li>
+<li>
+<p><a href="#CHDBDCGE">Enabling and Disabling Database Options After Installation</a></p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1"><span class="bold">Note</span>:</p>
+This chapter describes only basic configurations<span class="italic">.</span> Refer to the <span class="italic">Oracle Database 11g Administrator's Guide for UNIX Systems</span>, and the product administration and tuning guides for more detailed configuration and tuning information. Refer also to <a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Database Installation Guide</span></a> for your platform for additional postinstallation configuration information.</div>
+<a id="BABIAGFH" name="BABIAGFH"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">4.1</span> Required Postinstallation Tasks</h2>
+<p>Perform the following tasks after completing your installation:</p>
+<ul>
+<li>
+<p><a href="#BABGIHDF">Download and Install Patch Updates</a></p>
+</li>
+<li>
+<p><a href="#CIHBFJCA">Set External Jobs Ownership for Installations on HP-UX</a></p>
+</li>
+<li>
+<p><a href="#BABFJBDD">Configure Oracle Products</a></p>
+</li>
+<li>
+<p><a href="#BABJEADG">Relocate Instance-Related Memory-Mapped files from OCFS2 Using Symbolic Links</a></p>
+</li>
+</ul>
+<a id="BABGIHDF" name="BABGIHDF"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">4.1.1</span> Download and Install Patch Updates</h3>
+<p>Refer to the My Oracle Support Web site for required <a id="sthref285" name="sthref285"></a><a id="sthref286" name="sthref286"></a><a id="sthref287" name="sthref287"></a><a id="sthref288" name="sthref288"></a>patch updates for your <a id="sthref289" name="sthref289"></a>installation.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Browsers require an Adobe Flash plug-in, version 9.0.115 or higher to use My Oracle Support. Check your browser for the correct version of Flash plug-in by going to the Adobe Flash checker page, and installing the latest version of Adobe Flash.
+<p>If you do not have Flash installed, then download the latest version of the Flash Player from the Adobe web site:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://www.adobe.com/go/getflashplayer">http://www.adobe.com/go/getflashplayer</a>
+</pre></div>
+<p>To download required patch updates:</p>
+<ol>
+<li>
+<p>Use a Web browser to view the My Oracle Support Web site:</p>
+<p><code><a href="https://support.oracle.com">https://support.oracle.com</a></code></p>
+</li>
+<li>
+<p>Log in to My Oracle Support.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If you are not a My Oracle Support registered user, then click <span class="bold">Register for My Oracle Support</span> and register.</div>
+</li>
+<li>
+<p>On the main My Oracle Support page, click <span class="bold">Patches &amp; Updates</span>.</p>
+</li>
+<li>
+<p>In the Patches section, click <span class="bold">Simple Search</span>.</p>
+</li>
+<li>
+<p>Specify the following information, then click <span class="bold">Go</span>:</p>
+<ul>
+<li>
+<p>In the <span class="bold">Search By</span> field, select <span class="bold">Product or Family</span>, and then specify RDBMS Server.</p>
+</li>
+<li>
+<p>In the <span class="bold">Release</span> field, specify the current release number.</p>
+</li>
+<li>
+<p>In the <span class="bold">Patch Type</span> field, specify Patchset/Minipack.</p>
+</li>
+<li>
+<p>In the <span class="bold">Platform or Language</span> field, select your platform.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the Results list, find the latest patch set for Oracle Database.</p>
+<p>Patch sets for Oracle databases are identified in the Description column as <span class="italic">Product</span>:Patchset <span class="italic">x.x.x.x</span> PATCH SET FOR ORACLE DATABASE SERVER.</p>
+</li>
+<li>
+<p>In the Patch column, click the number of the patch that you want to download.</p>
+</li>
+<li>
+<p>On the Patch Set page, click <span class="bold">View README</span>&nbsp;and read the page that appears. The README page contains information about the patch set and how to apply the patches to your installation.</p>
+</li>
+<li>
+<p>Return to the Patch Set page, click <span class="bold">Download</span>, and save the file on your system.</p>
+</li>
+<li>
+<p>Use the unzip utility provided with Oracle Database 11<span class="italic">g</span> release 2 (11.2) to uncompress the Oracle patch updates that you downloaded from My Oracle Support. The unzip utility is located in the <code>$ORACLE_HOME/bin</code> directory.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CIHBFJCA" name="CIHBFJCA"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">4.1.2</span> Set External Jobs Ownership for Installations on HP-UX</h3>
+<p>On HP-UX platforms only, complete the following procedure to set external jobs ownership to the low-privilege user <code>extjob</code>:</p>
+<ol>
+<li>
+<p>Log on as root.</p>
+</li>
+<li>
+<p>Change directory to the Oracle Database Oracle home:</p>
+<pre xml:space="preserve" class="oac_no_warn"># cd $ORACLE_HOME/rdbms/admin/
+</pre></li>
+<li>
+<p>Open <code>externaljob.ora</code> with a text editor, and find the parameters <code>run_user</code> and <code>run_group</code>.</p>
+</li>
+<li>
+<p>Set <code>run_user</code> to the external jobs user (<code>extjob</code>), and set <code>run_group</code> to a low-privileged group, such as <code>other</code>. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">run_user=extproc
+run_group=other
+</pre></li>
+<li>
+<p>Save the file.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Modify <code>externaljob.ora</code> only as <code>root</code>.</div>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BABFJBDD" name="BABFJBDD"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">4.1.3</span> Configure Oracle Products</h3>
+<p>Many Oracle products and options must be <a id="sthref290" name="sthref290"></a>configured before you use them for the first time. Before using individual Oracle Database 11<span class="italic">g</span> release 2 (11.2) database products or options, refer to the manual in the product documentation library which is available in the DOC directory on the Oracle Database installation media, or on the OTN Web site.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BABJEADG" name="BABJEADG"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">4.1.4</span> Relocate Instance-Related Memory-Mapped files from OCFS2 Using Symbolic Links</h3>
+<p>If you install Oracle RAC on a standard local file system, then you do not need to read this section.</p>
+<p>On Linux, if your Oracle RAC installation is created on OCFS2, and the version of OCFS2 that you are using is earlier than 1.4.1. then you must complete the following task to continue to use that version.</p>
+<p>On OCFS2 versions earlier than 1.4.1, you must relocate the healthcheck files (<code>*.dat</code>) that typically reside in <code>$ORACLE_HOME/dbs</code> to a local file system, and create symbolic links to it from the original path. This is required because these OCFS2 versions for Linux do not support shared writable map access that the Oracle software uses to manipulate the healthcheck files.</p>
+<p>To relocate the files:</p>
+<ol>
+<li>
+<p>Stop the Oracle Database instance.</p>
+</li>
+<li>
+<p>Move the <code>$ORACLE_HOME/dbs/*.dat</code> files to a directory on a local file system.</p>
+</li>
+<li>
+<p>Create symbolic links from the <code>$ORACLE_HOME/dbs</code> directory to the <code>*.dat</code> files on the local file system.</p>
+</li>
+<li>
+<p>Restart the Oracle Database instance.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABJDBHG" name="BABJDBHG"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">4.2</span> Recommended Postinstallation Tasks</h2>
+<p>This section explains the tasks that Oracle recommends you perform after completing an installation.</p>
+<ul>
+<li>
+<p><a href="#BABBJIGJ">Recommended Database Postinstallation Tasks</a></p>
+</li>
+</ul>
+<a id="BABBJIGJ" name="BABBJIGJ"></a>
+<div class="sect2"><!-- infolevel="all" infotype="Task" -->
+<h3 class="sect2"><span class="secnum">4.2.1</span> Recommended Database Postinstallation Tasks</h3>
+<p>Oracle recommends that you complete the following tasks after installing Oracle RAC:</p>
+<ul>
+<li>
+<p><a href="#BABGGHIF">Back Up the root.sh Script</a></p>
+</li>
+<li>
+<p><a href="#BABFGAEA">Set the Oracle User Environment Variables</a></p>
+</li>
+<li>
+<p><a href="#BABEDHBH">Recompile all PL/SQL modules</a></p>
+</li>
+<li>
+<p><a href="#BABBEBFB">Set Up User Accounts</a></p>
+</li>
+</ul>
+<a id="BABGGHIF" name="BABGGHIF"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><span class="secnum">4.2.1.1</span> Back Up the root.sh Script</h4>
+<p>Oracle recommends that you <a id="sthref291" name="sthref291"></a><a id="sthref292" name="sthref292"></a>back up the <code>root.sh</code> script after you complete an installation. If you install other products in the same Oracle home directory, then the Oracle Universal Installer (OUI) updates the contents of the existing <code>root.sh</code> script during the installation. If you require information contained in the original <code>root.sh</code> script, then you can recover it from the <code>root.sh</code> file copy.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BABFGAEA" name="BABFGAEA"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">4.2.1.2</span> Set the Oracle User Environment Variables<a id="sthref293" name="sthref293"></a><a id="sthref294" name="sthref294"></a><a id="sthref295" name="sthref295"></a></h4>
+<p>On each node, in the installation owner user profile file (in this example, <code>oracle</code>), set the environment variables <code>ORACLE_BASE</code> and <code>ORACLE_HOME</code>, and <code>ORACLE_SID</code>; also add <code>ORACLE_HOME/bin</code> to the path environment variable.</p>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">export ORACLE_BASE=/u01/app/oracle
+export ORACLE_HOME=/u01/app/oracle/11.2.0/dbhome_1
+export PATH=$PATH:$ORACLE_HOME/bin
+export ORACLE_SID=sales1
+</pre>
+<p>If the environment variables <code>ORACLE_HOME</code> and <code>ORACLE_SID</code> are not set, and you try to use SQL*Plus or other tools, then you receive an error message requesting that you set these variables.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BABEDHBH" name="BABEDHBH"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">4.2.1.3</span> Recompile all PL/SQL modules</h4>
+<p>Oracle recommends that you run the <code>utlrp.sql</code> script after creating or upgrading a database. This script recompiles all PL/SQL modules that might be in an invalid state, including packages, procedures, and types. This is an optional step but Oracle recommends that you do it immediately following installation, not at a later date.</p>
+<ol>
+<li>
+<p>Complete setting up the Oracle software owner user account environment (for example, <code>oracle</code>), as described in <a href="#BABFGAEA">"Set the Oracle User Environment Variables"</a> in the preceding section.</p>
+</li>
+<li>
+<p>Start SQL*Plus, as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus "/ AS SYSDBA"
+</pre></li>
+<li>
+<p>Run the <code>utlrp.sql</code> script, where <code><span class="codeinlineitalic">Oracle_home</span></code> is the Oracle home path:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; @<span class="italic">Oracle_home</span>/rdbms/admin/utlrp.sql
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="BABBEBFB" name="BABBEBFB"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><span class="secnum">4.2.1.4</span> Set Up User Accounts</h4>
+<p>For information about setting up additional optional <a id="sthref296" name="sthref296"></a><a id="sthref297" name="sthref297"></a>user accounts, refer to <span class="italic">Oracle Database 11g Administrator's Guide for UNIX Systems</span>.</p>
+<p>When you complete these procedures, you are ready to perform the initial configuration tasks described in <a href="params.htm#CIHFCHGH">Chapter 5, " Configuring the Server Parameter File in Oracle Real Application Clusters Environments"</a>.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABFCFGC" name="BABFCFGC"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">4.3</span> Oracle Configuration Manager Postinstallation Configuration for Oracle RAC<a id="sthref298" name="sthref298"></a></h2>
+<p>If you have installed Oracle Configuration Manager, then you must run a script to create a database account to collect database configuration collections. You must create this account in both <span class="bold">Connected</span> and <span class="bold">Disconnected</span> modes. The database account stores the PL/SQL procedures that collect the configuration information, and the account owns the database management system (DBMS) job that performs the collection. After the account has been set up, the account is locked because login privileges are no longer required.</p>
+<p>To configure the database for configuration collection, run the following script:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/ccr/admin/scripts/installCCRSQL.sh collectconfig -s SID -r\ 
+SYSDBA-USER -p SYSDBA-PASSWORD
+</pre>
+<p>The script <code>installCCRSQL.sh</code> creates an Oracle Configuration Manager user and loads the PL/SQL procedure into the database defined by the <code>ORACLE_SID</code>. You can also specify the database SID by using the <code>-s</code> option in the command line, as in the following example, where the SID is <code>orcl</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/ccr/admin/scripts/installCCRSQL.sh collectconfig -s orcl
+</pre>
+<p>For Oracle RAC, you must run the database script against only one instance, such as the local instance on which you performed the installation. However, Oracle Configuration Manager must be installed in all instance homes.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink CCRIA" href="http://www.oracle.com/pls/db112/lookup?id=CCRIA"><span class="italic">Oracle Configuration Manager Installation and Administration Guide</span></a> for further information</p>
+</li>
+<li>
+<p><a class="olink DVADM19006" href="http://www.oracle.com/pls/db112/lookup?id=DVADM19006"><span class="italic">Oracle Database Vault Administrator's Guide</span></a> for additional configuration tasks</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect1" -->
+<a id="CHDBDCGE" name="CHDBDCGE"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">4.4</span> Enabling and Disabling Database Options After Installation</h2>
+<p>When you install Oracle Database, some options are enabled and others are disabled. To enable or disable a particular database feature for an Oracle home, shut down the database and use the <code>chopt</code> tool.</p>
+<p>The chopt tool is a command-line utility that is located in the directory <code>ORACLE_HOME/bin</code>. It uses the following syntax, where <span class="italic">db_option</span> is the option whose status you want to modify:</p>
+<p>chopt [enable | disable] <span class="italic">db_option</span></p>
+<p>The possible values for <span class="italic">db_option</span> are described in <a href="#CHDBGIIB">Table 4-1</a>:</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref299" name="sthref299"></a><a id="CHDBGIIB" name="CHDBGIIB"></a>Table 4-1 Chopt Tool Command Options for Database Options</p>
+<table class="Formal" title="Chopt Tool Command Options for Database Options" summary="A list of database options that fan be enabled or disabled using the chopt tool." dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t7">Value</th>
+<th align="left" valign="bottom" id="r1c2-t7">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t7" headers="r1c1-t7">
+<p><code>dm</code></p>
+</td>
+<td align="left" headers="r2c1-t7 r1c2-t7">
+<p>Oracle Data Mining Database Files</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t7" headers="r1c1-t7">
+<p><code>dv</code></p>
+</td>
+<td align="left" headers="r3c1-t7 r1c2-t7">
+<p>Oracle Database Vault</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t7" headers="r1c1-t7">
+<p><code>lbac</code></p>
+</td>
+<td align="left" headers="r4c1-t7 r1c2-t7">
+<p>Oracle Label Security</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t7" headers="r1c1-t7">
+<p><code>olap</code></p>
+</td>
+<td align="left" headers="r5c1-t7 r1c2-t7">
+<p>Oracle OLAP</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t7" headers="r1c1-t7">
+<p><code>partitioning</code></p>
+</td>
+<td align="left" headers="r6c1-t7 r1c2-t7">
+<p>Oracle Partitioning</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t7" headers="r1c1-t7">
+<p><code>rat</code></p>
+</td>
+<td align="left" headers="r7c1-t7 r1c2-t7">
+<p>Oracle Real Application Testing</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t7" headers="r1c1-t7">
+<p><code>ode_net</code></p>
+</td>
+<td align="left" headers="r8c1-t7 r1c2-t7">
+<p>Oracle Database Extensions for .NET 1.x</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t7" headers="r1c1-t7">
+<p><code>ode_net_2</code></p>
+</td>
+<td align="left" headers="r9c1-t7 r1c2-t7">
+<p>Oracle Database Extensions for .NET 2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" -->
+<div class="example">
+<p class="titleinexample"><a id="sthref300" name="sthref300"></a>Example 4-1 How to Enable a Database Option Using Chopt</p>
+<p>In this example, the <code>chopt</code> tool is used to enable Oracle Label Security in the database <code>oradb1</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd $ORACLE_HOME/bin
+$ srvctl stop database -d oradb1
+$ chopt enable lbac
+$ srvctl start database -d oradb1
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="dbcacrea.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="params.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2007, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

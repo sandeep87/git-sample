@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div element="article" href="toc.htm" number="" targetptr="">
+  <ttl>		Oracle&#x00AE; Database Quick Installation Guide for IBM: Linux on System z</ttl>
+  <xreftext><cite>		Oracle&#x00AE; Database Quick Installation Guide for IBM: Linux on System z</cite></xreftext>
+  <div element="sect1" href="toc.htm" number="1" targetptr="CEGHFFGG">
+    <ttl>Reviewing Information About This Guide</ttl>
+    <xreftext>&#x201C;Reviewing Information About This Guide&#x201D;</xreftext>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="">
+      <ttl>Tasks Described in This Guide</ttl>
+      <xreftext>&#x201C;Tasks Described in This Guide&#x201D;</xreftext>
+    </obj>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="">
+      <ttl>Results of a Successful Installation</ttl>
+      <xreftext>&#x201C;Results of a Successful Installation&#x201D;</xreftext>
+    </obj>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="">
+      <ttl>Tasks Not Described in This Guide</ttl>
+      <xreftext>&#x201C;Tasks Not Described in This Guide&#x201D;</xreftext>
+    </obj>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="">
+      <ttl>Where to Get Additional Installation Information</ttl>
+      <xreftext>&#x201C;Where to Get Additional Installation Information&#x201D;</xreftext>
+    </obj>
+  </div>
+  <div element="sect1" href="toc.htm" number="2" targetptr="BABIBGFA">
+    <ttl>Logging In to the System as root</ttl>
+    <xreftext>&#x201C;Logging In to the System as root&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="3" targetptr="i1011296">
+    <ttl>Checking the Hardware Requirements</ttl>
+    <xreftext>&#x201C;Checking the Hardware Requirements&#x201D;</xreftext>
+    <div element="sect2" href="toc.htm" number="3.1" targetptr="BHCJCBAF">
+      <ttl>Memory Requirements</ttl>
+      <xreftext>&#x201C;Memory Requirements&#x201D;</xreftext>
+      <obj element="bridgehead" href="toc.htm" number="" targetptr="">
+        <ttl>Automatic Memory Management</ttl>
+        <xreftext>&#x201C;Automatic Memory Management&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="sect2" href="toc.htm" number="3.2" targetptr="BHCJCGCB">
+      <ttl>System Architecture</ttl>
+      <xreftext>&#x201C;System Architecture&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="3.3" targetptr="BHCBFEBA">
+      <ttl>Disk Space Requirements</ttl>
+      <xreftext>&#x201C;Disk Space Requirements&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="sect1" href="toc.htm" number="4" targetptr="CIHFICFD">
+    <ttl>Checking the Software Requirements</ttl>
+    <xreftext>&#x201C;Checking the Software Requirements&#x201D;</xreftext>
+    <div element="sect2" href="toc.htm" number="4.1" targetptr="BHCHGDIE">
+      <ttl>Operating System Requirements</ttl>
+      <xreftext>&#x201C;Operating System Requirements&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="4.2" targetptr="BHCGGJAB">
+      <ttl>Kernel Requirements</ttl>
+      <xreftext>&#x201C;Kernel Requirements&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="4.3" targetptr="BHCGJCEA">
+      <ttl>Package Requirements</ttl>
+      <xreftext>&#x201C;Package Requirements&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="4.4" targetptr="BHCFACHG">
+      <ttl>Compiler Requirements</ttl>
+      <xreftext>&#x201C;Compiler Requirements&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="4.5" targetptr="BHCIFHBE">
+      <ttl>Additional Software Requirements</ttl>
+      <xreftext>&#x201C;Additional Software Requirements&#x201D;</xreftext>
+      <div element="sect3" href="toc.htm" number="4.5.1" targetptr="BHCFGFBH">
+        <ttl>Oracle ODBC Drivers</ttl>
+        <xreftext>&#x201C;Oracle ODBC Drivers&#x201D;</xreftext>
+      </div>
+      <div element="sect3" href="toc.htm" number="4.5.2" targetptr="BHCEBIAG">
+        <ttl>Oracle JDBC/OCI Drivers</ttl>
+        <xreftext>&#x201C;Oracle JDBC/OCI Drivers&#x201D;</xreftext>
+      </div>
+      <div element="sect3" href="toc.htm" number="4.5.3" targetptr="CIHEDCAH">
+        <ttl>Linux-PAM Library</ttl>
+        <xreftext>&#x201C;Linux-PAM Library&#x201D;</xreftext>
+      </div>
+      <div element="sect3" href="toc.htm" number="4.5.4" targetptr="BHCEHEGJ">
+        <ttl>Oracle Messaging Gateway</ttl>
+        <xreftext>&#x201C;Oracle Messaging Gateway&#x201D;</xreftext>
+      </div>
+      <div element="sect3" href="toc.htm" number="4.5.5" targetptr="CHDDBIHJ">
+        <ttl>Programming Languages</ttl>
+        <xreftext>&#x201C;Programming Languages&#x201D;</xreftext>
+      </div>
+      <div element="sect3" href="toc.htm" number="4.5.6" targetptr="BHCEDEEH">
+        <ttl>Browser Requirements</ttl>
+        <xreftext>&#x201C;Browser Requirements&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+  <div element="sect1" href="toc.htm" number="5" targetptr="BHCBCFDI">
+    <ttl>Creating Required Operating System Groups and Users</ttl>
+    <xreftext>&#x201C;Creating Required Operating System Groups and Users&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="6" targetptr="BHCCADGD">
+    <ttl>Configuring Kernel Parameters</ttl>
+    <xreftext>&#x201C;Configuring Kernel Parameters&#x201D;</xreftext>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="">
+      <ttl>Check Resource Limits for the Oracle Software Installation Users</ttl>
+      <xreftext>&#x201C;Check Resource Limits for the Oracle Software Installation Users&#x201D;</xreftext>
+    </obj>
+    <obj element="table" href="toc.htm" number="@-1" targetptr="">
+      <ttl>Installation Owner Resource Limit Recommended Ranges</ttl>
+      <xreftext>&#x201C;Installation Owner Resource Limit Recommended Ranges&#x201D;</xreftext>
+    </obj>
+  </div>
+  <div element="sect1" href="toc.htm" number="7" targetptr="CEGIHDBF">
+    <ttl>Creating Required Directories</ttl>
+    <xreftext>&#x201C;Creating Required Directories&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="8" targetptr="CEGEGDBA">
+    <ttl>Configuring the oracle User&#x0027;s Environment</ttl>
+    <xreftext>&#x201C;Configuring the oracle User&#x0027;s Environment&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="9" targetptr="CEGHBFHB">
+    <ttl>Mounting the Product Disc</ttl>
+    <xreftext>&#x201C;Mounting the Product Disc&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="10" targetptr="BHCHBHDB">
+    <ttl>Installing Oracle Database</ttl>
+    <xreftext>&#x201C;Installing Oracle Database&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="11" targetptr="BABFCHBA">
+    <ttl>Installing Oracle Database Examples</ttl>
+    <xreftext>&#x201C;Installing Oracle Database Examples&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="12" targetptr="BAGJAAGF">
+    <ttl>What to Do Next?</ttl>
+    <xreftext>&#x201C;What to Do Next?&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="13" targetptr="CHDIBDIG">
+    <ttl>Additional Information</ttl>
+    <xreftext>&#x201C;Additional Information&#x201D;</xreftext>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="CHDIHFAB">
+      <ttl>Product Licenses</ttl>
+      <xreftext>&#x201C;Product Licenses&#x201D;</xreftext>
+    </obj>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="CHDBHFFE">
+      <ttl>Purchasing Licenses and Version Updates</ttl>
+      <xreftext>&#x201C;Purchasing Licenses and Version Updates&#x201D;</xreftext>
+    </obj>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="CHDCGFIC">
+      <ttl>Contacting Oracle Support Services</ttl>
+      <xreftext>&#x201C;Contacting Oracle Support Services&#x201D;</xreftext>
+    </obj>
+    <obj element="bridgehead" href="toc.htm" number="" targetptr="CHDFFCCA">
+      <ttl>Locating Product Documentation</ttl>
+      <xreftext>&#x201C;Locating Product Documentation&#x201D;</xreftext>
+    </obj>
+  </div>
+  <div element="sect1" href="toc.htm" number="14" targetptr="CIHGECBI">
+    <ttl>Documentation Accessibility</ttl>
+    <xreftext>&#x201C;Documentation Accessibility&#x201D;</xreftext>
+    <obj element="formalpara" href="toc.htm" number="" targetptr="">
+      <ttl>Accessibility of Code Examples in Documentation</ttl>
+      <xreftext>&#x201C;Accessibility of Code Examples in Documentation&#x201D;</xreftext>
+    </obj>
+    <obj element="formalpara" href="toc.htm" number="" targetptr="">
+      <ttl>Accessibility of Links to External Web Sites in Documentation</ttl>
+      <xreftext>&#x201C;Accessibility of Links to External Web Sites in Documentation&#x201D;</xreftext>
+    </obj>
+    <obj element="formalpara" href="toc.htm" number="" targetptr="">
+      <ttl>Access to Oracle Support</ttl>
+      <xreftext>&#x201C;Access to Oracle Support&#x201D;</xreftext>
+    </obj>
+  </div>
+</div>

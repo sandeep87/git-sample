@@ -1,0 +1,16 @@
+var chapters = [
+  { topic: "chapter", section: "1", title: "Preinstallation Checklist", anchor: "", file: "chklist.htm" },
+  { topic: "chapter", section: "2", title: "Installing Oracle Database 11g with Oracle Real Application Clusters", anchor: "CIHHEHBF", file: "racinstl.htm" },
+  { topic: "chapter", section: "3", title: "Creating Oracle Real Application Clusters Databases with Database Configuration Assistant", anchor: "BGBIJGDA", file: "dbcacrea.htm" },
+  { topic: "chapter", section: "4", title: "Oracle Real Application Clusters Postinstallation Procedures", anchor: "BABHHEHG", file: "postinst.htm" },
+  { topic: "chapter", section: "5", title: "		Configuring the Server Parameter File in Oracle Real Application Clusters Environments", anchor: "CIHFCHGH", file: "params.htm" },
+  { topic: "chapter", section: "6", title: "Configuring Server Pools and Enterprise Manager Database Control", anchor: "", file: "srvpool.htm" },
+  { topic: "chapter", section: "7", title: "Understanding the Oracle Real Application Clusters Installed Configuration", anchor: "BEIHEFDB", file: "undrstnd.htm" },
+  { topic: "chapter", section: "8", title: "Removing Oracle Real Application Clusters Software", anchor: "", file: "rem_orcl.htm" },
+  { topic: "appendix", section: "A", title: "Troubleshooting Oracle Real Application Clusters Installations", anchor: "CIACEGFJ", file: "trouble.htm" },
+  { topic: "appendix", section: "B", title: "		Using Scripts or Response Files to Create Oracle Real Application Clusters Databases", anchor: "CIHBDCAJ", file: "scripts.htm" },
+  { topic: "appendix", section: "C", title: "		Converting to Oracle RAC and Oracle RAC One Node from Single-Instance Oracle Databases", anchor: "BABBAHCH", file: "cvrt2rac.htm" },
+  { topic: "appendix", section: "D", title: "Directory Structure for Oracle Real Application Clusters Environments", anchor: "RILIN009", file: "apa.htm" },
+  { topic: "appendix", section: "E", title: "How to Stop Processes in an Existing Oracle Real Application Clusters Database", anchor: "BABEHGJG", file: "procstop.htm" },
+  { topic: "appendix", section: "F", title: "Managing Oracle Database Port Numbers", anchor: "BABECFJF", file: "ports.htm" },
+  { } ];

@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>How to Complete Installation Prerequisite Tasks Manually</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-03-24T11:1:7Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Grid Infrastructure Installation Guide 11g Release 2 (11.2) for Linux" />
+<meta name="partno" content="E17212-11" />
+<meta name="docid" content="CWLIN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="concepts.htm" title="Previous" type="text/html" />
+<link rel="Next" href="procstop.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17212.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Grid Infrastructure Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux</b><br />
+Part Number E17212-11</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="concepts.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="procstop.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17212.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CWLIN406" name="CWLIN406"></a><a id="sthref833" name="sthref833"></a>
+<h1 class="appendix"><span class="secnum">E</span> How to Complete Installation Prerequisite Tasks Manually</h1>
+<p>This appendix provides instructions for how to complete configuration tasks manually that Cluster Verification Utility (CVU) and the installer (OUI) normally complete during installation. Use this appendix as a guide if you cannot use the fixup script.</p>
+<p>This appendix contains the following information:</p>
+<ul>
+<li>
+<p><a href="#BABJBAEB">Configuring SSH Manually on All Cluster Nodes</a></p>
+</li>
+<li>
+<p><a href="#BABCHAED">Configuring Kernel Parameters</a></p>
+</li>
+<li>
+<p><a href="#BABHJJIF">Checking OCFS2 Version Manually</a></p>
+</li>
+</ul>
+<a id="BABJBAEB" name="BABJBAEB"></a><a id="CWLIN407" name="CWLIN407"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">E.1</span> Configuring SSH Manually on All Cluster Nodes<a id="sthref834" name="sthref834"></a></h2>
+<p>Passwordless SSH configuration is a mandatory installation requirement. SSH is used during installation to configure cluster member nodes, and SSH is used after installation by configuration assistants, Oracle Enterprise Manager, Opatch, and other features.</p>
+<p>Automatic Passwordless SSH configuration using OUI creates RSA encryption keys on all nodes of the cluster. If you have system restrictions that require you to set up SSH manually, such as using DSA keys, then use this procedure as a guide to set up passwordless SSH.</p>
+<p>In the examples that follow, the Oracle software owner listed is the <code>grid</code> user.</p>
+<p>If SSH is not available, then OUI attempts to use rsh and rcp instead. However, these services are disabled by default on most Linux systems.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+<a id="sthref835" name="sthref835"></a>The supported version of SSH for Linux distributions is OpenSSH.</div>
+<p>This section contains the following:</p>
+<ul>
+<li>
+<p><a href="#BABDAIGB">Checking Existing SSH Configuration on the System</a></p>
+</li>
+<li>
+<p><a href="#BABFIDDD">Configuring SSH on Cluster Nodes</a></p>
+</li>
+<li>
+<p><a href="#BABHDEIC">Enabling SSH User Equivalency on Cluster Nodes</a></p>
+</li>
+</ul>
+<a id="BABDAIGB" name="BABDAIGB"></a><a id="CWLIN408" name="CWLIN408"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">E.1.1</span> Checking Existing SSH Configuration on the System<a id="sthref836" name="sthref836"></a><a id="sthref837" name="sthref837"></a></h3>
+<p>To determine if SSH is running, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ pgrep sshd
+</pre>
+<p>If SSH is running, then the response to this command is one or more process ID numbers. In the home directory of the installation software owner (<code>grid</code>, <code>oracle</code>), use the command <code>ls -al</code> to ensure that the <code>.ssh</code> directory is owned and writable only by the user.</p>
+<p>You need either an RSA or a DSA key for the SSH protocol. RSA is used with the SSH 1.5 protocol, while DSA is the default for the SSH 2.0 protocol. With OpenSSH, you can use either RSA or DSA. The instructions that follow are for SSH1. If you have an SSH2 installation, and you cannot use SSH1, then refer to your SSH distribution documentation to configure SSH1 compatibility or to configure SSH2 with DSA.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BABFIDDD" name="BABFIDDD"></a><a id="CWLIN409" name="CWLIN409"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">E.1.2</span> Configuring SSH on Cluster Nodes</h3>
+<p>To configure SSH, you must first create RSA or DSA keys on each cluster node, and then copy all the keys generated on all cluster node members into an authorized keys file that is identical on each node. Note that the SSH files must be readable only by <code>root</code> and by the software installation user (<code>oracle</code>, <code>grid</code>), as SSH ignores a private key file if it is accessible by others. In the examples that follow, the DSA key is used.</p>
+<p>You must configure SSH separately for each Oracle software installation owner that you intend to use for installation.</p>
+<p>To configure SSH, complete the following:</p>
+<a id="CWLIN410" name="CWLIN410"></a>
+<div class="sect3"><a id="sthref838" name="sthref838"></a>
+<h4 class="sect3"><span class="secnum">E.1.2.1</span> Create SSH Directory, and Create SSH Keys On Each Node</h4>
+<p>Complete the following steps on each node:</p>
+<ol>
+<li>
+<p>Log in as the software owner (in this example, the <code>grid</code> user).</p>
+</li>
+<li>
+<p>To ensure that you are logged in as <code>grid</code>, and to verify that the user ID matches the expected user ID you have assigned to the <code>grid</code> user, enter the commands <code>id</code> and <code>id grid</code>. Ensure that Oracle user group and user and the user terminal window process you are using have group and user IDs are identical. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ id 
+uid=502(grid) gid=501(oinstall) groups=501(oinstall),502(grid,asmadmin,asmdba)
+$ id grid
+uid=502(grid) gid=501(oinstall) groups=501(oinstall),502(grid,asmadmin,asmdba)
+</pre></li>
+<li>
+<p>If necessary, create the <code>.ssh</code> directory in the <code>grid</code> user's home directory, and set permissions on it to ensure that only the oracle user has read and write permissions:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ mkdir ~/.ssh
+$ chmod 700 ~/.ssh
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+<a id="sthref839" name="sthref839"></a>SSH configuration will fail if the permissions are not set to 700.</div>
+</li>
+<li>
+<p>Enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ /usr/bin/ssh-keygen -t dsa
+</pre>
+<p>At the prompts, accept the default location for the key file (press <span class="bold">Enter</span>).</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+SSH with passphrase is not supported for Oracle Clusterware 11<span class="italic">g</span> release 2 and later releases.</div>
+<p>This command writes the DSA public key to the <code>~/.ssh/id_dsa.pub</code> file and the private key to the <code>~/.ssh/id_dsa</code> file.</p>
+<p>Never distribute the private key to anyone not authorized to perform Oracle software installations.</p>
+</li>
+<li>
+<p>Repeat steps 1 through 4 on each node that you intend to make a member of the cluster, using the DSA key.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="CWLIN411" name="CWLIN411"></a>
+<div class="sect3"><a id="sthref840" name="sthref840"></a>
+<h4 class="sect3"><span class="secnum">E.1.2.2</span> Add All Keys to a Common authorized_keys File</h4>
+<p>Complete the following steps:</p>
+<ol>
+<li>
+<p>On the local node, change directories to the <code>.ssh</code> directory in the Oracle Grid Infrastructure owner's home directory (typically, either <code>grid</code> or <code>oracle</code>).</p>
+<p>Then, add the DSA key to the <code>authorized_keys</code> file using the following commands:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cat id_dsa.pub &gt;&gt; authorized_keys
+$ ls
+</pre>
+<p>In the ssh directory, you should see the <code>id_dsa.pub</code> keys that you have created, and the file <code>authorized_keys</code>.</p>
+</li>
+<li>
+<p><a id="BABJHBEF" name="BABJHBEF"></a>On the local node, use SCP (Secure Copy) or SFTP (Secure FTP) to copy the <code>authorized_keys</code> file to the <code>oracle</code> user <code>.ssh</code> directory on a remote node. The following example is with SCP, on a node called node2, with the Oracle Grid Infrastructure owner <code>grid</code>, where the <code>grid</code> user path is <code>/home/grid</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">[grid@node1 .ssh]$ scp authorized_keys node2:/home/grid/.ssh/
+</pre>
+<p>You are prompted to accept a DSA key. Enter Yes, and you see that the node you are copying to is added to the <code>known_hosts</code> file.</p>
+<p>When prompted, provide the password for the grid user, which should be the same on all nodes in the cluster. The <code>authorized_keys</code> file is copied to the remote node.</p>
+<p>Your output should be similar to the following, where <code>xxx</code> represents parts of a valid IP address:</p>
+<pre xml:space="preserve" class="oac_no_warn">[grid@node1 .ssh]$ scp authorized_keys node2:/home/grid/.ssh/
+The authenticity of host 'node2 (xxx.xxx.173.152) can't be established.
+DSA key fingerprint is 7e:60:60:ae:40:40:d1:a6:f7:4e:zz:me:a7:48:ae:f6:7e.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'node1,xxx.xxx.173.152' (dsa) to the list
+of known hosts
+grid@node2's password:
+authorized_keys       100%             828             7.5MB/s      00:00
+</pre></li>
+<li>
+<p><a id="BABCIEDC" name="BABCIEDC"></a>Using SSH, log in to the node where you copied the <code>authorized_keys</code> file. Then change to the <code>.ssh</code> directory, and using the <code>cat</code> command, add the DSA keys for the second node to the <code>authorized_keys</code> file, clicking <span class="bold">Enter</span> when you are prompted for a password, so that passwordless SSH is set up:</p>
+<pre xml:space="preserve" class="oac_no_warn">[grid@node1 .ssh]$ ssh node2
+[grid@node2 grid]$ cd .ssh
+[grid@node2 ssh]$ cat id_dsa.pub  &gt;&gt; authorized_keys
+</pre>
+<p>Repeat steps 2 and 3 from each node to each other member node in the cluster.</p>
+<p>When you have added keys from each cluster node member to the <code>authorized_keys</code> file on the last node you want to have as a cluster node member, then use <code>scp</code> to copy the <code>authorized_keys</code> file with the keys from all nodes back to each cluster node member, overwriting the existing version on the other nodes.</p>
+<p>To confirm that you have all nodes in the <code>authorized_keys</code> file, enter the command <code>more authorized_keys</code>, and determine if there is a DSA key for each member node. The file lists the type of key (<code>ssh-dsa</code>), followed by the key, and then followed by the user and server. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">ssh-dsa AAAABBBB . . . = grid@node1
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The <code>grid</code> user's <code>/.ssh/authorized_keys</code> file on every node must contain the contents from all of the <code>/.ssh/id_dsa.pub</code> files that you generated on all cluster nodes.</div>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BABHDEIC" name="BABHDEIC"></a><a id="CWLIN412" name="CWLIN412"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">E.1.3</span> Enabling SSH User Equivalency on Cluster Nodes</h3>
+<p>After you have copied the <code>authorized_keys</code> file that contains all keys to each node in the cluster, complete the following procedure, in the order listed. In this example, the Oracle Grid Infrastructure software owner is named <code>grid</code>:</p>
+<ol>
+<li>
+<p>On the system where you want to run OUI, log in as the <code>grid</code> user.</p>
+</li>
+<li>
+<p><a id="BABDDIEI" name="BABDDIEI"></a>Use the following command syntax, where <code><span class="codeinlineitalic">hostname1</span></code>, <code><span class="codeinlineitalic">hostname2</span></code>, and so on, are the public host names (alias and fully qualified domain name) of nodes in the cluster to run SSH from the local node to each node, including from the local node to itself, and from each node to each other node:</p>
+<pre xml:space="preserve" class="oac_no_warn">[grid@<span class="italic">nodename</span>]$ ssh <span class="italic">hostname1</span> date
+[grid@<span class="italic">nodename</span>]$ ssh <span class="italic">hostname2</span> date
+    .
+    .
+    .
+</pre>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">[grid@node1 grid]$ ssh node1 date
+The authenticity of host 'node1 (xxx.xxx.100.101)' can't be established.
+DSA key fingerprint is 7z:60:60:zz:48:48:z1:a0:f7:4e.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'node1,xxx.xxx.100.101' (DSA) to the list of
+known hosts.
+Mon Dec 4 11:08:13 PST 2006
+[grid@node1 grid]$ ssh node1.example.com date
+The authenticity of host 'node1.example.com (xxx.xxx.100.101)' can't be
+established.
+DSA key fingerprint is 7z:60:60:zz:48:48:z1:a0:f7:4e.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'node1.example.com,xxx.xxx.100.101' (DSA) to the
+list of known hosts.
+Mon Dec 4 11:08:13 PST 2006
+[grid@node1 grid]$ ssh node2 date
+Mon Dec 4 11:08:35 PST 2006
+.
+.
+.
+</pre>
+<p>At the end of this process, the public host name for each member node should be registered in the <code>known_hosts</code> file for all other cluster nodes.</p>
+<p>If you are using a remote client to connect to the local node, and you see a message similar to "Warning: No xauth data; using fake authentication data for <a id="sthref841" name="sthref841"></a><a id="sthref842" name="sthref842"></a>X11 forwarding," then this means that your authorized keys file is configured correctly, but your SSH configuration has X11 forwarding enabled. To correct this issue, proceed to <a href="prelinux.htm#BABDFDJI">"Setting Display and X11 Forwarding Configuration"</a>.</p>
+</li>
+<li>
+<p>Repeat step 2 on each cluster node member.</p>
+</li>
+</ol>
+<p>If you have configured SSH correctly, then you can now use the <code>ssh</code> or <code>scp</code> commands without being prompted for a password. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">[grid@node1 ~]$ ssh node2 date
+Mon Feb 26 23:34:42 UTC 2009
+[grid@node1 ~]$ ssh node1 date
+Mon Feb 26 23:34:48 UTC 2009
+</pre>
+<p>If any node prompts for a password, then verify that the <code>~/.ssh/authorized_keys</code> file on that node contains the correct public keys, and that you have created an Oracle software owner with identical group membership and IDs.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABCHAED" name="BABCHAED"></a><a id="CWLIN413" name="CWLIN413"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">E.2</span> Configuring Kernel Parameters<a id="sthref843" name="sthref843"></a><a id="sthref844" name="sthref844"></a></h2>
+<p>This section contains the following:</p>
+<ul>
+<li>
+<p><a href="#BABEAABC">Minimum Parameter Settings for Installation</a></p>
+</li>
+<li>
+<p><a href="#BABJDCDH">Additional Parameter and Kernel Settings for SUSE Linux</a></p>
+</li>
+<li>
+<p><a href="#BABHJJIF">Checking OCFS2 Version Manually</a></p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The kernel parameter and shell limit values shown in the following section are recommended values only. For production database systems, Oracle recommends that you tune these values to optimize the performance of the system. Refer to your operating system documentation for more information about tuning kernel parameters.</div>
+<a id="BABEAABC" name="BABEAABC"></a><a id="CWLIN414" name="CWLIN414"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">E.2.1</span> Minimum Parameter Settings for Installation</h3>
+<p>During installation, or when you run the Cluster Verification Utility (cluvfy) with the flag <code>-fixup</code>, a fixup script is generated. This script updates required kernel packages if necessary to minimum values.</p>
+<p>If you cannot use the fixup scripts, then review the following table to set values manually:</p>
+<div class="inftblhruleinformal">
+<table class="HRuleInformal" title="Recommended Values for Kernel Parameters on Linux" summary="This table shows the recommended values for kernel parameters on Linux" dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="24%" />
+<col width="25%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t7">Parameter</th>
+<th align="left" valign="bottom" id="r1c2-t7">Value</th>
+<th align="left" valign="bottom" id="r1c3-t7">File<a id="sthref845" name="sthref845"></a><a id="sthref846" name="sthref846"></a><a id="sthref847" name="sthref847"></a><a id="sthref848" name="sthref848"></a><a id="sthref849" name="sthref849"></a><a id="sthref850" name="sthref850"></a></th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t7" headers="r1c1-t7"><a id="sthref851" name="sthref851"></a>semmsl <a id="sthref852" name="sthref852"></a>semmns <a id="sthref853" name="sthref853"></a>semopm <a id="sthref854" name="sthref854"></a>semmni</td>
+<td align="left" headers="r2c1-t7 r1c2-t7">250 32000 100 128</td>
+<td align="left" headers="r2c1-t7 r1c3-t7"><code><a id="sthref855" name="sthref855"></a>/proc/sys/kernel/<a id="sthref856" name="sthref856"></a>sem</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t7" headers="r1c1-t7">shmmax</td>
+<td align="left" headers="r3c1-t7 r1c2-t7"><span class="bold">On Linux x86</span>: A maximum value that is 1 byte less than 4 GB, or 4294967295.
+<p><span class="bold">On Linux x86-64</span>: A maximum value of half the size of physical memory (in bytes).</p>
+<p>Default:</p>
+<p>536870912</p>
+<p>See My Oracle Support Note 567506.1 for additional information about configuring shmmax.</p>
+</td>
+<td align="left" headers="r3c1-t7 r1c3-t7"><code>/proc/sys/kernel/<a id="sthref857" name="sthref857"></a><a id="sthref858" name="sthref858"></a>shmmax</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t7" headers="r1c1-t7">shmmni</td>
+<td align="left" headers="r4c1-t7 r1c2-t7">4096</td>
+<td align="left" headers="r4c1-t7 r1c3-t7"><code><a id="sthref859" name="sthref859"></a>/proc/sys/kernel/<a id="sthref860" name="sthref860"></a><a id="sthref861" name="sthref861"></a>shmmni</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t7" headers="r1c1-t7">shmall</td>
+<td align="left" headers="r5c1-t7 r1c2-t7">2097152</td>
+<td align="left" headers="r5c1-t7 r1c3-t7"><code><a id="sthref862" name="sthref862"></a>/proc/sys/kernel/<a id="sthref863" name="sthref863"></a><a id="sthref864" name="sthref864"></a>shmall</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t7" headers="r1c1-t7">file-max</td>
+<td align="left" headers="r6c1-t7 r1c2-t7">6815744</td>
+<td align="left" headers="r6c1-t7 r1c3-t7"><code><a id="sthref865" name="sthref865"></a>/proc/sys/fs/<a id="sthref866" name="sthref866"></a>file-max</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t7" headers="r1c1-t7">ip_local_port_range</td>
+<td align="left" headers="r7c1-t7 r1c2-t7">Minimum: 9000
+<p>Maximum: 65500</p>
+</td>
+<td align="left" headers="r7c1-t7 r1c3-t7"><code><a id="sthref867" name="sthref867"></a>/proc/sys/net/ipv4/<a id="sthref868" name="sthref868"></a>ip_local_port_range</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t7" headers="r1c1-t7">rmem_default</td>
+<td align="left" headers="r8c1-t7 r1c2-t7">262144</td>
+<td align="left" headers="r8c1-t7 r1c3-t7"><code><a id="sthref869" name="sthref869"></a>/proc/sys/net/core/<a id="sthref870" name="sthref870"></a>rmem_default</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t7" headers="r1c1-t7">rmem_max</td>
+<td align="left" headers="r9c1-t7 r1c2-t7">4194304</td>
+<td align="left" headers="r9c1-t7 r1c3-t7"><code><a id="sthref871" name="sthref871"></a>/proc/sys/net/core/<a id="sthref872" name="sthref872"></a>rmem_max</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r10c1-t7" headers="r1c1-t7">wmem_default</td>
+<td align="left" headers="r10c1-t7 r1c2-t7">262144</td>
+<td align="left" headers="r10c1-t7 r1c3-t7"><code><a id="sthref873" name="sthref873"></a>/proc/sys/net/core/<a id="sthref874" name="sthref874"></a>wmem_default</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r11c1-t7" headers="r1c1-t7">wmem_max</td>
+<td align="left" headers="r11c1-t7 r1c2-t7">1048576</td>
+<td align="left" headers="r11c1-t7 r1c3-t7"><code><a id="sthref875" name="sthref875"></a>/proc/sys/net/core/<a id="sthref876" name="sthref876"></a>wmem_max</code></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r12c1-t7" headers="r1c1-t7">aio-max-nr</td>
+<td align="left" headers="r12c1-t7 r1c2-t7">1048576</td>
+<td align="left" headers="r12c1-t7 r1c3-t7"><a id="sthref877" name="sthref877"></a>/proc/sys/fs/<a id="sthref878" name="sthref878"></a>aio-max-nr</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblhruleinformal" -->
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If the current value for any parameter is greater than the value listed in this table, then the Fixup scripts do not change the value of that parameter.</div>
+</div>
+<!-- class="sect2" -->
+<a id="BABJDCDH" name="BABJDCDH"></a><a id="CWLIN415" name="CWLIN415"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">E.2.2</span> Additional Parameter and Kernel Settings for SUSE Linux</h3>
+<p>On SUSE systems only, complete the following steps as needed:</p>
+<ol>
+<li>
+<p>Enter the following command to cause the system to read the <code>/etc/sysctl.conf</code> file when it restarts:</p>
+<pre xml:space="preserve" class="oac_no_warn"># /sbin/chkconfig boot.sysctl on
+</pre></li>
+<li>
+<p>On SUSE 10 systems only, use a text editor to change the <code>/etc/sysconfig/boot.sysctl</code> parameter <code>RUN_PARALLEL</code> flag from <code>yes</code> to <code>no</code>.</p>
+</li>
+<li>
+<p>Enter the GID of the <code>oinstall</code> group as the value for the parameter <code>/proc/sys/vm/hugetlb_shm_group</code>. Doing this grants members of <code>oinstall</code> a group permission to create shared memory segments.</p>
+<p>For example, where the oinstall group GID is 501:</p>
+<pre xml:space="preserve" class="oac_no_warn"># echo 501 &gt; /proc/sys/vm/hugetlb_shm_group
+</pre>
+<p>After running this command, use <code>vi</code> to add the following text to <code>/etc/sysctl.conf</code>, and enable the <code>boot.sysctl</code> script to run on system restart:</p>
+<pre xml:space="preserve" class="oac_no_warn">vm.hugetlb_shm_group=501
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Only one group can be defined as the <code>vm.hugetlb_shm_group</code>.</div>
+</li>
+<li>
+<p>Repeat steps 1 through 3 on all other nodes in the cluster.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABHJJIF" name="BABHJJIF"></a><a id="CWLIN416" name="CWLIN416"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">E.3</span> Checking OCFS2 Version Manually</h2>
+<p>To check your OCFS version manually, enter the following commands:</p>
+<pre xml:space="preserve" class="oac_no_warn">modinfo ocfs2
+<a id="sthref879" name="sthref879"></a>rpm -qa |grep ocfs2
+</pre>
+<p>Ensure that <code>ocfs2console</code> and <code>ocfs2-tools</code> are at least version 1.2.7, and that the other OCFS2 components correspond to the pattern ocfs2-<span class="italic">kernel_version</span>-1.2.7 or greater. If you want to install Oracle RAC on a shared home, then the OCFS version must be 1.4.1 or greater.</p>
+<p>For information about OCFS2, refer to the following Web site:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://oss.oracle.com/projects/ocfs2/">http://oss.oracle.com/projects/ocfs2/</a>
+</pre></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="concepts.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="procstop.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2007, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

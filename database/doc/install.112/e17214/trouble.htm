@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Troubleshooting Oracle Real Application Clusters Installations</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-02-18T17:43:29Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Real Application Clusters Installation Guide 11g Release 2 (11.2) for Linux and UNIX" />
+<meta name="partno" content="E17214-08" />
+<meta name="docid" content="RILIN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="rem_orcl.htm" title="Previous" type="text/html" />
+<link rel="Next" href="scripts.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17214.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Real Application Clusters Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux and UNIX</b><br />
+Part Number E17214-08</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="rem_orcl.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="scripts.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17214.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CIACEGFJ" name="CIACEGFJ"></a>
+<h1 class="appendix"><span class="secnum">A</span> Troubleshooting Oracle Real Application Clusters Installations</h1>
+<p>This appendix provides troubleshooting information for installing Oracle Real Application Clusters (Oracle RAC).</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+The Oracle Database 11<span class="italic">g</span> release 2 (11.2) Oracle Real Application Clusters documentation set included with the installation media in the Documentation directory:
+<ul>
+<li>
+<p><a class="olink RACAD" href="http://www.oracle.com/pls/db112/lookup?id=RACAD"><span class="italic">Oracle Real Application Clusters Administration and Deployment Guide</span></a></p>
+</li>
+<li>
+<p><a class="olink CWADD" href="http://www.oracle.com/pls/db112/lookup?id=CWADD"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a></p>
+</li>
+</ul>
+</div>
+<a id="CIAHDDCG" name="CIAHDDCG"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">A.1</span> Troubleshooting Oracle Real Application Clusters Installations<a id="sthref425" name="sthref425"></a></h2>
+<p>This section contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CACJCBBC">General Installation Issues</a></p>
+</li>
+<li>
+<p><a href="#CIAJGBGE">Oracle RAC Installation Error Messages</a></p>
+</li>
+<li>
+<p><a href="#CIAEHCEA">Performing Cluster Diagnostics During Oracle Clusterware Installations</a></p>
+</li>
+<li>
+<p><a href="#BABFGEEG">Reviewing the Log of an Installation Session</a></p>
+</li>
+<li>
+<p><a href="#BABEFFEI">Configuration Assistant Errors</a></p>
+</li>
+</ul>
+<a id="CACJCBBC" name="CACJCBBC"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">A.1.1</span> General Installation Issues</h3>
+<p>The following is a list of examples of the types of errors that can occur during installation. It contains the following issues:</p>
+<ul>
+<li>
+<p><a href="#CIAJIAAE">An error occurred while trying to get the disks</a></p>
+</li>
+<li>
+<p><a href="#CIACFDDA">Failed to connect to server, Connection refused by server, or Can't open display</a></p>
+</li>
+<li>
+<p><a href="#CIACHJHJ">Nodes unavailable for selection from the OUI Node Selection screen</a></p>
+</li>
+<li>
+<p><a href="#CIAHFCFH">Node <span class="italic">nodename</span> is unreachable</a></p>
+</li>
+<li>
+<p><a href="#CIAHCAIH">PROT-8: Failed to import data from specified file to the cluster registry</a></p>
+</li>
+<li>
+<p><a href="#CIAHDHJG">PRKP-1001: Error starting instance</a></p>
+</li>
+<li>
+<p><a href="#CIAHEGIB">Time stamp is in the future</a></p>
+</li>
+<li>
+<p><a href="#CIABJIFI">YPBINDPROC_DOMAIN: Domain not bound</a></p>
+</li>
+</ul>
+<div class="msgset"><a id="tahiti32526838" name="tahiti32526838"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAJIAAE" name="CIAJIAAE"></a>An error occurred while trying to get the disks<a id="sthref426" name="sthref426"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> There is an entry in <code>/etc/oratab</code> pointing to a non-existent Oracle home. The OUI error file should show the following error: "<code>java.io.IOException: /home/oracle/OraHome//bin/kfod: not found</code>"</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Remove the entry in <code>/etc/oratab</code> pointing to a non-existing Oracle home.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti40863970" name="tahiti40863970"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIACFDDA" name="CIACFDDA"></a>Failed to connect to server, Connection refused by server, or Can't open display<a id="sthref427" name="sthref427"></a><a id="sthref428" name="sthref428"></a><a id="sthref429" name="sthref429"></a><a id="sthref430" name="sthref430"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> These are typical of X Window display errors on Windows or UNIX systems, where xhost is not properly configured.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> In a local terminal window, log in as the user that started the X Window session, and enter the following command:
+<p><code>$ xhost</code> <code><span class="codeinlineitalic">fully_qualified_remote_host_name</span></code></p>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ xhost somehost.example.com
+</pre>
+<p>Then, enter the following commands, where <code><span class="codeinlineitalic">workstation_name</span></code> is the host name or IP address of your workstation.</p>
+<p>Bourne, Bash, or Korn shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ DISPLAY=<span class="italic">workstation_name</span>:0.0
+$ export DISPLAY
+</pre>
+<p>To determine if X Window applications display correctly on the local system, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ xclock
+</pre>
+<p>The X clock should appear on your monitor. If this fails, then use of the <code>xhost</code> command may be restricted on the server.</p>
+<p>If you are using a VNC client to access the server, then ensure that you are accessing the visual that is assigned to the user that you are trying to use for the installation. For example, if you used the <code>su</code> command to become the installation owner on another user visual, and the <code>xhost</code> command use is restricted, then you cannot use the <code>xhost</code> command to change the display. If you use the visual assigned to the installation owner, then the correct display will be available, and entering the <code>xclock</code> command will display the X clock.</p>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti32526381" name="tahiti32526381"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIACHJHJ" name="CIACHJHJ"></a>Nodes unavailable for selection from the OUI Node Selection screen<a id="sthref431" name="sthref431"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Oracle Clusterware is either not installed, or the Oracle Clusterware services are not up and running.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Install Oracle Clusterware, or review the status of your Oracle Clusterware. Consider restarting the nodes, as doing so may resolve the problem.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti32526471" name="tahiti32526471"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAHFCFH" name="CIAHFCFH"></a>Node <span class="italic">nodename</span> is unreachable<a id="sthref432" name="sthref432"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Unavailable IP host</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Attempt the following:
+<ol>
+<li>
+<p>Run the command <code>ifconfig -a</code>. Compare the output of this command with the contents of the <code>/etc/hosts</code> file to ensure that the node IP is listed.</p>
+</li>
+<li>
+<p>Run the command <code>nslookup</code> to see if the host is reachable.</p>
+</li>
+<li>
+<p>As the <code>oracle</code> user, attempt to connect to the node with <code>ssh</code> or <code>rsh</code>. If you are prompted for a password, then user equivalence is not set up properly. Contact your system administrator, or consult The <a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Grid Infrastructure Installation Guide</span></a> for your platform to complete SSH configuration.</p>
+</li>
+</ol>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti40865961" name="tahiti40865961"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAHCAIH" name="CIAHCAIH"></a>PROT-8: Failed to import data from specified file to the cluster registry<a id="sthref433" name="sthref433"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Insufficient space in an existing Oracle Cluster Registry raw device partition, which causes a migration failure while running <code>rootupgrade.sh</code>. To confirm, look for the error "utopen:12:Not enough space in the backing store" in the log file <code>$ORA_CRS_HOME/log/</code><code><span class="codeinlineitalic">hostname</span></code><code>/client/ocrconfig_</code><code><span class="codeinlineitalic">pid</span></code><code>.log</code>.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Identify a raw device that has 280 MB or more available space. Locate the existing raw device name from <code>/etc/oracle/srvConfig.lo</code>c (AIX, HP-UX, Linux) or <code>/var/opt/oracle/srvConfig.loc</code> (Solaris), and copy the contents of this raw device to the new device using the command <code>dd</code>.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti40866365" name="tahiti40866365"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAHDHJG" name="CIAHDHJG"></a>PRKP-1001: Error starting instance<a id="sthref434" name="sthref434"></a><a id="sthref435" name="sthref435"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Missing ODBC Driver Manager. Associated message is <span class="bold">CRS-0215: Could not start resource</span>.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Clean up installation, download and install the ODBC driver from <code><a href="http://www.unixodbc.org">http://www.unixodbc.org</a></code>, and restart the installation. This is a requirement for Oracle RAC databases, documented in system requirements in the <a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Grid Infrastructure</span></a> installation guide for your platform.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti32526054" name="tahiti32526054"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAHEGIB" name="CIAHEGIB"></a>Time stamp is in the future<a id="sthref436" name="sthref436"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> One or more nodes has a different clock time than the local node. If this is the case, then you may see output similar to the following:
+<pre xml:space="preserve" class="oac_no_warn">time stamp 2005-04-04 14:49:49 is 106 s in the future
+</pre></div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Ensure that all member nodes of the cluster have the same clock time.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti32526608" name="tahiti32526608"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIABJIFI" name="CIABJIFI"></a>YPBINDPROC_DOMAIN: Domain not bound<a id="sthref437" name="sthref437"></a></span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> This error can occur during postinstallation testing when a node public network interconnect is pulled out, and the VIP does not fail over. Instead, the node hangs, and users are unable to log in to the system. This error occurs when the Oracle home, listener.ora, Oracle log files, or any action scripts are located on an NAS device or NFS mount, and the name service cache daemon <code>nscd</code> has not been activated.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Enter the following command on all nodes in the cluster to start the nscd service:
+<pre xml:space="preserve" class="oac_no_warn">/sbin/service  nscd start
+</pre></div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" --></div>
+<!-- class="msgset" --></div>
+<!-- class="sect2" -->
+<a id="CIAJGBGE" name="CIAJGBGE"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">A.1.2</span> Oracle RAC Installation Error Messages</h3>
+<p>Note that the user performing the Oracle RAC installation must have membership both in the oinstall group and the OSDBA group (typically <code>oinstall</code> and <code>dba</code>). If this is not the case, then the installation will fail</p>
+</div>
+<!-- class="sect2" -->
+<a id="CIAEHCEA" name="CIAEHCEA"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">A.1.3</span> Performing Cluster Diagnostics During Oracle Clusterware Installations<a id="sthref438" name="sthref438"></a></h3>
+<p>If Oracle Universal Installer (OUI) does not display the Node Selection page, then perform <a id="sthref439" name="sthref439"></a><a id="sthref440" name="sthref440"></a>clusterware diagnostics by running the <code><a id="sthref441" name="sthref441"></a>olsnodes</code> <code>-v</code> command from the binary directory in your Oracle Clusterware home <code><span class="codeinlineitalic">(Grid_home</span></code><code>/bin</code> on Linux and UNIX-based systems, and analyzing its output. Refer to your clusterware documentation if the detailed output indicates that your clusterware is not running.</p>
+<p>In addition, use the following command syntax to check the integrity of the Cluster Manager:</p>
+<pre xml:space="preserve" class="oac_no_warn">cluvfy comp clumgr -n <span class="italic">node_list</span> -verbose
+</pre>
+<p>In the preceding syntax example, the variable <code><span class="codeinlineitalic">node_list</span></code> is the list of nodes in your cluster, separated by commas.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BABFGEEG" name="BABFGEEG"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">A.1.4</span> Reviewing the Log of an Installation Session<a id="sthref442" name="sthref442"></a><a id="sthref443" name="sthref443"></a><a id="sthref444" name="sthref444"></a></h3>
+<p>During an installation, Oracle Universal Installer records all of the actions that it performs in a log file. If you encounter problems during the installation, then review the log file for information about possible causes of the problem.</p>
+<p>To view the log file, follow these steps:</p>
+<ol>
+<li>
+<p>If necessary, enter the following command to determine the location of the oraInventory directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cat /opt/oracle/oraInst.loc
+$ cat /var/opt/oracle/oraInst.loc
+</pre></li>
+<li>
+<p>Enter the following command to determine the name of the log file:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ls -ltr
+</pre>
+<p>This command lists the files in the order of creation, with the most recent file shown last. Installer log files have names similar to the following, where <code><span class="codeinlineitalic">date_time</span></code> indicates the date and time that the installation started:</p>
+<pre xml:space="preserve" class="oac_no_warn">installActions<span class="italic">date_time</span>.log
+</pre>
+<p>To view the most recent entries in the log file, where information about a problem is most likely to appear, enter a command similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ tail -50 installActions2007-07-20_09-53-22AM.log | more
+</pre>
+<p>This command displays the last 50 lines in the log file, and enables you to page through them.</p>
+<p>If the error displayed by Oracle Universal Installer or listed in the log file indicates a relinking problem, then refer to the following file for more information:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/install/make.log
+</pre></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BABEFFEI" name="BABEFFEI"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">A.1.5</span> Configuration Assistant Errors<a id="sthref445" name="sthref445"></a><a id="sthref446" name="sthref446"></a></h3>
+<p>To troubleshoot an installation error that occurs when a configuration assistant is running:</p>
+<p>Review the installation log files listed in the section"<a href="#BABFGEEG">"Reviewing the Log of an Installation Session"</a>.</p>
+<p>Review the specific configuration assistant log file located in the Oracle RAC installation owner Oracle base directory, in the path <code>$ORACLE_BASE/cfgtoollogs</code>. Try to fix the issue that caused the error.</p>
+<p>If you see the "Fatal Error. Reinstall" message, then look for the cause of the problem by reviewing the log files. Refer to the section <a href="#BABDEIBI">"Fatal Errors"</a> for further instructions.</p>
+<p>This section contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CIABFECD">Configuration Assistant Failures</a></p>
+</li>
+<li>
+<p><a href="#BABDEIBI">Fatal Errors</a></p>
+</li>
+</ul>
+<a id="CIABFECD" name="CIABFECD"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><span class="secnum">A.1.5.1</span> Configuration Assistant Failures</h4>
+<p>Oracle configuration assistant failures are noted at the bottom of the installation screen. The configuration assistant interface displays additional information, if available. The configuration assistant execution status is stored in the following file:</p>
+<pre xml:space="preserve" class="oac_no_warn">oraInventory_location/logs/installActionsdate_time.log
+</pre>
+<p>More details about errors related to the configuration assistant can be found in the following directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_BASE/cfgtoollogs
+</pre>
+<p>The Oracle base directory is the Oracle base for the Oracle RAC installation owner. Completion status codes are listed in the following table:</p>
+<pre xml:space="preserve" class="oac_no_warn">Status Result Code 
+Configuration assistant succeeded 0 
+Configuration assistant failed 1 
+Configuration assistant cancelled -1 
+</pre></div>
+<!-- class="sect3" -->
+<a id="BABDEIBI" name="BABDEIBI"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><span class="secnum">A.1.5.2</span> Fatal Errors</h4>
+<p>If you receive a fatal error while a configuration assistant is running, then you must complete the following tasks:</p>
+<ol>
+<li>
+<p>Deinstall Oracle software.</p>
+</li>
+<li>
+<p>Correct the cause of the fatal error.</p>
+</li>
+<li>
+<p>Reinstall the Oracle software.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="rem_orcl.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="scripts.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2007, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

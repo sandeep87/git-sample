@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE RootProperty SYSTEM "admin.dtd">
+<!-- 
+======================================================================
+ CAUTION:                                                             
+    Changes to this file might adversely affect Cluster Verification.  
+
+    This file has 2 sections. Section D contains the default values    
+    where as Section P contains the platform specific values 
+======================================================================= 
+-->
+
+<!-- Root property -->
+<RootProperty>
+
+  <!-- 
+  ===============  SECTION D: [ START ]  ============================
+  This section contains the default values for various properties. 
+  Generally, these are available/applicable on all the platforms.
+  ===================================================================
+  -->
+
+  <!-- name of the constraint file -->
+  <Property Name="file_constraints_xml"  
+            Value="constraints.xml"/>
+  <!--  To be deleted -->
+  <Property Name="def_user_oracle"  
+            Value="oracle"/>
+  <!--  user 'nobody' -->
+  <Property Name="def_user_nobody"  
+            Value="nobody"/>
+  <!--  defult name for 'dba' group -->
+  <Property Name="def_group_dba"  
+            Value="dba"/>
+  <!--  defult name for asm admin group -->
+  <Property Name="def_group_asmadmin"  
+            Value="dba"/>
+  <!--  defult permissions for asm disks -->
+  <Property Name="def_asm_disks_permissions"  
+            Value="0660"/>
+  <!--  default name for 'oper' group -->
+  <Property Name="def_group_oper"  
+            Value="oper"/>
+  <!-- default name for 'oinstall' group  -->
+  <Property Name="def_group_oinstall"  
+            Value="oinstall"/>
+  <!-- default/current OCR version for this platform -->
+  <Property Name="def_ocr_ver"  
+            Value="3"/>
+  <!-- default/current ocr version for this platform for 11.1-->
+  <Property Name="def_ocr_ver_11_0"  
+            Value="2"/>
+  <!-- default/current ocr version for this platform for 11.1-->
+  <Property Name="def_ocr_ver_11_1"  
+            Value="2"/>
+  <!-- default/current ocr version for this platform for 10.2-->
+  <Property Name="def_ocr_ver_10_2"  
+            Value="2"/>
+  <Property Name="def_nfs_options"  
+          Value="rw,acregmin=0&amp;acregmax=0&amp;acdirmin=0&amp;acdirmax=0|actimeo=0"/>
+  <!-- default nfs mount options for RAC DB software  -->
+  <Property Name="def_rac_software_nfs_options"  
+          Value="rw,hard,rsize&gt;=32768,wsize&gt;=32768,proto=tcp|tcp,vers=3|nfsvers=3|nfsv3|v3,acregmin=0&amp;acregmax=0&amp;acdirmin=0&amp;acdirmax=0|actimeo=0"/>
+  <!-- default nfs mount options for RAC DB datafiles  -->
+  <Property Name="def_rac_data_nfs_options"  
+          Value="rw,hard,rsize&gt;=32768,wsize&gt;=32768,proto=tcp|tcp,vers=3|nfsvers=3|nfsv3|v3,acregmin=0&amp;acregmax=0&amp;acdirmin=0&amp;acdirmax=0|actimeo=0"/>
+  <!-- default nfs mount options for RAC OCR & Voting disk  -->
+  <Property Name="def_rac_ocr_vdisk_nfs_options"  
+          Value="rw,hard,rsize&gt;=32768,wsize&gt;=32768,proto=tcp|tcp,vers=3|nfsvers=3|nfsv3|v3,acregmin=0&amp;acregmax=0&amp;acdirmin=0&amp;acdirmax=0|actimeo=0"/>
+  <!-- default nfs mount options for Single Instance DB software  -->
+  <Property Name="def_si_software_nfs_options"  
+          Value="rw,hard,rsize&gt;=32768,wsize&gt;=32768,proto=tcp|tcp,vers=3|nfsvers=3|nfsv3|v3"/>
+  <!-- default nfs mount options for Single Instance DB datafiles  -->
+  <Property Name="def_si_data_nfs_options"  
+          Value="rw,hard,rsize&gt;=32768,wsize&gt;=32768,proto=tcp|tcp,vers=3|nfsvers=3|nfsv3|v3"/>
+
+  <!-- default value for 'ocr.loc' owner  -->
+  <Property Name="def_ocr_loc_owner"  
+            Value="root"/>
+  <!-- default value for 'ocr.loc' group  -->
+  <Property Name="def_ocr_loc_group"  
+            Value="root"/>
+  <!-- default value for 'ocr.loc' permissions  -->
+  <Property Name="def_ocr_loc_permissions"  
+            Value="0644"/>
+  <!-- default value for 'ocr' owner  -->
+  <Property Name="def_ocr_owner"  
+            Value="root"/>
+  <!-- default value for 'ocr' group  -->
+  <Property Name="def_ocr_group"  
+            Value="$INSTALL_GROUP"/>
+  <!-- default value for 'ocr' permissions  -->
+  <Property Name="def_ocr_permissions"  
+            Value="0640"/>
+  <!-- default value for 'ocr' size  -->
+  <Property Name="def_ocr_size"  
+            Value="262144"/>
+  <!-- default value for 'olr.loc' owner  -->
+  <Property Name="def_olr_loc_owner"  
+            Value="root"/>
+  <!-- default value for 'olr.loc' group  -->
+  <Property Name="def_olr_loc_group"  
+            Value="$INSTALL_GROUP"/>
+  <!-- default value for 'olr.loc' permissions  in case of crs-->
+  <Property Name="def_olr_loc_permissions"  
+            Value="0644"/>
+  <!-- default value for 'olr.loc' permissions  in case of SIHA for release 11.2.0.1-->
+  <Property Name="def_olr_loc_siha_permissions_11_2_0_1"  
+            Value="0644"/>
+  <!-- default value for 'olr.loc' permissions  in case of SIHA for release 11.2.0.2 and beyond-->
+  <Property Name="def_olr_loc_siha_permissions"  
+            Value="0640"/>
+  <!-- default value for 'olr' owner in case of crs -->
+  <Property Name="def_olr_owner_crs"  
+            Value="root"/>
+  <!-- default value for 'olr' owner in case of siha -->
+  <Property Name="def_olr_owner_siha"  
+            Value="$ORACLE_USER"/>
+  <!-- default value for 'olr' group  -->
+  <Property Name="def_olr_group"  
+            Value="$INSTALL_GROUP"/>
+  <!-- default value for 'olr' permissions  -->
+  <Property Name="def_olr_permissions"  
+            Value="0600"/>
+  <!-- default value for voting disk permissions for 11.2 and forward -->
+  <Property Name="def_vdisk_permissions"  
+            Value="0640"/>
+  <!-- default value for voting disk permissions for 10.2-->
+  <Property Name="def_vdisk_permissions_10"  
+            Value="0644"/>
+  <!-- default value for voting disk permissions for 10.2.0.5-->
+  <Property Name="def_vdisk_permissions_10_2_0_5"  
+            Value="0640"/>
+
+
+  <!--  ********************  SECTION D: [ END ]  *****************  -->
+
+
+`  <!-- 
+  ===============  SECTION P: [ START ]  ============================
+  This section contains the platform specific properties and their
+  values. These values may or may not exist on other platforms. 
+  ===================================================================
+  -->
+  <!--  Name of the remote command(the wrapper script for exectask) -->
+  <Property Name="rem_command"  
+            Value="exectask.sh"/>
+  <!--  Files required on the remote node for exectask operation -->
+  <Property Name="rem_cmd_files"  
+            Value="cv/remenv/runfixup.sh,cv/remenv/orarun.sh,cv/remenv/cvuqdisk-1.0.9-1.rpm,cv/remenv/exectask.sh,cv/remenv/exectask,cv/remenv/pluggable" />
+
+  <!-- CRS Daemon - internal name -->
+  <Property Name="DAEMON_INAME_CRS"
+            Value="crsd.bin"/>
+  <!-- CRS Daemon - display name -->
+  <Property Name="DAEMON_DNAME_CRS"
+            Value="CRS daemon"/>
+
+  <!-- CSS Daemon - internal name -->
+  <Property Name="DAEMON_INAME_CSS"
+            Value="ocssd.bin"/>
+  <!-- CSS Daemon - display name -->
+  <Property Name="DAEMON_DNAME_CSS"
+            Value="CSS daemon"/>
+
+  <!-- EVM Daemon - internal name -->
+  <Property Name="DAEMON_INAME_EVM"
+            Value="evmd.bin"/>
+  <!-- EVM Daemon - display name -->
+  <Property Name="DAEMON_DNAME_EVM"
+            Value="EVM daemon"/>
+  <!-- Default temp dir  -->
+  <Property Name="def_dir_temp"
+            Value="/tmp"/>
+  <!-- xdpyinfo location  -->
+  <Property Name="xcheck_app_location"
+            Value="/usr/X11R6/bin/"/>
+  <!-- Default SSH app  -->
+  <Property Name="def_ssh_app"
+            Value="/usr/bin/ssh"/>
+  <!-- Default SCP app  -->
+  <Property Name="def_scp_app"
+            Value="/usr/bin/scp"/>
+  <!-- Default RSH app  -->
+  <Property Name="def_rsh_app"
+            Value="/usr/bin/rsh"/>
+  <!-- Default usermask for Oracle User -->
+  <Property Name="def_umask"
+            Value="0022"/>
+
+  <!--  ***************  SECTION P:  [ END ]  ************************  -->
+
+</RootProperty>

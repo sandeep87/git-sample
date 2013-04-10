@@ -1,0 +1,737 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Using Snapshots to Manage Metadata</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 014" />
+<meta name="Date" content="2010-10-19T15:11:47Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Warehouse Builder Installation and Administration Guide 11g Release 2 (11.2)" />
+<meta name="partno" content="E17130-03" />
+<meta name="docid" content="WBINS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="runtime_mgmt.htm" title="Previous" type="text/html" />
+<link rel="Next" href="change_mgmt.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17130.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Warehouse Builder Installation and Administration Guide<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E17130-03</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="runtime_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="change_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17130.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CIHHBHEC" name="CIHHBHEC"></a><a id="WBINS10000" name="WBINS10000"></a>
+<h1 class="chapter"><span class="secnum">11</span> Using Snapshots to Manage Metadata</h1>
+<p>This section describes how to use snapshots to manage metadata. Snapshots in Oracle Warehouse Builder enable you to capture point-in-time versions of the metadata definitions of the design objects you create in the Project Navigator. You can capture all design objects in a project, or you can selectively choose objects to include in a snapshot.</p>
+<p>This section includes the following topics:</p>
+<ul>
+<li>
+<p><a href="#BGBJDAGH">About Snapshots and Metadata Loader</a></p>
+</li>
+<li>
+<p><a href="#BGBHIEEG">Using Snapshots</a></p>
+</li>
+</ul>
+<a id="BGBJDAGH" name="BGBJDAGH"></a><a id="WBINS10100" name="WBINS10100"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">About Snapshots and Metadata Loader</h2>
+<p>Because snapshots and the Metadata Loader have overlapping capabilities, it may not be readily apparent when to use one and not the other. In general, snapshots address the needs of a development team for tracking changes to an evolving design. The Metadata Loader facilitates the more traditional administrative tasks of backing up, restoring, and migrating repositories.</p>
+<p>A key factor to understand is that snapshots and the Metadata Loader differ in the scope of objects they handle. Snapshots are limited to handling only the design objects users create in the Project Navigator. The Metadata Loader, however, handles everything in the repository. This includes all design objects and information related to location and security.</p>
+<p>Refer to <a href="#BGBBICJA">Table 11-1</a> for a list of important differences between the two tools.</p>
+<div class="tblformal">
+<p class="titleintable"><a id="WBINS16216" name="WBINS16216"></a><a id="sthref549" name="sthref549"></a><a id="BGBBICJA" name="BGBBICJA"></a>Table 11-1 Comparison of Snapshots and Metadata Loader</p>
+<table class="Formal" title="Comparison of Snapshots and Metadata Loader " summary="This table lists the key differences between snapshots and the Metadata Loader utility." dir="ltr" border="1" width="100%" frame="border" rules="all" cellpadding="3" cellspacing="0">
+<col width="18%" />
+<col width="38%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t2">Feature</th>
+<th align="left" valign="bottom" id="r1c2-t2">Snapshots</th>
+<th align="left" valign="bottom" id="r1c3-t2">Metadata Loader</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t2" headers="r1c1-t2">
+<p>Scope</p>
+</td>
+<td align="left" headers="r2c1-t2 r1c2-t2">
+<p>Captures metadata related to objects in the Project Navigator only. Captures metadata for mappings, process flows, and other design objects. Does not capture information about locations, security, and user defined objects.</p>
+</td>
+<td align="left" headers="r2c1-t2 r1c3-t2">
+<p>Captures all metadata related to a repository including all design objects and information about locations, security, and user defined objects.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t2" headers="r1c1-t2">
+<p>Output</p>
+</td>
+<td align="left" headers="r3c1-t2 r1c2-t2">
+<p>You can create a full snapshot from which to restore objects. Or you can create a signature snapshot which requires less space and enables you to track changes but not restore objects. Both types of snapshots are stored in Oracle Database.</p>
+</td>
+<td align="left" headers="r3c1-t2 r1c3-t2">
+<p>When exporting, the Metadata Loader creates a ZIP file with the extension <code>.mdl</code>.You can use the output to restore a repository or populate a new repository on a different Oracle Database.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t2" headers="r1c1-t2">
+<p>Integration with Version Control Tools</p>
+</td>
+<td align="left" headers="r4c1-t2 r1c2-t2">
+<p>You can save the output as a file and then export the file into a version control tool.</p>
+</td>
+<td align="left" headers="r4c1-t2 r1c3-t2">
+<p>You can export MDL files into a version control tool. When using the GUI, first extract the MDL file before putting the objects into the version control system. When using the OMB Plus scripting language, set <code>ZIPFILEFORMAT=N</code> as described in <a href="change_mgmt.htm#CIHCIJHF">"About Metadata Loader Control Files"</a>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t2" headers="r1c1-t2">
+<p>Compatibility</p>
+</td>
+<td align="left" headers="r5c1-t2 r1c2-t2">
+<p>Snapshots are not compatible between releases of Warehouse Builder.</p>
+</td>
+<td align="left" headers="r5c1-t2 r1c3-t2">
+<p>MDL files are upwards compatible with newer releases of Warehouse Builder. When you import an MDL file from a previous release, the utility automatically upgrades the metadata to the new release.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t2" headers="r1c1-t2">
+<p>Object Locking</p>
+</td>
+<td align="left" headers="r6c1-t2 r1c2-t2">
+<p>To restore a snapshot, the Change Manager must obtain a lock on all primary objects. Locks held within that session are first freed by prompting the user to save or revert any pending changes, then automatically closing all editor windows. If a lock is held by another session, the restore fails and Change Manager rolls back any changes.</p>
+</td>
+<td align="left" headers="r6c1-t2 r1c3-t2">
+<p>To import, the Metadata Loader must obtain a lock on all the primary objects. If a necessary lock is not available, the import fails and the Metadata Loader rolls back any changes.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t2" headers="r1c1-t2">
+<p>Compare</p>
+</td>
+<td align="left" headers="r7c1-t2 r1c2-t2">
+<p>You can compare snapshots by launching a command in the user interface.</p>
+</td>
+<td align="left" headers="r7c1-t2 r1c3-t2">
+<p>You can compare MDL files by using a third-party <code>diff</code> tool.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect1" -->
+<a id="BGBHIEEG" name="BGBHIEEG"></a><a id="WBINS10200" name="WBINS10200"></a>
+<div class="sect1">
+<h2 class="sect1">Using Snapshots</h2>
+<p><a id="sthref550" name="sthref550"></a><a id="sthref551" name="sthref551"></a><a id="ABC1300503" name="ABC1300503"></a><a id="ABC1300503SRI1" name="ABC1300503SRI1"></a>When using snapshots, you can backup and restore your metadata, maintain a history of metadata changes, and compare different versions of the metadata.</p>
+<p><a id="sthref552" name="sthref552"></a>A snapshot captures all the metadata information about the selected objects and their relationships at a particular instance of time. While an object can only have one current definition in a workspace, it can have multiple snapshots that describe its changing states throughout its history. Warehouse Builder supports the following types of snapshots:</p>
+<ul>
+<li>
+<p>Full snapshots provide backup and restore functionality.</p>
+</li>
+<li>
+<p>Signature snapshots provide historical records for comparison.</p>
+</li>
+</ul>
+<p>Snapshots are stored in Oracle Database. Contrast this with Metadata Loader exports, which are stored as separate disk files. Note that you can export snapshots to disk files.</p>
+<p>Snapshots are useful for both warehouse managers and designers. Managers can use full snapshots to perform large-scale actions, such as deploying a warehouse or restoring a warehouse to an earlier state. Designers can create full snapshots of a particular component under development so that, if necessary, they can restore that component to its previous state. Designers can also use signature snapshots to track the changes made to a particular component.</p>
+<p>When used with other features, such as MDL metadata imports and impact analyses, snapshots help you manage the metadata. For example, you can use snapshots to determine the impact an MDL metadata import has on the current metadata workspace. With the knowledge gained by the comparison, you may choose to import the metadata at a lower level of detail to avoid overwriting the definition of related metadata objects.</p>
+<p>Snapshots are also used to support the recycle bin, providing the information necessary to restore a deleted metadata object.</p>
+<p>The rest of this section describes the metadata change management feature using the graphical user interface. For information about creating and managing snapshots using scripts, see <a class="olink WBSCR" href="http://www.oracle.com/pls/db112/lookup?id=WBSCR"><span class="italic">Oracle Warehouse Builder API and Scripting Reference</span></a>.</p>
+<a id="i1098284" name="i1098284"></a><a id="WBINS16217" name="WBINS16217"></a>
+<div class="sect2">
+<h3 class="sect2">Creating Snapshots</h3>
+<p>When you take a snapshot, you capture the metadata of all or specific objects in your workspace at a given point in time. You can use a snapshot to detect and report changes in your metadata.</p>
+<p>You can create snapshots of any first class objects, except for automatic default objects, and User or Role objects. Use Create Snapshot wizard to create snapshots.</p>
+<p>Note that a snapshot of a collection is a snapshot of both the shortcuts in the collection and the actual objects. The same applies to a snapshot of a user folder, because it includes references (which are similar to shortcuts) to both contained and actual objects.</p>
+<p class="subhead2"><a id="WBINS16337" name="WBINS16337"></a>To create a snapshot:</p>
+<ol>
+<li>
+<p>In the Project Navigator, select all the objects that you want to include in the snapshot.</p>
+<p>You do not need to select parent or child objects, because the wizard does that for you.</p>
+<p>For example, if you select a collection that contains two cubes, then the snapshot includes both cubes and any gives you the option to include any dependent objects such as dimensions and source tables.</p>
+<p>Note that you must select actual objects or user folders, not the standard folders that contain them.</p>
+</li>
+<li>
+<p>Right-click the selected object, then select <span class="bold">Snapshot</span>, then select <span class="bold">New</span>.</p>
+<img width="442" height="482" src="img/snapshot_01.gif" alt="Description of snapshot_01.gif follows" title="Description of snapshot_01.gif follows" longdesc="img_text/snapshot_01.htm" /><br />
+<a id="sthref553" name="sthref553" href="img_text/snapshot_01.htm">Description of the illustration snapshot_01.gif</a><br />
+<br />
+<p>Alternatively, from the File menu, select <span class="bold">Snapshot</span>, then select <span class="bold">New</span>.</p>
+</li>
+<li>
+<p>On the Welcome screen, click <span class="bold">Next</span>.</p>
+<p>Note that you can get supporting information at any time by clicking <span class="bold">Help</span>.</p>
+<img width="477" height="348" src="img/snapshot_02.gif" alt="Description of snapshot_02.gif follows" title="Description of snapshot_02.gif follows" longdesc="img_text/snapshot_02.htm" /><br />
+<a id="sthref554" name="sthref554" href="img_text/snapshot_02.htm">Description of the illustration snapshot_02.gif</a><br />
+<br /></li>
+<li>
+<p>On the Name page, specify the <span class="bold">Name</span> and the <span class="bold">Type</span> (<span class="bold">Full</span> or <span class="bold">Signature</span>) of the snapshot.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<p>[Optional] Provide a <span class="bold">Description</span>.</p>
+<img width="477" height="348" src="img/snapshot_03.gif" alt="Description of snapshot_03.gif follows" title="Description of snapshot_03.gif follows" longdesc="img_text/snapshot_03.htm" /><br />
+<a id="sthref555" name="sthref555" href="img_text/snapshot_03.htm">Description of the illustration snapshot_03.gif</a><br />
+<br /></li>
+<li>
+<p>On the Components screen, choose whether to select the <span class="bold">Cascade</span> option.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<p>This screen displays the components that are captured in the snapshot. If a component is a node-level object, such as a module, then select the Cascade option to include the subcomponents.</p>
+<img width="477" height="348" src="img/snapshot_04.gif" alt="Description of snapshot_04.gif follows" title="Description of snapshot_04.gif follows" longdesc="img_text/snapshot_04.htm" /><br />
+<a id="sthref556" name="sthref556" href="img_text/snapshot_04.htm">Description of the illustration snapshot_04.gif</a><br />
+<br /></li>
+<li>
+<p>On the Dependency screen, specify the <span class="bold">Depth</span> of dependency to include dependent objects in the snapshot.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<p>Because it impacts performance, avoid specifying unnecessarily large values for depth. For example, supplying a depth value greater than <code>0</code> for a Project snapshot searches Globals for dependencies.</p>
+<img width="477" height="348" src="img/snapshot_05.gif" alt="Description of snapshot_05.gif follows" title="Description of snapshot_05.gif follows" longdesc="img_text/snapshot_05.htm" /><br />
+<a id="sthref557" name="sthref557" href="img_text/snapshot_05.htm">Description of the illustration snapshot_05.gif</a><br />
+<br /></li>
+<li>
+<p>On the Finish screen, review the characteristics of the snapshot.</p>
+<p>Click <span class="bold">Finish</span> to create the snapshot.</p>
+<img width="477" height="348" src="img/snapshot_06.gif" alt="Description of snapshot_06.gif follows" title="Description of snapshot_06.gif follows" longdesc="img_text/snapshot_06.htm" /><br />
+<a id="sthref558" name="sthref558" href="img_text/snapshot_06.htm">Description of the illustration snapshot_06.gif</a><br />
+<br /></li>
+<li>
+<p>The system starts creating the snapshot; notice the Create Snapshot Progress pop-up.</p>
+<img width="304" height="153" src="img/snapshot_07.gif" alt="Description of snapshot_07.gif follows" title="Description of snapshot_07.gif follows" longdesc="img_text/snapshot_07.htm" /><br />
+<a id="sthref559" name="sthref559" href="img_text/snapshot_07.htm">Description of the illustration snapshot_07.gif</a><br />
+<br />
+<p>When the snapshot is complete, a Warehouse Builder Note pop-up screen appears, stating "Snapshot created successfully."</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="266" height="137" src="img/snapshot_08.gif" alt="Description of snapshot_08.gif follows" title="Description of snapshot_08.gif follows" longdesc="img_text/snapshot_08.htm" /><br />
+<a id="sthref560" name="sthref560" href="img_text/snapshot_08.htm">Description of the illustration snapshot_08.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="i1098304" name="i1098304"></a><a id="WBINS16219" name="WBINS16219"></a>
+<div class="sect2">
+<h3 class="sect2">Adding Components to a Snapshot</h3>
+<p><a id="sthref561" name="sthref561"></a>After you create a snapshot, you can add more components. Keep in mind, however, that when you add components, you are changing the historical record provided by the snapshot, so its creation date changes.</p>
+<p>To update a snapshot, use the Add to Snapshot wizard.</p>
+<p class="subhead2"><a id="WBINS16338" name="WBINS16338"></a>To add new components to the snapshot:</p>
+<ol>
+<li>
+<p>In the Design Center Project Navigator, select all the components you want to add to the snapshot.</p>
+<p>For example, you can select tables, mappings, and dimensions from an Oracle module.</p>
+</li>
+<li>
+<p>Right-click and select <span class="bold">Snapshot</span>, then select <span class="bold">Add to Existing</span>.</p>
+<p>Alternatively, from the File menu, select <span class="bold">Snapshot</span>, then select <span class="bold">Add to Existing</span>.</p>
+<img width="502" height="439" src="img/snapshot_09.gif" alt="Description of snapshot_09.gif follows" title="Description of snapshot_09.gif follows" longdesc="img_text/snapshot_09.htm" /><br />
+<a id="sthref562" name="sthref562" href="img_text/snapshot_09.htm">Description of the illustration snapshot_09.gif</a><br />
+<br />
+<p>The Add to Snapshot wizard appears.</p>
+</li>
+<li>
+<p>On the Welcome screen, click <span class="bold">Next</span>.</p>
+<p>Note that you can get supporting information at any time by clicking <span class="bold">Help</span>.</p>
+<img width="477" height="348" src="img/snapshot_10.gif" alt="Description of snapshot_10.gif follows" title="Description of snapshot_10.gif follows" longdesc="img_text/snapshot_10.htm" /><br />
+<a id="sthref563" name="sthref563" href="img_text/snapshot_10.htm">Description of the illustration snapshot_10.gif</a><br />
+<br /></li>
+<li>
+<p>On the Snapshot screen, from the list of snapshots, select the snapshot where to add the components.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<img width="477" height="348" src="img/snapshot_11.gif" alt="Description of snapshot_11.gif follows" title="Description of snapshot_11.gif follows" longdesc="img_text/snapshot_11.htm" /><br />
+<a id="sthref564" name="sthref564" href="img_text/snapshot_11.htm">Description of the illustration snapshot_11.gif</a><br />
+<br /></li>
+<li>
+<p>On the Components screen, note all the components that are added to the snapshot. If a component is a folder level object, such as a module, then select the Cascade option to include its subcomponents.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<img width="477" height="348" src="img/snapshot_12.gif" alt="Description of snapshot_12.gif follows" title="Description of snapshot_12.gif follows" longdesc="img_text/snapshot_12.htm" /><br />
+<a id="sthref565" name="sthref565" href="img_text/snapshot_12.htm">Description of the illustration snapshot_12.gif</a><br />
+<br /></li>
+<li>
+<p>On the Finish screen, review the characteristics of the snapshot.</p>
+<p>Click <span class="bold">Finish</span> to update the snapshot.</p>
+<img width="477" height="348" src="img/snapshot_13.gif" alt="Description of snapshot_13.gif follows" title="Description of snapshot_13.gif follows" longdesc="img_text/snapshot_13.htm" /><br />
+<a id="sthref566" name="sthref566" href="img_text/snapshot_13.htm">Description of the illustration snapshot_13.gif</a><br />
+<br /></li>
+<li>
+<p>The system starts updating the snapshot; notice the Update Snapshot Progress pop-up.</p>
+<p>When the snapshot is complete, a Warehouse Builder Note pop-up screen appears, stating "Snapshot updated successfully."</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="266" height="137" src="img/snapshot_14.gif" alt="Description of snapshot_14.gif follows" title="Description of snapshot_14.gif follows" longdesc="img_text/snapshot_14.htm" /><br />
+<a id="sthref567" name="sthref567" href="img_text/snapshot_14.htm">Description of the illustration snapshot_14.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="i1098312" name="i1098312"></a><a id="WBINS16221" name="WBINS16221"></a>
+<div class="sect2">
+<h3 class="sect2">Managing Snapshots</h3>
+<p>You can manage your snapshots from the Metadata Change Management window in the Design Center. To open this window, select <span class="bold">Change Manager</span> from the Tools menu.</p>
+<img width="206" height="241" src="img/change_mgr_01.gif" alt="Description of change_mgr_01.gif follows" title="Description of change_mgr_01.gif follows" longdesc="img_text/change_mgr_01.htm" /><br />
+<a id="sthref568" name="sthref568" href="img_text/change_mgr_01.htm">Description of the illustration change_mgr_01.gif</a><br />
+<br />
+<p>The Metadata Change Management window contains a menu bar and a toolbar. You can start most tasks in several different ways, either by using the menus, clicking the tools, or right-clicking a snapshot or a component.</p>
+<p>Metadata Change Management window supports the following activities:</p>
+<ul>
+<li>
+<p><a href="#CHDCADBH">Managing Snapshot Access Privileges</a></p>
+</li>
+<li>
+<p><a href="#i1098237">Comparing Snapshots</a></p>
+</li>
+<li>
+<p><a href="#i1098246">Restoring Workspace Objects From Snapshots</a></p>
+</li>
+<li>
+<p><a href="#CHDDFAED">Exporting and Importing Snapshots</a></p>
+</li>
+<li>
+<p><a href="#i1098253">Deleting Snapshots</a></p>
+</li>
+</ul>
+<p><a href="#BGBJBEAG">Figure 11-1</a> shows the Metadata Change Management window.</p>
+<div class="figure">
+<p class="titleinfigure"><a id="BGBJBEAG" name="BGBJBEAG"></a><a id="WBINS16350" name="WBINS16350"></a>Figure 11-1 Metadata Change Management Window</p>
+<img width="598" height="314" src="img/change_mgr_02.gif" alt="Description of Figure 11-1 follows" title="Description of Figure 11-1 follows" longdesc="img_text/change_mgr_02.htm" /><br />
+<a id="sthref569" name="sthref569" href="img_text/change_mgr_02.htm">Description of "Figure 11-1 Metadata Change Management Window"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<a id="CHDCADBH" name="CHDCADBH"></a><a id="WBINS16223" name="WBINS16223"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Managing Snapshot Access Privileges</h4>
+<p><a id="sthref570" name="sthref570"></a>You can control access to snapshots just like any other object. By default, everyone has full access rights to the snapshots.</p>
+<p class="subhead2"><a id="WBINS16339" name="WBINS16339"></a>To change snapshot access privileges:</p>
+<ol>
+<li>
+<p>In the left section of the Metadata Change Management window, right-click the name of the snapshot.</p>
+</li>
+<li>
+<p>From the menu, select <span class="bold">Security</span>.</p>
+<img width="416" height="132" src="img/change_mgr_03.gif" alt="Description of change_mgr_03.gif follows" title="Description of change_mgr_03.gif follows" longdesc="img_text/change_mgr_03.htm" /><br />
+<a id="sthref571" name="sthref571" href="img_text/change_mgr_03.htm">Description of the illustration change_mgr_03.gif</a><br />
+<br />
+<p>The Snapshot Privilege Management dialog box is displayed.</p>
+</li>
+<li>
+<p>On the Snapshot Privilege Management screen, for each user or role, select the privileges to grant and clear the privileges to deny.</p>
+<p>Click <span class="bold">Help</span> for additional information.</p>
+<img width="604" height="444" src="img/change_mgr_04.gif" alt="Description of change_mgr_04.gif follows" title="Description of change_mgr_04.gif follows" longdesc="img_text/change_mgr_04.htm" /><br />
+<a id="sthref572" name="sthref572" href="img_text/change_mgr_04.htm">Description of the illustration change_mgr_04.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="i1098237" name="i1098237"></a><a id="WBINS16224" name="WBINS16224"></a>
+<div class="sect3">
+<h4 class="sect3">Comparing Snapshots</h4>
+<p><a id="sthref573" name="sthref573"></a>You can compare two snapshots, or a snapshot with a current workspace object. The results of a comparison list all objects as one of:</p>
+<ul>
+<li>
+<p>Identical objects appearing in both snapshots</p>
+</li>
+<li>
+<p>An object appearing in only one snapshot</p>
+</li>
+<li>
+<p>Similar objects appearing in both snapshots, with different property values</p>
+</li>
+</ul>
+<p>If you take a snapshot of an object that has a child object, and that child object subsequently changes, a comparison shows that the parent object has changed. For example, if you create a Cascade snapshot of a project, all the modules in that project are its children. If any of the modules change, a comparison of the snapshot to the workspace shows that the project has changed.</p>
+<p>The Metadata Change Manager uses Universal Object Identifiers (UOIDs) as the basis for all comparisons. When you delete an object and re-create it with the same metadata, the object has a different UOID although it may be identical to the deleted object in all other aspects. When you compare the re-created object to its original version, the results show that all the metadata has changed. Likewise, objects do not match if they have been deleted and re-created during an import or Intelligence Object derivation.</p>
+<p>Note that a temporary signature snapshot of the current workspace object is taken automatically; this increases the comparison time. If you are planning to make multiple comparisons to the same current workspace object, Oracle recommends that you take a signature snapshot and use it directly in snapshot-to-snapshot comparisons.</p>
+<p class="subhead2"><a id="WBINS16340" name="WBINS16340"></a>Two compare two snapshots:</p>
+<ol>
+<li>
+<p>On the Metadata Change Management screen, select two snapshots for comparison.</p>
+<p>Right-click the selected snapshots, and select <span class="bold">Compare</span>.</p>
+<p>Alternatively, from the Snapshot menu, select <span class="bold">Compare</span>.</p>
+<img width="479" height="149" src="img/change_mgr_05.gif" alt="Description of change_mgr_05.gif follows" title="Description of change_mgr_05.gif follows" longdesc="img_text/change_mgr_05.htm" /><br />
+<a id="sthref574" name="sthref574" href="img_text/change_mgr_05.htm">Description of the illustration change_mgr_05.gif</a><br />
+<br />
+<p>The Compare Two Snapshots screen appears.</p>
+</li>
+<li>
+<p>On the Compare Two Snapshots screen, ensure that the correct snapshots are selected, and click <span class="bold">Compare</span>.</p>
+<p>[Optional] Click <span class="bold">Help</span> for additional information.</p>
+<img width="500" height="190" src="img/change_mgr_06.gif" alt="Description of change_mgr_06.gif follows" title="Description of change_mgr_06.gif follows" longdesc="img_text/change_mgr_06.htm" /><br />
+<a id="sthref575" name="sthref575" href="img_text/change_mgr_06.htm">Description of the illustration change_mgr_06.gif</a><br />
+<br />
+<p>The Snapshot Comparison screen appears.</p>
+</li>
+<li>
+<p>The Snapshot Comparison screen displays the differences between the two snapshots. By selecting one of the changed objects you can see the details of the changes.</p>
+<img width="517" height="232" src="img/change_mgr_07.gif" alt="Description of change_mgr_07.gif follows" title="Description of change_mgr_07.gif follows" longdesc="img_text/change_mgr_07.htm" /><br />
+<a id="sthref576" name="sthref576" href="img_text/change_mgr_07.htm">Description of the illustration change_mgr_07.gif</a><br />
+<br />
+<p>If there are no differences between snapshots, a Warehouse Builder Note pop-up screen appears, stating "The two snapshots are identical."</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="266" height="137" src="img/change_mgr_08.gif" alt="Description of change_mgr_08.gif follows" title="Description of change_mgr_08.gif follows" longdesc="img_text/change_mgr_08.htm" /><br />
+<a id="sthref577" name="sthref577" href="img_text/change_mgr_08.htm">Description of the illustration change_mgr_08.gif</a><br />
+<br /></li>
+<li>
+<p>[Optional] Click <span class="bold">Save As</span> to save the results of the comparison to an <code>*.xml</code> file.</p>
+</li>
+<li>
+<p>Click <span class="bold">Close</span>.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="WBINS16341" name="WBINS16341"></a>To compare the current version of an object with a snapshot version:</p>
+<ol>
+<li>
+<p>From the Project Navigator, select the object for comparison.</p>
+</li>
+<li>
+<p>Right-click the selected object, select <span class="bold">Snapshot</span>, and then select <span class="bold">Compare</span>.</p>
+<img width="537" height="477" src="img/change_mgr_09.gif" alt="Description of change_mgr_09.gif follows" title="Description of change_mgr_09.gif follows" longdesc="img_text/change_mgr_09.htm" /><br />
+<a id="sthref578" name="sthref578" href="img_text/change_mgr_09.htm">Description of the illustration change_mgr_09.gif</a><br />
+<br />
+<p>Alternatively, from the File menu, select <span class="bold">Snapshot</span>, and then select <span class="bold">Compare</span>.</p>
+<p>The Choose Snapshot screen appears. Note that it only lists the snapshots that contain the object of interest.</p>
+</li>
+<li>
+<p>On the Choose Snapshot screen, select the snapshot for comparison.</p>
+<p>Click <span class="bold">OK.</span></p>
+<img width="403" height="185" src="img/change_mgr_10.gif" alt="Description of change_mgr_10.gif follows" title="Description of change_mgr_10.gif follows" longdesc="img_text/change_mgr_10.htm" /><br />
+<a id="sthref579" name="sthref579" href="img_text/change_mgr_10.htm">Description of the illustration change_mgr_10.gif</a><br />
+<br /></li>
+<li>
+<p>The Snapshot Comparison window displays the differences between the two objects. If there are none, then a message informs you that the objects are the same.</p>
+</li>
+<li>
+<p>The Snapshot Comparison screen displays the differences between the object and the snapshot. By selecting one of the changed objects you can see the details of the changes.</p>
+<img width="517" height="232" src="img/change_mgr_11.gif" alt="Description of change_mgr_11.gif follows" title="Description of change_mgr_11.gif follows" longdesc="img_text/change_mgr_11.htm" /><br />
+<a id="sthref580" name="sthref580" href="img_text/change_mgr_11.htm">Description of the illustration change_mgr_11.gif</a><br />
+<br />
+<p>If there are no differences between snapshots, a Warehouse Builder Note pop-up screen appears, stating "The <code><span class="codeinlineitalic">object</span></code> is identical to the snapshot <code><span class="codeinlineitalic">snapshot</span></code>".</p>
+<img width="266" height="141" src="img/change_mgr_12.gif" alt="Description of change_mgr_12.gif follows" title="Description of change_mgr_12.gif follows" longdesc="img_text/change_mgr_12.htm" /><br />
+<a id="sthref581" name="sthref581" href="img_text/change_mgr_12.htm">Description of the illustration change_mgr_12.gif</a><br />
+<br />
+<p>Click <span class="bold">OK</span>.</p>
+</li>
+<li>
+<p>[Optional] Click <span class="bold">Save As</span> to save the results of the comparison to an <code>*.xml</code> file.</p>
+</li>
+<li>
+<p>Click <span class="bold">Close</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="BJCBBBGA" name="BJCBBBGA"></a><a id="WBINS16227" name="WBINS16227"></a>
+<div class="sect3">
+<h4 class="sect3">Converting a Full Snapshot to a Signature Snapshot</h4>
+<p><a id="sthref582" name="sthref582"></a>You can convert a full snapshot to a signature snapshot if it is no longer necessary for backup. This conversion preserves the snapshot history while saving a significant amount of space in the workspace.</p>
+<p>Note that a signature snapshot cannot be used to restore metadata objects.</p>
+<p class="subhead2"><a id="WBINS16342" name="WBINS16342"></a>To convert a full snapshot:</p>
+<ol>
+<li>
+<p>Open the Metadata Change Management window, as described in <a href="#i1098312">"Managing Snapshots"</a>.</p>
+</li>
+<li>
+<p>Select the snapshot that you want to convert.</p>
+</li>
+<li>
+<p>Right-click the selected snapshot, and select <span class="bold">Convert to Signature</span>.</p>
+<p>Alternatively, from the Snapshot menu, select <span class="bold">Convert to Signature</span>.</p>
+<img width="325" height="156" src="img/change_mgr_13.gif" alt="Description of change_mgr_13.gif follows" title="Description of change_mgr_13.gif follows" longdesc="img_text/change_mgr_13.htm" /><br />
+<a id="sthref583" name="sthref583" href="img_text/change_mgr_13.htm">Description of the illustration change_mgr_13.gif</a><br />
+<br /></li>
+<li>
+<p>On the Warehouse Builder Warning dialog box, click <span class="bold">Yes</span>.</p>
+<img width="284" height="155" src="img/change_mgr_14.gif" alt="Description of change_mgr_14.gif follows" title="Description of change_mgr_14.gif follows" longdesc="img_text/change_mgr_14.htm" /><br />
+<a id="sthref584" name="sthref584" href="img_text/change_mgr_14.htm">Description of the illustration change_mgr_14.gif</a><br />
+<br /></li>
+<li>
+<p>Notice that the Type of the snapshot has changed to Signature.</p>
+<img width="467" height="101" src="img/change_mgr_15.gif" alt="Description of change_mgr_15.gif follows" title="Description of change_mgr_15.gif follows" longdesc="img_text/change_mgr_15.htm" /><br />
+<a id="sthref585" name="sthref585" href="img_text/change_mgr_15.htm">Description of the illustration change_mgr_15.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="i1098246" name="i1098246"></a><a id="WBINS16228" name="WBINS16228"></a>
+<div class="sect3">
+<h4 class="sect3">Restoring Workspace Objects From Snapshots</h4>
+<p><a id="sthref586" name="sthref586"></a><a id="sthref587" name="sthref587"></a>You can replace the current definition of an object in the workspace with the snapshot image of that object.</p>
+<p>Note that:</p>
+<ul>
+<li>
+<p>You can only use full snapshots; you cannot restore objects from signature snapshots.</p>
+</li>
+<li>
+<p>You can restore all components or only selected components of the snapshot.</p>
+</li>
+<li>
+<p>When you restore a collection from a snapshot, you restore both the collection and the actual objects.</p>
+</li>
+<li>
+<p>When you restore a container, all its child objects are also restored.</p>
+</li>
+<li>
+<p>To restore only the collection or selected objects within a container, use the Components tab.</p>
+</li>
+</ul>
+<p class="subhead2"><a id="WBINS16343" name="WBINS16343"></a>To restore objects from a snapshot:</p>
+<ol>
+<li>
+<p>Save any work that you have done in the current session.</p>
+</li>
+<li>
+<p>Open the Metadata Change Management window, as described in <a href="#i1098312">"Managing Snapshots"</a>.</p>
+</li>
+<li>
+<p>Select the snapshot that contains the version of the objects you want to restore.</p>
+</li>
+<li>
+<p>[Optional] To restore all objects, right-click the snapshot, and select <span class="bold">Restore</span>.</p>
+<img width="327" height="126" src="img/change_mgr_16.gif" alt="Description of change_mgr_16.gif follows" title="Description of change_mgr_16.gif follows" longdesc="img_text/change_mgr_16.htm" /><br />
+<a id="sthref588" name="sthref588" href="img_text/change_mgr_16.htm">Description of the illustration change_mgr_16.gif</a><br />
+<br /></li>
+<li>
+<p>[Optional] to restore only some components, select these components in the Components tab, right-click the component, and select <span class="bold">Restore</span>.</p>
+<img width="422" height="102" src="img/change_mgr_17.gif" alt="Description of change_mgr_17.gif follows" title="Description of change_mgr_17.gif follows" longdesc="img_text/change_mgr_17.htm" /><br />
+<a id="sthref589" name="sthref589" href="img_text/change_mgr_17.htm">Description of the illustration change_mgr_17.gif</a><br />
+<br /></li>
+<li>
+<p>[Optional] If the most recent changes to the object have not been committed, a Warehouse Builder Warning note appears, stating "You must commit your changes before restoring a snapshot. Do you want to commit now?"</p>
+<p>Click <span class="bold">Yes</span>.</p>
+<img width="266" height="155" src="img/change_mgr_18.gif" alt="Description of change_mgr_18.gif follows" title="Description of change_mgr_18.gif follows" longdesc="img_text/change_mgr_18.htm" /><br />
+<a id="sthref590" name="sthref590" href="img_text/change_mgr_18.htm">Description of the illustration change_mgr_18.gif</a><br />
+<br /></li>
+<li>
+<p>On the Restore Snapshot screen, review the objects in the list and verify that the correct objects are restored. If you</p>
+<p>Select <span class="bold">Cascade Up</span>. This ensures that any components whose parents no longer exist in the workspace are restored with new parent objects.</p>
+<p>Click <span class="bold">Restore</span>.</p>
+<img width="491" height="206" src="img/change_mgr_19.gif" alt="Description of change_mgr_19.gif follows" title="Description of change_mgr_19.gif follows" longdesc="img_text/change_mgr_19.htm" /><br />
+<a id="sthref591" name="sthref591" href="img_text/change_mgr_19.htm">Description of the illustration change_mgr_19.gif</a><br />
+<br /></li>
+<li>
+<p>A Warehouse Builder Warning note appears, stating "All currently open editors will be closed after a successful restore. Do you want tocontinue?"</p>
+<p>Click <span class="bold">Yes</span>.</p>
+<img width="274" height="155" src="img/change_mgr_20.gif" alt="Description of change_mgr_20.gif follows" title="Description of change_mgr_20.gif follows" longdesc="img_text/change_mgr_20.htm" /><br />
+<a id="sthref592" name="sthref592" href="img_text/change_mgr_20.htm">Description of the illustration change_mgr_20.gif</a><br />
+<br /></li>
+<li>
+<p>The system starts restoring the snapshot; notice the Restore Snapshot Progress pop-up.</p>
+<p>When the snapshot is restored, a Warehouse Builder Note pop-up screen appears, stating "Snapshot restored successfully."</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="267" height="138" src="img/change_mgr_21.gif" alt="Description of change_mgr_21.gif follows" title="Description of change_mgr_21.gif follows" longdesc="img_text/change_mgr_21.htm" /><br />
+<a id="sthref593" name="sthref593" href="img_text/change_mgr_21.htm">Description of the illustration change_mgr_21.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="CHDDFAED" name="CHDDFAED"></a><a id="WBINS16229" name="WBINS16229"></a>
+<div class="sect3">
+<h4 class="sect3">Exporting and Importing Snapshots</h4>
+<p><a id="sthref594" name="sthref594"></a><a id="sthref595" name="sthref595"></a><a id="sthref596" name="sthref596"></a>You can export a full snapshot to an MDL file and use this file to re-create metadata objects either in the same database or in a different one. Note that you cannot export signature snapshots or individual components of a snapshot.</p>
+<p class="subhead2"><a id="WBINS16344" name="WBINS16344"></a>To export a snapshot:</p>
+<ol>
+<li>
+<p>Open the Metadata Change Management window.</p>
+</li>
+<li>
+<p>Select the full snapshot you want to export.</p>
+</li>
+<li>
+<p>From the Snapshot menu, select <span class="bold">Export</span>.</p>
+<img width="175" height="141" src="img/change_mgr_22.gif" alt="Description of change_mgr_22.gif follows" title="Description of change_mgr_22.gif follows" longdesc="img_text/change_mgr_22.htm" /><br />
+<a id="sthref597" name="sthref597" href="img_text/change_mgr_22.htm">Description of the illustration change_mgr_22.gif</a><br />
+<br /></li>
+<li>
+<p>[Optional] If the most recent changes to the object have not been committed, a Warehouse Builder Warning note appears, stating "You must either save or revert your changes before exporting."</p>
+<p>Click <span class="bold">Save</span>.</p>
+<img width="290" height="141" src="img/change_mgr_23.gif" alt="Description of change_mgr_23.gif follows" title="Description of change_mgr_23.gif follows" longdesc="img_text/change_mgr_23.htm" /><br />
+<a id="sthref598" name="sthref598" href="img_text/change_mgr_23.htm">Description of the illustration change_mgr_23.gif</a><br />
+<br /></li>
+<li>
+<p>On the Metadata Export screen, do the following:</p>
+<ul>
+<li>
+<p>Click <span class="bold">Browse</span> to select the location and name of the export file (File Name).</p>
+</li>
+<li>
+<p>Click <span class="bold">Browse</span> to select the location of the Log File.</p>
+</li>
+<li>
+<p>Click <span class="bold">Export</span>.</p>
+</li>
+</ul>
+<p>Note that the export file has an <code>.mdl</code> extension, and the log file has a <code>.log</code> extension.</p>
+<p>[Optional] Click <span class="bold">Help</span> for additional information.</p>
+<img width="463" height="357" src="img/change_mgr_24.gif" alt="Description of change_mgr_24.gif follows" title="Description of change_mgr_24.gif follows" longdesc="img_text/change_mgr_24.htm" /><br />
+<a id="sthref599" name="sthref599" href="img_text/change_mgr_24.htm">Description of the illustration change_mgr_24.gif</a><br />
+<br /></li>
+<li>
+<p>Note that the Metadata Export Progress screen appears.</p>
+<p>When the progress bar shows 100%, click <span class="bold">OK</span>.</p>
+<img width="494" height="203" src="img/change_mgr_25.gif" alt="Description of change_mgr_25.gif follows" title="Description of change_mgr_25.gif follows" longdesc="img_text/change_mgr_25.htm" /><br />
+<a id="sthref600" name="sthref600" href="img_text/change_mgr_25.htm">Description of the illustration change_mgr_25.gif</a><br />
+<br /></li>
+</ol>
+<p class="subhead2"><a id="WBINS16345" name="WBINS16345"></a>To import a snapshot:</p>
+<ol>
+<li>
+<p>From the File menu, select <span class="bold">Import</span>, then select <span class="bold">Warehouse Builder Metadata</span>.</p>
+<img width="475" height="409" src="img/change_mgr_26.gif" alt="Description of change_mgr_26.gif follows" title="Description of change_mgr_26.gif follows" longdesc="img_text/change_mgr_26.htm" /><br />
+<a id="sthref601" name="sthref601" href="img_text/change_mgr_26.htm">Description of the illustration change_mgr_26.gif</a><br />
+<br /></li>
+<li>
+<p>On the Metadata Import screen, specify the <span class="bold">File Name</span> of the file that is imported.</p>
+<p>Click <span class="bold">Import</span>.</p>
+<img width="555" height="361" src="img/change_mgr_27.gif" alt="Description of change_mgr_27.gif follows" title="Description of change_mgr_27.gif follows" longdesc="img_text/change_mgr_27.htm" /><br />
+<a id="sthref602" name="sthref602" href="img_text/change_mgr_27.htm">Description of the illustration change_mgr_27.gif</a><br />
+<br /></li>
+<li>
+<p>Note that the Metadata Import Progress screen appears.</p>
+<p>When the progress bar shows 100%, click <span class="bold">OK</span>.</p>
+<img width="494" height="203" src="img/change_mgr_28.gif" alt="Description of change_mgr_28.gif follows" title="Description of change_mgr_28.gif follows" longdesc="img_text/change_mgr_28.htm" /><br />
+<a id="sthref603" name="sthref603" href="img_text/change_mgr_28.htm">Description of the illustration change_mgr_28.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="i1098253" name="i1098253"></a><a id="WBINS16230" name="WBINS16230"></a>
+<div class="sect3">
+<h4 class="sect3">Deleting Snapshots</h4>
+<p><a id="sthref604" name="sthref604"></a>You can delete snapshots or components within a snapshot from the Metadata Change Management window.</p>
+<p>Note that you cannot delete individual components of a signature snapshot.</p>
+<p class="subhead2"><a id="WBINS16346" name="WBINS16346"></a>To delete a snapshot:</p>
+<ol>
+<li>
+<p>On the Metadata Change Management screen, select the snapshot to delete.</p>
+</li>
+<li>
+<p>Right-click the snapshot and select <span class="bold">Delete</span>.</p>
+<p>Alternatively, from the Snapshot menu, select <span class="bold">Delete.</span></p>
+<img width="463" height="153" src="img/change_mgr_29.gif" alt="Description of change_mgr_29.gif follows" title="Description of change_mgr_29.gif follows" longdesc="img_text/change_mgr_29.htm" /><br />
+<a id="sthref605" name="sthref605" href="img_text/change_mgr_29.htm">Description of the illustration change_mgr_29.gif</a><br />
+<br /></li>
+<li>
+<p>The Warehouse Builder Warning note appears, stating "You must either save or revert your changes before exporting."</p>
+<p>Click <span class="bold">Yes</span>.</p>
+<img width="265" height="141" src="img/change_mgr_31.gif" alt="Description of change_mgr_31.gif follows" title="Description of change_mgr_31.gif follows" longdesc="img_text/change_mgr_31.htm" /><br />
+<a id="sthref606" name="sthref606" href="img_text/change_mgr_31.htm">Description of the illustration change_mgr_31.gif</a><br />
+<br /></li>
+</ol>
+<p class="subhead2"><a id="WBINS16347" name="WBINS16347"></a>To delete components from a snapshot:</p>
+<ol>
+<li>
+<p>In the Metadata Change Management, select the snapshot from where to delete components.</p>
+</li>
+<li>
+<p>On the Components tab, select the component to delete, right-click the component, then select <span class="bold">Delete</span>.</p>
+<p>Alternatively, from the Snapshot menu, select <span class="bold">Delete.</span></p>
+<img width="423" height="118" src="img/change_mgr_30.gif" alt="Description of change_mgr_30.gif follows" title="Description of change_mgr_30.gif follows" longdesc="img_text/change_mgr_30.htm" /><br />
+<a id="sthref607" name="sthref607" href="img_text/change_mgr_30.htm">Description of the illustration change_mgr_30.gif</a><br />
+<br />
+<p>Warehouse Builder displays a delete confirmation dialog box.</p>
+</li>
+<li>
+<p>The Warehouse Builder Warning note appears, stating "Are you sure you want to delete the selected component(s) and all its children?"</p>
+<p>Click <span class="bold">Yes</span>.</p>
+<img width="266" height="155" src="img/change_mgr_32.gif" alt="Description of change_mgr_32.gif follows" title="Description of change_mgr_32.gif follows" longdesc="img_text/change_mgr_32.htm" /><br />
+<a id="sthref608" name="sthref608" href="img_text/change_mgr_32.htm">Description of the illustration change_mgr_32.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="WBINS16364" name="WBINS16364"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref609" name="sthref609"></a>
+<h3 class="sect2">Snapshot Performance</h3>
+<p>Performance of snapshot operations depends on how accurate the SQL optimizer statistics are for a small subset of tables and indexes. Because most of these in a newly created repository contain little data, it is necessary to seed and lock the statistics initially. This ensures reasonable performance for moderately sized snapshots in a lightly populated repository.</p>
+<p>As the number and size of snapshots increases, unless accurate statistics are refreshed on a periodic basis, the performance of snapshots degrades. Although a refresh may be performed in several different ways, <code>OMBOPTIMIZE</code> (in OMB*Plus) or Optimize Repository (in Tools menu) should be run at least once. Otherwise, certain tables remain locked and continue to use old, seeded statistics.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="runtime_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="change_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2000, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

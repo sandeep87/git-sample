@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Cloning an Oracle Home</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.1" />
+<meta name="Date" content="2011-03-08T13:46:18Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database Installation Guide 11g Release 2 (11.2) for Linux" />
+<meta name="partno" content="E16763-08" />
+<meta name="docid" content="LADBI" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Glossary" href="glossary.htm" title="Glossary" type="text/html" />
+<link rel="Prev" href="app_nonint.htm" title="Previous" type="text/html" />
+<link rel="Next" href="app_nas.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e16763.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux</b><br />
+Part Number E16763-08</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="app_nonint.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="app_nas.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e16763.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CIHGCJBS" name="CIHGCJBS"></a>
+<h1 class="appendix"><span class="secnum">B</span> Cloning an Oracle Home</h1>
+<p>Cloning an Oracle home involves creating a copy of the Oracle home and then configuring it for a new environment. If you are performing multiple Oracle Database installations, then you may want to use this method to create each Oracle home, because copying files from an existing Oracle Database installation takes less time than creating a new version of them. This method is also useful if the Oracle home that you are cloning has had patches applied to it. When you clone this Oracle home, the new Oracle home has the patch updates as well.</p>
+<p>When cloning Database Oracle homes using 11.2 Database Control, you must update the exclude file list. This file list specifies files that need not be included when the source Oracle home is archived because these files are not required for the clone operation. The following files should not be included in the archive:</p>
+<ul>
+<li>
+<p><code>sqlnet.ora</code></p>
+</li>
+<li>
+<p><code>tnsnames.ora</code></p>
+</li>
+<li>
+<p><code>listener.ora</code></p>
+</li>
+<li>
+<p><code>oratab</code></p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+In addition to cloning an Oracle home, you can clone individual Oracle Database installations by using Enterprise Manager Database Control. <span class="italic"><a class="olink ADMIN" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN">Oracle Database Administrator's Guide</a></span> provides detailed information about cloning Oracle Database installations and Oracle homes.</div>
+<p>This appendix includes information about the following topics:</p>
+<ul>
+<li>
+<p><a href="#BABCIEID">Cloning an Oracle Home</a></p>
+</li>
+<li>
+<p><a href="#BABBIEEF">Configuring Oracle Configuration Manager in a Cloned Oracle Home</a></p>
+</li>
+</ul>
+<a id="BABCIEID" name="BABCIEID"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">B.1</span> <a id="sthref765" name="sthref765"></a><a id="sthref766" name="sthref766"></a>Cloning an Oracle Home</h2>
+<p>Perform the following to clone an Oracle home:</p>
+<ol>
+<li>
+<p>Verify that the installation of Oracle Database that you want to clone has been successful.</p>
+<p>You can do this by reviewing the <code>installActions</code><code><span class="codeinlineitalic">date_time</span></code><code>.log</code> file for the installation session, which is normally located in the <code>/</code><code><span class="codeinlineitalic">orainventory_location</span></code><code>/logs</code> directory.</p>
+<p>If you have installed patches, then you can check their status using the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd $ORACLE_HOME/OPatch
+</pre>
+<p>Include <code>$ORACLE_HOME/OPatch</code> in <code>$PATH</code></p>
+<pre xml:space="preserve" class="oac_no_warn">$ opatch lsinventory
+</pre></li>
+<li>
+<p>Stop all processes related to the Oracle home. Refer to <a href="remove_oracle_sw.htm#BABEBHAA">"Removing Oracle Software Using the Deinstallation Tool"</a> for more information about stopping the processes for an Oracle home.</p>
+</li>
+<li>
+<p>Create a ZIP file with the Oracle home (but not Oracle base) directory.</p>
+<p>For example, if the source Oracle installation is in the <code>/u01/app/oracle/product/11.2.0/dbhome_1</code>, then you zip the <code>dbhome_1</code> directory by using the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn"># zip -r dbhome_1.zip /u01/app/oracle/product/11.2.0/dbhome_1
+</pre>
+<p>Do not include the <code>admin</code>, <code>recovery_area</code>, and <code>oradata</code> directories that are under the Oracle base directory. These directories are created in the target installation later, when you create a new database there.</p>
+</li>
+<li>
+<p><a id="BBAGCBIE" name="BBAGCBIE"></a>Copy the ZIP file to the root directory of the target computer.</p>
+</li>
+<li>
+<p><a id="BBACDADJ" name="BBACDADJ"></a>Extract the ZIP file contents by using the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn"># unzip -d / dbhome_1.zip
+</pre></li>
+<li>
+<p>Repeat steps <a href="#BBAGCBIE">4</a> and <a href="#BBACDADJ">5</a> for each computer where you want to clone the Oracle home, unless the Oracle home is on a shared storage device.</p>
+</li>
+<li>
+<p>On the target computer, change directory to the unzipped Oracle home directory, and remove all the .ora (*.ora) files present in the unzipped <code>$ORACLE_HOME/network/admin</code> directory.</p>
+</li>
+<li>
+<p>From the <code>$ORACLE_HOME/clone/bin</code> directory, run clone.pl for the unzipped Oracle home. Use the following syntax:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/perl/bin/perl clone.pl ORACLE_BASE="<span class="codeinlineitalic">target_oracle_base</span>" ORACLE_HOME="<span class="codeinlineitalic">target_oracle_home</span>"
+OSDBA_GROUP=<span class="codeinlineitalic">OSDBA_privileged_group</span> OSOPER_GROUP=<span class="codeinlineitalic">OSOPER_privileged_group</span> -defaultHomeName
+</pre>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/perl/bin/perl clone.pl ORACLE_BASE="/u01/app/oracle/" ORACLE_HOME="/u01/app/oracle/product/11.2.0/dbhome_1"
+OSDBA_GROUP=dba OSOPER_GROUP=oper -defaultHomeName
+</pre>
+<p>Oracle Universal Installer starts, and then records the cloning actions in the <code>cloneActions</code><code><span class="codeinlineitalic">timestamp</span></code><code>.log</code> file. This log file is normally located in <code>/</code><code><span class="codeinlineitalic">orainventory_location</span></code><code>/logs</code> directory.</p>
+</li>
+<li>
+<p>To configure connection information for the new database, run Net Configuration Assistant:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd $ORACLE_HOME/bin
+$ ./netca
+</pre></li>
+<li>
+<p>To create a new database for the newly cloned Oracle home, run Database Configuration Assistant as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd $ORACLE_HOME/bin
+$ ./dbca
+</pre></li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink OUICG" href="../../em.112/e12255/toc.htm"><span class="italic">Oracle Universal Installer and OPatch User's Guide for Windows and UNIX</span></a> for detailed information about using Oracle Universal Installer to clone an Oracle Database home</p>
+</li>
+<li>
+<p><a class="olink ADMIN" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN"><span class="italic">Oracle Database Administrator's Guide</span></a> for information about cloning an Oracle databases, and cloning an Oracle Database home</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect1" -->
+<a id="BABBIEEF" name="BABBIEEF"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">B.2</span> <a id="sthref767" name="sthref767"></a><a id="sthref768" name="sthref768"></a>Configuring Oracle Configuration Manager in a Cloned Oracle Home</h2>
+<p>Perform the following to configure Oracle Configuration Manager for a cloned Oracle home:</p>
+<ol>
+<li>
+<p>Run the following command from <code>$ORACLE_HOME/ccr/state</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ rm -rf *.ll*
+</pre></li>
+<li>
+<p>Run the following command from <code>$ORACLE_HOME/ccr/inventory</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cp core.jar pending
+</pre></li>
+<li>
+<p>Run the following commands from <code>$ORACLE_HOME/ccr/bin</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ./emSnapshotEnv
+$ ./deployPackages
+</pre></li>
+<li>
+<p>Run the following command from <code>$ORACLE_HOME/ccr/bin</code>, and provide the proper credentials:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ./configCCR
+</pre></li>
+</ol>
+<p>If Oracle Configuration Manager was manually configured using <code>setupCCR</code>, then perform the following in the cloned Oracle home:</p>
+<ol>
+<li>
+<p>Delete all the subdirectories of the <code>$ORACLE_HOME/ccr/hosts</code> directory to remove previously configured hosts.</p>
+</li>
+<li>
+<p>Run the following command from <code>$ORACLE_HOME/ccr/bin</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ./configCCR -a
+</pre></li>
+</ol>
+<p>If you have installed Oracle Configuration Manager in the original Oracle home but have not configured it, then run the following command in the cloned Oracle home:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ setupCCR
+</pre></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="app_nonint.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="app_nas.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;1996, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

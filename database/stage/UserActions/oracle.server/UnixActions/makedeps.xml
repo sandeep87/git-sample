@@ -1,0 +1,615 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--  $Header: install/utl/useractions/db/UserActions/oracle.server/UnixActions/makedeps.xml /main/5 2010/07/23 05:03:29 poosrini Exp $ -->
+
+<!-- 
+ Copyright (c) 2008, 2010, Oracle and/or its affiliates. All rights reserved. 
+
+   NAME
+     makedeps.xml - <one-line expansion of the name>
+
+   DESCRIPTION
+     <short description of component this file declares/defines>
+
+   NOTES
+     <other useful comments, qualifications, etc.>
+
+   MODIFIED   (MM/DD/YY)
+   dschrein    04/21/09 - use standard precomp targets (no longer EXENAME)
+   wyou        02/04/09 - add asm_on and asm_off
+   dschrein    01/22/09 - part_on!
+   dschrein    05/08/08 - creation
+
+-->
+
+<ohmd:MAKE_LIST xmlns:ohmd="make_desc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="make_desc.xsd make_desc.xsd">
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="ioracle" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="rat_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="rat_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="part_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="part_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="dm_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="dm_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="olap_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="olap_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="sdo_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="sdo_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="lbac_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="lbac_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="dv_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="dv_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="no_opts" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="asm_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="asm_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="rac_on" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+<ohmd:TARGET TARGETNAME="rac_off" ACTIONTYPE="DEINSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_client.mk">
+<ohmd:TARGET TARGETNAME="mkldflags" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_client.mk">
+<ohmd:TARGET TARGETNAME="ntcontab.o" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_client.mk">
+<ohmd:TARGET TARGETNAME="nnfgt.o" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="client_sharedlib" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="links" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="proc" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="gen_pcscfg" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="modada" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="comp_adalib" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="procob" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="procob32" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="rtsora" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="rtsora32" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="profor" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="profor32" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="precomp/lib/ins_precomp.mk">
+<ohmd:TARGET TARGETNAME="profor" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4odbc" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4adbs" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4db2" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4ifmx" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4ims" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="itg4ingr" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4sybs" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4tera" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="idg4vsam" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="dg4appc/lib/dg4appc.mk">
+<ohmd:TARGET TARGETNAME="net_str" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="dg4mq/lib/db4mqc.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="dg4mq/lib/db4mqs.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="dg4drda/lib/dg4drda.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_client.mk">
+<ohmd:TARGET TARGETNAME="itnsping" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="ctx/lib/ins_ctx.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_cman.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="ipc_rdg" ACTIONTYPE="BOTH" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="racg/lib/ins_has.mk">
+<ohmd:TARGET TARGETNAME="racg_install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_client.mk">
+<ohmd:TARGET TARGETNAME="preinstall" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="sysman/lib/ins_emagent.mk">
+<ohmd:TARGET TARGETNAME="nmo" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="ctx_on" ACTIONTYPE="BOTH" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="plsql/lib/ins_plsql.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="sysman/lib/ins_emagent.mk">
+<ohmd:TARGET TARGETNAME="agent" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="sysman/lib/ins_emagent.mk">
+<ohmd:TARGET TARGETNAME="nmhs" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="all_no_orcl" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_client.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="ipc_relink" ACTIONTYPE="BOTH" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="sysman/lib/ins_emagent.mk">
+<ohmd:TARGET TARGETNAME="nmb" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="sqlplus/lib/ins_sqlplus.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="sysman/lib/ins_emagent.mk">
+<ohmd:TARGET TARGETNAME="emsubagent" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="ldap/lib/ins_ldap.mk">
+<ohmd:TARGET TARGETNAME="clientonlyinstall" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_nau.mk">
+<ohmd:TARGET TARGETNAME="ioklist" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="srvm/lib/ins_srvm.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="utilities" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_nau.mk">
+<ohmd:TARGET TARGETNAME="ientrust" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_nau.mk">
+<ohmd:TARGET TARGETNAME="iokdstry" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_nau.mk">
+<ohmd:TARGET TARGETNAME="iokinit" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_server.mk">
+<ohmd:TARGET TARGETNAME="install" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="network/lib/ins_net_client.mk">
+<ohmd:TARGET TARGETNAME="itrcroute" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="irman" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+
+<ohmd:MAKE MAKEPATH="%oracle_install_UnixMakePath%" FILENAME="rdbms/lib/ins_rdbms.mk">
+<ohmd:TARGET TARGETNAME="ioracle" ACTIONTYPE="INSTALL" >
+<ohmd:INPUT_LIST>
+<ohmd:INPUT VAL="ORACLE_HOME=%ORACLE_HOME%"/>
+</ohmd:INPUT_LIST>
+</ohmd:TARGET>
+</ohmd:MAKE>
+</ohmd:MAKE_LIST>

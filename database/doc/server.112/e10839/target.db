@@ -1,0 +1,1201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div element="book" href="toc.htm" number="" targetptr="">
+  <ttl>Oracle&#x00AE; Database Administrator&#x0027;s Reference for Linux and UNIX-Based Operating Systems</ttl>
+  <xreftext><cite>Oracle&#x00AE; Database Administrator&#x0027;s Reference for Linux and UNIX-Based Operating Systems</cite></xreftext>
+  <div element="preface" href="preface.htm" number="" targetptr="UNXAR101">
+    <ttl>Preface</ttl>
+    <xreftext>&#x201C;Preface&#x201D;</xreftext>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="UNXAR102">
+      <ttl>Audience</ttl>
+      <xreftext>&#x201C;Audience&#x201D;</xreftext>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="UNXAR398">
+      <ttl>Documentation Accessibility</ttl>
+      <xreftext>&#x201C;Documentation Accessibility&#x201D;</xreftext>
+      <obj element="formalpara" href="preface.htm" number="" targetptr="UNXAR399">
+        <ttl>Access to Oracle Support</ttl>
+        <xreftext>&#x201C;Access to Oracle Support&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="UNXAR107">
+      <ttl>Related Documentation</ttl>
+      <xreftext>&#x201C;Related Documentation&#x201D;</xreftext>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="UNXAR108">
+        <ttl>IBM AIX on POWER Systems Documentation</ttl>
+        <xreftext>&#x201C;IBM AIX on POWER Systems Documentation&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="UNXAR109">
+        <ttl>HP-UX Documentation</ttl>
+        <xreftext>&#x201C;HP-UX Documentation&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="UNXAR110">
+        <ttl>Linux Documentation</ttl>
+        <xreftext>&#x201C;Linux Documentation&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="UNXAR111">
+        <ttl>Oracle Solaris Documentation</ttl>
+        <xreftext>&#x201C;Oracle Solaris Documentation&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="UNXAR112">
+      <ttl>Conventions</ttl>
+      <xreftext>&#x201C;Conventions&#x201D;</xreftext>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="UNXAR113">
+      <ttl>Command Syntax</ttl>
+      <xreftext>&#x201C;Command Syntax&#x201D;</xreftext>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="UNXAR114">
+      <ttl>Terminology</ttl>
+      <xreftext>&#x201C;Terminology&#x201D;</xreftext>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="UNXAR115">
+      <ttl>Accessing Documentation</ttl>
+      <xreftext>&#x201C;Accessing Documentation&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="admin_ora.htm" number="1" targetptr="UNXAR001">
+    <ttl>Administering Oracle Database</ttl>
+    <xreftext>&#x201C;Administering Oracle Database&#x201D;</xreftext>
+    <div element="sect1" href="admin_ora.htm" number="1.1" targetptr="UNXAR116">
+      <ttl>Overview</ttl>
+      <xreftext>&#x201C;Overview&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="admin_ora.htm" number="1.2" targetptr="UNXAR117">
+      <ttl>Environment Variables</ttl>
+      <xreftext>&#x201C;Environment Variables&#x201D;</xreftext>
+      <div element="sect2" href="admin_ora.htm" number="1.2.1" targetptr="UNXAR118">
+        <ttl>Oracle Database Environment Variables</ttl>
+        <xreftext>&#x201C;Oracle Database Environment Variables&#x201D;</xreftext>
+        <obj element="table" href="admin_ora.htm" number="1-1" targetptr="UNXAR119">
+          <ttl>Oracle Database Environment Variables</ttl>
+          <xreftext>&#x201C;Oracle Database Environment Variables&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="admin_ora.htm" number="1.2.2" targetptr="UNXAR120">
+        <ttl>UNIX Environment Variables</ttl>
+        <xreftext>&#x201C;UNIX Environment Variables&#x201D;</xreftext>
+        <obj element="table" href="admin_ora.htm" number="1-2" targetptr="UNXAR121">
+          <ttl>Environment Variables Used with Oracle Database</ttl>
+          <xreftext>&#x201C;Environment Variables Used with Oracle Database&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="admin_ora.htm" number="1.2.3" targetptr="UNXAR122">
+        <ttl>Setting a Common Environment</ttl>
+        <xreftext>&#x201C;Setting a Common Environment&#x201D;</xreftext>
+        <obj element="bridgehead" href="admin_ora.htm" number="" targetptr="UNXAR123">
+          <ttl>oraenv and coraenv Script Files</ttl>
+          <xreftext>&#x201C;oraenv and coraenv Script Files&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="admin_ora.htm" number="" targetptr="UNXAR124">
+          <ttl>Local bin Directory</ttl>
+          <xreftext>&#x201C;Local bin Directory&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="admin_ora.htm" number="1.2.4" targetptr="UNXAR125">
+        <ttl>Setting the System Time Zone</ttl>
+        <xreftext>&#x201C;Setting the System Time Zone&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="admin_ora.htm" number="1.3" targetptr="UNXAR126">
+      <ttl>Initialization Parameters</ttl>
+      <xreftext>&#x201C;Initialization Parameters&#x201D;</xreftext>
+      <div element="sect2" href="admin_ora.htm" number="1.3.1" targetptr="UNXAR127">
+        <ttl>DB_BLOCK_SIZE Initialization Parameter</ttl>
+        <xreftext>&#x201C;DB_BLOCK_SIZE Initialization Parameter&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admin_ora.htm" number="1.3.2" targetptr="UNXAR128">
+        <ttl>ASM_DISKSTRING Initialization Parameter</ttl>
+        <xreftext>&#x201C;ASM_DISKSTRING Initialization Parameter&#x201D;</xreftext>
+        <obj element="table" href="admin_ora.htm" number="1-3" targetptr="UNXAR129">
+          <ttl>Default Values of the ASM_DISKSTRING Initialization Parameter</ttl>
+          <xreftext>&#x201C;Default Values of the ASM_DISKSTRING Initialization Parameter&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="admin_ora.htm" number="1.3.3" targetptr="UNXAR130">
+        <ttl>LOG_ARCHIVE_DEST_n Initialization Parameter</ttl>
+        <xreftext>&#x201C;LOG_ARCHIVE_DEST_<span class="italic">n</span> Initialization Parameter&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admin_ora.htm" number="1.3.4" targetptr="UNXAR131">
+        <ttl>DISK_ASYNCH_IO Initialization Parameter (HP-UX)</ttl>
+        <xreftext>&#x201C;DISK_ASYNCH_IO Initialization Parameter (HP-UX)&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="admin_ora.htm" number="1.4" targetptr="UNXAR132">
+      <ttl>Operating System Accounts and Groups</ttl>
+      <xreftext>&#x201C;Operating System Accounts and Groups&#x201D;</xreftext>
+      <div element="sect2" href="admin_ora.htm" number="1.4.1" targetptr="UNXAR133">
+        <ttl>Creating Additional Operating System Accounts</ttl>
+        <xreftext>&#x201C;Creating Additional Operating System Accounts&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admin_ora.htm" number="1.4.2" targetptr="UNXAR134">
+        <ttl>Configuring the Accounts of Oracle Users</ttl>
+        <xreftext>&#x201C;Configuring the Accounts of Oracle Users&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="admin_ora.htm" number="1.5" targetptr="UNXAR135">
+      <ttl>Using Trace Files</ttl>
+      <xreftext>&#x201C;Using Trace Files&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="strt_stp.htm" number="2" targetptr="UNXAR002">
+    <ttl>Stopping and Starting Oracle Software</ttl>
+    <xreftext>&#x201C;Stopping and Starting Oracle Software&#x201D;</xreftext>
+    <div element="sect1" href="strt_stp.htm" number="2.1" targetptr="UNXAR136">
+      <ttl>Oracle Restart</ttl>
+      <xreftext>&#x201C;Oracle Restart&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="strt_stp.htm" number="2.2" targetptr="UNXAR138">
+      <ttl>Stopping and Starting Oracle Processes</ttl>
+      <xreftext>&#x201C;Stopping and Starting Oracle Processes&#x201D;</xreftext>
+      <div element="sect2" href="strt_stp.htm" number="2.2.1" targetptr="UNXAR139">
+        <ttl>Stopping and Starting Oracle Database and Automatic Storage Management Instances</ttl>
+        <xreftext>&#x201C;Stopping and Starting Oracle Database and Automatic Storage Management Instances&#x201D;</xreftext>
+        <div element="sect3" href="strt_stp.htm" number="2.2.1.1" targetptr="UNXAR140">
+          <ttl>Stopping an Oracle Database or Automatic Storage Management Instance</ttl>
+          <xreftext>&#x201C;Stopping an Oracle Database or Automatic Storage Management Instance&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="strt_stp.htm" number="2.2.1.2" targetptr="UNXAR141">
+          <ttl>Restarting an Oracle Database or Automatic Storage Management Instance</ttl>
+          <xreftext>&#x201C;Restarting an Oracle Database or Automatic Storage Management Instance&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="strt_stp.htm" number="2.2.2" targetptr="UNXAR142">
+        <ttl>Stopping and Starting Oracle Restart</ttl>
+        <xreftext>&#x201C;Stopping and Starting Oracle Restart&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="strt_stp.htm" number="2.2.3" targetptr="UNXAR143">
+        <ttl>Stopping and Starting Oracle Enterprise Manager Database Control</ttl>
+        <xreftext>&#x201C;Stopping and Starting Oracle Enterprise Manager Database Control&#x201D;</xreftext>
+        <obj element="bridgehead" href="strt_stp.htm" number="" targetptr="UNXAR144">
+          <ttl>Stopping Oracle Enterprise Manager Database Control</ttl>
+          <xreftext>&#x201C;Stopping Oracle Enterprise Manager Database Control&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="strt_stp.htm" number="" targetptr="UNXAR145">
+          <ttl>Starting Oracle Enterprise Manager Database Control</ttl>
+          <xreftext>&#x201C;Starting Oracle Enterprise Manager Database Control&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="strt_stp.htm" number="2.2.4" targetptr="UNXAR146">
+        <ttl>Stopping and Starting Oracle Management Agent</ttl>
+        <xreftext>&#x201C;Stopping and Starting Oracle Management Agent&#x201D;</xreftext>
+        <obj element="bridgehead" href="strt_stp.htm" number="" targetptr="UNXAR147">
+          <ttl>Stopping Oracle Management Agent</ttl>
+          <xreftext>&#x201C;Stopping Oracle Management Agent&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="strt_stp.htm" number="" targetptr="UNXAR148">
+          <ttl>Starting Oracle Management Agent</ttl>
+          <xreftext>&#x201C;Starting Oracle Management Agent&#x201D;</xreftext>
+        </obj>
+      </div>
+    </div>
+  </div>
+  <div element="chapter" href="cnfg_prd.htm" number="3" targetptr="UNXAR003">
+    <ttl>Configuring Oracle Database</ttl>
+    <xreftext>&#x201C;Configuring Oracle Database&#x201D;</xreftext>
+    <div element="sect1" href="cnfg_prd.htm" number="3.1" targetptr="UNXAR149">
+      <ttl>Using Configuration Assistants as Standalone Tools</ttl>
+      <xreftext>&#x201C;Using Configuration Assistants as Standalone Tools&#x201D;</xreftext>
+      <div element="sect2" href="cnfg_prd.htm" number="3.1.1" targetptr="UNXAR150">
+        <ttl>Using Oracle Net Configuration Assistant</ttl>
+        <xreftext>&#x201C;Using Oracle Net Configuration Assistant&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="cnfg_prd.htm" number="3.1.2" targetptr="UNXAR151">
+        <ttl>Using Oracle Database Upgrade Assistant</ttl>
+        <xreftext>&#x201C;Using Oracle Database Upgrade Assistant&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="cnfg_prd.htm" number="3.1.3" targetptr="UNXAR152">
+        <ttl>Using Oracle Database Configuration Assistant</ttl>
+        <xreftext>&#x201C;Using Oracle Database Configuration Assistant&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="cnfg_prd.htm" number="3.1.4" targetptr="UNXAR153">
+        <ttl>Configuring New or Upgraded Databases</ttl>
+        <xreftext>&#x201C;Configuring New or Upgraded Databases&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="cnfg_prd.htm" number="3.2" targetptr="UNXAR154">
+      <ttl>Relinking Executables</ttl>
+      <xreftext>&#x201C;Relinking Executables&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="admn_sqlpls.htm" number="4" targetptr="UNXAR004">
+    <ttl>Administering SQL*Plus</ttl>
+    <xreftext>&#x201C;Administering SQL*Plus&#x201D;</xreftext>
+    <div element="sect1" href="admn_sqlpls.htm" number="4.1" targetptr="UNXAR156">
+      <ttl>Administering Command-Line SQL*Plus</ttl>
+      <xreftext>&#x201C;Administering Command-Line SQL*Plus&#x201D;</xreftext>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.1.1" targetptr="UNXAR157">
+        <ttl>Using Setup Files</ttl>
+        <xreftext>&#x201C;Using Setup Files&#x201D;</xreftext>
+        <obj element="bridgehead" href="admn_sqlpls.htm" number="" targetptr="UNXAR158">
+          <ttl>Using the Site Profile File</ttl>
+          <xreftext>&#x201C;Using the Site Profile File&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="admn_sqlpls.htm" number="" targetptr="UNXAR159">
+          <ttl>Using the User Profile File</ttl>
+          <xreftext>&#x201C;Using the User Profile File&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.1.2" targetptr="UNXAR160">
+        <ttl>Using the PRODUCT_USER_PROFILE Table</ttl>
+        <xreftext>&#x201C;Using the PRODUCT_USER_PROFILE Table&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.1.3" targetptr="UNXAR161">
+        <ttl>Using Oracle Database Sample Schemas</ttl>
+        <xreftext>&#x201C;Using Oracle Database Sample Schemas&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.1.4" targetptr="UNXAR162">
+        <ttl>Installing and Removing SQL*Plus Command-Line Help</ttl>
+        <xreftext>&#x201C;Installing and Removing SQL*Plus Command-Line Help&#x201D;</xreftext>
+        <div element="sect3" href="admn_sqlpls.htm" number="4.1.4.1" targetptr="UNXAR163">
+          <ttl>Installing SQL*Plus Command-Line Help</ttl>
+          <xreftext>&#x201C;Installing SQL*Plus Command-Line Help&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="admn_sqlpls.htm" number="4.1.4.2" targetptr="UNXAR164">
+          <ttl>Removing SQL*Plus Command-Line Help</ttl>
+          <xreftext>&#x201C;Removing SQL*Plus Command-Line Help&#x201D;</xreftext>
+        </div>
+      </div>
+    </div>
+    <div element="sect1" href="admn_sqlpls.htm" number="4.2" targetptr="UNXAR165">
+      <ttl>Using Command-Line SQL*Plus</ttl>
+      <xreftext>&#x201C;Using Command-Line SQL*Plus&#x201D;</xreftext>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.2.1" targetptr="UNXAR166">
+        <ttl>Using a System Editor from SQL*Plus</ttl>
+        <xreftext>&#x201C;Using a System Editor from SQL*Plus&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.2.2" targetptr="UNXAR167">
+        <ttl>Running Operating System Commands from SQL*Plus</ttl>
+        <xreftext>&#x201C;Running Operating System Commands from SQL*Plus&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.2.3" targetptr="UNXAR168">
+        <ttl>Interrupting SQL*Plus</ttl>
+        <xreftext>&#x201C;Interrupting SQL*Plus&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.2.4" targetptr="UNXAR169">
+        <ttl>Using the SPOOL Command</ttl>
+        <xreftext>&#x201C;Using the SPOOL Command&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="admn_sqlpls.htm" number="4.3" targetptr="UNXAR170">
+      <ttl>SQL*Plus Restrictions</ttl>
+      <xreftext>&#x201C;SQL*Plus Restrictions&#x201D;</xreftext>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.3.1" targetptr="UNXAR171">
+        <ttl>Resizing Windows</ttl>
+        <xreftext>&#x201C;Resizing Windows&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.3.2" targetptr="UNXAR172">
+        <ttl>Return Codes</ttl>
+        <xreftext>&#x201C;Return Codes&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="admn_sqlpls.htm" number="4.3.3" targetptr="UNXAR173">
+        <ttl>Hiding the Password</ttl>
+        <xreftext>&#x201C;Hiding the Password&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+  <div element="chapter" href="cnfg_net_srv.htm" number="5" targetptr="UNXAR005">
+    <ttl>Configuring Oracle Net Services</ttl>
+    <xreftext>&#x201C;Configuring Oracle Net Services&#x201D;</xreftext>
+    <div element="sect1" href="cnfg_net_srv.htm" number="5.1" targetptr="UNXAR174">
+      <ttl>Locating Oracle Net Services Configuration Files</ttl>
+      <xreftext>&#x201C;Locating Oracle Net Services Configuration Files&#x201D;</xreftext>
+      <obj element="bridgehead" href="cnfg_net_srv.htm" number="" targetptr="UNXAR175">
+        <ttl>Sample Configuration Files</ttl>
+        <xreftext>&#x201C;Sample Configuration Files&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="sect1" href="cnfg_net_srv.htm" number="5.2" targetptr="UNXAR176">
+      <ttl>Adapters Utility</ttl>
+      <xreftext>&#x201C;Adapters Utility&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="cnfg_net_srv.htm" number="5.3" targetptr="UNXAR177">
+      <ttl>Oracle Protocol Support</ttl>
+      <xreftext>&#x201C;Oracle Protocol Support&#x201D;</xreftext>
+      <div element="sect2" href="cnfg_net_srv.htm" number="5.3.1" targetptr="UNXAR178">
+        <ttl>IPC Protocol Support</ttl>
+        <xreftext>&#x201C;IPC Protocol Support&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="cnfg_net_srv.htm" number="5.3.2" targetptr="UNXAR179">
+        <ttl>TCP/IP Protocol Support</ttl>
+        <xreftext>&#x201C;TCP/IP Protocol Support&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="cnfg_net_srv.htm" number="5.3.3" targetptr="UNXAR180">
+        <ttl>TCP/IP with Secure Sockets Layer Protocol Support</ttl>
+        <xreftext>&#x201C;TCP/IP with Secure Sockets Layer Protocol Support&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="cnfg_net_srv.htm" number="5.4" targetptr="UNXAR181">
+      <ttl>Setting Up the Listener for TCP/IP or TCP/IP with Secure Sockets Layer</ttl>
+      <xreftext>&#x201C;Setting Up the Listener for TCP/IP or TCP/IP with Secure Sockets Layer&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="cnfg_net_srv.htm" number="5.5" targetptr="UNXAR182">
+      <ttl>Oracle Advanced Security</ttl>
+      <xreftext>&#x201C;Oracle Advanced Security&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="prcmp_cll_int.htm" number="6" targetptr="UNXAR006">
+    <ttl>Using Oracle Precompilers and the Oracle Call Interface</ttl>
+    <xreftext>&#x201C;Using Oracle Precompilers and the Oracle Call Interface&#x201D;</xreftext>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.1" targetptr="UNXAR183">
+      <ttl>Overview of Oracle Precompilers</ttl>
+      <xreftext>&#x201C;Overview of Oracle Precompilers&#x201D;</xreftext>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.1.1" targetptr="UNXAR184">
+        <ttl>Precompiler Configuration Files</ttl>
+        <xreftext>&#x201C;Precompiler Configuration Files&#x201D;</xreftext>
+        <obj element="table" href="prcmp_cll_int.htm" number="6-1" targetptr="UNXAR185">
+          <ttl>System Configuration Files for Oracle Precompilers</ttl>
+          <xreftext>&#x201C;System Configuration Files for Oracle Precompilers&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.1.2" targetptr="UNXAR186">
+        <ttl>Relinking Precompiler Executables</ttl>
+        <xreftext>&#x201C;Relinking Precompiler Executables&#x201D;</xreftext>
+        <obj element="table" href="prcmp_cll_int.htm" number="6-2" targetptr="UNXAR187">
+          <ttl>Executables for Oracle Precompilers</ttl>
+          <xreftext>&#x201C;Executables for Oracle Precompilers&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.1.3" targetptr="UNXAR188">
+        <ttl>Precompiler README Files</ttl>
+        <xreftext>&#x201C;Precompiler README Files&#x201D;</xreftext>
+        <obj element="table" href="prcmp_cll_int.htm" number="6-3" targetptr="UNXAR189">
+          <ttl>Location of Precompiler README Files</ttl>
+          <xreftext>&#x201C;Location of Precompiler README Files&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.1.4" targetptr="UNXAR190">
+        <ttl>Issues Common to All Precompilers</ttl>
+        <xreftext>&#x201C;Issues Common to All Precompilers&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.1.5" targetptr="UNXAR191">
+        <ttl>Static and Dynamic Linking</ttl>
+        <xreftext>&#x201C;Static and Dynamic Linking&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.1.6" targetptr="UNXAR192">
+        <ttl>Client Shared and Static Libraries</ttl>
+        <xreftext>&#x201C;Client Shared and Static Libraries&#x201D;</xreftext>
+        <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR193">
+          <ttl>Nonthreaded Client Shared Library</ttl>
+          <xreftext>&#x201C;Nonthreaded Client Shared Library&#x201D;</xreftext>
+        </obj>
+      </div>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.2" targetptr="UNXAR194">
+      <ttl>Bit-Length Support for Client Applications</ttl>
+      <xreftext>&#x201C;Bit-Length Support for Client Applications&#x201D;</xreftext>
+      <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR195">
+        <ttl>Building 32-Bit Pro*C and OCI Customer Applications</ttl>
+        <xreftext>&#x201C;Building 32-Bit Pro*C and OCI Customer Applications&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.3" targetptr="UNXAR196">
+      <ttl>Pro*C/C++ Precompiler</ttl>
+      <xreftext>&#x201C;Pro*C/C++ Precompiler&#x201D;</xreftext>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.3.1" targetptr="UNXAR197">
+        <ttl>Pro*C/C++ Demonstration Programs</ttl>
+        <xreftext>&#x201C;Pro*C/C++ Demonstration Programs&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.3.2" targetptr="UNXAR198">
+        <ttl>Pro*C/C++ User Programs</ttl>
+        <xreftext>&#x201C;Pro*C/C++ User Programs&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.4" targetptr="UNXAR199">
+      <ttl>Pro*COBOL Precompiler</ttl>
+      <xreftext>&#x201C;Pro*COBOL Precompiler&#x201D;</xreftext>
+      <obj element="table" href="prcmp_cll_int.htm" number="6-4" targetptr="UNXAR200">
+        <ttl>Pro*COBOL Naming Conventions</ttl>
+        <xreftext>&#x201C;Pro*COBOL Naming Conventions&#x201D;</xreftext>
+      </obj>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.4.1" targetptr="UNXAR201">
+        <ttl>Pro*COBOL Environment Variables</ttl>
+        <xreftext>&#x201C;Pro*COBOL Environment Variables&#x201D;</xreftext>
+        <div element="sect3" href="prcmp_cll_int.htm" number="6.4.1.1" targetptr="UNXAR202">
+          <ttl>Micro Focus Server Express COBOL Compiler</ttl>
+          <xreftext>&#x201C;Micro Focus Server Express COBOL Compiler&#x201D;</xreftext>
+          <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR203">
+            <ttl>COBDIR</ttl>
+            <xreftext>&#x201C;COBDIR&#x201D;</xreftext>
+          </obj>
+          <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR204">
+            <ttl>PATH</ttl>
+            <xreftext>&#x201C;PATH&#x201D;</xreftext>
+          </obj>
+          <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR205">
+            <ttl>Shared Library Path</ttl>
+            <xreftext>&#x201C;Shared Library Path&#x201D;</xreftext>
+          </obj>
+        </div>
+        <div element="sect3" href="prcmp_cll_int.htm" number="6.4.1.2" targetptr="UNXAR206">
+          <ttl>Acucorp ACUCOBOL-GT COBOL Compiler</ttl>
+          <xreftext>&#x201C;Acucorp ACUCOBOL-GT COBOL Compiler&#x201D;</xreftext>
+          <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR207">
+            <ttl>A_TERMCAP and A_TERM</ttl>
+            <xreftext>&#x201C;A_TERMCAP and A_TERM&#x201D;</xreftext>
+          </obj>
+          <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR208">
+            <ttl>PATH</ttl>
+            <xreftext>&#x201C;PATH&#x201D;</xreftext>
+          </obj>
+          <obj element="bridgehead" href="prcmp_cll_int.htm" number="" targetptr="UNXAR209">
+            <ttl>LD_LIBRARY_PATH</ttl>
+            <xreftext>&#x201C;LD_LIBRARY_PATH&#x201D;</xreftext>
+          </obj>
+        </div>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.4.2" targetptr="UNXAR210">
+        <ttl>Pro*COBOL Oracle Runtime System</ttl>
+        <xreftext>&#x201C;Pro*COBOL Oracle Runtime System&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.4.3" targetptr="UNXAR211">
+        <ttl>Pro*COBOL Demonstration Programs</ttl>
+        <xreftext>&#x201C;Pro*COBOL Demonstration Programs&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.4.4" targetptr="UNXAR212">
+        <ttl>Pro*COBOL User Programs</ttl>
+        <xreftext>&#x201C;Pro*COBOL User Programs&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.4.5" targetptr="UNXAR213">
+        <ttl>FORMAT Precompiler Option</ttl>
+        <xreftext>&#x201C;FORMAT Precompiler Option&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.5" targetptr="UNXAR214">
+      <ttl>Pro*FORTRAN Precompiler</ttl>
+      <xreftext>&#x201C;Pro*FORTRAN Precompiler&#x201D;</xreftext>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.5.1" targetptr="UNXAR215">
+        <ttl>Pro*FORTRAN Demonstration Programs</ttl>
+        <xreftext>&#x201C;Pro*FORTRAN Demonstration Programs&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.5.2" targetptr="UNXAR216">
+        <ttl>Pro*FORTRAN User Programs</ttl>
+        <xreftext>&#x201C;Pro*FORTRAN User Programs&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.6" targetptr="UNXAR217">
+      <ttl>SQL*Module for ADA</ttl>
+      <xreftext>&#x201C;SQL*Module for ADA&#x201D;</xreftext>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.6.1" targetptr="UNXAR218">
+        <ttl>SQL*Module for Ada Demonstration Programs</ttl>
+        <xreftext>&#x201C;SQL*Module for Ada Demonstration Programs&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.6.2" targetptr="UNXAR219">
+        <ttl>SQL*Module for Ada User Programs</ttl>
+        <xreftext>&#x201C;SQL*Module for Ada User Programs&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.7" targetptr="UNXAR220">
+      <ttl>OCI and OCCI</ttl>
+      <xreftext>&#x201C;OCI and OCCI&#x201D;</xreftext>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.7.1" targetptr="UNXAR221">
+        <ttl>OCI and OCCI Demonstration Programs</ttl>
+        <xreftext>&#x201C;OCI and OCCI Demonstration Programs&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prcmp_cll_int.htm" number="6.7.2" targetptr="UNXAR222">
+        <ttl>OCI and OCCI User Programs</ttl>
+        <xreftext>&#x201C;OCI and OCCI User Programs&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.8" targetptr="UNXAR223">
+      <ttl>Oracle JDBC/OCI Programs with a 64-Bit Driver</ttl>
+      <xreftext>&#x201C;Oracle JDBC/OCI Programs with a 64-Bit Driver&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.9" targetptr="UNXAR224">
+      <ttl>Custom Make Files</ttl>
+      <xreftext>&#x201C;Custom Make Files&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.10" targetptr="UNXAR225">
+      <ttl>Correcting Undefined Symbols</ttl>
+      <xreftext>&#x201C;Correcting Undefined Symbols&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.11" targetptr="UNXAR226">
+      <ttl>Multithreaded Applications</ttl>
+      <xreftext>&#x201C;Multithreaded Applications&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.12" targetptr="UNXAR227">
+      <ttl>Using Signal Handlers</ttl>
+      <xreftext>&#x201C;Using Signal Handlers&#x201D;</xreftext>
+      <obj element="table" href="prcmp_cll_int.htm" number="6-5" targetptr="UNXAR228">
+        <ttl>Signals for Two-Task Communication</ttl>
+        <xreftext>&#x201C;Signals for Two-Task Communication&#x201D;</xreftext>
+      </obj>
+      <obj element="example" href="prcmp_cll_int.htm" number="6-1" targetptr="UNXAR229">
+        <ttl>Signal Routine and Catching Routine</ttl>
+        <xreftext>&#x201C;Signal Routine and Catching Routine&#x201D;</xreftext>
+      </obj>
+      <obj element="example" href="prcmp_cll_int.htm" number="6-2" targetptr="UNXAR230">
+        <ttl>osnsui() and osncui() Routine Template</ttl>
+        <xreftext>&#x201C;osnsui() and osncui() Routine Template&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="sect1" href="prcmp_cll_int.htm" number="6.13" targetptr="UNXAR231">
+      <ttl>XA Functionality</ttl>
+      <xreftext>&#x201C;XA Functionality&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="ldr_demo.htm" number="7" targetptr="UNXAR007">
+    <ttl>SQL*Loader and PL/SQL Demonstrations</ttl>
+    <xreftext>&#x201C;SQL*Loader and PL/SQL Demonstrations&#x201D;</xreftext>
+    <div element="sect1" href="ldr_demo.htm" number="7.1" targetptr="UNXAR232">
+      <ttl>SQL*Loader Demonstrations</ttl>
+      <xreftext>&#x201C;SQL*Loader Demonstrations&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="ldr_demo.htm" number="7.2" targetptr="UNXAR233">
+      <ttl>PL/SQL Demonstrations</ttl>
+      <xreftext>&#x201C;PL/SQL Demonstrations&#x201D;</xreftext>
+      <obj element="bridgehead" href="ldr_demo.htm" number="" targetptr="UNXAR234">
+        <ttl>PL/SQL Kernel Demonstrations</ttl>
+        <xreftext>&#x201C;PL/SQL Kernel Demonstrations&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="ldr_demo.htm" number="" targetptr="UNXAR235">
+        <ttl>PL/SQL Precompiler Demonstrations</ttl>
+        <xreftext>&#x201C;PL/SQL Precompiler Demonstrations&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="sect1" href="ldr_demo.htm" number="7.3" targetptr="UNXAR237">
+      <ttl>Calling 32-Bit External Procedures from 64-Bit Oracle Database PL/SQL</ttl>
+      <xreftext>&#x201C;Calling 32-Bit External Procedures from 64-Bit Oracle Database PL/SQL&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="tuning.htm" number="8" targetptr="UNXAR008">
+    <ttl>Tuning Oracle Database</ttl>
+    <xreftext>&#x201C;Tuning Oracle Database&#x201D;</xreftext>
+    <div element="sect1" href="tuning.htm" number="8.1" targetptr="UNXAR238">
+      <ttl>Importance of Tuning</ttl>
+      <xreftext>&#x201C;Importance of Tuning&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="tuning.htm" number="8.2" targetptr="UNXAR239">
+      <ttl>Operating System Tools</ttl>
+      <xreftext>&#x201C;Operating System Tools&#x201D;</xreftext>
+      <div element="sect2" href="tuning.htm" number="8.2.1" targetptr="UNXAR240">
+        <ttl>vmstat</ttl>
+        <xreftext>&#x201C;vmstat&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.2.2" targetptr="UNXAR241">
+        <ttl>sar</ttl>
+        <xreftext>&#x201C;sar&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.2.3" targetptr="UNXAR242">
+        <ttl>iostat</ttl>
+        <xreftext>&#x201C;iostat&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.2.4" targetptr="UNXAR243">
+        <ttl>swap, swapinfo, swapon, or lsps</ttl>
+        <xreftext>&#x201C;swap, swapinfo, swapon, or lsps&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.2.5" targetptr="UNXAR244">
+        <ttl>AIX Tools</ttl>
+        <xreftext>&#x201C;AIX Tools&#x201D;</xreftext>
+        <div element="sect3" href="tuning.htm" number="8.2.5.1" targetptr="UNXAR245">
+          <ttl>Base Operation System Tools</ttl>
+          <xreftext>&#x201C;Base Operation System Tools&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="tuning.htm" number="8.2.5.2" targetptr="UNXAR246">
+          <ttl>Performance Toolbox</ttl>
+          <xreftext>&#x201C;Performance Toolbox&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="tuning.htm" number="8.2.5.3" targetptr="UNXAR247">
+          <ttl>System Management Interface Tool</ttl>
+          <xreftext>&#x201C;System Management Interface Tool&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.2.6" targetptr="UNXAR248">
+        <ttl>HP-UX Tools</ttl>
+        <xreftext>&#x201C;HP-UX Tools&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.2.7" targetptr="UNXAR249">
+        <ttl>Linux Tools</ttl>
+        <xreftext>&#x201C;Linux Tools&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.2.8" targetptr="UNXAR250">
+        <ttl>Solaris Tools</ttl>
+        <xreftext>&#x201C;Solaris Tools&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="tuning.htm" number="8.3" targetptr="UNXAR251">
+      <ttl>Tuning Memory Management</ttl>
+      <xreftext>&#x201C;Tuning Memory Management&#x201D;</xreftext>
+      <div element="sect2" href="tuning.htm" number="8.3.1" targetptr="UNXAR252">
+        <ttl>Allocating Sufficient Swap Space</ttl>
+        <xreftext>&#x201C;Allocating Sufficient Swap Space&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.3.2" targetptr="UNXAR253">
+        <ttl>Controlling Paging</ttl>
+        <xreftext>&#x201C;Controlling Paging&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.3.3" targetptr="UNXAR254">
+        <ttl>Adjusting Oracle Block Size</ttl>
+        <xreftext>&#x201C;Adjusting Oracle Block Size&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.3.4" targetptr="UNXAR255">
+        <ttl>Allocating Memory Resource</ttl>
+        <xreftext>&#x201C;Allocating Memory Resource&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="tuning.htm" number="8.4" targetptr="UNXAR256">
+      <ttl>Tuning Disk Input-Output</ttl>
+      <xreftext>&#x201C;Tuning Disk Input-Output&#x201D;</xreftext>
+      <div element="sect2" href="tuning.htm" number="8.4.1" targetptr="UNXAR257">
+        <ttl>Using Automatic Storage Management</ttl>
+        <xreftext>&#x201C;Using Automatic Storage Management&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.4.2" targetptr="UNXAR258">
+        <ttl>Choosing the Appropriate File System Type</ttl>
+        <xreftext>&#x201C;Choosing the Appropriate File System Type&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="tuning.htm" number="8.5" targetptr="UNXAR259">
+      <ttl>Monitoring Disk Performance</ttl>
+      <xreftext>&#x201C;Monitoring Disk Performance&#x201D;</xreftext>
+      <div element="sect2" href="tuning.htm" number="8.5.1" targetptr="UNXAR260">
+        <ttl>Monitoring Disk Performance on Other Operating Systems</ttl>
+        <xreftext>&#x201C;Monitoring Disk Performance on Other Operating Systems&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.5.2" targetptr="UNXAR261">
+        <ttl>Using Disk Resync to Monitor Automatic Storage Management Disk Group</ttl>
+        <xreftext>&#x201C;Using Disk Resync to Monitor Automatic Storage Management Disk Group&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="tuning.htm" number="8.6" targetptr="UNXAR262">
+      <ttl>System Global Area</ttl>
+      <xreftext>&#x201C;System Global Area&#x201D;</xreftext>
+      <div element="sect2" href="tuning.htm" number="8.6.1" targetptr="UNXAR263">
+        <ttl>Determining the Size of the SGA</ttl>
+        <xreftext>&#x201C;Determining the Size of the SGA&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="tuning.htm" number="8.6.2" targetptr="UNXAR264">
+        <ttl>Shared Memory on AIX</ttl>
+        <xreftext>&#x201C;Shared Memory on AIX&#x201D;</xreftext>
+        <obj element="bridgehead" href="tuning.htm" number="" targetptr="UNXAR265">
+          <ttl>Large Page Feature on AIX POWER4- and POWER5-Based Systems</ttl>
+          <xreftext>&#x201C;Large Page Feature on AIX POWER4- and POWER5-Based Systems&#x201D;</xreftext>
+        </obj>
+      </div>
+    </div>
+    <div element="sect1" href="tuning.htm" number="8.7" targetptr="UNXAR266">
+      <ttl>Tuning the Operating System Buffer Cache</ttl>
+      <xreftext>&#x201C;Tuning the Operating System Buffer Cache&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="appendix" href="appa_aix.htm" number="A" targetptr="UNXAR009">
+    <ttl>Administering Oracle Database on AIX</ttl>
+    <xreftext>&#x201C;Administering Oracle Database on AIX&#x201D;</xreftext>
+    <div element="sect1" href="appa_aix.htm" number="A.1" targetptr="UNXAR267">
+      <ttl>Memory and Paging</ttl>
+      <xreftext>&#x201C;Memory and Paging&#x201D;</xreftext>
+      <div element="sect2" href="appa_aix.htm" number="A.1.1" targetptr="UNXAR268">
+        <ttl>Controlling Buffer-Cache Paging Activity</ttl>
+        <xreftext>&#x201C;Controlling Buffer-Cache Paging Activity&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.1.2" targetptr="UNXAR269">
+        <ttl>Tuning the AIX File Buffer Cache</ttl>
+        <xreftext>&#x201C;Tuning the AIX File Buffer Cache&#x201D;</xreftext>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR270">
+          <ttl>Tuning the minperm and maxperm Parameters</ttl>
+          <xreftext>&#x201C;Tuning the minperm and maxperm Parameters&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.1.3" targetptr="UNXAR271">
+        <ttl>Allocating Sufficient Paging Space</ttl>
+        <xreftext>&#x201C;Allocating Sufficient Paging Space&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.1.4" targetptr="UNXAR272">
+        <ttl>Controlling Paging</ttl>
+        <xreftext>&#x201C;Controlling Paging&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.1.5" targetptr="UNXAR273">
+        <ttl>Setting the Database Block Size</ttl>
+        <xreftext>&#x201C;Setting the Database Block Size&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.1.6" targetptr="UNXAR274">
+        <ttl>Tuning the Log Archive Buffers</ttl>
+        <xreftext>&#x201C;Tuning the Log Archive Buffers&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.1.7" targetptr="UNXAR275">
+        <ttl>Input-Output Buffers and SQL*Loader</ttl>
+        <xreftext>&#x201C;Input-Output Buffers and SQL*Loader&#x201D;</xreftext>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR276">
+          <ttl>BUFFER Parameter for the Import Utility</ttl>
+          <xreftext>&#x201C;BUFFER Parameter for the Import Utility&#x201D;</xreftext>
+        </obj>
+      </div>
+    </div>
+    <div element="sect1" href="appa_aix.htm" number="A.2" targetptr="UNXAR277">
+      <ttl>Disk Input-Output Issues</ttl>
+      <xreftext>&#x201C;Disk Input-Output Issues&#x201D;</xreftext>
+      <div element="sect2" href="appa_aix.htm" number="A.2.1" targetptr="UNXAR278">
+        <ttl>AIX Logical Volume Manager</ttl>
+        <xreftext>&#x201C;AIX Logical Volume Manager&#x201D;</xreftext>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR279">
+          <ttl>Design a Striped Logical Volume</ttl>
+          <xreftext>&#x201C;Design a Striped Logical Volume&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR280">
+          <ttl>Other Considerations</ttl>
+          <xreftext>&#x201C;Other Considerations&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.2" targetptr="UNXAR281">
+        <ttl>Using Journaled File Systems Compared to Raw Logical Volumes</ttl>
+        <xreftext>&#x201C;Using Journaled File Systems Compared to Raw Logical Volumes&#x201D;</xreftext>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR282">
+          <ttl>File System Options</ttl>
+          <xreftext>&#x201C;File System Options&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR283">
+          <ttl>Considerations for JFS and JFS2</ttl>
+          <xreftext>&#x201C;Considerations for JFS and JFS2&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR284">
+          <ttl>Considerations for GPFS</ttl>
+          <xreftext>&#x201C;Considerations for GPFS&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR285">
+          <ttl>Moving from a Journaled File System to Raw Logical Volumes</ttl>
+          <xreftext>&#x201C;Moving from a Journaled File System to Raw Logical Volumes&#x201D;</xreftext>
+        </obj>
+        <obj element="bridgehead" href="appa_aix.htm" number="" targetptr="UNXAR286">
+          <ttl>Moving from Raw Logical Volumes to a Journaled File System</ttl>
+          <xreftext>&#x201C;Moving from Raw Logical Volumes to a Journaled File System&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.3" targetptr="UNXAR287">
+        <ttl>Using Asynchronous Input-Output</ttl>
+        <xreftext>&#x201C;Using Asynchronous Input-Output&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.4" targetptr="UNXAR288">
+        <ttl>Input-Output Slaves</ttl>
+        <xreftext>&#x201C;Input-Output Slaves&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.5" targetptr="UNXAR289">
+        <ttl>Using the DB_FILE_MULTIBLOCK_READ_COUNT Parameter</ttl>
+        <xreftext>&#x201C;Using the DB_FILE_MULTIBLOCK_READ_COUNT Parameter&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.6" targetptr="UNXAR290">
+        <ttl>Using Write Behind</ttl>
+        <xreftext>&#x201C;Using Write Behind&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.7" targetptr="UNXAR291">
+        <ttl>Tuning Sequential Read Ahead</ttl>
+        <xreftext>&#x201C;Tuning Sequential Read Ahead&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.8" targetptr="UNXAR292">
+        <ttl>Tuning Disk Input-Output Pacing</ttl>
+        <xreftext>&#x201C;Tuning Disk Input-Output Pacing&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.2.9" targetptr="UNXAR293">
+        <ttl>Resilvering with Oracle Database</ttl>
+        <xreftext>&#x201C;Resilvering with Oracle Database&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="appa_aix.htm" number="A.3" targetptr="UNXAR295">
+      <ttl>CPU Scheduling and Process Priorities</ttl>
+      <xreftext>&#x201C;CPU Scheduling and Process Priorities&#x201D;</xreftext>
+      <div element="sect2" href="appa_aix.htm" number="A.3.1" targetptr="UNXAR296">
+        <ttl>Changing Process Running Time Slice</ttl>
+        <xreftext>&#x201C;Changing Process Running Time Slice&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appa_aix.htm" number="A.3.2" targetptr="UNXAR297">
+        <ttl>Using Processor Binding on SMP Systems</ttl>
+        <xreftext>&#x201C;Using Processor Binding on SMP Systems&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="appa_aix.htm" number="A.4" targetptr="UNXAR298">
+      <ttl>Setting the AIXTHREAD_SCOPE Environment Variable</ttl>
+      <xreftext>&#x201C;Setting the AIXTHREAD_SCOPE Environment Variable&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appa_aix.htm" number="A.5" targetptr="UNXAR299">
+      <ttl>Network Information Service external naming support</ttl>
+      <xreftext>&#x201C;Network Information Service external naming support&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appa_aix.htm" number="A.6" targetptr="UNXAR300">
+      <ttl>Simultaneous Multithreading on AIX 5.3 and Later Versions</ttl>
+      <xreftext>&#x201C;Simultaneous Multithreading on AIX 5.3 and Later Versions&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appa_aix.htm" number="A.7" targetptr="UNXAR301">
+      <ttl>Configuring IBM JSSE Provider with Oracle JDBC Thin Driver</ttl>
+      <xreftext>&#x201C;Configuring IBM JSSE Provider with Oracle JDBC Thin Driver&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="appendix" href="appb_hpux.htm" number="B" targetptr="UNXAR010">
+    <ttl>Administering Oracle Database on HP-UX</ttl>
+    <xreftext>&#x201C;Administering Oracle Database on HP-UX&#x201D;</xreftext>
+    <div element="sect1" href="appb_hpux.htm" number="B.1" targetptr="UNXAR302">
+      <ttl>HP-UX Shared Memory Segments for an Oracle Instance</ttl>
+      <xreftext>&#x201C;HP-UX Shared Memory Segments for an Oracle Instance&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appb_hpux.htm" number="B.2" targetptr="UNXAR303">
+      <ttl>HP-UX SCHED_NOAGE Scheduling Policy</ttl>
+      <xreftext>&#x201C;HP-UX SCHED_NOAGE Scheduling Policy&#x201D;</xreftext>
+      <div element="sect2" href="appb_hpux.htm" number="B.2.1" targetptr="UNXAR304">
+        <ttl>Enabling SCHED_NOAGE for Oracle Database</ttl>
+        <xreftext>&#x201C;Enabling SCHED_NOAGE for Oracle Database&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="appb_hpux.htm" number="B.3" targetptr="UNXAR305">
+      <ttl>Lightweight Timer Implementation</ttl>
+      <xreftext>&#x201C;Lightweight Timer Implementation&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appb_hpux.htm" number="B.4" targetptr="UNXAR306">
+      <ttl>Asynchronous Input-Output</ttl>
+      <xreftext>&#x201C;Asynchronous Input-Output&#x201D;</xreftext>
+      <div element="sect2" href="appb_hpux.htm" number="B.4.1" targetptr="UNXAR307">
+        <ttl>MLOCK Privilege</ttl>
+        <xreftext>&#x201C;MLOCK Privilege&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appb_hpux.htm" number="B.4.2" targetptr="UNXAR308">
+        <ttl>Implementing Asynchronous Input-Output</ttl>
+        <xreftext>&#x201C;Implementing Asynchronous Input-Output&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appb_hpux.htm" number="B.4.3" targetptr="UNXAR309">
+        <ttl>Verifying Asynchronous Input-Output</ttl>
+        <xreftext>&#x201C;Verifying Asynchronous Input-Output&#x201D;</xreftext>
+        <div element="sect3" href="appb_hpux.htm" number="B.4.3.1" targetptr="UNXAR310">
+          <ttl>Verifying That HP-UX Asynchronous Driver is Configured for Oracle Database</ttl>
+          <xreftext>&#x201C;Verifying That HP-UX Asynchronous Driver is Configured for Oracle Database&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="appb_hpux.htm" number="B.4.3.2" targetptr="UNXAR311">
+          <ttl>Verifying that Oracle Database is Using Asynchronous Input-Output</ttl>
+          <xreftext>&#x201C;Verifying that Oracle Database is Using Asynchronous Input-Output&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="appb_hpux.htm" number="B.4.4" targetptr="UNXAR312">
+        <ttl>Asynchronous Flag in SGA</ttl>
+        <xreftext>&#x201C;Asynchronous Flag in SGA&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="appb_hpux.htm" number="B.5" targetptr="UNXAR313">
+      <ttl>Large Memory Allocations and Oracle Database Tuning</ttl>
+      <xreftext>&#x201C;Large Memory Allocations and Oracle Database Tuning&#x201D;</xreftext>
+      <div element="sect2" href="appb_hpux.htm" number="B.5.1" targetptr="UNXAR315">
+        <ttl>Default Large Virtual Memory Page Size</ttl>
+        <xreftext>&#x201C;Default Large Virtual Memory Page Size&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appb_hpux.htm" number="B.5.2" targetptr="UNXAR316">
+        <ttl>Tuning Recommendations</ttl>
+        <xreftext>&#x201C;Tuning Recommendations&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appb_hpux.htm" number="B.5.3" targetptr="UNXAR317">
+        <ttl>Tunable Base Page Size</ttl>
+        <xreftext>&#x201C;Tunable Base Page Size&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="appb_hpux.htm" number="B.6" targetptr="UNXAR318">
+      <ttl>CPU_COUNT Initialization Parameter and HP-UX Dynamic Processor Reconfiguration</ttl>
+      <xreftext>&#x201C;CPU_COUNT Initialization Parameter and HP-UX Dynamic Processor Reconfiguration&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appb_hpux.htm" number="B.7" targetptr="UNXAR319">
+      <ttl>Network Information Service external naming support</ttl>
+      <xreftext>&#x201C;Network Information Service external naming support&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appb_hpux.htm" number="B.8" targetptr="UNXAR320">
+      <ttl>Activating and Setting Expanded Host Names and Node Names</ttl>
+      <xreftext>&#x201C;Activating and Setting Expanded Host Names and Node Names&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="appendix" href="appc_linux.htm" number="C" targetptr="UNXAR011">
+    <ttl>Administering Oracle Database on Linux</ttl>
+    <xreftext>&#x201C;Administering Oracle Database on Linux&#x201D;</xreftext>
+    <div element="sect1" href="appc_linux.htm" number="C.1" targetptr="UNXAR321">
+      <ttl>Extended Buffer Cache Support</ttl>
+      <xreftext>&#x201C;Extended Buffer Cache Support&#x201D;</xreftext>
+      <obj element="bridgehead" href="appc_linux.htm" number="" targetptr="UNXAR322">
+        <ttl>In-Memory File System</ttl>
+        <xreftext>&#x201C;In-Memory File System&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="appc_linux.htm" number="" targetptr="UNXAR323">
+        <ttl>USE_INDIRECT_DATA_BUFFERS Initialization Parameter</ttl>
+        <xreftext>&#x201C;USE_INDIRECT_DATA_BUFFERS Initialization Parameter&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="appc_linux.htm" number="" targetptr="UNXAR324">
+        <ttl>Dynamic Cache Parameters</ttl>
+        <xreftext>&#x201C;Dynamic Cache Parameters&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="appc_linux.htm" number="" targetptr="UNXAR325">
+        <ttl>Limitations</ttl>
+        <xreftext>&#x201C;Limitations&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="sect1" href="appc_linux.htm" number="C.2" targetptr="UNXAR327">
+      <ttl>Using hugetlbfs on SUSE Linux Enterprise Server 10 or Red Hat Enterprise Linux 4</ttl>
+      <xreftext>&#x201C;Using hugetlbfs on SUSE Linux Enterprise Server 10 or Red Hat Enterprise Linux 4&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appc_linux.htm" number="C.3" targetptr="UNXAR328">
+      <ttl>Asynchronous Input-Output Support</ttl>
+      <xreftext>&#x201C;Asynchronous Input-Output Support&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appc_linux.htm" number="C.4" targetptr="UNXAR333">
+      <ttl>Simultaneous Multithreading</ttl>
+      <xreftext>&#x201C;Simultaneous Multithreading&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appc_linux.htm" number="C.5" targetptr="UNXAR334">
+      <ttl>Allocating Shared Resources</ttl>
+      <xreftext>&#x201C;Allocating Shared Resources&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="appc_linux.htm" number="C.6" targetptr="UNXAR335">
+      <ttl>Database Migration from 32-Bit Linux to 64-Bit Linux</ttl>
+      <xreftext>&#x201C;Database Migration from 32-Bit Linux to 64-Bit Linux&#x201D;</xreftext>
+      <div element="sect2" href="appc_linux.htm" number="C.6.1" targetptr="UNXAR336">
+        <ttl>Online Backup of Database With RMAN</ttl>
+        <xreftext>&#x201C;Online Backup of Database With RMAN&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appc_linux.htm" number="C.6.2" targetptr="UNXAR337">
+        <ttl>Migrating 32-Bit Linux Database to 64-Bit Linux Database</ttl>
+        <xreftext>&#x201C;Migrating 32-Bit Linux Database to 64-Bit Linux Database&#x201D;</xreftext>
+        <div element="sect3" href="appc_linux.htm" number="C.6.2.1" targetptr="UNXAR338">
+          <ttl>Migrating 32-Bit Database to 64-Bit Database With the Same Directory Structure for Data Files</ttl>
+          <xreftext>&#x201C;Migrating 32-Bit Database to 64-Bit Database With the Same Directory Structure for Data Files&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="appc_linux.htm" number="C.6.2.2" targetptr="UNXAR339">
+          <ttl>Migrating 32-Bit Database to 64-Bit Database With Different Directory Structure for Data Files</ttl>
+          <xreftext>&#x201C;Migrating 32-Bit Database to 64-Bit Database With Different Directory Structure for Data Files&#x201D;</xreftext>
+          <obj element="bridgehead" href="appc_linux.htm" number="" targetptr="UNXAR340">
+            <ttl>Re-aligning Data File Path and Name</ttl>
+            <xreftext>&#x201C;Re-aligning Data File Path and Name&#x201D;</xreftext>
+          </obj>
+          <obj element="bridgehead" href="appc_linux.htm" number="" targetptr="UNXAR341">
+            <ttl>Re-creating Control File</ttl>
+            <xreftext>&#x201C;Re-creating Control File&#x201D;</xreftext>
+          </obj>
+          <obj element="bridgehead" href="appc_linux.htm" number="" targetptr="UNXAR342">
+            <ttl>Mounting Database on a 64-Bit Computer</ttl>
+            <xreftext>&#x201C;Mounting Database on a 64-Bit Computer&#x201D;</xreftext>
+          </obj>
+        </div>
+      </div>
+      <div element="sect2" href="appc_linux.htm" number="C.6.3" targetptr="UNXAR343">
+        <ttl>Migrating Data To and From ASM</ttl>
+        <xreftext>&#x201C;Migrating Data To and From ASM&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+  <div element="appendix" href="appe_sol.htm" number="D" targetptr="UNXAR013">
+    <ttl>Administering Oracle Database on Solaris</ttl>
+    <xreftext>&#x201C;Administering Oracle Database on Solaris&#x201D;</xreftext>
+    <div element="sect1" href="appe_sol.htm" number="D.1" targetptr="UNXAR344">
+      <ttl>Intimate Shared Memory</ttl>
+      <xreftext>&#x201C;Intimate Shared Memory&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="appendix" href="app_odbc.htm" number="E" targetptr="UNXAR014">
+    <ttl>Using Oracle ODBC Driver</ttl>
+    <xreftext>&#x201C;Using Oracle ODBC Driver&#x201D;</xreftext>
+    <div element="sect1" href="app_odbc.htm" number="E.1" targetptr="UNXAR345">
+      <ttl>Oracle ODBC Driver Certification</ttl>
+      <xreftext>&#x201C;Oracle ODBC Driver Certification&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.2" targetptr="UNXAR346">
+      <ttl>Features Not Supported</ttl>
+      <xreftext>&#x201C;Features Not Supported&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.3" targetptr="UNXAR347">
+      <ttl>Implementation of Data Types</ttl>
+      <xreftext>&#x201C;Implementation of Data Types&#x201D;</xreftext>
+      <obj element="bridgehead" href="app_odbc.htm" number="" targetptr="UNXAR348">
+        <ttl>DATE and TIMESTAMP</ttl>
+        <xreftext>&#x201C;DATE and TIMESTAMP&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="app_odbc.htm" number="" targetptr="UNXAR349">
+        <ttl>Floating Point Data Types</ttl>
+        <xreftext>&#x201C;Floating Point Data Types&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.4" targetptr="UNXAR350">
+      <ttl>Limitations on Data Types</ttl>
+      <xreftext>&#x201C;Limitations on Data Types&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.5" targetptr="UNXAR351">
+      <ttl>Format of the Connection String for the SQLDriverConnect Function</ttl>
+      <xreftext>&#x201C;Format of the Connection String for the SQLDriverConnect Function&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.6" targetptr="UNXAR352">
+      <ttl>Reducing Lock Timeout in a Program</ttl>
+      <xreftext>&#x201C;Reducing Lock Timeout in a Program&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.7" targetptr="UNXAR353">
+      <ttl>Linking ODBC Applications</ttl>
+      <xreftext>&#x201C;Linking ODBC Applications&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.8" targetptr="UNXAR354">
+      <ttl>Obtaining Information About ROWIDs</ttl>
+      <xreftext>&#x201C;Obtaining Information About ROWIDs&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.9" targetptr="UNXAR355">
+      <ttl>ROWIDs in a WHERE Clause</ttl>
+      <xreftext>&#x201C;ROWIDs in a WHERE Clause&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.10" targetptr="UNXAR356">
+      <ttl>Enabling Result Sets</ttl>
+      <xreftext>&#x201C;Enabling Result Sets&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.11" targetptr="UNXAR357">
+      <ttl>Enabling EXEC Syntax</ttl>
+      <xreftext>&#x201C;Enabling EXEC Syntax&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.12" targetptr="UNXAR358">
+      <ttl>Supported Functionality</ttl>
+      <xreftext>&#x201C;Supported Functionality&#x201D;</xreftext>
+      <div element="sect2" href="app_odbc.htm" number="E.12.1" targetptr="UNXAR359">
+        <ttl>API Conformance</ttl>
+        <xreftext>&#x201C;API Conformance&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.12.2" targetptr="UNXAR360">
+        <ttl>Implementation of ODBC API Functions</ttl>
+        <xreftext>&#x201C;Implementation of ODBC API Functions&#x201D;</xreftext>
+        <obj element="bridgehead" href="app_odbc.htm" number="" targetptr="UNXAR361">
+          <ttl>SQLProcedures and SQLProcedureColumns</ttl>
+          <xreftext>&#x201C;SQLProcedures and SQLProcedureColumns&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.12.3" targetptr="UNXAR362">
+        <ttl>Implementation of the ODBC SQL Syntax</ttl>
+        <xreftext>&#x201C;Implementation of the ODBC SQL Syntax&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.12.4" targetptr="UNXAR363">
+        <ttl>Implementation of Data Types</ttl>
+        <xreftext>&#x201C;Implementation of Data Types&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.13" targetptr="UNXAR364">
+      <ttl>Unicode Support</ttl>
+      <xreftext>&#x201C;Unicode Support&#x201D;</xreftext>
+      <div element="sect2" href="app_odbc.htm" number="E.13.1" targetptr="UNXAR365">
+        <ttl>Unicode Support Within the ODBC Environment</ttl>
+        <xreftext>&#x201C;Unicode Support Within the ODBC Environment&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.13.2" targetptr="UNXAR366">
+        <ttl>Unicode Support in ODBC API</ttl>
+        <xreftext>&#x201C;Unicode Support in ODBC API&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.13.3" targetptr="UNXAR367">
+        <ttl>SQLGetData Performance</ttl>
+        <xreftext>&#x201C;SQLGetData Performance&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.13.4" targetptr="UNXAR368">
+        <ttl>Unicode Samples</ttl>
+        <xreftext>&#x201C;Unicode Samples&#x201D;</xreftext>
+        <obj element="example" href="app_odbc.htm" number="E-1" targetptr="UNXAR369">
+          <ttl>Connection to Database</ttl>
+          <xreftext>&#x201C;Connection to Database&#x201D;</xreftext>
+        </obj>
+        <obj element="example" href="app_odbc.htm" number="E-2" targetptr="UNXAR370">
+          <ttl>Simple Retrieval</ttl>
+          <xreftext>&#x201C;Simple Retrieval&#x201D;</xreftext>
+        </obj>
+        <obj element="example" href="app_odbc.htm" number="E-3" targetptr="UNXAR371">
+          <ttl>Retrieval Using SQLGetData (Binding After Fetch)</ttl>
+          <xreftext>&#x201C;Retrieval Using SQLGetData (Binding After Fetch)&#x201D;</xreftext>
+        </obj>
+        <obj element="example" href="app_odbc.htm" number="E-4" targetptr="UNXAR372">
+          <ttl>Simple Update</ttl>
+          <xreftext>&#x201C;Simple Update&#x201D;</xreftext>
+        </obj>
+        <obj element="example" href="app_odbc.htm" number="E-5" targetptr="UNXAR373">
+          <ttl>Update and Retrieval for Long Data (CLOB)</ttl>
+          <xreftext>&#x201C;Update and Retrieval for Long Data (CLOB)&#x201D;</xreftext>
+        </obj>
+      </div>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.14" targetptr="UNXAR374">
+      <ttl>Performance and Tuning</ttl>
+      <xreftext>&#x201C;Performance and Tuning&#x201D;</xreftext>
+      <div element="sect2" href="app_odbc.htm" number="E.14.1" targetptr="UNXAR375">
+        <ttl>General ODBC Programming Guidelines</ttl>
+        <xreftext>&#x201C;General ODBC Programming Guidelines&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.14.2" targetptr="UNXAR376">
+        <ttl>Data Source Configuration Options</ttl>
+        <xreftext>&#x201C;Data Source Configuration Options&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_odbc.htm" number="E.14.3" targetptr="UNXAR377">
+        <ttl>DATE and TIMESTAMP Data Types</ttl>
+        <xreftext>&#x201C;DATE and TIMESTAMP Data Types&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="app_odbc.htm" number="E.15" targetptr="UNXAR378">
+      <ttl>Error Messages</ttl>
+      <xreftext>&#x201C;Error Messages&#x201D;</xreftext>
+      <obj element="bridgehead" href="app_odbc.htm" number="" targetptr="UNXAR379">
+        <ttl>Native Error</ttl>
+        <xreftext>&#x201C;Native Error&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="app_odbc.htm" number="" targetptr="UNXAR380">
+        <ttl>SQLSTATE</ttl>
+        <xreftext>&#x201C;SQLSTATE&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="app_odbc.htm" number="" targetptr="UNXAR381">
+        <ttl>Error Message</ttl>
+        <xreftext>&#x201C;Error Message&#x201D;</xreftext>
+      </obj>
+    </div>
+  </div>
+  <div element="appendix" href="appg_db_lmts.htm" number="F" targetptr="UNXAR015">
+    <ttl>Database Limits</ttl>
+    <xreftext>&#x201C;Database Limits&#x201D;</xreftext>
+    <div element="sect1" href="appg_db_lmts.htm" number="F.1" targetptr="UNXAR382">
+      <ttl>Database Limits</ttl>
+      <xreftext>&#x201C;Database Limits&#x201D;</xreftext>
+      <obj element="table" href="appg_db_lmts.htm" number="F-1" targetptr="UNXAR383">
+        <ttl>CREATE CONTROLFILE and CREATE DATABASE Parameters</ttl>
+        <xreftext>&#x201C;CREATE CONTROLFILE and CREATE DATABASE Parameters&#x201D;</xreftext>
+      </obj>
+      <obj element="table" href="appg_db_lmts.htm" number="F-2" targetptr="UNXAR384">
+        <ttl>File Size Limits</ttl>
+        <xreftext>&#x201C;File Size Limits&#x201D;</xreftext>
+      </obj>
+    </div>
+  </div>
+  <div element="appendix" href="appi_vlm.htm" number="G" targetptr="UNXAR385">
+    <ttl>Very Large Memory and HugePages</ttl>
+    <xreftext>&#x201C;Very Large Memory and HugePages&#x201D;</xreftext>
+    <div element="sect1" href="appi_vlm.htm" number="G.1" targetptr="UNXAR386">
+      <ttl>Very Large Memory on Linux x86</ttl>
+      <xreftext>&#x201C;Very Large Memory on Linux x86&#x201D;</xreftext>
+      <div element="sect2" href="appi_vlm.htm" number="G.1.1" targetptr="UNXAR387">
+        <ttl>Implementing VLM on 32-bit Linux</ttl>
+        <xreftext>&#x201C;Implementing VLM on 32-bit Linux&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appi_vlm.htm" number="G.1.2" targetptr="UNXAR388">
+        <ttl>Prerequisites for Implementing VLM</ttl>
+        <xreftext>&#x201C;Prerequisites for Implementing VLM&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appi_vlm.htm" number="G.1.3" targetptr="UNXAR389">
+        <ttl>Methods To Increase SGA Limits</ttl>
+        <xreftext>&#x201C;Methods To Increase SGA Limits&#x201D;</xreftext>
+        <div element="sect3" href="appi_vlm.htm" number="G.1.3.1" targetptr="UNXAR390">
+          <ttl>Hugemem Kernel</ttl>
+          <xreftext>&#x201C;Hugemem Kernel&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="appi_vlm.htm" number="G.1.3.2" targetptr="UNXAR391">
+          <ttl>Hugemem Kernel with Very Large Memory</ttl>
+          <xreftext>&#x201C;Hugemem Kernel with Very Large Memory&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="appi_vlm.htm" number="G.1.4" targetptr="UNXAR392">
+        <ttl>Configuring Very Large Memory for Oracle Database</ttl>
+        <xreftext>&#x201C;Configuring Very Large Memory for Oracle Database&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appi_vlm.htm" number="G.1.5" targetptr="UNXAR393">
+        <ttl>Restrictions Involved in Implementing Very Large Memory</ttl>
+        <xreftext>&#x201C;Restrictions Involved in Implementing Very Large Memory&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="appi_vlm.htm" number="G.2" targetptr="UNXAR394">
+      <ttl>Overview of HugePages</ttl>
+      <xreftext>&#x201C;Overview of HugePages&#x201D;</xreftext>
+      <div element="sect2" href="appi_vlm.htm" number="G.2.1" targetptr="UNXAR395">
+        <ttl>Tuning SGA With HugePages</ttl>
+        <xreftext>&#x201C;Tuning SGA With HugePages&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appi_vlm.htm" number="G.2.2" targetptr="UNXAR396">
+        <ttl>Configuring HugePages on RHEL/ Oracle Linux</ttl>
+        <xreftext>&#x201C;Configuring HugePages on RHEL/ Oracle Linux&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="appi_vlm.htm" number="G.2.3" targetptr="UNXAR397">
+        <ttl>Restrictions for HugePages Configurations</ttl>
+        <xreftext>&#x201C;Restrictions for HugePages Configurations&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+</div>

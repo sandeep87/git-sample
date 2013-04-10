@@ -1,0 +1,1110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Installing Oracle Database and Creating a Database</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 009" />
+<meta name="Date" content="2010-08-02T19:32:56Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database 2 Day DBA 11g Release 2 (11.2)" />
+<meta name="partno" content="E10897-05" />
+<meta name="docid" content="ADMQS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="intro.htm" title="Previous" type="text/html" />
+<link rel="Next" href="em_manage.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e10897.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database 2 Day DBA<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E10897-05</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="intro.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="em_manage.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e10897.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CHDGJGHB" name="CHDGJGHB"></a><a id="ADMQS002" name="ADMQS002"></a>
+<h1 class="chapter"><span class="secnum">2</span> Installing Oracle Database and Creating a Database</h1>
+<p>This chapter describes how to install Oracle Database software and create a database.</p>
+<p>If you are using an earlier release of Oracle Database and want to install a later release of the Oracle Database software, then you can <span class="italic">upgrade</span> your existing Oracle Database and use it with the new release of the database software. See <a href="software.htm#CIHHCEHC">"Upgrading a Database"</a>.</p>
+<p>This chapter contains the following sections:</p>
+<ul>
+<li>
+<p><a href="#CHDIHEFC">Overview of Installing Oracle Database Software and Creating a Database</a></p>
+</li>
+<li>
+<p><a href="#CHDCDIIE">Installing Oracle Database Software</a></p>
+</li>
+<li>
+<p><a href="#BABEIAID">Creating and Managing a Database with DBCA</a></p>
+</li>
+<li>
+<p><a href="#CIHFEJCJ">Installation: Oracle By Example Series</a></p>
+</li>
+</ul>
+<a id="CHDIHEFC" name="CHDIHEFC"></a><a id="ADMQS021" name="ADMQS021"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Overview of Installing Oracle Database Software and Creating a Database</h2>
+<p><a id="sthref10" name="sthref10"></a><a id="sthref11" name="sthref11"></a><a id="sthref12" name="sthref12"></a>To install your Oracle Database software, use Oracle Universal Installer (OUI). OUI is a graphical user interface utility that enables you to install new Oracle Database software. Online Help is available to guide you through the installation process.</p>
+<p>During the installation process, you are given the opportunity to create a database. If you choose to do so, then OUI automatically starts Oracle Database Configuration Assistant (DBCA) to guide you through the process of creating and configuring a database.</p>
+<p>Before you start the installation process, see the following sections for information about prerequisites and installation choices:</p>
+<ul>
+<li>
+<p><a href="#CIHBECHA">Checking Prerequisites</a></p>
+</li>
+<li>
+<p><a href="#CHDIHHJB">Deciding on Installation Choices</a></p>
+</li>
+</ul>
+<p>If you do not create a database during installation, then you must run DBCA at some point after installation to create a database.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+After you create a database, either during installation or as a standalone operation, you do not have to create another. Each Oracle instance works with a single database only. Rather than requiring that you create multiple databases to accommodate different applications, Oracle Database uses a single database, and accommodates multiple applications by enabling you to separate data into different <span class="italic">schemas</span> within the single database. See <a href="users_secure.htm#CHDDDEBI">"About User Accounts"</a> for more information about schemas.</div>
+<a id="CIHBECHA" name="CIHBECHA"></a><a id="ADMQS0211" name="ADMQS0211"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Checking Prerequisites</h3>
+<p><a id="sthref13" name="sthref13"></a>Before installing the software, OUI performs several automated checks to ensure that your computer fulfills the basic hardware and software requirements for an Oracle Database installation. If your computer does not meet a requirement, then an error message is displayed. The requirements may vary depending upon the type of computer and operating system you are using, but some prerequisites include:</p>
+<ul>
+<li>
+<p><a id="sthref14" name="sthref14"></a>There is a minimum of 1 GB of physical memory.</p>
+</li>
+<li>
+<p>Sufficient paging space is available.</p>
+</li>
+<li>
+<p>The appropriate service packs or patches for your operating system are installed.</p>
+</li>
+<li>
+<p>An appropriate file system format is being used.</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Database Installation Guide</span></a> for your platform for more information about exact requirements</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDIHHJB" name="CHDIHHJB"></a><a id="ADMQS0212" name="ADMQS0212"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Deciding on Installation Choices<a id="sthref15" name="sthref15"></a></h3>
+<p>Oracle Universal Installer guides you through an interview phase where you specify your choices for installation and database creation. The exact sequence of steps depends on your operating system. As you progress through the installation, you are presented with choices on how to configure the database.</p>
+<ul>
+<li>
+<p><a href="#CHDICDHE">Install Options</a></p>
+</li>
+<li>
+<p><a href="#CHDHAFJB">Installation Method</a></p>
+</li>
+<li>
+<p><a href="#g1110927">Installation Type</a></p>
+</li>
+<li>
+<p><a href="#CHDIDDBB">Software Installation Directories</a></p>
+</li>
+<li>
+<p><a href="#CHDHAFHH">Database File Location</a></p>
+</li>
+<li>
+<p><a href="#CHDCFBDE">Database Identifiers</a></p>
+</li>
+<li>
+<p><a href="#CBHFDDFE">About Advanced Installation</a></p>
+</li>
+</ul>
+<a id="CHDICDHE" name="CHDICDHE"></a><a id="ADMQS12378" name="ADMQS12378"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Install Options</h4>
+<p>You can choose to create and configure a database, or to only install the database software.</p>
+<p>You can create a preconfigured database or a custom-configured database during installation. If you choose not to create a database during installation, then you must run DBCA after installation to create a database.</p>
+<p>Preconfigured databases are based on templates that Oracle provides or that you create. Each Oracle-provided template is optimized for a particular workload type. See <a href="#BABHDEDA">Table 2-2, "Oracle-Provided DBCA Templates and Their Corresponding Workloads"</a> for information about the types of preconfigured databases.</p>
+<p>If you choose to use the Desktop Class installation method, then the general purpose database template is used. To create a custom database in which you configure your own database structure, see <a href="#CBHFDDFE">"About Advanced Installation"</a>.</p>
+<div align="center">
+<div class="inftblinformal"><br />
+<table class="Informal oac_no_warn" summary="" border="1" width="80%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<tbody>
+<tr align="left" valign="top">
+<td align="left">
+<p class="notep1">Note:</p>
+If you must create a new database, then Oracle recommends that you install a preconfigured database, which is faster and easier. You can customize the database after it has been created.</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblinformal" --></div>
+</div>
+<!-- class="sect3" -->
+<a id="CHDHAFJB" name="CHDHAFJB"></a><a id="ADMQS12379" name="ADMQS12379"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Installation Method</h4>
+<p>The installation methods are divided into Desktop Class and Server Class:</p>
+<ul>
+<li>
+<p><span class="bold">Desktop Class</span>&#x2014;This installation class is most appropriate for laptop or desktop computers. It includes a starter database and requires minimal configuration.</p>
+</li>
+<li>
+<p><span class="bold">Server Class</span>&#x2014;This installation class is for servers, such as you would find in a data center, or used to support enterprise-level applications. Choose this installation class if you need access to advanced configuration options.</p>
+</li>
+</ul>
+<p>During a Desktop Class installation, you make only basic choices. For a Server Class installation, you choose either typical installation (where you make only basic choices) or advanced installation.</p>
+<p>During a Desktop Class or a typical installation, Oracle Database automatically installs the sample schemas.</p>
+</div>
+<!-- class="sect3" -->
+<a id="g1110927" name="g1110927"></a><a id="ADMQS02121" name="ADMQS02121"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Installation Type</h4>
+<p>When you install Oracle Database during basic and advanced installations, you need answers for the questions listed in this section. OUI provides default values for every choice.</p>
+<ul>
+<li>
+<p><a id="sthref16" name="sthref16"></a><a id="sthref17" name="sthref17"></a><a id="sthref18" name="sthref18"></a><a id="sthref19" name="sthref19"></a>What type of database edition installation do you want to perform?</p>
+<p>Your choices are:</p>
+<ul>
+<li>
+<p><span class="bold">Enterprise Edition</span>&#x2014;This installation type is the full-featured Oracle Database product that provides data management for enterprise-level applications. It is intended for mission-critical, high-security online transaction processing (OLTP) and data warehousing environments.</p>
+</li>
+<li>
+<p><span class="bold">Standard Edition</span>&#x2014;This installation type is suitable for workgroup or department-level applications, and for small to medium-sized enterprises. It provides core relational database management services and options and includes an integrated set of management tools, replication, Web features, and facilities for building business-critical applications.</p>
+</li>
+<li>
+<p><span class="bold">Standard One Edition</span>&#x2014;This installation type is suitable for workgroup, department, or web applications. It provides core relational database management services for single-server environments or highly distributed branch environments. Oracle Standard Edition One includes all the facilities necessary to build business-critical applications.</p>
+</li>
+<li>
+<p><span class="bold">Personal Edition</span> (Microsoft Windows operating systems only)&#x2014;This installation type installs the same software as the Enterprise Edition, but supports only a single-user, development and deployment environment.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>What are your database configuration options?</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="CHDIDDBB" name="CHDIDDBB"></a><a id="ADMQS12380" name="ADMQS12380"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Software Installation Directories</h4>
+<p><a id="sthref20" name="sthref20"></a>you must specify the directory in which the Oracle Database software is installed, or the location where the product binary files are copied from the installation media. You must choose a location that has enough disk space to contain the software and is accessible by the operating system user performing the installation.</p>
+<p><a id="sthref21" name="sthref21"></a><a id="sthref22" name="sthref22"></a><a id="sthref23" name="sthref23"></a><a id="sthref24" name="sthref24"></a>You also specify the location of the Oracle base directory, which is used by all Oracle software products installed on the server. The first time you install Oracle Database software on a server, you are prompted to specify the location of the inventory directory, called <code>oraInventory</code>. This directory provides a centralized inventory of all Oracle software products installed on the server. You should use the same value for the Oracle inventory directory each time you perform an Oracle software installation on the server.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CHDHAFHH" name="CHDHAFHH"></a><a id="ADMQS12381" name="ADMQS12381"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Database File Location</h4>
+<p><a id="sthref25" name="sthref25"></a>A database includes several files that store the user data, database metadata, and information required to recover from failures. As an administrator, you decide what kind of storage subsystem to use for these files. You can select from the following options:</p>
+<ul>
+<li>
+<p><span class="bold">File System</span>&#x2014;This default option creates database files that are managed by the file system of your operating system. You can specify the directory path where database files are to be stored. Oracle Database can create and manage the actual files.</p>
+<p>If you are not certain about which option to use, then select File System (the default).</p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref26" name="sthref26"></a>Automatic Storage Management</span>&#x2014;This option enables you to place your data files in Oracle Automatic Storage Management (Oracle ASM) disk groups. If you choose Oracle ASM, then Oracle Database automatically manages database file placement and naming. For environments with a large number of disks, this option simplifies database administration and maximizes performance. Oracle ASM performs software striping and mirroring at the file level for maximum storage flexibility, performance, and availability.</p>
+<p>Oracle ASM uses an Oracle ASM instance, which is distinct from the database instance, to configure and manage disk groups. A single Oracle ASM instance can provide storage for multiple databases on the same server.</p>
+<p>For more information, see <a href="asm.htm#CIADJDJF">"About Oracle Automatic Storage Management"</a> and <a class="olink OSTMG" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a>.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+In past releases, Oracle ASM was installed as part of the Oracle Database installation. With Oracle Database 11<span class="italic">g</span> release 2 (11.2), Oracle ASM is part of an Oracle grid infrastructure installation.
+<p>To use Oracle ASM for storing database files, you must have installed Oracle ASM and created one or more disk groups before performing the Oracle Database installation.</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="CHDCFBDE" name="CHDCFBDE"></a><a id="ADMQS12382" name="ADMQS12382"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Database Identifiers</h4>
+<p><a id="sthref27" name="sthref27"></a><a id="sthref28" name="sthref28"></a><a id="sthref29" name="sthref29"></a><a id="sthref30" name="sthref30"></a><a id="sthref31" name="sthref31"></a><a id="sthref32" name="sthref32"></a>These options include your global database name and system identifier (SID). The <span class="bold">SID</span> is a unique identifier that is used to distinguish this instance from other Oracle Database instances that you may create later and run concurrently on your system.</p>
+<p>The global database name is the full name of the database that uniquely distinguishes it from any other database. The global database name is in the form <code>database_name.database_domain</code>, for example <code>sales.example.com</code>. The database name portion <code>sales</code> is a simple name you call your database. The database domain portion <code>example.com</code> specifies the database domain in which the database is located. Together, the database name and domain form the global database name.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CBHFDDFE" name="CBHFDDFE"></a><a id="ADMQS02122" name="ADMQS02122"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">About Advanced Installation</h4>
+<p>During advanced installations using the Server Class method you are prompted to make the additional choices listed in this section, and the choices for a typical installation. The installation process provides default values for every choice.</p>
+<p>This guide describes, but does not document, these additional advanced installation choices. For more information, see <a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Database Installation Guide</span></a> for your platform.</p>
+<ul>
+<li>
+<p><a id="sthref33" name="sthref33"></a>Product Languages</p>
+<p>You choose which language the software should use after it is installed. You can select multiple languages. The default value is English. If you choose a value other than English, it does not change the language used by the installation.</p>
+</li>
+<li>
+<p>Database Configuration Type</p>
+<p>You select a template to use when configuring the database. You can choose either either General Purpose/Transaction Processing or Data Warehousing.</p>
+</li>
+<li>
+<p><a id="sthref34" name="sthref34"></a><a id="sthref35" name="sthref35"></a><a id="sthref36" name="sthref36"></a><a id="sthref37" name="sthref37"></a>Database Configuration Options</p>
+<p>You can choose how to configure the database created by the installer. You can select the memory size and management options, the character sets used to store data, the security options for database access, and whether the sample schemas should be installed.</p>
+<p>To complete the exercises in this guide and related course material, you must install the sample schemas. This data is also used in most examples throughout Oracle Database documentation. Oracle recommends that you install the sample schemas.</p>
+<p>This choice is a configuration option only during advanced installation. Sample schemas are installed by default during typical or Desktop class installations.</p>
+</li>
+<li>
+<p><a id="sthref38" name="sthref38"></a><a id="sthref39" name="sthref39"></a>Database Management Options</p>
+<p>You specify whether to manage your database centrally or locally using Oracle Enterprise Manager. Central management enables you to manage multiple targets, such as databases and application servers, using a single interface. Using local management you can manage only a single database instance at a time.</p>
+<p>To use central management, you must have an Oracle Enterprise Management agent on each <span class="italic">host</span>, or computer that has Oracle Database software installed on it. These agents are responsible for monitoring all components on that host. If an agent is not found on the local host, then this option is disabled during installation.</p>
+<p>If you are setting up a single database for the first time, then it is recommended that you configure local management with Oracle Enterprise Manager, which is the default. You can later install additional databases and configure central management using Enterprise Manager.</p>
+</li>
+<li>
+<p>Recovery Options</p>
+<p>You specify whether automated backups should be configured for the database. If you choose this option, you must specify whether the recovery area should be stored on the local file system or in an Oracle ASM disk group. You must also specify the operating system credentials the backup job uses when performing backups.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+To use Oracle ASM for recovery area storage, you must have installed Oracle ASM as part of an Oracle grid infrastructure installation and created one or more disk groups before performing the Oracle Database installation.</div>
+</li>
+<li>
+<p>Schema Passwords</p>
+<p>When you create a database, certain administrative user accounts are created automatically. You are prompted to enter the passwords for the <code>SYS</code>, <code>SYSTEM</code>, <code>SYSMAN</code>, and <code>DBSNMP</code> accounts, which enable you to manage and administer the database. You can use the same password for each account, or specify passwords for each account individually. If you do not enter a secure password, you will receive a warning message during installation.</p>
+</li>
+<li>
+<p><a id="sthref40" name="sthref40"></a><a id="sthref41" name="sthref41"></a><a id="sthref42" name="sthref42"></a>Operating System Groups</p>
+<p>Administrative access to the database is granted by membership in certain operating system groups. You can choose the operating system group to be used for <code>SYSDBA</code> access (typically <code>dba</code>) and <code>SYSOPER</code> access (typically <code>oper</code>).</p>
+<p>The SYSDBA group identifies operating system user accounts that have database administrative privileges and can log in with SYSDBA access. The SYSOPER group is an optional group for users that should have limited database administrative privileges. See <a href="users_secure.htm#CHDECEBA">"SYSDBA and SYSOPER System Privileges"</a> for more information about these groups and privileges.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDCDIIE" name="CHDCDIIE"></a><a id="ADMQS022" name="ADMQS022"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Installing Oracle Database Software<a id="sthref43" name="sthref43"></a><a id="sthref44" name="sthref44"></a><a id="sthref45" name="sthref45"></a></h2>
+<p>This section briefly describes the steps for a desktop-class installation. Most steps are common to all platforms and involve running the Oracle Universal Installer. Platform-specific steps are noted. For further assistance, consult the online Help or the <a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Database Installation Guide</span></a> for your platform.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The following steps describe the Oracle Universal Installer workflow for a host computer that has no previous Oracle software installed. If your host computer has Oracle software installed, then you may see a different workflow.</div>
+<p class="subhead2"><a id="ADMQS12124" name="ADMQS12124"></a>To perform a basic installation:</p>
+<ol>
+<li>
+<p>Log on to your computer as a member of the administrative group that is authorized to install Oracle Database software and to create and run the database.</p>
+<p><a id="sthref46" name="sthref46"></a>Refer to your operating system-specific documentation or contact your system administrator to determine whether you have the necessary privileges and permissions to install new software.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>If you are installing from distribution media, then insert the distribution media for the database into your computer.</p>
+<p>The Autorun feature opens the Select a Product to Install window automatically.</p>
+</li>
+<li>
+<p>If you downloaded the installation software from the Oracle Web site, then follow the instructions on the site to run the Oracle Universal Installer. Or, see the <a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Database Installation Guide</span></a> for your platform.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The first window that appears is the Configure Security Updates window. To receive notifications about security issues via e-mail, enter your e-mail address in the Email text field. To receive security updates from My Oracle Support, enter the e-mail address registered with My Oracle Support, select the <span class="bold">I wish to receive security updates...</span> option, and enter your My Oracle Support password.</p>
+<p>Click <span class="bold">Next</span> to continue.</p>
+<p>The Select Installation Option window appears.</p>
+</li>
+<li>
+<p>Choose the <span class="bold">Create and configure a database</span> option. Or, you also have the option of choosing to only install the database software, but then you must create a database in an additional step after the software is installed. If you are currently using a previous version of Oracle Database, choose Upgrade an existing database. After you have chosen an option, click Next.</p>
+<p>The System Class window appears.</p>
+</li>
+<li>
+<p>Choose <span class="bold">Desktop Class</span>.</p>
+<p>You can choose the Server Class option to customize your installation. For example, you use this method to configure Oracle Automatic Storage Management for your database, install the Sample Schemas, or configure automated backups. Selecting this option guides you through a series of installation steps that are not documented in this guide. For more information about the advanced choices, see <a href="#CBHFDDFE">"About Advanced Installation"</a>. Also see <a class="olink GINST" href="http://www.oracle.com/pls/db112/lookup?id=GINST"><span class="italic">Oracle Database Installation Guide</span></a> for your platform.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<p>The Typical Install Configuration window appears.</p>
+<img width="801" height="600" src="img/install_basic.gif" alt="Description of install_basic.gif follows" title="Description of install_basic.gif follows" longdesc="img_text/install_basic.htm" /><br />
+<a id="sthref47" name="sthref47" href="img_text/install_basic.htm">Description of the illustration install_basic.gif</a><br />
+<br /></li>
+<li>
+<p><a id="BABHACIH" name="BABHACIH"></a><a id="g1110050" name="g1110050"></a>Provide the following configuration details for the database:</p>
+<ul>
+<li>
+<p><a id="sthref48" name="sthref48"></a><a id="sthref49" name="sthref49"></a>Oracle Base Location&#x2014; The Oracle base directory helps to facilitate the organization of multiple Oracle software installations. See the <span class="italic">Oracle Database Installation Guide</span> for your platform for more information about <code>ORACLE_BASE</code>.</p>
+<p>If you did not set the <code>ORACLE_BASE</code> environment variable before starting OUI, then the Oracle base directory is created in an <code>app/</code><code><span class="codeinlineitalic">username</span></code><code>/</code>directory on the first existing and writable directory from <code>/u01</code> through <code>/u09</code> for UNIX and Linux systems, or on the disk drive with the most available space for Windows systems. If <code>/u01</code> through <code>/u09</code> does not exist on the UNIX or Linux system, then the default location is <code><span class="codeinlineitalic">user_home_directory</span></code><code>/app/</code><code><span class="codeinlineitalic">username</span></code>.</p>
+<p>You can click <span class="bold">Browse</span> to find the directory you want to act as the Oracle base directory.</p>
+</li>
+<li>
+<p><a id="sthref50" name="sthref50"></a><a id="sthref51" name="sthref51"></a>Software Location&#x2014;The software location is the Oracle home for your database. You must specify a new Oracle home directory for each new installation of Oracle Database software. By default, the Oracle home directory is a subdirectory of the Oracle base directory.</p>
+<p>You can click <span class="bold">Browse</span> to find the directory where you want to install the Oracle Database software.</p>
+</li>
+<li>
+<p>Database File Location&#x2014;The database file location is the location where Oracle Database files are stored. By default, this location is <code><span class="codeinlineitalic">Oracle_base</span></code><code>/oradata</code>. You can click <span class="bold">Browse</span> to select a different location.</p>
+</li>
+<li>
+<p>Database Edition&#x2014;Select either <span class="bold">Enterprise Edition</span>, <span class="bold">Standard Edition</span>, <span class="bold">Standard Edition One</span>, or <span class="bold">Personal Edition</span> (Microsoft Windows platforms only). See <a href="#g1110927">"Installation Type"</a>.</p>
+</li>
+<li>
+<p>Character Set&#x2014;Choose the character set to use to store the data within the database. You can choose between the <span class="bold">Default</span>, which is based on the operating system language settings, or <span class="bold">Unicode</span>.</p>
+</li>
+<li>
+<p>OSDBA Group (Linux and UNIX platforms only)&#x2014;Specify the operating system DBA group. Host computer users in this group have administrative privileges on the database. This group is typically named <code><span class="codeinlinebold">dba</span></code>. Refer to <a class="olink LADBI" href="../../install.112/e16763/toc.htm"><span class="italic">Oracle Database Installation Guide for Linux</span></a> or for your UNIX platform for more details.</p>
+</li>
+<li>
+<p>Global Database Name&#x2014;Enter the fully qualified global database name. See <a href="#g1110927">"Installation Type"</a> for more on global database name.</p>
+</li>
+<li>
+<p>Administrative Password&#x2014;Specify the initial password for the <code>SYS</code>, <code>SYSTEM</code>, <code>SYSMAN</code>, and <code>DBSNMP</code> administrator accounts. If the password you choose is not a secure password, a warning message will be displayed.</p>
+</li>
+</ul>
+<p>After you enter the required information, click <span class="bold">Next</span>.</p>
+<p>If Oracle software has not previously been installed on this server, then the Create Inventory window appears. If this is not the first installation attempt on this server, then the Perform Prerequisite Checks window appears.</p>
+</li>
+<li>
+<p><span class="italic">For first time installations on Linux and UNIX operating systems only</span>, specify a directory for installation files and the name of an operating system group that has write permissions for that directory.</p>
+<p><a id="sthref52" name="sthref52"></a>If this is the first time you are installing any Oracle software on this computer, then the Create Inventory Directory window appears. You must specify a local directory for the inventory, which OUI uses to keep track of all Oracle software installed on the computer. This information is used while applying patches or upgrading an existing installation, and while deinstalling Oracle software. Note that this directory is different from the Oracle home directory. The recommended value for the inventory directory is <code><span class="codeinlineitalic">Oracle_base</span></code><code>/../oraInventory</code>, or one level above the Oracle base directory, in the <code>oraInventory</code> subdirectory. If your Oracle base directory is <code>/u01/app/oracle</code>, then the Oracle inventory directory defaults to <code>/u01/app/oraInventory</code>.</p>
+<p>In this window you can also specify the operating system group that has write permissions on the inventory directory. This prevents other users from writing over the Oracle product installation files. Typically the <code>oinstall</code> group is selected.</p>
+<p>After you enter a directory path and optionally specify an operating system group, click <span class="bold">Next</span> to continue.</p>
+<p>The Perform Prerequisite Checks window appears.</p>
+</li>
+<li>
+<p>If any checks failed, then take corrective actions.</p>
+<p>OUI performs several environment checks and indicates whether the check was a success, or resulted in a warning or failure. Details of the checks are provided in the displayed window. The installation can proceed only when all checks have a status of either Succeeded or Warning. If any of the environment checks failed, then they must be resolved manually. See <a href="#CIHBECHA">"Checking Prerequisites"</a> for more information.</p>
+<p>If all the prerequisite checks passed, or after you click <span class="bold">Next</span>, the Summary window appears,</p>
+</li>
+<li>
+<p>Review the installation summary, then click <span class="bold">Finish</span> to start the installation.</p>
+<p>The Install window appears, showing the installation progress. After the installation phase, the Configuration Assistants window appears. This window lists the configuration assistants that are started automatically. If you chose to create a starter database, then Database Configuration Assistant starts automatically in a separate window.</p>
+<p>After database creation, a window is displayed that summarizes the database creation.</p>
+</li>
+<li>
+<p>(Optional) Click <span class="bold">Password Management</span> to unlock user accounts to make the accounts accessible to users.</p>
+<p>The <code>SYS</code> and <code>SYSTEM</code> accounts are unlocked by default.</p>
+</li>
+<li>
+<p>Click <span class="bold">OK</span> to continue the installation.</p>
+</li>
+<li>
+<p><span class="italic">For Linux and UNIX operating systems only</span>, run the specified scripts, then click <span class="bold">OK</span>.</p>
+<p>In the Execute Configuration Scripts window, you are prompted to open a new terminal window, and to run scripts as the <code>root</code> user. After you run the scripts, return to this window and click <span class="bold">OK</span>.</p>
+</li>
+<li>
+<p>Make note of the information in the Finish window, then click <span class="bold">Close</span> to exit OUI.</p>
+<p>Your installation and database creation is now complete. The Finish window displays one or more important URLs, including one for the Oracle Enterprise Manager Database Control console. (The console is the user interface&#x2014;the Web application&#x2014;portion of Oracle Enterprise Manager Database Control.)</p>
+<p>You use Oracle Enterprise Manager Database Control to perform common database administration tasks. <a id="sthref53" name="sthref53"></a>The URL and port information for Database Control can be found after installation in the <code><span class="codeinlineitalic">Oracle_home</span></code><code>/install/portlist.ini</code> file.</p>
+<p>You can access this URL with your browser and log in as the <code>SYS</code> user with the associated password, and connect as <code>SYSDBA</code>. See <a href="em_manage.htm#CACHGFFI">Chapter 3, "Getting Started with Database Administration"</a> for more information about using Database Control.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="BABEIAID" name="BABEIAID"></a><a id="ADMQS023" name="ADMQS023"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Creating and Managing a Database with DBCA<a id="sthref54" name="sthref54"></a><a id="sthref55" name="sthref55"></a><a id="sthref56" name="sthref56"></a><a id="sthref57" name="sthref57"></a></h2>
+<p>Unless you specified that only the Oracle Database software should be installed, Oracle Universal Installer automatically runs Database Configuration Assistant (DBCA) after software installation is complete. DBCA then creates a database using the information you provided. If you do not create a starter database and later want to create one, or to create additional databases, use DBCA.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+With Oracle Database, you typically have a single database that hosts multiple applications. You do not need multiple databases to run different applications. Instead, you separate the objects that support each different application into different <span class="italic">schemas</span> in the same database. However, there may be situations in which you want to create multiple Oracle databases on the same host computer. When you do this with DBCA, the new databases typically use the same Oracle home directory as the first database, but store database data files separately from those of the first database.</div>
+<p>DBCA also enables you to modify a database configuration, delete a database, and more.&nbsp;This section describes the following DBCA tasks:</p>
+<ul>
+<li>
+<p><a href="#BABBBHJB">Starting DBCA</a></p>
+</li>
+<li>
+<p><a href="#BABCABGJ">Creating a Database Using DBCA</a></p>
+</li>
+<li>
+<p><a href="#BABCBGAE">Changing the Configuration of a Database Using DBCA</a></p>
+</li>
+<li>
+<p><a href="#BABJIDJI">Deleting a Database Using DBCA</a></p>
+</li>
+<li>
+<p><a href="#BABEGFCG">Managing Templates with DBCA</a></p>
+</li>
+</ul>
+<p>Online Help is available by clicking <span class="bold">Help</span>. It provides information that guides you in selecting configuration options.</p>
+<a id="BABBBHJB" name="BABBBHJB"></a><a id="ADMQS0231" name="ADMQS0231"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Starting DBCA</h3>
+<p>Follow the steps in this section to start DBCA.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If you choose to create a starter database while installing the Oracle Database software, then OUI automatically starts DBCA.</div>
+<p class="subhead2"><a id="ADMQS12125" name="ADMQS12125"></a>To start DBCA:</p>
+<ol>
+<li>
+<p>Log on to your computer as a member of the administrative group that is authorized to install Oracle Database software and to create and run the database.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>To start DBCA on a Microsoft Windows operating system, click <span class="bold">Start</span>, select <span class="bold">Programs</span> (or <span class="bold">All Programs</span>), then <span class="bold">Oracle -</span> <span class="bolditalic">HOME_NAME</span>, then <span class="bold">Configuration and Migration Tools</span>, and then <span class="bold">Database Configuration Assistant</span>.</p>
+</li>
+<li>
+<p>To start DBCA on UNIX or Linux, or at the command-line prompt on the Windows operating system, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">dbca
+</pre>
+<p>The <code>dbca</code> utility is typically located in the <code><span class="codeinlineitalic"><code><span class="codeinlineitalic">ORACLE_HOME</span></code></span></code><code>/bin</code> directory.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <span class="bold">Next</span> to bypass the Welcome window.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BABCABGJ" name="BABCABGJ"></a><a id="ADMQS0232" name="ADMQS0232"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Creating a Database Using DBCA</h3>
+<p>DBCA enables you to create an Oracle database by following a step-by-step guided workflow.</p>
+<p class="subhead2"><a id="ADMQS12126" name="ADMQS12126"></a>To create a database using DBCA:</p>
+<ol>
+<li>
+<p>Start DBCA as described in <a href="#BABBBHJB">"Starting DBCA"</a>.</p>
+</li>
+<li>
+<p><a id="sthref58" name="sthref58"></a>In the Operations window, select <span class="bold">Create a Database</span> and click <span class="bold">Next</span> to start the guided workflow for creating a database. The workflow requests your input in the following windows:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><a href="#BABGFHDG">Step 2 - Database Templates</a></p>
+</li>
+<li>
+<p><a href="#BABEFIIF">Step 3 - Database Identification</a></p>
+</li>
+<li>
+<p><a href="#BABBBJDC">Step 4 - Management Options</a></p>
+</li>
+<li>
+<p><a href="#BABBGDAJ">Step 5 - Database Credentials</a></p>
+</li>
+<li>
+<p><a href="#BABEDFCI">Step 6 - Database File Locations</a></p>
+</li>
+<li>
+<p><a href="#BABGFDAG">Step 7 - Recovery Configuration</a></p>
+</li>
+<li>
+<p><a href="#BABDHGAI">Step 8 - Database Content</a></p>
+</li>
+<li>
+<p><a href="#BABJGJFC">Step 9 - Initialization Parameters</a></p>
+</li>
+<li>
+<p><a href="#CHDFEFFF">Step 10 - Database Storage</a></p>
+</li>
+<li>
+<p><a href="#BABDBHCI">Step 11 - Creation Options</a></p>
+</li>
+</ul>
+<p>The following sections provide details on each window. Most windows provide default settings.</p>
+<a id="BABGFHDG" name="BABGFHDG"></a><a id="ADMQS02321" name="ADMQS02321"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 2 - Database Templates</h4>
+<p><a id="sthref59" name="sthref59"></a>This window enables you to select the type of database to create. You can use DBCA to create a database from templates supplied by Oracle or from templates that you create. The templates contain settings optimized for a particular type of workload.</p>
+<p>Oracle ships templates for the following two workload types:</p>
+<ul>
+<li>
+<p>General purpose or transaction processing</p>
+</li>
+<li>
+<p>Data warehouse</p>
+</li>
+</ul>
+<p>Click <span class="bold">Show Details</span> to see the configuration for each type of database. Select the template suited to the type of workload your database will support. If you are not sure which to choose, then select the default <span class="bold">General Purpose or Transaction Processing</span> template.</p>
+<p>For more complex environments, you can select the <span class="bold">Custom Database</span> option. This option does not use templates and results in a more extensive interview, which means that it takes longer to create your database.</p>
+<p>For more information about using database templates, see <a href="#BABEGFCG">"Managing Templates with DBCA"</a>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BABEFIIF" name="BABEFIIF"></a><a id="ADMQS02322" name="ADMQS02322"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 3 - Database Identification</h4>
+<p>In the <span class="bold">Global Database Name</span> field, enter the database name in the form <span class="italic">database_name</span>.<span class="italic">domain_name</span>.</p>
+<p>In the <span class="bold">SID</span> field, enter the system identifier. The SID defaults to the database name and uniquely identifies the instance that runs the database.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BABBBJDC" name="BABBBJDC"></a><a id="ADMQS02323" name="ADMQS02323"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 4 - Management Options</h4>
+<p><a id="sthref60" name="sthref60"></a><a id="sthref61" name="sthref61"></a><a id="sthref62" name="sthref62"></a>Use this window to set up your database so it can be managed with Oracle Enterprise Manager. Oracle Enterprise Manager provides Web-based management tools for individual databases, and central management tools for managing your entire Oracle environment.</p>
+<p>Select <span class="bold">Configure Enterprise Manager</span> to use Enterprise Manager. Then, select one option:</p>
+<ul>
+<li>
+<p>If the Oracle Management Agent is installed on your host computer, then you can choose central management by selecting <span class="bold">Register with Grid Control for centralized management</span> and then selecting the Management Service.</p>
+</li>
+<li>
+<p>To manage your database locally, select <span class="bold">Configure Database Control for local management</span>. You can then optionally configure e-mail notification of database alerts or a daily backup of the database.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BABBGDAJ" name="BABBGDAJ"></a><a id="ADMQS02324" name="ADMQS02324"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 5 - Database Credentials</h4>
+<p>In this window, specify the passwords for the administrative accounts such as <code>SYS</code> and <code>SYSTEM</code>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BABEDFCI" name="BABEDFCI"></a><a id="ADMQS02326" name="ADMQS02326"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 6 - Database File Locations</h4>
+<p>In this window, specify the type of storage you would like your database to use. For more information, see <a href="#CBHFDDFE">"About Advanced Installation"</a>.</p>
+<p>Then specify the locations for the Oracle database files. Select one of the following options:</p>
+<ul>
+<li>
+<p><span class="bold">Use Database File Locations from Template</span>&#x2014;This option instructs DBCA to use the directory information as specified in the template. Later, you can make modifications to database file names and locations.</p>
+</li>
+<li>
+<p><span class="bold">Use Common Location for All Database Files</span>&#x2014;This option requires you to specify a new directory for the Oracle home. All the database files are created in this location. Later, you can make modifications to database file names and locations.</p>
+</li>
+<li>
+<p><span class="bold">Use Oracle Managed Files</span>&#x2014;This option instructs Oracle Database to directly manage operating system files comprising an Oracle database. You specify the default location, called a database area, for all your files. Oracle Database thereafter automatically creates and deletes files in this location, as required. You can also create multiple copies of your redo and online log files by selecting <span class="bold">Multiplex Redo Logs and Control Files</span>. To learn more about online redo log files and control files, see <a href="backrest.htm#CIHEHFJJ">Chapter 9, "Performing Backup and Recovery"</a>.</p>
+<p>Selecting this option enables you to delegate the complete management of database files to the database. You no longer have to specify the file names, their location, or their sizes.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BABGFDAG" name="BABGFDAG"></a><a id="ADMQS02327" name="ADMQS02327"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 7 - Recovery Configuration</h4>
+<p><a id="sthref63" name="sthref63"></a><a id="sthref64" name="sthref64"></a>When you create a new database, it is important to configure the database so you can recover your data if a system failure occurs. <a id="sthref65" name="sthref65"></a>Online redo log files contain a record of changes that were made to data files. <a id="sthref66" name="sthref66"></a>Online redo log files are stored in online redo log groups. You must have at least two online redo log groups for your database. <a id="sthref67" name="sthref67"></a>After the online redo log files in a group have filled up, the log writer process (LGWR) switches the writing of redo records to a new online redo log group. Oracle Database can automatically save the inactive group of online redo log files to one or more offline destinations, known collectively as the <a id="sthref68" name="sthref68"></a><span class="bold">archived redo log</span> (also called the archive log). <a id="sthref69" name="sthref69"></a>The process of turning online redo log files into archived redo log files is called <span class="bold">archiving</span>.</p>
+<p>Archiving can be performed only if the database is running in <code>ARCHIVELOG</code> mode. A group of online redo log files cannot be reused by the log writer (LGWR) process until the group is archived. If the database is running in <code>NOARCHIVELOG</code> mode, then when a group becomes inactive after the LGWR process switches to a new group, the inactive group is available for immediate reuse by the LGWR process.</p>
+<p>The <code>NOARCHIVELOG</code> mode protects a database from instance failure but not from media failure. Only the most recent changes made to the database, which are stored in the online redo log files, are available for instance recovery. To restore a database operating in <code>NOARCHIVELOG</code> mode, you can use only entire database backups taken while the database is closed. Therefore, if you operate a database in <code>NOARCHIVELOG</code> mode, then back up the entire database at regular, frequent intervals.</p>
+<p><a id="sthref70" name="sthref70"></a>The archiving of online redo log files has the following advantages:</p>
+<ul>
+<li>
+<p>A database backup, with online and archived redo log files, guarantees that you can recover all committed transactions if the operating system or hardware fails.</p>
+</li>
+<li>
+<p>You can recover the database using a backup that was taken while the database was open and being used, if you have a copy of the archived log files that were written while the database was being backed up.</p>
+</li>
+<li>
+<p>You can perform online tablespace backups, and use these backups to restore a tablespace following media failure.</p>
+</li>
+<li>
+<p>You can keep a standby database current with its original database by continuously applying the original archived redo log files to the standby database.</p>
+</li>
+</ul>
+<p>Before you can archive the online redo log files, you must determine the destination to which you want to archive. Oracle recommends that the archive log be stored in a fast recovery area because it can simplify backup and recovery operations for your database. A <span class="bold">fast recovery area</span> is a location in which Oracle Database can store and manage files related to backup and recovery. It is distinct from the database area, which is a location for the current database files (data files, control files, and online redo log files).</p>
+<p>When creating your database, you can select the following options:</p>
+<ul>
+<li>
+<p><span class="bold"><a id="sthref71" name="sthref71"></a><a id="sthref72" name="sthref72"></a>Specify Fast Recovery Area</span>&#x2014;Select this option to specify a backup and recovery area and its directory location and size. You can use variables to identify standard locations.</p>
+</li>
+<li>
+<p><span class="bold">Enable Archiving</span>&#x2014;Select this option to enable the archiving of database online redo log files, which can be used to recover a database. Selecting this option is the same as enabling Archive Log Mode in Oracle Enterprise Manager Database Control or running the database in <code>ARCHIVELOG</code> mode.</p>
+<p>Oracle recommends you select <span class="bold">Enable Archiving</span>. Selecting this option provides better protection for your database for software or hardware failure. If you do not select this option now, then you can enable ARCHIVELOG mode later. See <a href="backrest.htm#i1006225">"Configuring Your Database for Basic Backup and Recovery"</a>.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BABDHGAI" name="BABDHGAI"></a><a id="ADMQS02328" name="ADMQS02328"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 8 - Database Content</h4>
+<p>When you create your database, you can load it with data using either of the following methods:</p>
+<ul>
+<li>
+<p><span class="bold">Sample Schemas&#x2014;</span><a id="sthref73" name="sthref73"></a><a id="sthref74" name="sthref74"></a>Select <span class="bold">Sample Schemas</span> to include the Sample Schemas (<code>EXAMPLE</code>) tablespace in your database. Oracle guides and educational materials contain examples based upon the Sample Schemas. Oracle recommends that you include them in your database.</p>
+</li>
+<li>
+<p><span class="bold">Custom Scripts&#x2014;</span>In the <span class="bold">Custom Scripts</span> subpage, optionally specify one or more SQL scripts to run after your database is created. Scripts are useful for performing postinstallation tasks, such as loading custom schemas. Note that if you choose to run scripts after installation, then your scripts must include a connection string that identifies the database. Click <span class="bold">Help</span> for more information.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BABJGJFC" name="BABJGJFC"></a><a id="ADMQS02329" name="ADMQS02329"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 9 - Initialization Parameters</h4>
+<p>The links in this window provide access to additional windows that enable you to change the default initialization parameter settings. These parameters fall into the following categories:</p>
+<ul>
+<li>
+<p><a href="#BABCAFIF">Memory</a></p>
+</li>
+<li>
+<p><a href="#BABCGJGB">Sizing</a></p>
+</li>
+<li>
+<p><a href="#BABCABAC">Character Sets</a></p>
+</li>
+<li>
+<p><a href="#BABIJDFF">Connection Mode</a></p>
+</li>
+</ul>
+<p>You can also click the <span class="bold">All Initialization Parameters</span> button at the bottom of the window to display a list of all the database initialization parameters and their current settings.</p>
+<a id="BABCAFIF" name="BABCAFIF"></a><a id="ADMQS02332" name="ADMQS02332"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4">Memory</h5>
+<p>Use<a id="sthref75" name="sthref75"></a> this window to set the initialization parameters that control how the database manages its memory. You can choose from the following methods for memory management:</p>
+<ul>
+<li>
+<p><span class="bold">Typical</span>&#x2014;This method requires little configuration, and allocates memory as a percentage of total overall physical system memory. Select <span class="bold">Typical</span> and enter a percentage value. Click <span class="bold">Show Memory Distribution</span> to see how much memory DBCA assigns to the System Global Area (SGA) and the aggregate Program Global Area (PGA). With this setting, the system automatically tunes many of the memory components of the SGA, and allocates memory to individual PGAs as needed. The system can also dynamically decrease or increase the total amount of memory allocated to the SGA or aggregate PGA, depending on processing demands. The total memory used for the database instance never exceeds the amount you specify. This automatic memory tuning for the instance is known as <a id="sthref76" name="sthref76"></a><span class="bold">automatic memory management</span>. To learn more about PGA and SGA, see <a href="instance.htm#CIHJHIJD">"About Instance Memory Structure"</a>.</p>
+</li>
+<li>
+<p><span class="bold">Custom</span>&#x2014;This method requires more configuration than the Typical option, but gives you more control over how the database instance uses system memory. This option is meant for more experienced database administrators. You can directly specify memory sizes for the SGA and aggregate PGA and their substructures, such as the shared pool and buffer cache.</p>
+<p>Select one of the following options for customized memory management:</p>
+<ul>
+<li>
+<p><a id="sthref77" name="sthref77"></a><span class="bold">Automatic</span> <span class="bold">Shared Memory Management</span> to allocate specific amounts of memory to the SGA and aggregate PGA. With this setting, automatic shared memory management is enabled for the SGA, and memory is allocated to the individual PGAs as needed.</p>
+</li>
+<li>
+<p><span class="bold">Manual Shared Memory Management</span> to enter specific values for each SGA component and the aggregate PGA. This disables automatic shared memory management and enables you to determine how the SGA memory is distributed among the SGA memory components.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="instance.htm#CACFBJED">Chapter 5, "Managing the Oracle Instance"</a> for more information about memory management options</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect4" -->
+<a id="BABCGJGB" name="BABCGJGB"></a><a id="ADMQS02333" name="ADMQS02333"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4">Sizing</h5>
+<p>In th<a id="sthref78" name="sthref78"></a>is tab, you specify the smallest block size and the maximum number of operating system user processes that can simultaneously connect to the database.</p>
+<ul>
+<li>
+<p><a id="sthref79" name="sthref79"></a><span class="bold">Block Size</span>&#x2014;Use this list to select the block size, or accept the default. Oracle Database data is stored in data blocks of the size specified. One data block corresponds to a specific number of bytes of physical space on disk. Selecting a block size other than the default 8 kilobytes (KB) value requires advanced knowledge and should be done only when absolutely required.</p>
+<p>While using predefined templates, this list is not enabled because the database will be created with the default block size of 8 KB. While using the custom option, you can change the block size.</p>
+</li>
+<li>
+<p><span class="bold">Processes</span>&#x2014;In this field, specify the maximum number of processes that can simultaneously connect to the database. Enter a number or accept the default value of 150. The default value for this parameter is appropriate for many environments. The value you select should allow for all <a id="sthref80" name="sthref80"></a>background processes, user processes, and parallel execution processes.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect4" -->
+<a id="BABCABAC" name="BABCABAC"></a><a id="ADMQS02334" name="ADMQS02334"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4">Character Sets</h5>
+<p>U<a id="sthref81" name="sthref81"></a>se this tab to define the character sets used by your database. <a id="sthref82" name="sthref82"></a><span class="bold">Character sets</span> are the encoding schemes used to display characters on your computer screen. The character set determines what languages can be represented in the database.</p>
+<p>Oracle recommends using Unicode (AL32UTF8) as the database character set. AL32UTF8 is Oracle's name for the UTF-8 encoding of the Unicode standard. The Unicode standard is the universal character set that supports most of the currently spoken languages of the world. The use of the Unicode standard is indispensable for any multilingual technology, including database processing.After a database is created and accumulates production data, changing the database character set is a time consuming and complex project. Therefore, it is very important to select the right character set at installation time. Even if the database does not currently store multilingual data but is expected to store multilingual data within a few years, the choice of AL32UTF8 for the database character set is usually the only good decision.Even so, the default character set used by Oracle Universal Installer (OUI) and Database Configuration Assistant (DBCA) for the UNIX, Linux, and Microsoft Windows platforms is not AL32UTF8, but a Microsoft Windows character set known as an ANSI code page. The particular character set is selected based on the current language (locale) of the operating system session that started OUI or DBCA. If the language is American English or a Western European language, then the default character set is WE8MSWIN1252. Each Microsoft Windows ANSI Code Page can store data from only one language or a limited group of languages, such as only Western European, or only Eastern European, or only Japanese.A Microsoft Windows character set is the default even for databases created on UNIX and Linux platforms because Microsoft Windows is the prevalent platform for client workstations. Oracle Client libraries automatically perform the necessary character set conversion between the database character set and the character sets used by non-Windows client applications.You may also choose to use any other character set from the presented list of character sets. You can use this option to select a particular character set required by an application vendor, or choose a particular character set that is the common character set used by all clients connecting to this database.</p>
+<p>Because AL32UTF8 is a multibyte character set, database operations on character data may be slightly slower when compared to single-byte database character sets, such as WE8MSWIN1252. Storage space requirements for text in most languages that use characters outside of the ASCII repertoire are higher in AL32UTF8 compared to legacy character sets supporting the language. Note that the increase in storage space concerns only character data and only data that is not in English. The universality and flexibility of Unicode usually outweighs these additional costs.</p>
+<ul>
+<li>
+<p><span class="bold">Database Character Set&#x2014;</span>In this section, select one of the following options:</p>
+<ul>
+<li>
+<p><span class="bold">Use the Default&#x2014;</span>Select this option to select only the language currently used by the operating system for all your database users and database applications.</p>
+</li>
+<li>
+<p><span class="bold">Use Unicode (AL32UTF8)</span>&#x2014;Select this option to support multiple languages for your database users and database applications.</p>
+</li>
+<li>
+<p><span class="bold">Choose from the list of character sets&#x2014;</span>Select this option if you want Oracle Database to use a character set other than the default character set used by the operating system.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+AL32UTF8 is a variable-width multibyte character set. Applications connecting to a database that uses AL32UTF8 for character data processing must be correctly programmed to work with such character sets. Always verify the character set requirements of the applications that use the database. Contact the application vendor and ask for a Unicode-capable version, if your current application version does not support the Unicode standard.</div>
+</li>
+<li>
+<p><span class="bold">National Character Set&#x2014;</span>In this list, select a character set or accept the default. The national character set, also called <code>NCHAR</code> character set, is the character set used to store and process data of data types <code>NVARCHAR2</code>, <code>NCHAR</code>, and <code>NCLOB</code>. These data types allow storing of Unicode characters in a database that does not have a Unicode database character set. Unless installation requirements of any of your applications specify otherwise, accept the default value of AL16UTF16 as the national character set.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Although this character set is called "national," after the SQL standard (ISO/IEC 9075), it is not better suited to support globalized applications than the database character set. Because working with national character set data requires additional API calls in client applications, and because national character set data is not supported by some database components, such as Oracle Text, Oracle recommends that multilingual applications use <code>VARCHAR2</code>, <code>CHAR</code>, and <code>CLOB</code> data types and an Oracle database with the database character set AL32UTF8.</div>
+</li>
+<li>
+<p><span class="bold">Default Language</span>&#x2014;In this list, select a default database language or accept the default. The default language determines how the database supports locale-sensitive information such as day and month abbreviations, default sorting sequence for character data, and reading direction (left to right or right to left).</p>
+</li>
+<li>
+<p><span class="bold">Default Territory&#x2014;</span>In this list, select the name of the territory whose conventions are to be followed for day and week numbering or accept the default. The default territory also establishes the default date format, the default decimal character and group separator, and the default International Standardization Organization (ISO) and local currency symbols. For example, in the United Kingdom, the default date format is DD-MON-YYYY, where DD is the day of the month (1-31), MON is the abbreviated name of the month, and YYYY is the 4-digit year.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect4" -->
+<a id="BABIJDFF" name="BABIJDFF"></a><a id="ADMQS02335" name="ADMQS02335"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4">Connection Mode</h5>
+<p>Us<a id="sthref83" name="sthref83"></a><a id="sthref84" name="sthref84"></a><a id="sthref85" name="sthref85"></a>e this window to select the database mode. You can run the database in either of the following modes:</p>
+<ul>
+<li>
+<p><span class="bold">Dedicated Server Mode</span>&#x2014;This mode allows a dedicated server process for each user process. Select this option when the number of total clients is expected to be small, for example, 50 or fewer. You might also choose this option when database clients typically make persistent, long-running requests to the database. By default, the database is configured for dedicated server processes.</p>
+</li>
+<li>
+<p><span class="bold">Shared Server Mode&#x2014;</span>This mode allows several client connections to share a database-allocated pool of resources. Use this mode in configurations in which client load is expected to cause a strain on memory and other system resources. If you choose shared server mode, then you must indicate the number of server processes you want to create when a database instance is started. For more information about setting this parameter, click <span class="bold">Help</span>.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" -->
+<a id="CHDFEFFF" name="CHDFEFFF"></a><a id="ADMQS02336" name="ADMQS02336"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 10 - Database Storage</h4>
+<p>In this window, a navigation tree displays the storage structure of your database (control files, data files, online redo log groups, and so forth). If you are not satisfied with the storage structure or parameters, then you can make changes.</p>
+<p>Note that if you selected a preconfigured template for a database, then you cannot add or remove control files, data files, or undo segments.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BABDBHCI" name="BABDBHCI"></a><a id="ADMQS02337" name="ADMQS02337"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Step 11 - Creation Options</h4>
+<p>In this window, select any of the following options for creating the database:</p>
+<ul>
+<li>
+<p><span class="bold">Create Database</span>&#x2014;Select this option to create your database now.</p>
+</li>
+<li>
+<p><span class="bold">Save as a Database Template</span>&#x2014;Select this option to save the database definition as a template to use at a later time.</p>
+</li>
+<li>
+<p><span class="bold">Generate Database Creation Scripts</span>&#x2014;Select this option to generate a SQL database creation script that you can run at a later time.</p>
+</li>
+</ul>
+<p>After you make your choice, click <span class="bold">Finish</span>. A confirmation window appears after a short period. Review the Create Database Summary information, then click <span class="bold">OK</span> to proceed.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BABCBGAE" name="BABCBGAE"></a><a id="ADMQS0233" name="ADMQS0233"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Changing the Configuration of a Data<a id="sthref86" name="sthref86"></a><a id="sthref87" name="sthref87"></a>base Using DBCA</h3>
+<p>You can use DBCA to change the configuration of an existing database. For example, you can:</p>
+<ul>
+<li>
+<p>Register the database with Grid Control</p>
+</li>
+<li>
+<p>Configure Database Control alert notification via e-mail</p>
+</li>
+<li>
+<p>Enable daily disk backups to the recovery area</p>
+</li>
+<li>
+<p>Change default security settings</p>
+</li>
+<li>
+<p>Change server mode from dedicated to shared, or the reverse</p>
+</li>
+<li>
+<p>Add database options that were not previously configured (for example, Oracle Label Security or Oracle OLAP)</p>
+</li>
+</ul>
+<p class="subhead2"><a id="ADMQS12127" name="ADMQS12127"></a>To change the configuration of a database using DBCA:</p>
+<ol>
+<li>
+<p>Start DBCA as described in <a href="#BABBBHJB">"Starting DBCA"</a>.</p>
+</li>
+<li>
+<p>In the Operations window, select <span class="bold">Configure Database Options</span> and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Follow the instructions in the DBCA guided workflow.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BABJIDJI" name="BABJIDJI"></a><a id="ADMQS0234" name="ADMQS0234"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Deleting a Data<a id="sthref88" name="sthref88"></a><a id="sthref89" name="sthref89"></a><a id="sthref90" name="sthref90"></a>base Using DBCA</h3>
+<p>You can also use DBCA to delete a database. When DBCA deletes a database, it shuts down the database instance and then deletes all database files. On the Windows platform, it also deletes associated Windows services.</p>
+<p class="subhead2"><a id="ADMQS12128" name="ADMQS12128"></a>To delete a database using DBCA:</p>
+<ol>
+<li>
+<p>Start DBCA as described in <a href="#BABBBHJB">"Starting DBCA"</a>.</p>
+</li>
+<li>
+<p>In the Operations window, select <span class="bold">Delete a Database</span> and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Select the database to delete and click <span class="bold">Finish</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BABEGFCG" name="BABEGFCG"></a><a id="ADMQS0235" name="ADMQS0235"></a>
+<div class="sect2">
+<h3 class="sect2">Managing Temp<a id="sthref91" name="sthref91"></a><a id="sthref92" name="sthref92"></a><a id="sthref93" name="sthref93"></a>lates with DBCA</h3>
+<p>DBCA templates are XML files that contain information required to create a database. Templates are used in DBCA to create new databases and duplicate existing databases. The information in templates includes database options, initialization parameters, and storage attributes (for data files, tablespaces, control files, and online redo log files).</p>
+<p><a id="sthref94" name="sthref94"></a><a id="sthref95" name="sthref95"></a>Templates can be used just like scripts, but they are more powerful than scripts because you have the option of duplicating a database. Duplication saves time because you copy the files of an existing database, referred to as a <span class="italic">seed database</span>, to the correct locations.</p>
+<p>Templates are stored in the following directory:</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="codeinlineitalic">ORACLE_HOME</span>/assistants/dbca/templates
+</pre>
+<a id="ADMQS02351" name="ADMQS02351"></a>
+<div class="sect3"><a id="sthref96" name="sthref96"></a>
+<h4 class="sect3">Advantages of Using Templates</h4>
+<p>Using templates has the following advantages:</p>
+<ul>
+<li>
+<p>Time saving. If you use a template, then you do not have to define the database.</p>
+</li>
+<li>
+<p>Easy duplication. By creating a template containing your database settings, you can easily create a duplicate database without specifying parameters twice.</p>
+</li>
+<li>
+<p>Easy editing. You can quickly change database options from the template settings.</p>
+</li>
+<li>
+<p>Easy sharing. Templates can be copied from one computer to another.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="ADMQS02352" name="ADMQS02352"></a>
+<div class="sect3"><a id="sthref97" name="sthref97"></a>
+<h4 class="sect3">Types of Templates</h4>
+<p>Templates are divided into the following types:</p>
+<ul>
+<li>
+<p>Seed templates</p>
+</li>
+<li>
+<p>Nonseed templates</p>
+</li>
+</ul>
+<p>The characteristics of each are shown in <a href="#BABJJIIG">Table 2-1</a>.</p>
+<div class="tblruleformalwide">
+<p class="titleintable"><a id="ADMQS12327" name="ADMQS12327"></a><a id="sthref98" name="sthref98"></a><a id="BABJJIIG" name="BABJJIIG"></a>Table 2-1 DBCA Template Types</p>
+<table class="RuleFormalWide" title="DBCA Template Types" summary="This table describes the DBCA template types." dir="ltr" border="1" width="100%" frame="border" rules="all" cellpadding="3" cellspacing="0">
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t13">Type</th>
+<th align="left" valign="bottom" id="r1c2-t13">File Extension</th>
+<th align="left" valign="bottom" id="r1c3-t13">Includes Data Files</th>
+<th align="left" valign="bottom" id="r1c4-t13">Database Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t13" headers="r1c1-t13">
+<p>Seed</p>
+</td>
+<td align="left" headers="r2c1-t13 r1c2-t13">
+<p><code>.dbc</code></p>
+</td>
+<td align="left" headers="r2c1-t13 r1c3-t13">
+<p>Yes</p>
+</td>
+<td align="left" headers="r2c1-t13 r1c4-t13">
+<p>This type of template contains both the structure and the physical data files of an existing database, referred to as the <span class="italic">seed database</span>. Your new database starts as a copy of the seed database, and requires only the following changes:</p>
+<ul>
+<li>
+<p>Name of the database</p>
+</li>
+<li>
+<p>Destination of the data files</p>
+</li>
+<li>
+<p>Number of control files</p>
+</li>
+<li>
+<p>Number of online redo log groups</p>
+</li>
+<li>
+<p>Initialization parameters</p>
+</li>
+</ul>
+<p>Other changes can be made after database creation using custom scripts that can be invoked by DBCA, command-line SQL statements, or Oracle Enterprise Manager Database Control.</p>
+<p>The data files for the seed database are stored in compressed RMAN backup format in a file with a .dfb extension. The seed database control file is stored in a file with .ctl extension. (This file is needed only when storing data files in Oracle Automatic Storage Management (Oracle ASM) disk groups or as Oracle Managed Files.) The .dbc file contains the location of the seed database data files and contains the source database name used to mount the control file.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t13" headers="r1c1-t13">
+<p>Nonseed</p>
+</td>
+<td align="left" headers="r3c1-t13 r1c2-t13">
+<p><code>.dbt</code></p>
+</td>
+<td align="left" headers="r3c1-t13 r1c3-t13">
+<p>No</p>
+</td>
+<td align="left" headers="r3c1-t13 r1c4-t13">
+<p>This type of template is used to create a new database. It contains the characteristics of the database to be created. Nonseed templates are more flexible than their seed counterparts because all data files and online redo log files are created to your specification, and names, sizes, and other attributes can be changed as required.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblruleformalwide" --></div>
+<!-- class="sect3" -->
+<a id="ADMQS02353" name="ADMQS02353"></a>
+<div class="sect3"><a id="sthref99" name="sthref99"></a>
+<h4 class="sect3">DBCA Templates Provided by Oracle</h4>
+<p>Oracle provides the templates shown in <a href="#BABHDEDA">Table 2-2</a>.</p>
+<div class="tblruleformal">
+<p class="titleintable"><a id="ADMQS12328" name="ADMQS12328"></a><a id="sthref100" name="sthref100"></a><a id="BABHDEDA" name="BABHDEDA"></a>Table 2-2 Oracle-Provided DBCA Templates and Their Corresponding Workloads</p>
+<table class="RuleFormal" title="Oracle-Provided DBCA Templates and Their Corresponding Workloads" summary="This table describes the DBCA template environments." dir="ltr" border="1" width="100%" frame="border" rules="all" cellpadding="3" cellspacing="0">
+<col width="27%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t14">Template</th>
+<th align="left" valign="bottom" id="r1c2-t14">Workload</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t14" headers="r1c1-t14">
+<p>Data warehouse</p>
+</td>
+<td align="left" headers="r2c1-t14 r1c2-t14">
+<p>Users perform numerous, complex queries that process large volumes of data. Response time, accuracy, and availability are key issues.</p>
+<p>These queries (<code>SELECT</code> statements) range from a fetch of a few records to queries that sort thousands of records from many different tables.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t14" headers="r1c1-t14">
+<p>General Purpose or Transaction processing</p>
+</td>
+<td align="left" headers="r3c1-t14 r1c2-t14">
+<p>Many concurrent users perform numerous transactions that require rapid access to data. Availability, speed, concurrency, and recoverability are key issues.</p>
+<p>Transactions consist of reading (<code>SELECT</code> statements), writing (<code>INSERT</code> and <code>UPDATE</code> statements), and deleting (<code>DELETE</code> statements) data in database tables.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t14" headers="r1c1-t14">
+<p>Custom database</p>
+</td>
+<td align="left" headers="r4c1-t14 r1c2-t14">
+<p>This template allows you maximum flexibility in defining a database because you can change any of the settings for the database being created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblruleformal" --></div>
+<!-- class="sect3" -->
+<a id="ADMQS02354" name="ADMQS02354"></a>
+<div class="sect3"><a id="sthref101" name="sthref101"></a>
+<h4 class="sect3">Creating Templates Using DBCA</h4>
+<p>Follow the instructions in this section to create your own templates.</p>
+<p class="subhead2"><a id="ADMQS12129" name="ADMQS12129"></a>To create templates:</p>
+<ol>
+<li>
+<p>Start DBCA as described in <a href="#BABBBHJB">"Starting DBCA"</a>.</p>
+</li>
+<li>
+<p>In the Operations window, select <span class="bold">Manage Templates</span> and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>In the Template Management window, select <span class="bold">Create a database template</span> and one of the following options, and click <span class="bold">Next</span>.</p>
+<ul>
+<li>
+<p><span class="bold">From an existing template</span></p>
+<p>Using an existing template, you can create a new template based on the predefined template settings. You can add or change any template settings such as initialization parameters, storage parameters, or whether to use custom scripts.</p>
+</li>
+<li>
+<p><span class="bold">From an existing database (structure only)</span></p>
+<p>You can create a new template that contains structural information from an existing database, including database options, tablespaces, data files, and initialization parameters. User-defined schemas and their data <span class="italic">will not</span> be part of the created template. The source database can be either local or remote. Select this option when you want the new database to be structurally similar to the source database, but not contain the same data.</p>
+</li>
+<li>
+<p><span class="bold">From an existing database (structure as well as data)</span></p>
+<p>You can create a new template that has both the structural information and physical data files of an existing database. Databases created using such a template are identical to the source database. User-defined schemas and their data <span class="italic">will</span> be part of the created template. The source database must be local. Select this option when you want a template from which you can create an exact replica of the source database.</p>
+</li>
+</ul>
+<p>When creating templates from existing databases, you can translate file paths into Optimal Flexible Architecture (OFA) or maintain existing file paths. OFA is a set of file naming and placement guidelines for Oracle software and databases. Using OFA is recommended if the target computer on which you plan to create a database using the template has a different directory structure than computer on which the template was defined. Standard file paths can be used if the target computer has a directory structure that is similar to the directory structure on the source computer.</p>
+</li>
+<li>
+<p>Follow the instructions in the DBCA guided workflow to create your template.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="ADMQS02355" name="ADMQS02355"></a>
+<div class="sect3"><a id="sthref102" name="sthref102"></a>
+<h4 class="sect3">Deleting Templates</h4>
+<p>When you delete a template, it is no longer available to create a new database or a new template.</p>
+<p class="subhead2"><a id="ADMQS12130" name="ADMQS12130"></a>To delete a template:</p>
+<ol>
+<li>
+<p>Start DBCA as described in <a href="#BABBBHJB">"Starting DBCA"</a>.</p>
+</li>
+<li>
+<p>In the Operations window, select <span class="bold">Manage Templates</span> and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>In the Template Management window, select <span class="bold">Delete a database template</span> and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Select the template to delete and click <span class="bold">Finish</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CIHFEJCJ" name="CIHFEJCJ"></a><a id="ADMQS025" name="ADMQS025"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Installation: Oracle By Example Series</h2>
+<p>Oracle By Example (OBE) has a series on the <span class="italic">Oracle Database 2 Day DBA</span> guide. This OBE steps you through the tasks in this chapter and includes annotated screenshots.</p>
+<p>To view the Installation OBE, in your browser, enter the following URL:</p>
+<p><code><a href="http://www.oracle.com/technology/obe/11gr2_2day_dba/index.html">http://www.oracle.com/technology/obe/11gr2_2day_dba/index.html</a></code></p>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="intro.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="em_manage.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2004, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

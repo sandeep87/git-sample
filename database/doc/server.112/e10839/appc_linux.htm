@@ -1,0 +1,807 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Administering Oracle Database on Linux</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-03-24T3:32:28Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database Administrator's Reference 11g Release 2 (11.2) for Linux and UNIX-Based Operating Systems" />
+<meta name="partno" content="E10839-14" />
+<meta name="docid" content="UNXAR" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="appb_hpux.htm" title="Previous" type="text/html" />
+<link rel="Next" href="appe_sol.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e10839.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database Administrator's Reference<br />
+11<i>g</i> Release 2 (11.2) for Linux and UNIX-Based Operating Systems</b><br />
+Part Number E10839-14</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="appb_hpux.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="appe_sol.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e10839.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BEJJBAGF" name="BEJJBAGF"></a><a id="UNXAR011" name="UNXAR011"></a>
+<h1 class="appendix"><span class="secnum">C</span> Administering Oracle Database on Linux</h1>
+<p>This appendix contains information about administering Oracle Database on Linux. From Oracle</p>
+<p>It contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CHDFFCJB">Extended Buffer Cache Support</a></p>
+</li>
+<li>
+<p><a href="#CIHIGAEC">Using hugetlbfs on SUSE Linux Enterprise Server 10 or Red Hat Enterprise Linux 4</a></p>
+</li>
+<li>
+<p><a href="#BABIIHEJ">Asynchronous Input-Output Support</a></p>
+</li>
+<li>
+<p><a href="#CEGBHEAF">Simultaneous Multithreading</a></p>
+</li>
+<li>
+<p><a href="#CHDFHJHA">Allocating Shared Resources</a></p>
+</li>
+<li>
+<p><a href="#BABJGEFC">Database Migration from 32-Bit Linux to 64-Bit Linux</a></p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Starting with Oracle Database 11<span class="italic">g</span> release 2 (11.2), Linux x86-64 media does not contain Linux x86 binaries. You must use Linux x86 media to install 32-bit Oracle home.</div>
+<a id="CHDFFCJB" name="CHDFFCJB"></a><a id="UNXAR321" name="UNXAR321"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">C.1</span> Extended Buffer Cache Support<a id="sthref545" name="sthref545"></a></h2>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+This section applies to Linux x86 only.</div>
+<p>Oracle Database can allocate and use more than 4 GB of memory for the database buffer cache. This section describes the limitations and requirements of the extended buffer cache feature on Linux x86 systems.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="appi_vlm.htm#CACEGHIB">Very Large Memory on Linux x86</a> for more information.</div>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink CNCPT" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT"><span class="italic">Oracle Database Concepts</span></a> for more information about the extended buffer cache feature.</div>
+<p class="subhead2"><a id="UNXAR322" name="UNXAR322"></a>In-Memory File System<a id="sthref546" name="sthref546"></a></p>
+<p>To use the extended buffer cache feature, create an in-memory file system on the <code>/dev/shm</code> mount point equal in size or larger than the amount of memory that you intend to use for the database buffer cache. For example, to create an 8 GB file system on the <code>/dev/shm</code> mount point:</p>
+<ol>
+<li>
+<p>Run the following command as the <code>root</code> user:</p>
+<pre xml:space="preserve" class="oac_no_warn"># mount -t tmpfs shmfs -o size=8g /dev/shm
+</pre></li>
+<li>
+<p>To ensure that the in-memory file system is mounted when the system restarts, add an entry in the <code>/etc/fstab</code> file similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">shmfs /dev/shm tmpfs size=8g 0 0
+</pre></li>
+</ol>
+<p>When Oracle Database starts with the extended buffer cache feature enabled, it creates a file in the <code>/dev/shm</code> directory that corresponds to the Oracle buffer cache.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If an in-memory file system is already mounted on the <code>/dev/shm</code> mount point, then ensure that its size equals or is larger than the amount of memory that is used for the database buffer cache.</div>
+<p class="subhead2"><a id="UNXAR323" name="UNXAR323"></a>USE_INDIRECT_DATA_BUFFERS<a id="sthref547" name="sthref547"></a><a id="sthref548" name="sthref548"></a> Initialization Parameter</p>
+<p>To enable the extended buffer cache feature, set the <code>USE_INDIRECT_DATA_BUFFERS</code> initialization parameter to TRUE in the parameter file. This enables Oracle Database to specify a larger buffer cache.</p>
+<p class="subhead2"><a id="UNXAR324" name="UNXAR324"></a>Dynamic Cache Parameters<a id="sthref549" name="sthref549"></a><a id="sthref550" name="sthref550"></a></p>
+<p>If the extended cache feature is enabled, then you must use the <code>DB_BLOCK_BUFFERS</code> parameter to specify the database cache size.</p>
+<p>Do not use the following dynamic cache parameters while the extended buffer cache feature is enabled:</p>
+<ul>
+<li>
+<p><code>DB_CACHE_SIZE</code></p>
+</li>
+<li>
+<p><code>DB_2K_CACHE_SIZE</code></p>
+</li>
+<li>
+<p><code>DB_4K_CACHE_SIZE</code></p>
+</li>
+<li>
+<p><code>DB_8K_CACHE_SIZE</code></p>
+</li>
+<li>
+<p><code>DB_16K_CACHE_SIZE</code></p>
+</li>
+</ul>
+<p class="subhead2"><a id="UNXAR325" name="UNXAR325"></a>Limitations<a id="sthref551" name="sthref551"></a></p>
+<p>The following limitations apply to the extended buffer cache feature:</p>
+<ul>
+<li>
+<p>You cannot create or use tablespaces with nondefault block sizes. You can create tablespaces using only the block size specified by the <code>DB_BLOCK_SIZE</code> parameter.</p>
+</li>
+<li>
+<p>You cannot change the size of the buffer cache while the instance is running.</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink SQLRF" href="http://www.oracle.com/pls/db112/lookup?id=SQLRF"><span class="italic">Oracle Database SQL Language Reference</span></a> for more information about the default block size used by the <code>CREATE TABLESPACE</code> command.</div>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The default VLM window size is 512 MB. This memory size is allocated to the address space of the process. To increase or decrease this value, set the <code>VLM_WINDOW_SIZE</code> environment variable to the new size in bytes. For example, to set the <code>VLM_WINDOW_SIZE</code> to 256 MB, run the following command:
+<pre xml:space="preserve" class="oac_no_warn">$ export VLM_WINDOW_SIZE=268435456
+</pre>
+<p>The value that you specify for the <code>VLM_WINDOW_SIZE</code> environment variable must be a multiple of 64 KB.</p>
+</div>
+</div>
+<!-- class="sect1" -->
+<a id="CIHIGAEC" name="CIHIGAEC"></a><a id="UNXAR327" name="UNXAR327"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">C.2</span> Using hugetlbfs on SUSE Linux Enterprise Server 10 or Red Hat Enterprise Linux 4<a id="sthref552" name="sthref552"></a></h2>
+<p>To enable Oracle Database to use large pages (sometimes called huge pages) on SUSE Linux Enterprise Server 10, or Red Hat Enterprise Linux 4, set the value of the <code>vm.nr_hugepages</code> kernel parameter to specify the number of large pages that you want to reserve. You must specify a enough large pages to hold the entire SGA for the database instance. To determine the required parameter value, divide the SGA size for the instance by the size of a large page, then round up the result to the nearest integer.</p>
+<p>To determine the default large page size, run the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn"># grep Hugepagesize /proc/meminfo
+</pre>
+<p>For example, if <code>/proc/meminfo</code> lists the large page size as 2 MB, and the total SGA size for the instance is 1.6 GB, then set the value for the <code>vm.nr_hugepages</code> kernel parameter to 820 (1.6 GB / 2 MB = 819.2).</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="appi_vlm.htm#CACDCGAH">Overview of HugePages</a> for more information on tuning SGA with hugepages, configuring hugepages, and hugepages configuration restrictions.</div>
+</div>
+<!-- class="sect1" -->
+<a id="BABIIHEJ" name="BABIIHEJ"></a><a id="UNXAR328" name="UNXAR328"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">C.3</span> Asynchronous Input-Output Support<a id="sthref553" name="sthref553"></a></h2>
+<p>Oracle Database supports kernel asynchronous Input-Output. Asynchronous Input-Output is enabled by default on raw volumes. Automatic Storage Management uses asynchronous Input-Output by default.</p>
+<p>By default, the <code>DISK_ASYNCH_IO</code> initialization parameter in the parameter file is set to TRUE. To enable asynchronous Input-Output on file system files:</p>
+<ol>
+<li>
+<p>Ensure that all Oracle Database files are located on file systems that support asynchronous Input-Output.</p>
+</li>
+<li>
+<p>Set the <code>FILESYSTEMIO_OPTIONS</code> initialization parameter in the parameter file to <code>ASYNCH</code> or <code>SETALL</code>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If the file system files are managed through ODM library interface or dNFS, asynchronous Input-Output is enabled by default. There is no need to set FILESYSTEMIO_OPTIONS to enable asynchronous Input-Output in these environments.</div>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="CEGBHEAF" name="CEGBHEAF"></a><a id="UNXAR333" name="UNXAR333"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">C.4</span> Simultaneous Multithreading</h2>
+<p>If Simultaneous Multithreading is enabled, then the <code>v$osstat</code> view reports two additional rows corresponding to the online logical (<code>NUM_LCPUS</code>) and virtual CPUs (<code>NUM_VCPUS</code>).</p>
+</div>
+<!-- class="sect1" -->
+<a id="CHDFHJHA" name="CHDFHJHA"></a><a id="UNXAR334" name="UNXAR334"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">C.5</span> Allocating Shared Resources</h2>
+<p>To use the <code>MEMORY_TARGET</code> or <code>MEMORY_MAX_TARGET</code> feature, the following kernel parameters must be potentially modified.</p>
+<ul>
+<li>
+<p><code>/dev/shm</code> mount point should be equal in size or larger than the value of <code>SGA_MAX_SIZE</code>, if set, or should be set to be at least <code>MEMORY_TARGET</code> or <code>MEMORY_MAX_TARGET</code>, whichever is larger. For example, with <code>MEMORY_MAX_TARGET=4GB</code> only set, to create a 4GB system on the <code>/dev/shm</code> mount point:</p>
+<ul>
+<li>
+<p>Run the following command as the <code>root</code> user:</p>
+<pre xml:space="preserve" class="oac_no_warn"># mount -t tmpfs shmfs -o size=4g /dev/shm
+</pre></li>
+<li>
+<p>Ensure that the in-memory file system is mounted when the system restarts, add an entry in the <code>/etc/fstab</code> file similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn"># shmfs /dev/shm tmpfs size=4g 0
+</pre></li>
+</ul>
+</li>
+<li>
+<p>The number of file descriptors for each Oracle instance are increased by 512*<code>PROCESSES</code>. Therefore, the maximum number of file descriptors should be at least this value, plus some more for the operating system requirements. For example, if the <code>cat /proc/sys/fs/file-max</code> command returns 32768 and <code>PROCESSES</code> are 100, you can set it to 6815744 or higher as <code>root</code>, to have 51200 available for Oracle. Use one of the following options to set the value for the <code>file-max</code> descriptor.</p>
+<ul>
+<li>
+<p>Run the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">echo 6815744 &gt; /proc/sys/fs/file-max
+</pre>
+<p>OR</p>
+</li>
+<li>
+<p>Modify the following entry in the <code>/etc/sysctl.conf</code> file and restart the system as <code>root</code>.</p>
+<pre xml:space="preserve" class="oac_no_warn">fs.file-max = 6815744
+</pre></li>
+</ul>
+</li>
+<li>
+<p>Per-process number of file descriptors must be at least 512. For example, as <code>root</code> run the following command.</p>
+<ul>
+<li>
+<p>On bash and sh:</p>
+<pre xml:space="preserve" class="oac_no_warn"># ulimit -n
+</pre></li>
+<li>
+<p>On csh:</p>
+<pre xml:space="preserve" class="oac_no_warn"># limit descriptors
+</pre></li>
+</ul>
+<p>If the preceding command returns 200, then run the following command to set the value for the per processor file descriptors limit, for example to 1000:</p>
+<ul>
+<li>
+<p>On bash and sh:</p>
+<pre xml:space="preserve" class="oac_no_warn"># sudo sh
+# ulimit -n 1000
+</pre></li>
+<li>
+<p>On csh:</p>
+<pre xml:space="preserve" class="oac_no_warn"># sudo sh
+# limit descriptors 1000
+</pre></li>
+</ul>
+</li>
+<li>
+<p><code>MEMORY_TARGET</code> and <code>MEMORY_MAX_TARGET</code> cannot be used when <code>LOCK_SGA</code> is enabled. <code>MEMORY_TARGE</code>T and <code>MEMORY_MAX_TARGET</code> also cannot be used with huge pages on Linux.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="BABJGEFC" name="BABJGEFC"></a><a id="UNXAR335" name="UNXAR335"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">C.6</span> Database Migration from 32-Bit Linux to 64-Bit Linux</h2>
+<p>To migrate an Oracle Database 11<span class="italic">g</span> Release 2 (11.2) for 32-bit Linux to an Oracle Database 11<span class="italic">g</span> Release 2 (11.2) for 64-bit Linux, you must perform the following steps:</p>
+<ul>
+<li>
+<p><a href="#BABECIGA">Online Backup of Database With RMAN</a></p>
+</li>
+<li>
+<p><a href="#BABBHFDB">Migrating 32-Bit Linux Database to 64-Bit Linux Database</a></p>
+</li>
+<li>
+<p><a href="#CHDFBEIC">Migrating Data To and From ASM</a></p>
+</li>
+</ul>
+<a id="BABECIGA" name="BABECIGA"></a><a id="UNXAR336" name="UNXAR336"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">C.6.1</span> Online Backup of Database With RMAN</h3>
+<p>Online backup enables to take a backup of the database without having to shutdown the database. To achieve this, perform the following steps:</p>
+<ol>
+<li>
+<p>Connect to the database instance as <code>SYSDBA</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; CONNECT / AS SYSDBA;
+</pre></li>
+<li>
+<p>Run the following commands to ensure that the database is in <code>ARCHIVELOG</code> mode:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SHUTDOWN IMMEDIATE
+Database closed
+Database dismounted
+Oracle instance shutdown
+
+SQL&gt; STARTUP MOUNT
+Oracle instance started
+
+Total System Global Area  272629760 bytes
+Fixed Size                   788472 bytes
+Variable Size             103806984 bytes
+Database Buffers          167772160 bytes
+Redo Buffers                 262144 bytes
+Database mounted
+
+SQL&gt;ALTER DATABASE ARCHIVELOG;
+Database altered
+
+SQL&gt; ALTER DATABASE OPEN;
+Database altered
+</pre></li>
+<li>
+<p>Run the following command to start RMAN, which is located under <code>$ORACLE_HOME/bin</code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">RMAN&gt;connect target
+</pre></li>
+<li>
+<p>To backup the 32-bit database and all the archived redo log files, run the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">RMAN&gt;backup database plus archivelog delete input;
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Archive redo logs are very important to recover the database. Oracle recommends that you back them up along with your database. You can backup the archive redo logs from time to time by issuing the following command:
+<pre xml:space="preserve" class="oac_no_warn">RMAN&gt;backup archivelog all delete input;
+</pre></div>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BABBHFDB" name="BABBHFDB"></a><a id="UNXAR337" name="UNXAR337"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">C.6.2</span> Migrating 32-Bit Linux Database to 64-Bit Linux Database</h3>
+<p>This section covers the following topics:</p>
+<ul>
+<li>
+<p><a href="#BABEBAEE">Migrating 32-Bit Database to 64-Bit Database With the Same Directory Structure for Data Files</a></p>
+</li>
+<li>
+<p><a href="#BABEDFCJ">Migrating 32-Bit Database to 64-Bit Database With Different Directory Structure for Data Files</a></p>
+</li>
+</ul>
+<a id="BABEBAEE" name="BABEBAEE"></a><a id="UNXAR338" name="UNXAR338"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">C.6.2.1</span> Migrating 32-Bit Database to 64-Bit Database With the Same Directory Structure for Data Files</h4>
+<p>If the control file, data file, redo log files have the same structure on the target computer as in the source computer, then perform the following steps:</p>
+<ol>
+<li>
+<p>Perform an online backup of the database before starting the migration process. Refer to <a href="#BABECIGA">Online Backup of Database With RMAN</a> for more information.</p>
+</li>
+<li>
+<p>Install Oracle Database 11<span class="italic">g</span> Release 2 (11.2) for 64-bit Linux in a new Oracle Database home. It is recommended that you use the same version of Oracle Database home as on the 32-bit computer.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink LADBI" href="../../install.112/e16763/toc.htm"><span class="italic">Oracle Database Installation Guide for Linux</span></a></div>
+</li>
+<li>
+<p>Copy <code>init.ora</code>, data files, control file, and the redo log files from the 32-bit Linux computer to the corresponding locations on the 64-bit Linux computer.</p>
+</li>
+<li>
+<p>Edit <code>init.ora</code> file to include the following changes:</p>
+<ul>
+<li>
+<p>Update the memory requirements included in the file.</p>
+</li>
+<li>
+<p>Edit the control file location if necessary.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends that you double the values of shared pool, java pool, <code>sga_target</code> and large pool listed in the <code>init.ora</code> file.</div>
+</li>
+<li>
+<p>Connect to the database instance as <code>SYSDBA</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; CONNECT / AS SYSDBA;
+</pre></li>
+<li>
+<p>Set the system to spool results to a log file for later verification of success. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SPOOL /tmp/utlirp.log
+</pre></li>
+<li>
+<p>Start the 64-bit Oracle Database as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; STARTUP UPGRADE pfile=init.ora;
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+<a class="olink UPGRD12354" href="http://www.oracle.com/pls/db112/lookup?id=UPGRD12354"><span class="italic">Oracle Database Upgrade Guide</span></a> for more information on changing from 32-bit to 64-bit</div>
+</li>
+<li>
+<p>Run the following command on the 64-bit Oracle Database, to invalidate all the PL/SQL modules:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; @$ORACLE_HOME/rdbms/admin/utlirp.sql 
+</pre></li>
+<li>
+<p>Shut down the 64-bit Oracle Database:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt;shutdown immediate; 
+</pre></li>
+<li>
+<p>Start the 64-bit Oracle Database:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; STARTUP pfile=init.ora;
+</pre></li>
+<li>
+<p>If the JServer JAVA Virtual Machine component is installed, perform the following steps after connecting as <code>SYS</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">begin
+  update obj$ set status=5 where obj#=(select obj# from obj$,javasnm$
+    where owner#=0 and type#=29 and short(+)=name and
+    nvl(longdbcs,name)='oracle/aurora/rdbms/Compiler');
+  commit;
+  declare
+    cursor C1 is select
+       'DROP JAVA DATA "' || u.name || '"."' || o.name || '"'
+       from obj$ o,user$ u where o.type#=56 and u.user#=o.owner#;
+
+    ddl_statement varchar2(200);
+    iterations number;
+    previous_iterations number;
+    loop_count number;
+    my_err     number;
+  begin
+    previous_iterations := 10000000;
+    loop
+      -- To make sure we eventually stop, pick a max number of iterations
+      select count(*) into iterations from obj$ where type#=56;
+      exit when iterations=0 or iterations &gt;= previous_iterations;
+      previous_iterations := iterations;
+      loop_count := 0;
+      open C1;
+     loop
+       begin
+         fetch C1 into ddl_statement;
+         exit when C1%NOTFOUND or loop_count &gt; iterations;
+      exception when others then
+         my_err := sqlcode;
+         if my_err = -1555 then -- snapshot too old, re-execute fetch query
+           exit;
+         else
+           raise;
+        end if;
+      end;
+      initjvmaux.exec(ddl_statement);
+      loop_count := loop_count + 1;
+     end loop;
+     close C1;
+    end loop;
+  end;
+  commit;
+  initjvmaux.drp('delete from java$policy$shared$table');
+  update obj$ set status=1 where obj#=(select obj# from obj$,javasnm$ 
+    where owner#=0 and type#=29 and short(+)=name and
+    nvl(longdbcs,name)='oracle/aurora/rdbms/Compiler');
+  commit;
+end;
+/
+create or replace java system;
+/
+</pre></li>
+<li>
+<p>Revalidate all the existing PL/SQL modules in the format required by the 64-bit Oracle Database:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt;$ORACLE_HOME/rdbms/admin/utlrp.sql;
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="BABEDFCJ" name="BABEDFCJ"></a><a id="UNXAR339" name="UNXAR339"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">C.6.2.2</span> Migrating 32-Bit Database to 64-Bit Database With Different Directory Structure for Data Files</h4>
+<p>If the control file, data file, redo log files have different structure on the target computer as compared to the source computer, then perform the following steps:</p>
+<ol>
+<li>
+<p>Perform an online backup of the database before starting the migration process. Refer to <a href="#BABECIGA">Online Backup of Database With RMAN</a> for more information.</p>
+</li>
+<li>
+<p>Install Oracle Database 11<span class="italic">g</span> Release 2 (11.2) for 64-bit Linux in a new Oracle Database home. It is recommended that you use the same version of Oracle Database home as on the 32-bit computer.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<span class="italic">Oracle Database Installation Guide for Linux</span></div>
+</li>
+<li>
+<p>Edit <code>init.ora</code> file on the 64-bit computer to include the following changes:</p>
+<ul>
+<li>
+<p>Update the memory requirements included in the file.</p>
+</li>
+<li>
+<p>The <code>init.ora</code> file still contains the 32-bit control file path. You must manually update <code>control_files</code> parameter value to include the 64-bit control file location.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends that you double the values of shared pool, java pool, <code>sga_target</code> and large pool listed in the <code>init.ora</code> file.</div>
+</li>
+<li>
+<p>If the 64-bit target computer contains a different structure for data files, then you must re-create the control file or mount database on 64-bit computer. Refer to <a href="#BABIGGDD">Re-aligning Data File Path and Name</a> for more information.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends not to use the <code>RESETLOGS</code> option to re-create control files.</div>
+</li>
+<li>
+<p>Set the system to spool results to a log file for later verification of success. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SPOOL /tmp/utlirp.log
+</pre></li>
+<li>
+<p>Run the following command on the 64-bit Oracle Database, to invalidate all the PL/SQL modules:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; @$ORACLE_HOME/rdbms/admin/utlirp.sql 
+</pre></li>
+<li>
+<p>Turn off the spooling of script results to the log file:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; SPOOL OFF;
+</pre></li>
+<li>
+<p>Shut down the 64-bit Oracle Database:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt;shutdown immediate; 
+</pre></li>
+<li>
+<p>Start the 64-bit Oracle Database:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; STARTUP pfile=init.ora;
+</pre></li>
+<li>
+<p>If the JServer JAVA Virtual Machine component is installed, perform the following steps after connecting as <code>SYS</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">begin
+  update obj$ set status=5 where obj#=(select obj# from obj$,javasnm$
+    where owner#=0 and type#=29 and short(+)=name and
+    nvl(longdbcs,name)='oracle/aurora/rdbms/Compiler');
+  commit;
+  declare
+    cursor C1 is select
+       'DROP JAVA DATA "' || u.name || '"."' || o.name || '"'
+       from obj$ o,user$ u where o.type#=56 and u.user#=o.owner#;
+
+    ddl_statement varchar2(200);
+    iterations number;
+    previous_iterations number;
+    loop_count number;
+    my_err     number;
+  begin
+    previous_iterations := 10000000;
+    loop
+      -- To make sure we eventually stop, pick a max number of iterations
+      select count(*) into iterations from obj$ where type#=56;
+      exit when iterations=0 or iterations &gt;= previous_iterations;
+      previous_iterations := iterations;
+      loop_count := 0;
+      open C1;
+     loop
+       begin
+         fetch C1 into ddl_statement;
+         exit when C1%NOTFOUND or loop_count &gt; iterations;
+      exception when others then
+         my_err := sqlcode;
+         if my_err = -1555 then -- snapshot too old, re-execute fetch query
+           exit;
+         else
+           raise;
+        end if;
+      end;
+      initjvmaux.exec(ddl_statement);
+      loop_count := loop_count + 1;
+     end loop;
+     close C1;
+    end loop;
+  end;
+  commit;
+  initjvmaux.drp('delete from java$policy$shared$table');
+  update obj$ set status=1 where obj#=(select obj# from obj$,javasnm$ 
+    where owner#=0 and type#=29 and short(+)=name and
+    nvl(longdbcs,name)='oracle/aurora/rdbms/Compiler');
+  commit;
+end;
+/
+create or replace java system;
+/
+</pre></li>
+<li>
+<p>Revalidate all the existing PL/SQL modules in the format required by the 64-bit Oracle Database:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt;$ORACLE_HOME/rdbms/admin/utlrp.sql;
+</pre></li>
+</ol>
+<p class="subhead2"><a id="BABIGGDD" name="BABIGGDD"></a><a id="UNXAR340" name="UNXAR340"></a>Re-aligning Data File Path and Name</p>
+<p>The following are some methods to realign the data file names and path to point to the correct location:</p>
+<ul>
+<li>
+<p><a href="#BABGDBFJ">Re-creating Control File</a></p>
+</li>
+<li>
+<p><a href="#BABHJEHI">Mounting Database on a 64-Bit Computer</a></p>
+</li>
+</ul>
+<p class="subhead2"><a id="BABGDBFJ" name="BABGDBFJ"></a><a id="UNXAR341" name="UNXAR341"></a>Re-creating Control File</p>
+<p>Perform the following steps to re-create the control file:</p>
+<ol>
+<li>
+<p>Run the following command to backup the control file to trace. The trace file is located under the <code>diagnostic_dest</code> directory on the 32-bit Linux computer. The following command generates a trace file which contains the necessary sql to re-create the control file:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; alter database backup controlfile to trace;
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Ensure that you open the Oracle Database in the <code>UPGRADE</code> mode after the control file is created.</div>
+</li>
+<li>
+<p>Rename the trace file generated into <code>.sql</code> format on the 32-bit Linux computer. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cp trace.ora control.sql
+</pre>
+<p>The contents of the control file are as follows, for example:</p>
+<ul>
+<li>
+<p>Re-creating control files with <code>NORESETLOGS</code> option.</p>
+<p>32-bit control file with <code>NORESETLOGS</code> option:</p>
+<pre xml:space="preserve" class="oac_no_warn">STARTUP NOMOUNT pfile=t_init1.ora
+CREATE CONTROLFILE REUSE DATABASE "L32" NORESETLOGS  NOARCHIVELOG
+    MAXLOGFILES 32
+    MAXLOGMEMBERS 2
+    MAXDATAFILES 32
+    MAXINSTANCES 1
+    MAXLOGHISTORY 454
+LOGFILE
+     GROUP 1 '/ade/aime_l32/oracle/dbs/t_log1.f'  SIZE 25M,
+     GROUP 2 '/ade/aime_l32/oracle/dbs/t_log2.f'  SIZE 25M
+DATAFILE
+     '/ade/aime_l32/oracle/dbs/t_db1.f'
+     '/ade/aime_l32/oracle/dbs/t_ax1.f'
+     '/ade/aime_l32/oracle/dbs/t_undo1.f'
+CHARACTER SET WE8DEC;
+RECOVER DATABASE;
+ALTER DATABASE OPEN UPGRADE;
+ALTER TABLESPACE TEMP ADD TEMPFILE '/ade/aime_l32/oracle/dbs/t_tmp1.f' SIZE 41943040  REUSE AUTOEXTEND ON NEXT 8192  MAXSIZE 32767M;
+</pre>
+<p>Now, let us consider the modified 64-bit control file:</p>
+<pre xml:space="preserve" class="oac_no_warn">STARTUP NOMOUNT pfile=t_init1.ora
+CREATE CONTROLFILE REUSE DATABASE "L32" NORESETLOGS  NOARCHIVELOG
+    MAXLOGFILES 32
+    MAXLOGMEMBERS 2
+    MAXDATAFILES 32
+    MAXINSTANCES 1
+    MAXLOGHISTORY 454
+LOGFILE
+     GROUP 1 '/ade/aime_l64/oracle/dbs/t_log1.f'  SIZE 25M,
+     GROUP 2 '/ade/aime_l64/oracle/dbs/t_log2.f'  SIZE 25M
+DATAFILE
+     '/ade/aime_l64/oracle/dbs/t_db1.f'
+     '/ade/aime_l64/oracle/dbs/t_ax1.f'
+     '/ade/aime_l64/oracle/dbs/t_undo1.f'
+CHARACTER SET WE8DEC;
+RECOVER DATABASE;
+ALTER DATABASE OPEN UPGRADE;
+ALTER TABLESPACE TEMP ADD TEMPFILE '/ade/aime_l64/oracle/dbs/t_tmp1.f' SIZE 41943040  REUSE AUTOEXTEND ON NEXT 8192  MAXSIZE 32767M;
+</pre></li>
+<li>
+<p>Re-creating control files with <code>RESETLOGS</code> option:</p>
+<p>32-bit control file with <code>RESETLOGS</code> option:</p>
+<pre xml:space="preserve" class="oac_no_warn">STARTUP NOMOUNT pfile=t_init1.ora
+CREATE CONTROLFILE REUSE DATABASE "L32" RESETLOGS  NOARCHIVELOG
+    MAXLOGFILES 32
+    MAXLOGMEMBERS 2
+    MAXDATAFILES 32
+    MAXINSTANCES 1
+    MAXLOGHISTORY 454
+LOGFILE
+     GROUP 1 '/ade/aime_l32/oracle/dbs/t_log1.f'  SIZE 25M,
+     GROUP 2 '/ade/aime_l32/oracle/dbs/t_log2.f'  SIZE 25M
+DATAFILE
+     '/ade/aime_l32/oracle/dbs/t_db1.f'
+     '/ade/aime_l32/oracle/dbs/t_ax1.f'
+     '/ade/aime_l32/oracle/dbs/t_undo1.f'
+CHARACTER SET WE8DEC;
+RECOVER DATABASE USING BACKUP CONTROLFILE;
+ALTER DATABASE OPEN RESETLOGS UPGRADE;
+ALTER TABLESPACE TEMP ADD TEMPFILE '/ade/aime_l32/oracle/dbs/t_tmp1.f' SIZE 41943040  REUSE AUTOEXTEND ON NEXT 8192  MAXSIZE 32767M;
+</pre>
+<p>Now, let us consider the modified 64-bit control file:</p>
+<pre xml:space="preserve" class="oac_no_warn">STARTUP NOMOUNT pfile=t_init1.ora
+CREATE CONTROLFILE REUSE DATABASE "L32" RESETLOGS  NOARCHIVELOG
+    MAXLOGFILES 32
+    MAXLOGMEMBERS 2
+    MAXDATAFILES 32
+    MAXINSTANCES 1
+    MAXLOGHISTORY 454
+LOGFILE
+     GROUP 1 '/ade/aime_l64/oracle/dbs/t_log1.f'  SIZE 25M,
+     GROUP 2 '/ade/aime_l64/oracle/dbs/t_log2.f'  SIZE 25M
+DATAFILE
+     '/ade/aime_l64/oracle/dbs/t_db1.f'
+     '/ade/aime_l64/oracle/dbs/t_ax1.f'
+     '/ade/aime_l64/oracle/dbs/t_undo1.f'
+CHARACTER SET WE8DEC;
+RECOVER DATABASE USING BACKUP CONTROLFILE;
+ALTER DATABASE OPEN RESETLOGS UPGRADE;
+ALTER TABLESPACE TEMP ADD TEMPFILE '/ade/aime_l64/oracle/dbs/t_tmp1.f' SIZE 41943040  REUSE AUTOEXTEND ON NEXT 8192  MAXSIZE 32767M;
+</pre></li>
+</ul>
+</li>
+<li>
+<p>Based on the method employed to realign the file paths to point to the correct locations, you must copy the necessary files from the source 32-bit Linux computer to the target 64-bit Linux computer:</p>
+<ul>
+<li>
+<p><code>NORESETLOGS</code> option: Copy <code>init.ora</code>, data files, re-created control files (<code><span class="codeinlineitalic">control.sql</span></code>), and the redo log files from the 32-bit Linux computer to the corresponding locations on the 64-bit Linux computer</p>
+</li>
+<li>
+<p><code>RESETLOGS</code> option: Copy <code>init.ora</code>, data files, and re-created control files (<code><span class="codeinlineitalic">control.sql</span></code>) from the 32-bit Linux computer to the corresponding locations on the 64-bit Linux computer</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Connect to the database instance as <code>SYSDBA</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; CONNECT / AS SYSDBA;
+</pre></li>
+<li>
+<p>To change from 32-bit to 64-bit, run the following command from the Linux 64-bit Oracle Database home:</p>
+<pre xml:space="preserve" class="oac_no_warn">sql&gt;set echo on
+sql&gt;@control.sql
+</pre></li>
+</ol>
+<p class="subhead2"><a id="BABHJEHI" name="BABHJEHI"></a><a id="UNXAR342" name="UNXAR342"></a>Mounting Database on a 64-Bit Computer</p>
+<p>Perform the following steps to mount the database on a 64-bit computer:</p>
+<ol>
+<li>
+<p>Copy <code>init.ora</code>, data files, control file and the redo log files from the 32-bit Linux computer to the corresponding locations on the 64-bit Linux computer</p>
+</li>
+<li>
+<p>Connect to the database instance as <code>SYSDBA</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; CONNECT / AS SYSDBA;
+</pre></li>
+<li>
+<p>Start the 64-bit Oracle Database as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; STARTUP mount pfile=init.ora;
+</pre></li>
+<li>
+<p>Update all the 32-bit data file locations to include the 64-bit data file locations. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">sql&gt; alter database rename file '/ade/aime_l32/oracle/dbs/t_db1.f' to '/ade/aime_l64/oracle/dbs/t_db1.f'
+sql&gt; Database altered.
+</pre></li>
+<li>
+<p>Update all the 32-bit log file locations to include the 64-bit log file locations. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">sql&gt; alter database rename file '/ade/aime_l32/oracle/dbs/t_log.f' to '/ade/aime_l64/oracle/dbs/t_log.f'
+sql&gt; Database altered.
+</pre></li>
+<li>
+<p>To change from 32-bit to 64-bit, run the following command from the Linux 64-bit Oracle Database home:</p>
+<pre xml:space="preserve" class="oac_no_warn">sql&gt; ALTER DATABASE OPEN UPGRADE;
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Refer to <a class="olink UPGRD12354" href="http://www.oracle.com/pls/db112/lookup?id=UPGRD12354"><span class="italic">Oracle Database Upgrade Guide</span></a> for more information on changing from 32-bit to 64-bit</div>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CHDFBEIC" name="CHDFBEIC"></a><a id="UNXAR343" name="UNXAR343"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">C.6.3</span> Migrating Data To and From ASM</h3>
+<p>To take advantage of Automatic Storage Management (ASM), you can migrate an Oracle 11<span class="italic">g</span> Release 2 (11.2) database into and out of an ASM disk group using Recovery Manager (RMAN). This migration is performed using RMAN even if you are not using RMAN for your primary backup and recovery strategy.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+Chapter 8, "Performing ASM Data Migration with RMAN", in <a class="olink OSTMG12000" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG12000"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for more information on migrating databases.</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="appb_hpux.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="appe_sol.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2006, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

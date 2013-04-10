@@ -1,0 +1,580 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Understanding the Oracle Real Application Clusters Installed Configuration</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-02-18T17:43:29Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Real Application Clusters Installation Guide 11g Release 2 (11.2) for Linux and UNIX" />
+<meta name="partno" content="E17214-08" />
+<meta name="docid" content="RILIN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="srvpool.htm" title="Previous" type="text/html" />
+<link rel="Next" href="rem_orcl.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17214.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Real Application Clusters Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux and UNIX</b><br />
+Part Number E17214-08</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="srvpool.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="rem_orcl.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17214.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BEIHEFDB" name="BEIHEFDB"></a>
+<h1 class="chapter"><span class="secnum">7</span> <a id="sthref349" name="sthref349"></a><a name="RILIN006" id="RILIN006"></a>Understanding the Oracle Real Application Clusters Installed Configuration</h1>
+<p>This chapter describes the Oracle Real Application Clusters (Oracle RAC) installed configuration. This chapter contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#BEIGJCAD">Understanding the Configured Environment in Oracle RAC</a></p>
+</li>
+<li>
+<p><a href="#CIHEBJEB">Understanding Time Zone Settings on Cluster Nodes</a></p>
+</li>
+<li>
+<p><a href="#BEIFCJBA">Oratab Configuration for Oracle RAC</a></p>
+</li>
+<li>
+<p><a href="#BEIBFAIE">Database Components Created Using Database Configuration Assistant</a></p>
+</li>
+<li>
+<p><a href="#BEIHICJC">Managing Undo Tablespaces in Oracle RAC</a></p>
+</li>
+<li>
+<p><a href="#BEIIADCC">Initialization Parameter Files</a></p>
+</li>
+<li>
+<p><a href="#BEIBJHHJ">Oracle Database Default Audit Policy and Initialization Parameters</a></p>
+</li>
+<li>
+<p><a href="#BEIFFBBI">Understanding Service Registration-Related Parameters</a></p>
+</li>
+<li>
+<p><a href="#BEIHGBAD">Configuring the Listener File (listener.ora)</a></p>
+</li>
+<li>
+<p><a href="#BEICCHHC">Net Service Names (tnsnames.ora File)</a></p>
+</li>
+<li>
+<p><a href="#BEIHCDFC">Net Services Profile (sqlnet.ora File)</a></p>
+</li>
+</ul>
+<a id="BEIGJCAD" name="BEIGJCAD"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.1</span> <a name="RILIN601" id="RILIN601"></a>Understanding the Configured Environment in Oracle RAC</h2>
+<p>Oracle Net Configuration Assistant (NETCA) and Database Configuration Assistant (DBCA) configure your environment to meet the requirements for database creation and Oracle Enterprise Manager discovery of Oracle RAC databases.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Configuration files are created on each node in your cluster database.</div>
+<p>Avoid changing host names<a id="sthref350" name="sthref350"></a><a id="sthref351" name="sthref351"></a> after you complete your Oracle RAC installation, including adding or deleting domain qualifications. Hostnames are created during an Oracle Clusterware installation and are used extensively with database processes. Nodes with changed host names must be deleted from the cluster and added back with the new name.</p>
+</div>
+<!-- class="sect1" -->
+<a id="CIHEBJEB" name="CIHEBJEB"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">7.2</span> Understanding Time Zone Settings on Cluster Nodes</h2>
+<p>Oracle RAC requires that all cluster nodes have the same time zone setting. During an Oracle Clusterware installation, the installation process determines the time zone setting of the Grid installation owner on the node where Oracle Universal Installer (OUI) runs, and uses that time zone value on all of the nodes as the default time zone setting for all processes that Oracle Clusterware manages. This default setting is used for databases, Oracle ASM, and any other managed processes. However, if you start an instance with SQL*Plus, you must ensure that the time zone value that Oracle RAC uses is the same as the Oracle Clusterware time zone. You can change the time zone that Oracle Clusterware uses for a database by running the command <code>srvctl setenv database -T 'TZ=</code><code><span class="codeinlineitalic">time zone</span></code>.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BEIFCJBA" name="BEIFCJBA"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.3</span> <a name="RILIN603" id="RILIN603"></a>Oratab Configuration for Oracle RAC</h2>
+<p>Oracle creates an entry for each Oracle RAC database in the <a id="sthref352" name="sthref352"></a><code>oratab</code> configuration file. The <code>oratab</code> file is created by the <code>root.sh</code> script during installation, and it is updated by the Database Configuration Assistant when creating or deleting a database. The <code>oratab</code> file entry is also created automatically by the Database Agent when a database is first started on a node where it has not run previously. Oracle ASM Agent creates Oracle ASM <code>oratab</code> entries.</p>
+<p>Oracle Enterprise Manager uses the oratab file during service discovery to determine the name of the Oracle RAC database, and to determine if the database should be started automatically when the system is restarted.</p>
+<p>The database entry has the following syntax:</p>
+<pre xml:space="preserve" class="oac_no_warn">$DB_UNIQUE_NAME:$ORACLE_HOME:N
+</pre>
+<p>A colon (:) is used as the field terminator. A new line terminates the entry. Lines beginning with a pound sign (#) are comments. Because all the instances of an Oracle RAC database have the same <code>DB_UNIQUE_NAME</code>, but each instance has its own <code>ORACLE_SID</code>, use the <code>$DB_UNIQUE_NAME</code> environment variable in the <code>oratab</code> file as the database entry.</p>
+<p>The <code>$DB_UNIQUE_NAME</code> identifier for your Oracle RAC database must be unique across your enterprise. <code>$ORACLE_HOME</code> is the directory path to the database, and <code>N</code> indicates that the database should not be started at restart time. The following is an example entry for a database named <code>sales</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">sales:/u01/app/oracle/sales:N
+</pre></div>
+<!-- class="sect1" -->
+<a id="BEIBFAIE" name="BEIBFAIE"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.4</span> <a name="RILIN604" id="RILIN604"></a>Database Components Created Using Database Configuration Assistant</h2>
+<p><a id="sthref353" name="sthref353"></a>This section describes the <a id="sthref354" name="sthref354"></a>database components that DBCA creates, which <a id="sthref355" name="sthref355"></a>include:</p>
+<ul>
+<li>
+<p><a href="#BEIEGGAD">Tablespaces and Data files</a></p>
+</li>
+<li>
+<p><a href="#BEIFGBJG">Control Files</a></p>
+</li>
+<li>
+<p><a href="#BEIBFCJE">Redo Log Files</a></p>
+</li>
+</ul>
+<a id="BEIEGGAD" name="BEIEGGAD"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.4.1</span> Tablespaces and Data files<a id="sthref356" name="sthref356"></a><a id="sthref357" name="sthref357"></a><a id="sthref358" name="sthref358"></a></h3>
+<p>For both single-instance and <a id="sthref359" name="sthref359"></a>cluster database environments, an Oracle Database is divided into smaller logical areas of space known as tablespaces. Each <a id="sthref360" name="sthref360"></a>tablespace corresponds to one or more <a id="sthref361" name="sthref361"></a>data files on the shared storage. <a href="#CIHIHJAD">Table 7-1</a> shows the tablespace names used by an Oracle RAC database and the types of data they contain.</p>
+<div class="tblformalwide">
+<p class="titleintable"><a id="sthref362" name="sthref362"></a><a id="CIHIHJAD" name="CIHIHJAD"></a>Table 7-1 Tablespace Names Used with Oracle Real Application Clusters Databases</p>
+<table class="FormalWide" title=" Tablespace Names Used with Oracle Real Application Clusters Databases" summary="This table is described in the preceding text" dir="ltr" border="1" width="100%" frame="border" rules="all" cellpadding="3" cellspacing="0">
+<col width="24%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t3">Tablespace Name</th>
+<th align="left" valign="bottom" id="r1c2-t3">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t3" headers="r1c1-t3">
+<p><code>SYSTEM</code><a id="sthref363" name="sthref363"></a><a id="sthref364" name="sthref364"></a></p>
+</td>
+<td align="left" headers="r2c1-t3 r1c2-t3">
+<p>Consists of the data dictionary, including definitions of tables, views, and stored procedures needed by the database. Oracle Database automatically maintains information in this tablespace.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t3" headers="r1c1-t3">
+<p><code>SYSAUX</code></p>
+</td>
+<td align="left" headers="r3c1-t3 r1c2-t3">
+<p>An auxiliary system tablespace that contains the <code>DRSYS</code> (contains data for Oracle Text), <code>CWMLITE</code> (contains the OLAP schemas), <code>XDB</code> (for XML features), <code>ODM</code> (for Oracle Data Mining), <code>TOOLS</code> (contains Oracle Enterprise Manager tables), <code>INDEX</code>, <code>EXAMPLE</code>, and <code>OEM-REPO</code> tablespaces.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t3" headers="r1c1-t3">
+<p><code>USERS<a id="sthref365" name="sthref365"></a><a id="sthref366" name="sthref366"></a></code></p>
+</td>
+<td align="left" headers="r4c1-t3 r1c2-t3">
+<p>Consists of application data. As you create and enter data into tables, Oracle Database fills this space with your data.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t3" headers="r1c1-t3">
+<p><code>TEMP</code> <a id="sthref367" name="sthref367"></a><a id="sthref368" name="sthref368"></a><a id="sthref369" name="sthref369"></a></p>
+</td>
+<td align="left" headers="r5c1-t3 r1c2-t3">
+<p>Contains temporary tables and indexes created during SQL statement processing. You may need to expand this tablespace if you are running a SQL statement that involves significant sorting, such as <code>ANALYZE COMPUTE STATISTICS</code> on a very large table, or the constructs <code>GROUP BY,</code> <code>ORDER</code> <code>BY</code>, or <code>DISTINCT</code>.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t3" headers="r1c1-t3">
+<p><code>UNDOTBS<a id="sthref370" name="sthref370"></a></code><span class="italic">n</span></p>
+</td>
+<td align="left" headers="r6c1-t3 r1c2-t3">
+<p>Contains undo tablespaces for each instance that DBCA creates for automatic undo management.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t3" headers="r1c1-t3">
+<p><code>RBS<a id="sthref371" name="sthref371"></a><a id="sthref372" name="sthref372"></a></code></p>
+</td>
+<td align="left" headers="r7c1-t3 r1c2-t3">
+<p>If you do not use automatic undo management, then Oracle Database uses the <code>RBS</code> tablespace for the rollback segments.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformalwide" -->
+<p>You cannot alter these tablespace names when using the preconfigured database configuration options from OUI. However, you can change the names of the tablespaces if you use the advanced database creation method.</p>
+<p>As mentioned, each tablespace has one or more data files. The data file names created by the preconfigured database configuration options vary by storage type such as Oracle ASM, or a file system.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BEIFGBJG" name="BEIFGBJG"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.4.2</span> Control Files<a id="sthref373" name="sthref373"></a><a id="sthref374" name="sthref374"></a></h3>
+<p>The database is configured with two <a id="sthref375" name="sthref375"></a>control files that are stored on shared storage.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BEIBFCJE" name="BEIBFCJE"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.4.3</span> Redo Log Files<a id="sthref376" name="sthref376"></a><a id="sthref377" name="sthref377"></a></h3>
+<p>Each instance is configured with at least two <a id="sthref378" name="sthref378"></a>redo log files that are stored in the shared storage. If you use a file system, then these files are shared file system files. If you use Oracle ASM, then these files are stored on the Oracle ASM disk group.</p>
+<p>The file names of the redo log files that are created with the preconfigured database configuration options vary by storage type. Unless you are using a cluster file system, you must enter the block or raw device names.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BEIHICJC" name="BEIHICJC"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.5</span> <a name="RILIN605" id="RILIN605"></a>Managing Undo Tablespaces in Oracle RAC</h2>
+<p><a id="sthref379" name="sthref379"></a><a id="sthref380" name="sthref380"></a>Oracle Database stores rollback or undo information in <a id="sthref381" name="sthref381"></a>undo tablespaces. To manage undo tablespaces, Oracle recommends that you use <a id="sthref382" name="sthref382"></a>Automatic Undo Management. Automatic Undo Management is an automated undo tablespace management mode that is easier to administer than manual undo management.</p>
+<p>When Oracle ASM and Oracle Managed Files are used along with Automatic Undo Management, an instance that is started for the first time, and thus does not have an undo tablespace, will have its undo tablespace created for it by another instance automatically. The same is also true for redo logs.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink RACAD" href="http://www.oracle.com/pls/db112/lookup?id=RACAD"><span class="italic">Oracle Real Application Clusters Administration and Deployment Guide</span></a> for more information about managing undo tablespaces</div>
+</div>
+<!-- class="sect1" -->
+<a id="BEIIADCC" name="BEIIADCC"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.6</span> <a name="RILIN606" id="RILIN606"></a>Initialization Parameter Files<a id="sthref383" name="sthref383"></a></h2>
+<p><a id="sthref384" name="sthref384"></a>Oracle recommends using the <a id="sthref385" name="sthref385"></a>server parameter file (SPFILE) for storing Oracle Database initialization parameters. Oracle recommends that you store all SPFILEs on Oracle ASM, including the Oracle ASM SPFILE. SPFILEs must be located on shared storage; all instances in a cluster database can access this parameter file.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="params.htm#CIHFCHGH">Chapter 5, " Configuring the Server Parameter File in Oracle Real Application Clusters Environments"</a> for more information about the creation and use of parameter files</div>
+</div>
+<!-- class="sect1" -->
+<a id="BEIBJHHJ" name="BEIBJHHJ"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">7.7</span> Oracle Database Default Audit Policy and Initialization Parameters</h2>
+<p>Oracle Database installs a baseline database auditing policy. This policy covers the access control configuration information stored in Oracle Database database tables, information stored in Oracle Catalog (rollback segments, tablespaces, and so on), the use of system privileges, and Oracle Label Security configuration.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink DVADM" href="http://www.oracle.com/pls/db112/lookup?id=DVADM"><span class="italic">Oracle Database Vault Administrator's Guide</span></a> for more information about the database audit policy</div>
+</div>
+<!-- class="sect1" -->
+<a id="BEIFFBBI" name="BEIFFBBI"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.8</span> <a name="RILIN607" id="RILIN607"></a>Understanding Service Registration-Related Parameters</h2>
+<p><a id="sthref386" name="sthref386"></a>Oracle RAC databases provide the important benefits of <a id="sthref387" name="sthref387"></a>connection load balancing and failover. Standalone Oracle Databases perform <a id="sthref388" name="sthref388"></a>load balancing by distributing connections among local dispatchers.</p>
+<p>Oracle RAC databases increase load balancing by using the Oracle Clusterware SCANs (Single Client Access Name) to balance connections among all instances in a cluster database.</p>
+<p>Review the following sections to understand the Oracle RAC load-balancing features:</p>
+<ul>
+<li>
+<p><a href="#BEIFHHBE">Understanding Single Client Access Name (SCAN) and Load-balancing</a></p>
+</li>
+<li>
+<p><a href="#BEIGGFAD">Understanding Load-Balancing, Failover, and High Availability</a></p>
+</li>
+</ul>
+<a id="BEIFHHBE" name="BEIFHHBE"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">7.8.1</span> Understanding Single Client Access Name (SCAN) and Load-balancing</h3>
+<p>The Single Client Access Name (SCAN) is a fully qualified name (hostname+domain) that is configured to resolve to all the addresses allocated for the SCAN. The addresses resolve using Round Robin DNS either on the DNS server, or within the cluster in a GNS configuration. SCAN listeners can run on any node in the cluster.</p>
+<p>Oracle Database 11<span class="italic">g</span> release 2 and later instances only register with SCAN listeners as remote listeners. Upgraded databases register with SCAN listeners as remote listeners, and also continue to register with all node listeners.</p>
+<p>SCANs run on the cluster, not on a cluster node. SCANs provide location independence for the databases, so that client configuration does not have to depend on which nodes are running a particular database. For example, if you configure policy managed server pools in a cluster, then the SCAN enables connections to databases in these server pools regardless of which nodes are allocated to the server pool.</p>
+<p>SCANs function like a node virtual IP (VIP) address. However, SCANs are resolved to SCAN VIPs that run on any node in the cluster, so unlike a virtual IP address for a node, clients connecting to the SCAN no longer require updated virtual IP addresses as nodes are added to or removed from the cluster. Because the SCAN addresses resolve to the cluster, rather than to a node address in the cluster, nodes can be added to or removed from the cluster without affecting the SCAN address configuration.</p>
+<p>During Oracle Grid Infrastructure installation, SCAN listeners are created for as many IP addresses as there are addresses assigned to resolve to the SCAN. Oracle recommends that the SCAN resolves to three addresses, to provide high availability and scalability. If the SCAN resolves to three addresses, then there are three SCAN listeners created.</p>
+<p>Oracle RAC provides <a id="sthref389" name="sthref389"></a>failover with the node VIP addresses by configuring multiple listeners on multiple nodes to manage client connection requests for the same database service. If a node fails, then the service connecting to the VIP is relocated transparently to a surviving node, enabling fast notification of the failure to the clients connecting through the VIP. If the application and client are configured with transparent application failover options, then the client is reconnected to the surviving node. Oracle Clusterware routes client application requests from the SCAN to the VIP on the least loaded instance providing the service.</p>
+<p><a id="sthref390" name="sthref390"></a>Clients configured to use IP addresses for Oracle Database releases prior to Oracle Database 11<span class="italic">g</span> release 2 can continue to use their existing connection addresses; using SCANs is not required. When an earlier version of Oracle Database is upgraded, it registers with the SCAN listeners, and clients can start using the SCAN to connect to that database. The database registers with the SCAN listener through the remote listener parameter in the init.ora file. The REMOTE_LISTENER parameter must be set to SCAN:PORT. Do not set it to a TNSNAMES alias with a single address with the SCAN as HOST=SCAN.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+The <a class="olink CWGEN" href="http://www.oracle.com/pls/db112/lookup?id=CWGEN"><span class="italic">Oracle Grid Infrastructure Installation Guide</span></a> for detailed information about SCANs and their configuration</div>
+</div>
+<!-- class="sect2" -->
+<a id="BEIGGFAD" name="BEIGGFAD"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.8.2</span> Understanding Load-Balancing, Failover, and High Availability</h3>
+<p>Connection load balancing and failover increase availability by taking advantage of the redundant resources within a cluster database.</p>
+<p>The <a id="sthref391" name="sthref391"></a><a id="sthref392" name="sthref392"></a><a id="sthref393" name="sthref393"></a><a id="sthref394" name="sthref394"></a>Database Agent (previously known as <code>racgimon</code>) configures the <code>LOCAL_LISTENER</code> initialization parameters automatically. You do not need to alter this setting. Set the <code>REMOTE_LISTENER</code><a id="sthref395" name="sthref395"></a> to the SCAN port and SCAN using the SQL command <code>ALTER SYSTEM SET REMOTE_LISTENER</code>. If you change the SCAN port, then you need to change the REMOTE_LISTENER configuration.</p>
+<p>The <code>LOCAL_LISTENER</code> parameter identifies the local listener, and the <code><a id="sthref396" name="sthref396"></a>REMOTE_LISTENER</code> parameter identifies the global list of listeners. The <code>REMOTE_LISTENER</code> parameter is always set to the SCAN address. For example, if the name of the cluster is mycluster, and the domain is example.com, then the SCAN address will be similar to <code>myscan.mycluster.example.com:1521</code>.</p>
+<p>By default, DBCA configures your environment with <a id="sthref397" name="sthref397"></a>dedicated servers. However, if you select the <a id="sthref398" name="sthref398"></a>Shared server option when using DBCA, then Oracle configures the shared server. In this case, Oracle Database uses both dedicated and shared server processing. When shared servers are configured, the <code>DISPATCHERS</code> parameter is specified as in the following example:</p>
+<pre xml:space="preserve" class="oac_no_warn">DISPATCHERS="(protocol=tcp)"
+</pre>
+<p>If the <code>DISPATCHERS</code> <a id="sthref399" name="sthref399"></a>initialization parameter does not specify the <code>LISTENER</code> attribute as in the previous example, then the PMON process registers information for all dispatchers with the listeners specified by the <code>LOCAL_LISTENER</code> and <code>REMOTE_LISTENER</code> parameters.</p>
+<p>However, when the <code>LISTENER</code> attribute is specified, the PMON process registers dispatcher information with the listeners specified by the <code>LISTENER</code> attribute. In this case, setting the <code>LISTENER</code> attribute overrides <code>REMOTE_LISTENER</code> settings for the specified dispatchers as in the following example:</p>
+<pre xml:space="preserve" class="oac_no_warn">DISPATCHERS="(protocol=tcp)(listener=listeners_<span class="italic">db_name</span>)"
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Where the notation <code><span class="codeinlineitalic">db_name</span></code> appears in the previous example and throughout this chapter, it refers to the database name (or Oracle SID) that you entered when prompted by DBCA, or it refers to the entry you made for the <code>DATABASE</code> keyword of the <code>CREATE DATABASE</code> statement.</div>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+The <a class="olink NETAG" href="http://www.oracle.com/pls/db112/lookup?id=NETAG"><span class="italic">Oracle Database Net Services Administrator's Guide</span></a> for further information about cross-instance registration, shared and dedicated server configurations, and connection load balancing</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BEIHGBAD" name="BEIHGBAD"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.9</span> <a name="RILIN608" id="RILIN608"></a>Configuring the Listener File (listener.ora)</h2>
+<p>You can configure two types of listeners in the <a id="sthref400" name="sthref400"></a><code>listener.ora</code> file as described in the following sections:</p>
+<ul>
+<li>
+<p><a href="#BEIHBEJC">Grid Naming Service (GNS) and Listeners</a></p>
+</li>
+<li>
+<p><a href="#BEICFAIC">About Local Listeners</a></p>
+</li>
+<li>
+<p><a href="#BEIDJJAG">About Multiple Listeners</a></p>
+</li>
+<li>
+<p><a href="#BEIDCAIH">How Oracle Database Uses the Listener File (listener.ora)</a></p>
+</li>
+</ul>
+<a id="BEIHBEJC" name="BEIHBEJC"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">7.9.1</span> Grid Naming Service (GNS) and Listeners</h3>
+<p>If you enable Grid Naming Service (GNS), then you do not have to manually configure the listener. In GNS configurations, there is one GNS daemon for the cluster. Service requests to the cluster domain that GNS manages are routed to the GNS virtual IP address, which routes these requests to the GNS daemon.</p>
+<p>The GNS daemon listens for registrations. When a SCAN virtual IP starts, it registers its addresses with GNS. When GNS receives a request from a DNS for the SCAN, it returns the registered addresses to the DNS.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BEICFAIC" name="BEICFAIC"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.9.2</span> About Local Listeners</h3>
+<p><a id="sthref401" name="sthref401"></a>During Oracle Database creation, the <code>LOCAL_LISTENER</code> parameter is automatically configured to point to the local listener for the database. The Database Agent sets the <code>LOCAL_LISTENER</code> parameter to a connect descriptor that does not require a TNS alias.</p>
+<p><a id="sthref402" name="sthref402"></a>You can set a value manually for LOCAL_LISTENER. However, Oracle recommends that you leave the parameter unset so that the Database Agent can maintain it automatically.</p>
+<p>For example, after you create the database, if you need to add a second listener, listening on port 2012, then use the following command to have the database register with both listeners on startup:</p>
+<pre xml:space="preserve" class="oac_no_warn">&gt; alter system set local_listener='(DESCRIPTION=
+(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.61)(PORT=1521))
+(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.61)(PORT=2011))))' 
+scope=BOTH SID='OCRL1';
+</pre>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink NETAG" href="http://www.oracle.com/pls/db112/lookup?id=NETAG"><span class="italic">Oracle Database Net Services Administrator's Guide</span></a> for information about understanding and configuring listeners</div>
+<p>The <code>tnsnames.ora</code> file is located in the path <code>$ORACLE_HOME/network/admin</code>. By default, the <code>tnsnames.ora</code> file is read from the Oracle Grid Infrastructure home, in the path <span class="italic">Grid_home</span><code>/network/admin</code>.</p>
+<p>The listener association no longer requires <code>tnsnames.ora</code> file entries. The REMOTE_LISTENER is configured by DBCA to reference the SCAN name and port, without any need for a <code>tnsnames.ora</code> entry.</p>
+<p>The following is an example of an Oracle RAC 11<span class="italic">g</span> release 2 (11.2) <code>tnsnames.ora</code> file:</p>
+<pre xml:space="preserve" class="oac_no_warn"># tnsnames.ora Network Configuration file:
+/u01/app/oracle/product/11.2.0/dbhome_1/network/admin/tnsnames.ora
+# Generated by Oracle Configuration tools
+RACDB =
+   (DESCRIPTION = 
+     (ADDRESS = (PROTOCOL = TCP)(HOST = myscan.mycluster.example.com)(PORT = 1521)
+)
+     (CONNECT_DATA =
+       (SERVER = DEDICATED)
+       (SERVICE_NAME = RACDB)
+      )
+    )
+</pre></div>
+<!-- class="sect2" -->
+<a id="BEIDJJAG" name="BEIDJJAG"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.9.3</span> About Multiple Listeners</h3>
+<p>If DBCA detects more than one listener on the node, then it displays a list of the listeners. You can select one or all of these listeners with which to register your database.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+To administer 11<span class="italic">g</span> release 2 (11.2) local and scan listeners using the <code>lsnrctl</code> command, set your ORACLE_HOME environment variable to the path for the Oracle Grid Infrastructure home (Grid home). Do not attempt to use the <code>lsnrctl</code> commands from Oracle home locations for previous releases, because they cannot be used with the new release.</div>
+</div>
+<!-- class="sect2" -->
+<a id="BEIDCAIH" name="BEIDCAIH"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.9.4</span> How Oracle Database Uses the Listener File (listener.ora) <a id="sthref403" name="sthref403"></a><a id="sthref404" name="sthref404"></a><a id="sthref405" name="sthref405"></a></h3>
+<p><a id="sthref406" name="sthref406"></a><a id="sthref407" name="sthref407"></a>Services coordinate their sessions by registering their load with the Local Listener and the SCAN Listeners. Clients are redirected by the SCAN Listener to a local listener on the least loaded node that is running the instance for a particular service. That Listener either redirects the client to a Dispatcher process (if the database was configured for Shared Server), or redirects the client to a dedicated server process. Local Listeners are configured to respond to database connection requests, and to non-database connection requests, such as external procedures or XDB requests.</p>
+<p>The Listener agent dynamically updates endpoints with the listener. With the Oracle Database 11<span class="italic">g</span> release 2 installation, the <code>listener.ora</code> file now only contains an IPC key and the following information:</p>
+<p>(ADDRESS = (PROTOCOL=TCP)(HOST=)(PORT=1521))</p>
+<p>This information refers implicitly to the local node's HOST endpoint. The <code>listener.ora</code> file is the same on every node.</p>
+<p>Before you install Oracle RAC, during the Oracle Grid Infrastructure installation, Oracle Net Configuration Assistant creates and starts a default listener in the Grid home called <code>LISTENER</code>. The listener is configured with default protocol listening addresses. The listener is configured to respond to connection requests that are directed to one protocol address specified during installation.</p>
+<p><a id="sthref408" name="sthref408"></a><a id="sthref409" name="sthref409"></a>During Oracle RAC installation, the Oracle RAC database uses the Oracle Clusterware listener, and configures service information about the Oracle RAC database. An Oracle Database 11<span class="italic">g</span> release 2 (11.2) database service automatically registers its information with the listener, such as its service name, instance names, and load information. This feature, called service registration, does not require configuration in the <code>listener.ora</code> file. After listener creation, Oracle Net Configuration Assistant starts the listener.</p>
+<p>After installation, you can modify listeners by using <code>srvctl</code> commands, or by using NetCA. Manual editing of the <code>listener.ora</code> file is not required.</p>
+<p>The following is an example <code>listener.ora</code> file with an entry for a node named <code>node1</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">LISTENER_SCAN1=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER_
+SCAN1))))               # line added by Agent
+LISTENER_NODE1=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=IPC) (KEY=LISTENER))))
+          # line added by Agent
+# listener.ora.mycluster Network Configuration File:
+/u01/app/oracle/11.2.0/dbhome_1/network/admin/listener.ora.mycluster
+# Generated by Oracle configuration tools.
+ 
+LISTENER_NODE1 =
+  (DESCRIPTION_LIST =
+    (DESCRIPTION =
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1521))
+    )
+  )
+ 
+ENABLE_GLOBAL_DYNAMIC_ENDPOINT_LISTENER_NODE1=ON              # line added by Agent
+ENABLE_GLOBAL_DYNAMIC_ENDPOINT_LISTENER_SCAN2=ON              # line added by Agent
+ENABLE_GLOBAL_DYNAMIC_ENDPOINT_LISTENER_SCAN1=ON              # line added by Agen
+</pre>
+<div class="sect3"><a id="sthref410" name="sthref410"></a>
+<h4 class="sect3"><span class="secnum">7.9.4.1</span> Listener Registration and PMON Discovery</h4>
+<p>When a <a id="sthref411" name="sthref411"></a>listener starts after the Oracle instance starts, and the listener is listed for service registration, registration does not occur until the next time the Oracle Database process monitor (PMON) discovery routine starts. By default, PMON discovery occurs every 60 seconds.</p>
+<p>To override the 60-second delay, use the SQL <code>ALTER SYSTEM REGISTER</code> statement. This statement forces the PMON process to register the service immediately.</p>
+<p>Oracle recommends that you create a script to run this statement immediately after starting the listener. If you run this statement while the listener is up and the instance is already registered, or while the listener is down, then the statement has no effect.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+The <a class="olink NETAG" href="http://www.oracle.com/pls/db112/lookup?id=NETAG"><span class="italic">Oracle Database Net Services Administrator's Guide</span></a> for further information about the listener and the <code>listener.ora</code> file</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BEICCHHC" name="BEICCHHC"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.10</span> <a name="RILIN610" id="RILIN610"></a>Net Service Names (tnsnames.ora File)<a id="sthref412" name="sthref412"></a><a id="sthref413" name="sthref413"></a></h2>
+<p><a id="sthref414" name="sthref414"></a><a id="sthref415" name="sthref415"></a>A <code>tnsnames.ora</code> file is created on each node with net service names. A connect identifier is an identifier that maps to a connect descriptor. A connect descriptor contains the following information:</p>
+<ul>
+<li>
+<p>The network route to the service, including the location of the listener through a protocol address</p>
+</li>
+<li>
+<p>The <code>SERVICE_NAME</code> for an Oracle Database</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The <code>SERVICE_NAME</code> parameter that you use in the <code>tnsnames.ora</code> file is singular, because you can specify only one service name. There is also the <code>SERVICE_NAMES</code> parameter in the database initialization file. The <code>SERVICE_NAMES</code> parameter defaults the global database name, a name comprising the <code>DB_NAME</code> and <code>DB_DOMAIN</code> parameters in the initialization parameter file.</div>
+</li>
+</ul>
+<p><a id="sthref416" name="sthref416"></a><a id="sthref417" name="sthref417"></a><a id="sthref418" name="sthref418"></a>With Oracle Clusterware 11<span class="italic">g</span> release 2 and later, Database Configuration Agent (DBCA) no longer sets the LOCAL_LISTENER parameter. The Oracle Clusterware agent that starts the database sets the LOCAL_LISTENER parameter dynamically, unless you explicitly set the LOCAL_LISTENER parameter, using the command ALTER SYSTEM SET LOCAL_LISTENER to set the LOCAL_LISTENER parameter manually. Listener_<span class="italic">alias</span> entries are no longer needed in the <code>tnsnames.ora</code> file.</p>
+<p>For example, after you create the database, if you need to add a second listener, listening on port 2012, then use the following command to have the database register with both listeners on startup:</p>
+<pre xml:space="preserve" class="oac_no_warn">&gt; alter system set local_listener='(DESCRIPTION=
+(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.61)(PORT=1521))
+(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.61)(PORT=2011))))' 
+scope=BOTH SID='OCRL1';
+</pre>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink ADMIN11120" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN11120"><span class="italic">Oracle Database Administrator's Guide</span></a></div>
+<p>For the REMOTE_LISTENER parameter, Oracle Clusterware uses the EZ connect syntax scanname:scanport, so that no entries are needed for the REMOTE_LISTENER parameter in the <code>tnsnames.ora</code> file.</p>
+<p>DBCA creates <a id="sthref419" name="sthref419"></a>net service names for connections as described in the following sections:</p>
+<p>Review the following sections for information about net service names:</p>
+<ul>
+<li>
+<p><a href="#BEIGCIJF">Net Service Names for Database Connections</a></p>
+</li>
+<li>
+<p><a href="#BEIBHCIG">Net Service Name Instance Connections</a></p>
+</li>
+<li>
+<p><a href="#BEIGAJAJ">tnsnames.ora Example File</a></p>
+</li>
+</ul>
+<a id="BEIGCIJF" name="BEIGCIJF"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">7.10.1</span> Net Service Names for Database Connections</h3>
+<p>Clients that connect to any instance of the database use the SCAN name for the database. This entry also enables Oracle Enterprise Manager to discover an Oracle RAC database.</p>
+<p>Three SCAN addresses are configured for the cluster, and allocated to servers. If the chosen address fails, then the connection request to the SCAN name fails over to the next address. Thus, if an instance fails, then clients can still connect using another instance.</p>
+<p>In the following example, <code>myscan.mycluster.example.com</code> is used by the client to connect to the target database, <code>mycluster.example.com</code>.</p>
+<pre xml:space="preserve" class="oac_no_warn">mycluster.example.com =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = host=myscan.mycluster.example.com)(PORT = 1522))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = myApp)
+    )
+  
+</pre>
+<p>An Easy Connect address for this database should be similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">myscan.mycluster.example.com/mycluster.example.com
+</pre></div>
+<!-- class="sect2" -->
+<a id="BEIBHCIG" name="BEIBHCIG"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">7.10.2</span> Net Service Name Instance Connections</h3>
+<p>Clients that connect to a particular instance of the database use the SCAN name for the instance. This entry, for example, enables Oracle Enterprise Manager to discover the instances in the cluster. These entries are also used to start and stop instances.</p>
+<p>In the following example, Oracle Enterprise Manager uses <code>myscan.mycluster.example.com</code> to connect to an instance named <code>mycluster1</code> on node1:</p>
+<pre xml:space="preserve" class="oac_no_warn">mycluster1.example.com=
+ (description= 
+  (address=(protocol=tcp)(host=myscan.mycluster.example.com)(port=1521))
+  (connect_data= 
+    (service_name=mycluster.example.com)
+    (instance_name=mycluster1)))
+</pre></div>
+<!-- class="sect2" -->
+<a id="BEIGAJAJ" name="BEIGAJAJ"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">7.10.3</span> tnsnames.ora Example File</h3>
+<p>This example is a sample <code>tnsnames.ora</code> file that is created during a preconfigured database configuration installation.</p>
+<pre xml:space="preserve" class="oac_no_warn"># tnsnames.ora Network Configuration File: /u01/app/oracle/11.2.0/dbhome_1/network/admin/tnsnames.ora
+# Generated by Oracle configuration tools.
+ 
+sales =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = myscan.mycluster.example.com)(PORT = 1522))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = myApp)
+    )
+  
+</pre>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+The <a class="olink NETAG302" href="http://www.oracle.com/pls/db112/lookup?id=NETAG302"><span class="italic">Oracle Database Net Services Administrator's Guide</span></a> for further information about the <code>tnsnames.ora</code> file</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BEIHCDFC" name="BEIHCDFC"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">7.11</span> <a name="RILIN611" id="RILIN611"></a>Net Services Profile (sqlnet.ora File)</h2>
+<p><a id="sthref420" name="sthref420"></a><a id="sthref421" name="sthref421"></a><a id="sthref422" name="sthref422"></a><a id="sthref423" name="sthref423"></a>Oracle Universal Installer starts Oracle Net Configuration Assistant after the database is installed, and creates the Net Services profile, or <code>sqlnet.ora</code> file.</p>
+<p>By default, the <code>sqlnet.ora</code> file is located in the following directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/network/admin
+</pre>
+<p>In this directory, in addition to the default <code>sqlnet.ora</code> file generated during installation, you also can find a sample <code>sqlnet.ora</code> file in the directory <code>sample</code>.</p>
+<p>During installation, Oracle Net Configuration Assistant creates the following entries in the <code>sqlnet.ora</code> file, where <span class="italic">Oracle_base</span> is the path to the Oracle RAC installation owner's Oracle base directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">NAMES.DIRECTORY_PATH=(TNSNAMES, EZCONNECT)
+ADR_BASE =<span class="italic">Oracle_base</span>
+</pre>
+<p>The parameter <code>NAMES.DIRECTORY_PATH</code> specifies the priority order of the naming methods to use to resolve connect identifiers to connect descriptors.</p>
+<p>The Easy Connect naming method eliminates the need for service name lookup in the <code>tnsnames.ora</code> files for TCP/IP environments. With Easy Connect, clients use a connect string for a simple TCP/IP address, consisting of a host name and optional port and service name. If you use this method, then no naming or directory system is required.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+The <a class="olink NETAG" href="http://www.oracle.com/pls/db112/lookup?id=NETAG"><span class="italic">Oracle Database Net Services Administrator's Guide</span></a> for further information about the <code>sqlnet.ora</code> file</div>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="srvpool.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="rem_orcl.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2007, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>
