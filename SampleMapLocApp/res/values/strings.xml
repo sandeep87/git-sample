@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MyMapActivity!</string>
+    <string name="app_name">Sample Maps Application</string>
+
+<string name="index">Click S for Sattelite View, M for Map view, I to zoom in, O to zoom out; You can simulate change of location from adb shell</string>
+</resources>
