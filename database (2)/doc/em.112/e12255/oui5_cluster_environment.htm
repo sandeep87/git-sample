@@ -1,0 +1,1434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Installing Cluster Environments</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.1" />
+<meta name="Date" content="2011-03-15T16:57:53Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Universal Installer and OPatch User's Guide 11g Release 2 (11.2) for Windows and UNIX" />
+<meta name="partno" content="E12255-11" />
+<meta name="docid" content="OUICG" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="oui4_product_install.htm" title="Previous" type="text/html" />
+<link rel="Next" href="oui6_cloning.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e12255.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Universal Installer and OPatch User's Guide<br />
+11<i>g</i> Release 2 (11.2) for Windows and UNIX</b><br />
+Part Number E12255-11</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="oui4_product_install.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="oui6_cloning.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e12255.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BABJBJDC" name="BABJBJDC"></a>
+<h1 class="chapter"><span class="secnum">5</span> <a name="OUICG218" id="OUICG218"></a>Installing Cluster Environments</h1>
+<p>A cluster installation uses Oracle Universal Installer to install software on the nodes of a cluster that are network reachable and bound together by Oracle Clusterware. You can use Oracle Universal Installer to extend the Oracle home of a product installation to include additional nodes on the cluster.</p>
+<p>This chapter includes the following sections:</p>
+<ul>
+<li>
+<p><a href="#BABCJEEC">Oracle Universal Installer and Oracle Real Application Clusters</a></p>
+</li>
+<li>
+<p><a href="#BABECFDI">General System Installation Requirements for Oracle Real Application Clusters</a></p>
+</li>
+<li>
+<p><a href="#BABIDHGE">Cluster Setup and Pre-installation Configuration Tasks for Oracle Real Application Clusters</a></p>
+</li>
+<li>
+<p><a href="#BABCHDDJ">Pre-installation Tasks for Oracle Real Application Clusters on UNIX</a></p>
+</li>
+<li>
+<p><a href="#BABHAJHE">Pre-installation Tasks for Real Application Clusters on Windows</a></p>
+</li>
+<li>
+<p><a href="#BABHGHFG">Configuring Storage for Oracle Clusterware</a></p>
+</li>
+<li>
+<p><a href="#BABGDBFD">Installing Oracle Clusterware on UNIX</a></p>
+</li>
+<li>
+<p><a href="#BABGFEAE">Installing Oracle Clusterware on Windows</a></p>
+</li>
+<li>
+<p><a href="#BABFGFGA">Adding More Nodes to the Cluster for Mass Deployment</a></p>
+</li>
+<li>
+<p><a href="#BEIFDDBF">Installing Product Software on a Cluster</a></p>
+</li>
+<li>
+<p><a href="#BEIIIDGE">Command Line Options for Cluster Installations (UNIX Only)</a></p>
+</li>
+<li>
+<p><a href="#BABBIEDJ">Adding Language Support for Installed Products</a></p>
+</li>
+<li>
+<p><a href="#BABJAGID">Patchsets and Upgrades</a></p>
+</li>
+<li>
+<p><a href="#BABDDJBF">Post-installation Tasks</a></p>
+</li>
+<li>
+<p><a href="#BABFCADA">Deinstalling Real Application Clusters Software</a></p>
+</li>
+<li>
+<p><a href="#BABGGGHG">Converting Single-instance Nodes to Real Application Clusters</a></p>
+</li>
+<li>
+<p><a href="#BABBIGGF">Troubleshooting Real Application Clusters / Oracle Clusterware Installation</a></p>
+</li>
+</ul>
+<a id="BABCJEEC" name="BABCJEEC"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG219" id="OUICG219"></a>Oracle Universal Installer and Oracle Real Application Clusters</h2>
+<p>The Oracle Universal Installer facilitates the installation of Oracle grid infrastructure for a cluster, which includes Oracle Clusterware and Oracle Automatic Storage Management (Oracle ASM). You must install Oracle grid infrastructure before you install Oracle Real Application Clusters (Oracle RAC). In most cases, you use the graphical user interface (GUI) provided by the Oracle Universal Installer to install the software. However, you can also use the Oracle Universal Installer to complete non-interactive (or "silent") installations without using the GUI.</p>
+<p>The Oracle inventory maintains records of Oracle software versions and patches. Each installation has a Central Inventory where the Oracle home is registered. Oracle software installations have a local home directory, whose path location is recorded in the Central Inventory. The local inventory directory for each Oracle software installation contains a list of components and applied interim patches associated with that software. Because faulty inventory information can corrupt your Oracle software installation, the Oracle Universal Installer must perform all read and write operations on Oracle inventories. Ensure that you do not modify files in the Central Inventory or the Oracle home inventory.</p>
+<p>When you install Oracle grid infrastructure for a cluster or Oracle Real Application Clusters, the Oracle Universal Installer copies the Oracle software onto the node from which you are running it. If your Oracle home is not on a shared file system, the Oracle Universal Installer propagates the software onto the other nodes that you have selected to be part of your Oracle Universal Installer installation session. The Oracle inventory maintains a list of each node that is a member of the Oracle Real Application Clusters database, and lists the paths to each node's Oracle home. This is used to maintain patches and updates for each member node of the Oracle Real Application Clusters database.</p>
+<p>When the Oracle Universal Installer installs the Oracle software, Oracle recommends that you select a preconfigured database, or use the Database Configuration Assistant (DBCA) interactively to create your cluster database. You can also manually create your database as described in the <span class="italic">Oracle Database Administrator's Guide</span>.</p>
+<p>Oracle ASM is installed as part of the Oracle grid infrastructure installation. Oracle recommends that you use Oracle ASM. If you are not using Oracle ASM, configure Oracle RAC on a supported storage option.</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref402" name="sthref402"></a>
+<h3 class="sect2"><a name="OUICG220" id="OUICG220"></a><a id="sthref403" name="sthref403"></a><a id="sthref404" name="sthref404"></a>Oracle Clusterware and Vendor Clusterware Installations</h3>
+<p>The Oracle Universal Installer installs Oracle Clusterware on each node on which the Oracle Universal Installer detects that third-party vendor clusterware is present. If third-party vendor clusterware is not present, you must use the Oracle Universal Installer to enter the nodes on which you want the Oracle Clusterware to be installed. The Oracle Clusterware home can be either shared by all nodes, or private to each node, depending on your responses when you run the Oracle Universal Installer.</p>
+<p>When third-party vendor clusterware is present, Oracle Clusterware can interact with the third-party vendor clusterware. In using third-party vendor clusterware, note that Oracle Clusterware can integrate with third-party vendor clusterware for all operating systems except Linux and Windows. You need to have Oracle Cluster Registry and Voting Disks shared across all nodes.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref405" name="sthref405"></a>
+<h3 class="sect2"><a name="OUICG221" id="OUICG221"></a><a id="sthref406" name="sthref406"></a>Installed Oracle Real Application Clusters Components</h3>
+<p>All instances in an Oracle Real Application Clusters environment share the control file, server parameter file, redo log files, and all data files. These files reside on a shared cluster file system or on shared disks. Either of these types of file configurations are accessed by all the cluster database instances. Each instance also has its own set of redo log files. During failures, shared access to redo log files enables surviving instances to perform recovery.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABECFDI" name="BABECFDI"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG222" id="OUICG222"></a><a id="sthref407" name="sthref407"></a><a id="sthref408" name="sthref408"></a>General System Installation Requirements for Oracle Real Application Clusters</h2>
+<p>Each node that is going to be part of your Oracle Real Application Clusters installation must meet the following hardware and software requirements. You will perform step-by-step tasks for hardware and software verification for the platform-specific pre-installation procedures.</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref409" name="sthref409"></a>
+<h3 class="sect2"><a name="OUICG223" id="OUICG223"></a><a id="sthref410" name="sthref410"></a><a id="sthref411" name="sthref411"></a>Hardware Requirements for Oracle Real Application Clusters Setup</h3>
+<p>Each node in a cluster requires the following hardware:</p>
+<ul>
+<li>
+<p>External shared disks for storing the Oracle Clusterware files.</p>
+<p>See the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span> for information on the available disk configuration options. Review these options before you decide which storage option to use in your Oracle Real Application Clusters environment.</p>
+</li>
+<li>
+<p>One private Internet protocol (IP) address for each node to serve as the private interconnect. The following must be true for each private IP address:</p>
+<p>&#x2013; It must be separate from the public network.&#x2013; It must be accessible on the same network interface on each node.&#x2013; It must have a unique address on each node.The private interconnect is used for inter-node communication by both Oracle Clusterware and Oracle Real Application Clusters. If the private address is available from a network name server (DNS), you can use that name. Otherwise, the private IP address must be available in each node's <code>/etc/hosts</code> file on UNIX and <code>%SystemRoot%\system32\drivers\etc\hosts</code> on Windows.</p>
+<p>During Oracle Clusterware installation, the information you enter as the private IP address determines which private interconnects are used by Oracle Real Application Clusters database instances.</p>
+</li>
+<li>
+<p>One public IP address for each node to be used as the Virtual IP address for client connections and for connection failover.</p>
+<p>This public Virtual IP address (VIP) must be associated with the same interface name on every node that is part of your cluster. Additionally, the IP addresses that you use for all of the nodes that are part of a cluster must be from the same subnet. If you have a domain name server (DNS), register the host names for the VIP with DNS. The Virtual IP address should not be in use at the time of the installation, because this is a Virtual IP address that Oracle manages.</p>
+</li>
+<li>
+<p>One public fixed host name address for each node, typically assigned by the system administrator during operating system installation. If you have a DNS, register both the fixed IP and the VIP address with DNS. If you do not have DNS, you must make sure that both public IP addresses are in the node host file.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref412" name="sthref412"></a>
+<h3 class="sect2"><a name="OUICG224" id="OUICG224"></a><a id="sthref413" name="sthref413"></a><a id="sthref414" name="sthref414"></a>Software Requirements for Oracle Real Application Clusters Setup</h3>
+<p>Each node in a cluster requires a supported interconnect software protocol to support <a id="sthref415" name="sthref415"></a><a id="sthref416" name="sthref416"></a>Cache Fusion, and to support Oracle Clusterware polling. Your interconnect must be certified by Oracle for your platform. You should also have a Web browser, both to enable Oracle Enterprise Manager, and to view online documentation. For Oracle Database 11<span class="italic">g</span> requirements, Oracle Clusterware provides the same functionality as third-party vendor clusterware. Using Oracle Clusterware also reduces installation and support complications. However, you may require third-party vendor clusterware if you use a non-ethernet interconnect, or if you have deployed clusterware-dependent applications on the same cluster where you deploy Oracle Real Application Clusters.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABIDHGE" name="BABIDHGE"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG225" id="OUICG225"></a>Cluster Setup and Pre-installation Configuration Tasks for Oracle Real Application Clusters</h2>
+<p>Before installing Oracle Real Application Clusters, perform the following procedures:</p>
+<ol>
+<li>
+<p>Ensure that you have a certified combination of operating system and Oracle software version by referring to the <a id="sthref417" name="sthref417"></a><a id="sthref418" name="sthref418"></a>OracleMetaLink certification information, which is located at the following Web site:</p>
+<pre xml:space="preserve" class="oac_no_warn">http://metalink.oracle.com
+</pre>
+<p>Click <span class="bold">Certify &amp; Availability</span>, and select <span class="bold">1.View Certifications by Product</span>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The layout of the OracleMetaLink site and the site's certification policies are subject to change.</div>
+</li>
+<li>
+<p>Configure a high-speed interconnect that uses a private network. Some platforms support automatic failover to an additional interconnect.</p>
+</li>
+<li>
+<p>Determine the storage option for your system and configure the shared disk.</p>
+</li>
+<li>
+<p>Ensure that the directory structure is similar in all nodes.</p>
+</li>
+<li>
+<p>Ensure that all nodes in the cluster have the same time zone settings.</p>
+</li>
+<li>
+<p>Install the operating system patches for the Oracle software. For more information, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="BABCHDDJ" name="BABCHDDJ"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG226" id="OUICG226"></a><a id="sthref419" name="sthref419"></a><a id="sthref420" name="sthref420"></a>Pre-installation Tasks for Oracle Real Application Clusters on UNIX</h2>
+<p>You need to complete the following pre-installation tasks before you start the Oracle Universal Installer:</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref421" name="sthref421"></a>
+<h3 class="sect2"><a name="OUICG227" id="OUICG227"></a>Logging In to the System as root</h3>
+<p>Before you install the Oracle software, you must complete several tasks as the root user. To log in as the root user, complete one of the following procedures:</p>
+<ul>
+<li>
+<p>If you are installing the software from an X Window System workstation or X terminal, then:</p>
+<ol>
+<li>
+<p>Start a local terminal session, for example, an X terminal (xterm).</p>
+</li>
+<li>
+<p>If you are not installing the software on the local system, enter the following command to enable remote hosts to display X applications on the local X server:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ xhost +
+</pre></li>
+<li>
+<p>If you are not installing the software on the local system, use the <code>ssh</code>, <code>rlogin</code>, or <code>telnet</code> command to connect to the system where you want to install the software:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ telnet remote_host
+</pre></li>
+<li>
+<p>If you are not logged in as the root user, enter the following command to switch user to <code>root</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ su - root
+password:
+#
+</pre></li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>
+<p>If you are installing the software from a PC or other system with X server software installed:</p>
+<ol>
+<li>
+<p>Start the X server software.</p>
+</li>
+<li>
+<p>Configure the security settings of the X server software to permit remote hosts to display X applications on the local system.</p>
+</li>
+<li>
+<p>Connect to the remote system where you want to install the software and start a terminal session on that system, for example, an X terminal (xterm).</p>
+</li>
+<li>
+<p>If you are not logged in as the root user on the remote system, enter the following command to switch user to <code>root</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ su - root
+password:
+#
+</pre></li>
+</ol>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref422" name="sthref422"></a>
+<h3 class="sect2"><a name="OUICG228" id="OUICG228"></a><a id="sthref423" name="sthref423"></a><a id="sthref424" name="sthref424"></a><a id="sthref425" name="sthref425"></a>Creating Required UNIX Groups and Users</h3>
+<p>Depending on whether it is the first time an Oracle software product is being installed on a system and on the products that you are installing, you may need to create several UNIX groups and a UNIX user account. The following UNIX group and users are required for all installations:</p>
+<ul>
+<li>
+<p>The Oracle Inventory group (<code>oinstall</code>)</p>
+<p>You must create this group the first time you install Oracle software on the system. The usual name chosen for this group is <code>oinstall</code>. This group owns the Oracle inventory, which is a catalog of all Oracle software installed on the system.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If Oracle software is already installed on the system, the existing <a id="sthref426" name="sthref426"></a>Oracle Inventory group must be the primary group of the UNIX user that you use to install new Oracle software. The following sections describe how to identify an existing Oracle Inventory group.</div>
+</li>
+<li>
+<p>The Oracle software owner user (<code>oracle</code>)</p>
+<p>You must create this user the first time you install Oracle software on the system. This user owns all of the software installed during the installation. The usual name chosen for this user is <code>oracle</code>. This user must have the Oracle Inventory group as its primary group.</p>
+</li>
+</ul>
+<p>You need to create other groups and users in addition to the ones created above. For more information on creating the required groups and users, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+<div class="sect3"><a id="sthref427" name="sthref427"></a>
+<h4 class="sect3"><a name="OUICG229" id="OUICG229"></a>Creating Identical Users and Groups on Other Cluster Nodes</h4>
+<p>The Oracle software users and groups must exist and be identical on all cluster nodes. To create these identical users and groups, you must identify the user ID and group IDs assigned to them on the node where you created them, then create the user and groups with the same name and ID on the other cluster nodes. You must create identical users and groups on other cluster nodes only if you are using local users and groups. If you are using users and groups defined in a directory service such as NIS, they are already identical on each cluster node.</p>
+<div class="sect4"><a id="sthref428" name="sthref428"></a>
+<h5 class="sect4"><a name="OUICG230" id="OUICG230"></a>Identifying the User and Group IDs</h5>
+<p>To determine the user ID (UID) and the group IDs (GID) for the groups, follow these steps:</p>
+<ol>
+<li>
+<p>Enter following command:</p>
+<pre xml:space="preserve" class="oac_no_warn"># id oracle
+</pre>
+<p>The output from this command is similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">uid=440(oracle) gid=200(oinstall) groups=201(dba),202(oper)
+</pre></li>
+<li>
+<p>From the output, identify the user identity (UID) for the Oracle user and the group identities (GIDs) for the groups to which it belongs.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect4" -->
+<div class="sect4"><a id="sthref429" name="sthref429"></a>
+<h5 class="sect4"><a name="OUICG231" id="OUICG231"></a>Creating the User and Groups on the Other Cluster Nodes</h5>
+<p>To create the user and groups on the other cluster nodes, repeat the following procedure on each node:</p>
+<ol>
+<li>
+<p>Log in to the cluster node in which you want to create the user and groups as <code>root</code>.</p>
+</li>
+<li>
+<p>Enter commands as per the syntax to create the respective groups. Use the <code>-g</code> option to specify the correct GID for each group:</p>
+<pre xml:space="preserve" class="oac_no_warn"># /usr/sbin/groupadd -g &lt;group_id&gt; &lt;group_name&gt;
+</pre></li>
+</ol>
+</div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" -->
+<a id="BABHEHEA" name="BABHEHEA"></a>
+<div class="sect3">
+<h4 class="sect3"><a name="OUICG232" id="OUICG232"></a><a id="sthref430" name="sthref430"></a><a id="sthref431" name="sthref431"></a><a id="sthref432" name="sthref432"></a>Configuring SSH on all Cluster Nodes</h4>
+<p>Before you install and use Oracle Real Application Clusters, you must configure secure shell (SSH) for the <code>oracle</code> user on all cluster nodes. Oracle Universal Installer uses the <code>ssh</code> and <code>scp</code> commands during installation to run remote commands on and copy files to the other cluster nodes. You must configure SSH so that these commands do not prompt for a password. SSH is also used by the configuration assistants, Enterprise Manager, and when adding nodes to the cluster.</p>
+<p>You can configure SSH from the Oracle Universal Installer (OUI) interface during installation for the user account running the installation. The automatic configuration creates passwordless SSH connectivity between all cluster member nodes. You can use an SSH Connectivity button available in the Cluster Node information page for this purpose.</p>
+<p>To enable the script to run, you must remove stty commands from the profiles of any Oracle software installation owners, and remove other security measures triggered during a login and that generate messages to the terminal. These messages, mail checks, and other displays prevent Oracle software installation owners from using the SSH configuration script that is built into the Oracle Universal Installer. If they are not disabled, you must manually configure SSH before running an installation.</p>
+<p>On Linux systems, to enable Oracle Universal Installer to use the ssh and scp commands without being prompted for a pass phrase, you must have user equivalency in the cluster. User equivalency exists in a cluster when the following occurs on all nodes in the cluster:</p>
+<ul>
+<li>
+<p>A given user has the same user name, user ID (UID), and password.</p>
+</li>
+<li>
+<p>A given user belongs to the same groups.</p>
+</li>
+<li>
+<p>A given group has the same group ID (GID).</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+This section describes how to configure <a id="sthref433" name="sthref433"></a><a id="sthref434" name="sthref434"></a>OpenSSH version 3. If SSH is not available, then Oracle Universal Installer attempts to use <code>rsh</code> and <code>rcp</code> instead. However, these services are disabled by default on most Linux systems.</div>
+<div class="sect4"><a id="sthref435" name="sthref435"></a>
+<h5 class="sect4"><a name="OUICG233" id="OUICG233"></a>Configuring SSH on Cluster Member Nodes</h5>
+<p>To configure SSH, complete the following steps on each cluster node:</p>
+<ol>
+<li>
+<p>Log in as the Oracle user.</p>
+</li>
+<li>
+<p>If necessary, create the<code>.ssh</code> directory in the Oracle user's home directory and set the correct permissions for it:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ mkdir ~/.ssh
+$ chmod 700 ~/.ssh
+</pre></li>
+<li>
+<p>Enter the following commands to generate an <a id="sthref436" name="sthref436"></a>RSA key for version 2 of the SSH protocol:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ /usr/bin/ssh-keygen -t rsa
+</pre>
+<p>At the prompts:</p>
+<ul>
+<li>
+<p>Accept the default location for the key file.</p>
+</li>
+<li>
+<p>Enter and confirm a different pass phrase from the Oracle user's password.</p>
+</li>
+</ul>
+<p>This command writes the public key to the <code>~/.ssh/id_rsa.pub</code> file and the private key to the <code>~/.ssh/id_rsa</code> file. Never distribute the private key to anyone.</p>
+</li>
+<li>
+<p>Enter the following command to generate a DSA key for version 2 of the SSH protocol:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ /usr/bin/ssh-keygen -t dsa
+</pre>
+<p>At the prompts:</p>
+<ul>
+<li>
+<p>Accept the default location for the key file.</p>
+</li>
+<li>
+<p>Enter and confirm a pass phrase that is different from the Oracle user's password.</p>
+</li>
+</ul>
+<p>This command writes the public key to the <code>~/.ssh/id_dsa.pub</code> file and the private key to the <code>~/.ssh/id_dsa</code> file. Never distribute the private key to anyone.</p>
+</li>
+<li>
+<p>Copy the contents of the <code>~/.ssh/id_rsa.pub</code> and <code>~/.ssh/id_dsa.pub</code> files to the <code>~/.ssh/authorized_keys</code> file on this node and to the same file on all other cluster nodes.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The <code>~/.ssh/authorized_keys</code> file on every node must contain the contents from all of the <code>~/.ssh/id_rsa.pub</code> and <code>~/.ssh/id_dsa.pub</code> files that you generated on all cluster nodes.</div>
+</li>
+<li>
+<p>Change the permissions on the <code>~/.ssh/authorized_keys</code> file on all cluster nodes:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ chmod 600 ~/.ssh/authorized_keys
+</pre></li>
+</ol>
+<p>At this point, if you use <code>ssh</code> to log in to or run a command on another node, you are prompted for the pass phrase that you specified when you created the DSA key.</p>
+</div>
+<!-- class="sect4" -->
+<div class="sect4"><a id="sthref437" name="sthref437"></a>
+<h5 class="sect4"><a name="OUICG234" id="OUICG234"></a><a id="sthref438" name="sthref438"></a>Enabling SSH User Equivalency on Cluster Member Nodes</h5>
+<p>To enable Oracle Universal Installer to use the <code>ssh</code> and <code>scp</code> commands without being prompted for a pass phrase, follow these steps:</p>
+<ol>
+<li>
+<p>On the system where you want to run Oracle Universal Installer, log in as the Oracle user.</p>
+</li>
+<li>
+<p>Enter the following commands:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ exec /usr/bin/ssh-agent $SHELL
+$ /usr/bin/ssh-add
+</pre></li>
+<li>
+<p>At the prompts, enter the pass phrase for each key that you generated.</p>
+<p>If you have configured SSH correctly, then you can use the <code>ssh</code> or <code>scp</code> commands without being prompted for a password or a pass phrase.</p>
+</li>
+<li>
+<p>To test the SSH configuration, enter the following commands from the same terminal session, testing the configuration of each cluster node:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ssh nodename1 date
+$ ssh nodename2 date
+.
+.
+</pre>
+<p>These commands should display the date set on each node. If any node prompts for a password or pass phrase, verify that the <code>~/.ssh/authorized_keys</code> file on that node contains the correct public keys.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The first time you use SSH to connect to a node from a particular system, you might see a message stating that the authenticity of the host could not be established. Enter yes at the prompt to continue. You should not see this message again when you connect from this system to that node.
+<p>If you see any other messages or text, apart from the date, the installation can fail. Make any changes required to ensure that only the date is displayed when you enter these commands.</p>
+<p>You should ensure that any parts of login scripts that generate any output, or ask any questions, are modified so that they only act when the shell is an interactive shell.</p>
+</div>
+</li>
+<li>
+<p>To ensure that X11 forwarding does not cause the installation to fail, create a user-level SSH client configuration file for the Oracle software owner user, as follows:</p>
+<ol>
+<li>
+<p>Using any text editor, edit or create the <code>~oracle/.ssh/config</code> file.</p>
+</li>
+<li>
+<p>Make sure that the ForwardX11 attribute is set to no. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">Host *
+ForwardX11 no
+</pre></li>
+</ol>
+</li>
+<li>
+<p>You must run Oracle Universal Installer from this session or remember to repeat steps 2 and 3 before you start Oracle Universal Installer from a different terminal session.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect4" -->
+<div class="sect4"><a id="sthref439" name="sthref439"></a>
+<h5 class="sect4"><a name="OUICG235" id="OUICG235"></a><a id="sthref440" name="sthref440"></a><a id="sthref441" name="sthref441"></a>Preventing Oracle Clusterware Installation Errors Caused by stty Commands</h5>
+<p>During an Oracle Clusterware installation, the Oracle Universal Installer uses SSH to run commands and copy files to the other nodes. During the installation, hidden files on the system (for example, <code>.bashrc</code> or <code>.cshrc</code>) can cause installation errors if they contain <code>stty</code> commands.</p>
+<p>To avoid this problem, Oracle recommends that you modify these files to suppress all output on <code>STDERR</code>, as in the following examples:</p>
+<ul>
+<li>
+<p>Bourne, Bash, or Korn shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">if [ -t 0 ]; then
+stty intr ^C
+fi
+</pre></li>
+<li>
+<p>C shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">test -t 0
+if ($status == 0) then
+stty intr ^C
+endif
+</pre></li>
+</ul>
+</div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref442" name="sthref442"></a>
+<h3 class="sect2"><a name="OUICG236" id="OUICG236"></a>Configuring the Oracle User Environment</h3>
+<p>You run Oracle Universal Installer from the <code>oracle</code> account. However, before you start Oracle Universal Installer you must configure the environment of the <code>oracle</code> user. For more information on configuring the environment, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref443" name="sthref443"></a>
+<h3 class="sect2"><a name="OUICG237" id="OUICG237"></a>Checking the Hardware Requirements</h3>
+<p>Each system must meet certain minimum hardware requirements. For more information on hardware requirements, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref444" name="sthref444"></a>
+<h3 class="sect2"><a name="OUICG238" id="OUICG238"></a>Checking the Network Requirements</h3>
+<p>There are some minimum networking hardware and Internet protocol (IP) address requirements. Check that you have the networking hardware and Internet protocol (IP) address required for an Oracle Real Application Clusters installation.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref445" name="sthref445"></a>
+<h4 class="sect3"><a name="OUICG239" id="OUICG239"></a><a id="sthref446" name="sthref446"></a><a id="sthref447" name="sthref447"></a>Network Hardware Requirements</h4>
+<p>Each node in the cluster must meet the following requirements:</p>
+<ul>
+<li>
+<p>Each node must have at least two network adapters: one for the public network interface and one for the private network interface (the interconnect).</p>
+</li>
+<li>
+<p>The interface names associated with the network adapters for each network must be the same on all nodes.</p>
+</li>
+<li>
+<p>For increased reliability, you can configure redundant public and private network adapters for each node.</p>
+</li>
+<li>
+<p>For the public network, each network adapter must support TCP/IP.</p>
+</li>
+<li>
+<p>For the private network, the interconnect must support the user datagram protocol (UDP) using high-speed network adapters and switches that support TCP/IP (Gigabit Ethernet or better recommended).</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+UDP is the default interconnect protocol for Real Application Clusters and TCP is the interconnect protocol for Oracle Clusterware. Token-Ring is not supported for the interconnect.</div>
+</li>
+<li>
+<p>For the private network, the end points of all designated interconnect interfaces must be completely reachable on the network.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref448" name="sthref448"></a>
+<h4 class="sect3"><a name="OUICG240" id="OUICG240"></a><a id="sthref449" name="sthref449"></a><a id="sthref450" name="sthref450"></a>Network Parameter Requirements</h4>
+<p>If you are using NFS, then you must set the values for the NFS buffer size parameters rsize and wsize to at least 16384. Oracle recommends that you use the value 32768.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref451" name="sthref451"></a>
+<h4 class="sect3"><a name="OUICG241" id="OUICG241"></a><a id="sthref452" name="sthref452"></a><a id="sthref453" name="sthref453"></a>IP Address Requirements</h4>
+<p>Before starting the installation, you must identify or obtain the following IP addresses for each node:</p>
+<ul>
+<li>
+<p>An IP address and an associated host name registered in the domain name service (DNS) for each public network interface.</p>
+</li>
+<li>
+<p>One unused virtual IP address and an associated virtual host name registered in DNS, or resolved in the host file, or both, that you will configure for the primary public network interface.</p>
+<p>The virtual IP address must be in the same subnet as the associated public interface. After installation, you can configure clients to use the virtual host name or IP address. If a node fails, then its virtual IP address fails over to another node.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref454" name="sthref454"></a>
+<h4 class="sect3"><a name="OUICG242" id="OUICG242"></a><a id="sthref455" name="sthref455"></a><a id="sthref456" name="sthref456"></a>Node Time Requirements</h4>
+<p>Before starting the installation, ensure that each member node of the cluster is set as closely as possible to the same date and time. Oracle strongly recommends using the Network Time Protocol feature of most operating systems for this purpose, with all nodes using the same reference Network Time Protocol server.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref457" name="sthref457"></a>
+<h3 class="sect2"><a name="OUICG243" id="OUICG243"></a>Checking Software Requirements</h3>
+<p>The Oracle Universal Installer performs checks on your system to verify that it meets the requirements listed for your platform. To ensure that these checks pass, verify the requirements before you start the Installer.</p>
+<p>Depending on the Oracle products that you intend to install, verify that the required software is installed on the system. For more information on software requirements, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref458" name="sthref458"></a>
+<h3 class="sect2"><a name="OUICG244" id="OUICG244"></a>Configuring Kernel Parameters</h3>
+<p>Each cluster node must meet the recommended kernel values. For information on verifying and setting the kernel parameters, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref459" name="sthref459"></a>
+<h3 class="sect2"><a name="OUICG245" id="OUICG245"></a>Identifying Required Software Directories</h3>
+<p>You must identify or create the following directories for the Oracle software as follows:</p>
+<ul>
+<li>
+<p><a href="#BABIGJDA">Oracle Base Directory</a></p>
+</li>
+<li>
+<p><a href="#BABGJAAF">Oracle Inventory Directory</a></p>
+</li>
+<li>
+<p><a href="#BABDCECD">Oracle Clusterware Home Directory</a></p>
+</li>
+<li>
+<p><a href="#BABIGCAD">Oracle Home Directory</a></p>
+</li>
+</ul>
+<p>The following subsections describe the requirements for these directories.</p>
+<a id="BABIGJDA" name="BABIGJDA"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG246" id="OUICG246"></a><a id="sthref460" name="sthref460"></a><a id="sthref461" name="sthref461"></a>Oracle Base Directory</h4>
+<p>The Oracle base directory acts as a top-level directory for Oracle software installations. It is analogous to the <code>C:\Oracle</code> directory used for Oracle software installations on Windows systems. On UNIX systems, the Optimal Flexible Architecture (OFA) guidelines recommend that you use a path similar to the following for the Oracle base directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">/mount_point/app/oracle_sw_owner
+</pre>
+<p>In this example:</p>
+<ul>
+<li>
+<p><code>mount_point</code> is the mount point directory for the file system that will contain the Oracle software.</p>
+<p>The examples in this guide use <code>/u01</code> for the mount point directory. However, you could choose another mount point directory, such as <code>/oracle or /opt/oracle</code> for example.</p>
+</li>
+<li>
+<p><code>oracle_sw_owner</code> is the operating system user name of the Oracle software owner, for example <code>oracle</code>.</p>
+</li>
+</ul>
+<p>You can use the same Oracle base directory for more than one installation, or you can create separate Oracle base directories for different installations. If different operating system users install Oracle software on the same system, each user must create a separate Oracle base directory. The following example Oracle base directories could all exist on the same system:</p>
+<pre xml:space="preserve" class="oac_no_warn">/u01/app/oracle
+
+/u01/app/orauser
+
+/opt/oracle/app/oracle
+</pre>
+<p>Regardless of whether you create an Oracle base directory or decide to use an existing one, you must set the <code>ORACLE_BASE</code> environment variable to specify the full path to this directory.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The Oracle base directory can be on a local file system or on an NFS file system on a certified NAS device. Do not create the Oracle base directory on an OCFS version 1 file system.</div>
+</div>
+<!-- class="sect3" -->
+<a id="BABGJAAF" name="BABGJAAF"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG247" id="OUICG247"></a><a id="sthref462" name="sthref462"></a><a id="sthref463" name="sthref463"></a>Oracle Inventory Directory</h4>
+<p>The Oracle Inventory directory (oraInventory) stores an inventory of all software installed on the system. It is required by, and shared by, all Oracle software installations on a single system. The first time you install Oracle software on a system, Oracle Universal Installer prompts you to specify the path to this directory. If you are installing the software on a local file system, Oracle recommends that you choose the following path:</p>
+<pre xml:space="preserve" class="oac_no_warn">oracle_base/../oraInventory
+</pre>
+<p>If the Oracle base directory is on a cluster file system, or on an NFS file system on a NAS device, you must specify a path for the Oracle Inventory directory on a local file system. The Oracle base directory must be on a local file system to enable all of the nodes to have separate inventories.</p>
+<p>Oracle Universal Installer creates the directory that you specify, and sets the correct owner, group, and permissions for it. You do not need to create it.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+All Oracle software installations rely on the Oracle base directory. Make sure that you back it up regularly.
+<p>Do not delete the Oracle base directory unless you have completely removed all Oracle software from the system.</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="BABDCECD" name="BABDCECD"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG248" id="OUICG248"></a><a id="sthref464" name="sthref464"></a><a id="sthref465" name="sthref465"></a><a id="sthref466" name="sthref466"></a>Oracle Clusterware Home Directory</h4>
+<p>The Oracle Clusterware home directory is the directory where you choose to install the software for Oracle Clusterware. You must install Oracle Clusterware in a separate home directory. When you run Oracle Universal Installer, it prompts you to specify the path to this directory, as well as a name that identifies it. Oracle recommends that you specify a path similar to the following for the Oracle Clusterware home directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">/u01/crs/oracle/product/11.2.0/app
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Because you must change the permissions of all of the parent directories of the Oracle Clusterware home directory after installing the software to grant write access only to the root user, the Oracle Clusterware home directory must not be a subdirectory of the Oracle base directory.</div>
+</div>
+<!-- class="sect3" -->
+<a id="BABIGCAD" name="BABIGCAD"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG249" id="OUICG249"></a><a id="sthref467" name="sthref467"></a><a id="sthref468" name="sthref468"></a>Oracle Home Directory</h4>
+<p>The Oracle home directory is the directory where you choose to install the software for a particular Oracle product. You must install different Oracle products, or different releases of the same Oracle product, in separate Oracle home directories. When you run Oracle Universal Installer, it prompts you to specify the path to this directory, as well as a name that identifies it. The directory that you specify must be a subdirectory of the Oracle base directory. Oracle recommends that you specify a path similar to the following for the Oracle home directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">oracle_base/product/11.2.0/db_1
+</pre>
+<p>Oracle Universal Installer creates the directory path that you specify under the Oracle base directory. It also sets the correct owner, group, and permissions on it. You do not need to create this directory.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref469" name="sthref469"></a>
+<h3 class="sect2"><a name="OUICG250" id="OUICG250"></a><a id="sthref470" name="sthref470"></a><a id="sthref471" name="sthref471"></a>Identifying or Creating an Oracle Base Directory</h3>
+<p>Before starting the installation, you must either identify an existing Oracle base directory or, if required, create one. For more information on identifying or creating an Oracle Base Directory, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref472" name="sthref472"></a>
+<h3 class="sect2"><a name="OUICG251" id="OUICG251"></a><a id="sthref473" name="sthref473"></a><a id="sthref474" name="sthref474"></a>Creating the Clusterware Home Directory</h3>
+<p>Oracle Universal Installer creates the Oracle Clusterware home directory for you. Ensure before you start the installation that you provide sufficient disk space on a file system for the Oracle Clusterware directory, and the parent directory of the Oracle Clusterware directory space is writable by the Oracle user.</p>
+<p>To create the Oracle Clusterware home directory and specify the correct owner, group, and permissions for it, follow these steps:</p>
+<ol>
+<li>
+<p>Enter commands similar to the following to create the recommended subdirectories in the mount point directory that you identified, and set the appropriate owner, group, and permissions on them:</p>
+<pre xml:space="preserve" class="oac_no_warn"># mkdir -p /mount_point/crs/oracle_sw_owner/product/11.2.0/crs
+# chown -R root:oinstall /mount_point/crs
+# chmod -R 775 /mount_point/crs/oracle_sw_owner
+</pre>
+<p>If the mount point you identified is <code>/u01</code>, the recommended Oracle Clusterware home directory path is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">/u01/crs/oracle/product/11.2.0/crs
+</pre></li>
+<li>
+<p>If necessary, repeat the commands listed in the previous step to create the same directory on the other nodes in the cluster.</p>
+</li>
+<li>
+<p>Enter commands similar to the following to set the <code>ORACLE_BASE</code> and <code>ORACLE_HOME</code> environment variables in preparation for the Oracle Clusterware installation:</p>
+<ul>
+<li>
+<p>Bourne, Bash, or Korn shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ORACLE_BASE=/u01/app/oracle
+$ ORACLE_HOME=/u01/crs/oracle/product/11.2.0/crs
+$ export ORACLE_BASE
+$ export ORACLE_HOME
+</pre></li>
+<li>
+<p>C shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">% setenv ORACLE_BASE /u01/app/oracle
+% setenv ORACLE_HOME /u01/crs/oracle/product/11.2.0/crs
+</pre></li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands to ensure that the <code>TNS_ADMIN</code> environment variable is not set:</p>
+<ul>
+<li>
+<p>Bourne, Bash, or Korn shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ unset TNS_ADMIN
+</pre></li>
+<li>
+<p>C shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">% unsetenv TNS_ADMIN
+</pre></li>
+</ul>
+</li>
+<li>
+<p>To verify that the environment has been set correctly, enter the following commands:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ umask
+$ env | more
+</pre>
+<p>Verify that the <code>umask</code> command displays a value of 22, 022, or 0022, and the environment variables that you set in this section have the correct values.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABHAJHE" name="BABHAJHE"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG252" id="OUICG252"></a><a id="sthref475" name="sthref475"></a><a id="sthref476" name="sthref476"></a>Pre-installation Tasks for Real Application Clusters on Windows</h2>
+<p>You need to complete the following pre-installation tasks before you start the Oracle Universal Installer to install Oracle Clusterware and Oracle Real Application Clusters on Microsoft Windows systems.</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref477" name="sthref477"></a>
+<h3 class="sect2"><a name="OUICG253" id="OUICG253"></a><a id="sthref478" name="sthref478"></a>Checking Hardware and Software Certification</h3>
+<p>Oracle recommends you to review the certification matrix on the OracleMetaLink Web site for the most up-to-date list of certified hardware platforms and operating system versions for Oracle software. This Web site also provides patches and workaround information for bugs. For more information on accessing the OracleMetaLink site, see <a href="#BABEFEBC">"Download and Install Patches"</a>.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref479" name="sthref479"></a>
+<h3 class="sect2"><a name="OUICG254" id="OUICG254"></a><a id="sthref480" name="sthref480"></a>Checking the Hardware Requirements</h3>
+<p>Each system must meet minimum hardware requirements. For more information on hardware requirements and the steps involved to check them, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref481" name="sthref481"></a>
+<h4 class="sect3"><a name="OUICG255" id="OUICG255"></a>Hard Disk Space Requirements</h4>
+<p>Each system must meet certain hard disk space requirements. For more information on hard disk space requirements, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref482" name="sthref482"></a>
+<h3 class="sect2"><a name="OUICG256" id="OUICG256"></a><a id="sthref483" name="sthref483"></a>Checking the Software Requirements</h3>
+<p>Each system must meet minimum software requirements. For more information on software requirements and the steps involved to check them, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref484" name="sthref484"></a>
+<h3 class="sect2"><a name="OUICG257" id="OUICG257"></a><a id="sthref485" name="sthref485"></a><a id="sthref486" name="sthref486"></a>Checking the Network Requirements</h3>
+<p>There are some minimum networking hardware and Internet protocol (IP) address requirements. Check that you have the networking hardware and Internet protocol (IP) address required for an Oracle Real Application Clusters installation. For more information on the steps involved in checking these requirements, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref487" name="sthref487"></a>
+<h4 class="sect3"><a name="OUICG258" id="OUICG258"></a>Network Hardware Requirements</h4>
+<p>Each node in the cluster must meet the following requirements:</p>
+<ul>
+<li>
+<p>Each node must have at least two network adapters: one for the public network interface and one for the private network interface (the interconnect).</p>
+</li>
+<li>
+<p>The private and public network interface names must be different from each other and cannot contain any multibyte language characters. The names are case-sensitive.</p>
+</li>
+<li>
+<p>The private network interface name must be the same on all nodes.</p>
+</li>
+<li>
+<p>The public network interface name must be the same on all nodes.</p>
+</li>
+<li>
+<p>The public interface must be listed first in the ipconfig list.</p>
+</li>
+<li>
+<p>Oracle supports the TCP/IP protocol for the public and private networks.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref488" name="sthref488"></a>
+<h4 class="sect3"><a name="OUICG259" id="OUICG259"></a><a id="sthref489" name="sthref489"></a><a id="sthref490" name="sthref490"></a>IP Address Requirements</h4>
+<p>Before starting the installation, you must identify or obtain the following IP addresses for each node:</p>
+<ul>
+<li>
+<p>An IP address and an associated host name registered in the domain name service (DNS) for each public network interface.</p>
+</li>
+<li>
+<p>One unused virtual IP address and an associated virtual host name registered in DNS that you will configure for the primary public network interface.</p>
+<p>The virtual IP address must be in the same subnet as the associated public interface. After installation, you can configure clients to use the virtual host name or IP address. If a node fails, then its virtual IP address fails over to another node.</p>
+</li>
+<li>
+<p>A private IP address and optional host name for each private interface.</p>
+<p>Oracle recommends that you use private network IP addresses for the private interfaces; for example: 10.*.*.* or 192.168.*.*. You can use the <code>%SystemRoot%\system32\drivers\etc\hosts</code> file on each node to associate private host names with private IP addresses.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref491" name="sthref491"></a>
+<h3 class="sect2"><a name="OUICG260" id="OUICG260"></a>Checking Individual Component Requirements</h3>
+<p>Depending on the Oracle products that you intend to install, verify the required components for the Oracle software you are installing and ensure they are installed on the system. You can find more information on the components in the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABHGHFG" name="BABHGHFG"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG261" id="OUICG261"></a><a id="sthref492" name="sthref492"></a><a id="sthref493" name="sthref493"></a>Configuring Storage for Oracle Clusterware</h2>
+<p>You need to perform certain storage configuration tasks before you start Oracle Universal Installer. For detailed information on the storage configuration tasks, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span>.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABGDBFD" name="BABGDBFD"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG262" id="OUICG262"></a><a id="sthref494" name="sthref494"></a><a id="sthref495" name="sthref495"></a>Installing Oracle Clusterware on UNIX</h2>
+<p>This section provides you with information about how to use the Oracle Universal Installer to install Oracle Clusterware on UNIX.</p>
+<div class="sect2"><a id="sthref496" name="sthref496"></a>
+<h3 class="sect2"><a name="OUICG263" id="OUICG263"></a>Running the Oracle Universal Installer to Install Oracle Clusterware</h3>
+<p>Complete the following steps to install Oracle Clusterware on your cluster. At any time during installation, if you have a question about what you are being asked to do, click <span class="bold">Help</span> in the Oracle Universal Installer page.</p>
+<ol>
+<li>
+<p>Start the <code>runInstaller</code> command with the <code>-formCluster</code> option from the main directory on the Oracle Clusterware 11<span class="italic">g</span> Release 2 (11.2) CD-ROM. This is a separate CD that contains the Oracle Clusterware software. When the Oracle Universal Installer displays the <span class="bold">Welcome</span> page, click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Oracle Universal Installer displays the <span class="bold">Installation Prerequisite Checks</span> page. This screen shows the name, type, and status for all prerequisite checks designed for the installation. Click <span class="bold">Next.</span></p>
+</li>
+<li>
+<p>Oracle Universal Installer displays the <span class="bold">Specify Cluster Nodes for Node Addition</span> page. Specify public, private, virtual IPs in this page and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Oracle Universal Installer displays the <span class="bold">Specify Local Host Name</span> page. Specify at least one public and one private interface in this page and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Specify the <a id="sthref497" name="sthref497"></a>Oracle Cluster Registry location option to provide a redundant OCR location and click <span class="bold">Next.</span></p>
+</li>
+<li>
+<p>Specify the <a id="sthref498" name="sthref498"></a>VD (Voting Disk Location) location option to provide redundant VD locations and click <span class="bold">Next.</span></p>
+</li>
+<li>
+<p>Oracle Universal Installer displays the <span class="bold">Summary</span> page. Click <span class="bold">Install</span> and proceed.</p>
+</li>
+<li>
+<p>After the installation is done, Oracle Universal Installer prompts you to run <code>orainstRoot.sh</code> and <code>root.sh</code>. You need to run these scripts and click <span class="bold">OK</span>.</p>
+</li>
+<li>
+<p>After you run <code>root.sh</code> on all of the nodes, the Oracle Universal Installer runs the Oracle Notification Server Configuration Assistant and Oracle Private Interconnect Configuration Assistant. These assistants run without user intervention.</p>
+</li>
+<li>
+<p>Oracle Universal Installer displays the <span class="bold">End of Installation</span> page. Click <span class="bold">Exit.</span></p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref499" name="sthref499"></a>
+<h3 class="sect2"><a name="OUICG264" id="OUICG264"></a>Running the Oracle Universal Installer in <a id="sthref500" name="sthref500"></a><a id="sthref501" name="sthref501"></a><a id="sthref502" name="sthref502"></a>Silent Mode to Install Oracle Clusterware</h3>
+<p>You can run the Oracle Universal Installer in silent mode to install Oracle Clusterware by entering the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -responseFile &lt;response file path&gt;
+</pre>
+<p>For Oracle Clusterware, you need to use the <code>-formCluste</code>r flag. You can pass session variables like nodelist, ocr, voting disk location, and so forth from the command line for silent installation.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref503" name="sthref503"></a>
+<h3 class="sect2"><a name="OUICG265" id="OUICG265"></a>Oracle Clusterware Background Processes</h3>
+<p><a id="sthref504" name="sthref504"></a><a id="sthref505" name="sthref505"></a>The following processes must be running in your environment after the Oracle Clusterware installation for Oracle Clusterware to function:</p>
+<ul>
+<li>
+<p><code>oprocd</code> &#x2014; Process monitor for the cluster.</p>
+</li>
+<li>
+<p><code>evmd</code> &#x2014; Event manager daemon that starts the <code>racgevt</code> process to manage call-outs.</p>
+</li>
+<li>
+<p><code>ocssd</code> &#x2014; Manages cluster node membership and runs as the Oracle user; failure of this process results in node restart.</p>
+</li>
+<li>
+<p><code>crsd</code> &#x2014; Performs high availability recovery and management operations such as maintaining the OCR. Also manages application resources and runs as the root user and restarts automatically upon failure.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABGFEAE" name="BABGFEAE"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG266" id="OUICG266"></a>Installing Oracle Clusterware on Windows</h2>
+<p>This section provides you with information about how to use the Oracle Universal Installer to install Oracle Clusterware on Windows.</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref506" name="sthref506"></a>
+<h3 class="sect2"><a name="OUICG267" id="OUICG267"></a>Running the Oracle Universal Installer to <a id="sthref507" name="sthref507"></a><a id="sthref508" name="sthref508"></a>Install Oracle Clusterware</h3>
+<p>Complete the following steps to install Oracle Clusterware on your cluster. At any time during installation, if you have a question about what you are being asked to do, click <span class="bold">Help</span> in the Oracle Universal Installer page.</p>
+<ol>
+<li>
+<p>Log in to Windows with Administrative privileges and run the <code>setup.exe</code> command on the Oracle Clusterware media. This opens the Oracle Universal Installer <span class="bold">Welcome</span> page.</p>
+</li>
+<li>
+<p>After you click <span class="bold">Next</span> in the <span class="bold">Welcome</span> page, the <span class="bold">Specify File Locations</span> page enables you to accept the displayed path name for the Oracle Clusterware products or select a different one. You can also accept default directory and path name for the location of your Clusterware home or browse for an alternate directory and destination. You must select a destination that exists on each cluster node that is part of this installation. Click <span class="bold">Next</span> to confirm your choices and proceed to the <span class="bold">Language Selection</span> page.</p>
+</li>
+<li>
+<p>Select the language or languages for your Oracle Clusterware installation in the <span class="bold">Language Selection</span> page, then click <span class="bold">Next</span> for the <span class="bold">Cluster Configuration</span> page.</p>
+</li>
+<li>
+<p>The <span class="bold">Cluster Configuration</span> page contains predefined node information if the Oracle Universal Installer detects that your system has the Oracle 10<span class="italic">g</span> Release 2 Clusterware. Otherwise, the Oracle Universal Installer displays the <span class="bold">Cluster Configuration</span> page without predefined node information.</p>
+<p>Provide your own cluster name if you do not want to use the name provided by the Oracle Universal Installer. Note that the selected cluster name must be globally unique throughout the enterprise, and its allowable character set is the same as that for host names; that is, underscores (_), hyphens (-), and single-byte alphanumeric characters (a to z, A to Z, and 0 to 9).</p>
+<p>Enter a public and a private host name for each node. Neither the public nor the private name should have a domain qualifier. When you enter the public host name, use the primary host name of each node; that is, the name displayed by the <code>hostname</code> command. The private node refers to an address that is only accessible by the other nodes in this cluster, and which Oracle uses for <a id="sthref509" name="sthref509"></a>Cache Fusion processing. You can enter either a private host name or a private IP address for each node.</p>
+<p>Click <span class="bold">Next</span> after you have entered the cluster configuration information. This saves your entries and opens the <span class="bold">Specify Network Interface Usage</span> page.</p>
+</li>
+<li>
+<p>In the <span class="bold">Specify Network Interface Usage</span> page, the Oracle Universal Installer displays a list of cluster-wide interfaces. Use the drop-down menus on this page to classify each interface as Public, Private, or Do Not Use. The default setting for each interface is Do Not Use. You must classify at least one interconnect as Public and one as Private. Click <span class="bold">Next</span> when you have made your selections to open the <span class="bold">Select Disk Formatting Options</span> page.</p>
+</li>
+<li>
+<p>In the <span class="bold">Select Disk Formatting Options</span> page, you indicate what OCFS you want the Oracle Universal Installer to format for you.</p>
+<p>The formatting options are as follows:</p>
+<ul>
+<li>
+<p>Format two logical drives for data and software storage. In this case, the Oracle Universal Installer creates two cluster file systems, one for the database files and one for the Oracle home. The OCR and voting disk are created in the data file directory.</p>
+</li>
+<li>
+<p>Format one logical drive for software storage. In this case, the Oracle Universal Installer creates one cluster file system for the Oracle home and requires two additional partitions, one for the OCR and one for the voting disk. If you select this option, you must have already configured the partitions before proceeding with the installation. These partitions are stamped with "ocrcfg" for the OCR and "votedsk" for the voting disk.</p>
+</li>
+<li>
+<p>Format one logical drive for data file storage. In this case, the Oracle Universal Installer creates one cluster file system for the database files which is also used to store the OCR and voting disk.</p>
+</li>
+<li>
+<p>Do not format any logical drives. In this case, the Oracle Universal Installer requires two partitions: one for the OCR and one for the voting disk. If you select this option, you must have already configured the partitions before proceeding with the installation. These partitions are stamped with "ocrcfg" for the OCR and "votedsk" for the voting disk.</p>
+</li>
+</ul>
+<p>Click <span class="bold">Next</span> after making your selection in the <span class="bold">Select Disk Formatting Options</span> page. The next page that the Oracle Universal Installer displays depends on your selection on the <span class="bold">Select Disk Formatting Options</span> page, as described in the following step.</p>
+</li>
+<li>
+<p>If you selected the "Format two logical drives for data and software storage" option on the <span class="bold">Select Disk Formatting Options</span> page, you must complete the <span class="bold">Select Software Storage Drive</span> page and the <span class="bold">Select Data Storage Drive</span> page as described in Steps a and b, respectively.</p>
+<p>If you selected the "Format one logical drive for software storage" option on the <span class="bold">Select Disk Formatting Options</span> page, you must complete the <span class="bold">Select Software Storage Drive</span> page, the <span class="bold">Disk Configuration - Oracle Cluster Registry (OCR)</span> page, and the <span class="bold">Disk Configuration - Voting Disk</span> page as described in Steps a, c, and d, respectively.</p>
+<p>If you selected the "Format one logical drive for data file storage" option on the <span class="bold">Select Disk Formatting Options</span> page, you must complete the <span class="bold">Select Data Storage Drive</span> page as described in Step b.</p>
+<p>If you selected the "Do not format any logical drives" option on the <span class="bold">Select Disk Formatting Options</span> page, you must complete the <span class="bold">Disk Configuration - Oracle Cluster Registry (OCR)</span> page and the <span class="bold">Disk Configuration - Voting Disk</span> page as described in Steps c and d, respectively.</p>
+<ol>
+<li>
+<p>On the <span class="bold">Select Software Storage Drive</span> page, choose a shared drive to see a list of available partitions on that drive. Choose a partition with sufficient space to hold your Oracle home and select the partition's disk number and partition number from the list. Click <span class="bold">Next</span> to proceed.</p>
+</li>
+<li>
+<p>On the <span class="bold">Select Data Storage Drive</span> page, choose a shared drive to see a list of available partitions on that drive. Choose a partition with sufficient space to hold your database files and select the partition's disk number and partition number from the list. Click <span class="bold">Next</span> to proceed.</p>
+</li>
+<li>
+<p>On the <span class="bold">Disk Configuration - Oracle Cluster Registry (OCR)</span> page, choose a partition with sufficient space to hold your OCR and select the partition's disk number and partition number from the list. Click <span class="bold">Next</span> to proceed.</p>
+</li>
+<li>
+<p>On the <span class="bold">Disk Configuration - Voting Disk</span> page, choose a partition with sufficient space to hold your voting disk and select the partition's disk number and partition number from the list. Click <span class="bold">Next</span> to proceed.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The Oracle Universal Installer pages described in this step displays logical drives from which you must make your selections. To be valid for selection, a logical drive must be located on a disk without a primary partition.</div>
+</li>
+</ol>
+</li>
+<li>
+<p>After you click <span class="bold">Next</span>, the Oracle Universal Installer checks whether the remote inventories are set. If they are not set, the Oracle Universal Installer sets up the remote inventories by setting registry keys. The Oracle Universal Installer also verifies the permissions to enable writing to the inventory directories on the remote nodes. After completing these actions, the Oracle Universal Installer displays a <span class="bold">Summary</span> page that shows the cluster node information along with the space requirements and availability. Verify the installation that the Oracle Universal Installer is about to perform and click <span class="bold">Finish</span>.</p>
+</li>
+<li>
+<p>When you click <span class="bold">Finish</span>, the Oracle Universal Installer installs the OCFS and Oracle Clusterware software on the local node and validates the installation again. The Oracle Universal Installer also creates any required OCFS file systems. After validating the installation, the Oracle Universal Installer completes the Oracle Clusterware software installation and configuration on the remote nodes.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref510" name="sthref510"></a>
+<h3 class="sect2"><a name="OUICG268" id="OUICG268"></a>Running the Oracle Universal Installer in <a id="sthref511" name="sthref511"></a><a id="sthref512" name="sthref512"></a>Silent Mode to Install Oracle Clusterware</h3>
+<p>You can run the Oracle Universal Installer in silent mode to install Oracle Clusterware by entering the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">./setup.exe -silent -responseFile &lt;response file path&gt;
+</pre>
+<p>For Oracle Clusterware, you need to use the <code>-formCluster</code> flag. You can pass session variables like nodelist, ocr, voting disk location, and so forth from the command line for silent installation.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref513" name="sthref513"></a>
+<h3 class="sect2"><a name="OUICG269" id="OUICG269"></a><a id="sthref514" name="sthref514"></a><a id="sthref515" name="sthref515"></a>Oracle Clusterware Background Processes</h3>
+<p>The following processes must be running in your environment after the Oracle Clusterware installation for Oracle Clusterware to function:</p>
+<ul>
+<li>
+<p><code>oprocd</code> &#x2014; Process monitor for the cluster.</p>
+</li>
+<li>
+<p><code>evmd</code> &#x2014; Event manager daemon that starts the <code>racgevt</code> process to manage call-outs.</p>
+</li>
+<li>
+<p><code>ocssd</code> &#x2014; Manages cluster node membership and runs as the Oracle user; failure of this process results in node restart.</p>
+</li>
+<li>
+<p><code>crsd</code> &#x2014; Performs high availability recovery and management operations such as maintaining the OCR. Also manages application resources and runs as the root user and restarts automatically upon failure.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABFGFGA" name="BABFGFGA"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG270" id="OUICG270"></a>Adding More Nodes to the Cluster for <a id="sthref516" name="sthref516"></a><a id="sthref517" name="sthref517"></a>Mass Deployment</h2>
+<p>If you want to add more nodes to the cluster, complete the following procedure:</p>
+<ol>
+<li>
+<p>Perform a single-node cluster Oracle Clusterware installation on node1.</p>
+</li>
+<li>
+<p>Execute the prerequisite checks required on the remote nodes in order to add the nodes:</p>
+<pre xml:space="preserve" class="oac_no_warn">$CRS_HOME/bin/cluvfy stage -pre nodeadd -n &lt;<span class="italic">new nodes separated by commas</span>&gt; -verbose
+</pre></li>
+<li>
+<p>Go to the $CRS_HOME/oui/bin directory. The variable <code>$CRS_HOME</code> represents the Oracle Clusterware home directory of the successfully installed Oracle Clusterware software.</p>
+</li>
+<li>
+<p>Run the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">./addNode.sh -silent "CLUSTER_NEW_NODES=&lt;comma-separated new nodes&gt;"  "CLUSTER_NEW_VIRTUAL_HOSTNAMES=&lt;comma-separated new vips&gt;"
+</pre>
+<p>addNode is not supported in GUI mode in version 11.2.</p>
+</li>
+<li>
+<p>If prompted to do so, run the <code>orainstroot.sh</code> script on the new nodes.</p>
+</li>
+<li>
+<p>When prompted, run the <code>root.sh</code> script on each of the new nodes.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="BEIFDDBF" name="BEIFDDBF"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG271" id="OUICG271"></a><a id="sthref518" name="sthref518"></a><a id="sthref519" name="sthref519"></a>Installing Product Software on a Cluster<a id="sthref520" name="sthref520"></a><a id="sthref521" name="sthref521"></a></h2>
+<p>After you have installed clusterware and completed pre-installation tasks, you are ready to install the cluster-ready product on the cluster. To do this, you can use Oracle Universal Installer in interactive mode, command line mode, or silent mode using a response file.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+See <a href="oui4_product_install.htm#i1007819">"Modes of Installation"</a> for more information on the different modes.</div>
+<div class="sect2"><a id="sthref522" name="sthref522"></a>
+<h3 class="sect2"><a name="OUICG272" id="OUICG272"></a>Cluster Detection<a id="sthref523" name="sthref523"></a></h3>
+<p>When Oracle Universal Installer detects that the destination you entered on the <span class="bold">File Locations</span> page is part of a cluster, one of two dialogs appear:</p>
+<ul>
+<li>
+<p>If the Oracle home name entered is new, the <span class="bold">Specify Hardware Installation Mode</span> page appears. Use this page to select between cluster and non-cluster installation:</p>
+<ul>
+<li>
+<p><span class="bold">Cluster installation:</span> Select the nodes for your installation from the list of nodes on which clusterware has been installed.</p>
+</li>
+<li>
+<p><span class="bold">Non-cluster installation:</span> Install on a single-node only, even though that node is part of a cluster.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>If the Oracle home name entered is a pre-existing home, the <span class="bold">Selected Nodes</span> page appears. This is an information-only page that displays the nodes associated with the Oracle home. The installation is performed on all selected nodes. If any of the selected nodes are down, the installation is not allowed to proceed.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+In Oracle Universal Installer, click <span class="bold">Installed Products</span> to display the Inventory panel, which lists all installed Oracle homes. Clustered Oracle homes, which are homes installed on multiple cluster nodes, have an attribute called Cluster Nodes, which lists all the nodes associated with that home.</div>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref524" name="sthref524"></a>
+<h3 class="sect2"><a name="OUICG273" id="OUICG273"></a>Availability Checking<a id="sthref525" name="sthref525"></a></h3>
+<p>When the user clicks <span class="bold">Next</span> on the <span class="bold">Specify Hardware Installation Mode</span> page or <span class="bold">Selected Nodes</span> page, Oracle Universal Installer performs the following availability checks on the nodes:</p>
+<ul>
+<li>
+<p><span class="bold">Network reachability:</span> Tests whether the remote cluster nodes are up and running.</p>
+</li>
+<li>
+<p><span class="bold">Network configuration:</span> Tests whether the remote cluster nodes are properly network-configured.</p>
+</li>
+<li>
+<p><span class="bold">Inventory setup:</span> Tests whether the inventory is set up on the remote nodes. If not set up on UNIX, Oracle Universal Installer prompts you to run root scripts on the remote nodes to set up the inventory. On Windows, Oracle Universal Installer sets up the inventory location in the Windows registry.</p>
+</li>
+<li>
+<p><span class="bold">Inventory permission:</span> Tests whether you can write to the Central Inventory location.</p>
+</li>
+<li>
+<p><span class="bold">Oracle home permission:</span> Tests whether you can write to the Oracle home.</p>
+</li>
+</ul>
+<p>If all selected nodes are available, the installation process continues to the next step. If a node (or nodes) is not available, the page redisplays with a <span class="bold">Status</span> column indicating the results of the check. You must fix the problem or choose another set of nodes in order to proceed.</p>
+<p>If any of the remote nodes is unreachable, check if those nodes are up and running and if they are properly network-configured. If either the inventory or the Oracle home is not writable, check for the appropriate permissions on the remote nodes for these directories.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref526" name="sthref526"></a>
+<h3 class="sect2"><a name="OUICG274" id="OUICG274"></a><a id="sthref527" name="sthref527"></a><a id="sthref528" name="sthref528"></a>Cluster Installation</h3>
+<p>In a typical cluster installation, when clusterware is present, Universal Installer installs the Oracle software onto the node on which Oracle Universal Installer is running, then propagates the Oracle home from the local node installation to the other nodes that are part of the installation. Then Universal Installer runs <code>-attachHome</code> on the remote nodes to update the inventory. After this, you need to run <code>orainstRoot.sh</code> (if required) and <code>root.sh</code> on the local and remote nodes. After the scripts are run, the configuration steps are executed.</p>
+<p>If the cluster is <a id="sthref529" name="sthref529"></a>Cluster File System (CFS) or <a id="sthref530" name="sthref530"></a><a id="sthref531" name="sthref531"></a>Network File System (NFS) mounted, Oracle Universal Installer does not propagate the Oracle home to other nodes, as files are shared across nodes and the installation will exist on the shared disk.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+For cluster installations, you must run <code>oraInstRoot.sh</code> on each node of the cluster to set up the inventory.</div>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref532" name="sthref532"></a>
+<h3 class="sect2"><a name="OUICG275" id="OUICG275"></a><a id="sthref533" name="sthref533"></a><a id="sthref534" name="sthref534"></a>Cluster Installation in Silent Mode</h3>
+<p>For Real Application Clusters installation, you can specify the <code>-local</code> flag, <code>CLUSTER_NODES, REMOTE_NODES,</code> and <code>LOCAL_NODE</code> session variables to indicate the nodes on which the installation needs to be done.</p>
+<p>When you use the <code>-local</code> flag in a cluster installation, it means that the installation or inventory operation needs to be performed only on the local node. The <code>CLUSTER_NODES</code> session variable indicates that the specified nodes are part of the cluster.</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -local "CLUSTER_NODES={a,b,c,d}"
+</pre>
+<p>In the above example, the installation would be performed in the local node, and nodes a, b, c, and d would be taken as the part of the cluster.</p>
+<p>When you use the <code>REMOTE_NODES</code> session variable in a cluster installation, it means that the installation or the inventory operation needs to be performed on the local node and the other nodes apart from the local node.</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller "REMOTE_NODES={c,d}" "CLUSTER_NODES={a,b,c,d}"
+</pre>
+<p>In the above example, the installation would be performed on the local node a and nodes c and d. The nodes a, b, c, and d would be taken as the part of the cluster.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref535" name="sthref535"></a>
+<h3 class="sect2"><a name="OUICG276" id="OUICG276"></a>Cluster Deinstallation<a id="sthref536" name="sthref536"></a><a id="sthref537" name="sthref537"></a></h3>
+<p>When removing a clustered Oracle home, Oracle Universal Installer first removes software from the node from which you are deinstalling, then removes software from the other cluster nodes associated with the Oracle home.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BEIIIDGE" name="BEIIIDGE"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG277" id="OUICG277"></a>Command Line Options for Cluster Installations (UNIX Only)<a id="sthref538" name="sthref538"></a><a id="sthref539" name="sthref539"></a></h2>
+<p>When using Oracle Universal Installer in suppressed or silent mode, specify the path to the remote copy or shell program on the local node to use for cluster installations using the following optional flags:</p>
+<pre xml:space="preserve" class="oac_no_warn">-remoteShell &lt;path to program&gt;
+-remoteCopy &lt;path to program&gt;
+</pre>
+<p>The default for <code>remoteShell</code> is <code>/usr/local/bin/ssh</code>. The default for <code>remoteCopy</code> is <code>/usr/local/bin/scp</code>. If these are not present, Oracle Universal Installer defaults to <code>rsh</code> and <code>rcp</code>, respectively.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABBIEDJ" name="BABBIEDJ"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Adding Language Support for Installed Products</h2>
+<p>Oracle Universal Installer enables you to add language support for the products you have installed. To add a language definition for the products already installed in the Oracle Home, you use the addLangs flag of runInstaller.</p>
+<p class="subhead2"><a id="sthref540" name="sthref540"></a>User Interface-based Installation</p>
+<ol>
+<li>
+<p>From the shiphome or from the Oracle Home, start OUI by entering the following command and flag:</p>
+<p>./runInstaller -addLangs</p>
+</li>
+<li>
+<p>Select the product location of the shiphome.</p>
+</li>
+<li>
+<p>Select the new language set from the languages panel. The language upgrade is performed for all the components in the shiphome that are located in the Oracle Home.</p>
+</li>
+<li>
+<p>View the summary window with the new &#x201C;Language Updates&#x201D; node. The elements of this node provide the component information for which the language updates are performed.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="sthref541" name="sthref541"></a>Silent-based installation</p>
+<p>In the installation phase, OUI copies the files for the languages to be installed.</p>
+<ol>
+<li>
+<p>Make sure the response file specifies the new languages. For silent installations, by default the language update is performed for the languages specified in the response file.</p>
+</li>
+<li>
+<p>From the shiphome or from the Oracle Home, start OUI by entering the following command and flags:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -addLangs
+</pre></li>
+</ol>
+<p>The language upgrade is performed for all the components in the shiphome that are located in the Oracle Home. In the installation phase, OUI copies the files for the languages to be installed.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABJAGID" name="BABJAGID"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG278" id="OUICG278"></a><a id="sthref542" name="sthref542"></a><a id="sthref543" name="sthref543"></a>Patchsets and Upgrades</h2>
+<p>Oracle Universal Installer enables you to upgrade a product from one version to another version. An upgrade is a major product enhancement that often requires installation of the upgraded software. For example, if you convert your Oracle <span class="italic">10g</span> Database to Oracle 11<span class="italic">g</span>R1 Database, then it is called an upgrade.</p>
+<p>A group of patches form a patchset. For example, if you convert your Oracle 11<span class="italic">g</span>R1 from version 11.1.1 to version 11.1.2, then it is called applying a patchset.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABDDJBF" name="BABDDJBF"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG279" id="OUICG279"></a><a id="sthref544" name="sthref544"></a><a id="sthref545" name="sthref545"></a><a id="sthref546" name="sthref546"></a>Post-installation Tasks</h2>
+<p>After completing a Real Application Clusters installation, it is advisable that you perform the following tasks:</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref547" name="sthref547"></a>
+<h3 class="sect2"><a name="OUICG280" id="OUICG280"></a><a id="sthref548" name="sthref548"></a><a id="sthref549" name="sthref549"></a>Verification</h3>
+<p>After your Oracle product with Real Application Clusters installation is complete, go to <code>$ORACLE_HOME/Opatch</code> on each node and execute the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/OPatch/opatch lsinventory -detail
+</pre>
+<p>This command lists the components installed inside the Oracle home and also lists the local and remote nodes for the home. Verify this information. You may also want to look at installation logs <code>inventory.xml</code> and <code>oraclehomeproperties.xml</code>.</p>
+<p>See <a href="#BABBIGGF">"Troubleshooting Real Application Clusters / Oracle Clusterware Installation"</a> in case the check fails.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref550" name="sthref550"></a>
+<h3 class="sect2"><a name="OUICG281" id="OUICG281"></a><a id="sthref551" name="sthref551"></a><a id="sthref552" name="sthref552"></a>Back Up Disk after Installation</h3>
+<p>After your Oracle product with Real Application Clusters installation is complete and after you are sure that your system is functioning properly, make a back-up of the contents of the disk.</p>
+<p>Also make a back-up of the disk contents after you complete any node additions or node deletions and after running any de-installation procedures.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BABEFEBC" name="BABEFEBC"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a name="OUICG282" id="OUICG282"></a><a id="sthref553" name="sthref553"></a><a id="sthref554" name="sthref554"></a>Download and Install Patches</h3>
+<p>Go to the OracleMetaLink Web site for required patches for your installation. To download the required patches:</p>
+<ol>
+<li>
+<p>Use a Web browser to view the OracleMetaLink Web site:</p>
+<pre xml:space="preserve" class="oac_no_warn">http://metalink.oracle.com
+</pre></li>
+<li>
+<p>Log in to OracleMetaLink.</p>
+</li>
+<li>
+<p>On the main OracleMetaLink page, click <span class="bold">Patches</span>.</p>
+</li>
+<li>
+<p>On the <span class="bold">Select a Patch Search Area</span> page, click <span class="bold">New MetaLink Patch Search</span>.</p>
+</li>
+<li>
+<p>On the <span class="bold">Simple Search</span> page, click <span class="bold">Advanced</span>.</p>
+</li>
+<li>
+<p>On the <span class="bold">Advanced Search</span> page, click the search icon next to the <span class="bold">Product or Product Family</span> field.</p>
+</li>
+<li>
+<p>In the <span class="bold">Search and Select: Product Family</span> field, enter the Oracle product name in the <span class="bold">For</span> field and click <span class="bold">Go</span>.</p>
+</li>
+<li>
+<p>Select the Oracle product under the Results heading and click <span class="bold">Select</span>. The product name appears in the <span class="bold">Product or Product Family</span> field, and the current release appears in the <span class="bolditalic">Release</span> field.</p>
+</li>
+<li>
+<p>Select your platform from the list in the <span class="bold">Platform</span> field and click <span class="bold">Go</span>.</p>
+</li>
+<li>
+<p>Any available patches appear under the <span class="bold">Results</span> heading.</p>
+</li>
+<li>
+<p>Click the number of the patch that you want to download.</p>
+</li>
+<li>
+<p>On the <span class="bold">Patch Set</span> page, click <span class="bold">View README</span> and read the page that appears. The README page contains information about the patch set and how to apply the patches to your installation.</p>
+</li>
+<li>
+<p>Return to the <span class="bold">Patch Set</span> page, click <span class="bold">Download</span>, and save the file on your system.</p>
+</li>
+<li>
+<p>Use the unzip utility provided with Oracle software to uncompress the Oracle patches that you downloaded from OracleMetaLink. The unzip utility is located in the <code>$ORACLE_HOME/bin</code> directory.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+By default, the patches would only be applied on the nodes on which the Oracle software installation was done. You can change the node list by using the <code>-enableRollingUpgrade</code> option.</div>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref555" name="sthref555"></a>
+<h3 class="sect2"><a name="OUICG283" id="OUICG283"></a><a id="sthref556" name="sthref556"></a><a id="sthref557" name="sthref557"></a>Configure Oracle Products</h3>
+<p>Many Oracle products and options must be configured before you use them for the first time. Before using individual Oracle products or options, refer to the manual in the product documentation library that is available on the documentation CD-ROM or on the Oracle Technology Network Web site.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABFCADA" name="BABFCADA"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG284" id="OUICG284"></a><a id="sthref558" name="sthref558"></a><a id="sthref559" name="sthref559"></a>Deinstalling Real Application Clusters Software</h2>
+<p>If you need to deinstall Real Application Clusters software, you must run the Oracle Universal Installer to deinstall the software on the same node from which you performed the installation. You must first deinstall the Oracle product before deinstalling the Oracle Clusterware software.</p>
+<p>Perform the following procedures as described in the following sections to deinstall Oracle product and Oracle Clusterware software.</p>
+<div class="sect2"><a id="sthref560" name="sthref560"></a>
+<h3 class="sect2"><a name="OUICG285" id="OUICG285"></a><a id="sthref561" name="sthref561"></a><a id="sthref562" name="sthref562"></a>Deinstalling Oracle Product Software on UNIX</h3>
+<p>The following steps describe how to use Oracle Universal Installer to remove Oracle software from an Oracle home on UNIX systems:</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Always use Oracle Universal Installer to remove Oracle software. Do not delete any Oracle home directories without first using Oracle Universal Installer to remove the software.</div>
+<ol>
+<li>
+<p>If necessary, log in as the <code>oracle</code> user:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ su - oracle
+</pre></li>
+<li>
+<p>Set the <code>ORACLE_HOME</code> environment variable to specify the path of the Oracle home directory that you want to remove:</p>
+<ul>
+<li>
+<p>Bourne, Bash, or Korn shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ORACLE_HOME=/u01/app/oracle/product/11.2.0/db_1
+$ export ORACLE_HOME
+</pre></li>
+<li>
+<p>C shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ setenv ORACLE_HOME /u01/app/oracle/product/11.2.0/db_1
+</pre></li>
+</ul>
+</li>
+<li>
+<p>Stop all processes running in this Oracle home.</p>
+</li>
+<li>
+<p>Start Oracle Universal Installer using the Deinstall tool. For information on this tool, see "Removing Oracle Database Client Software" in the <span class="italic">Oracle Database Client Installation Guide 11g Release 2 (11.2) for Linux</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref563" name="sthref563"></a>
+<h3 class="sect2"><a name="OUICG286" id="OUICG286"></a><a id="sthref564" name="sthref564"></a><a id="sthref565" name="sthref565"></a>Deinstalling Oracle Product Software on Windows</h3>
+<p>The following steps describe how to use Oracle Universal Installer to remove Oracle software from an Oracle home on Windows systems:</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Always use Oracle Universal Installer to remove Oracle software. Do not delete any Oracle home directories without first using Oracle Universal Installer to remove the software.</div>
+<ol>
+<li>
+<p>Stop all the Oracle services running in this Oracle home.</p>
+</li>
+<li>
+<p>Start Oracle Universal Installer: from the <span class="bold">Start</span> menu, select <span class="bold">Programs</span>, then <span class="bold">ORACLE_ HOME_NAME</span>, then <span class="bold">Oracle Installation Products</span>, then <span class="bold">Oracle Universal Installer</span>.</p>
+<p>The <span class="bold">Welcome</span> screen for Oracle Universal Installer appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Deinstall Products</span>.</p>
+<p>The <span class="bold">Inventory</span> screen appears.</p>
+</li>
+<li>
+<p>Expand the tree of installed components until you find the components to remove. For example, if you installed a database with the Enterprise Edition option and later installed additional components with the Custom option, expand the Oracle home component to display all the components installed in the Oracle home.</p>
+</li>
+<li>
+<p>Select the components to remove.</p>
+</li>
+<li>
+<p>Click <span class="bold">Remove</span>.</p>
+<p>The <span class="bold">Confirmation</span> screen appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span> to remove the selected components to initiate the removal process.</p>
+</li>
+<li>
+<p>After the components are removed from your computer, the <span class="bold">Inventory</span> screen appears without the removed components.</p>
+</li>
+<li>
+<p>Click <span class="bold">Close</span> to close the <span class="bold">Inventory</span> screen.</p>
+</li>
+<li>
+<p>Click <span class="bold">Cancel</span> to exit Oracle Universal Installer.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span> to confirm that you want to exit.</p>
+<p>For detailed instructions on deinstalling an Oracle product, see the respective Oracle product installation guide.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref566" name="sthref566"></a>
+<h3 class="sect2"><a name="OUICG287" id="OUICG287"></a><a id="sthref567" name="sthref567"></a><a id="sthref568" name="sthref568"></a>Deinstalling Oracle Clusterware</h3>
+<p>Before deinstalling Oracle Cluster software, ensure that you have removed the respective Oracle product's home in each node by following the steps in the preceding section. The following section explains deinstallation on Windows and UNIX.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref569" name="sthref569"></a>
+<h4 class="sect3"><a name="OUICG288" id="OUICG288"></a>Deinstalling Oracle Clusterware from a UNIX Environment</h4>
+<p>Deinstall each Oracle product Real Application Clusters home by running the procedure in the previous section. Then complete the deinstallation by removing the Oracle Clusterware software using the following procedure:</p>
+<ol>
+<li>
+<p>Run the command <code>$CRS_HOME/install/rootdelete.sh</code> to disable the Oracle Clusterware applications running on the cluster node. The <code>rootdelete.sh</code> script requires three arguments. If you are running this command on a remote node of the cluster, use <code>remote</code> as the first argument; otherwise, use <code>local</code> as the first argument. If the <code>ocr.loc</code> file is on a shared file system, use <code>sharedvar</code>. Otherwise, use <code>nosharedvar</code> as the second argument. If the Oracle Clusterware home is on a shared file system, use <code>sharedhome</code>; otherwise, use <code>nosharedhome</code> as the third argument. Repeat this step on each node of the cluster from which you want to deinstall Oracle Clusterware.</p>
+</li>
+<li>
+<p>Run the script <code>$CRS_HOME/install/rootdeinstall.sh</code> on a local node to remove the OCR. You only need to run this script once.</p>
+</li>
+<li>
+<p>Start Oracle Universal Installer. In the <span class="bold">Welcome</span> page, click <span class="bold">Deinstall Products</span> to display the list of installed products. Select the Oracle Clusterware home to deinstall.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref570" name="sthref570"></a>
+<h4 class="sect3"><a name="OUICG289" id="OUICG289"></a>Deinstalling Oracle Clusterware from a Windows Environment</h4>
+<p>Deinstall each Oracle product Real Application Clusters home by running the procedure in the previous section. Then complete the deinstallation by removing the Oracle Clusterware software using one of the following procedures:</p>
+<ul>
+<li>
+<p><a href="#BABFAAGC">Deinstalling Oracle Clusterware with No Previous Cluster Software Versions</a>.</p>
+</li>
+<li>
+<p><a href="#BABCGGAH">Deinstalling Oracle Clusterware with Clusterware Downgrade to 10.2</a>.</p>
+</li>
+</ul>
+<a id="BABFAAGC" name="BABFAAGC"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4"><a name="OUICG290" id="OUICG290"></a>Deinstalling Oracle Clusterware with No Previous Cluster Software Versions</h5>
+<p>Perform the following steps to deinstall Oracle 11<span class="italic">g</span> Clusterware software from a Windows environment:</p>
+<ol>
+<li>
+<p>Click <span class="bold">Start</span> and navigate to <span class="bold">Settings</span>, then to <span class="bold">Control Panel</span>, then to <span class="bold">Administrative Tools</span>, and then to <span class="bold">Services</span>. Stop the service <code>oracleremexec</code>.</p>
+</li>
+<li>
+<p>Start the Oracle Universal Installer. On the <span class="bold">Welcome</span> page, click <span class="bold">Deinstall Products</span> to display the list of installed products. Select the Oracle Clusterware home you want to deinstall.</p>
+</li>
+<li>
+<p>If you have services with names such as <code>OracleCRSTokenname</code>, remove them by running the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">crsuser remove user_name
+where user_name is a user name.
+</pre></li>
+<li>
+<p>Shut down and restart each node that is a member of your cluster.</p>
+</li>
+<li>
+<p>If you are not using a cluster file system, on each node use Windows Explorer to delete the Oracle directory, its subdirectories, and their contents.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect4" -->
+<a id="BABCGGAH" name="BABCGGAH"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4"><a name="OUICG291" id="OUICG291"></a>Deinstalling Oracle Clusterware with Clusterware Downgrade to 10.2</h5>
+<p>Perform the following steps to deinstall Oracle 11<span class="italic">g</span> Clusterware software from a Windows environment that also has 10.2 Real Application Clusters:</p>
+<ol>
+<li>
+<p>Run <code>$CRS_HOME\bin\GuiOracleOBJManager.exe</code> to make sure that the symbolic link named <code>srvcfg</code> exists and points to a disk partition, if you are not using OCFS to store the OCR.</p>
+</li>
+<li>
+<p>If Oracle10<span class="italic">g</span> release 10.2 Clusterware uses Oracle CFS (Cluster File System), ensure the following is true for all nodes:</p>
+<ul>
+<li>
+<p>The registry key <code>HKLM\SOFTWARE\Oracle\osd9i\ocr</code> exists.The registry key <code>HKLM\SOFTWARE\Oracle\osd9i\ocr</code> has a string value <code>CfsOcrRoot</code> that points to a release 10.2 OCR (CFS) location.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Run <code>$CRS_HOME\bin\ocrconfig -downgrade</code> to downgrade the Cluster Registry to a release 10.2 OCR.</p>
+</li>
+<li>
+<p>On each node, copy <code>$CRS_HOME\cfs\OcfsFindVol.exe</code> to <code>%SYSTEMROOT%\system32\osd9i\cfs</code>.</p>
+</li>
+<li>
+<p>Run <code>$CRS_HOME\oui\bin\setup.exe</code> to start Oracle Universal Installer. On the <span class="bold">Welcome</span> page, click <span class="bold">Deinstall Products</span> to list all the installed products. Select the Oracle Clusterware home name from the displayed products, and click <span class="bold">Remove</span> to deconfigure and deinstall the product.</p>
+</li>
+<li>
+<p>On each node, run <code>%SYSTEMROOT%\system32\osd9i\olm\OracleOBJService.exe /install</code> to reinstall the Oracle 10.2 object service. Then start Oracle Object Service.</p>
+</li>
+<li>
+<p>On each node, run <code>%SYSTEMROOT%\system32\osd9i\cfs\OcfsFindVol.exe /i:%SYSTEMROOT%\system32\osd9i\cfs\OcfsFindVol.exe</code> to reinstall the Oracle Cluster Volume service. Then start the Oracle Cluster Volume service.</p>
+</li>
+<li>
+<p>From a 10.2 Real Application Clusters Oracle home on each node, run the command <code>ORACLE_HOME\bin\gsdservice.exe -install</code>. Then start the <code>OracleGSDService</code>.</p>
+</li>
+<li>
+<p>On each node, copy <code>%SYSTEMROOT%\system32\osd9i\orafencedrv.sys %SYSTEMROOT%\system32\drivers\orafenceservice.sys</code>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABGGGHG" name="BABGGGHG"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG292" id="OUICG292"></a>Converting Single-instance Nodes to Real Application Clusters</h2>
+<p><a id="sthref571" name="sthref571"></a><a id="sthref572" name="sthref572"></a>You can convert single-instance nodes to Real Application Clusters using Oracle Universal Installer. For details on converting single instance nodes to Real Application Clusters, see the <span class="italic">Oracle Real Application Clusters Installation Guide 11g Release 2 (11.2)</span> for your platform.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABBIGGF" name="BABBIGGF"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG293" id="OUICG293"></a><a id="sthref573" name="sthref573"></a><a id="sthref574" name="sthref574"></a><a id="sthref575" name="sthref575"></a>Troubleshooting Real Application Clusters / Oracle Clusterware Installation</h2>
+<p>Figure&nbsp;5&#x2013;1 explains how you can solve problems associated with the Real Application Clusters or Oracle Clusterware installation.</p>
+<div class="figure">
+<p class="titleinfigure"><a id="sthref576" name="sthref576"></a>Figure 5-1 Troubleshooting Real Application Clusters / Oracle Clusterware Installation</p>
+<img width="713" height="755" src="img/rac_troubleshooting.gif" alt="Surrounding text describes Figure 5-1 ." title="Surrounding text describes Figure 5-1 ." /><br /></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="oui4_product_install.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="oui6_cloning.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;1996, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

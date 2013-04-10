@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div element="article" href="toc.htm" number="" targetptr="">
+  <ttl>Oracle&#x00AE; Application Express Release Notes</ttl>
+  <xreftext><cite>Oracle&#x00AE; Application Express Release Notes</cite></xreftext>
+  <div element="sect1" href="toc.htm" number="1" targetptr="BGBCJIEA">
+    <ttl>Configuration Requirements</ttl>
+    <xreftext>&#x201C;Configuration Requirements&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="2" targetptr="CHDGGGFC">
+    <ttl>Checking for the Most Current Release</ttl>
+    <xreftext>&#x201C;Checking for the Most Current Release&#x201D;</xreftext>
+  </div>
+  <div element="sect1" href="toc.htm" number="3" targetptr="CHDICFFC">
+    <ttl>New Features</ttl>
+    <xreftext>&#x201C;New Features&#x201D;</xreftext>
+    <div element="sect2" href="toc.htm" number="3.1" targetptr="CHDCFBDE">
+      <ttl>AnyChart AnyGantt Flash Gantt and AnyChart AnyMap</ttl>
+      <xreftext>&#x201C;AnyChart AnyGantt Flash Gantt and AnyChart AnyMap&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="sect1" href="toc.htm" number="4" targetptr="CACCEDHG">
+    <ttl>Components and Features Not Supported</ttl>
+    <xreftext>&#x201C;Components and Features Not Supported&#x201D;</xreftext>
+    <div element="sect2" href="toc.htm" number="4.1" targetptr="BAJHIDBJ">
+      <ttl>Web Browsers Not Supported</ttl>
+      <xreftext>&#x201C;Web Browsers Not Supported&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="4.2" targetptr="CHDGCIFG">
+      <ttl>No Support for Running in an EBCDIC Character Set</ttl>
+      <xreftext>&#x201C;No Support for Running in an EBCDIC Character Set&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="sect1" href="toc.htm" number="5" targetptr="CHDCBDAF">
+    <ttl>Open Bugs and Known Issues</ttl>
+    <xreftext>&#x201C;Open Bugs and Known Issues&#x201D;</xreftext>
+    <div element="sect2" href="toc.htm" number="5.1" targetptr="CHDHIIAA">
+      <ttl>Problem Applying the Oracle Application Express 3.2.1 Patch Set Against Oracle Database Release 11.1.0.7</ttl>
+      <xreftext>&#x201C;Problem Applying the Oracle Application Express 3.2.1 Patch Set Against Oracle Database Release 11.1.0.7&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.2" targetptr="CHDJGDAD">
+      <ttl>Access Denied When Validating Migration Export File</ttl>
+      <xreftext>&#x201C;Access Denied When Validating Migration Export File&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.3" targetptr="CHDEDAIA">
+      <ttl>Supported Web Browsers</ttl>
+      <xreftext>&#x201C;Supported Web Browsers&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.4" targetptr="CHDDDIDJ">
+      <ttl>Editing Scripts with Multibyte Characters in the First Line</ttl>
+      <xreftext>&#x201C;Editing Scripts with Multibyte Characters in the First Line&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.5" targetptr="CHDJGEJJ">
+      <ttl>Problems with SVG Charts</ttl>
+      <xreftext>&#x201C;Problems with SVG Charts&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.6" targetptr="CHDFADHJ">
+      <ttl>Problems with Queries Containing a Bind Variable and a String with Two Dashes</ttl>
+      <xreftext>&#x201C;Problems with Queries Containing a Bind Variable and a String with Two Dashes&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.7" targetptr="CHDDDHBE">
+      <ttl>Importing Spreadsheet Data Containing Quotation Marks</ttl>
+      <xreftext>&#x201C;Importing Spreadsheet Data Containing Quotation Marks&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.8" targetptr="CHDFDHDE">
+      <ttl>Creating an Item with Multibyte Characters</ttl>
+      <xreftext>&#x201C;Creating an Item with Multibyte Characters&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.9" targetptr="CHDJEIGE">
+      <ttl>Runtime Errors in an Application Imported from a Previous Release</ttl>
+      <xreftext>&#x201C;Runtime Errors in an Application Imported from a Previous Release&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.10" targetptr="CHDBACBH">
+      <ttl>Enabling Network Services in Oracle Database 11g</ttl>
+      <xreftext>&#x201C;Enabling Network Services in Oracle Database 11<span class="italic">g</span>&#x201D;</xreftext>
+      <div element="sect3" href="toc.htm" number="5.10.1" targetptr="CHDHGCGB">
+        <ttl>Granting Connect Privileges to a Host</ttl>
+        <xreftext>&#x201C;Granting Connect Privileges to a Host&#x201D;</xreftext>
+      </div>
+      <div element="sect3" href="toc.htm" number="5.10.2" targetptr="CHDFJEBC">
+        <ttl>Granting Connect Privileges to a Local Host</ttl>
+        <xreftext>&#x201C;Granting Connect Privileges to a Local Host&#x201D;</xreftext>
+      </div>
+      <div element="sect3" href="toc.htm" number="5.10.3" targetptr="CHDJCCGD">
+        <ttl>Troubleshooting an Invalid ACL Error</ttl>
+        <xreftext>&#x201C;Troubleshooting an Invalid ACL Error&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.11" targetptr="CHDCDHJF">
+      <ttl>Enabling Indexing of Online Help in Oracle Database 11gR2 and Higher</ttl>
+      <xreftext>&#x201C;Enabling Indexing of Online Help in Oracle Database 11gR2 and Higher&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.12" targetptr="CHDFDCDA">
+      <ttl>Issues with HTML Editor Item Type</ttl>
+      <xreftext>&#x201C;Issues with HTML Editor Item Type&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.13" targetptr="CHDCJIEJ">
+      <ttl>DBA Authentication Restrictions</ttl>
+      <xreftext>&#x201C;DBA Authentication Restrictions&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.14" targetptr="CHDHGAEG">
+      <ttl>Exporter Tool Support for Microsoft Access</ttl>
+      <xreftext>&#x201C;Exporter Tool Support for Microsoft Access&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.15" targetptr="CHDJHIBG">
+      <ttl>Issue with Online Help Table of Contents</ttl>
+      <xreftext>&#x201C;Issue with Online Help Table of Contents&#x201D;</xreftext>
+    </div>
+    <div element="sect2" href="toc.htm" number="5.16" targetptr="CHDDBGDD">
+      <ttl>Incorrect Default Tablespace when Creating New Database Users through Application Express Administration Services</ttl>
+      <xreftext>&#x201C;Incorrect Default Tablespace when Creating New Database Users through Application Express Administration Services&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="sect1" href="toc.htm" number="6" targetptr="BAJBCDEA">
+    <ttl>Documentation Accessibility</ttl>
+    <xreftext>&#x201C;Documentation Accessibility&#x201D;</xreftext>
+    <obj element="formalpara" href="toc.htm" number="" targetptr="">
+      <ttl>Accessibility of Code Examples in Documentation</ttl>
+      <xreftext>&#x201C;Accessibility of Code Examples in Documentation&#x201D;</xreftext>
+    </obj>
+    <obj element="formalpara" href="toc.htm" number="" targetptr="">
+      <ttl>Accessibility of Links to External Web Sites in Documentation</ttl>
+      <xreftext>&#x201C;Accessibility of Links to External Web Sites in Documentation&#x201D;</xreftext>
+    </obj>
+    <obj element="formalpara" href="toc.htm" number="" targetptr="">
+      <ttl>Deaf/Hard of Hearing Access to Oracle Support Services</ttl>
+      <xreftext>&#x201C;Deaf/Hard of Hearing Access to Oracle Support Services&#x201D;</xreftext>
+    </obj>
+  </div>
+</div>

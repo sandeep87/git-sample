@@ -1,0 +1,812 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Managing the Control Center Agent</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 014" />
+<meta name="Date" content="2010-10-19T15:11:47Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Warehouse Builder Installation and Administration Guide 11g Release 2 (11.2)" />
+<meta name="partno" content="E17130-03" />
+<meta name="docid" content="WBINS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="control_ctr_mgmt.htm" title="Previous" type="text/html" />
+<link rel="Next" href="content_mgmt.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17130.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Warehouse Builder Installation and Administration Guide<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E17130-03</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="control_ctr_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="content_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17130.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CIHIHFGG" name="CIHIHFGG"></a><a id="WBINS09000" name="WBINS09000"></a>
+<h1 class="chapter"><span class="secnum">10</span> Managing the Control Center Agent</h1>
+<p>This section describes how to start and stop the Control Center Agent (CCA), and how to administer it using the <code>cca_admin</code> utility. Note that the CCA manages deployment and execution of the mappings that are based on Code Templates. CCA is not part of the Control Center service hosted within the Oracle Database.</p>
+<p>This section contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#BABIHDDH">Starting and Stopping the Control Center Agent</a></p>
+</li>
+<li>
+<p><a href="#BABIHGGB">About the cca_admin Utility</a></p>
+</li>
+<li>
+<p><a href="#BABFBIJI">Starting the cca_admin Utility</a></p>
+</li>
+<li>
+<p><a href="#BABHJBIJ">cca_admin Commands</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="components.htm#BABHHDGF">Chapter 7, "Configuring Repository Browser, Control Center Agent, and Other Components"</a>, and specifically section <a href="components.htm#BGBBBBGD">"Configuring Control Center Agent Server-side Logging"</a> if you have your own Oracle Application Server and want to install the CCA there</p>
+</li>
+<li>
+<p><a href="components.htm#BABHHDGF">Chapter 7, "Configuring Repository Browser, Control Center Agent, and Other Components"</a> for procedures that modify the installation defaults</p>
+</li>
+</ul>
+</div>
+<a id="BABIHDDH" name="BABIHDDH"></a><a id="WBINS16122" name="WBINS16122"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Starting and Stopping the Control Center Agent</h2>
+<p>This section describes how to start and stop the CCA.</p>
+<p>Note that when you invoke the <code>ccastart</code> for the first time, it prompts you to enter a password for the OC4J administrator account. The default username for this account is <code>oc4jadmin</code>.</p>
+<p class="subhead2"><a id="WBINS16123" name="WBINS16123"></a>To start the CCA:</p>
+<ul>
+<li>
+<p><span class="bolditalic">In Linux</span>, in the directory <code><span class="codeinlineitalic">OWB_HOME</span></code> <code>/owb/bin/unix/</code>, run the script <code>ccastart</code>.</p>
+</li>
+<li>
+<p><span class="bolditalic">In Windows</span>, in the directory <code><span class="codeinlineitalic">OWB_HOME</span></code><code>\owb\bin\win32\</code>, run the script <code>ccastart.bat</code>.</p>
+</li>
+</ul>
+<p class="subhead2"><a id="WBINS16124" name="WBINS16124"></a>To stop the CCA:</p>
+<ul>
+<li>
+<p><span class="bolditalic">In Linux</span>, in the directory <code><span class="codeinlineitalic">OWB_HOME</span></code> <code>/owb/bin/unix/</code>, run the script <code>ccashut</code>. This script accepts an optional argument <code><span class="codeinlineitalic">password</span></code>.</p>
+</li>
+<li>
+<p><span class="bolditalic">In Windows</span>, in the directory <code><span class="codeinlineitalic">OWB_HOME</span></code><code>\owb\bin\win32\</code>, run the script <code>ccashut.bat</code>. This script accepts an optional argument <code><span class="codeinlineitalic">password</span></code>.</p>
+</li>
+</ul>
+<p>For a representation of architectural structures of this installation, see <a href="overview.htm#CEGHCEGH">Figure 1-5, "Control Center Agent Topology"</a>.</p>
+<p>For procedures that modify installation defaults, see <a href="components.htm#BABHHDGF">Chapter 7, "Configuring Repository Browser, Control Center Agent, and Other Components"</a>.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABIHGGB" name="BABIHGGB"></a><a id="WBINS09100" name="WBINS09100"></a>
+<div class="sect1">
+<h2 class="sect1">About the cca_admin Utility</h2>
+<p>The <code>cca_admin</code> utility changes Control Center Agent settings dynamically, without the need to shut down and subsequently restart the run-time environment. cca_admin commands retrieve the values of various environment attributes, set these to new values, and invoke the operations of <code>JRTAdministratorMBean</code>, introduced in section <a href="components.htm#BGBIDHAD">"JRTAdministratorMBean"</a>.</p>
+<p>The typical cca_admin session includes the following steps:</p>
+<ul>
+<li>
+<p>Running the cca_admin script, as described in <a href="#BABFBIJI">"Starting the cca_admin Utility"</a></p>
+</li>
+<li>
+<p>Connecting to an MBeanServer using the <code>connect</code> command described in <a href="#BABGACEA">"connect"</a></p>
+</li>
+<li>
+<p>Issuing one or more commands to view or update run-time environment attributes or invoke cca_admin commands described in <a href="#BABHJBIJ">"cca_admin Commands"</a></p>
+</li>
+<li>
+<p>Disconnecting from the server using the command <a href="#BABFABDJ">"disconnect"</a> or the command <a href="#BABIBEAC">"exit"</a>.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="BABFBIJI" name="BABFBIJI"></a><a id="WBINS16125" name="WBINS16125"></a>
+<div class="sect1">
+<h2 class="sect1">Starting the cca_admin Utility</h2>
+<p>The <code>cca_admin</code> tool is delivered as a shell script on Linux or a batch file on Windows.</p>
+<ul>
+<li>
+<p><span class="bolditalic">In Linux</span>, use the following command:</p>
+<p><code><span class="codeinlineitalic">OWB_HOME</span></code> <code>/owb/bin/unix/cca_admin</code></p>
+</li>
+<li>
+<p><span class="bolditalic">In Windows</span>, use the following command:</p>
+<p><code><span class="codeinlineitalic">OWB_HOME</span></code><code>\owb\bin\win32\cca_admin.bat</code>.</p>
+</li>
+</ul>
+<p>Before activating the <code>JRTAdministratorMBean</code>, your can use only the basic commands: <code>help</code>, <code>connect</code>, <code>disconnect</code>, and <code>exit</code>. The full range of commands is available once you connect to an MBean server and start using the <code>JRTAdministratorMBean</code>.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABHJBIJ" name="BABHJBIJ"></a><a id="WBINS16328" name="WBINS16328"></a>
+<div class="sect1">
+<h2 class="sect1">cca_admin Commands</h2>
+<p>This section provides a complete list of the cca_admin commands as follows:</p>
+<ul>
+<li>
+<p><a href="#BABGDBDD">"cleanUpJobLogFilesForGivenTimeInterval"</a></p>
+</li>
+<li>
+<p><a href="#BABDBHJA">"cleanUpNLeastRecentJobLogFiles"</a></p>
+</li>
+<li>
+<p><a href="#BABGACEA">"connect"</a></p>
+</li>
+<li>
+<p><a href="#BABFABDJ">"disconnect"</a></p>
+</li>
+<li>
+<p><a href="#BABIBEAC">"exit"</a></p>
+</li>
+<li>
+<p><a href="#BABJBEJI">"getCacheJobStatusSize"</a></p>
+</li>
+<li>
+<p><a href="#BABFJDIE">"getCacheLogNo"</a></p>
+</li>
+<li>
+<p><a href="#BABHGJHI">"getKmPermissionsFile"</a></p>
+</li>
+<li>
+<p><a href="#BABDACEB">"getLogRoot"</a></p>
+</li>
+<li>
+<p><a href="#BABDJFGI">"getMaxAbortTimeout"</a></p>
+</li>
+<li>
+<p><a href="#BABCBGDG">"getMaxRuntimeFileSizeMB"</a></p>
+</li>
+<li>
+<p><a href="#CIHDDFED">"getMaxRuntimeLogSizeMB"</a></p>
+</li>
+<li>
+<p><a href="#BABHIBDA">"getRuntimeLogEncoding"</a></p>
+</li>
+<li>
+<p><a href="#BABEHFJC">"getRuntimeLogFileLocation"</a></p>
+</li>
+<li>
+<p><a href="#BABDIHIC">"getRuntimeLogLevel"</a></p>
+</li>
+<li>
+<p><a href="#BABIIDHB">"help"</a></p>
+</li>
+<li>
+<p><a href="#BABGCAAI">"isKmSecurityNeeded"</a></p>
+</li>
+<li>
+<p><a href="#BABFBJCI">"isLogToAuditTable"</a></p>
+</li>
+<li>
+<p><a href="#BABFCFDI">"isLogToOdl"</a></p>
+</li>
+<li>
+<p><a href="#BABDEHJC">"isShowRuntimeLoggerLogHostAddr"</a></p>
+</li>
+<li>
+<p><a href="#BABGBIGD">"isShowRuntimeLoggerLogHostId"</a></p>
+</li>
+<li>
+<p><a href="#BABEBHFE">"isShowRuntimeLoggerLogMsgClassPath"</a></p>
+</li>
+<li>
+<p><a href="#BABIBFBF">"isShowRuntimeLoggerLogMsgLogLevel"</a></p>
+</li>
+<li>
+<p><a href="#BABHBFID">"isShowRuntimeLoggerLogUserId"</a></p>
+</li>
+<li>
+<p><a href="#BABBIIBE">"readSettings"</a></p>
+</li>
+<li>
+<p><a href="#BABBCDEB">"reset"</a></p>
+</li>
+<li>
+<p><a href="#BABFEHIF">"setCacheJobStatusSize"</a></p>
+</li>
+<li>
+<p><a href="#BABDHGGG">"setCacheLogNo"</a></p>
+</li>
+<li>
+<p><a href="#BABCEEIA">"setKmPermissionsFile"</a></p>
+</li>
+<li>
+<p><a href="#BABFJJBC">"setKmSecurityNeeded"</a></p>
+</li>
+<li>
+<p><a href="#BABJDGBI">"setLogRoot"</a></p>
+</li>
+<li>
+<p><a href="#BABGCDBD">"setLogToAuditTable"</a></p>
+</li>
+<li>
+<p><a href="#BABFHFFC">"setLogToOdl"</a></p>
+</li>
+<li>
+<p><a href="#BABFGBJH">"setRuntimeLogEncoding"</a></p>
+</li>
+<li>
+<p><a href="#BABFBJHB">"setMaxAbortTimeout"</a></p>
+</li>
+<li>
+<p><a href="#BABBGGFE">"setMaxRuntimeFileSizeMB"</a></p>
+</li>
+<li>
+<p><a href="#BABHADJC">"setMaxRuntimeLogSizeMB"</a></p>
+</li>
+<li>
+<p><a href="#BABGGBGE">"setRuntimeLogLevel"</a></p>
+</li>
+<li>
+<p><a href="#BABJBIEJ">"setShowRuntimeLoggerLogHostAddr"</a></p>
+</li>
+<li>
+<p><a href="#BABCJAGC">"setShowRuntimeLoggerLogHostId"</a></p>
+</li>
+<li>
+<p><a href="#BABEAAEF">"setShowRuntimeLoggerLogMsgClassPath"</a></p>
+</li>
+<li>
+<p><a href="#BABDGFEF">"setShowRuntimeLoggerLogMsgLogLevel"</a></p>
+</li>
+<li>
+<p><a href="#BABEEIIF">"setShowRuntimeLoggerLogUserId"</a></p>
+</li>
+<li>
+<p><a href="#BABBGBEB">"settingsToString"</a></p>
+</li>
+<li>
+<p><a href="#BABEEDID">"showAllJobLogFiles"</a></p>
+</li>
+</ul>
+<a id="BABGDBDD" name="BABGDBDD"></a><a id="WBINS16126" name="WBINS16126"></a>
+<div class="sect2">
+<h3 class="sect2">cleanUpJobLogFilesForGivenTimeInterval</h3>
+<p>This command removes all log files that were modified during the specified time range, between <code>startDate</code> and <code>endDate</code>, and returns the total number of files removed. Both parameters are expressed in the format <code>DD-MM-YYYY HH:MM:SS</code>. If the specified <code>startDate</code> is <code>null</code>, no records are deleted. If <code>endDate</code> is <code>null</code>, all log files created after the <code>startDate</code> are purged.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16127" name="WBINS16127"></a><a id="sthref504" name="sthref504"></a>Example 10-1 Using cleanUpJobLogFilesForGivenTimeInterval Command</p>
+<pre xml:space="preserve" class="oac_no_warn">cleanUpJobLogFilesForGivenTimeInterval 26-12-2008 13:38:56 12-01-2009 22:15:58
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABDBHJA" name="BABDBHJA"></a><a id="WBINS16128" name="WBINS16128"></a>
+<div class="sect2">
+<h3 class="sect2">cleanUpNLeastRecentJobLogFiles</h3>
+<p>This command removes the specified number, <code>n</code>, of least recent log files from the system, and returns the number of job log files that are actually removed.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16129" name="WBINS16129"></a><a id="sthref505" name="sthref505"></a>Example 10-2 Using cleanUpNLeastRecentJobLogFiles command</p>
+<pre xml:space="preserve" class="oac_no_warn">cleanUpNLeastRecentJobLogFiles 10
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABGACEA" name="BABGACEA"></a><a id="WBINS16130" name="WBINS16130"></a>
+<div class="sect2">
+<h3 class="sect2">connect</h3>
+<p>This command connects the user to MBean server.</p>
+<p>The command is of the following form, where <code><span class="codeinlineitalic">host</span></code> is the computer on which the CCA is located, <code><span class="codeinlineitalic">port</span></code> is the port number for accessing the CCA, <code><span class="codeinlineitalic">user</span></code> is the user name for accessing the CCA, <code><span class="codeinlineitalic">password</span></code> is that user's password, <code><span class="codeinlineitalic">connection_type</span></code> is one of <code>RMI</code>, <code>OPMN</code>, <code>RMIS</code>, <code>OPMN_RMIS</code>, <code>OPMN_CLUSTER</code>, or <code>OPMN_CLUSTER_RMIS</code>, <code><span class="codeinlineitalic">application_name</span></code> is the name of the application deployed to OC4J, and <code><span class="codeinlineitalic">instance</span></code> is the OC4J process that contains the CCA application:</p>
+<pre xml:space="preserve" class="oac_no_warn">connect <span class="italic">host</span> <span class="italic">port</span> <span class="italic">user</span> <span class="italic">password</span> <span class="italic">connection_type</span> <span class="italic">application_name</span> <span class="italic">instance</span>
+</pre>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16131" name="WBINS16131"></a><a id="sthref506" name="sthref506"></a>Example 10-3 Using connect Command</p>
+<pre xml:space="preserve" class="oac_no_warn">connect localhost 23791 oc4jadmin welcome rmi jrt host
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFABDJ" name="BABFABDJ"></a><a id="WBINS16132" name="WBINS16132"></a>
+<div class="sect2">
+<h3 class="sect2">disconnect</h3>
+<p>This command disconnects the user from the MBean server.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16133" name="WBINS16133"></a><a id="sthref507" name="sthref507"></a>Example 10-4 Using disconnect Command</p>
+<pre xml:space="preserve" class="oac_no_warn">disconnect
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABIBEAC" name="BABIBEAC"></a><a id="WBINS16134" name="WBINS16134"></a>
+<div class="sect2">
+<h3 class="sect2">exit</h3>
+<p>This command exits the <code>cca_admin</code> shell when it is running in the interactive mode. If the connection to the MBean server is not closed, it first disconnects and then exits <code>cca_admin</code> shell.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16135" name="WBINS16135"></a><a id="sthref508" name="sthref508"></a>Example 10-5 Using exit Command</p>
+<pre xml:space="preserve" class="oac_no_warn">exit
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABJBEJI" name="BABJBEJI"></a><a id="WBINS16136" name="WBINS16136"></a>
+<div class="sect2">
+<h3 class="sect2">getCacheJobStatusSize</h3>
+<p>This command returns a value for the numerical (integer) MBean attribute <code>CacheJobStatusSize</code>, which controls the maximum number of the job status logs that can be stored by the in-memory job log cache in CCA. The attribute's value is in the range of <code>1</code> and <code>10000</code>, with the default value of <code>3000</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16137" name="WBINS16137"></a><a id="sthref509" name="sthref509"></a>Example 10-6 Using getCacheJobStatusSize Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getCacheJobStatusSize 3000
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFJDIE" name="BABFJDIE"></a><a id="WBINS16138" name="WBINS16138"></a>
+<div class="sect2">
+<h3 class="sect2">getCacheLogNo</h3>
+<p>This command returns the value of MBean attribute <code>CacheLogNo</code>, which controls the maximum number of job logs that can be stored by the in-memory job log cache in CCA. Obviously the bigger this number is the more memory CCA takes up. The attribute's value is in the range of <code>1</code> and <code>100</code>, with the default value of <code>10</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16139" name="WBINS16139"></a><a id="sthref510" name="sthref510"></a>Example 10-7 Using getCacheLogNo Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getCacheLogNo
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABHGJHI" name="BABHGJHI"></a><a id="WBINS16140" name="WBINS16140"></a>
+<div class="sect2">
+<h3 class="sect2">getKmPermissionsFile</h3>
+<p>This command returns the value of MBean attribute <code>KmPermissionsFile</code>, which is the file system path to the <code>ct_permissions.properties</code> file. If this parameter is set to <code>true</code>, the CCA checks <code>ct_permissions.properties</code> to determine what system commands may be executed. This path may be either absolute or relative. The relative value refers to the <code><span class="codeinlineitalic">$OC4J_HOME</span></code><code>/j2ee/home</code> directory. The default value is <code>config/ct_permissions.properties</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16141" name="WBINS16141"></a><a id="sthref511" name="sthref511"></a>Example 10-8 Using getKmPermissionsFile Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getKmPermissionsFile
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABDACEB" name="BABDACEB"></a><a id="WBINS16142" name="WBINS16142"></a>
+<div class="sect2">
+<h3 class="sect2">getLogRoot</h3>
+<p>This command returns the value of MBean attribute <code>LogRoot</code>, which is the directory that stores the CCA job log file. The attribute value may be either absolute or relative. The relative value refers to <code><span class="codeinlineitalic">$OC4J_HOME</span></code><code>/j2ee/home</code> directory; the default value is <code><span class="codeinlineitalic">$OC4J_HOME</span></code><code>/j2ee/home/log</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16143" name="WBINS16143"></a><a id="sthref512" name="sthref512"></a>Example 10-9 Using getLogRoot Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getLogRoot
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABDJFGI" name="BABDJFGI"></a><a id="WBINS16144" name="WBINS16144"></a>
+<div class="sect2">
+<h3 class="sect2">getMaxAbortTimeout</h3>
+<p>Returns the value of MBean attribute <code>MaxAbortTimeout</code>, the maximum amount of wait time in seconds before the execution is aborted. The attribute's value is in the range of <code>1</code> to <code>60</code>; and the default value is <code>60</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16145" name="WBINS16145"></a><a id="sthref513" name="sthref513"></a>Example 10-10 Using getMaxAbortTimeout Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getMaxAbortTimeout
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABCBGDG" name="BABCBGDG"></a><a id="WBINS16146" name="WBINS16146"></a>
+<div class="sect2">
+<h3 class="sect2">getMaxRuntimeFileSizeMB</h3>
+<p>This command returns the value of MBean attribute <code>MaxRuntimeFileSizeMB</code>, the maximum size of any log file, in <code>MB</code>. When a log file exceeds this limit, it is closed and a new log file is opened. The attribute's value is in the range of <code>1</code>&nbsp;<code>MB</code> to <code>15</code>&nbsp;<code>MB</code>, and the default value is <code>3</code>&nbsp;<code>MB</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16147" name="WBINS16147"></a><a id="sthref514" name="sthref514"></a>Example 10-11 Using getMaxRuntimeFileSizeMB Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getMaxRuntimeFileSizeMB
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="CIHDDFED" name="CIHDDFED"></a><a id="WBINS16148" name="WBINS16148"></a>
+<div class="sect2">
+<h3 class="sect2">getMaxRuntimeLogSizeMB</h3>
+<p>This command returns the value of MBean attribute <code>MaxRuntimeLogSizeMB</code>, the maximum size of the log file directory, in <code>MB.</code> When the directory exceeds this limit, log files are purged, starting with the oldest. The attribute's value is in the range of <code>1</code>&nbsp;<code>MB</code> to <code>20</code>&nbsp;<code>MB</code>, and the default value is <code>10</code>&nbsp;<code>MB</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16149" name="WBINS16149"></a><a id="sthref515" name="sthref515"></a>Example 10-12 Using getMaxRuntimeLogSizeMB Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getMaxRuntimeLogSizeMB
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABHIBDA" name="BABHIBDA"></a><a id="WBINS16150" name="WBINS16150"></a>
+<div class="sect2">
+<h3 class="sect2">getRuntimeLogEncoding</h3>
+<p>This command returns the value of MBean attribute <code>RuntimeLogEncoding</code>, which specifies the character encoding of the log file. The default value is <code>UTF-8</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16151" name="WBINS16151"></a><a id="sthref516" name="sthref516"></a>Example 10-13 Using getRuntimeLogEncoding Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getRuntimeLogEncoding
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABEHFJC" name="BABEHFJC"></a><a id="WBINS16152" name="WBINS16152"></a>
+<div class="sect2">
+<h3 class="sect2">getRuntimeLogFileLocation</h3>
+<p>This command returns the value of MBean attribute <code>RuntimeLogFileLocation</code>, the name of CCA job log file, a read-only attribute. This value is <code><span class="codeinlineitalic">$OC4J_HOME</span></code><code>/j2ee/home/log/</code><code><span class="codeinlineitalic">appName</span></code><code>.log</code>, where <code>appName</code> is the name of the CCA application.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16153" name="WBINS16153"></a><a id="sthref517" name="sthref517"></a>Example 10-14 Using getRuntimeLogFileLocation Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getRuntimeLogFileLocation
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABDIHIC" name="BABDIHIC"></a><a id="WBINS16154" name="WBINS16154"></a>
+<div class="sect2">
+<h3 class="sect2">getRuntimeLogLevel</h3>
+<p>This application returns the value of MBean attribute <code>RuntimeLogLevel</code>, the log level for run-time logger. The legal values for this attribute are: <code>SEVERE</code>, <code>WARNING</code>, <code>INFO</code>, <code>CONFIG</code>, <code>FINE</code>, <code>FINER</code>, <code>FINEST</code>, <code>ALL</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16155" name="WBINS16155"></a><a id="sthref518" name="sthref518"></a>Example 10-15 Using getRuntimeLogLevel Command</p>
+<pre xml:space="preserve" class="oac_no_warn">getRuntimeLogLevel
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABIIDHB" name="BABIIDHB"></a><a id="WBINS16156" name="WBINS16156"></a>
+<div class="sect2">
+<h3 class="sect2">help</h3>
+<p>This command returns help information for a specified valid <code>command</code>; if a command is not specified, it returns the list of valid commands.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16157" name="WBINS16157"></a><a id="sthref519" name="sthref519"></a>Example 10-16 Using help Command</p>
+<pre xml:space="preserve" class="oac_no_warn">help
+help isLogToOdl
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABGCAAI" name="BABGCAAI"></a><a id="WBINS16158" name="WBINS16158"></a>
+<div class="sect2">
+<h3 class="sect2">isKmSecurityNeeded</h3>
+<p>This command returns the value of MBean attribute <code>KmSecurityNeeded</code>, determining whether security is enforced on system commands that are invoked by CCA script. If the value is <code>true</code> (which is the default), CCA checks the <code>ct_permissions.properties</code> file for allowable system commands, and only execute the commands defined in <code>ALLOWED_CMD</code>. If the value is <code>false</code>, CCA executes all system commands.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16159" name="WBINS16159"></a><a id="sthref520" name="sthref520"></a>Example 10-17 Using isKmSecurityNeeded Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isKmSecurityNeeded
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFBJCI" name="BABFBJCI"></a><a id="WBINS16160" name="WBINS16160"></a>
+<div class="sect2">
+<h3 class="sect2">isLogToAuditTable</h3>
+<p>This command returns the value of MBean attribute <code>LogToAuditTable</code>, which turns audit table logging on and off. Audit table logging is only effective for execution job logs. The attribute value is either <code>true</code> or <code>false</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16161" name="WBINS16161"></a><a id="sthref521" name="sthref521"></a>Example 10-18 Using isLogToAuditTable Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isLogToAuditTable
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFCFDI" name="BABFCFDI"></a><a id="WBINS16162" name="WBINS16162"></a>
+<div class="sect2">
+<h3 class="sect2">isLogToOdl</h3>
+<p>This command returns the value of MBean attribute <code>LogToOdl</code>, which turns ODL logging on and off. Only effective for execution job logs. Deployment and web service logs are always created in the ODL log format, regardless of the value of this setting. The attribute value is either <code>true</code> or <code>false</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16163" name="WBINS16163"></a><a id="sthref522" name="sthref522"></a>Example 10-19 Using isLogToOdl Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isLogToOdl
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABDEHJC" name="BABDEHJC"></a><a id="WBINS16164" name="WBINS16164"></a>
+<div class="sect2">
+<h3 class="sect2">isShowRuntimeLoggerLogHostAddr</h3>
+<p>This command returns the value of MBean attribute <code>ShowRuntimeLoggerLogHostAddr</code>, which determines whether the IP address of the host that is running CCA is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16165" name="WBINS16165"></a><a id="sthref523" name="sthref523"></a>Example 10-20 Using isShowRuntimeLoggerLogHostAddr Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isShowRuntimeLoggerLogHostAddr
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABGBIGD" name="BABGBIGD"></a><a id="WBINS16166" name="WBINS16166"></a>
+<div class="sect2">
+<h3 class="sect2">isShowRuntimeLoggerLogHostId</h3>
+<p>This command returns the value of MBean attribute <code>ShowRuntimeLoggerLogHostId</code>, which determines whether the ID of the host that is running CCA is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16167" name="WBINS16167"></a><a id="sthref524" name="sthref524"></a>Example 10-21 Using isShowRuntimeLoggerLogHostId Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isShowRuntimeLoggerLogHostId
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABEBHFE" name="BABEBHFE"></a><a id="WBINS16168" name="WBINS16168"></a>
+<div class="sect2">
+<h3 class="sect2">isShowRuntimeLoggerLogMsgClassPath</h3>
+<p>This command returns the value of MBean attribute <code>ShowRuntimeLoggerLogMsgClassPath</code>, which determines whether the path of the class where the message is logged is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16169" name="WBINS16169"></a><a id="sthref525" name="sthref525"></a>Example 10-22 Using isShowRuntimeLoggerLogMsgClassPath Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isShowRuntimeLoggerLogMsgClassPath
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABIBFBF" name="BABIBFBF"></a><a id="WBINS16170" name="WBINS16170"></a>
+<div class="sect2">
+<h3 class="sect2">isShowRuntimeLoggerLogMsgLogLevel</h3>
+<p>This command returns the value of MBean attribute <code>ShowRuntimeLoggerLogMsgLogLevel</code>, which determines whether the log level of the log message is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16171" name="WBINS16171"></a><a id="sthref526" name="sthref526"></a>Example 10-23 Using isShowRuntimeLoggerLogMsgLogLevel Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isShowRuntimeLoggerLogMsgLogLevel
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABHBFID" name="BABHBFID"></a><a id="WBINS16172" name="WBINS16172"></a>
+<div class="sect2">
+<h3 class="sect2">isShowRuntimeLoggerLogUserId</h3>
+<p>This command returns the value of MBean attribute <code>ShowRuntimeLoggerLogUserId</code>, which determines whether the ID of the user is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16173" name="WBINS16173"></a><a id="sthref527" name="sthref527"></a>Example 10-24 Using isShowRuntimeLoggerLogUserId Command</p>
+<pre xml:space="preserve" class="oac_no_warn">isShowRuntimeLoggerLogUserId
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABBIIBE" name="BABBIIBE"></a><a id="WBINS16174" name="WBINS16174"></a>
+<div class="sect2">
+<h3 class="sect2">readSettings</h3>
+<p>This command reads CCA settings from the CCA configuration file.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16175" name="WBINS16175"></a><a id="sthref528" name="sthref528"></a>Example 10-25 Using readSettings Command</p>
+<pre xml:space="preserve" class="oac_no_warn">readSettings
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABBCDEB" name="BABBCDEB"></a><a id="WBINS16176" name="WBINS16176"></a>
+<div class="sect2">
+<h3 class="sect2">reset</h3>
+<p>This command resets attributes to their default values, if the attributes are defined to have defaults.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16177" name="WBINS16177"></a><a id="sthref529" name="sthref529"></a>Example 10-26 Using reset Command</p>
+<pre xml:space="preserve" class="oac_no_warn">reset
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFEHIF" name="BABFEHIF"></a><a id="WBINS16178" name="WBINS16178"></a>
+<div class="sect2">
+<h3 class="sect2">setCacheJobStatusSize</h3>
+<p>This command sets the value for MBean attribute <code>CacheJobStatusSize</code>, which controls the maximum number of the job status that can be stored in the in-memory job log cache in CCACCA. The attribute's value is an integer in the range of <code>1</code> to <code>10000</code>; the default value is <code>3000</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16179" name="WBINS16179"></a><a id="sthref530" name="sthref530"></a>Example 10-27 Using setCacheJobStatusSize Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setCacheJobStatusSize 3000
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABDHGGG" name="BABDHGGG"></a><a id="WBINS16180" name="WBINS16180"></a>
+<div class="sect2">
+<h3 class="sect2">setCacheLogNo</h3>
+<p>This command sets a value for MBean attribute <code>CacheLogNo</code>, which controls the maximum number of job logs that can be stored in the in-memory job log cache in CCA. The attribute's value is an integer in the range of <code>1</code> and <code>100</code>; the default value is <code>10</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16181" name="WBINS16181"></a><a id="sthref531" name="sthref531"></a>Example 10-28 Using setCacheLogNo Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setCacheLogNo 10
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABCEEIA" name="BABCEEIA"></a><a id="WBINS16182" name="WBINS16182"></a>
+<div class="sect2">
+<h3 class="sect2">setKmPermissionsFile</h3>
+<p>This command sets the value for MBean attribute <code>KmPermissionsFile</code>, which is the file system path to the <code>ct_permissions.properties</code> file. If the value is set to <code>true</code>, the CCA checks the file to determine what system commands may run. The path can be either absolute or relative. The relative refers to <code><span class="codeinlineitalic">$OC4J_HOME</span></code><code>/j2ee/home</code> directory; the default value is <code>config/ct_permissions.properties</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16183" name="WBINS16183"></a><a id="sthref532" name="sthref532"></a>Example 10-29 Using setKmPermissionsFile Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setKmPermissionsFile <span class="italic">$OC4J_HOME</span>/j2ee/home/config/ct_permissions.properties
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFJJBC" name="BABFJJBC"></a><a id="WBINS16184" name="WBINS16184"></a>
+<div class="sect2">
+<h3 class="sect2">setKmSecurityNeeded</h3>
+<p>This command sets a value for MBean attribute <code>KmSecurityNeeded</code>, which determines whether security is enforced on system commands invoked from CCA scripts. When the value is <code>true</code> (default), CCA checks the <code>ct_permissions.properties</code> file for system commands that may run, and only execute the ones defined in <code>ALLOWED_CMD</code>. When the value is <code>false</code>, CCA executes all system commands.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16185" name="WBINS16185"></a><a id="sthref533" name="sthref533"></a>Example 10-30 Using setKmSecurityNeeded Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setKmSecurityNeeded true
+setKmSecurityNeeded false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABJDGBI" name="BABJDGBI"></a><a id="WBINS16186" name="WBINS16186"></a>
+<div class="sect2">
+<h3 class="sect2">setLogRoot</h3>
+<p>This command sets the value of MBean attribute <code>LogRoot</code>, the directory of the CCA job log file. The attribute's value may be either absolute or relative. The relative value refers to <code><span class="codeinlineitalic">$OC4J_HOME</span></code><code>/j2ee/home</code> directory; the default value is <code><span class="codeinlineitalic">$OC4J_HOME</span></code><code>/j2ee/home/log</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16187" name="WBINS16187"></a><a id="sthref534" name="sthref534"></a>Example 10-31 Using setLogRoot Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setLogRoot <span class="italic">$OC4J_HOME</span>/j2ee/home/log
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABGCDBD" name="BABGCDBD"></a><a id="WBINS16188" name="WBINS16188"></a>
+<div class="sect2">
+<h3 class="sect2">setLogToAuditTable</h3>
+<p>This command sets the value for MBean attribute <code>LogToAuditTable</code>, which turns audit table logging on and off. Audit table logging is only effective for execution job logs. The attribute's value is <code>true</code> or <code>false</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16189" name="WBINS16189"></a><a id="sthref535" name="sthref535"></a>Example 10-32 Using setLogToAuditTable Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setLogToAuditTable true
+setLogToAuditTable false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFHFFC" name="BABFHFFC"></a><a id="WBINS16190" name="WBINS16190"></a>
+<div class="sect2">
+<h3 class="sect2">setLogToOdl</h3>
+<p>This command sets the value for MBean attribute <code>LogToOdl</code>, which turns ODL logging on and off. This is only effective for execution job logs; deployment and web service logs are created in ODL log format regardless of this setting. The attribute's value is <code>true</code> or <code>false</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16191" name="WBINS16191"></a><a id="sthref536" name="sthref536"></a>Example 10-33 Using setLogToOdl Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setLogToOdl true
+setLogToOdl false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFBJHB" name="BABFBJHB"></a><a id="WBINS16192" name="WBINS16192"></a>
+<div class="sect2">
+<h3 class="sect2">setMaxAbortTimeout</h3>
+<p>This command sets the value for MBean attribute <code>MaxAbortTimeout</code>, the maximum wait time (in seconds) before aborting the execution. The attribute's value is an integer in the range of <code>1</code> to <code>60</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16193" name="WBINS16193"></a><a id="sthref537" name="sthref537"></a>Example 10-34 Using setMaxAbortTimeout command</p>
+<pre xml:space="preserve" class="oac_no_warn">setMaxAbortTimeout 60
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABBGGFE" name="BABBGGFE"></a><a id="WBINS16194" name="WBINS16194"></a>
+<div class="sect2">
+<h3 class="sect2">setMaxRuntimeFileSizeMB</h3>
+<p>This command sets the value of MBean attribute <code>MaxRuntimeFileSizeMB</code>, the maximum size, in <span class="italic">MB</span>, a log file in the directory. When a log file exceeds this limit, it is closed and a new log file is opened. The attribute's value is an integer in the range of <code>1</code> <code>MB</code> and <code>15</code> <code>MB</code>; the default value is <code>3</code> <code>MB</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16195" name="WBINS16195"></a><a id="sthref538" name="sthref538"></a>Example 10-35 Using setMaxRuntimeFileSizeMB Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setMaxRuntimeFileSizeMB 5
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABHADJC" name="BABHADJC"></a><a id="WBINS16196" name="WBINS16196"></a>
+<div class="sect2">
+<h3 class="sect2">setMaxRuntimeLogSizeMB</h3>
+<p>This command sets the value of MBean attribute <code>MaxRuntimeLogSizeMB</code>, the maximum size of the log file directory, in <code>MB.</code> When the directory exceeds this limit, log files are purged, starting with the oldest. The attribute's value is in the range of <code>1</code>&nbsp;<code>MB</code> to <code>20</code>&nbsp;<code>MB</code>, and the default value is <code>10</code>&nbsp;<code>MB</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16197" name="WBINS16197"></a><a id="sthref539" name="sthref539"></a>Example 10-36 Using setMaxRuntimeLogSizeMB Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setMaxRuntimeLogSizeMB 10
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABFGBJH" name="BABFGBJH"></a><a id="WBINS16198" name="WBINS16198"></a>
+<div class="sect2">
+<h3 class="sect2">setRuntimeLogEncoding</h3>
+<p>This command sets the value of MBean attribute <code>RuntimeLogEncoding</code>, which specifies the character set encoding of the log file. The default value is <code>UTF-8</code>.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16199" name="WBINS16199"></a><a id="sthref540" name="sthref540"></a>Example 10-37 Using setRuntimeLogEncoding Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setRuntimeLogEncoding UTF-8
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABGGBGE" name="BABGGBGE"></a><a id="WBINS16200" name="WBINS16200"></a>
+<div class="sect2">
+<h3 class="sect2">setRuntimeLogLevel</h3>
+<p>This command sets the value for MBean attribute <code>RuntimeLogLevel</code>, the log level for run-time logger. The attribute's value may be <code>SEVERE</code>,<code>WARNING</code>, <code>INFO</code>, <code>CONFIG</code>, <code>FINE</code>, <code>FINER</code>, <code>FINEST</code>, <code>ALL</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16201" name="WBINS16201"></a><a id="sthref541" name="sthref541"></a>Example 10-38 Using setRuntimeLogLevel Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setRuntimeLogLevel ALL
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABJBIEJ" name="BABJBIEJ"></a><a id="WBINS16202" name="WBINS16202"></a>
+<div class="sect2">
+<h3 class="sect2">setShowRuntimeLoggerLogHostAddr</h3>
+<p>This command sets the value for MBean attribute <code>ShowRuntimeLoggerLogHostAddr</code>, which determines whether the IP address of the CCA host is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16203" name="WBINS16203"></a><a id="sthref542" name="sthref542"></a>Example 10-39 Using setShowRuntimeLoggerLogHostAddr Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setShowRuntimeLoggerLogHostAddr true
+setShowRuntimeLoggerLogHostAddr false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABCJAGC" name="BABCJAGC"></a><a id="WBINS16204" name="WBINS16204"></a>
+<div class="sect2">
+<h3 class="sect2">setShowRuntimeLoggerLogHostId</h3>
+<p>This command sets the value for MBean attribute <code>ShowRuntimeLoggerLogHostId</code>, which determines whether the ID of the CCA host is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16205" name="WBINS16205"></a><a id="sthref543" name="sthref543"></a>Example 10-40 Using setShowRuntimeLoggerLogHostId Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setShowRuntimeLoggerLogHostId true
+setShowRuntimeLoggerLogHostId false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABEAAEF" name="BABEAAEF"></a><a id="WBINS16206" name="WBINS16206"></a>
+<div class="sect2">
+<h3 class="sect2">setShowRuntimeLoggerLogMsgClassPath</h3>
+<p>This command sets the value for MBean attribute <code>ShowRuntimeLoggerLogMsgClassPath</code>, which determines whether the path of the class that logged the message is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16207" name="WBINS16207"></a><a id="sthref544" name="sthref544"></a>Example 10-41 Using setShowRuntimeLoggerLogMsgClassPath Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setShowRuntimeLoggerLogMsgClassPath true
+setShowRuntimeLoggerLogMsgClassPath false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABDGFEF" name="BABDGFEF"></a><a id="WBINS16208" name="WBINS16208"></a>
+<div class="sect2">
+<h3 class="sect2">setShowRuntimeLoggerLogMsgLogLevel</h3>
+<p>This command sets the value for MBean attribute <code>ShowRuntimeLoggerLogMsgLogLevel</code>, which determines whether the log level of the log message is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16209" name="WBINS16209"></a><a id="sthref545" name="sthref545"></a>Example 10-42 Using setShowRuntimeLoggerLogMsgLogLevel Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setShowRuntimeLoggerLogMsgLogLevel true
+setShowRuntimeLoggerLogMsgLogLevel false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABEEIIF" name="BABEEIIF"></a><a id="WBINS16210" name="WBINS16210"></a>
+<div class="sect2">
+<h3 class="sect2">setShowRuntimeLoggerLogUserId</h3>
+<p>This command sets the value for MBean attribute <code>ShowRuntimeLoggerLogUserId</code>, which determines whether the ID of the user is included in the run-time log messages. The attribute value is either <code>true</code> or <code>false</code> (default).</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16211" name="WBINS16211"></a><a id="sthref546" name="sthref546"></a>Example 10-43 Using setShowRuntimeLoggerLogUserId Command</p>
+<pre xml:space="preserve" class="oac_no_warn">setShowRuntimeLoggerLogUserId true
+setShowRuntimeLoggerLogUserId false
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABBGBEB" name="BABBGBEB"></a><a id="WBINS16212" name="WBINS16212"></a>
+<div class="sect2">
+<h3 class="sect2">settingsToString</h3>
+<p>This command converts CCA setting information to <code>String</code>, and shows all CCA settings.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16213" name="WBINS16213"></a><a id="sthref547" name="sthref547"></a>Example 10-44 Using settingsToString Command</p>
+<pre xml:space="preserve" class="oac_no_warn">settingsToString
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" -->
+<a id="BABEEDID" name="BABEEDID"></a><a id="WBINS16214" name="WBINS16214"></a>
+<div class="sect2">
+<h3 class="sect2">showAllJobLogFiles</h3>
+<p>This command shows all job log files names.</p>
+<div class="example">
+<p class="titleinexample"><a id="WBINS16215" name="WBINS16215"></a><a id="sthref548" name="sthref548"></a>Example 10-45 Using showAllJobLogFiles Command</p>
+<pre xml:space="preserve" class="oac_no_warn">showAllJobLogFiles
+</pre></div>
+<!-- class="example" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="control_ctr_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="content_mgmt.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2000, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

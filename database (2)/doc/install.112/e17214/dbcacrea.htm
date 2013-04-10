@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Creating Oracle Real Application Clusters Databases with Database Configuration Assistant</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-02-18T17:43:29Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Real Application Clusters Installation Guide 11g Release 2 (11.2) for Linux and UNIX" />
+<meta name="partno" content="E17214-08" />
+<meta name="docid" content="RILIN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="racinstl.htm" title="Previous" type="text/html" />
+<link rel="Next" href="postinst.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17214.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Real Application Clusters Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux and UNIX</b><br />
+Part Number E17214-08</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="racinstl.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="postinst.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17214.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BGBIJGDA" name="BGBIJGDA"></a>
+<h1 class="chapter"><span class="secnum">3</span> <a name="RILIN004" id="RILIN004"></a> <a id="sthref233" name="sthref233"></a>Creating Oracle Real Application Clusters Databases with Database Configuration Assistant</h1>
+<p>This chapter describes how to use Database Configuration Assistant (DBCA) in standalone mode to create and delete Oracle Real Application Clusters (Oracle RAC) databases. The topics in this chapter include the following:</p>
+<ul>
+<li>
+<p><a href="#BABJEAFA">Using Database Configuration Assistant with Oracle RAC</a></p>
+</li>
+<li>
+<p><a href="#BABFJGHF">Benefits of Using Database Configuration Assistant</a></p>
+</li>
+<li>
+<p><a href="#BABIDGEG">Automatic Listener Migration from Earlier Releases</a></p>
+</li>
+<li>
+<p><a href="#BABCEGCF">Setting Environment Variables for Enterprise Manager DB Control</a></p>
+</li>
+<li>
+<p><a href="#BABFFBBC">Verifying Requirements for DBCA</a></p>
+</li>
+<li>
+<p><a href="#BABCHEIC">Creating an Oracle RAC Database with DBCA</a></p>
+</li>
+<li>
+<p><a href="#BABIGJAH">Deleting an Oracle RAC Database with DBCA</a></p>
+</li>
+</ul>
+<a id="BABJEAFA" name="BABJEAFA"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">3.1</span> <a name="RILIN401" id="RILIN401"></a>Using Database Configuration Assistant with Oracle RAC</h2>
+<p><a id="sthref234" name="sthref234"></a><a id="sthref235" name="sthref235"></a><a id="sthref236" name="sthref236"></a>DBCA has the following primary database functions:</p>
+<ul>
+<li>
+<p>Create and delete databases</p>
+</li>
+<li>
+<p>Add and delete database instances</p>
+</li>
+<li>
+<p>Set up network configurations for databases and their instances</p>
+</li>
+<li>
+<p>Register databases in Oracle Enterprise Manager Grid Control or configure Database Control</p>
+</li>
+<li>
+<p>Configure database options, such as Oracle Database Vault</p>
+</li>
+<li>
+<p>Start up databases and their instances</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Cluster Managed Services are no longer managed through DBCA. Instead, use the cluster managed services page in Oracle Enterprise Manager DB Control (accessible from the Cluster Database Availability Page). For more information, refer to the <span class="italic">Oracle Real Application Clusters Administration and Deployment Guide</span>.</div>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#BABCHEIC">"Creating an Oracle RAC Database with DBCA"</a> for more information about using DBCA in standalone mode</p>
+</li>
+<li>
+<p>The <a class="olink NETAG" href="http://www.oracle.com/pls/db112/lookup?id=NETAG"><span class="italic">Oracle Database Net Services Administrator's Guide</span></a> to resolve problems&#x2014;for example, with the listener configuration&#x2014;and for further information about Lightweight Directory Access Protocol (LDAP)-compliant directory support</p>
+</li>
+<li>
+<p>The <a class="olink TDPRC" href="http://www.oracle.com/pls/db112/lookup?id=TDPRC"><span class="italic">Oracle Database 2 Day + Real Application Clusters Guide</span></a> for more information about using Oracle Enterprise Manager</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect1" -->
+<a id="BABFJGHF" name="BABFJGHF"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">3.2</span> <a name="RILIN402" id="RILIN402"></a>Benefits of Using Database Configuration Assistant</h2>
+<p>Oracle recommends that you use DBCA to create your Oracle RAC database, because preconfigured databases optimize your environment for features such as the server parameter file (SPFILE), and automatic undo management. If you use Oracle ASM or cluster file system storage, then DBCA also configures automated backup, which uses the Fast Recovery Area.</p>
+<p>DBCA enables you to create both policy-managed and administrator-managed databases. With DBCA, you can also create site-specific tablespaces as part of database creation. If you have data file requirements that differ from those offered by DBCA templates, then create your database with DBCA and modify the data files later. You can also run user-specified scripts as part of your database creation process.</p>
+<p>DBCA also configures your Oracle RAC environment for various Oracle high availability features, such as cluster administration tools. DBCA also starts any database instances required to support your defined configuration.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABIDGEG" name="BABIDGEG"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">3.3</span> Automatic Listener Migration from Earlier Releases<a id="sthref237" name="sthref237"></a><a id="sthref238" name="sthref238"></a><a id="sthref239" name="sthref239"></a></h2>
+<p><a id="sthref240" name="sthref240"></a>If your system has an Oracle Database 10<span class="italic">g</span> or 11<span class="italic">g</span> installation, and you install Oracle Database 11<span class="italic">g</span> release 2 (11.2) either to coexist with or to upgrade the Oracle Database 10.1, 10.2, or 11.1 installation, then most installation types automatically migrate the existing Oracle Database listener to the 11<span class="italic">g</span> release 2 (11.2) Oracle home. During migration, they configure and start a default Oracle Net listener using the same TCP/IP port as the existing listener, with the IPC key value.</p>
+<p>During the Oracle Clusterware upgrade, the default listener (<span class="italic">LISTENER_NODENAME</span> was migrated to the Oracle Grid Infrastructure home (Grid home). DBCA always uses the default listener.</p>
+<p>The listener migration process stops the listener in the existing Oracle home, and restarts it in the new Oracle home. If the database was using the default listener (LISTENER_<span class="italic">NODENAME</span>), then it is migrated automatically to the Oracle Clusterware home by NETCA as part of the Oracle Clusterware upgrade. If the database was using a nondefault listener, then DBUA migrates the nondefault listener to the Oracle Database home.</p>
+<p>During migration, client applications may not be able to connect to any databases that are registered to the listener that is being migrated.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABCEGCF" name="BABCEGCF"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">3.4</span> Setting Environment Variables for Enterprise Manager DB Control</h2>
+<p>In previous releases of Oracle Database, you were required to set environment variables for ORACLE_HOME and ORACLE_SID to start, stop, and check the status of Enterprise Manager. With Oracle Database 11<span class="italic">g</span> release 2 (11.2) and later, you need to set the environment variables ORACLE_HOME and ORACLE_UNQNAME to use Enterprise Manager. For example, on each node, enter commands similar to the following to set these values for the <code>oracle</code> user with the Bourne shell as the default shell, where the Oracle home is <code>/u01/app/oracle</code>, and where the database unique name is <code>sales</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ export ORACLE_HOME=/u01/app/oracle/product/11.2/dbhome1
+$ export ORACLE_UNQNAME=sales
+</pre>
+<p>Place these environment variables in the <code>oracle</code> user profile file on each cluster member node to ensure that the environment variable settings are available after system restarts.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABFFBBC" name="BABFFBBC"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">3.5</span> Verifying Requirements for DBCA<a id="sthref241" name="sthref241"></a></h2>
+<p>To use DBCA to change the database configuration, use Cluster Verification Utility (CVU) to verify that your system is prepared for configuration changes using the following command syntax:</p>
+<pre xml:space="preserve" class="oac_no_warn">/<span class="italic">Grid_home</span>/bin/cluvfy stage -pre dbcfg -fixup -n <span class="italic">node_list</span> -d <span class="italic">Oracle_home</span> [-verbose]
+</pre>
+<p>In the preceding syntax example, the variable <code><span class="codeinlineitalic">Grid_home</span></code> is the Oracle Grid Infrastructure home, the variable <code><span class="codeinlineitalic">node_list</span></code> is the list of nodes in your cluster, separated by commas, and the variable <code><span class="codeinlineitalic">Oracle_home</span></code> is the path for the Oracle home directory where OUI creates or modifies the database. The <code>-fixup</code> flag generates a fixup script that can be run as root to resolve many operating system configuration tasks if they were not completed before you run the check.</p>
+<p>For example, to perform a check to determine if your system is prepared for an Oracle Database with Oracle RAC installation on a two-node cluster with nodes node1 and node2, with the Oracle Grid Infrastructure home path<code>/u01/app/grid/11.2.0</code>, and with the Oracle home path <code>/u01/app/oracle/product/11/db1</code>, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ /u01/app/grid/11.2.0/bin/cluvfy stage -pre dbcfg -fixup -n node1,node2 -d\
+/u01/app/oracle/product/11/db1
+</pre>
+<p>You can select the option <code>-verbose</code> to receive progress updates as the CVU performs its system checks, and detailed reporting of the test results.</p>
+<p>If the CVU summary indicates that the cluster verification check fails, and you cannot resolve these issues by running the fixup script, then review and correct the relevant system configuration steps, and run the test again.</p>
+<p>The command <code>cluvfy.sh stage -pre dbcfg</code> verifies the following:</p>
+<ul>
+<li>
+<p>Node Reachability: All the specified nodes are reachable from the local node.</p>
+</li>
+<li>
+<p>User Equivalence: User equivalence exists on all the specified nodes.</p>
+</li>
+<li>
+<p>Node Connectivity: Connectivity exists between all the specified nodes through the available public and private network interfaces.</p>
+</li>
+<li>
+<p>Administrative Privileges: The <code>oracle</code> user has proper administrative privileges on the specified nodes for creating an Oracle RAC database.</p>
+</li>
+<li>
+<p>Oracle Clusterware Integrity: All the components of the Oracle Clusterware stack are fully operational.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="BABCHEIC" name="BABCHEIC"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">3.6</span> <a name="RILIN404" id="RILIN404"></a>Creating an Oracle RAC Database with DBCA</h2>
+<p>To create a database with DBCA in standalone mode without Oracle ASM or a cluster file system, you must have configured shared storage devices. In addition, you must have run the Oracle Net Configuration Assistant (NETCA) to configure your Oracle Net <code>listener.ora</code> file. To run DBCA, you no longer need to set operating system environment variables ORACLE_HOME to the Oracle RAC database home, or ORACLE_UNQNAME to the database unique name.</p>
+<p>You can use DBCA to create a database from templates supplied by Oracle, or from templates that you create. The templates contain settings optimized for a particular type of workload.</p>
+<p>Oracle ships templates for the following two workload types:</p>
+<ul>
+<li>
+<p>General purpose or transaction processing</p>
+</li>
+<li>
+<p>Data warehouse</p>
+</li>
+</ul>
+<p>For more complex environments, you can select the Custom Database option. This option does not use templates and results in a more extensive interview, which means that it takes longer to create your database.</p>
+<p>Click <span class="bold">Show Details</span> to see the configuration for each type of database. Select the template suited to the type of workload your database will support. If you are not sure which to choose, then select the default <span class="bold">General Purpose or Transaction Processing</span> template.</p>
+<p>To s<a id="sthref242" name="sthref242"></a><a id="sthref243" name="sthref243"></a>tart DBCA, connect as the installation owner account (for example, <code>oracle</code>) to one of your nodes where Oracle RAC is installed, load SSH keys into memory, and enter the command <code>dbca</code> command from the <code>$ORACLE_HOME/bin</code> directory.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+In an Oracle RAC environment, you must load SSH keys into memory for the terminal session where you start DBCA. If you do not do this, then you receive user equivalency errors when you attempt to start DBCA. If you use a pass phrase on your system for SSH, then you must provide the <a id="sthref244" name="sthref244"></a><a id="sthref245" name="sthref245"></a><a id="sthref246" name="sthref246"></a><a id="sthref247" name="sthref247"></a>pass phrase to load the SSH keys.
+<p>Use the following commands to load SSH keys:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ exec /usr/bin/ssh-agent $SHELL
+$ /usr/bin/ssh-add
+</pre>
+<p>If needed, provide the pass phrase when prompted. You can then start DBCA.</p>
+</div>
+<p>When you start DBCA, the first page it displays is the Welcome page for Oracle RAC, which includes the option to select an Oracle RAC database. DBCA displays this Oracle RAC Welcome page only if the Oracle home from which it is started was installed on a cluster.<a id="sthref248" name="sthref248"></a><a id="sthref249" name="sthref249"></a></p>
+<p>If the Oracle RAC Welcome page opens, then provide information as prompted by DBCA. Click <span class="bold">Help</span> if you need assistance.</p>
+<p><a id="i1037229" name="i1037229"></a>If DBCA does not display the Welcome page for Oracle RAC, then DBCA was unable to detect if the Oracle home is installed on a cluster. In this case, check that the OUI inventory is correctly located in the directory <code>/etc/oraInst.loc</code>, and that the <code>oraInventory</code> file is not corrupted. Also, perform clusterware diagnostics by using the following CVU command syntax:</p>
+<pre xml:space="preserve" class="oac_no_warn">/<span class="italic">Grid_home</span>/bin/cluvfy/cluvfy.sh stage -post crsinst -n <span class="codeinlineitalic">nodelist</span>.
+</pre>
+<p>For example, with the mountpoint <code>/u01/app/grid/11.2.0</code>, and nodes <code>node1</code> and <code>node2</code>, run the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ /u01/app/grid/11.2.0/bin/cluvfy stage -post crsinst -n node1,node2
+</pre>
+<p>Note the following important information when using DBCA:</p>
+<ul>
+<li>
+<p>If nodes that are part of your cluster installation do not appear on the Node Selection page, then run Opatch lsinventory to perform inventory diagnostics and CVU to perform clusterware diagnostics.</p>
+</li>
+<li>
+<p>The global database name can be up to 30 characters in length, and must begin with an alphabetic character. The domain portion of the global database name can be no more than 128 characters and can contain only alphabetic and numeric characters, as well as the period (.) character.</p>
+</li>
+<li>
+<p>The <code>SID</code> prefix must begin with an alphabetic character.</p>
+</li>
+<li>
+<p>The maximum number of characters you can use for the SID prefix is 8 characters. DBCA uses the SID prefix to generate a unique value for the variable <code>ORACLE_SID</code> for each instance.</p>
+</li>
+<li>
+<p>On the Management Options page, you are provided with selections for Oracle Enterprise Manager monitoring and management interfaces.</p>
+<p>Database Control is always an option. If DBCA discovers Grid Control agents on the cluster, then it also provides you with the option <span class="bold">Enterprise Manager with the Grid Control</span>. Choose between Database Control and Grid Control interfaces.</p>
+<p>You can enable daily backup operations. For daily backups, you enter the backup time and operating system credentials for the user that performs backup operations.</p>
+<p>You can no longer set up e-mail notification either from DBCA or OUI with Oracle RAC 11<span class="italic">g</span> release 11.2.0.2 and later.</p>
+</li>
+<li>
+<p><a id="sthref250" name="sthref250"></a>Note that with Oracle RAC 11<span class="italic">g</span> release 2 and later, the storage administration role, SYSASM, requires membership in the OSASM group. This group may not be the same as OSDBA, whose members are granted the SYSDBA privilege. Tasks that require the SYSASM privilege in this list are marked with <span class="bold">SYSASM Privilege</span>.</p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref251" name="sthref251"></a><a id="sthref252" name="sthref252"></a><a id="sthref253" name="sthref253"></a>SYSASM Privilege</span>: To use a Fast Recovery Area, Oracle recommends that you create at least two separate Oracle ASM disk groups: one for the database area and one for the recovery area. Oracle recommends that you place the database area and the recovery area in separate failure groups. If you have divided administrative privileges, then ask your storage administrator to set up the Fast Recovery Area.</p>
+<p><a id="sthref254" name="sthref254"></a><a id="sthref255" name="sthref255"></a>A failure group is defined by shared hardware, such as a controller shared between two storage devices, or two disks that are on the same spindle. If two storage devices share hardware that could fail, making both storage devices unavailable, then these storage devices are said to be in the same failure group.</p>
+<p>If you do not use Oracle ASM, then Oracle recommends that the data files and the Fast Recovery Area are located outside of the Oracle home, in separate locations, as with separate Oracle ASM failure groups, so that a hardware failure does not affect availability.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink CNCPT" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT"><span class="italic">Oracle Database Concepts</span></a> for more information about using a Fast Recovery Area, and <a class="olink OSTMG" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG"><span class="italic">Oracle Database Storage Administrator's Guide</span></a> for information about failure groups and best practices for high availability and recovery</div>
+</li>
+<li>
+<p><a id="sthref256" name="sthref256"></a><a id="sthref257" name="sthref257"></a><a id="sthref258" name="sthref258"></a><a id="sthref259" name="sthref259"></a><span class="bold">SYSASM Privilege</span>: On the<a id="sthref260" name="sthref260"></a> Oracle ASM Disk Groups page, if you do not see the storage devices that you want to add, then click <span class="bold">Change Disk Discovery Path</span> to alter the search path used by DBCA to find available storage devices. You can select storage devices with a status of <code>Candidate</code> or <code>Former</code> (never used in an Oracle ASM disk group or no longer in a group) by selecting the box. If you want to add storage devices that still have Oracle ASM disk headers, but the disk group is no longer in use (a case that can occur if you are selecting storage devices after an aborted install, you attempted deinstallation without dropping the disk group, or other configuration problems), then use the <code>Force</code> command.</p>
+</li>
+<li>
+<p>On the <a id="sthref261" name="sthref261"></a>Recovery Configuration page, if you are using Oracle ASM or cluster file system storage, then you can also select the Fast Recovery Area and size on the Recovery Configuration page. If you are using Oracle ASM, then the Fast Recovery Area defaults to the Oracle ASM Disk Group. If you are using OCFS2, then the Fast Recovery Area defaults to <code>$ORACLE_BASE/flash_recovery_area</code>.</p>
+</li>
+<li>
+<p>On the <a id="sthref262" name="sthref262"></a>Initialization Parameters page, if you are installing on a Linux system, note that <span class="bold">Memory Size (SGA and PGA)</span>, which sets the initialization parameter <a id="sthref263" name="sthref263"></a><a id="sthref264" name="sthref264"></a><a id="sthref265" name="sthref265"></a><code>MEMORY_TARGET</code> or <code>MEMORY_MAX_TARGET</code>, cannot be greater than the shared memory filesystem on your operating system.</p>
+<p>For example, if the shared memory filesystem allocation on your system is 1 GB, but you set Memory Size (<code>MEMORY_TARGET</code>) to 2 GB, then you receive the following error during database startup<a id="sthref266" name="sthref266"></a><a id="sthref267" name="sthref267"></a>:</p>
+<pre xml:space="preserve" class="oac_no_warn">ORA-00845: MEMORY_TARGET not supported on this system 
+ORA-01078: Failure in processing system parameters
+</pre>
+<p>This issue is not relevant for other platforms.</p>
+<p>For all platforms, if you intend to add more nodes in your cluster than you have during the current DBCA session, then click <span class="bold">All Initialization Parameters</span>, and change the parameter <code><a id="sthref268" name="sthref268"></a><a id="sthref269" name="sthref269"></a>CLUSTER_DATABASE_INSTANCES</code> to the total number of nodes that you plan to add to the cluster.</p>
+<p>In addition, if you click <span class="bold">All Initialization Parameters</span>, note that if your global database name is longer than 8 characters, then the database name value (in the <code><a id="sthref270" name="sthref270"></a><a id="sthref271" name="sthref271"></a>DB_NAME</code> parameter) is truncated to the first 8 characters, and the <code><a id="sthref272" name="sthref272"></a><a id="sthref273" name="sthref273"></a>DB_UNIQUE_NAME</code> parameter value is set to the global name.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink UNXAR" href="../../server.112/e10839/toc.htm"><span class="italic">Oracle Database Administrator's Reference for Linux and UNIX-Based Operating Systems</span></a> for information about initialization parameters</div>
+</li>
+</ul>
+<p>After you respond to DBCA prompts, review the Summary dialog information and click <span class="bold">OK</span>, DBCA does the following:</p>
+<ul>
+<li>
+<p>Creates an operative Oracle RAC database and its instances</p>
+</li>
+<li>
+<p>Creates the Oracle RAC data dictionary views</p>
+</li>
+<li>
+<p>Configures the network for the cluster database</p>
+</li>
+<li>
+<p>Migrates previous release Oracle Database listeners and related files to the Oracle Database 11<span class="italic">g</span> Oracle home</p>
+</li>
+<li>
+<p>Starts the listeners and database instances, and then starts the high availability services</p>
+</li>
+<li>
+<p>Configures Oracle Enterprise Manager Database Control or Grid Control</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Caution:</p>
+<a id="sthref274" name="sthref274"></a>After you have created the database, if you decide that you want to install additional Oracle Database products in the database you have created, then you must stop <span class="italic">all</span> processes running in the Oracle home before you attempt to install the additional products, so that Oracle Universal Installer can relink certain executables and libraries. Refer to <a href="procstop.htm#BABEHGJG">Appendix E, "How to Stop Processes in an Existing Oracle Real Application Clusters Database"</a> for additional information.</div>
+</div>
+<!-- class="sect1" -->
+<a id="BABIGJAH" name="BABIGJAH"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">3.7</span> <a name="RILIN405" id="RILIN405"></a>Deleting an Oracle RAC Database with DBCA<a id="sthref275" name="sthref275"></a><a id="sthref276" name="sthref276"></a></h2>
+<p><a id="sthref277" name="sthref277"></a>This section explains how to delete an Oracle RAC database with DBCA. This process deletes a database and removes a database's initialization parameter files, instances, OFA structure, and an Oracle network configuration. However, this process does not remove data files if you placed the files on raw devices or on raw partitions.</p>
+<p>To <a id="sthref278" name="sthref278"></a><a id="sthref279" name="sthref279"></a>delete a database with DBCA:</p>
+<ol>
+<li>
+<p>Start DBCA on one of the nodes:.</p>
+<ul>
+<li>
+<p>Run the <code>dbca</code> command from the <code>$ORACLE_HOME/bin</code> directory.</p>
+</li>
+</ul>
+<p>The DBCA Welcome page appears.</p>
+</li>
+<li>
+<p>Select <span class="bold">Oracle Real Application Clusters,</span> and click <span class="bold">Next</span>.</p>
+<p>After you click <span class="bold">Next</span>, DBCA displays the <a id="sthref280" name="sthref280"></a>Operations page.</p>
+</li>
+<li>
+<p>Select <span class="bold">Delete a database</span>, and click <span class="bold">Next</span>. DBCA displays the <a id="sthref281" name="sthref281"></a><a id="sthref282" name="sthref282"></a>List of Cluster Databases page.</p>
+</li>
+<li>
+<p>If your user ID and password are not operating-system authenticated, then the List of Cluster Databases page displays the user name and password fields. If these fields appear, then enter a user ID and password for a user account that has <code>SYSDBA</code> privileges.</p>
+</li>
+<li>
+<p>Select the database to delete, and click <span class="bold">Finish</span>.</p>
+<p>After you click <span class="bold">Finish</span>, DBCA displays a <a id="sthref283" name="sthref283"></a><a id="sthref284" name="sthref284"></a>dialog box to confirm the database and instances that DBCA is going to delete.</p>
+</li>
+<li>
+<p>Click <span class="bold">OK</span> to begin the deletion of the database and its associated files, services, and environment settings, or click <span class="bold">Cancel</span> to stop the operation.</p>
+</li>
+</ol>
+<p>When you click <span class="bold">OK</span>, DBCA continues the operation and deletes all the associated instances for this database. DBCA also removes the parameter files, password files, and <code>oratab</code> entries.</p>
+<p>At this point, you have accomplished the following:</p>
+<ul>
+<li>
+<p>Deleted the selected database from the cluster</p>
+</li>
+<li>
+<p>Deleted high availability services that were assigned to the database</p>
+</li>
+<li>
+<p>Deleted the Oracle Net configuration for the database</p>
+</li>
+<li>
+<p>Deconfigured Database Control for that database</p>
+</li>
+<li>
+<p>Deleted the OFA directory structure for that database from the cluster</p>
+</li>
+<li>
+<p><a id="i1031801" name="i1031801"></a>Deleted the data files if the data files were not on raw devices</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="racinstl.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="postinst.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2007, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

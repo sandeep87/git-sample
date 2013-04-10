@@ -1,0 +1,712 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Moving to Oracle Warehouse Builder 11.2 from Earlier Releases</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 014" />
+<meta name="Date" content="2010-10-19T15:11:44Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Warehouse Builder Installation and Administration Guide 11g Release 2 (11.2)" />
+<meta name="partno" content="E17130-03" />
+<meta name="docid" content="WBINS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="uninstall.htm" title="Previous" type="text/html" />
+<link rel="Next" href="components.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17130.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Warehouse Builder Installation and Administration Guide<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E17130-03</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="uninstall.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="components.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17130.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CHDFEBII" name="CHDFEBII"></a><a id="WBINS07000" name="WBINS07000"></a>
+<h1 class="chapter"><span class="secnum">6</span> Moving to Oracle Warehouse Builder 11.2 from Earlier Releases</h1>
+<p>Oracle Warehouse Builder enables you to upgrade repositories from Oracle Warehouse Builder 10<span class="italic">g</span> Release 2 and Oracle Warehouse Builder 11<span class="italic">g</span> Release 1 to Oracle Warehouse Builder 11<span class="italic">g</span> Release 2.</p>
+<p>This section describes the different methods of moving to OWB release 11.2 from earlier releases, the upgrade and migration paths and upgrade process, and changes to upgraded ETL design objects to make them compatible with OWB release 11.2.</p>
+<p>This section includes the following topics:</p>
+<ul>
+<li>
+<p><a href="#CHDFBEBI">"Understanding MDL Migration and Repository Upgrades"</a></p>
+</li>
+<li>
+<p><a href="#CHDGBHJD">"Choosing a Repository Upgrade Scenario"</a></p>
+</li>
+<li>
+<p><a href="#CHDEHGJG">"In-Place Upgrade of OWB 10gR2 or 11gR1 Repository to 11gR2"</a></p>
+</li>
+<li>
+<p><a href="#CHDBJFGC">"Migrating the Repository to a Different Oracle Database Instance"</a></p>
+</li>
+<li>
+<p><a href="#CHDJJIGA">"Upgrading Locations to OWB Release 11.2"</a></p>
+</li>
+<li>
+<p><a href="#CHDCHDID">"Changes to Repository Objects When Moving to OWB Release 11<span class="italic">g</span>R2"</a></p>
+</li>
+</ul>
+<a id="CHDFBEBI" name="CHDFBEBI"></a>
+<div class="sect1">
+<h2 class="sect1">Understanding MDL Migration and Repository Upgrades</h2>
+<p>The two ways to move projects from earlier releases into OWB release 11.2 are migrating objects and upgrading repositories.</p>
+<p>This discussion uses the following definitions:</p>
+<ul>
+<li>
+<p><span class="italic">Upgrading a repository</span> is the process of taking an entire repository, including the control center audit data such as deployment and execution history, from an earlier OWB release and moving it to OWB release 11.2. This process is performed from within Repository Assistant.</p>
+</li>
+<li>
+<p><span class="italic">Migrating objects</span>, in the context of moving between OWB releases, is the process of exporting existing OWB design-time objects from an earlier OWB release, and importing the resulting MDL file into OWB release 11.2. This process is performed from OWB Design Center.</p>
+</li>
+</ul>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref247" name="sthref247"></a>
+<h3 class="sect2">Choosing Between MDL Migration and Repository Upgrade</h3>
+<p>The Repository Assistant in OWB release 11.2 provides ways to upgrade OWB release 10.2 and release 11.1 repositories directly. The advantages of upgrading an entire repository are:</p>
+<ul>
+<li>
+<p>You can move up to OWB release 11.2 without regenerating code or redeploying your mappings, for maximum stability, then decide on objects to regenerate or redeploy based on whether you need specific release 11.2 enhancements.</p>
+</li>
+<li>
+<p>Upgrading can bring forward all design-time and runtime audit metadata from the previous repository, such as the history of deployments and executions of your ETL mappings, process flows, and other objects.</p>
+</li>
+<li>
+<p>All projects and global objects in a repository are processed at once. (For OWB 11gR1 repositories, all projects in all workspaces are processed at once.)</p>
+</li>
+</ul>
+<p>The advantages of migrating individual projects or other objects include:</p>
+<ul>
+<li>
+<p>Speed, if you have large volumes of runtime metadata that you do not need to preserve.</p>
+</li>
+<li>
+<p>Simplicity, in cases where the upgrade path for the complete repository is more complex than the migration path. In particular, OWB release 11.2 can directly import MDL for projects from OWB 9.2 and 10.1, but cannot upgrade the entire repository from these earlier releases. For example, upgrading an entire repository from OWB 10.1 or older may require creating one or more new OWB environments from intermediate releases, to be used for these intermediate upgrades.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref248" name="sthref248"></a>
+<h3 class="sect2">MDL Migration Paths</h3>
+<p>OWB release 11.2 can directly import MDL for projects or other objects from OWB 9.2.0.n or higher. Importing metadata from MDL files from earlier releases is performed in the OWB release 11.2 Design Center. The process is described in <a href="change_mgmt.htm#BABHCIDB">Chapter 12, "Using the Metadata Loader."</a> The process is like importing any other MDL file. However, you will be prompted for a filename for an intermediate MDL file (which is your file upgraded to the new format for OWB release 11.2). This file is generated, saved at a location you specify, and then immediately imported.</p>
+<p>For releases older than 9.2.0.n, the supported migration path requires an intermediate step:</p>
+<ol>
+<li>
+<p>Import the MDL to an intermediate 10.2.0.5 or 11.1.0.7 database. These versions should be able to read any older MDL.</p>
+<p>The MDL file upgrade process is performed during the import process. OWB generates an upgraded MDL file; you will be prompted for a filename.</p>
+<p>The upgraded MDL file is written to the filename you specify, and is then imported into your intermediate database. You can ignore this and simply copy the intermediate file to a new location.</p>
+</li>
+<li>
+<p>Import that upgraded MDL into OWB 11.2 using Design Center, as described in <a href="change_mgmt.htm#BABHCIDB">Chapter 12, "Using the Metadata Loader."</a></p>
+</li>
+</ol>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The latest 10.1, 10.2 or 11.1 patch release is strongly recommended for cases where an intermediate release is used in the upgrade path. In some cases, earlier patch releases may not import or upgrade metadata from all earlier releases of the product.</div>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref249" name="sthref249"></a>
+<h3 class="sect2">Repository Upgrade Paths from OWB 10.1 or 9.n to release 11.2</h3>
+<p>OWB release 11.2 can directly upgrade repositories from OWB 10.2.0.n or OWB 11.1.0.n. Repositories from older releases cannot be upgraded directly. OWB 10.2 becomes an intermediate step in the upgrade path.</p>
+<p>OWB 10gR2 combined the separate design-time and runtime repositories from earlier releases into a single unified repository, which is used in all subsequent releases. The OWB 10gR2 Repository Assistant contains the functionality required to merge previously separate design-time and runtime repository contents from OWB 10.1.0.4 into the new combined repository model. If your source is 9.2.0.n or earlier, then you must first upgrade to OWB 10.1.0.4.</p>
+<p>Therefore, if upgrading both runtime and design-time metadata from a 10.1 or earlier release, the stages required are:</p>
+<ul>
+<li>
+<p>Prepare an OWB 10.2 environment</p>
+</li>
+<li>
+<p>Upgrade the separate design-time and run-time repositories from the earlier releases into the combined OWB 10.2 repository in that environment</p>
+</li>
+<li>
+<p>Upgrade the resulting 10.2 repository to OWB 11.2.</p>
+</li>
+</ul>
+<p>The following table summarizes the repository upgrade paths for releases prior to OWB 10.2:</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref250" name="sthref250"></a><a id="sthref251" name="sthref251"></a>Table 6-1 Repository Upgrade Paths for OWB 10.1 and Earlier</p>
+<table class="Formal" title="Repository Upgrade Paths for OWB 10.1 and Earlier" summary="This table shows repository upgrade paths for OWB 10.1 and earlier." dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t3">Current Release</th>
+<th align="left" valign="bottom" id="r1c2-t3">Repository Upgrade Path</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t3" headers="r1c1-t3">
+<p>10.1.0.n</p>
+</td>
+<td align="left" headers="r2c1-t3 r1c2-t3">
+<p>To 10.2.0.n, then to 11.2</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t3" headers="r1c1-t3">
+<p>9.2.0.n or Older</p>
+</td>
+<td align="left" headers="r3c1-t3 r1c2-t3">
+<p>To 10.1.0.4, then to 10.2.0.n, then to 11.2</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" -->
+<p>To perform these repository upgrades, you will require working environments for the intermediate versions on the upgrade path.</p>
+<p>For example, if you are upgrading a 9.2 repository, you must set up an OWB 10.1.0.4 environment and an OWB release 10.2.0.5 environment for use during the upgrade steps, then upgrade from release 9.2 to release 10.1.0.4 and upgrade the result to OWB release 10.2.0.5.</p>
+<p>See the documentation for those older releases for details on the intermediate upgrades.</p>
+<p>If you are moving to OWB 11.2 from OWB 10.1 or earlier, then it is usually simpler is to migrate objects on a project-by-project basis into a clean OWB release 11.2 workspace. Export the projects to MDL in Design Center using the process for those releases, and import the MDL objects into OWB release 11.2, using the steps in <a href="change_mgmt.htm#BABHCIDB">Chapter 12, "Using the Metadata Loader."</a></p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDGBHJD" name="CHDGBHJD"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Choosing a Repository Upgrade Scenario</h2>
+<p>The Repository Assistant for OWB 11.2 supports two major upgrade scenarios:</p>
+<ul>
+<li>
+<p>Repository upgrade through MDL files, where the complete repository from OWB 10.2 or OWB 11.1 is exported to an MDL file, and then that MDL file is later imported into a database with an OWB 11.2 repository schema</p>
+</li>
+<li>
+<p>An in-place repository upgrade, in which case the new OWB 11.2 repository is immediately created in the same database where the OWB 10.2 or 11.1 repository was stored.</p>
+</li>
+</ul>
+<p>Note the following:</p>
+<ul>
+<li>
+<p>Upgrading through MDL files is the only option when moving your entire repository to a new database. (Exporting the entire repository to MDL is also a good option for backing up the repository.)</p>
+</li>
+<li>
+<p>An in-place repository upgrade of OWB 11.1 overwrites the OWB 11.1 repository with the OWB 11.2 repository, because both are stored in the same repository schema.</p>
+</li>
+<li>
+<p>Internally, an in-place repository upgrade actually performs a repository export to MDL and repository import from MDL. The advantage of in-place repository upgrade is that the user performs fewer manual steps than in the upgrade through MDL files when targeting the same database.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="CHDEHGJG" name="CHDEHGJG"></a><a id="WBINS07100" name="WBINS07100"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">In-Place Upgrade of OWB 10gR2 or 11gR1 Repository to 11gR2</h2>
+<p>An in-place upgrade of an OWB repository is the simplest method of a repository upgrade where the target release 11.2 repository is stored in the same database instance that contained the source repository. You can perform an in-place upgrade of either a 10<span class="italic">g</span> R2 or 11<span class="italic">g</span> R1 repository that exists on the same database instance as your Oracle Database 11<span class="italic">g</span> R2 installation.</p>
+<p>For OWB 10gR2, Repository Assistant exports the specified repository to an MDL file, then imports that MDL file into a new release 11.2 workspace in the OWBSYS schema in the same database. The workspace name is the same as the schema that contained the 10<span class="italic">g</span>R2 repository.</p>
+<p>For OWB 11<span class="italic">g</span>R1, Repository Assistant exports the whole repository from the OWBSYS schema to an MDL file, drops all contents of the OWB 11<span class="italic">g</span>R1 repository (as if you had run <code>clean_owbsys.sql</code>), creates a new OWB release 11.2 repository in OWBSYS, and re-imports the repository from MDL.</p>
+<div class="infoboxnote">
+<p class="notep1">Caution:</p>
+If your target database already has an OWB 11<span class="italic">g</span>R1 <code>OWBSYS</code> schema, then back it up before starting the actual migration using the 11.2 Repository Assistant. This provides you a way to recover from any possible failures during the upgrade process. The process described in <a href="#CHDDEFIJ">"Preparing for In-Place Repository Upgrade"</a> overwrites the <code>OWBSYS</code> schema (if it exists) with the OWB 11.2 schema.</div>
+<a id="CHDDEFIJ" name="CHDDEFIJ"></a><a id="WBINS16055" name="WBINS16055"></a>
+<div class="sect2">
+<h3 class="sect2">Preparing for In-Place Repository Upgrade</h3>
+<p>To perform the tasks in this section, you must have <code>SYSADMIN</code> privileges, which enable you to run prerequisite scripts.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Check the latest OWB release notes at <code><a href="http://www.oracle.com/technetwork/developer-tools/warehouse/overview/index.html">http://www.oracle.com/technetwork/developer-tools/warehouse/overview/index.html</a></code> before starting the upgrade process.</div>
+<p>The steps for preparing a repository for in-place repository upgrade are slightly different for Windows and Linux.</p>
+<p class="orderedlisttitle">To prepare for an in-place repository upgrade on Windows&nbsp;</p>
+<ol>
+<li>
+<p>Ensure that you make a back-up copy of the <code>OWBSYS</code> schema, using the backup strategy employed in your organization.</p>
+</li>
+<li>
+<p>On the Microsoft Windows desktop, click <span class="bold">Start</span> and select <span class="bold">Run</span>.</p>
+</li>
+<li>
+<p>In the Run window, for <span class="bold">Open</span>, enter <code>cmd</code>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+</li>
+<li>
+<p>At the command prompt, start SQL*Plus:</p>
+<pre xml:space="preserve" class="oac_no_warn">C:\&gt;<span class="bold">sqlplus</span>
+</pre></li>
+<li>
+<p>Connect as a user with administrative privileges:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">connect sys as sysdba</span>
+Enter password: <span class="bolditalic">password</span>
+</pre></li>
+<li>
+<p>You have two options for the <code>OWBSYS</code> schema:</p>
+<ul>
+<li>
+<p>If the <code>OWBSYS</code> schema does not exist on the Oracle Database instance, then run the <code>cat_owb.sql</code> script to create it:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">@C:\OWB112\owb\UnifiedRepos\cat_owb.sql</span>
+</pre></li>
+<li>
+<p>If the <code>OWBSYS</code> schema exists on the Oracle Database instance, and you are upgrading from OWB 11<span class="italic">g</span> Release 1, then run the <code>cat_owb_reposupgrade.sql</code> script to upgrade it:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">@C:\OWB112\owb\UnifiedRepos\cat_owb_reposupgrade.sql</span>
+</pre></li>
+</ul>
+</li>
+<li>
+<p>Run the <code>reset_owbcc_home.sql</code> script to reset the <code><span class="codeinlineitalic">OWB_HOME</span></code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">@C:/OWB112/owb/UnifiedRepos/reset_owbcc_home.sql</span>
+</pre>
+<p>Note that this entry is case-sensitive, does not accept a trailing slash, and requires forward slashes only, regardless of the operating system.</p>
+</li>
+</ol>
+<p class="orderedlisttitle">To prepare for an in-place repository upgrade on Linux&nbsp;</p>
+<ol>
+<li>
+<p>Ensure that you make a back-up copy of the <code>OWBSYS</code> schema, using the backup strategy employed in your organization.</p>
+</li>
+<li>
+<p>At the command prompt, start SQL*Plus:</p>
+<pre xml:space="preserve" class="oac_no_warn">% <span class="bold">sqlplus</span>
+SQL*Plus: Release 11.2 - Production on Mon July 27 16:37:21 2009
+
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+</pre></li>
+<li>
+<p>Connect as a user with administrative privileges:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">connect sys as sysdba</span>
+Enter password: <span class="bolditalic">password</span>
+</pre></li>
+<li>
+<p>You have two options:</p>
+<ul>
+<li>
+<p>If the <code>OWBSYS</code> schema does not exist on the Oracle Database instance, run the <code>cat_owb.sql</code> script:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">@OWB112/owb/UnifiedRepos/cat_owb.sql</span>
+</pre>
+<p>Enter the tablespace name when you are prompted for it.</p>
+</li>
+<li>
+<p>If the <code>OWBSYS</code> schema exists on the Oracle Database instance, and you are upgrading from OWB 11<span class="italic">g</span> Release 1, then run the <code>cat_owb_reposupgrade.sql</code> script:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">@OWB112/owb/UnifiedRepos/cat_owb_reposupgrade.sql</span>
+</pre>
+<p>You are prompted for the tablespace name; enter it.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Run the <code>reset_owbcc_home.sql</code> script to reset the <code><span class="codeinlineitalic">OWB_HOME</span></code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">SQL&gt; <span class="bold">@OWB112/owb/UnifiedRepos/reset_owbcc_home.sql</span>
+</pre>
+<p>Note that this entry is case-sensitive, does not accept a trailing slash, and requires forward slashes only, regardless of the operating system.</p>
+</li>
+<li>
+<p>Unlock the <code>OWBSYS</code> and <code>OWBSYS_AUDIT</code> accounts, as described in the following sections:</p>
+<ul>
+<li>
+<p><span class="bolditalic">For Windows</span>, <a href="setup_windows.htm#BACHIHIE">"Unlocking the OWBSYS and OWBSYS_AUDIT Accounts"</a></p>
+</li>
+<li>
+<p><span class="bolditalic">For Linux</span>, <a href="setup_linux.htm#BABDJDBJ">"Unlocking the OWBSYS and OWBSYS_AUDIT Accounts"</a></p>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="WBINS16058" name="WBINS16058"></a>
+<div class="sect2"><a id="sthref254" name="sthref254"></a>
+<h3 class="sect2">Performing the In-Place Repository Upgrade</h3>
+<p>When upgrading from an OWB 11<span class="italic">g</span> R1 repository, you are upgrading an existing <code>OWBSYS</code> schema on an existing repository. When upgrading from OWB 10.2, your upgrade process will create a new workspace in the OWB 11.2 repository, with the same name as the schema containing the OWB 10.2 repository. In either case, the process is similar.</p>
+<p class="orderedlisttitle">To perform an in-place repository upgrade&nbsp;</p>
+<ol>
+<li>
+<p><a id="CIADBFGB" name="CIADBFGB"></a>Start the Repository Assistant.</p>
+<p><span class="bolditalic">In Windows</span>, from the <span class="bold">Start</span> menu, select <span class="bold">Program Files</span>, then <span class="bold">Oracle - OWB112</span>, then <span class="bold">Warehouse Builder</span>, then <span class="bold">Administration</span>, then <span class="bold">Repository Assistant</span>.</p>
+<p><span class="bolditalic">In Linux</span>, from the command line, run <code><span class="codeinlineitalic">OWB_HOME</span></code><code>/owb/bin/unix/reposinst.sh</code>.</p>
+</li>
+<li>
+<p>On the Welcome page of the Repository Assistant, click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Database Information page, enter the host name, port number, and service name where OWB is installed.</p>
+<img width="559" height="417" src="img/upgrade_00.gif" alt="Description of upgrade_00.gif follows" title="Description of upgrade_00.gif follows" longdesc="img_text/upgrade_00.htm" /><br />
+<a id="sthref256" name="sthref256" href="img_text/upgrade_00.htm">Description of the illustration upgrade_00.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Choose Operation page, select <span class="bold">Upgrade repository to current release of Oracle Warehouse Builder</span>.</p>
+<img width="518" height="372" src="img/upgrade_01.gif" alt="Description of upgrade_01.gif follows" title="Description of upgrade_01.gif follows" longdesc="img_text/upgrade_01.htm" /><br />
+<a id="sthref257" name="sthref257" href="img_text/upgrade_01.htm">Description of the illustration upgrade_01.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Choose Upgrade Operations page, select <span class="bold">Upgrade repository on the same database instance</span>.</p>
+<img width="530" height="363" src="img/upgrade_02.gif" alt="Description of upgrade_02.gif follows" title="Description of upgrade_02.gif follows" longdesc="img_text/upgrade_02.htm" /><br />
+<a id="sthref258" name="sthref258" href="img_text/upgrade_02.htm">Description of the illustration upgrade_02.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the OWBSYS Information page, enter the password for the <code>OWBSYS</code> user.</p>
+<img width="569" height="386" src="img/upgrade_03.gif" alt="Description of upgrade_03.gif follows" title="Description of upgrade_03.gif follows" longdesc="img_text/upgrade_03.htm" /><br />
+<a id="sthref259" name="sthref259" href="img_text/upgrade_03.htm">Description of the illustration upgrade_03.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>The File Information page appears. The in-place repository upgrade process creates a repository export MDL file. The default file names and location for this exported MDL file and export log file are displayed here. You can change the location of these files.</p>
+<img width="551" height="382" src="img/upgrade_04.gif" alt="Description of upgrade_04.gif follows" title="Description of upgrade_04.gif follows" longdesc="img_text/upgrade_04.htm" /><br />
+<a id="sthref260" name="sthref260" href="img_text/upgrade_04.htm">Description of the illustration upgrade_04.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span> to accept the file information.</p>
+</li>
+<li>
+<p>On the Summary page, click <span class="bold">Finish</span> to initiate the upgrade process.</p>
+<img width="588" height="410" src="img/upgrade_05.gif" alt="Description of upgrade_05.gif follows" title="Description of upgrade_05.gif follows" longdesc="img_text/upgrade_05.htm" /><br />
+<a id="sthref261" name="sthref261" href="img_text/upgrade_05.htm">Description of the illustration upgrade_05.gif</a><br />
+<br /></li>
+<li>
+<p>The Installation Progress popup window indicates the progress of the upgrade operation. When complete, click <span class="bold">OK</span>.</p>
+</li>
+</ol>
+<p>You may wish to review the log for errors, and save the exported MDL file as a backup of your pre-upgrade repository.</p>
+</div>
+<!-- class="sect2" -->
+<a id="WBINS16060" name="WBINS16060"></a>
+<div class="sect2"><a id="sthref262" name="sthref262"></a>
+<h3 class="sect2">Upgrading a Repository to release 11.2 through MDL Files</h3>
+<p>You can upgrade an OWB release 10.2 or 11.1 repository by exporting its content to a file, and then importing the file into an OWB release 11.2 repository, using the Repository Assistant.</p>
+<a id="CIAJFHEI" name="CIAJFHEI"></a><a id="WBINS16061" name="WBINS16061"></a>
+<div class="sect3">
+<h4 class="sect3">Exporting an OWB Repository to a File</h4>
+<p>You export a repository with the Repository Assistant as follows.</p>
+<p class="orderedlisttitle">To export a repository to a file&nbsp;</p>
+<ol>
+<li>
+<p>Start the Repository Assistant.</p>
+<p><span class="bolditalic">In Windows,</span> from the <span class="bold">Start</span> menu, select <span class="bold">Program Files</span>, then <span class="bold">Oracle - OWB112</span>, then <span class="bold">Warehouse Builder</span>, then <span class="bold">Administration</span>, then <span class="bold">Repository Assistant</span>.</p>
+<p><span class="bolditalic">In Linux,</span> from the command line, run <code><span class="codeinlineitalic">OWB_HOME</span></code><code>/owb/bin/unix/reposinst.sh</code>.</p>
+</li>
+<li>
+<p>On the Welcome page of the Repository Assistant, click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p><a id="CIABGAEJ" name="CIABGAEJ"></a>On the Database Information page, enter the host name, port number, and the service name where the OWB is installed.</p>
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Choose Operation page, select <span class="bold">Upgrade repository to current release of Oracle Warehouse Builder</span>.</p>
+<img width="518" height="372" src="img/upgrade_01.gif" alt="Description of upgrade_01.gif follows" title="Description of upgrade_01.gif follows" longdesc="img_text/upgrade_01.htm" /><br />
+<a id="sthref264" name="sthref264" href="img_text/upgrade_01.htm">Description of the illustration upgrade_01.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Choose Upgrade Operation page, select <span class="bold">Export entire repository to a file</span>.</p>
+<img width="530" height="363" src="img/export_01.gif" alt="Description of export_01.gif follows" title="Description of export_01.gif follows" longdesc="img_text/export_01.htm" /><br />
+<a id="sthref265" name="sthref265" href="img_text/export_01.htm">Description of the illustration export_01.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the User Information page, for an OWB release 10.2 source, enter the user name and password of the OWB release 10.2 repository owner. For an OWB release 11.1 source, enter the <code>OWBSYS</code> user name and password.</p>
+<img width="569" height="386" src="img/export_02.gif" alt="Description of export_02.gif follows" title="Description of export_02.gif follows" longdesc="img_text/export_02.htm" /><br />
+<a id="sthref266" name="sthref266" href="img_text/export_02.htm">Description of the illustration export_02.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p><a id="CIABFEDC" name="CIABFEDC"></a>On the File Information page, enter the following information:</p>
+<ul>
+<li>
+<p><span class="bold">File Name:</span> the name of the MDL file for storing the repository.</p>
+</li>
+<li>
+<p><span class="bold">Log File:</span> the name of the export operation log file that stores status and statistical information.</p>
+</li>
+</ul>
+<img width="551" height="382" src="img/upgrade_04.gif" alt="Description of upgrade_04.gif follows" title="Description of upgrade_04.gif follows" longdesc="img_text/upgrade_04.htm" /><br />
+<a id="sthref267" name="sthref267" href="img_text/upgrade_04.htm">Description of the illustration upgrade_04.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Summary page, click <span class="bold">Finish</span>.</p>
+<p>An Export Repository Progress window appears showing progress.</p>
+<p>At the end of the export process, a status message appears. The export operation creates the file.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="CIAGHBEC" name="CIAGHBEC"></a><a id="WBINS16063" name="WBINS16063"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Importing a Repository Export MDL File to OWB Release 11.2</h4>
+<p class="orderedlisttitle">To import a repository export MDL file&nbsp;</p>
+<ol>
+<li>
+<p>Start the Repository Assistant.</p>
+<p><span class="bolditalic">In Windows,</span> from the <span class="bold">Start</span> menu, select <span class="bold">Program Files</span>, then <span class="bold">Oracle - OWB112</span>, then <span class="bold">Warehouse Builder</span>, then <span class="bold">Administration</span>, then <span class="bold">Repository Assistant</span>.</p>
+<p><span class="bolditalic">In Linux,</span> from the command line, run <code><span class="codeinlineitalic">OWB_HOME</span></code><code>/owb/bin/unix/reposinst.sh</code>.</p>
+</li>
+<li>
+<p>On the Welcome page of the Repository Assistant, click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Database Information page, enter the host name, port number, and the service name where the OWB repository is installed. Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Choose Upgrade Operation page, select <span class="bold">Import entire repository from file</span>.</p>
+<img width="530" height="363" src="img/import_02.gif" alt="Description of import_02.gif follows" title="Description of import_02.gif follows" longdesc="img_text/import_02.htm" /><br />
+<a id="sthref269" name="sthref269" href="img_text/import_02.htm">Description of the illustration import_02.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the OWBSYS Information page, enter the OWBSYS password.</p>
+<img width="511" height="379" src="img/import_01.gif" alt="Description of import_01.gif follows" title="Description of import_01.gif follows" longdesc="img_text/import_01.htm" /><br />
+<a id="sthref270" name="sthref270" href="img_text/import_01.htm">Description of the illustration import_01.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p><a id="CIAHDBJA" name="CIAHDBJA"></a>On the File Information page, enter or browse to find the name of the files used when exporting the repository.</p>
+<img width="551" height="382" src="img/upgrade_04.gif" alt="Description of upgrade_04.gif follows" title="Description of upgrade_04.gif follows" longdesc="img_text/upgrade_04.htm" /><br />
+<a id="sthref271" name="sthref271" href="img_text/upgrade_04.htm">Description of the illustration upgrade_04.gif</a><br />
+<br />
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>On the Summary page, click <span class="bold">Finish</span>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+When importing an OWB release 10.2 MDL repository export, the import process creates a workspace that has the same name as the OWB release 10.2 repository schema. When importing an OWB release 11.1 repository export, the import process creates one workspace for each workspace being imported from the OWB release 11.1 repository.</div>
+<p>When importing an OWB release 10.2 MDL repository export, the import process creates a workspace that has the same name as the OWB release 10.2 repository schema. When importing an OWB release 11.1 repository export, the import process creates one workspace for each workspace being imported from the OWB release 11.1 repository.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDBJFGC" name="CHDBJFGC"></a><a id="WBINS07200" name="WBINS07200"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Migrating the Repository to a Different Oracle Database Instance</h2>
+<p>The process of migrating the repository to a different Oracle Database instance involves the export of the existing repository to a file, and subsequent import of information from that file into a new repository on the other Oracle Database instance.</p>
+<p>This process is virtually identical to upgrading from an OWB release 10.2 repository to a current version of the repository. The main differences are:</p>
+<ul>
+<li>
+<p>Before the import, you must create users on the target instance with the same names as the OWB users on the original instance.</p>
+</li>
+<li>
+<p>At the time of importing, you must provide the credentials of a remote Oracle Database instance where the export files reside.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Check the latest OWB release notes on <code><a href="http://www.oracle.com/technetwork/developer-tools/warehouse/overview/index.html">http://www.oracle.com/technetwork/developer-tools/warehouse/overview/index.html</a></code> before starting the migration process.</div>
+<p class="subhead2"><a id="sthref272" name="sthref272"></a>Exporting a Repository to MDL File</p>
+<p>The export part of the scenario uses the Repository Assistant to create an MDL zip archive. This MDL zip archive includes information about all the workspaces in the repository, with each workspace stored as a separate file.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="#CIAJFHEI">"Exporting an OWB Repository to a File"</a> for a description of the export operation</div>
+<p class="subhead2"><a id="sthref273" name="sthref273"></a>Creating OWB Users in the Target Instance</p>
+<p>Before importing the repository, in the target Oracle Database instance that contains the migrated repository, create the same users who had access to the original repository. You must do this to ensure that the security information is correctly imported. However, you do not need to register these users as OWB users; the upgrade process handles this automatically.</p>
+<p class="subhead2"><a id="sthref274" name="sthref274"></a>Importing a Repository from MDL File</p>
+<p>The import operation is described in section <a href="#CIAGHBEC">"Importing a Repository Export MDL File to OWB Release 11.2"</a>. Note that in step <a href="#CIAHDBJA">6</a>, you are entering the credential of the source (remote) database, which contains the repository MDL and log files.</p>
+</div>
+<!-- class="sect1" -->
+<a id="CHDJJIGA" name="CHDJJIGA"></a><a id="WBINS07300" name="WBINS07300"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Upgrading Locations to OWB Release 11.2</h2>
+<p>The locations in your OWB repository must also be upgraded for compatibility with OWB 11.2 after the upgrade process. There are two ways to perform this upgrade:</p>
+<ul>
+<li>
+<p>Use the script provided with OWB release 11.2.0.2 or higher. (This is the simpler procedure and is recommended.)</p>
+</li>
+<li>
+<p>Use the Repository Browser Locations Report to perform the upgrades one at a time. (This procedure is as effective as using the script, but requires more effort.)</p>
+</li>
+</ul>
+<p>Alternatively, you can also un-register and re-register all locations. However, in this case you must also redeploy all your mappings to affected locations; therefore, this procedure is not recommended.</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref275" name="sthref275"></a>
+<h3 class="sect2">Upgrading Locations to OWB Release 11.2 Using the Repository Browser</h3>
+<p>You can also use Locations Reports from the Repository Browser to perform the locations upgrade process as follows.</p>
+<p class="orderedlisttitle">To upgrade locations using the Repository Browser&nbsp;</p>
+<ol>
+<li>
+<p>In Repository Browser, select Control Center. Click <span class="bold">Reports</span>.</p>
+</li>
+<li>
+<p>In the Reports window, under Deployment, click <span class="bold">Locations Reports</span>.</p>
+<img width="424" height="315" src="img/locations_01.gif" alt="Description of locations_01.gif follows" title="Description of locations_01.gif follows" longdesc="img_text/locations_01.htm" /><br />
+<a id="sthref277" name="sthref277" href="img_text/locations_01.htm">Description of the illustration locations_01.gif</a><br />
+<br /></li>
+<li>
+<p><a id="CIADGDEB" name="CIADGDEB"></a>On the Locations Report, under Logical Details, in the Validation column of the table, click <span class="bold">Unknown</span>.</p>
+<img width="457" height="133" src="img/locations_02.gif" alt="Description of locations_02.gif follows" title="Description of locations_02.gif follows" longdesc="img_text/locations_02.htm" /><br />
+<a id="sthref278" name="sthref278" href="img_text/locations_02.htm">Description of the illustration locations_02.gif</a><br />
+<br /></li>
+<li>
+<p>Under Connection details, under Location Status, because the status is Unknown, enter the password and click <span class="bold">Get Status</span>.</p>
+<img width="418" height="134" src="img/locations_03.gif" alt="Description of locations_03.gif follows" title="Description of locations_03.gif follows" longdesc="img_text/locations_03.htm" /><br />
+<a id="sthref279" name="sthref279" href="img_text/locations_03.htm">Description of the illustration locations_03.gif</a><br />
+<br />
+<p>Note that the Current Status is Invalid.</p>
+</li>
+<li>
+<p><a id="CIAGABFD" name="CIAGABFD"></a>Under Location Status, click <span class="bold">Upgrade</span>.</p>
+<img width="418" height="149" src="img/locations_04.gif" alt="Description of locations_04.gif follows" title="Description of locations_04.gif follows" longdesc="img_text/locations_04.htm" /><br />
+<a id="sthref280" name="sthref280" href="img_text/locations_04.htm">Description of the illustration locations_04.gif</a><br />
+<br />
+<p>Note that the Current Status is now Valid.</p>
+</li>
+<li>
+<p>Repeat steps <a href="#CIADGDEB">3</a> through <a href="#CIAGABFD">5</a> for all installations.</p>
+</li>
+<li>
+<p>Once you are finished, notice that the Validation column shows Tested locations</p>
+<img width="457" height="133" src="img/locations_05.gif" alt="Description of locations_05.gif follows" title="Description of locations_05.gif follows" longdesc="img_text/locations_05.htm" /><br />
+<a id="sthref281" name="sthref281" href="img_text/locations_05.htm">Description of the illustration locations_05.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDCHDID" name="CHDCHDID"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Changes to Repository Objects When Moving to OWB Release 11<span class="italic">g</span>R2</h2>
+<p>Design-time objects in your projects are automatically modified during the upgrade process to be compatible with OWB release 11.2. This section lists the changes that are made.</p>
+<p class="subhead2"><a id="sthref282" name="sthref282"></a>Changes to OWB Release 10.2 and Release 11.1 Objects</p>
+<p>When you move a design from OWB release 10.2 or OWB release 11.1 to OWB release 11.2, the following objects are modified during the migration or upgrade:</p>
+<ul>
+<li>
+<p><span class="bold">Mapping Table Function Operators:</span> The mapping operators for table functions are upgraded to have only one input group and one output group. Old input groups that were configured as a REF cursor type are upgraded to a SYS_REFCURSOR type, and a new construct operator is added to the map; its input group values are the same as in the REF cursor type input group, and the output group attribute is set to SYS_RECURSOR type.</p>
+</li>
+<li>
+<p><span class="bold">Mapping Key Lookup Operators:</span> The mapping operators for key lookups are upgraded to the new lookup operator.</p>
+</li>
+<li>
+<p><span class="bold">Business Presentation Modules:</span> Business presentation modules and their contents are discarded.</p>
+</li>
+<li>
+<p><span class="bold">BI Beans Locations:</span> BI beans locations are discarded.</p>
+</li>
+<li>
+<p><span class="bold">Data Profile Metadata:</span> Data profile metadata is not upgraded.</p>
+</li>
+</ul>
+<p class="subhead2"><a id="sthref283" name="sthref283"></a>Changes to OWB Release 9.2 and Release 10.1 Objects</p>
+<p>When you move a design from OWB release 9.2 or OWB release 10.1 to OWB release 11.2, the following objects are modified during the migration or upgrade:</p>
+<ul>
+<li>
+<p><span class="bold">Control Centers and Locations:</span> After an upgrade, there is no association between the locations and the control centers that they reference. You must review the control center details using the Edit Control Center dialog box and select the locations associated with this control center.</p>
+</li>
+<li>
+<p><span class="bold">Locations and Control Center Connections:</span> Locations and Control Center connections are moved out of the projects that own them so that they can be shared across the entire workspace. Thus the statistics in the import log file displays an additional project for these objects.</p>
+</li>
+<li>
+<p><span class="bold">Mapping Operator Names:</span> The MDL Upgrade Utility ensures that the physical names and business names of all mapping operators are unique.</p>
+</li>
+<li>
+<p><span class="bold">Dimensions:</span> An associated dimension table is created with the same name as the dimension. The table contains the columns, constraints, and attribute sets defined in the Dimension Editor Table Properties of the dimension in the earlier release.</p>
+</li>
+<li>
+<p><span class="bold">Cubes:</span> An associated cube table is created with the same name as the cube. The cube table contains columns, constraints, and attribute sets defined in the Cube Editor Table Properties of the cube in the earlier release.</p>
+</li>
+<li>
+<p><span class="bold">Dimension and Cube Mapping Operators:</span> The mapping operators for dimensions and cubes are converted to table operators. These table operators use the physical tables created by the MDL Upgrade Utility for dimensions and cubes.</p>
+</li>
+<li>
+<p><span class="bold">Mapping Display Sets for Dimension Hierarchies:</span> Any mapping sets originally created based on the named attribute set for a dimension hierarchy are removed. This is because display sets for dimension hierarchies are no longer automatically created and maintained.</p>
+</li>
+<li>
+<p><span class="bold">Dimension Attributes:</span> For each level attribute upgraded, a dimension attribute with the same name is created, if it does not exist in the dimension.</p>
+</li>
+<li>
+<p><span class="bold">Intelligence Objects and Reports:</span> In the earlier release, intelligence objects and reports were available only using OMB Plus scripting. These objects are not upgraded.</p>
+</li>
+<li>
+<p><span class="bold">Advanced Queues:</span> An associated queue table is created based on the property AQ queue table name. The queue table created by the MDL File Upgrade Utility contains a column whose data type is the object type for that advanced queue.</p>
+</li>
+<li>
+<p><span class="bold">Advanced Queue Operator in a Mapping:</span> Mapping Advanced Queue operators are changed to contain only one attribute called PAYLOAD. For Mapping Advanced Queue operators that are used as a source, a new Expand operator is added after the Mapping Advanced Queue operator. For Mapping Advanced Queue operators that are used as a target, a new Construct operator is added before the Mapping Advanced Queue operator.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="uninstall.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="components.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2000, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

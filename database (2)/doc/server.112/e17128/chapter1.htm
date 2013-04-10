@@ -1,0 +1,2070 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Oracle Database 11g Release 1 (11.2.0.1) New Features</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1" />
+<meta name="Date" content="2010-10-23T9:18:56Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database New Features Guide 11g Release 2 (11.2)" />
+<meta name="partno" content="E17128-04" />
+<meta name="docid" content="NEWFT" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Prev" href="preface.htm" title="Previous" type="text/html" />
+<link rel="Next" href="chapter1_2.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17128.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database New Features Guide<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E17128-04</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="196">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="preface.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="chapter1_2.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17128.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="NEWFTCH1" name="NEWFTCH1"></a>
+<h1 class="chapter"><span class="secnum">1</span> Oracle Database 11<span class="italic">g</span> Release 1 (11.2.0.1) New Features</h1>
+<p>This chapter contains descriptions of all of the features that are new to Oracle 11<span class="italic">g</span> Database, Release 2. This chapter contains the following sections:</p>
+<ul>
+<li>
+<p><a href="#AREANO02583">Application Development</a></p>
+</li>
+<li>
+<p><a href="#AREANO02553">Availability</a></p>
+</li>
+<li>
+<p><a href="#AREANO02555">Business Intelligence and Data Warehousing</a></p>
+</li>
+<li>
+<p><a href="#AREANO02557">Clustering</a></p>
+</li>
+<li>
+<p><a href="#AREANO02559">Database Overall</a></p>
+</li>
+<li>
+<p><a href="#AREANO02572">Diagnosability</a></p>
+</li>
+<li>
+<p><a href="#AREANO02561">Performance</a></p>
+</li>
+<li>
+<p><a href="#AREANO02565">Security</a></p>
+</li>
+<li>
+<p><a href="#AREANO02567">Server Manageability</a></p>
+</li>
+<li>
+<p><a href="#AREANO02632">Unstructured Data Management</a></p>
+</li>
+</ul>
+<a id="AREANO02583" name="AREANO02583"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.1</span> Application Development</h2>
+<p>The following sections describe the new application development features for Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<a id="OBJECTIVENO00001" name="OBJECTIVENO00001"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.1.1</span> Oracle Application Express</h3>
+<p>The following sections describe Oracle Application Express features.</p>
+<a id="FEATURENO08814" name="FEATURENO08814"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.1</span> Application Date Format</h4>
+<p>You can now define a date format to be used throughout an application. This date format is used to alter the <code>NLS_DATE_FORMAT</code> database session setting prior to showing or submitting any page within the application. This format is used by all reports showing dates and is also picked up by form items of type "Date Picker (use Application Date Format)".</p>
+<p>The ability to specify a date format at the application level ensures consistency across the application. Therefore, whenever dates are displayed or input, they are in the same format.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08808" name="FEATURENO08808"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.2</span> Custom Themes</h4>
+<p>In addition to the default themes provided with Oracle Application Express, you can create your own customized themes. You can either start with one of the twenty standard themes available with Oracle Application Express and modify the underlying templates or define your own templates from scratch. Each theme consists of a set of templates defined with cascading style sheets (CSS) and HTML.</p>
+<p>The ability to publish custom themes enables you to design a specific look and feel to meet your corporate requirements and then publish them as a theme for all other applications to use.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08813" name="FEATURENO08813"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.3</span> Declarative BLOB Support</h4>
+<p>Declarative BLOB support enables files to be declaratively uploaded in forms, and downloaded or displayed using reports. BLOB display and download can also be authored procedurally using PL/SQL.</p>
+<p>The storing of binary large objects (BLOBs) within the database is growing in popularity due to the many advantages over storing content on disparate file systems. By incorporating declarative support for managing BLOBs into Application Express, the loading and manipulating of content is greatly simplified.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08809" name="FEATURENO08809"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.4</span> Documented JavaScript Libraries</h4>
+<p>This release includes an improved framework for advanced Oracle Application Express developers to build and leverage custom Web 2.0 capabilities, improving performance and enabling developers to create more dynamic application widgets. Oracle Application Express also includes the ability to suppress standard JavaScript and CSS files. All included JavaScript files are now compressed to improve page load time.</p>
+<p>Many developers want to extend their applications to include additional Web 2.0 capabilities or to minimize the page weight for use on mobile devices such as iphones and smartphones. The documentation and declarative capabilities allow developers to design applications for these disparate requirements.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08811" name="FEATURENO08811"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.5</span> Enhanced Report Printing</h4>
+<p>Release 3.1 includes XML as a download format and supports multiple SQL statements.</p>
+<p>Oracle Application Express interactive reporting provides the ability to manipulate the way in which the data is displayed on the screen. Users can also download this data in various formats including PDF, RTF, XLS and now XML.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08806" name="FEATURENO08806"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.6</span> Forms Conversion</h4>
+<p>Forms Conversion captures the design of existing Oracle Forms and automatically converts some components, primarily the user interface. Other components, such as complex triggers, need to be manually converted post-generation.</p>
+<p>Moving to native HTML is not seamless and changes to the user interface are required to deliver optimal Web interactivity.</p>
+<p>The Oracle Application Express Forms Conversion enables you to take advantage of Oracle Application Express dynamic HTML capabilities, including interactive reports. Given the similarities between Oracle Forms and Oracle Application Express development (both use SQL and PL/SQL), retraining requirements are also low.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08810" name="FEATURENO08810"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.7</span> Improved Security</h4>
+<p>Oracle Application Express offers a number of security enhancements. Key enhancements include the ability to declaratively encrypt session state and specify session time outs for maximum idle time and maximum session duration as well as create new password item types that enable users to enter passwords without ever saving them to session state.</p>
+<p>Other features include reducing the privileges required by the Oracle Application Express database account, disabling database monitoring by default, and the ability to specify HTTPS for administration. In addition, administrators can now restrict password reuse. This release also includes a new Hidden and Protected item type. This item type greatly simplifies the developer's task of protecting item session state. This, together with other minor improvements, makes the default security functionality more robust within Oracle Application Express.</p>
+<p>The additional declarative security capabilities make it easier for developers and administrators to harden the security of their applications and the development environment. These new capabilities complement existing Oracle Application Express security features some of which include flexible authentication, authorization schemes, and URL tampering protection.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08805" name="FEATURENO08805"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.8</span> Interactive Reporting Region</h4>
+<p>Interactive Reporting Regions enable end users to customize reports. Users can alter the layout of report data by choosing the columns they are interested in, applying filters, highlighting, and sorting. They can also define breaks, aggregations, different charts, and their own computations. Users can create multiple variations of the report and save them as named reports and download to various file formats including comma-delimited file (CSV) format, Microsoft Excel (XLS) format, Adobe Portable Document Format (PDF), and Microsoft Word Rich Text Format (RTF).</p>
+<p>Oracle Application Express Interactive Reporting enables developers to quickly develop reports that can be manipulated by end users to meet a wide range of reporting requirements. Therefore, instead of developers having to define specific report layouts for different users or groups, they can define a common report that can be used to meet the majority of the different requirements.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08807" name="FEATURENO08807"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.1.9</span> Runtime-Only Installation</h4>
+<p>For testing and production instances, Oracle Application Express now supports the ability to install a runtime version of Oracle Application Express. This minimizes the installed footprint and privileges. Scripts are also provided to remove or add the developer interface from an existing instance.</p>
+<p>The ability to implement a runtime-only environment improves application security as developers cannot inadvertently or maliciously update a production application.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00002" name="OBJECTIVENO00002"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.1.2</span> Other General Development Features</h3>
+<p>The following sections describe new features in the areas of OCI, Pro*C, JDBC, and other development APIs.</p>
+<a id="FEATURENO08800" name="FEATURENO08800"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.2.1</span> Support WITH HOLD Option for CURSOR DECLARATION in Pro*C</h4>
+<p>The <code>WITH HOLD</code> option can now be specified during cursor declaration.</p>
+<p>This new option provides easy migration of Pro*C applications.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink LNPCC" href="http://www.oracle.com/pls/db112/lookup?id=LNPCC"><span class="italic">Pro*C/C++ Programmer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08741" name="FEATURENO08741"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.2.2</span> Pro*C Support for 8-Byte Native Numeric Host Variable for INSERT and FETCH</h4>
+<p>Oracle Call Interface (OCI) now provides Pro*C support for 8-byte native numeric host variable for <code>INSERT</code> and <code>FETCH</code> on 32-bit and 64-bit platforms.</p>
+<p>Fusion applications need Pro*C to be able to support 8-byte native data type for bind/define while inserting or fetching data to and from a <code>NUMBER(18)</code> column.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink LNPCC" href="http://www.oracle.com/pls/db112/lookup?id=LNPCC"><span class="italic">Pro*C/C++ Programmer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08742" name="FEATURENO08742"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.2.3</span> Pro*COBOL Support for 8-Byte Native Numeric Host Variable for INSERT and FETCH</h4>
+<p>Oracle Call Interface (OCI) now provides Pro*COBOL support for 8-byte native numeric host variable for <code>INSERT</code> and <code>FETCH</code> on 32-bit and 64-bit platforms.</p>
+<p>Fusion applications need Pro*COBOL to be able to support 8-byte native data type for bind/define while inserting or fetching data to and from a <code>NUMBER(18)</code> column.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08698" name="FEATURENO08698"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.2.4</span> JDBC Support for Time Zone Patching</h4>
+<p>The JDBC driver is updated to conform with the new time zone upgrading scheme.</p>
+<p>This feature provides a simplified time zone patching process. As a result, Java applications using the <code>TIMESTAMP WITH TIME ZONE</code> data type are immune to Daylight Saving Time (DST) changes.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08765" name="FEATURENO08765"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.2.5</span> JDBC Support for SecureFile Zero-Copy LOB I/O and LOB Prefetching</h4>
+<p>JDBC now supports SecureFile zero-copy LOB I/O and LOB prefetching.</p>
+<p>This feature allows performant and secure Java access to structured (relational) and unstructured data.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink JJDBC23210" href="http://www.oracle.com/pls/db112/lookup?id=JJDBC23210"><span class="italic">Oracle Database JDBC Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08740" name="FEATURENO08740"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.1.2.6</span> OCI Support for 8-Byte Integer Bind/Define</h4>
+<p>Oracle Call Interface (OCI) now provides support for 8-byte integer bind/define on 32-bit and 64-bit platforms.</p>
+<p>Fusion applications need Pro*C or Pro*COBOL to be able to support 8-byte native data type for bind/define while inserting or fetching data to and from a <code>NUMBER(18)</code> column. Pro*C or Pro*COBOL need this support from OCI to be able to pass it on to application developers.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink LNOCI039" href="http://www.oracle.com/pls/db112/lookup?id=LNOCI039"><span class="italic">Oracle Call Interface Programmer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02553" name="AREANO02553"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.2</span> Availability</h2>
+<p>The focus of this Availability section is aimed towards providing capabilities that keep the Oracle database available for continuous data access, despite unplanned failures and scheduled maintenance activities. These various capabilities form the basis of Oracle Maximum Availability Architecture (MAA), which is the Oracle blueprint for implementing a highly available infrastructure using integrated Oracle technologies.</p>
+<a id="OBJECTIVENO00003" name="OBJECTIVENO00003"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.2.1</span> Backup and Recovery</h3>
+<p>The following sections describe new features in this release that provide improvements in the area of backup and recovery.</p>
+<a id="FEATURENO08777" name="FEATURENO08777"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.1.1</span> Automatic Block Repair</h4>
+<p>Automatic block repair allows corrupt blocks on the primary database or physical standby database to be automatically repaired, as soon as they are detected, by transferring good blocks from the other destination. In addition, <code>RECOVER BLOCK</code> is enhanced to restore blocks from a physical standby database. The physical standby database must be in real-time query mode.</p>
+<p>This feature reduces time when production data cannot be accessed, due to block corruption, by automatically repairing the corruptions as soon as they are detected in real-time using good blocks from a physical standby database. This reduces block recovery time by using up-to-date good blocks from a real-time, synchronized physical standby database as opposed to disk or tape backups or flashback logs.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SBYDB4782" href="http://www.oracle.com/pls/db112/lookup?id=SBYDB4782"><span class="italic">Oracle Data Guard Concepts and Administration</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08752" name="FEATURENO08752"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.1.2</span> Backup to Amazon Simple Storage Service (S3) Using OSB Cloud Computing</h4>
+<p>Oracle now offers backup to Amazon S3, an internet-based storage service, with the Oracle Secure Backup (OSB) Cloud Module. This is part of the Oracle Cloud Computing offering.</p>
+<p>This feature provides easy-to-manage, low cost database backup to Web services storage, reducing or eliminating the cost and time to manage an in-house backup infrastructure.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RCMRF90489" href="http://www.oracle.com/pls/db112/lookup?id=RCMRF90489"><span class="italic">Oracle Database Backup and Recovery Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO06994" name="FEATURENO06994"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.1.3</span> DUPLICATE Without Connection to Target Database</h4>
+<p><code>DUPLICATE</code> can be performed without connecting to a target database. This requires connecting to a catalog and auxiliary database.</p>
+<p>The benefit is improved availability of a <code>DUPLICATE</code> operation by not requiring connection to a target database. This is particularly useful for <code>DUPLICATE</code> to a destination database where connection to the target database may not be available at all times.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink BRADV416" href="http://www.oracle.com/pls/db112/lookup?id=BRADV416"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08779" name="FEATURENO08779"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.1.4</span> Enhanced Tablespace Point-In-Time Recovery (TSPITR)</h4>
+<p>Tablespace point-in-time recovery (TSPITR) is enhanced as follows:</p>
+<ul>
+<li>
+<p>You now have the ability to recover a dropped tablespace.</p>
+</li>
+<li>
+<p>TSPITR can be repeated multiple times for the same tablespace. Previously, once a tablespace had been recovered to an earlier point-in-time, it could not be recovered to another earlier point-in-time.</p>
+</li>
+<li>
+<p><code>DBMS_TTS.TRANSPORT_SET_CHECK</code> is automatically run to ensure that TSPITR is successful.</p>
+</li>
+<li>
+<p><code>AUXNAME</code> is no longer used for recovery set data files.</p>
+</li>
+</ul>
+<p>This feature improves usability with TSPITR.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08780" name="FEATURENO08780"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.1.5</span> New DUPLICATE Options</h4>
+<p>The following are new options for the <code>DUPLICATE</code> command:</p>
+<ul>
+<li>
+<p><code>NOREDO</code></p>
+<p><code>NOREDO</code> indicates that archive logs are not applied. Because targetless DUPLICATE does not connect to the target database, it cannot check if the database is running in <code>NOARCHIVELOG</code> mode. It can also be used during regular duplication to force a database currently in <code>ARCHIVELOG</code> mode to be recovered without applying archive logs (for example, because it was in <code>NOARCHIVELOG</code> mode at the point-in-time it is being duplicated).</p>
+</li>
+<li>
+<p><code>UNDO TABLESPACE &lt;</code><code><span class="codeinlineitalic">tsname</span></code><code>&gt; [ , &lt;</code><code><span class="codeinlineitalic">tsname</span></code><code>&gt; ... ]</code></p>
+<p>When not connected to a recovery catalog and not connected to an open target database, RMAN cannot obtain the list of tablespaces with undo segments, therefore, you must specify them with this clause.</p>
+</li>
+</ul>
+<p>This feature improves the usability of the DUPLICATE command.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08778" name="FEATURENO08778"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.1.6</span> New SET NEWNAME Clauses and Format Options</h4>
+<p>The following are new clauses and format options for the <code>SET NEWNAME</code> command:</p>
+<ul>
+<li>
+<p>A single <code>SET NEWNAME</code> command can be applied to all files in a tablespace, or for all files in the database. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">SET NEWNAME FOR TABLESPACE &lt;<span class="italic">tsname</span>&gt; TO &lt;<span class="italic">format</span>&gt;;
+</pre>
+<p>Or,</p>
+<pre xml:space="preserve" class="oac_no_warn">SET NEWNAME FOR DATABASE TO &lt;<span class="italic">format</span>&gt;;
+</pre></li>
+<li>
+<p>New format identifiers for <code>SET NEWNAME...&lt;</code><code><span class="codeinlineitalic">format</span></code><code>&gt;</code> are as follows:</p>
+<ul>
+<li>
+<p><code>%U</code></p>
+<p>Unique identifier. <code>data_D-%d_I-%I_TS-%N_FNO-%f</code></p>
+</li>
+<li>
+<p><code>%b</code></p>
+<p>UNIX base name of the original data file name. For example, if the original data file name was <code>ORACLE_HOME/data/tbs_01.f</code>, then <code>%b</code> is <code>tbs_01.f</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>The benefit is improved flexibility of <code>RESTORE</code>, <code>DUPLICATE</code>, and TSPITR.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink BRADV89956" href="http://www.oracle.com/pls/db112/lookup?id=BRADV89956"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08781" name="FEATURENO08781"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.1.7</span> Tablespace Checks in DUPLICATE</h4>
+<p>The <code>DUPLICATE...TABLESPACE</code> and <code>DUPLICATE... SKIP TABLESPACE</code> commands now perform the following initial checks:</p>
+<ul>
+<li>
+<p>Excluded tablespaces are checked to see if they contain any objects owned by <code>SYS</code>.</p>
+</li>
+<li>
+<p><code>DBMS_TTS.TRANSPORT_SET_CHECK</code> is run to ensure that the set of tablespaces being duplicated are self-contained before the actual duplicate process.</p>
+</li>
+</ul>
+<p>These checks are not possible for a targetless <code>DUPLICATE</code> as they are required to be run at the target database.</p>
+<p>This feature improves usability of DUPLICATE. Any tablespace issues are immediately identified prior to commencement of the actual duplicate operation.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00004" name="OBJECTIVENO00004"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.2.2</span> Online Application Maintenance and Upgrade</h3>
+<p>The following sections describe online application maintenance and upgrade features.</p>
+<a id="FEATURENO08709" name="FEATURENO08709"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.2.1</span> Edition-based Redefinition</h4>
+<p>Edition-based redefinition allows an application's database objects to be changed without interrupting the application's availability by making the changes in the privacy of a new edition. Every database has at least one edition. The DBA creates a new edition as a child of the existing one. The changes are made in the child edition while you continue to use the parent edition. When needed, changes to data are made safely by writing only to new columns or new tables not seen by the old edition. Editioning views expose a different projection of each changed table into each edition to allow each to see just its own columns. Crossedition triggers propagate data changes made by the old edition into the columns of the new edition. When the installation of the changes is complete, some users start to use the new edition while others drain off the old edition. Here, crossedition triggers propagate data changes made by the new edition into the columns of the old edition.</p>
+<p>Large, mission critical applications are often unavailable for long periods of time while database objects are patched or upgraded. Edition-based redefinition allows this cost to be avoided.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADFNS020" href="http://www.oracle.com/pls/db112/lookup?id=ADFNS020"><span class="italic">Oracle Database Advanced Application Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08745" name="FEATURENO08745"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.2.2</span> Enhance CREATE or REPLACE TYPE to Allow FORCE</h4>
+<p>The <code>FORCE</code> option can now be used in conjunction with the <code>CREATE</code> or <code>REPLACE TYPE</code> command.</p>
+<p>This feature provides enhanced usability and allows a <code>CREATE</code> or <code>REPLACE TYPE</code> operation to be performed even when <code>TYPE</code> dependent objects are present. However, if at least one <code>TABLE</code> dependent is present, then <code>FORCE</code> does not allow <code>CREATE</code> or <code>REPLACE TYPE</code> to succeed.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADOBJ00402" href="http://www.oracle.com/pls/db112/lookup?id=ADOBJ00402"><span class="italic">Oracle Database Object-Relational Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08767" name="FEATURENO08767"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.2.3</span> Fine-Grained Dependencies for Triggers</h4>
+<p>Oracle Database 11<span class="italic">g</span> Release 1 (11.1) brought both fine-grained dependency tracking and the new possibility that a trigger might be a dependency parent by virtue of the new <code>FOLLOWS</code> keyword.</p>
+<p>In release 11.1, dependents on triggers did not have fine-grained dependency. In release 11.2, this fine-grained dependence exists. (Release 11.2 also provides the new <code>PRECEDES</code> keyword which also allows trigger-upon-trigger dependencies.)</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADFNS99992" href="http://www.oracle.com/pls/db112/lookup?id=ADFNS99992"><span class="italic">Oracle Database Advanced Application Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08842" name="FEATURENO08842"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.2.4</span> IGNORE_ROW_ON_DUPKEY_INDEX Hint for INSERT Statement</h4>
+<p>With <code>INSERT INTO TARGET...SELECT...FROM SOURCE</code>, a unique key for some to-be-inserted rows may collide with existing rows. The <code>IGNORE_ROW_ON_DUPKEY_INDEX</code> allows the collisions to be silently ignored and the non-colliding rows to be inserted. A PL/SQL program could achieve the same effect by first selecting the source rows and by then inserting them one-by-one into the target in a block that has a null handler for the <code>DUP_VAL_ON_INDEX</code> exception. However, the PL/SQL approach would take effort to program and is much slower than the single SQL statement that this hint allows.</p>
+<p>This hint improves performance and ease-of-programming when implementing an online application upgrade script using edition-based redefinition.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SQLRF30052" href="http://www.oracle.com/pls/db112/lookup?id=SQLRF30052"><span class="italic">Oracle Database SQL Language Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00005" name="OBJECTIVENO00005"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.2.3</span> Oracle Data Guard</h3>
+<p>The following sections describe new features in this release that provide improvements in Oracle Data Guard.</p>
+<a id="FEATURENO08795" name="FEATURENO08795"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.3.1</span> Compressed Table Support in Logical Standby Databases and Oracle LogMiner</h4>
+<p>Compressed tables (that is, tables with compression that support both OLTP and direct load operations) are supported in logical standby databases and Oracle LogMiner.</p>
+<p>With support for this additional storage attribute, logical standby databases can now provide data protection and reporting benefits for a wider range of tables.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SBYDB4943" href="http://www.oracle.com/pls/db112/lookup?id=SBYDB4943"><span class="italic">Oracle Data Guard Concepts and Administration</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08794" name="FEATURENO08794"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.3.2</span> Configurable Real-Time Query Apply Lag Limit</h4>
+<p>A physical standby database can be open for read-only access while redo apply is active only if the Oracle Active Data Guard option is enabled. This capability is known as real-time query.</p>
+<p>The new <code>STANDBY_MAX_DATA_DELAY</code> session parameter can be used to specify a session-specific apply lag tolerance, measured in seconds, for queries issued by non-administrative users to a physical standby database that is in real-time query mode.</p>
+<p>This capability allows queries to be safely offloaded from the primary database to a physical standby database, because it is possible to detect if the standby database has become unacceptably stale.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SBYDB00706" href="http://www.oracle.com/pls/db112/lookup?id=SBYDB00706"><span class="italic">Oracle Data Guard Concepts and Administration</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07355" name="FEATURENO07355"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.3.3</span> Integrated Support for Application Failover in a Data Guard Configuration</h4>
+<p>Applications connected to a primary database can transparently failover to the new primary database upon an Oracle Data Guard role transition. Integration with Fast Application Notification (FAN) provides fast failover for integrated clients.</p>
+<p>Flexibility and manageability of disaster recovery configurations using Oracle Data Guard is improved.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink DGBKR3425" href="http://www.oracle.com/pls/db112/lookup?id=DGBKR3425"><span class="italic">Oracle Data Guard Broker</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08789" name="FEATURENO08789"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.2.3.4</span> Support Up to 30 Standby Databases</h4>
+<p>The number of standby databases that a primary database can support is increased from 9 to 30 in this release.</p>
+<p>The capability to create 30 standby databases, combined with the functionality of the Oracle Active Data Guard option, allows the creation of reader farms that can be used to offload large scale read-only workloads from a production database.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SBYDB5000" href="http://www.oracle.com/pls/db112/lookup?id=SBYDB5000"><span class="italic">Oracle Data Guard Concepts and Administration</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02555" name="AREANO02555"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.3</span> Business Intelligence and Data Warehousing</h2>
+<p>The following sections describe new Business Intelligence and Data Warehousing features for Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<a id="OBJECTIVENO00006" name="OBJECTIVENO00006"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.3.1</span> Improved Analytics</h3>
+<p>The following sections describe new and improved analytical capabilities in this release.</p>
+<a id="FEATURENO08750" name="FEATURENO08750"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.1.1</span> Analytic Functions 2.0</h4>
+<p>New and enhanced analytical functions are introduced in this release. A new ordered aggregate, <code>LISTAGG</code>, concatenates the values of the measure column. The new analytic window function <code>NTH_VALUE</code> (a generalization of existing <code>FIRST_VALUE</code> and <code>LAST_VALUE</code> functions) gives users the functionality of retrieving an arbitrary (or nth) record in a window.</p>
+<p>The <code>LAG</code> and <code>LEAD</code> functions are enhanced with the <code>IGNORE NULLS</code> option.</p>
+<p>The new and enhanced SQL analytical functions allow more complex analysis in the database, using (simpler) SQL specification and providing better performance.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink DWHSG02015" href="http://www.oracle.com/pls/db112/lookup?id=DWHSG02015"><span class="italic">Oracle Database Data Warehousing Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08835" name="FEATURENO08835"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.1.2</span> Recursive WITH Clause</h4>
+<p>The SQL <code>WITH</code> clause has been extended to enable formulation of recursive queries.</p>
+<p>Recursive <code>WITH</code> clause complies with the American National Standards Institute (ANSI) standard. This makes Oracle ANSI-compatible for recursive queries.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SQLRF30048" href="http://www.oracle.com/pls/db112/lookup?id=SQLRF30048"><span class="italic">Oracle Database SQL Language Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref6" name="sthref6"></a>
+<h3 class="sect2"><span class="secnum">1.3.2</span> Improved Data Loading</h3>
+<p>The following sections describe new and improved data loading capabilities in this release.</p>
+<a id="FEATURENO08784" name="FEATURENO08784"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.2.1</span> EXECUTE Privilege for DIRECTORY Objects</h4>
+<p><code>EXECUTE</code> privilege is allowed for <code>DIRECTORY</code> objects in this release. The <code>ORACLE_LOADER</code> access driver creates a process that runs a user-specified program. That program must live in a directory path specified by a directory object defined in the database. Only a user that has been given EXECUTE access to the directory object is allowed to run programs in it.</p>
+<p>This feature allows the DBA to control who is allowed to run preprocessors as part of loading data with external tables. It also allows the DBA to restrict which programs those users can run. No existing users with access to the directory object are allowed to run any programs from that directory unless the DBA gives them EXECUTE access to that directory.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SUTIL3412" href="http://www.oracle.com/pls/db112/lookup?id=SUTIL3412"><span class="italic">Oracle Database Utilities</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08785" name="FEATURENO08785"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.2.2</span> Preprocessing Data for ORACLE_LOADER Access Driver in External Tables</h4>
+<p>The syntax for the <code>ORACLE_LOADER</code> access driver is extended in this release to allow specification of a program to preprocess the data files that are read for the external table. The access parameters can specify the name of a directory object and the name of an executable file in that directory object. When the access driver needs to read data from a file, it creates a process that runs the specified program, passing in the name of the data file. The output from the program is passed into the access driver which parses the data into records and columns.</p>
+<p>The initial use of this feature is by a customer who needs to load data that is stored in compressed files. The user specifies the name of the program used to decompress the file as part of the access parameters. The access driver reads the output of the decompression program.</p>
+<p>Large customers want to load data from compressed files which requires less disk space and uses the I/O bandwidth between the disk and memory more efficiently.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SUTIL1385" href="http://www.oracle.com/pls/db112/lookup?id=SUTIL1385"><span class="italic">Oracle Database Utilities</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref7" name="sthref7"></a>
+<h3 class="sect2"><span class="secnum">1.3.3</span> Improved Partitioning</h3>
+<p>The following sections describe new and improved partitioning capabilities in this release.</p>
+<a id="FEATURENO08724" name="FEATURENO08724"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.3.1</span> Allow Virtual Columns in the Primary Key or Foreign Key for Reference Partitioning</h4>
+<p>Virtual columns can be used as the primary or the foreign key column of a reference partition table.</p>
+<p>Allowing the use of virtual columns for reference partitioned tables enables an easier implementation of various business scenarios using Oracle Partitioning.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08599" name="FEATURENO08599"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.3.2</span> System-Managed Indexes for List Partitioning</h4>
+<p>System-managed domain indexes are now supported for list partitioned tables.</p>
+<p>This feature provides enhanced completeness of domain-specific indexing support for partitioning to meet user requirements including Oracle XML DB. Performance of local domain indexes on list partitioned tables is improved in this release.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SQLRF30028" href="http://www.oracle.com/pls/db112/lookup?id=SQLRF30028"><span class="italic">Oracle Database SQL Language Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref8" name="sthref8"></a>
+<h3 class="sect2"><span class="secnum">1.3.4</span> Improved Performance and Scalability</h3>
+<p>The following sections describe new and improved performance and scalability capabilities in this release.</p>
+<a id="FEATURENO08862" name="FEATURENO08862"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.4.1</span> In-Memory Parallel Execution</h4>
+<p>Traditionally, parallel execution has enabled organizations to manage and access large amounts of data by taking full advantage of the I/O capacity of the system. In-memory parallel execution harnesses the aggregated memory in a system to enhance query performance by minimizing or even completely eliminating the physical I/O needed for a parallel operation. Oracle automatically decides if an object being accessed using parallel execution benefits from being cached in the SGA (buffer cache). The decision to cache an object is based on a well defined set of heuristics including size of the object and the frequency that it is accessed. In an Oracle RAC environment, Oracle maps fragments of the object into each of the buffer caches on the active instances. By creating this mapping, Oracle knows which buffer cache to access to find a specific part or partition of an object to answer a given SQL query.</p>
+<p>In-memory parallel query harnesses the aggregated memory in a system for parallel operations, enabling it to scale out with the available memory for data caching as the number of nodes in a cluster increases. This new functionality optimizes large parallel operations by minimizing or even completely eliminating the physical I/O needed because the parallel operation can now be satisfied in memory.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink VLDBG" href="http://www.oracle.com/pls/db112/lookup?id=VLDBG"><span class="italic">Oracle Database VLDB and Partitioning Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08700" name="FEATURENO08700"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.4.2</span> Minimal Effort Parallel Execution - Auto Degree of Parallelism (DOP) and Queuing</h4>
+<p>When activated, Oracle determines the optimal degree of parallelism (DOP) for any given SQL operation based on the size of the objects, the complexity of a statement, and the existing hardware resources.</p>
+<p>The database compensates for wrong or missing user settings for parallel execution, ensuring a more optimal resource consumption and overall system behavior.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink VLDBG0103" href="http://www.oracle.com/pls/db112/lookup?id=VLDBG0103"><span class="italic">Oracle Database VLDB and Partitioning Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08597" name="FEATURENO08597"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.4.3</span> The DBMS_PARALLEL_EXECUTE Package</h4>
+<p>The <code>DBMS_PARALLEL_EXECUTE</code> package provides subprograms to allow a specified <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>MERGE</code>, or anonymous block statement to be applied in parallel chunks. The statement must have two placeholders that define the start and end limit of a chunk. Typically, these are values for the rowid or a surrogate unique key in a large table. But, when an anonymous block is used, the block can interpret the values arbitrarily. The package has subprograms to define ranges that cover the specified table. These include rule-based division of a table's rowid or key range and support user-defined methods. The SQL statement together with the set of chunk ranges define a task. Another subprogram starts the task. Each task is processed using a scheduler job and automatically commits when it completes. Progress is logged. Untried, successful, and failed chunks are flagged as such on task completion or interruption. Another subprogram allows the task to resume to try untried and failed chunks.</p>
+<p>Many scenarios require the bulk transformation of a large number of rows. Using an ordinary SQL statement suffers from the all-or-nothing effect. In the common case, where the transformation of one row is independent of that of other rows, it is correct to commit every row that is transformed successfully and to roll back every row where the transformation fails. Some customers have implemented schemes to achieve this from scratch, using the Oracle Scheduler and suitable methods to record progress. This package provides a supported solution and adds database-wide manageability through new catalog views for parallel task metadata. The package is especially useful in online application upgrade scenarios to apply a crossedition trigger to all the rows in the table on which it is defined.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ARPLS233" href="http://www.oracle.com/pls/db112/lookup?id=ARPLS233"><span class="italic">Oracle Database PL/SQL Packages and Types Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08670" name="FEATURENO08670"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.4.4</span> Significant Performance Improvement of On-Commit Fast Refresh</h4>
+<p>Fast refresh of a materialized view is now significantly faster due to reducing the time spent on log handling.</p>
+<p>This provides significantly reduced maintenance time and more fast refreshes are possible.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink DWHSG0319" href="http://www.oracle.com/pls/db112/lookup?id=DWHSG0319"><span class="italic">Oracle Database Data Warehousing Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00007" name="OBJECTIVENO00007"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.3.5</span> Oracle Warehouse Builder</h3>
+<p>The following sections describe improvements to the extraction, transformation, and loading (ETL) capabilities available with Oracle Warehouse Builder (OWB).</p>
+<a id="FEATURENO08607" name="FEATURENO08607"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.1</span> Advanced Find Support in Mapping Editor</h4>
+<p>The mapping editor has been enhanced with advanced find capabilities to make it easier to locate and make updates to operators, groups, and attributes in a mapping diagram, in the Available Objects tab, and in the Selected Objects tab.</p>
+<p>This feature enhances ETL mapping developer productivity, especially on large and complex mappings and, for example, when working with complex data sources with large numbers of tables, views, or columns.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08575" name="FEATURENO08575"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.2</span> Business Intelligence Tool Integration</h4>
+<p>Oracle Warehouse Builder (OWB) now offers metadata integration with Oracle Business Intelligence Standard Edition (Discoverer) as well as Oracle Business Intelligence Enterprise Edition.</p>
+<p>For Oracle Business Intelligence Enterprise Edition (OBI EE), this feature allows derivation of ready-to-use physical, business model and presentation layer metadata from a data warehouse design, visualization and maintenance of the derived objects from within OWB, and deployment of the derived objects in the form of an RPD file that can be loaded into OBI EE.</p>
+<p>Oracle Discoverer integration was added in a previous release, and includes derivation of metadata for Discoverer from the data warehouse design, and deploying those derived objects into Discoverer. In this release, similar capabilities are now available for OBI Enterprise Edition. All business intelligence application objects are modeled in OWB and can be included in lineage and impact analysis at the column level.</p>
+<p>Customers using Oracle business intelligence tools with their Oracle data warehouses can get better answers from their warehouses faster, with no additional design or development effort.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08604" name="FEATURENO08604"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.3</span> Copy and Paste of Operators and Attributes in Mapping Editor</h4>
+<p>In the mapping editor, users can now copy and paste operators within a mapping or across mappings, including attribute settings.</p>
+<p>This enhancement saves time and reduces errors in the development of complex ETL mappings that reuse common or similar elements.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08635" name="FEATURENO08635"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.4</span> Current Configuration Dropdown List in Design Center Toolbar</h4>
+<p>In the Design Center, there is now a dropdown list that displays the active configuration of the user.</p>
+<p>This feature improves usability of the multi-configuration feature.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBINS" href="../../owb.112/e17130/toc.htm"><span class="italic">Oracle Warehouse Builder Installation and Administration Guide for Windows and Linux</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08654" name="FEATURENO08654"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.5</span> Enhanced Support for Flat File Imports</h4>
+<p>There are numerous support improvements for importing flat files, including a simplified Flat File Sampling wizard, support for multi-character and hexadecimal format delimiters and enclosures, simplified support for fixed format fields, and support for bulk flat file loads into heterogeneous targets.</p>
+<p>Flat files are frequently used for simple and high performance data movement in ETL applications. These changes improve ETL developer productivity and provide flexible handling of flat files in more scenarios.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08612" name="FEATURENO08612"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.6</span> Enhanced Table Function Support</h4>
+<p>OWB now has improved support for table functions, including importing metadata for existing table functions, an editor for creating table functions from within OWB, and better support for table functions in mappings.</p>
+<p>Improved support simplifies using table functions for much more flexible and powerful transformations, such as user-defined aggregations and data mining sampling operators.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08634" name="FEATURENO08634"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.7</span> Experts Available in Editor Menu</h4>
+<p>It is now possible to add OWB experts to the mapping editor menu.</p>
+<p>This feature makes it possible to enhance and extend the functionality of the mapping editor, improving developer productivity.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08601" name="FEATURENO08601"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.8</span> Expression Editing in Operator Edit Dialog</h4>
+<p>Expressions associated with operator attributes can now be entered directly into an Operator Edit Dialog or Expression Editor, rather than requiring that these expressions be entered into a property in the Property Inspector.</p>
+<p>Developers can finish more of their work in one place when creating operators in ETL mappings, thus improving their productivity.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08602" name="FEATURENO08602"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.9</span> Grouping and Spotlighting of Objects in Mapping Editor</h4>
+<p>In the mapping editor, users can now temporarily or permanently group objects in the mapping editor so that they are collapsed to a single icon. This hides complexity in mappings. Users can also spotlight a single operator, which temporarily hides all objects in the mapping except for those objects that connect directly to the operator.</p>
+<p>These features improve productivity for developers working with complex mappings with large numbers of operators.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08661" name="FEATURENO08661"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.10</span> Improved Management of Locations Registered in Multiple Control Centers</h4>
+<p>The user interface for managing the registration of locations in control centers has been reworked to improve usability, especially when working with locations registered in multiple control centers.</p>
+<p>This change improves productivity of OWB administrators responsible for managing locations across control centers.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBDOD10523" href="http://www.oracle.com/pls/db112/lookup?id=WBDOD10523"><span class="italic">Oracle Warehouse Builder Sources and Targets Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08660" name="FEATURENO08660"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.11</span> Improved User Interface for Managing Locations</h4>
+<p>The user interface for managing OWB locations has been reworked to improve usability and support access to non-Oracle data sources using newly supported connectivity methods.</p>
+<p>These changes improve Oracle Warehouse Builder administrator and developer productivity in heterogeneous and Oracle-only environments.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08611" name="FEATURENO08611"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.12</span> Key Lookup Operator Enhancements</h4>
+<p>Extensive changes have been made to the key lookup operator:</p>
+<ul>
+<li>
+<p>More efficient use of screen real estate.</p>
+</li>
+<li>
+<p>Support for non-equality lookups.</p>
+</li>
+<li>
+<p>Dynamic lookups, where the lookup table may be modified during the mapping execution.</p>
+</li>
+</ul>
+<p>These changes make the lookup operator more powerful in many situations, including improving Type 2 slowly changing dimension support.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08606" name="FEATURENO08606"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.13</span> Mapping Debugger Enhancements</h4>
+<p>There are numerous enhancements to the OWB mapping editor, including:</p>
+<ul>
+<li>
+<p>Improved support for watch points and enabling and disabling individual break points.</p>
+</li>
+<li>
+<p>Support for user-defined type columns.</p>
+</li>
+<li>
+<p>Enhanced support for numerous existing operators, such as <code>VARRAY</code>, <code>EXPAND</code>, and <code>CONSTRUCT</code>.</p>
+</li>
+<li>
+<p>Support for key lookup and table function operators.</p>
+</li>
+<li>
+<p>Support for correlated joins.</p>
+</li>
+<li>
+<p>Improved cleanup of debugger-specific objects.</p>
+</li>
+</ul>
+<p>These enhancements improve productivity for ETL mapping developers, especially when working with complex mappings where the mapping debugger adds the most value.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08573" name="FEATURENO08573"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.14</span> New JDeveloper-Style User Interface</h4>
+<p>The Oracle Warehouse Builder Design Center user interface has been updated to use the Fusion Client Platform, the same core Integrated Development Environment (IDE) platform as Oracle JDeveloper and Oracle SQL Developer.</p>
+<p>The advantages of this user interface include:</p>
+<ul>
+<li>
+<p>More efficient and flexible use of screen real estate.</p>
+</li>
+<li>
+<p>Support for opening multiple editors of the same type, for example, editing several ETL mappings at once in different windows.</p>
+</li>
+<li>
+<p>More consistent behavior across different parts of the OWB user interface.</p>
+</li>
+</ul>
+<p>This change brings Oracle Warehouse Builder Design Center in line with other development tools from Oracle. Developers experience increased productivity in the Oracle Warehouse Builder environment, which now benefits from the usability research behind the Fusion Client Platform and consistency with other Oracle products.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBDOD" href="http://www.oracle.com/pls/db112/lookup?id=WBDOD"><span class="italic">Oracle Warehouse Builder Sources and Targets Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08608" name="FEATURENO08608"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.15</span> Operator References Included in Generated PL/SQL Code</h4>
+<p>PL/SQL code generated for OWB ETL mappings now includes detailed comments to help developers associate specific operators in a mapping with sections of the generated code.</p>
+<p>Developers can more easily troubleshoot issues with OWB-generated code that can only be detected when the code is deployed. This additional information enhances developer productivity.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08600" name="FEATURENO08600"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.16</span> Quick Mapper</h4>
+<p>In this release, Oracle Warehouse Builder (OWB) introduces a new spreadsheet-like dialog for connecting operators in a mapping. This functionality replaces the existing auto mapping dialog.</p>
+<p>This improvement saves developer time and reduces errors when working with operators with a large number of inputs or outputs.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08662" name="FEATURENO08662"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.17</span> Repository Browser Changes</h4>
+<p>The Repository Browser has been updated to support foldering, expose the new types of metadata associated with the release 11.2 feature set, and support OC4J 10.3.3.</p>
+<p>These changes improve Oracle Warehouse Builder manageability.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08665" name="FEATURENO08665"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.18</span> Simplified Oracle Warehouse Builder Repository Upgrades</h4>
+<p>The repository upgrade automatically upgrades an Oracle Warehouse Builder (OWB) repository to the current release with less user intervention.</p>
+<p>This feature simplifies the task of upgrading from one release to the next.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08609" name="FEATURENO08609"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.19</span> Support for Extracting Data From Tables Containing LONG Data Type</h4>
+<p>Oracle Warehouse Builder can now generate SQL*Plus code to extract data from database schemas supporting the deprecated <code>LONG</code> data type, such as occurs in PeopleSoft application data sources.</p>
+<p>Support for <code>LONG</code> data types used in PeopleSoft data enables OWB users to integrate more effectively with PeopleSoft data or any other data source that uses the <code>LONG</code> data type.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08610" name="FEATURENO08610"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.3.5.20</span> Support for Subqueries in Join Operator</h4>
+<p>The join operator in Oracle Warehouse Builder (OWB) now supports several new behaviors related to the use of subqueries in joins:</p>
+<ul>
+<li>
+<p>Specifying subqueries using <code>EXISTS</code>, <code>NOT EXISTS</code>, <code>IN</code>, and <code>NOT IN</code>.</p>
+</li>
+<li>
+<p>Specifying outer joins using the input role instead of the <code>+</code> (plus) sign.</p>
+</li>
+<li>
+<p>Generating ANSI SQL syntax for all join types instead of only outer joins.</p>
+</li>
+</ul>
+<p>More flexible handling for join operations improves developer productivity and makes possible more flexible data transformations.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02557" name="AREANO02557"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.4</span> Clustering</h2>
+<p>The following sections describe new clustering features for Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<a id="OBJECTIVENO00008" name="OBJECTIVENO00008"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.4.1</span> Oracle Real Application Clusters Ease-of-Use</h3>
+<p>This release of Oracle Real Application Clusters (Oracle RAC) provides many features to dramatically simplify installation and on-going management of a cluster and Oracle RAC database, making it easy for the novice to adopt clustering and Oracle RAC and reap the benefits of this technology.</p>
+<p>The following sections describe ease-of-use features for Oracle RAC.</p>
+<a id="FEATURENO08595" name="FEATURENO08595"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.1</span> Configuration Assistants Support New Oracle RAC Features</h4>
+<p>Database Configuration Assistant (DBCA), Database Upgrade Assistant (DBUA), and Net Configuration Assistant (NETCA) have been updated to support all of the new features of this release and provide a best practice implementation.</p>
+<p>Configuration Assistants automate the configuration of the environment ensuring the correct steps are taken. The assistants simplify the implementation of clusters and clustered databases.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RILIN" href="../../install.112/e17214/toc.htm"><span class="italic">Oracle Real Application Clusters Installation Guide for Linux and UNIX</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07158" name="FEATURENO07158"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.2</span> Enhanced Cluster Verification Utility</h4>
+<p>Additional functionality has been added to the Cluster Verification Utility (CVU) in regard to checking certain storage types and configurations. Furthermore, it gives more consideration to user-specific settings.</p>
+<p>These enhancements provide easier implementation and configuration of cluster environments and improved problem diagnostics in a cluster environment.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RILIN" href="../../install.112/e17214/toc.htm"><span class="italic">Oracle Real Application Clusters Installation Guide for Linux and UNIX</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07485" name="FEATURENO07485"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.3</span> Integration of Cluster Verification Utility and Oracle Universal Installer</h4>
+<p>The Cluster Verification Utility (CVU) is now fully integrated with the installer so that checks are done automatically for all nodes included in the installation.</p>
+<p>This integration improves Oracle RAC manageability and deployment by ensuring that any problems with cluster setup are detected and corrected prior to installing Oracle software.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWLIN" href="../../install.112/e17212/toc.htm"><span class="italic">Oracle Grid Infrastructure Installation Guide for Linux</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07130" name="FEATURENO07130"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.4</span> Cluster Time Service</h4>
+<p>The Cluster Time Service synchronizes the system time on all nodes in the cluster. A synchronized system time across the cluster is a prerequisite to install and successfully run an Oracle cluster.</p>
+<p>This feature simplifies management, maintenance, and support of an Oracle cluster and an Oracle RAC environment by providing an out-of-the-box time server. It also improves the reliability of Oracle RAC environments.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWADD" href="http://www.oracle.com/pls/db112/lookup?id=CWADD"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07285" name="FEATURENO07285"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.5</span> Oracle Cluster Registry (OCR) Enhancements</h4>
+<p>There have been improvements in this release in the way the Oracle Cluster Registry (OCR) is accessed. These improvements include:</p>
+<ul>
+<li>
+<p>Faster relocation of services on node failure.</p>
+</li>
+<li>
+<p>Support for up to 5 copies of the OCR for improved availability of the cluster.</p>
+</li>
+<li>
+<p>Storage of OCR in Automatic Storage Management (ASM).</p>
+</li>
+</ul>
+<p>The tools to manage the OCR have changed to support the new management options.</p>
+<p>These enhancements improve performance in Oracle Clusterware and Oracle Real Application Clusters environments and provide easier management of the cluster through consistent storage management automation</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWADD70700" href="http://www.oracle.com/pls/db112/lookup?id=CWADD70700"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO06961" name="FEATURENO06961"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.6</span> Grid Plug and Play (GPnP)</h4>
+<p>Grid Plug and Play (GPnP) eliminates per-node configuration data and the need for explicit add and delete nodes steps. This allows a system administrator to take a template system image and run it on a new node with no further configuration. This removes many manual operations, reduces the opportunity for errors, and encourages configurations that can be changed easily. Removal of the per-node configuration makes the nodes easier to replace, because they do not need to contain individually-managed state.</p>
+<p>Grid Plug and Play reduces the cost of installing, configuring, and managing database nodes by making their per-node state disposable. It allows nodes to be easily replaced with regenerated state.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWGEN" href="http://www.oracle.com/pls/db112/lookup?id=CWGEN"><span class="italic">Oracle Grid Infrastructure Installation Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07157" name="FEATURENO07157"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.7</span> Oracle Restart</h4>
+<p>Oracle Restart improves the availability of your single-instance Oracle database. Oracle Restart automatically restarts the database instance, the Automatic Storage Management (ASM) instance, the listener, and other components after a hardware or software failure or whenever your database host computer restarts. Server Control (SRVCTL) is the command line interface to manage Oracle processes that are managed by Oracle Restart on a standalone server.</p>
+<p>This feature provides improved reliability and automated management of a single-instance Oracle database and the management of any process or application running on the database server.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN12708" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN12708"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08598" name="FEATURENO08598"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.8</span> Policy-Based Cluster and Capacity Management</h4>
+<p>Oracle Clusterware allocates and reassigns capacity based on policies defined by you. This enables faster resource failover and dynamic capacity assignment using a policy-based management.</p>
+<p>Policy-Based Cluster and Capacity Management allows the efficient allocation of all kinds of applications in the cluster. Various applications can be hosted on a shared infrastructure being isolated regarding their resource consumption by policies and, therefore, behave as if they were deployed in single system environments.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWADD91100" href="http://www.oracle.com/pls/db112/lookup?id=CWADD91100"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08593" name="FEATURENO08593"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.9</span> Improved Clusterware Resource Modeling</h4>
+<p>In this release, there are now more options for managing all types of applications and creating dependencies among them using Oracle Clusterware.</p>
+<p>Improved Clusterware Resource Modeling enables a granular definition of dependencies among applications or processes to manage them as one entity.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWADD" href="http://www.oracle.com/pls/db112/lookup?id=CWADD"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08615" name="FEATURENO08615"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.10</span> Role-Separated Management</h4>
+<p>Role-separated management for Oracle Clusterware allows certain administrative tasks to be delegated to different people, representing different roles in the company. It is based on the idea of a clusterware administrator. The administrator may grant administrative tasks on a per resource basis. For example, if two databases are placed into the same cluster, the clusterware administrator can manage both databases in the cluster. But, the clusterware administrator may decide to grant different administrative privileges to each DBA responsible for one of those databases.</p>
+<p>Role-separated management allows multiple applications and databases to share the same cluster and hardware resources, but ensures that different administration groups do not interfere with each other.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWADD91105" href="http://www.oracle.com/pls/db112/lookup?id=CWADD91105"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08756" name="FEATURENO08756"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.11</span> Agent Development Framework</h4>
+<p>Oracle Clusterware provides an agent framework for managing all kinds of applications with Oracle Clusterware. Using the agent framework provides optimized application startup, checking, and stopping based on user-defined scripts.</p>
+<p>Making it easy to protect applications with Oracle Clusterware reduces costs allowing you to efficiently enable high availability for applications.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWADD92084" href="http://www.oracle.com/pls/db112/lookup?id=CWADD92084"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07289" name="FEATURENO07289"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.12</span> Zero Downtime Patching for Oracle Clusterware and Oracle RAC</h4>
+<p>The patching of Oracle Clusterware and Oracle Real Application Clusters can now be completed without taking the entire cluster down. Patchsets are now installed as out-of-place upgrades to the Oracle Grid infrastructure for a cluster software (Oracle Clusterware and Automatic Storage Management) and Oracle Database.</p>
+<p>Now you can reduce your unplanned downtime of clustered databases and applications running in a cluster.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07195" name="FEATURENO07195"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.13</span> Enterprise Manager-Based Clusterware Resource Management</h4>
+<p>New in this release is an Enterprise Manager graphical user interface (GUI) to manage various Oracle Clusterware resources with full lifecycle support. In addition to allowing the creation and configuration of resources within Oracle Clusterware, it also helps to monitor and manage resources once deployed in the cluster.</p>
+<p>Using Oracle Enterprise Manager as a GUI to monitor and manage various Oracle Clusterware resources eases the daily management in high availability environments.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWADD91304" href="http://www.oracle.com/pls/db112/lookup?id=CWADD91304"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07589" name="FEATURENO07589"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.14</span> Enterprise Manager Provisioning for Oracle Clusterware and Oracle Real Application Clusters</h4>
+<p>Enterprise Manager provisioning introduces procedures to easily scale up or scale down Oracle Clusterware and Oracle Real Application Clusters.</p>
+<p>Ease-of-implementation and management for a clustered database environment can be achieved through utilizing the Enterprise Manager provisioning framework.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWLIN" href="../../install.112/e17212/toc.htm"><span class="italic">Oracle Grid Infrastructure Installation Guide for Linux</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07279" name="FEATURENO07279"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.15</span> Enterprise Manager Support for Grid Plug and Play</h4>
+<p>Oracle Enterprise Manager, the graphical user interface (GUI) for managing Oracle RAC, provides management and monitoring for the Grid Plug and Play environment.</p>
+<p>Enterprise Manager is the standard GUI interface for Oracle Database. This integration provides an easy-to-use interface that customers are familiar with to manage Grid Plug and Play environments.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink TDPRC" href="http://www.oracle.com/pls/db112/lookup?id=TDPRC"><span class="italic">Oracle Database 2 Day + Real Application Clusters Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07261" name="FEATURENO07261"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.16</span> Enterprise Manager Support for Oracle Restart</h4>
+<p>Enterprise Manager provides support for Oracle Restart and the configuration with single-instance databases. This is a change in configuration, monitoring, and administration to enable Oracle Restart.</p>
+<p>Enterprise Manager provides a graphical user interface (GUI) interface to easily manage Oracle databases. This additional functionality enables you to restart your Oracle databases.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN12708" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN12708"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07280" name="FEATURENO07280"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.17</span> Configuration Assistant Support for Removing Oracle RAC Installations</h4>
+<p>Database Configuration Assistant (DBCA), Database Upgrade Assistant (DBUA), and Net Configuration Assistant (NETCA) have been updated to support the complete deinstallation and deconfiguration of Oracle RAC databases and listeners.</p>
+<p>This support improves the manageability of an Oracle RAC environment through automation of deinstallation and deconfiguration of Oracle RAC databases.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RILIN" href="../../install.112/e17214/toc.htm"><span class="italic">Oracle Real Application Clusters Installation Guide for Linux and UNIX</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07483" name="FEATURENO07483"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.18</span> Oracle Universal Installer Support for Removing Oracle RAC Installations</h4>
+<p>The installer can clean up a failed Oracle Clusterware installation or upgrade of an environment prior to reattempting the operation. This ensures that the reattempted operation is done over a clean environment, thereby eliminating the chances of errors related to environmental inconsistencies.</p>
+<p>Easily cleaning up an environment provides improved Oracle RAC manageability and deployment.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWLIN" href="../../install.112/e17212/toc.htm"><span class="italic">Oracle Grid Infrastructure Installation Guide for Linux</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><a id="sthref9" name="sthref9"></a>
+<h4 class="sect3"><span class="secnum">1.4.1.19</span> Improved Deinstallation Support With Oracle Universal Installer</h4>
+<p>The installation of Oracle Clusterware and Oracle RAC now have recovery points. If a failure occurs during installation, you can rollback to the closest recovery point and restart the installation once the problem has been corrected.</p>
+<p>Installation rollback and recovery make the installation and configuration of Oracle Clusterware and Oracle RAC easier. It reduces project time lines by making it easy to recover from installation failures.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RILIN" href="../../install.112/e17214/toc.htm"><span class="italic">Oracle Real Application Clusters Installation Guide for Linux and UNIX</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08797" name="FEATURENO08797"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.20</span> Downgrading Database Configured With DBControl</h4>
+<p>Scripts are included to support DBControl downgrade as part of database downgrade.</p>
+<p>If an upgrade is deemed unsuccessful, the system needs to be returned to the starting release. In order to maintain the reliability of management when modifying software releases, DBControl must be at the same release as the database that it is monitoring.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink UPGRD" href="http://www.oracle.com/pls/db112/lookup?id=UPGRD"><span class="italic">Oracle Database Upgrade Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07556" name="FEATURENO07556"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.21</span> Oracle Restart Integration with Oracle Universal Installer</h4>
+<p>Oracle Restart requires a separate installation from Oracle Database. This installation is the Oracle Grid infrastructure for a cluster installation for standalone servers which includes Oracle Restart and Oracle Automatic Storage Management (ASM). This allows separation of roles such that the system administrator can manage the infrastructure and the database administrator can manage the database.</p>
+<p>Oracle Universal Installer is the tool to install Oracle software. This improves the manageability of the Oracle environment on a standalone server allowing separation of roles and improved resiliency of the Oracle software.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07131" name="FEATURENO07131"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.22</span> Out-of-Place Oracle Clusterware Upgrade</h4>
+<p>A new version of Oracle Clusterware is now installed into a separate home from the current installation. This reduces the downtime required to upgrade a node in the cluster and facilitate the provisioning of clusters within an enterprise.</p>
+<p>The benefit is a reduction in planned outage time required for cluster upgrades which assists in meeting availability service levels. This also makes it easier to provide a standard installation across the enterprise.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWLIN" href="../../install.112/e17212/toc.htm"><span class="italic">Oracle Grid Infrastructure Installation Guide for Linux</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07558" name="FEATURENO07558"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.23</span> OUI Support for Out-of-Place Oracle Clusterware Upgrade</h4>
+<p>You can now perform out-of-place upgrade of Oracle Clusterware software. The new version can be installed in a separate directory and pointed to during deployment.</p>
+<p>Out-of-place upgrades provide easier Oracle RAC and grid deployment and manageability, as well as better testing for controlled application migration.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWLIN" href="../../install.112/e17212/toc.htm"><span class="italic">Oracle Grid Infrastructure Installation Guide for Linux</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07588" name="FEATURENO07588"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.24</span> Server Control (SRVCTL) Enhancements</h4>
+<p>The server control (SRVCTL) commands have been enhanced to manage the configuration in a standalone server with Oracle Restart as well as the new style of cluster management (Policy-Based Cluster and Capacity Management).</p>
+<p>This feature provides easier management of Oracle Database through a consistent interface which can be used from the console or scripted.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN12708" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN12708"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08667" name="FEATURENO08667"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.25</span> Server Control (SRVCTL) Enhancements to Support Grid Plug and Play</h4>
+<p>The command-line interface (CLI) for Oracle Clusterware and Oracle Real Application Clusters has been updated to support the new features of this release.</p>
+<p>The CLI provides the ability to manage the cluster using a command line from a single point in the cluster and allows you to manage the cluster as a single entity. This reduces the management complexity for clusters and clustered databases. All changes to the cluster must be reflected in the management tool.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RACAD005" href="http://www.oracle.com/pls/db112/lookup?id=RACAD005"><span class="italic">Oracle Real Application Clusters Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08757" name="FEATURENO08757"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.26</span> SRVCTL Support for Single-Instance Database in a Cluster</h4>
+<p>Using SRVCTL, you can register a single-instance database to be managed by Oracle Clusterware. Once registered, Oracle Clusterware starts, stops, monitors, and restarts the database instance.</p>
+<p>This feature provides an improved management interface which makes it easy to provide higher availability for single-instance databases that are running on a server that is part of a cluster.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08589" name="FEATURENO08589"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.27</span> Universal Connection Pool (UCP) Integration with Oracle Data Guard</h4>
+<p>In this release, Java applications that use the Oracle Universal Connection Pool (UCP) for Java now have fast connection failover when the primary site fails. When Data Guard fails over or switches over to the standby database site, the connection pool cleans up connections to the primary site, terminates active transactions, and creates connections to the standby database.</p>
+<p>This feature provides increased availability for Java applications using UCP with Oracle RAC and Oracle Data Guard. Applications can easily mask failures to the end user.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08590" name="FEATURENO08590"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.28</span> UCP Integration With Oracle Real Application Clusters</h4>
+<p>Universal Connection Pool (UCP) is the new Java connection pool. It has many features that make it easy for Java applications to manage connections to an Oracle Real Application Clusters database such as Web Session Affinity, XA Affinity, Runtime Connection Load Balancing, and Fast Connection Failover.</p>
+<p>This feature provides a robust connection pool for Java applications with improved throughput and fast failover in an Oracle Real Application Clusters environment.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08802" name="FEATURENO08802"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.29</span> Universal Connection Pool (UCP) for JDBC</h4>
+<p>Universal Connection Pool for JDBC supersedes Implicit Connection Cache and provides the following functions:</p>
+<ul>
+<li>
+<p>Connection labeling, connection harvesting, logging, and statistics</p>
+</li>
+<li>
+<p>Performance and stabilization enhancements</p>
+</li>
+<li>
+<p>Improved diagnostics and statistics or metrics</p>
+</li>
+</ul>
+<p>UCP for JDBC provides advanced connection pooling functions, improved performance, and better diagnosability of connection issues.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink JJUCP" href="http://www.oracle.com/pls/db112/lookup?id=JJUCP"><span class="italic">Oracle Universal Connection Pool for JDBC Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08586" name="FEATURENO08586"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.4.1.30</span> Java API for Oracle RAC FAN High Availability Events</h4>
+<p>A new Java API allows Oracle RAC customers who are not using an Oracle connection pool to receive Fast Application Notification (FAN) events (for example, <code>DOWN</code> and <code>UP</code>) and then process these events, clean up or add connections when an instance, service or node leaves or joins the cluster.</p>
+<p>Applications using this API can be notified quickly when a failure occurs in the cluster.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RACAD" href="http://www.oracle.com/pls/db112/lookup?id=RACAD"><span class="italic">Oracle Real Application Clusters Administration and Deployment Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02559" name="AREANO02559"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.5</span> Database Overall</h2>
+<p>The following sections describe new database features for Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<div class="sect2"><a id="sthref10" name="sthref10"></a>
+<h3 class="sect2"><span class="secnum">1.5.1</span> General</h3>
+<p>The following sections provide new feature information for Flashback Data Archive and instance caging.</p>
+<div class="sect3"><a id="sthref11" name="sthref11"></a>
+<h4 class="sect3"><span class="secnum">1.5.1.1</span> Flashback Data Archive Support for DDLs</h4>
+<p>Oracle Database 11<span class="italic">g</span> Release 2 (11.2) users can now use most DDL commands on tables that are being tracked with Flashback Data Archive. This includes:</p>
+<ul>
+<li>
+<p>Add, Drop, Rename, Modify Column</p>
+</li>
+<li>
+<p>Drop, Truncate Partition</p>
+</li>
+<li>
+<p>Rename, Truncate Table</p>
+</li>
+<li>
+<p>Add, Drop, Rename, Modify Constraint</p>
+</li>
+</ul>
+<p>For more complex DDL (for example, upgrades and split table), the Disassociate and Associate PL/SQL procedures can be used to temporarily disable Total Recall on specified tables. The Associate procedure enforces schema integrity after association; the base table and history table schemas must be the same.</p>
+<p>This feature makes it much easier to use the Total Recall option with complex applications that require the ability to modify the schema.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><a id="sthref12" name="sthref12"></a>
+<h4 class="sect3"><span class="secnum">1.5.1.2</span> Instance Caging</h4>
+<p>Instance Caging allows the DBA to limit the CPU usage of an Oracle instance by setting the <code>CPU_COUNT</code> initialization parameter and enabling CPU resource management.</p>
+<p>With Instance Caging, users can partition CPU resources among multiple instances running on a server to ensure predictable performance.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN13332" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN13332"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref13" name="sthref13"></a>
+<h3 class="sect2"><span class="secnum">1.5.2</span> Improvements to Oracle Scheduler</h3>
+<p>The following sections detail improvements made to Oracle Scheduler.</p>
+<div class="sect3"><a id="sthref14" name="sthref14"></a>
+<h4 class="sect3"><span class="secnum">1.5.2.1</span> E-mail Notification</h4>
+<p>Oracle Database 11<span class="italic">g</span> Release 2 (11.2) users can now get e-mail notifications on any job activity.</p>
+<p>This feature improves efficiency by enabling users to be notified of any job activity that is of interest to them without having to constantly monitor the job.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><a id="sthref15" name="sthref15"></a>
+<h4 class="sect3"><span class="secnum">1.5.2.2</span> File Watcher</h4>
+<p>File watcher enables jobs to be triggered when a file arrives on a given machine.</p>
+<p>This feature improves efficiency and ease-of-use. Jobs with file dependencies are automatically triggered when the specified file is received instead of constantly monitoring for the file.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><a id="sthref16" name="sthref16"></a>
+<h4 class="sect3"><span class="secnum">1.5.2.3</span> Multiple Destination Jobs</h4>
+<p>This feature enables users to specify multiple destinations for a job.</p>
+<p>This is a key feature for Enterprise Manager scheduling. It improves efficiency and ease-of-use by enabling a job to be run on multiple nodes while managing it as one entity from a central location.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><a id="sthref17" name="sthref17"></a>
+<h4 class="sect3"><span class="secnum">1.5.2.4</span> Remote Database Jobs</h4>
+<p>This feature enables users to run PL/SQL blocks or stored procedures that reside in a remote database as a job.</p>
+<p>This is a key feature for Enterprise Manager scheduling. It improves efficiency and ease-of-use by enabling job scheduling in a distributed environment to be managed centrally.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref18" name="sthref18"></a>
+<h3 class="sect2"><span class="secnum">1.5.3</span> Improvements to Utilities</h3>
+<p>The following features provide improvements to the various utilities in Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<div class="sect3"><a id="sthref19" name="sthref19"></a>
+<h4 class="sect3"><span class="secnum">1.5.3.1</span> Data Pump Legacy Mode</h4>
+<p>Data Pump Legacy Mode provides backward compatibility for scripts and parameter files used for original Export and Import scripts.</p>
+<p>This feature enables users to continue using original Export and Import scripts with Data Pump Export and Import. Development time is reduced as new scripts do not have to be created.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SUTIL959" href="http://www.oracle.com/pls/db112/lookup?id=SUTIL959"><span class="italic">Oracle Database Utilities</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref20" name="sthref20"></a>
+<h3 class="sect2"><span class="secnum">1.5.4</span> IPv6 Support</h3>
+<p>The following sections describe improvements in IPv6 networking support.</p>
+<div class="sect3"><a id="sthref21" name="sthref21"></a>
+<h4 class="sect3"><span class="secnum">1.5.4.1</span> Complete IPv6 Support for JDBC Thin Clients</h4>
+<p>JDBC supports Internet Protocol Version 6 (IPv6) style addresses in the JDBC URL and machine names that resolve to IPv6 addresses. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">2001:0db8:0000:0000:0000:0000:0000:0001
+1080:0:0:0:8:800:200C:417A
+</pre>
+<p>A JDBC URL would look like the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)
+(HOST=[2001:0db8:0000:0000:0000:0000:0000:0001]) (PORT=5521))
+(CONNECT_DATA=(SERVICE_NAME=boston.us.example.com)))
+</pre>
+<p>This feature provides Java interoperability with IPv6.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><a id="sthref22" name="sthref22"></a>
+<h4 class="sect3"><span class="secnum">1.5.4.2</span> Complete IPv6 Support for JVM and Java Debuggers</h4>
+<p>IPv6 now provides support for the database resident Java virtual machine.</p>
+<p>This allows Java applications running in the database to connect to and accept connections from both IPv4 and IPv6 hosts.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink JJDEV" href="http://www.oracle.com/pls/db112/lookup?id=JJDEV"><span class="italic">Oracle Database Java Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02572" name="AREANO02572"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.6</span> Diagnosability</h2>
+<p>The following sections describe diagnosability features for Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<a id="OBJECTIVENO00014" name="OBJECTIVENO00014"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.6.1</span> Support Workbench</h3>
+<p>Enterprise Manager Support Workbench is a GUI workbench for customers and support to ease diagnosis and resolution of database errors.</p>
+<a id="FEATURENO08672" name="FEATURENO08672"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.6.1.1</span> Enterprise Manager Support Workbench for ASM</h4>
+<p>Enterprise Manager Support Workbench (Support Workbench) has been enhanced to help diagnose and package incidents to Oracle support for Automatic Storage Management (ASM) databases.</p>
+<p>This feature extends the benefit of Enterprise Manager Support Workbench to ASM by helping customers package all necessary diagnostic data for incidents.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG28500" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG28500"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02581" name="AREANO02581"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.7</span> Information Integration</h2>
+<p>The following sections describe new information integration features for Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<a id="OBJECTIVENO00015" name="OBJECTIVENO00015"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.7.1</span> Oracle Database XStream</h3>
+<p>The following section describes the new Oracle Database XStream feature.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref23" name="sthref23"></a>
+<h4 class="sect3"><span class="secnum">1.7.1.1</span> XStream</h4>
+<p>XStream provides application programming interfaces (APIs) that enable client applications to receive data changes from an Oracle database and to send data changes to an Oracle database. These data changes can be shared between Oracle databases and other systems. The other systems include non-Oracle databases, non-RDBMS Oracle products, file systems, third party software applications, and so on. The client application is designed by the user for specific purposes and use cases.</p>
+<p>XStream consists of two components: XStream Out and XStream In. XStream Out provides APIs that enable you to share data changes made to an Oracle database with other systems. XStream In provides APIs that enable you to share data changes made to other systems with Oracle databases.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink XSTRM" href="http://www.oracle.com/pls/db112/lookup?id=XSTRM"><span class="italic">Oracle Database XStream Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02561" name="AREANO02561"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.8</span> Performance</h2>
+<p>The following sections describe improvements in performance of the database and functionality of performance-related database features.</p>
+<a id="OBJECTIVENO00016" name="OBJECTIVENO00016"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.8.1</span> General Server Performance</h3>
+<p>The following sections describe general server performance enhancements.</p>
+<a id="FEATURENO09049" name="FEATURENO09049"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.8.1.1</span> Database Smart Flash Cache</h4>
+<p>New in Oracle Database 11<span class="italic">g</span> Release 2 (11.2), the Database Smart Flash Cache feature is a transparent extension of the database buffer cache using solid state device (SSD) technology. The SSD acts as a Level 2 cache to the (Level 1) SGA.</p>
+<p>Database Smart Flash Cache can greatly improve the performance of Oracle databases by reducing the amount of disk I/O at a much lower cost than adding an equivalent amount of RAM.</p>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08960" name="FEATURENO08960"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.8.1.2</span> Stored Outlines Migration to SQL Plan Management</h4>
+<p>Stored outlines can be migrated for future and enhanced usage with SQL Plan Management (SPM).</p>
+<p>Stored outlines lack the flexibility and adaptability of SQL Plan Management. By providing a migration path, old applications using stored outlines can be transparently migrated and can instantaneously take advantage of the enhanced functionality of SPM.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink PFGRF3616" href="http://www.oracle.com/pls/db112/lookup?id=PFGRF3616"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08796" name="FEATURENO08796"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.8.1.3</span> Client Result Cache Using Table Annotations Support</h4>
+<p>Table annotations support provides the ability to annotate a table as being cache worthy, which enables applications to leverage client and server result caching through deployment time knobs as opposed to making application changes. In addition, this feature provides automatic client cache invalidation.</p>
+<p>This feature allows non-intrusive application performance acceleration using client and server result caches.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink LNOCI10103" href="http://www.oracle.com/pls/db112/lookup?id=LNOCI10103"><span class="italic">Oracle Call Interface Programmer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08747" name="FEATURENO08747"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.8.1.4</span> Support 4 KB Sector Disk Drives</h4>
+<p>Today, disk drives have 512 byte sectors. Disk drive manufacturers are moving to 4 KB sector drives because it allows them to offer higher capacity with lower overhead. If customers use 4 KB sector drives as 512 byte sector drives, then there is likely to be a performance penalty (because they have to run in 512 byte emulation mode). This feature allows Oracle to work with 4 KB (and 512 byte) sector drives without a performance penalty. There is also the capability in Automatic Storage Management (ASM) to allow migration of a disk group from 512 byte sector drives to 4 KB sector drives.</p>
+<p>This feature allows customers to take full advantage of new generation, higher capacity disk drives.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SQLRF52268" href="http://www.oracle.com/pls/db112/lookup?id=SQLRF52268"><span class="italic">Oracle Database SQL Language Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02565" name="AREANO02565"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.9</span> Security</h2>
+<p>The new features discussed in the following section cover areas that include encryption and auditing. Significant new encryption key management functionality has been introduced in Oracle Database 11<span class="italic">g</span> Release 2 to enable complete integration with Hardware Security Modules and increased performance for Transparent Data Encryption. Audit Management has been simplified through the introduction of a new package for managing audit data on the Oracle database.</p>
+<a id="OBJECTIVENO00017" name="OBJECTIVENO00017"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.9.1</span> Audit Data Management</h3>
+<p>Simplify the management of audit data created by the Oracle Database to facilitate compliance with various privacy and compliance mandates such as SOX, HIPAA, and PCI.</p>
+<a id="FEATURENO08971" name="FEATURENO08971"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.9.1.1</span> Audit Trail Cleanup</h4>
+<p>Audit Trail Cleanup provides the ability to manage the Oracle database audit trail by:</p>
+<ul>
+<li>
+<p>Automating the periodic deletion of audit records from the database tables and operating system files after they have been securely backed up or are no longer needed.</p>
+</li>
+<li>
+<p>Controlling the size and age of the audit trail written to operating system files before a new operating system audit trail file is created.</p>
+</li>
+<li>
+<p>Moving the database audit trail tables out of the <code>SYSTEM</code> tablespace to a different tablespace.</p>
+</li>
+</ul>
+<p>Audit Trail Cleanup reduces the time and cost required to manage the Oracle database audit content. It enables you to dedicate an optimized tablespace for audit records and move the audit tables out of the <code>SYSTEM</code> tablespace for improved performance. In addition, it provides automated deletion of audit records from the database tables and operating system files.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00018" name="OBJECTIVENO00018"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.9.2</span> Encryption Key Management</h3>
+<p>Encryption key management provides the ability to change the master key associated with transparent data encryption (TDE) encrypted tablespaces. The tablespace master key is used to encrypt the encryption keys associated with individual tablespaces. This is commonly referred to as a 2-tier key architecture. Prior to Oracle Database 11<span class="italic">g</span> Release 2 (11.2), changing the master key was only possible when using TDE column encryption.</p>
+<a id="FEATURENO08788" name="FEATURENO08788"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.9.2.1</span> Tablespace Master Key Rekey</h4>
+<p>In Oracle Database 11<span class="italic">g</span> Release 2 (11.2), Oracle Advanced Security capability allows customers to change the master key used to protect the encryption keys used to encrypt Oracle tablespaces.</p>
+<p>Industry initiatives, such as the Payment Card Industry Data Security Standard (PCI DSS), mandate periodic rotation of encryption keys associated with credit card data. This support is now available in this release.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ASOAG9556" href="http://www.oracle.com/pls/db112/lookup?id=ASOAG9556"><span class="italic">Oracle Database Advanced Security Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02567" name="AREANO02567"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.10</span> Server Manageability</h2>
+<p>The following sections describe server manageability features for Oracle Database 11<span class="italic">g</span> Release 2 (11.2).</p>
+<a id="OBJECTIVENO00019" name="OBJECTIVENO00019"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.10.1</span> Automatic Storage Management for All Data</h3>
+<p>These features extend the capabilities of Automatic Storage Management (ASM) to support all types of data including database files, clusterware files, and file system data such as Oracle homes and binaries.</p>
+<p>The following sections describe ASM features.</p>
+<a id="FEATURENO07050" name="FEATURENO07050"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.1</span> ASM Cluster File System (ACFS)</h4>
+<p>The ASM Cluster File System (ACFS) extends Automatic Storage Management (ASM) by providing a robust, modern, general purpose file system for files beyond the Oracle database files. ACFS provides support for files such as Oracle binaries, report files, trace files, alert logs, and other application data files. With the addition of the Oracle ASM Cluster File System, ASM becomes a complete storage management solution for both Oracle database and non-database files.</p>
+<p>ACFS supports large files with 64-bit file and file system data structure sizes leading to exabyte-capable file and file system capacities. ACFS scales to hundreds of nodes and uses extent-based storage allocation for improved performance. A log-based metadata transaction engine is used for file system integrity and fast recovery. The ACFS on-disk structure supports endian neutral metadata. ACFS file systems can be exported to remote clients through industry standard protocols such as NFS and CIFS.</p>
+<p>Oracle ASM Cluster File System (ACFS) complements and leverages Automatic Storage Management (ASM) and provides a general purpose journaling file system for storing and managing non-Oracle database files. This eliminates the need for expensive third-party cluster file system solutions while streamlining, automating and simplifying all file type management in a single node as well as Oracle RAC and Oracle Grid infrastructure for a cluster computing environments.</p>
+<p>ACFS supports dynamic file system expansion and contraction without any downtime. ACFS is highly available leveraging the ASM mirroring and striping features in addition to hardware Redundant Array of Inexpensive Disks (RAID) functionality.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG31000" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG31000"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07048" name="FEATURENO07048"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.2</span> ASM Dynamic Volume Manager (DVM)</h4>
+<p>The ASM Dynamic Volume Manager (DVM) is a kernel-loadable device driver that provides a standard device driver interface to clients (for example, ACFS). File systems or other processes can do I/O to this device driver as they would to any other disk device driver on the system. DVM is the primary I/O interface for ACFS to perform I/O and build a file system leveraging ASM as a volume manager. DVM is loaded on ASM start up. The device driver is cluster-aware and communicates with ASM for extent map information, extent rebalancing, and I/O failures.</p>
+<p>The ASM Dynamic Volume Manager (DVM) provides a standard I/O interface allowing general purpose file systems to leverage the full functionality of ASM as a volume manager. Oracle database files as well as non-Oracle database files, for example Oracle binaries, can now reside on ACFS eliminating the need for third-party file systems or volume managers to host general purpose files.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG32000" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG32000"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08669" name="FEATURENO08669"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.3</span> ASM FS Snapshot</h4>
+<p>ASM FS Snapshot is a point-in-time copy of a file system and can provide up to 64 snapshot images. ASM FS Snapshot performs fast creation of persistent ASM FS images at a specific point-in-time with low overhead leveraging the Copy on Write technology.</p>
+<p>Read-only ASM FS Snapshots can be generated on an interval basis. They may reside in existing ASM FS storage or in an additional storage device and persist following a system restart.</p>
+<p>Even as the file system changes, the snapshot does not, giving you the ability to view the file system as it was at the time the snapshot was created. Initially, snapshots are read-only, which preserves their point-in-time capture. The following are the benefits of ASM FS Snapshots:</p>
+<ul>
+<li>
+<p>ASM FS Snapshots can be used as a source for backup. The original file system can continue to change but the static nature of the snapshot makes them ideal as a source for backup without keeping the original file system offline.</p>
+</li>
+<li>
+<p>ASM FS Snapshots can be used as a means for you to recover accidentally deleted or modified files.</p>
+</li>
+<li>
+<p>ASM FS Snapshots can be used as a source for data mining or report applications which need to work on a static, point-in-time data set.</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG33000" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG33000"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO06949" name="FEATURENO06949"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.4</span> Oracle Cluster Registry (OCR) and Voting Disk on ASM</h4>
+<p>Automatic Storage Management (ASM) disks are used to store the Oracle Cluster Registry (OCR) and the voting disks. ASM Partnership and Status Table (PST) is replicated on multiple disks and is extended to store the OCR. Consequently, the OCR tolerates loss of the same number of disks as the underlying disk group. OCR is relocated in response to disk failures.</p>
+<p>ASM reserves a number of blocks at a fixed location of every ASM disk for storing the voting disk. Should the disk holding the voting disk fail, ASM selects another disk to store this data.</p>
+<p>Storing the OCR and the voting disk on ASM eliminates the need to use expensive third-party cluster volume managers or deal with the complexity of managing disk partitions for OCR and voting disks in Oracle RAC configurations.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink CWLIN" href="../../install.112/e17212/toc.htm"><span class="italic">Oracle Grid Infrastructure Installation Guide for Linux</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO06963" name="FEATURENO06963"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.5</span> ASM Intelligent Data Placement</h4>
+<p>Disk drives have higher transfer rates and bytes per track on the outer tracks. This makes it preferable to keep the hotter data closer to the edge of the disk; that is, the lower numbered blocks. This feature enables ASM to identify higher performance disk regions. Most frequently accessed ASM files can be marked to be moved into the hot region and take advantage of higher I/O performance (for example, hot tablespaces and indices) and able to better meet the application I/O demand. This feature is only applicable when whole physical disks are presented to ASM versus local unit numbers (LUN).</p>
+<p>Most frequently accessed Oracle database files in ASM disk groups (ASM files) can be placed in hot disk regions to deliver higher bandwidth and reduce seek latency to meet the application I/O performance requirements.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG13790" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG13790"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08693" name="FEATURENO08693"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.6</span> ASM Storage Management Configuration Assistant</h4>
+<p>ASM Storage Management Configuration Assistant was previously known as Enterprise Manager Integration with ASM Optimal Disk Placement.</p>
+<p>This release now allows the configuration, monitoring, and management of Optimal Disk Placement with Enterprise Manager which is the graphical user interface (GUI) for management.</p>
+<p>This GUI manages ASM which makes storage management easier in an Oracle environment.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG40000" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG40000"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08620" name="FEATURENO08620"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.7</span> Automatic Storage Management (ASM) File Access Control</h4>
+<p>Automatic Storage Management (ASM) on UNIX platforms implements access control on its files to isolate different database instances from each other and prevent unauthorized access. ASM implements new SQL statements to grant, modify, and deny file permissions. The new security model and syntax is coherent with those already implemented for the objects represented in Oracle Database.</p>
+<p>Multiple database instances can store ASM files in the same disk group and, therefore, are able to consolidate multiple databases with security. This prevents unauthorized database instances from accessing or overwriting each other's files.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG02660" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG02660"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08753" name="FEATURENO08753"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.8</span> ASMCMD Command Extensions</h4>
+<p>The ASMCMD tool is extended to include management of ASM disks, disk groups, and ASM instance in addition to managing ASM files. This is a comprehensive command-line interface that parallels the SQL*Plus command functionality and provides an easy user interface for the system and storage administrators to manage ASM.</p>
+<p>The ASMCMD extensions provide the system and storage administrators with a comprehensive and user friendly command-line interface to manage ASM from all perspectives.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG01640" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG01640"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07386" name="FEATURENO07386"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.9</span> Enterprise Manager Support for ASM Cluster File System (ACFS)</h4>
+<p>Oracle Enterprise Manager provides a graphical user interface (GUI) to manage the ASM Dynamic Volume Manager and ASM cluster file system (ACFS) as part of the Automatic Storage Management (ASM) solution.</p>
+<p>Enterprise Manager provides a graphical user interface which makes is easier to manage the environment whether it is a standalone server or a cluster deployment of ASM. The centralized console provides a consistent interface for managing volumes, database files, and file systems as well as the Oracle Database.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG40000" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG40000"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08694" name="FEATURENO08694"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.1.10</span> Enterprise Manager Integration for ASM File Access Control</h4>
+<p>In this release, Oracle provides a graphical user interface (GUI) for managing File Access Control for Automatic Storage Management (ASM) files.</p>
+<p>This GUI simplifies management of ASM for the DBA, system administrator, or storage administrator.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OSTMG2000" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG2000"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00020" name="OBJECTIVENO00020"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.10.2</span> Database Management</h3>
+<p>The following sections describe general database management features to ease database management.</p>
+<a id="FEATURENO08754" name="FEATURENO08754"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.1</span> EMCA Supports New Oracle RAC Configuration for Enterprise Manager</h4>
+<p>Enterprise Manager Configuration Assistant (EMCA) has been updated to support the new configuration required for Enterprise Manager to support new features of the release.</p>
+<p>Configuration assistants automate the configuration of the environment ensuring the correct steps are taken. The assistants simplify the configuration of Enterprise Manager in clusters and clustered database settings.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink OEMCP" href="http://www.oracle.com/pls/db112/lookup?id=OEMCP"><span class="italic">Oracle Enterprise Manager Configuration Plug-In chapter</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07591" name="FEATURENO07591"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.2</span> Patch Application with DBControl</h4>
+<p>Enterprise Manager DBControl manages the application of patches to a single-instance database.</p>
+<p>Using Enterprise Manager to apply patches simplifies software maintenance.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink TDPRC" href="http://www.oracle.com/pls/db112/lookup?id=TDPRC"><span class="italic">Oracle Database 2 Day + Real Application Clusters Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08699" name="FEATURENO08699"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.3</span> Automatic Patching of Time Stamp With Time Zone Data</h4>
+<p>Time stamp with time zone data could become stale in the database tables when the time zone version file is updated. Today, users have to manually fix the affected data. This feature updates the system and user data transparently with minimal downtime and provides automatic and transparent patching of time stamp with time zone data whenever a time zone file is updated.</p>
+<p>Also, when a server time zone version is patched, all of the clients that communicate with the server need to be patched as well. With this feature, OCI, JDBC, Pro*C, and SQL*Plus clients can now continue to work with the server without having to update their client-side files.</p>
+<p>This new feature provides automatic and transparent patching of time stamp with time zone data whenever a time zone file is updated.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink NLSPG259" href="http://www.oracle.com/pls/db112/lookup?id=NLSPG259"><span class="italic">Oracle Database Globalization Support Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08697" name="FEATURENO08697"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.4</span> Prevent Data Loss for Time Zone with Local Time Zone Data Type</h4>
+<p>This feature makes <code>TIMESTAMP WITH TIME ZONE</code> data type immune to Daylight Saving Time (DST) changes and reduces the overhead of patching time zone data file and upgrading data on disk.</p>
+<p>The benefit of this feature is the elimination of the processing cost and the complexity of maintaining <code>TIMESTAMP WITH TIME ZONE</code> data type whenever there are new changes to DST transition rule and time zones.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink LNOCI16761" href="http://www.oracle.com/pls/db112/lookup?id=LNOCI16761"><span class="italic">Oracle Call Interface Programmer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08722" name="FEATURENO08722"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.5</span> Segment Creation on Demand</h4>
+<p>The initial segment creation for nonpartitioned tables and indexes can be delayed until data is first inserted into an object.</p>
+<p>Several prepackaged applications are delivered with large schemas containing many tables and indexes. Depending on the module usage, only a subset of these objects are really being used. With delayed segment creation, empty database objects do not consume any space, reducing the installation footprint and speeding up the installation.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SQLRF30035" href="http://www.oracle.com/pls/db112/lookup?id=SQLRF30035"><span class="italic">Oracle Database SQL Language Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08879" name="FEATURENO08879"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.6</span> Zero-Size Unusable Indexes and Index Partitions</h4>
+<p>Unusable indexes and index partitions no longer consume space in the database because they become segmentless.</p>
+<p>Unusable indexes and index segments are not usable for any data access. Any space allocated by this unusable (dead) object is freed as soon as an object is marked unusable.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADMIN13280" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN13280"><span class="italic">Oracle Database Administrator's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08689" name="FEATURENO08689"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.7</span> Metadata SXML Comparison Tool</h4>
+<p>The Metadata API has been enhanced to provide a cross database comparison tool to compare object metadata of the same type from different databases. This comparison depends on an alternate XML representation, called SXML. Full XML is typically complex and opaque. In contrast, SXML is somewhat simplified and more closely maps to the SQL creation DDL. These SXML documents provide the building blocks for the new comparison tool in which two SXML documents of the same type can be compared and a new SXML document is produced which describes their differences.</p>
+<p>This feature enables users to compare objects between databases to identify drift (that is, metadata changes over time) in objects of the same type.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ARPLS354" href="http://www.oracle.com/pls/db112/lookup?id=ARPLS354"><span class="italic">Oracle Database PL/SQL Packages and Types Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08978" name="FEATURENO08978"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.8</span> Compare Period Report</h4>
+<p>A Replay Compare Period Report performs a high-level comparison of workload replay to its capture or to another replay of the same capture. The Replay Compare Period report contains a summary of the most important changes between the two runs in terms of performance, errors and data divergence. This makes it easier for Database Replay users to understand and test the impact of system changes.</p>
+<p>Replay Compare Period Report simplifies understanding and assessment of the impact of system change in testing by providing summarized information on how the replay performed versus capture or other replays in terms of performance, errors and divergence.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RATUG289" href="http://www.oracle.com/pls/db112/lookup?id=RATUG289"><span class="italic">Oracle Database Real Application Testing User's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08975" name="FEATURENO08975"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.9</span> Compare SQL Tuning Sets</h4>
+<p>Compare SQL Tuning Set feature of the SQL Performance Analyzer allows:</p>
+<ul>
+<li>
+<p>Building a trial from SQL Tuning Set (STS).</p>
+</li>
+<li>
+<p>Comparison of two such trials built from two different STSs. A detailed comparison report including any new or missing SQL statements in one and not in another trial and any plan changes noticed in the compared trials is compiled.</p>
+</li>
+</ul>
+<p>Compare SQL Tuning Sets makes it possible for Database Replay users to perform SQL-centric analysis through the SQL Performance Analyzer report. The two STSs are captured as follows:</p>
+<ul>
+<li>
+<p>One during workload capture on production.</p>
+</li>
+<li>
+<p>And, the other during replay on the test system.</p>
+</li>
+</ul>
+<p>Then, the two STSs are used to generate the SPA report.</p>
+<p>Compare STS feature can also be used in non-Database Replay scenarios where customers already have existing test scripts and can capture the SQL into two STSs; one for before system change and one for after.</p>
+<p>Compare SQL Tuning Sets feature simplifies assessment of system changes by providing detailed SQL-centric analysis when using Database Replay or other load testing mechanisms.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RATUG305" href="http://www.oracle.com/pls/db112/lookup?id=RATUG305"><span class="italic">Oracle Database Real Application Testing User's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08977" name="FEATURENO08977"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.10</span> Enable Sampling for Active Data Guard</h4>
+<p>Active Session History (ASH) is now available on standby systems.</p>
+<p>Having ASH data available on standby systems for Data Guard environments allows customers to troubleshoot performance problems specific to their standby environments.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink HAOVW" href="http://www.oracle.com/pls/db112/lookup?id=HAOVW"><span class="italic">Oracle Database High Availability Overview</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08973" name="FEATURENO08973"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.11</span> Exadata Simulation</h4>
+<p>For a given workload, you can now simulate the possible benefits in I/O interconnect throughput that can be obtained from migration to Exadata architecture. SQL Performance Analyzer, a feature of Oracle Real Application Testing, allows simulation to be performed on a non-Exadata installation without needing to provision the Exadata system. The SQL Performance Analyzer Exadata simulation feature can be used to identify workloads that are good candidates for Exadata migration.</p>
+<p>This feature simplifies simulation and testing of workloads for Exadata migration system change without requiring provisioning of Exadata hardware.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RATUG293" href="http://www.oracle.com/pls/db112/lookup?id=RATUG293"><span class="italic">Oracle Database Real Application Testing User's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08976" name="FEATURENO08976"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.12</span> Global Oracle RAC ASH Report + ADDM Backwards Compatibility</h4>
+<p>The Active Session History (ASH) report now includes cluster-wide information, greatly enhancing it's utility in identifying and troubleshooting performance issues that span nodes for a cluster database.</p>
+<p>Automatic Database Diagnostic Monitor (ADDM) has been enhanced to be backward compatible allowing it to analyze archived data, or data preserved through database upgrades, allowing a customer to do performance comparisons over a longer time frame.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink PFGRF02606" href="http://www.oracle.com/pls/db112/lookup?id=PFGRF02606"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08979" name="FEATURENO08979"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.13</span> Oracle MTS and Streams Support</h4>
+<p>Database Replay supports capture and replay of workloads on shared server and Oracle Streams architecture.</p>
+<p>Customers using shared server and Oracle Streams architecture can benefit from Database Replay testing and have the ability to adopt technology faster.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RATUG115" href="http://www.oracle.com/pls/db112/lookup?id=RATUG115"><span class="italic">Oracle Database Real Application Testing User's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08974" name="FEATURENO08974"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.14</span> Parallel Query + Alt Plan Recording, Export STS Enhancements</h4>
+<p>This release includes the following enhancements to SQL Tuning Advisor:</p>
+<ul>
+<li>
+<p>SQL Tuning Advisor may recommend accepting a profile that uses the Automatic Degree of Parallelism (Auto DOP) feature. A parallel query profile is only recommended when the original plan is serial and when parallel execution can significantly reduce the elapsed time for a long-running query.</p>
+</li>
+<li>
+<p>While tuning a SQL statement, SQL Tuning Advisor searches real-time and historical performance data for alternative execution plans for the statement. If plans other than the original plan exist, then SQL Tuning Advisor reports an alternative plan finding.</p>
+</li>
+<li>
+<p>You can transport a SQL tuning set to any database created in Oracle Database 10<span class="italic">g</span> (Release 2) or later. This technique is useful when using SQL Performance Analyzer to tune regressions on a test database.</p>
+</li>
+</ul>
+<p>These features are introduced to enhance the capabilities of the SQL Tuning Advisor. The newest version can recommend alternative plans that were seen at some time in the past, in case they perform better, as well as recommending queries to run in parallel if that is beneficial for the total runtime of each query.</p>
+<p>The STS export to old releases is designed to help customers with upgrades so that they are using the most recent version of the database software.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink PFGRF" href="http://www.oracle.com/pls/db112/lookup?id=PFGRF"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08980" name="FEATURENO08980"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.10.2.15</span> Synchronization Controls</h4>
+<p>Synchronization controls have been enhanced to allow more concurrency, filtering, and scale-up during replay.</p>
+<p>This gives you the ability to replay workload more realistically to identify the impact of system change and provide flexibility during replay.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink RATUG154" href="http://www.oracle.com/pls/db112/lookup?id=RATUG154"><span class="italic">Oracle Database Real Application Testing User's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="AREANO02632" name="AREANO02632"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">1.11</span> Unstructured Data Management</h2>
+<p>The new features in the following sections describe the significant performance, developer productivity and advanced capabilities in Oracle Multimedia, Oracle Spatial, Oracle Database SecureFiles, and XML Database.</p>
+<a id="OBJECTIVENO00022" name="OBJECTIVENO00022"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.11.1</span> Enhanced Oracle Multimedia and DICOM Support</h3>
+<p>The following sections describe the new features and capabilities for Oracle Multimedia and Digital Imaging and Communications in Medicine (DICOM).</p>
+<a id="FEATURENO08791" name="FEATURENO08791"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.1.1</span> Attribute Extraction of Requested Attributes Only</h4>
+<p>Oracle Multimedia now allows extraction of a subset of DICOM metadata attributes as requested by a user or an application, without first extracting all DICOM attributes from the DICOM content.</p>
+<p>DICOM content can contain hundreds of metadata attributes. Often only a few attributes are required for indexing, searching and partitioning. Extraction of a subset eliminates the previous requirement of extracting all attributes thus improving performance.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink IMDCM13571" href="http://www.oracle.com/pls/db112/lookup?id=IMDCM13571"><span class="italic">Oracle Multimedia DICOM Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08758" name="FEATURENO08758"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.1.2</span> Client-Side DICOM Attribute Extraction</h4>
+<p>Oracle Multimedia now allows DICOM metadata extraction to be performed outside the database by a client tool or in the middle-tier.</p>
+<p>This enables extraction of DICOM metadata before the data is loaded into the database, facilitating metadata-based partitioning of DICOM data in the database.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink IMDCM13570" href="http://www.oracle.com/pls/db112/lookup?id=IMDCM13570"><span class="italic">Oracle Multimedia DICOM Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08759" name="FEATURENO08759"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.1.3</span> DICOM Enhancements</h4>
+<p>The following enhancements have been added to Oracle Multimedia:</p>
+<ul>
+<li>
+<p>Metadata extraction</p>
+<p>Any portion of a DICOM attribute can now be extracted (for example, extraction of the last name portion of the patient name attribute).</p>
+</li>
+<li>
+<p>Constraint definitions</p>
+<p>Validation of recursive structures such as DICOM Structured Reports can now be specified, and new <code>FOR EACH</code> syntax has been added to allow iteration through all the components in a single predicate.</p>
+</li>
+<li>
+<p>DICOM content processing:</p>
+<ul>
+<li>
+<p><code>DEFLATE</code> transfer syntax support has been added.</p>
+</li>
+<li>
+<p>RLE compression is now supported.</p>
+</li>
+<li>
+<p>Encoding of multi-bit monochrome images is now supported.</p>
+</li>
+<li>
+<p>YBR photometric interpretation is now supported.</p>
+</li>
+<li>
+<p>DICOM to AVI and DICOM to MPEG conversions are now supported.</p>
+</li>
+<li>
+<p>MPEG encapsulated into DICOM format is now supported.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>These new features allow more complete and powerful operations on DICOM data that include:</p>
+<ul>
+<li>
+<p>Flexible extraction of metadata from DICOM data.</p>
+</li>
+<li>
+<p>Support for DICOM Structured Reports.</p>
+</li>
+<li>
+<p>Presentation of DICOM videos in any browser, without requiring specific DICOM support in the browser.</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink IMDCM9500" href="http://www.oracle.com/pls/db112/lookup?id=IMDCM9500"><span class="italic">Oracle Multimedia DICOM Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08929" name="FEATURENO08929"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.1.4</span> Watermarking and Image Processing Enhancements</h4>
+<p>Oracle Multimedia now includes a new <code>applyWatermark</code> method to add an image or text watermark to any supported image. It also supports new image processing operators to remove metadata when creating thumbnail images and to sharpen image quality.</p>
+<p>Watermarking is commonly used to prevent misuse of copyrighted or trademarked images. With this feature, watermarking may be enforced by the database. Removing metadata when creating thumbnail images allows for the production of the smallest possible thumbnail images.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink AIVUG80772" href="http://www.oracle.com/pls/db112/lookup?id=AIVUG80772"><span class="italic">Oracle Multimedia Reference</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00023" name="OBJECTIVENO00023"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.11.2</span> Enhanced Oracle Spatial Support</h3>
+<p>The following sections describe new features in Oracle Spatial support for 3D, geocoder, routing engine, GeoRaster, and network data model.</p>
+<a id="FEATURENO08915" name="FEATURENO08915"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.2.1</span> 3D Visualization Framework</h4>
+<p>This release includes a set of metadata tables to describe themes, scenes, textures, viewpoints, light sources, non-geographic data, and other elements used to visualize three-dimensional (3D) content. It also delivers a number of performance improvements to the 3D analysis operations.</p>
+<p>This metadata support for 3D content enables a consistent way to combine all 3D, raster, vector, and non-geometric data into a unified visualization framework. Information may be logically grouped into themes to simplify the development, analysis, use, and maintenance of 3D applications.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SPATL" href="http://www.oracle.com/pls/db112/lookup?id=SPATL"><span class="italic">Oracle Spatial Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08917" name="FEATURENO08917"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.2.2</span> Network Data Model Enhancements</h4>
+<p>Oracle Spatial network data model (NDM) delivers numerous enhancements. These include a 30-50% more memory-efficient representation of user attribute data associated with the network, many additional highly requested path and subpath analysis functions such as traveling sales person (TSP), hierarchical shortest path (HSP), and K-shortest path (KSP).</p>
+<p>This release also allows the logical partitioning of networks based on metrics appropriate to the application. For analysis of data associated with the network, NDM has added a network buffer feature to derive the zone of influence with coverage and cost information and a "minimum cost polygon" to allow for the association of geographic points of interest or coverages with a network defined region.</p>
+<p>These enhancements allow NDM to support more completely a wider range of requirements found in utility networks, logistics and other applications dependent upon network-based analysis.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink TOPOL" href="http://www.oracle.com/pls/db112/lookup?id=TOPOL"><span class="italic">Oracle Spatial Topology and Network Data Models Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08918" name="FEATURENO08918"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.2.3</span> New GeoRaster JAVA API</h4>
+<p>With Oracle Spatial, there is a new Java application programming interface (API) to all functions currently available in the existing PL/SQL interface. These include support for all the search, analysis and raster management features in Oracle Spatial GeoRaster.</p>
+<p>In addition, this API includes calls to support the development of extraction, transformation, and loading (ETL) tools, Web applications and raster processing applications.</p>
+<p>This new feature simplifies the development of Java applications that use, access, and manipulate raster and gridded data sets stored in Oracle Spatial.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink GEORS" href="http://www.oracle.com/pls/db112/lookup?id=GEORS"><span class="italic">Oracle Spatial GeoRaster Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08919" name="FEATURENO08919"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.2.4</span> Raster Reprojections and Ground Control Point-Based (GCP) Georeferencing</h4>
+<p>Oracle Spatial currently includes support for over 4,000 coordinate systems when using vector data. Oracle GeoRaster now supports the reprojection of imagery to any of these 4,000 plus Oracle Spatial coordinate systems.</p>
+<p>In this release the GeoRaster feature also supports native storage and georeferencing of Ground Control Point (GCP) data.</p>
+<p>These capabilities remove the requirement for third-party tools currently required when using vector data and raster imagery in different coordinate systems. Oracle Spatial can now be used to perform these reprojections.</p>
+<p>Ground Control Point-based georeferencing is used in data collection and processing applications. This native GCP storage and georeferencing can be used to georeference raw (non-rectified) and processed (rectified) raster data.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink GEORS" href="http://www.oracle.com/pls/db112/lookup?id=GEORS"><span class="italic">Oracle Spatial GeoRaster Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08920" name="FEATURENO08920"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.2.5</span> Routing and Geocoding Enhancements</h4>
+<p>With this release, the Oracle Spatial routing engine is based on the network data model. This increases the ability of Oracle to support the restrictions and conditions required for advanced routing applications.</p>
+<p>The Oracle Spatial 11.2 geocoder, in addition to the support for standard address geocoding based on interpolation, now supports point-based geocoding where data sets include the exact location of addresses, intersections, and points of interest.</p>
+<p>Oracle Spatial now supports truck routing data sets to produce driving directions that include restrictions based on roads, weight, height, time of day, and other conditions applied to commercial and logistics applications.</p>
+<p>Point-based geocoding is becoming increasingly popular because it allows for more accurate results and can be used in situations where interpolation is not possible.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink SPATL" href="http://www.oracle.com/pls/db112/lookup?id=SPATL"><span class="italic">Oracle Spatial Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00024" name="OBJECTIVENO00024"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.11.3</span> Oracle SecureFiles</h3>
+<p>The following sections describe improvements in Oracle SecureFiles.</p>
+<a id="FEATURENO08766" name="FEATURENO08766"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.3.1</span> Database File System (DBFS)</h4>
+<p>The Oracle Database File System (DBFS) enables the database to be used as a POSIX-compatible file system on Linux. This feature includes a PL/SQL package on the database server that enables the DBFS server functionality and a Linux client for DBFS (<code>dbfs_client</code>). The <code>dbfs_client</code> client is a utility that enables mounting of a DBFS file system as a mount point on Linux. It provides the mapping from file system operations to database operations. The dbfs_client client runs completely in user space and interacts with the kernel through the FUSE library infrastructure.</p>
+<p>DBFS Hierarchical Store provides an easy and application-transparent way to archive SecureFiles data that is stored in DBFS file systems to secondary storage tiers such as tape and storage clouds, using DBFS Links. It also allows archived data to be dearchived and brought back into the database on demand.</p>
+<p>DBFS makes it easy for files to be accessed by database applications, and for file-based tools to access files stored in the database. With DBFS, all important file data can be seamlessly stored in an Oracle database, providing the benefits of security, backup, performance, and scalability that are standard with the Oracle Database.</p>
+<p>SecureFiles is a high performance solution for storing files or unstructured data in Oracle Database. Customers often need to store these files for long periods of time for business or compliance reasons. Consequently, customers are looking to transfer files to cheaper forms of storage in an application-transparent manner to reduce manageability and administration overhead. DBFS Hierarchical Store provides a seamless, automatic, and transparent way to archive cold file data to inexpensive storage.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADLOB" href="http://www.oracle.com/pls/db112/lookup?id=ADLOB"><span class="italic">Oracle Database SecureFiles and Large Objects Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08787" name="FEATURENO08787"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.3.2</span> Support for Oracle SecureFiles</h4>
+<p>Oracle Database 11<span class="italic">g</span> Release 2 (11.2) introduces a new compression level for SecureFiles LOBs called <code>COMPRESS LOW</code>. This compression level introduces a lightweight compression option that removes the majority of the CPU cost that is typical with file compression. Compressed SecureFiles at the <code>LOW</code> level now provides a very efficient choice for SecureFiles storage. SecureFiles LOBs compressed at <code>LOW</code> generally consume less CPU than BasicFile (pre-11g Release 1) LOBs, consume less storage than BasicFile LOBs and typically makes the application run faster because of reduced disk I/O.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADLOB" href="http://www.oracle.com/pls/db112/lookup?id=ADLOB"><span class="italic">Oracle Database SecureFiles and Large Objects Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="OBJECTIVENO00025" name="OBJECTIVENO00025"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">1.11.4</span> Oracle XML DB Scale and Performance Improvements</h3>
+<p>The following sections address key customer requirements in the area of scalability and performance by delivering partitioning of XML tables, scaling on registering large XML Schemata, significant improvements in XML indexing and query performance for common real-world workloads, and significant improvements in performance of repository operations.</p>
+<a id="FEATURENO08710" name="FEATURENO08710"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.4.1</span> Binary XML Enhancements</h4>
+<p>This release includes support for partitioning of binary XMLType table and relation tables containing binary XML columns, where the partition key is derived from the XML content. Also included are guidelines on how to optimize performance of binary XML operations.</p>
+<p>This new feature allows Oracle partitioning to be used with binary XML content, thereby allowing large volumes of XML data to be managed effectively.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADXDB0310" href="http://www.oracle.com/pls/db112/lookup?id=ADXDB0310"><span class="italic">Oracle XML DB Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08704" name="FEATURENO08704"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.4.2</span> Oracle XML DB Repository Performance Improvements and Guidelines</h4>
+<p>Oracle XML DB Repository performance improvements include guidance on:</p>
+<ul>
+<li>
+<p>How to optimize hierarchical queries using <code>EQUALS_PATH</code> and <code>UNDER_PATH</code> condition.</p>
+</li>
+<li>
+<p>How to optimize performance of hierarchical index when querying the repository.</p>
+</li>
+</ul>
+<p>The benefit is improved performance for repository operations.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADXDB2000" href="http://www.oracle.com/pls/db112/lookup?id=ADXDB2000"><span class="italic">Oracle XML DB Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO08717" name="FEATURENO08717"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.4.3</span> XMLIndex Enhancements</h4>
+<p>This release includes improvements to the ability for Oracle to index unstructured, semi-structured, and highly-structured XML documents stored using binary XML. Also included is support for partitioned indexes and parallel operations. These enhancements incorporate all features of existing XMLIndex and XMLTable Index into a single unified index.</p>
+<p>The benefits are high performance query, fragments, and scalar extraction operations on schema and schema-less binary XML storage.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink ADXDB0500" href="http://www.oracle.com/pls/db112/lookup?id=ADXDB0500"><span class="italic">Oracle XML DB Developer's Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="FEATURENO07634" name="FEATURENO07634"></a>
+<div class="sect3">
+<h4 class="sect3"><span class="secnum">1.11.4.4</span> XMLType Partitioning</h4>
+<p>This feature allows partitioning of the nested tables that are used to manage collections of child elements when storing XML documents using object-based persistence in conjunction with nested tables.</p>
+<p>XMLType partitioning enables all the advanced features of the Oracle partitioning option to be used to manage XMLType data.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<p><a class="olink VLDBG" href="http://www.oracle.com/pls/db112/lookup?id=VLDBG"><span class="italic">Oracle Database VLDB and Partitioning Guide</span></a> for details</p>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="preface.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="chapter1_2.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2001, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="196">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

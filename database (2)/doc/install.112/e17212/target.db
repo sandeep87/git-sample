@@ -1,0 +1,1425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div element="book" href="toc.htm" number="" targetptr="">
+  <ttl>Oracle&#x00AE; Grid Infrastructure Installation Guide for Linux</ttl>
+  <xreftext><cite>Oracle&#x00AE; Grid Infrastructure Installation Guide for Linux</cite></xreftext>
+  <div element="preface" href="preface.htm" number="" targetptr="CWLIN101">
+    <ttl>Preface</ttl>
+    <xreftext>&#x201C;Preface&#x201D;</xreftext>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="CWLIN102">
+      <ttl>Intended Audience</ttl>
+      <xreftext>&#x201C;Intended Audience&#x201D;</xreftext>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="CWLIN103">
+      <ttl>Documentation Accessibility</ttl>
+      <xreftext>&#x201C;Documentation Accessibility&#x201D;</xreftext>
+      <obj element="formalpara" href="preface.htm" number="" targetptr="">
+        <ttl>Accessibility of Code Examples in Documentation</ttl>
+        <xreftext>&#x201C;Accessibility of Code Examples in Documentation&#x201D;</xreftext>
+      </obj>
+      <obj element="formalpara" href="preface.htm" number="" targetptr="">
+        <ttl>Accessibility of Links to External Web Sites in Documentation</ttl>
+        <xreftext>&#x201C;Accessibility of Links to External Web Sites in Documentation&#x201D;</xreftext>
+      </obj>
+      <obj element="formalpara" href="preface.htm" number="" targetptr="">
+        <ttl>Access to Oracle Support</ttl>
+        <xreftext>&#x201C;Access to Oracle Support&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="CWLIN107">
+      <ttl>Related Documents</ttl>
+      <xreftext>&#x201C;Related Documents&#x201D;</xreftext>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="CWLIN108">
+        <ttl>Oracle Clusterware and Oracle Real Application Clusters Documentation</ttl>
+        <xreftext>&#x201C;Oracle Clusterware and Oracle Real Application Clusters Documentation&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="CWLIN109">
+        <ttl>Installation Guides</ttl>
+        <xreftext>&#x201C;Installation Guides&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="CWLIN110">
+        <ttl>Operating System-Specific Administrative Guides</ttl>
+        <xreftext>&#x201C;Operating System-Specific Administrative Guides&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="CWLIN111">
+        <ttl>Oracle Clusterware and Oracle Automatic Storage Management Administrative Guides</ttl>
+        <xreftext>&#x201C;Oracle Clusterware and Oracle Automatic Storage Management Administrative Guides&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="CWLIN112">
+        <ttl>Oracle Real Application Clusters Administrative Guides</ttl>
+        <xreftext>&#x201C;Oracle <code></code>Real Application Clusters Administrative Guides&#x201D;</xreftext>
+      </obj>
+      <obj element="bridgehead" href="preface.htm" number="" targetptr="CWLIN113">
+        <ttl>Generic Documentation</ttl>
+        <xreftext>&#x201C;Generic Documentation&#x201D;</xreftext>
+      </obj>
+    </div>
+    <div element="prefsect1" href="preface.htm" number="" targetptr="CWLIN114">
+      <ttl>Conventions</ttl>
+      <xreftext>&#x201C;Conventions&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="preface" href="whatsnew.htm" number="" targetptr="CWLIN115">
+    <ttl>What's New in Oracle Grid Infrastructure Installation and Configuration?</ttl>
+    <xreftext>&#x201C;What's New in Oracle Grid Infrastructure Installation and Configuration?&#x201D;</xreftext>
+    <div element="prefsect1" href="whatsnew.htm" number="" targetptr="CWLIN116">
+      <ttl>Desupported Options</ttl>
+      <xreftext>&#x201C;Desupported Options&#x201D;</xreftext>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN117">
+        <ttl>Block and Raw Devices Not Supported with OUI</ttl>
+        <xreftext>&#x201C;Block and Raw Devices Not Supported with OUI&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="prefsect1" href="whatsnew.htm" number="" targetptr="CEGJJCEH">
+      <ttl>New Features for Release 2 (11.2.0.2)</ttl>
+      <xreftext>&#x201C;New Features for Release 2 (11.2.0.2)&#x201D;</xreftext>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="">
+        <ttl>Enhanced Patch Set Installation</ttl>
+        <xreftext>&#x201C;Enhanced Patch Set Installation&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="">
+        <ttl>Oracle ACFS and ADVM Support for SUSE Enterprise Linux</ttl>
+        <xreftext>&#x201C;Oracle ACFS and ADVM Support for SUSE Enterprise Linux&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="">
+        <ttl>Cluster Health Monitor Included with Oracle Clusterware</ttl>
+        <xreftext>&#x201C;Cluster Health Monitor Included with Oracle Clusterware&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="">
+        <ttl>Grid Installation Owner and ASMOPER</ttl>
+        <xreftext>&#x201C;Grid Installation Owner and ASMOPER&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="">
+        <ttl>New Software Updates Option</ttl>
+        <xreftext>&#x201C;New Software Updates Option&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="">
+        <ttl>Redundant Interconnect Usage</ttl>
+        <xreftext>&#x201C;Redundant Interconnect Usage&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="">
+        <ttl>Oracle Database Quality of Service Management</ttl>
+        <xreftext>&#x201C;Oracle Database Quality of Service Management&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="prefsect1" href="whatsnew.htm" number="" targetptr="CWLIN118">
+      <ttl>New Features for Release 2 (11.2)</ttl>
+      <xreftext>&#x201C;New Features for Release 2 (11.2)&#x201D;</xreftext>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN119">
+        <ttl>Oracle Automatic Storage Management and Oracle Clusterware Installation</ttl>
+        <xreftext>&#x201C;Oracle Automatic Storage Management and Oracle Clusterware Installation&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN120">
+        <ttl>Oracle Automatic Storage Management and Oracle Clusterware Files</ttl>
+        <xreftext>&#x201C;Oracle Automatic Storage Management and Oracle Clusterware Files&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN121">
+        <ttl>Oracle Automatic Storage Management Cluster File System (Oracle ACFS)</ttl>
+        <xreftext>&#x201C;Oracle Automatic Storage Management Cluster File System (Oracle ACFS)&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN122">
+        <ttl>Oracle ASM Job Role Separation Option with SYSASM</ttl>
+        <xreftext>&#x201C;Oracle ASM Job Role Separation Option with SYSASM&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN123">
+        <ttl>Cluster Time Synchronization Service</ttl>
+        <xreftext>&#x201C;Cluster Time Synchronization Service&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN124">
+        <ttl>Oracle Enterprise Manager Database Control Provisioning</ttl>
+        <xreftext>&#x201C;Oracle Enterprise Manager Database Control Provisioning&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN125">
+        <ttl>Fixup Scripts and Grid Infrastructure Checks</ttl>
+        <xreftext>&#x201C;Fixup Scripts and Grid Infrastructure Checks&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN126">
+        <ttl>Grid Plug and Play</ttl>
+        <xreftext>&#x201C;Grid Plug and Play&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN127">
+        <ttl>Improved Input/Output Fencing Processes</ttl>
+        <xreftext>&#x201C;Improved Input/Output Fencing Processes&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN128">
+        <ttl>Intelligent Platform Management Interface (IPMI) Integration</ttl>
+        <xreftext>&#x201C;Intelligent Platform Management Interface (IPMI) Integration&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN129">
+        <ttl>Oracle Clusterware Out-of-place Upgrade</ttl>
+        <xreftext>&#x201C;Oracle Clusterware Out-of-place Upgrade&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN130">
+        <ttl>Oracle Clusterware Administration with Oracle Enterprise Manager</ttl>
+        <xreftext>&#x201C;Oracle Clusterware Administration with Oracle Enterprise Manager&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN132">
+        <ttl>SCAN for Simplified Client Access</ttl>
+        <xreftext>&#x201C;SCAN for Simplified Client Access&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN133">
+        <ttl>SRVCTL Command Enhancements for Patching</ttl>
+        <xreftext>&#x201C;SRVCTL Command Enhancements for Patching&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN134">
+        <ttl>Typical Installation Option</ttl>
+        <xreftext>&#x201C;Typical Installation Option&#x201D;</xreftext>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN135">
+        <ttl>Voting Disk Backup Procedure Change</ttl>
+        <xreftext>&#x201C;Voting Disk Backup Procedure Change&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="prefsect1" href="whatsnew.htm" number="" targetptr="CWLIN136">
+      <ttl>New Features for Release 1 (11.1)</ttl>
+      <xreftext>&#x201C;New Features for Release 1 (11.1)&#x201D;</xreftext>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN137">
+        <ttl>Changes in Installation Documentation</ttl>
+        <xreftext>&#x201C;Changes in Installation Documentation&#x201D;</xreftext>
+        <div element="prefsect3" href="whatsnew.htm" number="" targetptr="CWLIN138">
+          <ttl>Oracle Database 2 Day + Real Application Clusters Guide</ttl>
+          <xreftext>&#x201C;Oracle Database 2 Day + Real Application Clusters Guide&#x201D;</xreftext>
+        </div>
+        <div element="prefsect3" href="whatsnew.htm" number="" targetptr="CWLIN139">
+          <ttl>Oracle Clusterware Installation Guide</ttl>
+          <xreftext>&#x201C;Oracle Clusterware Installation Guide&#x201D;</xreftext>
+        </div>
+        <div element="prefsect3" href="whatsnew.htm" number="" targetptr="CWLIN140">
+          <ttl>Oracle Real Application Clusters Installation Guide</ttl>
+          <xreftext>&#x201C;Oracle Real Application Clusters Installation Guide&#x201D;</xreftext>
+        </div>
+        <div element="prefsect3" href="whatsnew.htm" number="" targetptr="CWLIN141">
+          <ttl>Oracle Database Storage Administrator's Guide</ttl>
+          <xreftext>&#x201C;Oracle Database Storage Administrator's Guide&#x201D;</xreftext>
+        </div>
+        <div element="prefsect3" href="whatsnew.htm" number="" targetptr="CWLIN142">
+          <ttl>Oracle Clusterware Administration and Deployment Guide</ttl>
+          <xreftext>&#x201C;Oracle Clusterware Administration and Deployment Guide&#x201D;</xreftext>
+        </div>
+        <div element="prefsect3" href="whatsnew.htm" number="" targetptr="CWLIN143">
+          <ttl>Oracle Real Application Clusters Administration and Deployment Guide</ttl>
+          <xreftext>&#x201C;Oracle Real Application Clusters Administration and Deployment Guide&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN144">
+        <ttl>Release 1 (11.1) Enhancements and New Features for Installation</ttl>
+        <xreftext>&#x201C;Release 1 (11.1) Enhancements and New Features for Installation&#x201D;</xreftext>
+        <div element="prefsect3" href="whatsnew.htm" number="" targetptr="CWLIN145">
+          <ttl>New SYSASM Privilege and OSASM operating system group for Oracle ASM Administration</ttl>
+          <xreftext>&#x201C;New SYSASM Privilege and OSASM operating system group for Oracle ASM Administration&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="prefsect2" href="whatsnew.htm" number="" targetptr="CWLIN146">
+        <ttl>Oracle Validated Configuration RPM</ttl>
+        <xreftext>&#x201C;Oracle Validated Configuration RPM&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+  <div element="chapter" href="typinstl.htm" number="1" targetptr="CWLIN147">
+    <ttl>Typical Installation for Oracle Grid Infrastructure for a Cluster</ttl>
+    <xreftext>&#x201C;Typical Installation for Oracle Grid Infrastructure for a Cluster&#x201D;</xreftext>
+    <div element="sect1" href="typinstl.htm" number="1.1" targetptr="CWLIN148">
+      <ttl>Typical and Advanced Installation</ttl>
+      <xreftext>&#x201C;Typical and Advanced Installation&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="typinstl.htm" number="1.2" targetptr="CWLIN149">
+      <ttl>Preinstallation Steps Completed Using Typical Installation</ttl>
+      <xreftext>&#x201C;Preinstallation Steps Completed Using Typical Installation&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="typinstl.htm" number="1.3" targetptr="CWLIN150">
+      <ttl>Preinstallation Steps Requiring Manual Tasks</ttl>
+      <xreftext>&#x201C;Preinstallation Steps Requiring Manual Tasks&#x201D;</xreftext>
+      <div element="sect2" href="typinstl.htm" number="1.3.1" targetptr="CWLIN151">
+        <ttl>Verify System Requirements</ttl>
+        <xreftext>&#x201C;Verify System Requirements&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="typinstl.htm" number="1.3.2" targetptr="CWLIN152">
+        <ttl>Check Network Requirements</ttl>
+        <xreftext>&#x201C;Check Network Requirements&#x201D;</xreftext>
+        <div element="sect3" href="typinstl.htm" number="1.3.2.1" targetptr="CWLIN153">
+          <ttl>Single Client Access Name (SCAN) for the Cluster</ttl>
+          <xreftext>&#x201C;Single Client Access Name (SCAN) for the Cluster&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="typinstl.htm" number="1.3.2.2" targetptr="CWLIN154">
+          <ttl>IP Address Requirements</ttl>
+          <xreftext>&#x201C;IP Address Requirements&#x201D;</xreftext>
+          <div element="sect4" href="typinstl.htm" number="1.3.2.2.1" targetptr="CWLIN155">
+            <ttl>IP Address Requirements for Manual Configuration</ttl>
+            <xreftext>&#x201C;IP Address Requirements for Manual Configuration&#x201D;</xreftext>
+          </div>
+        </div>
+        <div element="sect3" href="typinstl.htm" number="1.3.2.3" targetptr="CIHGBHCH">
+          <ttl>Redundant Interconnect Usage</ttl>
+          <xreftext>&#x201C;Redundant Interconnect Usage&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="typinstl.htm" number="1.3.2.4" targetptr="CWLIN156">
+          <ttl>Intended Use of Network Interfaces</ttl>
+          <xreftext>&#x201C;Intended Use of Network Interfaces&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="typinstl.htm" number="1.3.3" targetptr="CWLIN157">
+        <ttl>Check Operating System Packages</ttl>
+        <xreftext>&#x201C;Check Operating System Packages&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="typinstl.htm" number="1.3.4" targetptr="CWLIN158">
+        <ttl>Create Groups and Users</ttl>
+        <xreftext>&#x201C;Create Groups and Users&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="typinstl.htm" number="1.3.5" targetptr="CWLIN159">
+        <ttl>Check Storage</ttl>
+        <xreftext>&#x201C;Check Storage&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="typinstl.htm" number="1.3.6" targetptr="CWLIN160">
+        <ttl>Prepare Storage for Oracle Automatic Storage Management</ttl>
+        <xreftext>&#x201C;Prepare Storage for Oracle Automatic Storage Management&#x201D;</xreftext>
+        <div element="sect3" href="typinstl.htm" number="1.3.6.1" targetptr="CWLIN161">
+          <ttl>Installing ASMLIB Packages Automatically with ULN</ttl>
+          <xreftext>&#x201C;Installing ASMLIB Packages Automatically with ULN&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="typinstl.htm" number="1.3.6.2" targetptr="CWLIN162">
+          <ttl>Installing ASMLIB Packages Manually</ttl>
+          <xreftext>&#x201C;Installing ASMLIB Packages Manually&#x201D;</xreftext>
+          <div element="sect4" href="typinstl.htm" number="1.3.6.2.1" targetptr="CWLIN163">
+            <ttl>Determine the Correct Oracleasm Package</ttl>
+            <xreftext>&#x201C;Determine the Correct Oracleasm Package&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="typinstl.htm" number="1.3.6.2.2" targetptr="CWLIN164">
+            <ttl>Download and Install the Oracleasm Package</ttl>
+            <xreftext>&#x201C;Download and Install the Oracleasm Package&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="typinstl.htm" number="1.3.6.2.3" targetptr="CWLIN165">
+            <ttl>Configure ASMLib</ttl>
+            <xreftext>&#x201C;Configure ASMLib&#x201D;</xreftext>
+          </div>
+        </div>
+        <div element="sect3" href="typinstl.htm" number="1.3.6.3" targetptr="CWLIN166">
+          <ttl>Mark Oracle ASM Candidate Disk Partitions</ttl>
+          <xreftext>&#x201C;Mark Oracle ASM Candidate Disk Partitions&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="typinstl.htm" number="1.3.7" targetptr="CWLIN167">
+        <ttl>Install Oracle Grid Infrastructure Software</ttl>
+        <xreftext>&#x201C;Install Oracle Grid Infrastructure Software&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+  <div element="chapter" href="prelinux.htm" number="2" targetptr="CWLIN168">
+    <ttl>Advanced Installation Oracle Grid Infrastructure for a Cluster Preinstallation Tasks</ttl>
+    <xreftext>&#x201C;Advanced Installation Oracle Grid Infrastructure for a Cluster Preinstallation Tasks&#x201D;</xreftext>
+    <div element="sect1" href="prelinux.htm" number="2.1" targetptr="CWLIN169">
+      <ttl>About Installing the Linux Operating System</ttl>
+      <xreftext>&#x201C;About Installing the Linux Operating System&#x201D;</xreftext>
+      <div element="sect2" href="prelinux.htm" number="2.1.1" targetptr="CWLIN170">
+        <ttl>Completing a Minimal Linux Installation</ttl>
+        <xreftext>&#x201C;Completing a Minimal Linux Installation&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.1.2" targetptr="CWLIN171">
+        <ttl>Completing a Default Linux Installation</ttl>
+        <xreftext>&#x201C;Completing a Default Linux Installation&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.1.3" targetptr="CEGFFHJI">
+        <ttl>About the Oracle Unbreakable Enterprise Kernel for Linux</ttl>
+        <xreftext>&#x201C;About the Oracle Unbreakable Enterprise Kernel for Linux&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.1.4" targetptr="CWLIN172">
+        <ttl>About the Oracle Validated Configuration RPM</ttl>
+        <xreftext>&#x201C;About the Oracle Validated Configuration RPM&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.1.5" targetptr="CWLIN173">
+        <ttl>Installing the Oracle Validated RPM From Unbreakable Linux Network</ttl>
+        <xreftext>&#x201C;Installing the Oracle Validated RPM From Unbreakable Linux Network&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.1.6" targetptr="CEGJDGAG">
+        <ttl>Installing the Oracle Validated RPM From DVD Disks or Images</ttl>
+        <xreftext>&#x201C;Installing the Oracle Validated RPM From DVD Disks or Images&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.2" targetptr="CWLIN174">
+      <ttl>Reviewing Upgrade Best Practices</ttl>
+      <xreftext>&#x201C;Reviewing Upgrade Best Practices&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.3" targetptr="CWLIN175">
+      <ttl>Installation Fixup Scripts</ttl>
+      <xreftext>&#x201C;Installation Fixup Scripts&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.4" targetptr="CWLIN177">
+      <ttl>Logging In to a Remote System Using X Terminal</ttl>
+      <xreftext>&#x201C;Logging In to a Remote System Using X Terminal&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.5" targetptr="CWLIN178">
+      <ttl>Creating Groups, Users and Paths for Oracle Grid Infrastructure</ttl>
+      <xreftext>&#x201C;Creating Groups, Users and Paths for Oracle Grid Infrastructure&#x201D;</xreftext>
+      <div element="sect2" href="prelinux.htm" number="2.5.1" targetptr="CWLIN179">
+        <ttl>Determining If the Oracle Inventory and Oracle Inventory Group Exists</ttl>
+        <xreftext>&#x201C;Determining If the Oracle Inventory and Oracle Inventory Group Exists&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.5.2" targetptr="CWLIN180">
+        <ttl>Creating the Oracle Inventory Group If an Oracle Inventory Does Not Exist</ttl>
+        <xreftext>&#x201C;Creating the Oracle Inventory Group If an Oracle Inventory Does Not Exist&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.5.3" targetptr="CWLIN181">
+        <ttl>Creating the Oracle Grid Infrastructure User</ttl>
+        <xreftext>&#x201C;Creating the Oracle Grid Infrastructure User&#x201D;</xreftext>
+        <div element="sect3" href="prelinux.htm" number="2.5.3.1" targetptr="CWLIN182">
+          <ttl>Understanding Restrictions for Oracle Software Installation Owners</ttl>
+          <xreftext>&#x201C;Understanding Restrictions for Oracle Software Installation Owners&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="prelinux.htm" number="2.5.3.2" targetptr="CWLIN183">
+          <ttl>Determining if an Oracle Software Owner User Exists</ttl>
+          <xreftext>&#x201C;Determining if an Oracle Software Owner User Exists&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="prelinux.htm" number="2.5.3.3" targetptr="CWLIN184">
+          <ttl>Creating or Modifying an Oracle Software Owner User for Oracle Grid Infrastructure</ttl>
+          <xreftext>&#x201C;Creating or Modifying an Oracle Software Owner User for Oracle Grid Infrastructure&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.5.4" targetptr="CWLIN185">
+        <ttl>Creating the Oracle Base Directory Path</ttl>
+        <xreftext>&#x201C;Creating the Oracle Base Directory Path&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.5.5" targetptr="CWLIN186">
+        <ttl>Creating Job Role Separation Operating System Privileges Groups and Users</ttl>
+        <xreftext>&#x201C;Creating Job Role Separation Operating System Privileges Groups and Users&#x201D;</xreftext>
+        <div element="sect3" href="prelinux.htm" number="2.5.5.1" targetptr="CWLIN187">
+          <ttl>Overview of Creating Job Role Separation Groups and Users</ttl>
+          <xreftext>&#x201C;Overview of Creating Job Role Separation Groups and Users&#x201D;</xreftext>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.1.1" targetptr="CWLIN188">
+            <ttl>Users for Oracle Installations with Job Role Separation</ttl>
+            <xreftext>&#x201C;Users for Oracle Installations with Job Role Separation&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.1.2" targetptr="CWLIN189">
+            <ttl>Database Groups for Job Role Separation Installations</ttl>
+            <xreftext>&#x201C;Database Groups for Job Role Separation Installations&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.1.3" targetptr="CWLIN190">
+            <ttl>Oracle ASM Groups for Job Role Separation Installations</ttl>
+            <xreftext>&#x201C;Oracle ASM Groups for Job Role Separation Installations&#x201D;</xreftext>
+          </div>
+        </div>
+        <div element="sect3" href="prelinux.htm" number="2.5.5.2" targetptr="CWLIN191">
+          <ttl>Creating Database Groups and Users with Job Role Separation</ttl>
+          <xreftext>&#x201C;Creating Database Groups and Users with Job Role Separation&#x201D;</xreftext>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.2.1" targetptr="CWLIN192">
+            <ttl>Creating the OSDBA Group to Prepare for Database Installations</ttl>
+            <xreftext>&#x201C;Creating the OSDBA Group to Prepare for Database Installations&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.2.2" targetptr="CWLIN193">
+            <ttl>Creating an OSOPER Group for Database Installations</ttl>
+            <xreftext>&#x201C;Creating an OSOPER Group for Database Installations&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.2.3" targetptr="CWLIN194">
+            <ttl>Creating the OSASM Group</ttl>
+            <xreftext>&#x201C;Creating the OSASM Group&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.2.4" targetptr="CWLIN195">
+            <ttl>Creating the OSOPER for ASM Group</ttl>
+            <xreftext>&#x201C;Creating the OSOPER for ASM Group&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.2.5" targetptr="CWLIN196">
+            <ttl>Creating the OSDBA for ASM Group for Database Access to Oracle ASM</ttl>
+            <xreftext>&#x201C;Creating the OSDBA for ASM Group for Database Access to Oracle ASM&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.2.6" targetptr="CWLIN197">
+            <ttl>When to Create the Oracle Software Owner User</ttl>
+            <xreftext>&#x201C;When to Create the Oracle Software Owner User&#x201D;</xreftext>
+            <div element="sect4" href="prelinux.htm" number="2.5.5.2.7" targetptr="CWLIN198">
+              <ttl>Determining if an Oracle Software Owner User Exists</ttl>
+              <xreftext>&#x201C;Determining if an Oracle Software Owner User Exists&#x201D;</xreftext>
+            </div>
+            <div element="sect4" href="prelinux.htm" number="2.5.5.2.8" targetptr="CWLIN199">
+              <ttl>Creating an Oracle Software Owner User</ttl>
+              <xreftext>&#x201C;Creating an Oracle Software Owner User&#x201D;</xreftext>
+            </div>
+            <div element="sect4" href="prelinux.htm" number="2.5.5.2.9" targetptr="CWLIN200">
+              <ttl>Modifying an Existing Oracle Software Owner User</ttl>
+              <xreftext>&#x201C;Modifying an Existing Oracle Software Owner User&#x201D;</xreftext>
+            </div>
+          </div>
+          <div element="sect4" href="prelinux.htm" number="2.5.5.2.10" targetptr="CWLIN201">
+            <ttl>Creating Identical Database Users and Groups on Other Cluster Nodes</ttl>
+            <xreftext>&#x201C;Creating Identical Database Users and Groups on Other Cluster Nodes&#x201D;</xreftext>
+            <obj element="bridgehead" href="prelinux.htm" number="" targetptr="CWLIN202">
+              <ttl>Identifying Existing User and Group IDs</ttl>
+              <xreftext>&#x201C;Identifying Existing User and Group IDs&#x201D;</xreftext>
+            </obj>
+            <obj element="bridgehead" href="prelinux.htm" number="" targetptr="CWLIN203">
+              <ttl>Creating Users and Groups on the Other Cluster Nodes</ttl>
+              <xreftext>&#x201C;Creating Users and Groups on the Other Cluster Nodes&#x201D;</xreftext>
+            </obj>
+          </div>
+        </div>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.5.6" targetptr="CWLIN204">
+        <ttl>Example of Creating Standard Groups, Users, and Paths</ttl>
+        <xreftext>&#x201C;Example of Creating Standard Groups, Users, and Paths&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.5.7" targetptr="CWLIN205">
+        <ttl>Example of Creating Role-allocated Groups, Users, and Paths</ttl>
+        <xreftext>&#x201C;Example of Creating Role-allocated Groups, Users, and Paths&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.6" targetptr="CWLIN206">
+      <ttl>Checking the Hardware Requirements</ttl>
+      <xreftext>&#x201C;Checking the Hardware Requirements&#x201D;</xreftext>
+      <div element="sect2" href="prelinux.htm" number="2.6.1" targetptr="CEGBABFA">
+        <ttl>General Server Requirements</ttl>
+        <xreftext>&#x201C;General Server Requirements&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.6.2" targetptr="CEGHDCHI">
+        <ttl>Server Hardware Requirements</ttl>
+        <xreftext>&#x201C;Server Hardware Requirements&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.6.3" targetptr="CEGIEHBE">
+        <ttl>Server Memory Requirements</ttl>
+        <xreftext>&#x201C;Server Memory Requirements&#x201D;</xreftext>
+        <div element="sect3" href="prelinux.htm" number="2.6.3.1" targetptr="CEGDAJIG">
+          <ttl>64-bit System and Linux on System z Memory Requirements</ttl>
+          <xreftext>&#x201C;64-bit System and Linux on System z Memory Requirements&#x201D;</xreftext>
+          <obj element="table" href="prelinux.htm" number="2-1" targetptr="">
+            <ttl>Swap Space Required for 64-bit Linux and Linux on System z</ttl>
+            <xreftext>&#x201C;Swap Space Required for 64-bit Linux and Linux on System z&#x201D;</xreftext>
+          </obj>
+        </div>
+        <div element="sect3" href="prelinux.htm" number="2.6.3.2" targetptr="CEGGBJFC">
+          <ttl>32-bit System Memory Requirements</ttl>
+          <xreftext>&#x201C;32-bit System Memory Requirements&#x201D;</xreftext>
+          <obj element="table" href="prelinux.htm" number="2-2" targetptr="CWLIN207">
+            <ttl>Swap Space Required for 32-bit Linux</ttl>
+            <xreftext>&#x201C;Swap Space Required for 32-bit Linux&#x201D;</xreftext>
+          </obj>
+        </div>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.6.4" targetptr="CEGFBEIA">
+        <ttl>Checking Server Hardware and Memory Configuration</ttl>
+        <xreftext>&#x201C;Checking Server Hardware and Memory Configuration&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.7" targetptr="CWLIN208">
+      <ttl>Checking the Network Requirements</ttl>
+      <xreftext>&#x201C;Checking the Network Requirements&#x201D;</xreftext>
+      <div element="sect2" href="prelinux.htm" number="2.7.1" targetptr="CWLIN209">
+        <ttl>Network Hardware Requirements</ttl>
+        <xreftext>&#x201C;Network Hardware Requirements&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.2" targetptr="CWLIN210">
+        <ttl>IP Address Requirements</ttl>
+        <xreftext>&#x201C;IP Address Requirements&#x201D;</xreftext>
+        <div element="sect3" href="prelinux.htm" number="2.7.2.1" targetptr="CWLIN211">
+          <ttl>IP Address Requirements with Grid Naming Service</ttl>
+          <xreftext>&#x201C;IP Address Requirements with Grid Naming Service&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="prelinux.htm" number="2.7.2.2" targetptr="CWLIN212">
+          <ttl>IP Address Requirements for Manual Configuration</ttl>
+          <xreftext>&#x201C;IP Address Requirements for Manual Configuration&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.3" targetptr="CEGDIDCB">
+        <ttl>Broadcast Requirements for Networks Used by Oracle Grid Infrastructure</ttl>
+        <xreftext>&#x201C;Broadcast Requirements for Networks Used by Oracle Grid Infrastructure&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.4" targetptr="CEGGIDCG">
+        <ttl>Multicast Requirements for Networks Used by Oracle Grid Infrastructure</ttl>
+        <xreftext>&#x201C;Multicast Requirements for Networks Used by Oracle Grid Infrastructure&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.5" targetptr="CWLIN213">
+        <ttl>DNS Configuration for Domain Delegation to Grid Naming Service</ttl>
+        <xreftext>&#x201C;DNS Configuration for Domain Delegation to Grid Naming Service&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.6" targetptr="CWLIN214">
+        <ttl>Grid Naming Service Configuration Example</ttl>
+        <xreftext>&#x201C;Grid Naming Service Configuration Example&#x201D;</xreftext>
+        <obj element="table" href="prelinux.htm" number="2-3" targetptr="CWLIN215">
+          <ttl>Grid Naming Service Example Network</ttl>
+          <xreftext>&#x201C;Grid Naming Service Example Network&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.7" targetptr="CWLIN216">
+        <ttl>Manual IP Address Configuration Example</ttl>
+        <xreftext>&#x201C;Manual IP Address Configuration Example&#x201D;</xreftext>
+        <obj element="table" href="prelinux.htm" number="2-4" targetptr="CWLIN217">
+          <ttl>Manual Network Configuration Example</ttl>
+          <xreftext>&#x201C;Manual Network Configuration Example&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.8" targetptr="CWLIN218">
+        <ttl>Network Interface Configuration Options</ttl>
+        <xreftext>&#x201C;Network Interface Configuration Options&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.9" targetptr="CEGJDDIA">
+        <ttl>Multiple Private Interconnects and Enterprise Linux</ttl>
+        <xreftext>&#x201C;Multiple Private Interconnects and Enterprise Linux&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.7.10" targetptr="CWLIN219">
+        <ttl>Enabling the Name Service Cache Daemon</ttl>
+        <xreftext>&#x201C;Enabling the Name Service Cache Daemon&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.8" targetptr="CWLIN220">
+      <ttl>Identifying Software Requirements</ttl>
+      <xreftext>&#x201C;Identifying Software Requirements&#x201D;</xreftext>
+      <div element="sect2" href="prelinux.htm" number="2.8.1" targetptr="CWLIN221">
+        <ttl>Software Requirements List for x86 (32-bit) Linux Platforms</ttl>
+        <xreftext>&#x201C;Software Requirements List for x86 (32-bit) Linux Platforms&#x201D;</xreftext>
+        <obj element="table" href="prelinux.htm" number="2-5" targetptr="CWLIN222">
+          <ttl>Linux x86 (32-bit) Operating System Kernel Requirements</ttl>
+          <xreftext>&#x201C;Linux x86 (32-bit) Operating System Kernel Requirements&#x201D;</xreftext>
+        </obj>
+        <obj element="table" href="prelinux.htm" number="2-6" targetptr="CWLIN223">
+          <ttl>Linux x86 (32-bit) Grid Infrastructure and Oracle RAC Package Requirements</ttl>
+          <xreftext>&#x201C;Linux x86 (32-bit) Grid Infrastructure and Oracle RAC Package Requirements&#x201D;</xreftext>
+        </obj>
+        <obj element="table" href="prelinux.htm" number="2-7" targetptr="CWLIN224">
+          <ttl>Linux x86 Oracle Database Features Package Requirements</ttl>
+          <xreftext>&#x201C;Linux x86 Oracle Database Features Package Requirements&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.8.2" targetptr="CWLIN225">
+        <ttl>Software Requirements List for x86-64 Linux Platforms</ttl>
+        <xreftext>&#x201C;Software Requirements List for x86-64 Linux Platforms&#x201D;</xreftext>
+        <obj element="table" href="prelinux.htm" number="2-8" targetptr="CWLIN226">
+          <ttl>Linux x86-64 Operating System Kernel Requirements</ttl>
+          <xreftext>&#x201C;Linux x86-64 Operating System Kernel Requirements&#x201D;</xreftext>
+        </obj>
+        <obj element="table" href="prelinux.htm" number="2-9" targetptr="CWLIN227">
+          <ttl>Linux x86-64 Oracle Grid Infrastructure and Oracle RAC Package Requirements</ttl>
+          <xreftext>&#x201C;Linux x86-64 Oracle Grid Infrastructure and Oracle RAC Package Requirements&#x201D;</xreftext>
+        </obj>
+        <obj element="table" href="prelinux.htm" number="2-10" targetptr="CWLIN228">
+          <ttl>Linux x86-64 Oracle Database Features Package Requirements</ttl>
+          <xreftext>&#x201C;Linux x86-64 Oracle Database Features Package Requirements&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.8.3" targetptr="CWLIN233">
+        <ttl>Software Requirements list for IBM: Linux on System z</ttl>
+        <xreftext>&#x201C;Software Requirements list for IBM: Linux on System z&#x201D;</xreftext>
+        <obj element="table" href="prelinux.htm" number="2-11" targetptr="CWLIN234">
+          <ttl>IBM: Linux on System z Package Requirements</ttl>
+          <xreftext>&#x201C;IBM: Linux on System z Package Requirements&#x201D;</xreftext>
+        </obj>
+      </div>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.9" targetptr="CWLIN235">
+      <ttl>Checking the Software Requirements</ttl>
+      <xreftext>&#x201C;Checking the Software Requirements&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.10" targetptr="CEGIEGAJ">
+      <ttl>Verifying UDP and TCP Kernel Parameters</ttl>
+      <xreftext>&#x201C;Verifying UDP and TCP Kernel Parameters&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.11" targetptr="CEGBEDCD">
+      <ttl>Enabling Core File Creation</ttl>
+      <xreftext>&#x201C;Enabling Core File Creation&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.12" targetptr="CWLIN236">
+      <ttl>Network Time Protocol Setting</ttl>
+      <xreftext>&#x201C;Network Time Protocol Setting&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.13" targetptr="CWLIN237">
+      <ttl>Installing the cvuqdisk Package for Linux</ttl>
+      <xreftext>&#x201C;Installing the cvuqdisk Package for Linux&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.14" targetptr="CWLIN238">
+      <ttl>Enabling Intelligent Platform Management Interface (IPMI)</ttl>
+      <xreftext>&#x201C;Enabling Intelligent Platform Management Interface (IPMI)&#x201D;</xreftext>
+      <div element="sect2" href="prelinux.htm" number="2.14.1" targetptr="CWLIN239">
+        <ttl>Requirements for Enabling IPMI</ttl>
+        <xreftext>&#x201C;Requirements for Enabling IPMI&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.14.2" targetptr="CWLIN240">
+        <ttl>Configuring the IPMI Management Network</ttl>
+        <xreftext>&#x201C;Configuring the IPMI Management Network&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.14.3" targetptr="CWLIN241">
+        <ttl>Configuring the IPMI Driver</ttl>
+        <xreftext>&#x201C;Configuring the IPMI Driver&#x201D;</xreftext>
+        <div element="sect3" href="prelinux.htm" number="2.14.3.1" targetptr="CWLIN242">
+          <ttl>Configuring the Open IPMI Driver</ttl>
+          <xreftext>&#x201C;Configuring the Open IPMI Driver&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="prelinux.htm" number="2.14.3.2" targetptr="CWLIN243">
+          <ttl>Configuring the BMC</ttl>
+          <xreftext>&#x201C;Configuring the BMC&#x201D;</xreftext>
+          <div element="sect4" href="prelinux.htm" number="2.14.3.2.1" targetptr="CWLIN244">
+            <ttl>Example of BMC Configuration Using IPMItool</ttl>
+            <xreftext>&#x201C;Example of BMC Configuration Using IPMItool&#x201D;</xreftext>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.15" targetptr="CWLIN245">
+      <ttl>Automatic SSH Configuration During Installation</ttl>
+      <xreftext>&#x201C;Automatic SSH Configuration During Installation&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.16" targetptr="CWLIN246">
+      <ttl>Configuring Grid Infrastructure Software Owner User Environments</ttl>
+      <xreftext>&#x201C;Configuring Grid Infrastructure Software Owner User Environments&#x201D;</xreftext>
+      <div element="sect2" href="prelinux.htm" number="2.16.1" targetptr="CWLIN247">
+        <ttl>Environment Requirements for Oracle Grid Infrastructure Software Owner</ttl>
+        <xreftext>&#x201C;Environment Requirements for Oracle Grid Infrastructure Software Owner&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.16.2" targetptr="CWLIN248">
+        <ttl>Procedure for Configuring Oracle Software Owner Environments</ttl>
+        <xreftext>&#x201C;Procedure for Configuring Oracle Software Owner Environments&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.16.3" targetptr="CWLIN249">
+        <ttl>Check Resource Limits for the Oracle Software Installation Users</ttl>
+        <xreftext>&#x201C;Check Resource Limits for the Oracle Software Installation Users&#x201D;</xreftext>
+        <obj element="table" href="prelinux.htm" number="2-12" targetptr="">
+          <ttl>Installation Owner Resource Limit Recommended Ranges</ttl>
+          <xreftext>&#x201C;Installation Owner Resource Limit Recommended Ranges&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.16.4" targetptr="CWLIN251">
+        <ttl>Setting Display and X11 Forwarding Configuration</ttl>
+        <xreftext>&#x201C;Setting Display and X11 Forwarding Configuration&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="prelinux.htm" number="2.16.5" targetptr="CWLIN252">
+        <ttl>Preventing Installation Errors Caused by Terminal Output Commands</ttl>
+        <xreftext>&#x201C;Preventing Installation Errors Caused by Terminal Output Commands&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.17" targetptr="CWLIN253">
+      <ttl>Requirements for Creating an Oracle Grid Infrastructure Home Directory</ttl>
+      <xreftext>&#x201C;Requirements for Creating an Oracle Grid Infrastructure Home Directory&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="prelinux.htm" number="2.18" targetptr="CEGHHJJH">
+      <ttl>Cluster Name Requirements</ttl>
+      <xreftext>&#x201C;Cluster Name Requirements&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="storage.htm" number="3" targetptr="CWLIN003">
+    <ttl>Configuring Storage for Grid Infrastructure for a Cluster and Oracle Real Application Clusters (Oracle RAC)</ttl>
+    <xreftext>&#x201C;Configuring Storage for Grid Infrastructure for a Cluster and Oracle Real Application Clusters (Oracle RAC)&#x201D;</xreftext>
+    <div element="sect1" href="storage.htm" number="3.1" targetptr="CWLIN257">
+      <ttl>Reviewing Oracle Grid Infrastructure Storage Options</ttl>
+      <xreftext>&#x201C;Reviewing Oracle Grid Infrastructure Storage Options&#x201D;</xreftext>
+      <div element="sect2" href="storage.htm" number="3.1.1" targetptr="CWLIN258">
+        <ttl>Overview of Oracle Clusterware and Oracle RAC Storage Options</ttl>
+        <xreftext>&#x201C;Overview of Oracle Clusterware and Oracle RAC Storage Options&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.1.2" targetptr="CHDDGHHD">
+        <ttl>General Information About Oracle ACFS</ttl>
+        <xreftext>&#x201C;General Information About Oracle ACFS&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.1.3" targetptr="CWLIN259">
+        <ttl>General Storage Considerations for Oracle Grid Infrastructure and Oracle RAC</ttl>
+        <xreftext>&#x201C;General Storage Considerations for Oracle Grid Infrastructure and Oracle RAC&#x201D;</xreftext>
+        <div element="sect3" href="storage.htm" number="3.1.3.1" targetptr="CWLIN260">
+          <ttl>General Storage Considerations for Oracle Clusterware</ttl>
+          <xreftext>&#x201C;General Storage Considerations for Oracle Clusterware&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.1.3.2" targetptr="CWLIN261">
+          <ttl>General Storage Considerations for Oracle RAC</ttl>
+          <xreftext>&#x201C;General Storage Considerations for Oracle RAC&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.1.4" targetptr="CHDEBHID">
+        <ttl>Guidelines for Using Oracle ASM Disk Groups for Storage</ttl>
+        <xreftext>&#x201C;Guidelines for Using Oracle ASM Disk Groups for Storage&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.1.5" targetptr="CHDGEIIB">
+        <ttl>Using Logical Volume Managers with Oracle Grid Infrastructure and Oracle RAC</ttl>
+        <xreftext>&#x201C;Using Logical Volume Managers with Oracle Grid Infrastructure and Oracle RAC&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.1.6" targetptr="CWLIN262">
+        <ttl>Supported Storage Options</ttl>
+        <xreftext>&#x201C;Supported Storage Options&#x201D;</xreftext>
+        <obj element="table" href="storage.htm" number="3-1" targetptr="CWLIN263">
+          <ttl>Supported Storage Options for Oracle Clusterware and Oracle RAC</ttl>
+          <xreftext>&#x201C;Supported Storage Options for Oracle Clusterware and Oracle RAC&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.1.7" targetptr="CWLIN264">
+        <ttl>After You Have Selected Disk Storage Options</ttl>
+        <xreftext>&#x201C;After You Have Selected Disk Storage Options&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="storage.htm" number="3.2" targetptr="CWLIN265">
+      <ttl>Shared File System Storage Configuration</ttl>
+      <xreftext>&#x201C;Shared File System Storage Configuration&#x201D;</xreftext>
+      <div element="sect2" href="storage.htm" number="3.2.1" targetptr="CWLIN266">
+        <ttl>Requirements for Using a Shared File System</ttl>
+        <xreftext>&#x201C;Requirements for Using a Shared File System&#x201D;</xreftext>
+        <obj element="table" href="storage.htm" number="3-2" targetptr="CWLIN267">
+          <ttl>Oracle Clusterware Shared File System Volume Size Requirements</ttl>
+          <xreftext>&#x201C;Oracle Clusterware Shared File System Volume Size Requirements&#x201D;</xreftext>
+        </obj>
+        <obj element="table" href="storage.htm" number="3-3" targetptr="CWLIN268">
+          <ttl>Oracle RAC Shared File System Volume Size Requirements</ttl>
+          <xreftext>&#x201C;Oracle RAC Shared File System Volume Size Requirements&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.2" targetptr="CWLIN269">
+        <ttl>Deciding to Use a Cluster File System for Oracle Clusterware Files</ttl>
+        <xreftext>&#x201C;Deciding to Use a Cluster File System for Oracle Clusterware Files&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.3" targetptr="CWLIN270">
+        <ttl>Deciding to Use Direct NFS for Data Files</ttl>
+        <xreftext>&#x201C;Deciding to Use Direct NFS for Data Files&#x201D;</xreftext>
+        <div element="sect3" href="storage.htm" number="3.2.3.1" targetptr="CWLIN271">
+          <ttl>About Direct NFS Storage</ttl>
+          <xreftext>&#x201C;About Direct NFS Storage&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.2.3.2" targetptr="CWLIN272">
+          <ttl>Using the Oranfstab File with Direct NFS</ttl>
+          <xreftext>&#x201C;Using the Oranfstab File with Direct NFS&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.2.3.3" targetptr="CWLIN273">
+          <ttl>Mounting NFS Storage Devices with Direct NFS</ttl>
+          <xreftext>&#x201C;Mounting NFS Storage Devices with Direct NFS&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.2.3.4" targetptr="CWLIN274">
+          <ttl>Specifying Network Paths with the Oranfstab File</ttl>
+          <xreftext>&#x201C;Specifying Network Paths with the Oranfstab File&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.4" targetptr="CWLIN275">
+        <ttl>Deciding to Use NFS for Data Files</ttl>
+        <xreftext>&#x201C;Deciding to Use NFS for Data Files&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.5" targetptr="CWLIN276">
+        <ttl>Configuring Storage NFS Mount and Buffer Size Parameters</ttl>
+        <xreftext>&#x201C;Configuring Storage NFS Mount and Buffer Size Parameters&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.6" targetptr="CWLIN277">
+        <ttl>Checking NFS Mount and Buffer Size Parameters for Oracle Clusterware</ttl>
+        <xreftext>&#x201C;Checking NFS Mount and Buffer Size Parameters for Oracle Clusterware&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.7" targetptr="CWLIN278">
+        <ttl>Checking NFS Mount and Buffer Size Parameters for Oracle RAC</ttl>
+        <xreftext>&#x201C;Checking NFS Mount and Buffer Size Parameters for Oracle RAC&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.8" targetptr="CWLIN279">
+        <ttl>Enabling Direct NFS Client Oracle Disk Manager Control of NFS</ttl>
+        <xreftext>&#x201C;Enabling Direct NFS Client Oracle Disk Manager Control of NFS&#x201D;</xreftext>
+        <obj element="example" href="storage.htm" number="3-1" targetptr="CWLIN280">
+          <ttl>Using Local and Path NFS Server Entries</ttl>
+          <xreftext>&#x201C;Using Local and Path NFS Server Entries&#x201D;</xreftext>
+        </obj>
+        <obj element="example" href="storage.htm" number="3-2" targetptr="CWLIN281">
+          <ttl>Using Local and Path in the Same Subnet, with dontroute</ttl>
+          <xreftext>&#x201C;Using Local and Path in the Same Subnet, with dontroute&#x201D;</xreftext>
+        </obj>
+        <obj element="example" href="storage.htm" number="3-3" targetptr="CWLIN282">
+          <ttl>Using Names in Place of IP Addresses, with Multiple Exports</ttl>
+          <xreftext>&#x201C;Using Names in Place of IP Addresses, with Multiple Exports&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.9" targetptr="CWLIN283">
+        <ttl>Creating Directories for Oracle Clusterware Files on Shared File Systems</ttl>
+        <xreftext>&#x201C;Creating Directories for Oracle Clusterware Files on Shared File Systems&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.10" targetptr="CWLIN284">
+        <ttl>Creating Directories for Oracle Database Files on Shared File Systems</ttl>
+        <xreftext>&#x201C;Creating Directories for Oracle Database Files on Shared File Systems&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.2.11" targetptr="CWLIN285">
+        <ttl>Disabling Direct NFS Client Oracle Disk Management Control of NFS</ttl>
+        <xreftext>&#x201C;Disabling Direct NFS Client Oracle Disk Management Control of NFS&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="storage.htm" number="3.3" targetptr="CWLIN286">
+      <ttl>Oracle Automatic Storage Management Storage Configuration</ttl>
+      <xreftext>&#x201C;Oracle Automatic Storage Management Storage Configuration&#x201D;</xreftext>
+      <div element="sect2" href="storage.htm" number="3.3.1" targetptr="CWLIN287">
+        <ttl>Configuring Storage for Oracle Automatic Storage Management</ttl>
+        <xreftext>&#x201C;Configuring Storage for Oracle Automatic Storage Management&#x201D;</xreftext>
+        <div element="sect3" href="storage.htm" number="3.3.1.1" targetptr="CWLIN288">
+          <ttl>Identifying Storage Requirements for Oracle Automatic Storage Management</ttl>
+          <xreftext>&#x201C;Identifying Storage Requirements for Oracle Automatic Storage Management&#x201D;</xreftext>
+          <obj element="table" href="storage.htm" number="3-4" targetptr="CWLIN289">
+            <ttl>Total Oracle Clusterware Storage Space Required by Redundancy Type</ttl>
+            <xreftext>&#x201C;Total Oracle Clusterware Storage Space Required by Redundancy Type&#x201D;</xreftext>
+          </obj>
+          <obj element="table" href="storage.htm" number="3-5" targetptr="CWLIN290">
+            <ttl>Total Oracle Database Storage Space Required by Redundancy Type</ttl>
+            <xreftext>&#x201C;Total Oracle Database Storage Space Required by Redundancy Type&#x201D;</xreftext>
+          </obj>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.3.1.2" targetptr="CWLIN291">
+          <ttl>Creating Files on a NAS Device for Use with Oracle ASM</ttl>
+          <xreftext>&#x201C;Creating Files on a NAS Device for Use with Oracle ASM&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.3.1.3" targetptr="CWLIN292">
+          <ttl>Using an Existing Oracle ASM Disk Group</ttl>
+          <xreftext>&#x201C;Using an Existing Oracle ASM Disk Group&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.3.1.4" targetptr="CWLIN293">
+          <ttl>Configuring Disks for Oracle ASM with ASMLIB</ttl>
+          <xreftext>&#x201C;Configuring Disks for Oracle ASM with ASMLIB&#x201D;</xreftext>
+          <div element="sect4" href="storage.htm" number="3.3.1.4.1" targetptr="CWLIN294">
+            <ttl>Installing and Configuring the Oracle ASM Library Driver Software</ttl>
+            <xreftext>&#x201C;Installing and Configuring the Oracle ASM Library Driver Software&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="storage.htm" number="3.3.1.4.2" targetptr="CWLIN295">
+            <ttl>Configuring Disk Devices to Use Oracle ASM Library Driver on x86 Systems</ttl>
+            <xreftext>&#x201C;Configuring Disk Devices to Use Oracle ASM Library Driver on x86 Systems&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="storage.htm" number="3.3.1.4.3" targetptr="CWLIN296">
+            <ttl>Configuring Disk Devices to Use ASM Library Driver on IBM zSeries Systems</ttl>
+            <xreftext>&#x201C;Configuring Disk Devices to Use ASM Library Driver on IBM zSeries Systems&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="storage.htm" number="3.3.1.4.4" targetptr="CWLIN297">
+            <ttl>Administering the Oracle ASM Library Driver and Disks</ttl>
+            <xreftext>&#x201C;Administering the Oracle ASM Library Driver and Disks&#x201D;</xreftext>
+            <obj element="table" href="storage.htm" number="3-6" targetptr="CWLIN298">
+              <ttl>ORACLEASM Script Options</ttl>
+              <xreftext>&#x201C;ORACLEASM Script Options&#x201D;</xreftext>
+            </obj>
+          </div>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.3.1.5" targetptr="CWLIN299">
+          <ttl>Configuring ASMLIB for Multipath Disks</ttl>
+          <xreftext>&#x201C;Configuring ASMLIB for Multipath Disks&#x201D;</xreftext>
+          <div element="sect4" href="storage.htm" number="3.3.1.5.1" targetptr="CWLIN300">
+            <ttl>About Using Oracle ASM with Multipath Disks</ttl>
+            <xreftext>&#x201C;About Using Oracle ASM with Multipath Disks&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="storage.htm" number="3.3.1.5.2" targetptr="CWLIN301">
+            <ttl>Disk Scan Ordering</ttl>
+            <xreftext>&#x201C;Disk Scan Ordering&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="storage.htm" number="3.3.1.5.3" targetptr="CWLIN302">
+            <ttl>Configuring Disk Scan Ordering to Select Multipath Disks</ttl>
+            <xreftext>&#x201C;Configuring Disk Scan Ordering to Select Multipath Disks&#x201D;</xreftext>
+          </div>
+          <div element="sect4" href="storage.htm" number="3.3.1.5.4" targetptr="CWLIN303">
+            <ttl>Configuring Disk Order Scan to Exclude Single Path Disks</ttl>
+            <xreftext>&#x201C;Configuring Disk Order Scan to Exclude Single Path Disks&#x201D;</xreftext>
+          </div>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.3.1.6" targetptr="CWLIN304">
+          <ttl>Configuring Disk Devices Manually for Oracle ASM</ttl>
+          <xreftext>&#x201C;Configuring Disk Devices Manually for Oracle ASM&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.3.2" targetptr="CWLIN306">
+        <ttl>Using Disk Groups with Oracle Database Files on Oracle ASM</ttl>
+        <xreftext>&#x201C;Using Disk Groups with Oracle Database Files on Oracle ASM&#x201D;</xreftext>
+        <div element="sect3" href="storage.htm" number="3.3.2.1" targetptr="CWLIN307">
+          <ttl>Identifying and Using Existing Oracle Database Diskgroups on Oracle ASM</ttl>
+          <xreftext>&#x201C;Identifying and Using Existing Oracle Database Diskgroups on Oracle ASM&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="storage.htm" number="3.3.2.2" targetptr="CWLIN308">
+          <ttl>Creating Diskgroups for Oracle Database Data Files</ttl>
+          <xreftext>&#x201C;Creating Diskgroups for Oracle Database Data Files&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.3.3" targetptr="CWLIN309">
+        <ttl>Configuring Oracle Automatic Storage Management Cluster File System</ttl>
+        <xreftext>&#x201C;Configuring Oracle Automatic Storage Management Cluster File System&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="storage.htm" number="3.3.4" targetptr="CWLIN310">
+        <ttl>Upgrading Existing Oracle ASM Instances</ttl>
+        <xreftext>&#x201C;Upgrading Existing Oracle ASM Instances&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="storage.htm" number="3.4" targetptr="CWLIN312">
+      <ttl>Desupport of Block and Raw Devices</ttl>
+      <xreftext>&#x201C;Desupport of Block and Raw Devices&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="storage.htm" number="3.5" targetptr="CWLIN313">
+      <ttl>Configuring Raw Logical Volumes on IBM: Linux on System z</ttl>
+      <xreftext>&#x201C;Configuring Raw Logical Volumes on IBM: Linux on System z&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="crsunix.htm" number="4" targetptr="CWLIN315">
+    <ttl>Installing Oracle Grid Infrastructure for a Cluster</ttl>
+    <xreftext>&#x201C;Installing Oracle Grid Infrastructure for a Cluster&#x201D;</xreftext>
+    <div element="sect1" href="crsunix.htm" number="4.1" targetptr="CWLIN316">
+      <ttl>Preparing to Install Oracle Grid Infrastructure with OUI</ttl>
+      <xreftext>&#x201C;Preparing to Install Oracle Grid Infrastructure with OUI&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="crsunix.htm" number="4.2" targetptr="CWLIN317">
+      <ttl>Preparing to Install Oracle Clusterware on IBM: Linux on System z</ttl>
+      <xreftext>&#x201C;Preparing to Install Oracle Clusterware on IBM: Linux on System z&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="crsunix.htm" number="4.3" targetptr="CWLIN318">
+      <ttl>Installing Grid Infrastructure</ttl>
+      <xreftext>&#x201C;Installing Grid Infrastructure&#x201D;</xreftext>
+      <div element="sect2" href="crsunix.htm" number="4.3.1" targetptr="CWLIN319">
+        <ttl>Running OUI to Install Grid Infrastructure</ttl>
+        <xreftext>&#x201C;Running OUI to Install Grid Infrastructure&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="crsunix.htm" number="4.3.2" targetptr="CWLIN320">
+        <ttl>Installing Grid Infrastructure Using a Cluster Configuration File</ttl>
+        <xreftext>&#x201C;Installing Grid Infrastructure Using a Cluster Configuration File&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="crsunix.htm" number="4.4" targetptr="CWLIN321">
+      <ttl>Installing Grid Infrastructure Using a Software-Only Installation</ttl>
+      <xreftext>&#x201C;Installing Grid Infrastructure Using a Software-Only Installation&#x201D;</xreftext>
+      <div element="sect2" href="crsunix.htm" number="4.4.1" targetptr="CWLIN322">
+        <ttl>Installing the Software Binaries</ttl>
+        <xreftext>&#x201C;Installing the Software Binaries&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="crsunix.htm" number="4.4.2" targetptr="BABHIGAB">
+        <ttl>Configuring the Software Binaries</ttl>
+        <xreftext>&#x201C;Configuring the Software Binaries&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="crsunix.htm" number="4.4.3" targetptr="CWLIN323">
+        <ttl>Configuring the Software Binaries Using a Response File</ttl>
+        <xreftext>&#x201C;Configuring the Software Binaries Using a Response File&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="crsunix.htm" number="4.5" targetptr="BABHFJJA">
+      <ttl>Restrictions for Oracle Berkeley DB</ttl>
+      <xreftext>&#x201C;Restrictions for Oracle Berkeley DB&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="crsunix.htm" number="4.6" targetptr="CWLIN324">
+      <ttl>Confirming Oracle Clusterware Function</ttl>
+      <xreftext>&#x201C;Confirming Oracle Clusterware Function&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="crsunix.htm" number="4.7" targetptr="CWLIN325">
+      <ttl>Confirming Oracle ASM Function for Oracle Clusterware Files</ttl>
+      <xreftext>&#x201C;Confirming Oracle ASM Function for Oracle Clusterware Files&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="crsunix.htm" number="4.8" targetptr="BABBGICH">
+      <ttl>Understanding Offline Processes in Oracle Grid Infrastructure</ttl>
+      <xreftext>&#x201C;Understanding Offline Processes in Oracle Grid Infrastructure&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="postinst.htm" number="5" targetptr="CWLIN326">
+    <ttl>Oracle Grid Infrastructure Postinstallation Procedures</ttl>
+    <xreftext>&#x201C;Oracle Grid Infrastructure Postinstallation Procedures&#x201D;</xreftext>
+    <div element="sect1" href="postinst.htm" number="5.1" targetptr="CWLIN327">
+      <ttl>Required Postinstallation Tasks</ttl>
+      <xreftext>&#x201C;Required Postinstallation Tasks&#x201D;</xreftext>
+      <div element="sect2" href="postinst.htm" number="5.1.1" targetptr="CWLIN328">
+        <ttl>Download and Install Patch Updates</ttl>
+        <xreftext>&#x201C;Download and Install Patch Updates&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="postinst.htm" number="5.2" targetptr="CWLIN330">
+      <ttl>Recommended Postinstallation Tasks</ttl>
+      <xreftext>&#x201C;Recommended Postinstallation Tasks&#x201D;</xreftext>
+      <div element="sect2" href="postinst.htm" number="5.2.1" targetptr="CWLIN331">
+        <ttl>Back Up the root.sh Script</ttl>
+        <xreftext>&#x201C;Back Up the root.sh Script&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="postinst.htm" number="5.2.2" targetptr="CWLIN335">
+        <ttl>Tune Semaphore Parameters</ttl>
+        <xreftext>&#x201C;Tune Semaphore Parameters&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="postinst.htm" number="5.2.3" targetptr="CWLIN336">
+        <ttl>Create a Fast Recovery Area Disk Group</ttl>
+        <xreftext>&#x201C;Create a Fast Recovery Area Disk Group&#x201D;</xreftext>
+        <div element="sect3" href="postinst.htm" number="5.2.3.1" targetptr="CWLIN337">
+          <ttl>About the Fast Recovery Area and the Fast Recovery Area Disk Group</ttl>
+          <xreftext>&#x201C;About the Fast Recovery Area and the Fast Recovery Area Disk Group&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="postinst.htm" number="5.2.3.2" targetptr="CWLIN338">
+          <ttl>Creating the Fast Recovery Area Disk Group</ttl>
+          <xreftext>&#x201C;Creating the Fast Recovery Area Disk Group&#x201D;</xreftext>
+        </div>
+      </div>
+    </div>
+    <div element="sect1" href="postinst.htm" number="5.3" targetptr="CWLIN339">
+      <ttl>Using Older Oracle Database Versions with Grid Infrastructure</ttl>
+      <xreftext>&#x201C;Using Older Oracle Database Versions with Grid Infrastructure&#x201D;</xreftext>
+      <div element="sect2" href="postinst.htm" number="5.3.1" targetptr="CWLIN340">
+        <ttl>General Restrictions for Using Older Oracle Database Versions</ttl>
+        <xreftext>&#x201C;General Restrictions for Using Older Oracle Database Versions&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="postinst.htm" number="5.3.2" targetptr="CIHFHJFJ">
+        <ttl>Using ASMCA to Administer Disk Groups for Older Database Versions</ttl>
+        <xreftext>&#x201C;Using ASMCA to Administer Disk Groups for Older Database Versions&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="postinst.htm" number="5.3.3" targetptr="CWLIN341">
+        <ttl>Pinning Cluster Nodes for Oracle Database Release 10.x or 11.x</ttl>
+        <xreftext>&#x201C;Pinning Cluster Nodes for Oracle Database Release 10.x or 11.x&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="postinst.htm" number="5.3.4" targetptr="CWLIN342">
+        <ttl>Enabling The Global Services Daemon (GSD) for Oracle Database Release 9.2</ttl>
+        <xreftext>&#x201C;Enabling The Global Services Daemon (GSD) for Oracle Database Release 9.2&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="postinst.htm" number="5.3.5" targetptr="CWLIN343">
+        <ttl>Using the Correct LSNRCTL Commands</ttl>
+        <xreftext>&#x201C;Using the Correct LSNRCTL Commands&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="postinst.htm" number="5.4" targetptr="CWLIN344">
+      <ttl>Modifying Oracle Clusterware Binaries After Installation</ttl>
+      <xreftext>&#x201C;Modifying Oracle Clusterware Binaries After Installation&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="chapter" href="rem_orcl.htm" number="6" targetptr="CWLIN345">
+    <ttl>How to Modify or Deinstall Oracle Grid Infrastructure</ttl>
+    <xreftext>&#x201C;How to Modify or Deinstall Oracle Grid Infrastructure&#x201D;</xreftext>
+    <div element="sect1" href="rem_orcl.htm" number="6.1" targetptr="CWLIN346">
+      <ttl>Deciding When to Deinstall Oracle Clusterware</ttl>
+      <xreftext>&#x201C;Deciding When to Deinstall Oracle Clusterware&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="rem_orcl.htm" number="6.2" targetptr="CWLIN347">
+      <ttl>Migrating Standalone Grid Infrastructure Servers to a Cluster</ttl>
+      <xreftext>&#x201C;Migrating Standalone Grid Infrastructure Servers to a Cluster&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="rem_orcl.htm" number="6.3" targetptr="CWLIN348">
+      <ttl>Relinking Oracle Grid Infrastructure for a Cluster Binaries</ttl>
+      <xreftext>&#x201C;Relinking Oracle Grid Infrastructure for a Cluster Binaries&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="rem_orcl.htm" number="6.4" targetptr="CIHIFHDD">
+      <ttl>Changing the Oracle Grid Infrastructure Home Path</ttl>
+      <xreftext>&#x201C;Changing the Oracle Grid Infrastructure Home Path&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="rem_orcl.htm" number="6.5" targetptr="CWLIN349">
+      <ttl>Deconfiguring Oracle Clusterware Without Removing Binaries</ttl>
+      <xreftext>&#x201C;Deconfiguring Oracle Clusterware Without Removing Binaries&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="rem_orcl.htm" number="6.6" targetptr="CWLIN350">
+      <ttl>Removing Oracle Clusterware and Oracle ASM</ttl>
+      <xreftext>&#x201C;Removing Oracle Clusterware and Oracle ASM&#x201D;</xreftext>
+      <div element="sect2" href="rem_orcl.htm" number="6.6.1" targetptr="CWLIN351">
+        <ttl>About the Deinstallation Tool</ttl>
+        <xreftext>&#x201C;About the Deinstallation Tool&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="rem_orcl.htm" number="6.6.2" targetptr="CHDBHGBJ">
+        <ttl>Downloading The Deinstall Tool for Use with Failed Installations</ttl>
+        <xreftext>&#x201C;Downloading The Deinstall Tool for Use with Failed Installations&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="rem_orcl.htm" number="6.6.3" targetptr="CWLIN352">
+        <ttl>Deinstall Command Example for Oracle Clusterware and Oracle ASM</ttl>
+        <xreftext>&#x201C;Deinstall Command Example for Oracle Clusterware and Oracle ASM&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="rem_orcl.htm" number="6.6.4" targetptr="CWLIN353">
+        <ttl>Deinstallation Parameter File Example for Grid Infrastructure for a Cluster</ttl>
+        <xreftext>&#x201C;Deinstallation Parameter File Example for Grid Infrastructure for a Cluster&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+  <div element="appendix" href="trouble.htm" number="A" targetptr="CWLIN354">
+    <ttl>Troubleshooting the Oracle Grid Infrastructure Installation Process</ttl>
+    <xreftext>&#x201C;Troubleshooting the Oracle Grid Infrastructure Installation Process&#x201D;</xreftext>
+    <div element="sect1" href="trouble.htm" number="A.1" targetptr="CWLIN355">
+      <ttl>General Installation Issues</ttl>
+      <xreftext>&#x201C;General Installation Issues&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="trouble.htm" number="A.2" targetptr="CWLIN356">
+      <ttl>Interpreting CVU &quot;Unknown&quot; Output Messages Using Verbose Mode</ttl>
+      <xreftext>&#x201C;Interpreting CVU "Unknown" Output Messages Using Verbose Mode&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="trouble.htm" number="A.3" targetptr="CWLIN357">
+      <ttl>Interpreting CVU Messages About Oracle Grid Infrastructure Setup</ttl>
+      <xreftext>&#x201C;Interpreting CVU Messages About Oracle Grid Infrastructure Setup&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="trouble.htm" number="A.4" targetptr="CWLIN358">
+      <ttl>About the Oracle Clusterware Alert Log</ttl>
+      <xreftext>&#x201C;About the Oracle Clusterware Alert Log&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="trouble.htm" number="A.5" targetptr="CWLIN359">
+      <ttl>Missing Operating System Packages On Linux</ttl>
+      <xreftext>&#x201C;Missing Operating System Packages On Linux&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="trouble.htm" number="A.6" targetptr="CWLIN360">
+      <ttl>Performing Cluster Diagnostics During Oracle Grid Infrastructure Installations</ttl>
+      <xreftext>&#x201C;Performing Cluster Diagnostics During Oracle Grid Infrastructure Installations&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="trouble.htm" number="A.7" targetptr="CWLIN361">
+      <ttl>Interconnect Configuration Issues</ttl>
+      <xreftext>&#x201C;Interconnect Configuration Issues&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="trouble.htm" number="A.8" targetptr="BABCEEBE">
+      <ttl>Storage Configuration Issues</ttl>
+      <xreftext>&#x201C;Storage Configuration Issues&#x201D;</xreftext>
+      <div element="sect2" href="trouble.htm" number="A.8.1" targetptr="BABCABHH">
+        <ttl>Recovery from Losing a Node Filesystem or Grid Home</ttl>
+        <xreftext>&#x201C;Recovery from Losing a Node Filesystem or Grid Home&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="trouble.htm" number="A.8.2" targetptr="BABJIBJE">
+        <ttl>Oracle ASM Library Driver Issues</ttl>
+        <xreftext>&#x201C;Oracle ASM Library Driver Issues&#x201D;</xreftext>
+      </div>
+    </div>
+  </div>
+  <div element="appendix" href="app_nonint.htm" number="B" targetptr="CWLIN362">
+    <ttl>Installing and Configuring Oracle Database Using Response Files</ttl>
+    <xreftext>&#x201C;Installing and Configuring Oracle Database Using Response Files&#x201D;</xreftext>
+    <div element="sect1" href="app_nonint.htm" number="B.1" targetptr="CWLIN363">
+      <ttl>How Response Files Work</ttl>
+      <xreftext>&#x201C;How Response Files Work&#x201D;</xreftext>
+      <div element="sect2" href="app_nonint.htm" number="B.1.1" targetptr="CWLIN364">
+        <ttl>Reasons for Using Silent Mode or Response File Mode</ttl>
+        <xreftext>&#x201C;Reasons for Using Silent Mode or Response File Mode&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_nonint.htm" number="B.1.2" targetptr="CWLIN365">
+        <ttl>General Procedure for Using Response Files</ttl>
+        <xreftext>&#x201C;General Procedure for Using Response Files&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="app_nonint.htm" number="B.2" targetptr="CWLIN367">
+      <ttl>Preparing a Response File</ttl>
+      <xreftext>&#x201C;Preparing a Response File&#x201D;</xreftext>
+      <div element="sect2" href="app_nonint.htm" number="B.2.1" targetptr="CWLIN368">
+        <ttl>Editing a Response File Template</ttl>
+        <xreftext>&#x201C;Editing a Response File Template&#x201D;</xreftext>
+        <obj element="table" href="app_nonint.htm" number="B-1" targetptr="CWLIN369">
+          <ttl>Response Files for Oracle Database</ttl>
+          <xreftext>&#x201C;Response Files for Oracle Database&#x201D;</xreftext>
+        </obj>
+        <obj element="table" href="app_nonint.htm" number="B-2" targetptr="CWLIN370">
+          <ttl>Response files for Oracle Grid Infrastructure</ttl>
+          <xreftext>&#x201C;Response files for Oracle Grid Infrastructure&#x201D;</xreftext>
+        </obj>
+      </div>
+      <div element="sect2" href="app_nonint.htm" number="B.2.2" targetptr="CWLIN371">
+        <ttl>Recording a Response File</ttl>
+        <xreftext>&#x201C;Recording a Response File&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="app_nonint.htm" number="B.3" targetptr="CWLIN372">
+      <ttl>Running the Installer Using a Response File</ttl>
+      <xreftext>&#x201C;Running the Installer Using a Response File&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_nonint.htm" number="B.4" targetptr="CWLIN373">
+      <ttl>Running Net Configuration Assistant Using a Response File</ttl>
+      <xreftext>&#x201C;Running Net Configuration Assistant Using a Response File&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="app_nonint.htm" number="B.5" targetptr="CWLIN377">
+      <ttl>Postinstallation Configuration Using a Response File</ttl>
+      <xreftext>&#x201C;Postinstallation Configuration Using a Response File&#x201D;</xreftext>
+      <div element="sect2" href="app_nonint.htm" number="B.5.1" targetptr="CWLIN378">
+        <ttl>About the Postinstallation Configuration File</ttl>
+        <xreftext>&#x201C;About the Postinstallation Configuration File&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="app_nonint.htm" number="B.5.2" targetptr="CWLIN379">
+        <ttl>Running Postinstallation Configuration Using a Response File</ttl>
+        <xreftext>&#x201C;Running Postinstallation Configuration Using a Response File&#x201D;</xreftext>
+        <obj element="example" href="app_nonint.htm" number="B-1" targetptr="CWLIN380">
+          <ttl>Password response file for Oracle Grid Infrastructure installation for a cluster</ttl>
+          <xreftext>&#x201C;Password response file for Oracle Grid Infrastructure installation for a cluster&#x201D;</xreftext>
+        </obj>
+        <obj element="example" href="app_nonint.htm" number="B-2" targetptr="CWLIN381">
+          <ttl>Password response file for Oracle Real Application Clusters</ttl>
+          <xreftext>&#x201C;Password response file for Oracle Real Application Clusters&#x201D;</xreftext>
+        </obj>
+      </div>
+    </div>
+  </div>
+  <div element="appendix" href="memry.htm" number="C" targetptr="CWLIN382">
+    <ttl>Configuring Large Memory Optimization</ttl>
+    <xreftext>&#x201C;Configuring Large Memory Optimization&#x201D;</xreftext>
+    <div element="sect1" href="memry.htm" number="C.1" targetptr="CWLIN383">
+      <ttl>Overview of HugePages</ttl>
+      <xreftext>&#x201C;Overview of HugePages&#x201D;</xreftext>
+      <div element="sect2" href="memry.htm" number="C.1.1" targetptr="CWLIN384">
+        <ttl>What HugePages Provides</ttl>
+        <xreftext>&#x201C;What HugePages Provides&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="memry.htm" number="C.2" targetptr="CWLIN385">
+      <ttl>Restrictions for HugePage Configurations</ttl>
+      <xreftext>&#x201C;Restrictions for HugePage Configurations&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="appendix" href="concepts.htm" number="D" targetptr="CWLIN386">
+    <ttl>Oracle Grid Infrastructure for a Cluster Installation Concepts</ttl>
+    <xreftext>&#x201C;Oracle Grid Infrastructure for a Cluster Installation Concepts&#x201D;</xreftext>
+    <div element="sect1" href="concepts.htm" number="D.1" targetptr="CWLIN387">
+      <ttl>Understanding Preinstallation Configuration</ttl>
+      <xreftext>&#x201C;Understanding Preinstallation Configuration&#x201D;</xreftext>
+      <div element="sect2" href="concepts.htm" number="D.1.1" targetptr="CWLIN388">
+        <ttl>Understanding Oracle Groups and Users</ttl>
+        <xreftext>&#x201C;Understanding Oracle Groups and Users&#x201D;</xreftext>
+        <div element="sect3" href="concepts.htm" number="D.1.1.1" targetptr="CWLIN389">
+          <ttl>Understanding the Oracle Inventory Group</ttl>
+          <xreftext>&#x201C;Understanding the Oracle Inventory Group&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="concepts.htm" number="D.1.1.2" targetptr="CWLIN390">
+          <ttl>Understanding the Oracle Inventory Directory</ttl>
+          <xreftext>&#x201C;Understanding the Oracle Inventory Directory&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.1.2" targetptr="CWLIN391">
+        <ttl>Understanding the Oracle Base Directory Path</ttl>
+        <xreftext>&#x201C;Understanding the Oracle Base Directory Path&#x201D;</xreftext>
+        <div element="sect3" href="concepts.htm" number="D.1.2.1" targetptr="CWLIN392">
+          <ttl>Overview of the Oracle Base directory</ttl>
+          <xreftext>&#x201C;Overview of the Oracle Base directory&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="concepts.htm" number="D.1.2.2" targetptr="CWLIN393">
+          <ttl>Understanding Oracle Base and Grid Infrastructure Directories</ttl>
+          <xreftext>&#x201C;Understanding Oracle Base and Grid Infrastructure Directories&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.1.3" targetptr="CWLIN394">
+        <ttl>Understanding Network Addresses</ttl>
+        <xreftext>&#x201C;Understanding Network Addresses&#x201D;</xreftext>
+        <div element="sect3" href="concepts.htm" number="D.1.3.1" targetptr="CWLIN395">
+          <ttl>About the Public IP Address</ttl>
+          <xreftext>&#x201C;About the Public IP Address&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="concepts.htm" number="D.1.3.2" targetptr="CWLIN396">
+          <ttl>About the Private IP Address</ttl>
+          <xreftext>&#x201C;About the Private IP Address&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="concepts.htm" number="D.1.3.3" targetptr="CWLIN397">
+          <ttl>About the Virtual IP Address</ttl>
+          <xreftext>&#x201C;About the Virtual IP Address&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="concepts.htm" number="D.1.3.4" targetptr="CWLIN398">
+          <ttl>About the Grid Naming Service (GNS) Virtual IP Address</ttl>
+          <xreftext>&#x201C;About the Grid Naming Service (GNS) Virtual IP Address&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="concepts.htm" number="D.1.3.5" targetptr="CWLIN399">
+          <ttl>About the SCAN</ttl>
+          <xreftext>&#x201C;About the SCAN&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.1.4" targetptr="CWLIN400">
+        <ttl>Understanding Network Time Requirements</ttl>
+        <xreftext>&#x201C;Understanding Network Time Requirements&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="concepts.htm" number="D.2" targetptr="CWLIN401">
+      <ttl>Understanding Storage Configuration</ttl>
+      <xreftext>&#x201C;Understanding Storage Configuration&#x201D;</xreftext>
+      <div element="sect2" href="concepts.htm" number="D.2.1" targetptr="CWLIN402">
+        <ttl>Understanding Oracle Automatic Storage Management Cluster File System</ttl>
+        <xreftext>&#x201C;Understanding Oracle Automatic Storage Management Cluster File System&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.2.2" targetptr="CWLIN403">
+        <ttl>About Migrating Existing Oracle ASM Instances</ttl>
+        <xreftext>&#x201C;About Migrating Existing Oracle ASM Instances&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.2.3" targetptr="CWLIN404">
+        <ttl>About Converting Standalone Oracle ASM Installations to Clustered Installations</ttl>
+        <xreftext>&#x201C;About Converting Standalone Oracle ASM Installations to Clustered Installations&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="concepts.htm" number="D.3" targetptr="CIHDAJAC">
+      <ttl>Understanding Server Pools</ttl>
+      <xreftext>&#x201C;Understanding Server Pools&#x201D;</xreftext>
+      <div element="sect2" href="concepts.htm" number="D.3.1" targetptr="CIHHHFJI">
+        <ttl>Overview of Server Pools and Policy-based Management</ttl>
+        <xreftext>&#x201C;Overview of Server Pools and Policy-based Management&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.3.2" targetptr="CIHEFFGD">
+        <ttl>How Server Pools Work</ttl>
+        <xreftext>&#x201C;How Server Pools Work&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.3.3" targetptr="CIHGHIFD">
+        <ttl>The Free Server Pool</ttl>
+        <xreftext>&#x201C;The Free Server Pool&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="concepts.htm" number="D.3.4" targetptr="CIHBCEIH">
+        <ttl>The Generic Server Pool</ttl>
+        <xreftext>&#x201C;The Generic Server Pool&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="concepts.htm" number="D.4" targetptr="CWLIN405">
+      <ttl>Understanding Out-of-Place Upgrade</ttl>
+      <xreftext>&#x201C;Understanding Out-of-Place Upgrade&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="appendix" href="manpreins.htm" number="E" targetptr="CWLIN406">
+    <ttl>How to Complete Installation Prerequisite Tasks Manually</ttl>
+    <xreftext>&#x201C;How to Complete Installation Prerequisite Tasks Manually&#x201D;</xreftext>
+    <div element="sect1" href="manpreins.htm" number="E.1" targetptr="CWLIN407">
+      <ttl>Configuring SSH Manually on All Cluster Nodes</ttl>
+      <xreftext>&#x201C;Configuring SSH Manually on All Cluster Nodes&#x201D;</xreftext>
+      <div element="sect2" href="manpreins.htm" number="E.1.1" targetptr="CWLIN408">
+        <ttl>Checking Existing SSH Configuration on the System</ttl>
+        <xreftext>&#x201C;Checking Existing SSH Configuration on the System&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="manpreins.htm" number="E.1.2" targetptr="CWLIN409">
+        <ttl>Configuring SSH on Cluster Nodes</ttl>
+        <xreftext>&#x201C;Configuring SSH on Cluster Nodes&#x201D;</xreftext>
+        <div element="sect3" href="manpreins.htm" number="E.1.2.1" targetptr="CWLIN410">
+          <ttl>Create SSH Directory, and Create SSH Keys On Each Node</ttl>
+          <xreftext>&#x201C;Create SSH Directory, and Create SSH Keys On Each Node&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="manpreins.htm" number="E.1.2.2" targetptr="CWLIN411">
+          <ttl>Add All Keys to a Common authorized_keys File</ttl>
+          <xreftext>&#x201C;Add All Keys to a Common authorized_keys File&#x201D;</xreftext>
+        </div>
+      </div>
+      <div element="sect2" href="manpreins.htm" number="E.1.3" targetptr="CWLIN412">
+        <ttl>Enabling SSH User Equivalency on Cluster Nodes</ttl>
+        <xreftext>&#x201C;Enabling SSH User Equivalency on Cluster Nodes&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="manpreins.htm" number="E.2" targetptr="CWLIN413">
+      <ttl>Configuring Kernel Parameters</ttl>
+      <xreftext>&#x201C;Configuring Kernel Parameters&#x201D;</xreftext>
+      <div element="sect2" href="manpreins.htm" number="E.2.1" targetptr="CWLIN414">
+        <ttl>Minimum Parameter Settings for Installation</ttl>
+        <xreftext>&#x201C;Minimum Parameter Settings for Installation&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="manpreins.htm" number="E.2.2" targetptr="CWLIN415">
+        <ttl>Additional Parameter and Kernel Settings for SUSE Linux</ttl>
+        <xreftext>&#x201C;Additional Parameter and Kernel Settings for SUSE Linux&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="manpreins.htm" number="E.3" targetptr="CWLIN416">
+      <ttl>Checking OCFS2 Version Manually</ttl>
+      <xreftext>&#x201C;Checking OCFS2 Version Manually&#x201D;</xreftext>
+    </div>
+  </div>
+  <div element="appendix" href="procstop.htm" number="F" targetptr="CWLIN417">
+    <ttl>How to Upgrade to Oracle Grid Infrastructure 11g Release 2</ttl>
+    <xreftext>&#x201C;How to Upgrade to Oracle Grid Infrastructure 11<span class="italic">g</span> Release 2&#x201D;</xreftext>
+    <div element="sect1" href="procstop.htm" number="F.1" targetptr="CWLIN418">
+      <ttl>Back Up the Oracle Software Before Upgrades</ttl>
+      <xreftext>&#x201C;Back Up the Oracle Software Before Upgrades&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.2" targetptr="CWLIN419">
+      <ttl>Unset Oracle Environment Variables</ttl>
+      <xreftext>&#x201C;Unset Oracle Environment Variables&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.3" targetptr="CEGJHHFJ">
+      <ttl>About Oracle ASM and Oracle Grid Infrastructure Installation and Upgrade</ttl>
+      <xreftext>&#x201C;About Oracle ASM and Oracle Grid Infrastructure Installation and Upgrade&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.4" targetptr="CWLIN420">
+      <ttl>Restrictions for Clusterware and Oracle ASM Upgrades</ttl>
+      <xreftext>&#x201C;Restrictions for Clusterware and Oracle ASM Upgrades&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.5" targetptr="CWLIN422">
+      <ttl>Preparing to Upgrade an Existing Oracle Clusterware Installation</ttl>
+      <xreftext>&#x201C;Preparing to Upgrade an Existing Oracle Clusterware Installation&#x201D;</xreftext>
+      <div element="sect2" href="procstop.htm" number="F.5.1" targetptr="CWLIN423">
+        <ttl>Verifying System Readiness for Upgrades</ttl>
+        <xreftext>&#x201C;Verifying System Readiness for Upgrades&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="procstop.htm" number="F.5.2" targetptr="CWLIN424">
+        <ttl>Checks to Complete Before Upgrade an Existing Oracle Clusterware Installation</ttl>
+        <xreftext>&#x201C;Checks to Complete Before Upgrade an Existing Oracle Clusterware Installation&#x201D;</xreftext>
+      </div>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.6" targetptr="CWLIN425">
+      <ttl>Performing Rolling Upgrades From an Earlier Release</ttl>
+      <xreftext>&#x201C;Performing Rolling Upgrades From an Earlier Release&#x201D;</xreftext>
+      <div element="sect2" href="procstop.htm" number="F.6.1" targetptr="CWLIN426">
+        <ttl>Performing a Rolling Upgrade of Oracle Clusterware</ttl>
+        <xreftext>&#x201C;Performing a Rolling Upgrade of Oracle Clusterware&#x201D;</xreftext>
+      </div>
+      <div element="sect2" href="procstop.htm" number="F.6.2" targetptr="CWLIN00001">
+        <ttl>Performing a Rolling Upgrade of Oracle Automatic Storage Management</ttl>
+        <xreftext>&#x201C;Performing a Rolling Upgrade of Oracle Automatic Storage Management&#x201D;</xreftext>
+        <div element="sect3" href="procstop.htm" number="F.6.2.1" targetptr="CWLIN427">
+          <ttl>Preparing to Upgrade Oracle ASM</ttl>
+          <xreftext>&#x201C;Preparing to Upgrade Oracle ASM&#x201D;</xreftext>
+        </div>
+        <div element="sect3" href="procstop.htm" number="F.6.2.2" targetptr="CWLIN428">
+          <ttl>Upgrading Oracle ASM</ttl>
+          <xreftext>&#x201C;Upgrading Oracle ASM&#x201D;</xreftext>
+        </div>
+      </div>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.7" targetptr="CWLIN429">
+      <ttl>Updating DB Control and Grid Control Target Parameters</ttl>
+      <xreftext>&#x201C;Updating DB Control and Grid Control Target Parameters&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.8" targetptr="CEGGHAFG">
+      <ttl>Unlocking the Existing Oracle Clusterware Installation</ttl>
+      <xreftext>&#x201C;Unlocking the Existing Oracle Clusterware Installation&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.9" targetptr="CWLIN430">
+      <ttl>Downgrading Oracle Clusterware After an Upgrade</ttl>
+      <xreftext>&#x201C;Downgrading Oracle Clusterware After an Upgrade&#x201D;</xreftext>
+    </div>
+    <div element="sect1" href="procstop.htm" number="F.10" targetptr="CEGCDBDI">
+      <ttl>Checking Cluster Health Monitor Repository Size After Upgrading</ttl>
+      <xreftext>&#x201C;Checking Cluster Health Monitor Repository Size After Upgrading&#x201D;</xreftext>
+    </div>
+  </div>
+</div>

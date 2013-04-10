@@ -1,0 +1,1541 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Managing Oracle Homes</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.1" />
+<meta name="Date" content="2011-03-15T16:57:52Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Universal Installer and OPatch User's Guide 11g Release 2 (11.2) for Windows and UNIX" />
+<meta name="partno" content="E12255-11" />
+<meta name="docid" content="OUICG" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="oui1_introduction.htm" title="Previous" type="text/html" />
+<link rel="Next" href="oui3_response_files.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e12255.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Universal Installer and OPatch User's Guide<br />
+11<i>g</i> Release 2 (11.2) for Windows and UNIX</b><br />
+Part Number E12255-11</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="oui1_introduction.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="oui3_response_files.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e12255.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CJAGCIAC" name="CJAGCIAC"></a>
+<h1 class="chapter"><span class="secnum">2</span> <a name="OUICG126" id="OUICG126"></a> Managing Oracle Homes</h1>
+<p>This chapter contains the following sections:</p>
+<ul>
+<li>
+<p><a href="#i1006015">Introduction to Oracle Homes</a></p>
+</li>
+<li>
+<p><a href="#CJAEIHEE">Introduction to Oracle Base</a></p>
+</li>
+<li>
+<p><a href="#i1005984">Installing an Oracle Product</a></p>
+</li>
+<li>
+<p><a href="#i1006275">Removing Oracle Homes</a></p>
+</li>
+<li>
+<p><a href="#i1005601">Determining the Default Oracle Home</a></p>
+</li>
+<li>
+<p><a href="#i1005615">Multiple Oracle Homes</a></p>
+</li>
+<li>
+<p><a href="#i1005634">Oracle Universal Installer Inventory</a></p>
+</li>
+<li>
+<p><a href="#i1006001">Home Selector (Available on Win32 Platforms)</a></p>
+</li>
+</ul>
+<a id="i1006015" name="i1006015"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG127" id="OUICG127"></a>Introduction to Oracle Homes<a id="sthref79" name="sthref79"></a></h2>
+<p>The Oracle Universal Installer supports the installation of several active Oracle homes on the same host. An Oracle home is a directory into which all Oracle software is installed. This is pointed to by an environment variable. The Oracle home consists of the following:</p>
+<ul>
+<li>
+<p>Directory location where the products are installed</p>
+</li>
+<li>
+<p>Corresponding system path setup</p>
+</li>
+<li>
+<p>Program groups associated with the products installed in the home (where applicable)</p>
+</li>
+<li>
+<p>Services running from the home</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="CJAEIHEE" name="CJAEIHEE"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Introduction to Oracle Base</h2>
+<p>The Oracle base location is the location where Oracle Database binaries are stored. During installation, you are prompted for the Oracle base path. Typically, an Oracle base path for the database is created during Oracle Grid Infrastructure installation.</p>
+<p>To prepare for installation, Oracle recommends that you only set the ORACLE_BASE environment variable to define paths for Oracle binaries and configuration files. Oracle Universal Installer (OUI) creates other necessary paths and environment variables in accordance with the Optimal Flexible Architecture (OFA) rules for well-structured Oracle software environments.</p>
+<p>For example, with Oracle Database 11g, Oracle recommends that you do not set an Oracle home environment variable allow OUI to create it instead. If the Oracle base path is /u01/app/oracle, then by default, OUI creates the following Oracle home path:</p>
+<pre xml:space="preserve" class="oac_no_warn">/u01/app/oracle/product/11.2.0/dbhome_1
+</pre>
+<p>Ensure that the paths you select for Oracle software, such as Oracle home paths and the Oracle base path, use only ASCII characters. Because installation owner names are used by default for some paths, this ASCII character restriction applies to user names, file names, and directory names.</p>
+</div>
+<!-- class="sect1" -->
+<a id="i1005984" name="i1005984"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG128" id="OUICG128"></a><a id="sthref80" name="sthref80"></a><a id="sthref81" name="sthref81"></a>Installing an Oracle Product</h2>
+<p>When you install an Oracle product, an Oracle home is created.</p>
+<p>To install the product and create the Oracle home, perform the following steps:</p>
+<ol>
+<li>
+<p>Run Oracle Universal Installer.</p>
+</li>
+<li>
+<p>In the Specify Home Details page, enter the Oracle home settings for the installation session. See <a href="#CJAIJIIG">Table 2-1</a> for a description of the fields in this section of the screen.</p>
+</li>
+<li>
+<p>Continue with your installation. See <a href="oui4_product_install.htm#BABGCJJF">Chapter 4, "Installing Products"</a> for detailed information.</p>
+</li>
+</ol>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref82" name="sthref82"></a><a id="CJAIJIIG" name="CJAIJIIG"></a>Table 2-1 Oracle Installation Settings for Specify Home Details page</p>
+<table class="Formal" title="Oracle Installation Settings for Specify Home Details page" summary="Table listing the Oracle Home settings in destination" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t2">Settings</th>
+<th align="left" valign="bottom" id="r1c2-t2">Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t2" headers="r1c1-t2">
+<p>Name</p>
+</td>
+<td align="left" headers="r2c1-t2 r1c2-t2">
+<p>Enter a name for the Oracle home. This name identifies the program group associated with a particular home and the Oracle services installed on this home. The Oracle home name must be between 1 to 127 characters long, and can include only alphanumeric characters and underscores.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t2" headers="r1c1-t2">
+<p>Software Location</p>
+</td>
+<td align="left" headers="r3c1-t2 r1c2-t2">
+<p>Enter the full path to an Oracle home, or select an Oracle home from the drop-down list of existing Oracle homes. The Oracle home location is the directory where products are installed.</p>
+<p>Data files may or may not be installed within an Oracle home. You can use the <span class="bold">Browse</span> button to choose a directory to install your product.</p>
+<p>For Windows platforms, you must provide a valid path that is not in the Windows directory. Different homes cannot share the same location.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" -->
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends that you designate an Oracle home location that is an empty or non-existing directory. If you select a directory for the Oracle home location that is not empty or already exists, you will be warned and asked if you want to proceed.
+<p>For silent installations, if a non-empty, existing directory is specified, an error is logged in the console and in the <code>installActions&lt;timestamp&gt;.log</code> file. Also, the Oracle Universal Installer aborts. To override this condition, use the <code>-force</code> flag on the command line. The effect of using the <code>-force</code> flag is the same as selecting <span class="bold">Yes</span> while installing in interactive mode. You receive a warning message, but the installation continues.</p>
+</div>
+</div>
+<!-- class="sect1" -->
+<a id="i1006275" name="i1006275"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG129" id="OUICG129"></a>Removing Oracle Homes<a id="sthref83" name="sthref83"></a><a id="sthref84" name="sthref84"></a></h2>
+<p>To remove or deinstall Oracle homes, you can either use the Deinstall tool included with the Shiphome, or use the Deinstall utility available as part of the Oracle home.</p>
+<ul>
+<li>
+<p>To use the Deinstall tool, do the following to remove the Oracle home:</p>
+<ol>
+<li>
+<p>cd to DeinstallTool.</p>
+</li>
+<li>
+<p>Run deinstall -home &lt;OracleHome&gt;.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>To use the Deinstall utility, do the following to remove the Oracle home:</p>
+<ol>
+<li>
+<p>cd to $Oracle_Home/deinstall.</p>
+</li>
+<li>
+<p>Run Deinstall.</p>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="i1005601" name="i1005601"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG130" id="OUICG130"></a>Determining the Default Oracle Home<a id="sthref85" name="sthref85"></a><a id="sthref86" name="sthref86"></a></h2>
+<p>By default, when you start Oracle Universal Installer, the software searches your system to determine the default Oracle home where Oracle software should be installed.</p>
+<p>In all cases, the <code>ORACLE_HOME</code> name is taken first from the command line if it is specified, or else from the response file if specified. If not specified, the value of DEFAULT_ORACLE_HOME_NAME in oraparam.ini is examined. Typically, the following convention is used for the name:</p>
+<pre xml:space="preserve" class="oac_no_warn">Ora<span class="italic">&lt;short_marketing_name_in_oraparam.ini&gt;</span>_<span class="italic">&lt;home_identifier&gt;</span>
+</pre>
+<p>Where <span class="italic">&lt;short_marketing_name_in oraparam.ini&gt;</span> is the short product marketing name as specified in the <code>oraparam.ini</code> file; for example, "Db11g", and <code><span class="codeinlineitalic">&lt;home_identifier&gt;</span></code> is a counter derived from the Central Inventory. For example, the <code>ORACLE_HOME</code> name could be <code>OraDb11g_1</code>.</p>
+<p>The ORACLE_HOME <span class="bold">path</span> is taken first from the command line if specified, or else from the response file if specified. If not, the <code>ORACLE_HOME</code> environment variable is used. If neither is specified, the following conventions are used for the path:</p>
+<ul>
+<li>
+<p>If <code>ORACLE_BASE</code> <span class="italic">has</span> been specified in the environment:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_BASE/product/<span class="italic">&lt;version&gt;/&lt;short_name&gt;_&lt;counter&gt;</span>
+</pre>
+<p>For example: <code>$ORACLE_BASE/product/11.2.0/Db_1</code>.</p>
+</li>
+<li>
+<p>If <a id="sthref87" name="sthref87"></a><code>ORACLE_BASE</code> <span class="italic">has not</span> been specified in the environment:</p>
+<pre xml:space="preserve" class="oac_no_warn">$HOME/product/<span class="italic">&lt;version&gt;/&lt;short_name&gt;_&lt;counter&gt;</span>
+</pre>
+<p>Where <span class="italic">&lt;short_name&gt;</span> is the short product name; for example, "Db", and <span class="italic">&lt;counter&gt;</span> is picked up based on the existence of the files. For example, the <code>ORACLE_HOME</code> path could be <code>$HOME/product/11.2.0/Db_1</code>.</p>
+</li>
+</ul>
+<p>The instance-related directory location is accepted first from the response file, if specified. If not, the <code>oradata</code>, <code>flash_recovery_area</code>, <code>admin</code>, and <code>doc</code> directories are created under <code>ORACLE_BASE</code>. If <code>ORACLE_BASE</code> has not been specified, the default is the <code>$ORACLE_HOME/oradata</code> directory. If the parent directory of the Oracle home is writable, these directories are created in the parent directory of the Oracle home.</p>
+</div>
+<!-- class="sect1" -->
+<a id="i1005615" name="i1005615"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG131" id="OUICG131"></a>Multiple Oracle Homes<a id="sthref88" name="sthref88"></a></h2>
+<p>Oracle Universal Installer supports the installation of several active <a id="sthref89" name="sthref89"></a>Oracle homes on the same host as long as the products support this at run-time. Multiple versions of the same product or different products can run from different Oracle homes concurrently. Products installed in one home do not conflict or interact with products installed on another home. You can update software in any home at any time, assuming all Oracle applications, services, and processes installed on the target home are shut down. Processes from other homes may still be running.</p>
+<div class="sect2"><a id="sthref90" name="sthref90"></a>
+<h3 class="sect2"><a name="OUICG132" id="OUICG132"></a><a id="sthref91" name="sthref91"></a><a id="sthref92" name="sthref92"></a>Target Home</h3>
+<p>The Oracle home currently accessed by Oracle Universal Installer for installation or deinstallation is the target home. To upgrade or remove products from the target homes, these products must be shut down or stopped.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="i1005634" name="i1005634"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG133" id="OUICG133"></a>Oracle Universal Installer Inventory<a id="sthref93" name="sthref93"></a><a id="sthref94" name="sthref94"></a><a id="sthref95" name="sthref95"></a></h2>
+<p>The Oracle Universal Installer inventory stores information about all Oracle software products installed in all Oracle homes on a host, provided the product was installed using Oracle Universal Installer.</p>
+<p>Inventory information is stored in Extensible Markup Language (XML) format. The <a id="sthref96" name="sthref96"></a>XML format enables easier diagnosis of problems and faster loading of data. Any secure information is not stored directly in the inventory. As a result, during removal of some products, you may be prompted to enter the required credentials for validation.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends placing the central inventory on a local file system that is not shared by other systems, since the central inventory is a system-specific inventory of the installations on this system. It is strongly recommended that you place the central inventory on a local disk so that installations from other systems do not corrupt the inventory. You should not place the central inventory in the Oracle Base.</div>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref97" name="sthref97"></a>
+<h3 class="sect2"><a name="OUICG134" id="OUICG134"></a><a id="sthref98" name="sthref98"></a><a id="sthref99" name="sthref99"></a>Structure of the Oracle Universal Installer Inventory</h3>
+<p>The Oracle Universal Installer inventory has the following hierarchical structure:</p>
+<ul>
+<li>
+<p><a href="#CJAEHIGJ">Central Inventory Pointer File</a></p>
+</li>
+<li>
+<p><a href="#CJABFBDG">Central Inventory</a></p>
+</li>
+<li>
+<p><a href="#CJAHJJAE">Oracle Home Inventory</a></p>
+</li>
+</ul>
+<a id="CJAEHIGJ" name="CJAEHIGJ"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG135" id="OUICG135"></a><a id="sthref100" name="sthref100"></a><a id="sthref101" name="sthref101"></a><a id="sthref102" name="sthref102"></a><a id="sthref103" name="sthref103"></a>Central Inventory Pointer File</h4>
+<p>Every Oracle software installation has an associated Central Inventory where the details of all the Oracle products installed on a host are registered. The Central Inventory is located in the directory that the inventory pointer file specifies. Each Oracle software installation has its own Central Inventory pointer file that is unknown to another Oracle software installation.</p>
+<p>For Oracle homes sharing the same Central Inventory, the Oracle Universal Installer components perform all read and write operations on the inventory. The operations on the Central Inventory are performed through a locking mechanism. This implies that when an operation such as installation, upgrade, or patching occurs on an Oracle home, these operations become blocked on other Oracle homes that share the same Central Inventory.</p>
+<p>Table&nbsp;2&#x2013;2 shows the location of the default inventory pointer file for various platforms:</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref104" name="sthref104"></a><a id="sthref105" name="sthref105"></a>Table 2-2 Default Inventory Pointer File Locations</p>
+<table class="Formal" title="Default Inventory Pointer File Locations" summary="Table listing ARU IDs for various platforms" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="*" />
+<col width="49%" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t5">Platform</th>
+<th align="left" valign="bottom" id="r1c2-t5">Default Inventory Pointer Location</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t5" headers="r1c1-t5">
+<p>Linux Linux.PPC64 AIX</p>
+</td>
+<td align="left" headers="r2c1-t5 r1c2-t5">
+<p><code>/etc/oraInst.loc</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t5" headers="r1c1-t5">
+<p>Solaris.SPARC Solaris.X64 HPUX HPIA HP.TRU64 Linux.IA64 Linux.xSeries</p>
+</td>
+<td align="left" headers="r3c1-t5 r1c2-t5">
+<p><code>/var/opt/oracle/oraInst.loc</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t5" headers="r1c1-t5">
+<p>Windows Windows.X64 Windows.IA64</p>
+</td>
+<td align="left" headers="r4c1-t5 r1c2-t5">
+<p>HKEY_LOCAL_MACHINE/Software/Oracle/inst.loc</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" -->
+<p>The following string shows an example of the path for the <code>oraInst.loc</code> file:</p>
+<pre xml:space="preserve" class="oac_no_warn">inventory_loc=/home/oracle_db11g/product/11.2.0/db_1
+inst_group=oracle
+</pre>
+<p>In UNIX, if you do not want to use the Central Inventory located in the directory specified by the inventory pointer file, you can use the <code>-invPtrLoc</code> flag to specify another inventory pointer file. The syntax is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -invPtrLoc &lt;Location_of_oraInst.loc&gt; ORACLE_
+HOME="&lt;Location_of_Oracle_Home&gt;"
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If the contents of the <code>oraInst.loc</code> file is empty, Oracle Universal Installer prompts you to create a new inventory.</div>
+</div>
+<!-- class="sect3" -->
+<a id="CJABFBDG" name="CJABFBDG"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG136" id="OUICG136"></a><a id="sthref106" name="sthref106"></a><a id="sthref107" name="sthref107"></a>Central Inventory</h4>
+<p>The Central Inventory contains the information relating to all Oracle products installed on a host. It contains the following files and folders:</p>
+<ul>
+<li>
+<p><a href="#CHDEHFBJ">Inventory File</a></p>
+</li>
+<li>
+<p><a href="#CHDJGBFJ">Logs Directory</a></p>
+</li>
+</ul>
+<a id="CHDEHFBJ" name="CHDEHFBJ"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4"><a name="OUICG137" id="OUICG137"></a><a id="sthref108" name="sthref108"></a><a id="sthref109" name="sthref109"></a>Inventory File</h5>
+<p>This file lists all the Oracle homes installed on the node. For each Oracle home, it also lists the Oracle home name, home index, and nodes on which the home is installed. It also mentions if the home is an Oracle Clusterware home or a removed Oracle home. It can only detect removed Oracle homes created using Oracle Universal Installer version 11.2 and later. This file is present in the following location:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;central inventory location&gt;/ContentsXML/inventory.xml
+</pre>
+<p>The following code shows a sample <code>inventory.xml</code> file:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;?xml version="1.0" standalone="yes" ?&gt;
+&lt;!-- Copyright (c) 2009 Oracle Corporation. All rights Reserved --&gt;
+&lt;!-- Do not modify the contents of this file by hand. --&gt;
+&lt;INVENTORY&gt;
+&lt;VERSION_INFO&gt;
+   &lt;SAVED_WITH&gt;11.2.0.0.0&lt;/SAVED_WITH&gt;
+   &lt;MINIMUM_VER&gt;2.1.0.6.0&lt;/MINIMUM_VER&gt;
+&lt;/VERSION_INFO&gt;
+&lt;HOME_LIST&gt;
+&lt;HOME NAME="OraDb11g_home1" LOC="/home/oracle_db11g/product/11.2.0/db_1" TYPE="O" IDX="1"/&gt;
+&lt;HOME NAME="OUIHome" LOC="D:\OraHome1" TYPE="O" IDX="2" /&gt; 
+&lt;HOME NAME="OUIHome12" LOC="D:\OraHome12" TYPE="O" IDX="3" /&gt; 
+&lt;HOME NAME="OUIHome1" LOC="D:\homes\OraHome1" TYPE="O" IDX="4" /&gt; 
+&lt;/HOME_LIST&gt;
+&lt;/INVENTORY&gt;
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends that you do not remove or manually edit this file as it could affect installation and patching.</div>
+</div>
+<!-- class="sect4" -->
+<a id="CHDJGBFJ" name="CHDJGBFJ"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4"><a name="OUICG138" id="OUICG138"></a><a id="sthref110" name="sthref110"></a><a id="sthref111" name="sthref111"></a>Logs Directory</h5>
+<p>The Central Inventory contains installation logs in the following location:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;central inventory location&gt;/logs
+</pre>
+<p>The logs directory contains the logs corresponding to all installations performed on a particular node. You can also find a copy of the installation log in the <code>$ORACLE_HOME/cfgtoollogs</code> directory.The installation logs for an installation are identified by the timestamp associated with the log files. These files are generally saved in the following format:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;Name_of_Action&gt;&lt;YYYY-MM-DD_HH-MM-SS{AM/PM}&gt;.log
+</pre>
+<p>For example, consider an <code>attachHome</code> operation performed on 17th, May, 2009 at 6.45AM. The associated log file would be created as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">AttachHome2009-05-17_06-45-00AM.log
+</pre></div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" -->
+<a id="CJAHJJAE" name="CJAHJJAE"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG139" id="OUICG139"></a><a id="sthref112" name="sthref112"></a><a id="sthref113" name="sthref113"></a><a id="sthref114" name="sthref114"></a>Oracle Home Inventory</h4>
+<p>Oracle home inventory or local inventory is present inside each Oracle home. It only contains information relevant to a particular Oracle home. This file is located in the following location:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/inventory
+</pre>
+<p>It contains the following files and folders:</p>
+<ul>
+<li>
+<p><a href="#CHDICBGF">Components File</a></p>
+</li>
+<li>
+<p><a href="#CHDGEAHJ">Home Properties File</a></p>
+</li>
+<li>
+<p><a href="#CHDIGBFG">Other Folders</a></p>
+</li>
+</ul>
+<a id="CHDICBGF" name="CHDICBGF"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4"><a name="OUICG140" id="OUICG140"></a><a id="sthref115" name="sthref115"></a><a id="sthref116" name="sthref116"></a>Components File</h5>
+<p>This file contains the details about <a id="sthref117" name="sthref117"></a>third-party applications like Java Runtime Environment (JRE) required by different Java-based Oracle tools and components. In addition, it also contains details of all the components as well as patchsets or interim patches installed in the Oracle home. This file is located here:</p>
+<pre xml:space="preserve" class="oac_no_warn">ORACLE_HOME/inventory/ContentsXML/comps.xml
+</pre>
+<p>For an example of the components file, see <a href="d_oui_appendix.htm#BEHHFDDD">"Sample Components File"</a>.</p>
+</div>
+<!-- class="sect4" -->
+<a id="CHDGEAHJ" name="CHDGEAHJ"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4"><a name="OUICG141" id="OUICG141"></a><a id="sthref118" name="sthref118"></a><a id="sthref119" name="sthref119"></a>Home Properties File</h5>
+<p>This file contains the details about the node list, the local node name, and the <code>Oracle Clusterware</code> flag for the Oracle home. In a shared Oracle home, the local node information is not present. This file also contains the following information:</p>
+<ul>
+<li>
+<p><span class="bold">GUID &#x2014;</span> Unique global ID for the Oracle home</p>
+</li>
+<li>
+<p><span class="bold">ARU ID</span> &#x2014; Unique platform ID. The patching and patchset application depends on this ID.</p>
+</li>
+<li>
+<p><span class="bold">ARU ID DESCRIPTION</span> &#x2014; Platform description</p>
+</li>
+</ul>
+<p>The information in <code>oraclehomeproperties.xml</code> overrides the information in <code>inventory.xml</code>. This file is located here:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/inventory/ContentsXML/oraclehomeproperties.xml
+</pre>
+<p>The following example shows the Oracle home property file:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;GUID&gt;893051798#.356758136&lt;/GUID&gt;
+   &lt;HOME CRS="T"/&gt;
+   &lt;ARU_PLATFORM_INFO&gt;
+      &lt;ARU_ID&gt;46&lt;/ARU_ID&gt;
+      &lt;ARU_ID_DESCRIPTION&gt;Linux x86&lt;/ARU_ID_DESCRIPTION&gt;
+   &lt;/ARU_PLATFORM_INFO&gt;
+   &lt;CLUSTER_INFO&gt;
+      &lt;LOCAL_NODE NAME="stacg30"/&gt;
+    &lt;NODE_LIST&gt;&lt;NODE NAME="stacg34"/&gt;&lt;NODE
+NAME="stacg30"/&gt;&lt;/NODE_LIST&gt;&lt;/CLUSTER_INFO&gt;
+</pre>
+<p>Table 2&#x2013;3 lists the <a id="sthref120" name="sthref120"></a><a id="sthref121" name="sthref121"></a><a id="sthref122" name="sthref122"></a>ARU_IDs for some platforms:</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref123" name="sthref123"></a><a id="sthref124" name="sthref124"></a>Table 2-3 ARU_IDs for Platforms</p>
+<table class="Formal" title="ARU_IDs for Platforms" summary="Table listing ARU IDs for various platforms" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="*" />
+<col width="49%" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t8">Platform</th>
+<th align="left" valign="bottom" id="r1c2-t8">ARU_ID</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t8" headers="r1c1-t8">
+<p>Apple Mac OS X (PowerPC)</p>
+</td>
+<td align="left" headers="r2c1-t8 r1c2-t8">
+<p>421</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t8" headers="r1c1-t8">
+<p>HP Tru64 UNIX</p>
+</td>
+<td align="left" headers="r3c1-t8 r1c2-t8">
+<p>87</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t8" headers="r1c1-t8">
+<p>HP-UX Itanium</p>
+</td>
+<td align="left" headers="r4c1-t8 r1c2-t8">
+<p>197</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t8" headers="r1c1-t8">
+<p>HP-UX Itanium (32-bit)</p>
+</td>
+<td align="left" headers="r5c1-t8 r1c2-t8">
+<p>278</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t8" headers="r1c1-t8">
+<p>HP-UX PA-RISC (32-bit)</p>
+</td>
+<td align="left" headers="r6c1-t8 r1c2-t8">
+<p>2</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t8" headers="r1c1-t8">
+<p>HP-UX PA-RISC (64-bit)</p>
+</td>
+<td align="left" headers="r7c1-t8 r1c2-t8">
+<p>59</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t8" headers="r1c1-t8">
+<p>IBM AIX on POWER Systems (32-bit)</p>
+</td>
+<td align="left" headers="r8c1-t8 r1c2-t8">
+<p>319</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t8" headers="r1c1-t8">
+<p>IBM AIX on POWER Systems (64-bit)</p>
+</td>
+<td align="left" headers="r9c1-t8 r1c2-t8">
+<p>212</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r10c1-t8" headers="r1c1-t8">
+<p>IBM i on POWER Systems</p>
+</td>
+<td align="left" headers="r10c1-t8 r1c2-t8">
+<p>43</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r11c1-t8" headers="r1c1-t8">
+<p>IBM S/390-based Linux (31-bit)</p>
+</td>
+<td align="left" headers="r11c1-t8 r1c2-t8">
+<p>211</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r12c1-t8" headers="r1c1-t8">
+<p>IBM z/OS on System z</p>
+</td>
+<td align="left" headers="r12c1-t8 r1c2-t8">
+<p>30</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r13c1-t8" headers="r1c1-t8">
+<p>IBM: Linux on POWER Systems</p>
+</td>
+<td align="left" headers="r13c1-t8 r1c2-t8">
+<p>227</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r14c1-t8" headers="r1c1-t8">
+<p>IBM: Linux on System z</p>
+</td>
+<td align="left" headers="r14c1-t8 r1c2-t8">
+<p>209</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r15c1-t8" headers="r1c1-t8">
+<p>Linux Itanium</p>
+</td>
+<td align="left" headers="r15c1-t8 r1c2-t8">
+<p>214</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r16c1-t8" headers="r1c1-t8">
+<p>Linux x86</p>
+</td>
+<td align="left" headers="r16c1-t8 r1c2-t8">
+<p>46</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r17c1-t8" headers="r1c1-t8">
+<p>Linux x86-64</p>
+</td>
+<td align="left" headers="r17c1-t8 r1c2-t8">
+<p>226</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r18c1-t8" headers="r1c1-t8">
+<p>Microsoft Windows (32-bit)</p>
+</td>
+<td align="left" headers="r18c1-t8 r1c2-t8">
+<p>912</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r19c1-t8" headers="r1c1-t8">
+<p>Microsoft Windows Itanium (64-bit)</p>
+</td>
+<td align="left" headers="r19c1-t8 r1c2-t8">
+<p>208</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r20c1-t8" headers="r1c1-t8">
+<p>Microsoft Windows x64 (64-bit)</p>
+</td>
+<td align="left" headers="r20c1-t8 r1c2-t8">
+<p>233</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r21c1-t8" headers="r1c1-t8">
+<p>Sun Solaris SPARC (32-bit)</p>
+</td>
+<td align="left" headers="r21c1-t8 r1c2-t8">
+<p>453</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r22c1-t8" headers="r1c1-t8">
+<p>Sun Solaris SPARC (64-bit)</p>
+</td>
+<td align="left" headers="r22c1-t8 r1c2-t8">
+<p>23</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r23c1-t8" headers="r1c1-t8">
+<p>Sun Solaris x86 (32-bit)</p>
+</td>
+<td align="left" headers="r23c1-t8 r1c2-t8">
+<p>173</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r24c1-t8" headers="r1c1-t8">
+<p>Sun Solaris x86-64 (64-bit)</p>
+</td>
+<td align="left" headers="r24c1-t8 r1c2-t8">
+<p>267</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect4" -->
+<a id="CHDIGBFG" name="CHDIGBFG"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4"><a name="OUICG142" id="OUICG142"></a>Other Folders</h5>
+<p><a href="#g1137780">Table 2-4</a> lists the other folders you can find in the Oracle home inventory:</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref125" name="sthref125"></a><a id="g1137780" name="g1137780"></a>Table 2-4 Other Folders in the Oracle Home Inventory</p>
+<table class="Formal" title="Other Folders in the Oracle Home Inventory" summary="This table lists the other folders in the Oracle Home inventory (local inventory)" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t9">Folder Name</th>
+<th align="left" valign="bottom" id="r1c2-t9">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t9" headers="r1c1-t9">
+<p><a id="sthref126" name="sthref126"></a>Scripts</p>
+</td>
+<td align="left" headers="r2c1-t9 r1c2-t9">
+<p>Contains the scripts used for the cloning operation.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t9" headers="r1c1-t9">
+<p><a id="sthref127" name="sthref127"></a>ContentsXML</p>
+</td>
+<td align="left" headers="r3c1-t9 r1c2-t9">
+<p>Contains the details of the components and libraries installed.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t9" headers="r1c1-t9">
+<p><a id="sthref128" name="sthref128"></a>Templates</p>
+</td>
+<td align="left" headers="r4c1-t9 r1c2-t9">
+<p>Contains the template files used for cloning.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t9" headers="r1c1-t9">
+<p><a id="sthref129" name="sthref129"></a>oneoffs</p>
+</td>
+<td align="left" headers="r5c1-t9 r1c2-t9">
+<p>Contains the details of the one-off patches applied.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CJAGHABI" name="CJAGHABI"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a name="OUICG143" id="OUICG143"></a><a id="sthref130" name="sthref130"></a><a id="sthref131" name="sthref131"></a>Creating the Central Inventory</h3>
+<p>Oracle Universal Installer enables you to set up the Central Inventory on a clean host or register an existing Oracle home with the Central Inventory when it is lost or corrupted. If the Central Inventory does not already exist, Oracle Universal Installer creates the Central Inventory in the location specified by the <code>oraInst.loc</code> file.</p>
+<p>You can set up the Central Inventory by using the <code>-attachHome</code> flag of Oracle Universal Installer. The syntax is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -attachHome ORACLE_HOME="&lt;Oracle_Home_Location&gt;"
+"CLUSTER_NODES={&lt;node1,node2&gt;}" LOCAL_NODE="&lt;node_name&gt;"
+</pre>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref132" name="sthref132"></a>
+<h4 class="sect3"><a name="OUICG144" id="OUICG144"></a><a id="sthref133" name="sthref133"></a><a id="sthref134" name="sthref134"></a><a id="sthref135" name="sthref135"></a>Using the Session Variables</h4>
+<p>You can use the following session variables:</p>
+<ul>
+<li>
+<p><code>ORACLE_HOME</code></p>
+</li>
+<li>
+<p><code>CLUSTER_NODES</code></p>
+</li>
+<li>
+<p><code>REMOTE_NODES</code></p>
+</li>
+<li>
+<p><code>LOCAL_NODE</code></p>
+</li>
+</ul>
+<p>In a cluster installation:</p>
+<ul>
+<li>
+<p>If you do not pass the <code>CLUSTER_NODES</code> session variable, Oracle Universal Installer takes it from the <code>$ORACLE_HOME/inventory/ContentsXML/oraclehomeproperties.xml</code> file.</p>
+</li>
+<li>
+<p>If you do not pass the <code>LOCAL_NODE</code> session variable, Oracle Universal Installer takes it from the <code>$ORACLE_HOME/inventory/ContentsXML/oraclehomeproperties.xml</code> file. If it does not find an entry there, it takes it from the Oracle Clusterware stack. If it is not able to find it in the stack, the first node of the <code>CLUSTER_NODES</code> is taken as the <code>LOCAL_NODE</code>.</p>
+</li>
+</ul>
+<p>You can pass the <code>REMOTE_NODES</code> variable if you want to specify the list of remote nodes. If you want to set up the Central Inventory in the local node, you need to pass the <code>-local</code> flag, and the <code>REMOTE_NODES</code> variable is empty. The syntax is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -attachHome -invPtrLoc ./oraInst.loc 
+ORACLE_HOME="&lt;Oracle_Home_Location&gt;" "REMOTE_NODES={}" -local
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+When you use the <code>-local</code> flag, it performs the action on the local node irrespective of the cluster nodes specified.</div>
+<p>For a non-Oracle Real Application Clusters setup, you do not need to pass the <code>LOCAL_NODE</code> variable, and the <code>CLUSTER_NODES</code> variable is empty. The syntax is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -attachHome -invPtrLoc ./oraInst.loc 
+ORACLE_HOME="&lt;Oracle_Home_Location&gt;" "CLUSTER_NODES={}"
+</pre>
+<p>You can use the <code>-local</code> flag to attach the local Oracle home. If you are using a shared Oracle home with the <code>-local</code> flag, use the <code>-cfs</code> flag. This ensures that the local node information is not populated inside a shared Oracle home.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref136" name="sthref136"></a>
+<h4 class="sect3"><a name="OUICG145" id="OUICG145"></a><a id="sthref137" name="sthref137"></a><a id="sthref138" name="sthref138"></a><a id="sthref139" name="sthref139"></a>Verifying the Operation</h4>
+<p>After attaching the Oracle home, you can verify the success of the operation by verifying the contents of the log file present in the <code>&lt;central_inventory&gt;/logs</code> directory. You can also view the contents of the <code>inventory.xml</code> file under the <code>&lt;central-inventory&gt;/ContentsXML</code> directory to verify if the Oracle home is registered.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends cloning on Windows operating systems to create the Central Inventory.</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CJAEBIAH" name="CJAEBIAH"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a name="OUICG146" id="OUICG146"></a><a id="sthref140" name="sthref140"></a><a id="sthref141" name="sthref141"></a><a id="sthref142" name="sthref142"></a><a id="sthref143" name="sthref143"></a>Detaching Oracle Homes from the Central Inventory</h3>
+<p>You can detach an Oracle home from the Central Inventory. When you pass this flag, it updates the <code>inventory.xml</code> file present in the Central Inventory. The syntax is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -detachHome -invPtrLoc ./oraInst.loc 
+ORACLE_HOME="&lt;Oracle_Home_Location&gt;"
+</pre>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref144" name="sthref144"></a>
+<h4 class="sect3"><a name="OUICG147" id="OUICG147"></a><a id="sthref145" name="sthref145"></a><a id="sthref146" name="sthref146"></a>Using the Optional -local Flag</h4>
+<p>You can use the <code>-local</code> flag to detach the Oracle home from the inventory of the local node. If you are using a shared Oracle home, use the <code>-cfs</code> flag. This ensures that the local node information is not populated inside a shared Oracle home.</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -local -cfs -detachHome
+ORACLE_HOME="&lt;Oracle_Home_Location&gt;"
+</pre></div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref147" name="sthref147"></a>
+<h4 class="sect3"><a name="OUICG148" id="OUICG148"></a><a id="sthref148" name="sthref148"></a><a id="sthref149" name="sthref149"></a><a id="sthref150" name="sthref150"></a>Removing the Central Inventory</h4>
+<p>Even after all the Oracle homes on a host are removed, you will find traces of the inventory with certain log files. If you do not want to maintain these files and want to remove the Central Inventory, do the following:</p>
+<div class="sect4"><!-- infolevel="all" infotype="General" --><a id="sthref151" name="sthref151"></a>
+<h5 class="sect4"><a name="OUICG149" id="OUICG149"></a><a id="sthref152" name="sthref152"></a><a id="sthref153" name="sthref153"></a><a id="sthref154" name="sthref154"></a>Removing the Central Inventory on UNIX Platforms</h5>
+<p>You can remove the Central Inventory on UNIX by performing the following steps:</p>
+<ol>
+<li>
+<p>Locate the <code>oraInst.loc</code> file and get the Central Inventory location (<code>inventory_loc</code> parameter) from this file.</p>
+<p>For Solaris, this file is located in the <code>/var/opt/oracle</code> folder.</p>
+<p>For Linux, this file is located in the <code>/etc</code> folder.</p>
+</li>
+<li>
+<p>Remove the Central Inventory by executing the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">rm -rf &lt;central_inventory_location&gt;
+</pre></li>
+<li>
+<p>Remove the <code>oraInst.loc</code> file by executing the following command with root privileges:</p>
+<p><span class="bold">Solaris</span>:</p>
+<pre xml:space="preserve" class="oac_no_warn">rm /var/opt/oracle/oraInst.loc
+</pre>
+<p><span class="bold">Linux</span>:</p>
+<pre xml:space="preserve" class="oac_no_warn">rm /etc/oraInst.loc
+</pre></li>
+</ol>
+</div>
+<!-- class="sect4" -->
+<div class="sect4"><!-- infolevel="all" infotype="General" --><a id="sthref155" name="sthref155"></a>
+<h5 class="sect4"><a name="OUICG150" id="OUICG150"></a><a id="sthref156" name="sthref156"></a><a id="sthref157" name="sthref157"></a><a id="sthref158" name="sthref158"></a>Removing the Central Inventory on Windows Platforms</h5>
+<p>You can remove the Central Inventory on Windows by performing the following steps:</p>
+<ol>
+<li>
+<p>Locate the registry key:</p>
+<p><code>\\HKEY_LOCAL_MACHINE\Software\Oracle\inst_loc</code></p>
+</li>
+<li>
+<p>Get the Central Inventory location from this key.</p>
+</li>
+<li>
+<p>Delete the Central Inventory directory and all its contents.</p>
+</li>
+<li>
+<p>Delete the registry key:</p>
+<p><code>\\HKEY_LOCAL_MACHINE\Software\Oracle\inst_loc</code></p>
+</li>
+</ol>
+</div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref159" name="sthref159"></a>
+<h3 class="sect2"><a name="OUICG151" id="OUICG151"></a>Consolidating Multiple Central Inventories</h3>
+<p>The following procedure explains how to consolidate multiple central inventories into a single central inventory. For Oracle Clusterware and Oracle RAC homes, perform this procedure for each node.</p>
+<ol>
+<li>
+<p>Identify the Central Inventory to use and ensure that it is the same path on all nodes of the cluster.</p>
+</li>
+<li>
+<p>Go to this Central Inventory directory and run orainstRoot.sh to ensure that the oraInst.loc file points to this inventory.</p>
+</li>
+<li>
+<p>Identify the other central inventories on the system, then identify the Oracle homes for each Central Inventory.</p>
+</li>
+<li>
+<p>Do the following for each Oracle home:</p>
+<ol>
+<li>
+<p>Enter cd $ORACLE_HOME/oui/bin.</p>
+</li>
+<li>
+<p>Run ./attachhome.sh -silent -local "CLUSTER_NODES={&lt;List of nodes&gt;}" LOCAL_NODE=&lt;nodename&gt; CRS="TRUE"</p>
+<p>For single instance homes, run ./attachhome.sh -silent.</p>
+</li>
+<li>
+<p>Verify the inventory updates by going to the ORACLE_HOME/OPatch directory and running opatch lsinventory -detail.</p>
+</li>
+<li>
+<p>Verify that the overall inventory is being updated by running ./runInstaller and clicking on 'Installed Products...' to bring up the contents of the central inventory. Ensure that the inventory shows the new home and the nodes.</p>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref160" name="sthref160"></a>
+<h3 class="sect2">Reconstructing a Shared Central Inventory on a Non-shared Location</h3>
+<p>The following sections provide advisory information about shared Central Inventories, explain the enforced shared inventory check, and provide a procedure for reconstructing the Central Inventory.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref161" name="sthref161"></a>
+<h4 class="sect3">Oracle Recommendation Regarding Central Inventory Placement</h4>
+<p>The Oracle Central Inventory is a repository for all Oracle products (software) installed on a system. Since the Central Inventory consists of system-specific information, it is required that the Central Inventory be saved on a local non-shared directory on the system. While software can be shared across nodes, the inventory should be local to each system.</p>
+<p>If the Central Inventory is shared across system (nodes), this would reflect the installation information for a group of systems collectively. Such a configuration also mandates that all Oracle homes registered in the inventory are also shared. However, a shared inventory is contrary to Central Inventory design principles.</p>
+<p>Consequently, <span class="bold">Oracle recommends placing the Central Inventory on a local file system not shared by other systems</span>, because the Central Inventory is a system-specific inventory of the installations on this system. Shared inventories are strongly discouraged.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref162" name="sthref162"></a>
+<h4 class="sect3">Enforced Shared Inventory Check</h4>
+<p>Since a shared inventory is a recommended practice, OUI displays a warning if you attempt to specify a shared inventory location under the following circumstances:</p>
+<ul>
+<li>
+<p>Grid Control upgrades from 10.1.x or 10.2.x to 10.2.0.4 or later</p>
+</li>
+<li>
+<p>10.2.0.4 or later Grid Control patchset applications and 11g Grid Control installations</p>
+</li>
+</ul>
+<p>Exceptions are as follows:</p>
+<ul>
+<li>
+<p><span class="bold">Shared storage prior to 10.2.0.4</span> &#x2014;</p>
+<p>If you have already set up your inventory on shared storage prior to Grid Control version 10.2.0.4, you can use the steps in "Procedure to Reconstruct the Central Inventory" below to reconstruct the central inventory on a non-shared location.</p>
+<p>If you do not want to reconstruct the central inventory on a non-shared location, you can pass the flag '-ignoreSharedInventory' to suppress the shared inventory error when invoking runInstaller.</p>
+</li>
+<li>
+<p><span class="bold">HPTru64 Cases</span> &#x2014;</p>
+<p>Tru64 is a special operating system where <span class="italic">all</span> storage is shared storage (including the operating system installed on shared storage). Therefore, a shared inventory is permissible.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref163" name="sthref163"></a>
+<h4 class="sect3">Procedure to Reconstruct the Central Inventory</h4>
+<p>Perform the following steps as a Grid Control installation user, which is the user who owns the inventory.</p>
+<ol>
+<li>
+<p>Identify a non-shared location for the Central Inventory. This location should have sufficient permissions, such as read and write permissions. Make sure that the installation user creates this new location and that the location is part of the installation group.</p>
+</li>
+<li>
+<p>Obtain the list of Oracle homes from the existing shared Central Inventory registered in oraInventory, use the command opatch lsinventory -all.</p>
+<p>Since this is a shared inventory, you may see Oracle homes listed in the Central Inventory from other systems on which the inventory is shared. Identify the Oracle home pertinent to the current system.</p>
+</li>
+<li>
+<p>Edit the default inventory pointer file indicating the location of the non-shared inventory:</p>
+<pre xml:space="preserve" class="oac_no_warn">inventory_loc=&lt;location of non-shared inventory location&gt;
+inst_group=&lt;inventory group&gt;
+</pre>
+<p>The default inventory pointer file resides in this file:</p>
+<pre xml:space="preserve" class="oac_no_warn">/etc/oraInst.loc
+</pre>
+<p>All other Unix operating systems, such as Solaris and so forth reside in this file:</p>
+<pre xml:space="preserve" class="oac_no_warn">/var/opt/oracle/oraInst.loc
+</pre></li>
+<li>
+<p>For each Oracle home in the existing shared inventory, do the following:</p>
+<ol>
+<li>
+<p>Detach the home from the existing inventory.</p>
+<ul>
+<li>
+<p>For a non-RAC home, run:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/oui/bin/detachhome.sh
+</pre></li>
+<li>
+<p>For a Clusterware, RAC, or clustered Agent home, run the following command on each of the nodes:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/oui/bin/detachhome.sh -local
+</pre></li>
+</ul>
+</li>
+<li>
+<p>Attach a home to the new non-shared inventory.</p>
+<ul>
+<li>
+<p>For a non-RAC home, run:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/oui/bin/attachhome.sh
+</pre></li>
+<li>
+<p>For a non-shared Clusterware home, run the following command on each of the nodes:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/oui/bin/attachhome.sh -local "CLUSTER_NODES= {comma-separated nodelist}" LOCAL_NODE=&lt;node on which command is run&gt; CRS=true 
+</pre></li>
+<li>
+<p>For a shared Clusterware home, run the following command on each of the nodes:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/oui/bin/attachhome.sh -local "CLUSTER_NODES= {comma-separated nodelist}" LOCAL_NODE=&lt;node on which command is run&gt; CRS=true -cfs
+</pre></li>
+<li>
+<p>For a non-shared RAC or clustered Agent home, run the following command on each of the nodes:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/oui/bin/attachhome.sh -local "CLUSTER_NODES= {comma-separated nodelist}" LOCAL_NODE=&lt;node on which command is run&gt;
+</pre></li>
+<li>
+<p>For a shared RAC or clustered Agent home, run the following command on each of the nodes:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/oui/bin/attachhome.sh -local "CLUSTER_NODES={comma separated nodelist}" LOCAL_NODE=&lt;node on which command is run&gt; -cfs
+</pre></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The old inventory becomes obsolete after this migration. You can delete the directory, but this is not mandatory.</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref164" name="sthref164"></a>
+<h3 class="sect2"><a name="OUICG152" id="OUICG152"></a>Upgrading and Patching the Oracle Home</h3>
+<p>You can apply patchsets and upgrade an existing Oracle home. You can apply patchsets using Oracle Universal Installer. For more information on upgrading or applying patchsets for an Oracle product, refer to the respective Oracle product installation guide of the product that you want to upgrade.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref165" name="sthref165"></a>
+<h3 class="sect2"><a name="OUICG153" id="OUICG153"></a>Cloning Oracle Homes</h3>
+<p>You can clone an Oracle home using Oracle Universal Installer. For more information on cloning, see <a href="oui6_cloning.htm#BCGEJGAJ">Chapter 6, "Cloning Oracle Software"</a>.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CIHCHIDB" name="CIHCHIDB"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a name="OUICG154" id="OUICG154"></a><a id="sthref166" name="sthref166"></a>Backing up the Inventory</h3>
+<p>You can back up the Oracle home using your preferred method. You can use any method such as <code>zip</code>, <code>tar</code>, and <code>cpio</code> to compress the Oracle home.</p>
+<p>It is highly recommended to back up the Oracle home before any upgrade or patch operation. You should also back up the Central Inventory when Oracle home is installed or deinstalled.</p>
+<p><span class="bold">Example:</span></p>
+<p>Consider a scenario where you have a Database Oracle home called <code>DBHome</code> that is registered with the default Central Inventory in the <code>/product</code> directory. You want to patch this database but decide to back up the database before patching.</p>
+<ol>
+<li>
+<p>Enter the following to back up the database:</p>
+</li>
+<li>
+<pre xml:space="preserve" class="oac_no_warn">cd /product/DBHome
+tar cf - * | gzip &gt; /product/archive/DBHome.tar.gz
+</pre>
+<p>If you are using a Win32 system, you could use WinZip to zip up the Oracle home. Do not use the jar command to zip the Oracle home, as this causes the file permissions to become lost.</p>
+</li>
+<li>
+<p>Suppose you apply the patch and something goes wrong. You decide to delete the Oracle home from the Central Inventory and restore the original Oracle home. To delete the Oracle home from the Central Inventory, use the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -detachHome ORACLE_HOME="/product/DBHome"
+</pre>
+<p>On Win32 systems, the command would be:</p>
+<pre xml:space="preserve" class="oac_no_warn">setup.exe -silent -detachHome ORACLE_HOME="C:\product\DBHome"
+</pre></li>
+<li>
+<p>Delete the Oracle home:</p>
+<pre xml:space="preserve" class="oac_no_warn">cd /product
+rm -rf /product/DBHome
+</pre></li>
+<li>
+<p>Restore the original Oracle home and update the Central Inventory. Restore the Oracle home to its original location using the following commands:</p>
+<pre xml:space="preserve" class="oac_no_warn">mkdir -p /product/DBHome
+gunzip  &lt;  /product/archive/DBHome.tar.gz | tar xf -
+</pre></li>
+<li>
+<p>Attach this Oracle home to the Central Inventory:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -silent -attachHome ORACLE_HOME="/product/DBHome"
+</pre>
+<p>On Win32 systems, the command would be:</p>
+<pre xml:space="preserve" class="oac_no_warn">setup.exe -silent -attachHome ORACLE_HOME="C:\product\DBHome"
+</pre></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref167" name="sthref167"></a>
+<h3 class="sect2"><a name="OUICG155" id="OUICG155"></a>Recovering from Inventory Corruption</h3>
+<p>The inventory (Central and the Oracle home inventory) is critically important in the Oracle software life-cycle management. The following section explains what you need to do in case of inventory corruption.</p>
+<a id="CHDIFIBB" name="CHDIFIBB"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG156" id="OUICG156"></a><a id="sthref168" name="sthref168"></a><a id="sthref169" name="sthref169"></a><a id="sthref170" name="sthref170"></a><a id="sthref171" name="sthref171"></a>Diagnosing and Recovering from Central Inventory Corruption</h4>
+<p>When you execute <code>opatch lsinventory -detail</code> or when you click <span class="bold">Installed Products,</span> the Oracle home does not appear.</p>
+<p><span class="bold">Cause:</span> The Oracle home may be missing from the Central Inventory, or the Central Inventory could be missing or corrupted.</p>
+<p><span class="bold">Action:</span> Do the following:</p>
+<ul>
+<li>
+<p>If the Oracle home is missing from the Central Inventory, perform an attach home operation on the missing Oracle home. The Central Inventory will be restored.</p>
+</li>
+<li>
+<p>If the Central Inventory is missing or corrupted, restore the Central Inventory. If you have not backed up the Central Inventory, perform an attach home operation.</p>
+</li>
+</ul>
+<p>For more information on the attach home operation, see <a href="#CJAGHABI">"Creating the Central Inventory"</a>.</p>
+<p>If multiple entries are in the <code>inventory.xml</code> file for a given Oracle home, Inventory Collection from the Grid Control perspective would have issues. In this event, you should remove these duplicate entries manually.</p>
+<p>Here are some examples of the kind of incorrect entries that could be there:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;HOME NAME="db11g" LOC="/product/db11g" TYPE="O" IDX="1"/&gt;
+&lt;HOME NAME="oms11g" LOC="/product/em/oms11g" TYPE="O" IDX="2"/&gt;
+&lt;HOME NAME="db11g" LOC="/product/db11g" TYPE="O" IDX="3"/&gt;
+</pre>
+<p>In the above example, the first and third entries are duplicates. The Oracle home name and Oracle home location are identical. In this example, remove the third line.</p>
+<p>Note that all duplicate inventory issues are caused by manual updates to the <code>inventory.xml</code> file. Use the OUI APIs to change the inventory.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CJAJHEEB" name="CJAJHEEB"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG157" id="OUICG157"></a><a id="sthref172" name="sthref172"></a><a id="sthref173" name="sthref173"></a><a id="sthref174" name="sthref174"></a><a id="sthref175" name="sthref175"></a>Diagnosing and Recovering from Oracle Home Inventory Corruption</h4>
+<p>When you execute <code>opatch lsinventory -detail</code> or when you click <span class="bold">Installed Products,</span> the Oracle home appears, but the products and components within the Oracle home are not listed.</p>
+<p><span class="bold">Cause:</span> This may result because of a missing or corrupted Oracle home inventory.</p>
+<p><span class="bold">Action:</span> If the Oracle home inventory is missing or corrupted, restore the Oracle home inventory. If you have not backed up the Oracle home inventory, you may have to install the software on a different node with the same platform and install the same patch levels including interim patches. After that, you can simply copy the inventory directory from the patched Oracle home to the location of the affected Oracle home.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+For Oracle Universal Installer version 10.2.0.2.0 and above, you can use the following scripts in Oracle home to recover from Oracle home inventory corruption:
+<ul>
+<li>
+<p><code>detachHome.bat / detachHome.sh</code>: Use this script if the Oracle home is corrupted or needs to be updated.</p>
+</li>
+<li>
+<p><code>attachHome.bat / attachHome.sh</code>: Use this script if the Oracle home needs to be added to the inventory.</p>
+</li>
+</ul>
+</div>
+<p>For information on recovering from Oracle Real Application Clusters Oracle home inventory corruption, see <a href="#CJAFEIEF">"Diagnosing and Recovering from RAC Oracle Home Inventory Corruption"</a>.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref176" name="sthref176"></a>
+<h3 class="sect2"><a name="OUICG158" id="OUICG158"></a><a id="sthref177" name="sthref177"></a><a id="sthref178" name="sthref178"></a>Oracle Real Application Clusters</h3>
+<p>In an Oracle Real Application Clusters environment, the inventory also contains a list of nodes associated with an Oracle home. It is important that during upgrade and patching, the inventory is correctly populated with the list of nodes.</p>
+<p>For more information, see <a href="oui5_cluster_environment.htm#BABJBJDC">Chapter 5, "Installing Cluster Environments"</a>.</p>
+<a id="CJADBAHJ" name="CJADBAHJ"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG159" id="OUICG159"></a><a id="sthref179" name="sthref179"></a><a id="sthref180" name="sthref180"></a><a id="sthref181" name="sthref181"></a>Updating the Nodes of a Cluster</h4>
+<p>When you use the <code>-updateNodeList</code> flag with the Oracle Universal Installer, it retrieves the list of nodes and updates the <code>inventory.xml</code> file. If the <code>Oracle Clusterware</code> tag is set to <code>TRUE</code>, the <code>Oraclehomeproperties.xml</code> file is updated with the Oracle Clusterware home information. For shared Oracle homes, you need to use this with the <code>-cfs</code> flag. The syntax is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -updateNodeList "CLUSTER_NODES={Node1,Node2}" 
+ORACLE_HOME="&lt;Oracle_Home_Location&gt;" -defaultHomeName LOCAL_NODE="Node_Name"
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+You update the nodes of a cluster only under exceptional circumstances. Oracle recommends that you perform this operation with the help of Oracle support.</div>
+</div>
+<!-- class="sect3" -->
+<a id="CJAFEIEF" name="CJAFEIEF"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><a name="OUICG160" id="OUICG160"></a><a id="sthref182" name="sthref182"></a><a id="sthref183" name="sthref183"></a><a id="sthref184" name="sthref184"></a><a id="sthref185" name="sthref185"></a>Diagnosing and Recovering from RAC Oracle Home Inventory Corruption</h4>
+<p>When you execute <code>opatch lsinventory -detail</code> or when you click <span class="bold">Installed Products,</span> the Oracle home appears, but the products and components within the Oracle home are not listed.</p>
+<p><span class="bold">Cause:</span> This may result because of a missing or corrupted Oracle home inventory.</p>
+<p><span class="bold">Action:</span> Do the following:</p>
+<ol>
+<li>
+<p>Back up the Central and Local inventories of both Oracle Clusterware and RDBMS for all nodes.</p>
+</li>
+<li>
+<p>Rename or remove the Central Inventory on all nodes.</p>
+</li>
+<li>
+<p>Copy the Local Inventory from the node that is not corrupted to the node that is corrupted.</p>
+</li>
+<li>
+<p>Recreate the Central Inventory with the attachhome option as in MetaLink note 413939.1, Steps to Recreate the Central Inventory in Oracle Real Application Clusters.</p>
+</li>
+<li>
+<p>Verify that opatch lsinventory functions correctly in both the Oracle Clusterware and RDBMS homes.</p>
+</li>
+</ol>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Copying the Local Inventory is supported only when patch sets and one-off patches applied are the same across all nodes.</div>
+<p>For information on recovering from non-RAC Oracle home inventory corruption, see <a href="#CJAJHEEB">"Diagnosing and Recovering from Oracle Home Inventory Corruption"</a>.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="i1006001" name="i1006001"></a>
+<div class="sect1">
+<h2 class="sect1"><a name="OUICG161" id="OUICG161"></a><a id="sthref186" name="sthref186"></a><a id="sthref187" name="sthref187"></a><a id="sthref188" name="sthref188"></a>Home Selector (Available on Win32 Platforms)<a id="sthref189" name="sthref189"></a></h2>
+<p>The following sections describe the Home Selector, which is installed as part of Oracle Universal Installer on Windows computers.</p>
+<p>To view the Home Selector, click the <span class="bold">Environment</span> tab of the Inventory dialog, which appears when you click the <span class="bold">Installed Products</span> button on several Oracle Universal Installer screens.</p>
+<div class="sect2"><a id="sthref190" name="sthref190"></a>
+<h3 class="sect2"><a name="OUICG162" id="OUICG162"></a><a id="sthref191" name="sthref191"></a>Home Selector Overview</h3>
+<p>The Home Selector is a part of the installation software. The Home Selector enables you to easily change your primary Oracle home (the one that appears first in the <code>PATH</code> environment variable). If you need to switch the active home or need to perform batch work which requires a "default home" to be active, you can use the Home Selector to change the Windows NT system settings.</p>
+<p>When using the Home Selector to make a specific Oracle home the active one, the software installation in question is moved to the front of the <code>PATH</code> variable, making it the first directory to be scanned for executable and library files.</p>
+<p>Use the GUI in the <span class="bold">Environment</span> tab of the Inventory dialog to establish the order of Oracle homes in your <code>PATH</code> variable.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref192" name="sthref192"></a>
+<h3 class="sect2"><a name="OUICG163" id="OUICG163"></a><a id="sthref193" name="sthref193"></a>How Home Selector Works</h3>
+<p>When you perform an installation on a system, Oracle Universal Installer runs the <code>selectHome.bat</code> file to register the Oracle home you selected. In silent mode, you perform this outside Oracle Universal Installer. The first Oracle home is named the "<code>DEFAULT_HOME</code>" and registers itself in the Windows NT registry under the key:</p>
+<pre xml:space="preserve" class="oac_no_warn">HKEY_LOCAL_MACHINE
+</pre>
+<pre xml:space="preserve" class="oac_no_warn">Software
+</pre>
+<pre xml:space="preserve" class="oac_no_warn">Oracle
+</pre>
+<pre xml:space="preserve" class="oac_no_warn"></pre>
+<p>This is the default Windows NT registry hive which contains all the "generic" Oracle settings. Also the <code>PATH</code> variable is adjusted and the <code>BIN</code> directory of the <code>$ORACLE_HOME</code> is added to the environment variable.</p>
+<p>Some additional parameters is also written to the key:</p>
+<pre xml:space="preserve" class="oac_no_warn">HKEY_LOCAL_MACHINE
+</pre>
+<pre xml:space="preserve" class="oac_no_warn">Software
+</pre>
+<pre xml:space="preserve" class="oac_no_warn">Oracle
+</pre>
+<pre xml:space="preserve" class="oac_no_warn">KEY_&lt;ORACLE_Home_Name&gt;
+</pre>
+<pre xml:space="preserve" class="oac_no_warn"></pre>
+<p>With Oracle Universal Installer, you can change the "<code>DEFAULT_HOME</code>" name to something else. Also, it registers all Oracle settings in the "<code>KEY_&lt;Home_NAME&gt;</code>" sub-key of the <code>ORACLE</code> key.</p>
+<p>When an additional Oracle home is added to the system, the <code>PATH</code> variable is adjusted again to add the new <code>BIN</code> directory of the newly installed Oracle software. The registry variables are written to a key named "<code>KEY_&lt;HOME_NAME&gt;</code>".</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref194" name="sthref194"></a>
+<h3 class="sect2"><a name="OUICG164" id="OUICG164"></a>Oracle Home Directory Structure for Windows Platforms</h3>
+<p>A typical <a id="sthref195" name="sthref195"></a><a id="sthref196" name="sthref196"></a><a id="sthref197" name="sthref197"></a>Oracle home on Windows platforms contains the files and directories shown in <a href="#CHDCCCIB">Table 2-5</a>.</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref198" name="sthref198"></a><a id="CHDCCCIB" name="CHDCCCIB"></a>Table 2-5 Oracle Home Directory for Windows Platforms</p>
+<table class="Formal" title="Oracle Home Directory for Windows Platforms" summary="Table listing Oracle Home Directory for Windows platforms" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t16">Oracle Home Directory</th>
+<th align="left" valign="bottom" id="r1c2-t16">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t16" headers="r1c1-t16">
+<p>\BIN</p>
+</td>
+<td align="left" headers="r2c1-t16 r1c2-t16">
+<p>Product executable and DLLs</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t16" headers="r1c1-t16">
+<p>\LIB</p>
+</td>
+<td align="left" headers="r3c1-t16 r1c2-t16">
+<p>DLL files</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t16" headers="r1c1-t16">
+<p>\JLIB</p>
+</td>
+<td align="left" headers="r4c1-t16 r1c2-t16">
+<p>All JAR files</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t16" headers="r1c1-t16">
+<p>\DBS</p>
+</td>
+<td align="left" headers="r5c1-t16 r1c2-t16">
+<p>Common message files</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t16" headers="r1c1-t16">
+<p>\PROD1</p>
+</td>
+<td align="left" headers="r6c1-t16 r1c2-t16">
+<p>PROD1 product files</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t16" headers="r1c1-t16">
+<p>\PROD2</p>
+</td>
+<td align="left" headers="r7c1-t16 r1c2-t16">
+<p>PROD2 product files</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect2" -->
+<a id="i1005742" name="i1005742"></a>
+<div class="sect2">
+<h3 class="sect2"><a name="OUICG165" id="OUICG165"></a>Optimal Flexible Architecture Directory Structure (on UNIX)<a id="sthref199" name="sthref199"></a><a id="sthref200" name="sthref200"></a><a id="sthref201" name="sthref201"></a><a id="sthref202" name="sthref202"></a><a id="sthref203" name="sthref203"></a></h3>
+<p>The Optimal Flexible Architecture (OFA) standard is a set of configuration guidelines for fast, reliable Oracle databases that require little maintenance.</p>
+<p>OFA is designed to:</p>
+<ul>
+<li>
+<p>Organize large amounts of complicated software and data on disk to avoid device bottlenecks and poor performance</p>
+</li>
+<li>
+<p>Facilitate routine administrative tasks such as software and data backup functions, which are often vulnerable to data corruption</p>
+</li>
+<li>
+<p>Alleviate switching among multiple Oracle databases</p>
+</li>
+<li>
+<p>Adequately manage and administer database growth</p>
+</li>
+<li>
+<p>Help eliminate fragmentation of free space in the data dictionary, isolate other fragmentation, and minimize resource contention</p>
+</li>
+</ul>
+<p>The OFA directory structure is described in the following sections.</p>
+<div class="sect3"><a id="sthref204" name="sthref204"></a>
+<h4 class="sect3"><a name="OUICG166" id="OUICG166"></a><a id="sthref205" name="sthref205"></a><a id="sthref206" name="sthref206"></a>ORACLE_BASE Directory</h4>
+<p><code>ORACLE_BASE</code> specifies the <code>BASE</code> of the Oracle directory structure for OFA-compliant databases. A typical <code>ORACLE_BASE</code> directory structure is described in <a href="#CJAJBEDC">Table 2-6</a>. When installing an OFA-compliant database using Oracle Universal Installer, <code>ORACLE_BASE</code> is set to <code>/pm/app/oracle</code> by default.</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref207" name="sthref207"></a><a id="CJAJBEDC" name="CJAJBEDC"></a>Table 2-6 Sample ORACLE_BASE Directory Structure and Content</p>
+<table class="Formal" title="Sample ORACLE_BASE Directory Structure and Content" summary="Table listing sample ORACLE_BASE directory structure and content" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t17">Directory</th>
+<th align="left" valign="bottom" id="r1c2-t17">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t17" headers="r1c1-t17">
+<p>admin</p>
+</td>
+<td align="left" headers="r2c1-t17 r1c2-t17">
+<p>Administrative files</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t17" headers="r1c1-t17">
+<p>doc</p>
+</td>
+<td align="left" headers="r3c1-t17 r1c2-t17">
+<p>online documentation</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t17" headers="r1c1-t17">
+<p>local</p>
+</td>
+<td align="left" headers="r4c1-t17 r1c2-t17">
+<p>Sub-tree for local Oracle software</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t17" headers="r1c1-t17">
+<p>product</p>
+</td>
+<td align="left" headers="r5c1-t17 r1c2-t17">
+<p>Oracle software</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect3" -->
+<div class="sect3"><a id="sthref208" name="sthref208"></a>
+<h4 class="sect3"><a name="OUICG167" id="OUICG167"></a><a id="sthref209" name="sthref209"></a><a id="sthref210" name="sthref210"></a>ORACLE_HOME Directory</h4>
+<p><a href="#CJADCFEJ">Table 2-7</a> shows an example of the Oracle home directory structure and content for an Oracle Server Installation.</p>
+<p>If you install an OFA-compliant Oracle Server, the Oracle home directory is <code>/mount_point/app/oracle/product/</code><code><span class="codeinlineitalic">release_number</span></code>. Under UNIX, the Oracle home directory might contain the following subdirectories, as well as a subdirectory for each Oracle product selected.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The directory and content information in this table are only samples. The directories that appear in your own Oracle home depend on whether the corresponding products are installed and the version of the Oracle Database you are running.</div>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref211" name="sthref211"></a><a id="CJADCFEJ" name="CJADCFEJ"></a>Table 2-7 Sample Oracle Home Directory Structure and Content</p>
+<table class="Formal" title="Sample Oracle Home Directory Structure and Content" summary="Table listing sample Oracle home directory structure and content" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="31%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t19">Directory</th>
+<th align="left" valign="bottom" id="r1c2-t19">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t19" headers="r1c1-t19">
+<p>assistants</p>
+</td>
+<td align="left" headers="r2c1-t19 r1c2-t19">
+<p>configuration Assistants</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t19" headers="r1c1-t19">
+<p>bin</p>
+</td>
+<td align="left" headers="r3c1-t19 r1c2-t19">
+<p>binaries for all products</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t19" headers="r1c1-t19">
+<p>ctx</p>
+</td>
+<td align="left" headers="r4c1-t19 r1c2-t19">
+<p>interMedia Text cartridge</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t19" headers="r1c1-t19">
+<p>dbs</p>
+</td>
+<td align="left" headers="r5c1-t19 r1c2-t19">
+<p><code>init</code><span class="italic">sid</span><code>.ora</code>, <code>lk</code><span class="italic">sid</span></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t19" headers="r1c1-t19">
+<p>install</p>
+</td>
+<td align="left" headers="r6c1-t19 r1c2-t19">
+<p>install related files</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t19" headers="r1c1-t19">
+<p>lib</p>
+</td>
+<td align="left" headers="r7c1-t19 r1c2-t19">
+<p>Oracle product libraries</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t19" headers="r1c1-t19">
+<p>jlib</p>
+</td>
+<td align="left" headers="r8c1-t19 r1c2-t19">
+<p>Java classes</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t19" headers="r1c1-t19">
+<p>md</p>
+</td>
+<td align="left" headers="r9c1-t19 r1c2-t19">
+<p>Spatial cartridge</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r10c1-t19" headers="r1c1-t19">
+<p>mlx</p>
+</td>
+<td align="left" headers="r10c1-t19 r1c2-t19">
+<p>Xerox Stemmer (for interMedia Text cartridge)</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r11c1-t19" headers="r1c1-t19">
+<p>network</p>
+</td>
+<td align="left" headers="r11c1-t19 r1c2-t19">
+<p>Net8</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r12c1-t19" headers="r1c1-t19">
+<p>nlsrtl</p>
+</td>
+<td align="left" headers="r12c1-t19 r1c2-t19">
+<p>NLS run-time loadable data</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r13c1-t19" headers="r1c1-t19">
+<p>ocommon</p>
+</td>
+<td align="left" headers="r13c1-t19 r1c2-t19">
+<p>common files for all products</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r14c1-t19" headers="r1c1-t19">
+<p>odg</p>
+</td>
+<td align="left" headers="r14c1-t19 r1c2-t19">
+<p>data gatherer</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r15c1-t19" headers="r1c1-t19">
+<p>opsm</p>
+</td>
+<td align="left" headers="r15c1-t19 r1c2-t19">
+<p>Parallel Server Manager Components</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r16c1-t19" headers="r1c1-t19">
+<p>oracore</p>
+</td>
+<td align="left" headers="r16c1-t19 r1c2-t19">
+<p>core libraries</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r17c1-t19" headers="r1c1-t19">
+<p>ord</p>
+</td>
+<td align="left" headers="r17c1-t19 r1c2-t19">
+<p>data cartridges</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r18c1-t19" headers="r1c1-t19">
+<p>otrace</p>
+</td>
+<td align="left" headers="r18c1-t19 r1c2-t19">
+<p>Oracle TRACE</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r19c1-t19" headers="r1c1-t19">
+<p>plsql</p>
+</td>
+<td align="left" headers="r19c1-t19 r1c2-t19">
+<p>PL/SQL</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r20c1-t19" headers="r1c1-t19">
+<p>precomp</p>
+</td>
+<td align="left" headers="r20c1-t19 r1c2-t19">
+<p>precompilers</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r21c1-t19" headers="r1c1-t19">
+<p>rdbms</p>
+</td>
+<td align="left" headers="r21c1-t19 r1c2-t19">
+<p>server files and libraries required for the database</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r22c1-t19" headers="r1c1-t19">
+<p>slax</p>
+</td>
+<td align="left" headers="r22c1-t19 r1c2-t19">
+<p>SLAX parser</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r23c1-t19" headers="r1c1-t19">
+<p>sqlplus</p>
+</td>
+<td align="left" headers="r23c1-t19 r1c2-t19">
+<p>SQL*Plus</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="oui1_introduction.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="oui3_response_files.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;1996, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

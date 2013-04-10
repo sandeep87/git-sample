@@ -1,0 +1,1739 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Performing Backup and Recovery</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 009" />
+<meta name="Date" content="2010-08-02T19:33:6Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database 2 Day DBA 11g Release 2 (11.2)" />
+<meta name="partno" content="E10897-05" />
+<meta name="docid" content="ADMQS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="schema.htm" title="Previous" type="text/html" />
+<link rel="Next" href="montune.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e10897.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database 2 Day DBA<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E10897-05</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="schema.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="montune.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e10897.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CIHEHFJJ" name="CIHEHFJJ"></a><a id="ADMQS009" name="ADMQS009"></a><a id="i1004902" name="i1004902"></a>
+<h1 class="chapter"><span class="secnum">9</span> Performing Backup and Recovery</h1>
+<p>This chapter introduces you to Oracle Database backup and recovery with Oracle Enterprise Manager Database Control. After reading this chapter, you should be familiar with the basic concepts of Oracle Database backup and recovery operations, know how to implement a disk-based backup strategy, and perform simple repairs to database files.</p>
+<p>This chapter contains the following sections:</p>
+<ul>
+<li>
+<p><a href="#i1006198">Overview of Database Backup and Recovery</a></p>
+</li>
+<li>
+<p><a href="#CHDHEJBA">Database Backup and Recovery Concepts</a></p>
+</li>
+<li>
+<p><a href="#i1006225">Configuring Your Database for Basic Backup and Recovery</a></p>
+</li>
+<li>
+<p><a href="#i1006298">Backing Up Your Database</a></p>
+</li>
+<li>
+<p><a href="#BHAHGCGE">Displaying Backup Reports</a></p>
+</li>
+<li>
+<p><a href="#admqs_backrest_mgbackup">Managing Backups</a></p>
+</li>
+<li>
+<p><a href="#CHDFJGHE">Performing Oracle Advised Recovery</a></p>
+</li>
+<li>
+<p><a href="#CIHHBDDG">Performing User-Directed Recovery</a></p>
+</li>
+<li>
+<p><a href="#BHADAIJJ">Backup and Recovery: Oracle By Example Series</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink BRADV" href="http://www.oracle.com/pls/db112/lookup?id=BRADV"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> to learn how to use the command-line interface for Recovery Manager</p>
+</li>
+<li>
+<p><a class="olink RCMRF" href="http://www.oracle.com/pls/db112/lookup?id=RCMRF"><span class="italic">Oracle Database Backup and Recovery Reference</span></a> for the syntax and semantics of Recovery Manager commands</p>
+</li>
+</ul>
+</div>
+<a id="i1006198" name="i1006198"></a><a id="ADMQS091" name="ADMQS091"></a>
+<div class="sect1">
+<h2 class="sect1">Overview of Database Backup and Recovery</h2>
+<p><a id="sthref570" name="sthref570"></a><a id="sthref571" name="sthref571"></a><a id="sthref572" name="sthref572"></a>The focus in Oracle Database backup and recovery is on the physical backup of database files, which permits you to reconstruct your database. The files protected by the backup and recovery facilities built into Oracle Enterprise Manager Database Control (Database Control) include data files, control files, server parameter files, and archived redo log files. With these files you can reconstruct your database. The backup mechanisms work at the physical level to protect against file damage, such as the accidental deletion of a data file or the failure of a disk drive.</p>
+<p><a id="sthref573" name="sthref573"></a>Oracle Recovery Manager (RMAN), a command-line and Enterprise Manager-based tool, is the method preferred by Oracle for efficiently backing up and recovering your Oracle database. RMAN is designed to work intimately with the server, providing block-level corruption detection during backup and restore. RMAN optimizes performance and space consumption during backup with file multiplexing and backup set compression, and integrates with leading tape and storage media products.</p>
+<p>Logical backups, such as exporting database objects such as tables or tablespaces, are a useful supplement to physical backups, but cannot protect your whole database. An effective backup strategy must be based on physical backups.</p>
+<p><a id="sthref574" name="sthref574"></a>The Oracle Database flashback features provide a range of physical and logical data recovery tools as efficient, easy-to-use alternatives to physical and logical backups. The flashback features enable you to reverse the effects of unwanted database changes without restoring data files from backup or performing media recovery.</p>
+<p>This section introduces the following flashback features:</p>
+<ul>
+<li>
+<p><a class="olink BRADV81517" href="http://www.oracle.com/pls/db112/lookup?id=BRADV81517">Oracle Flashback Table</a>, which enables you to revert a table to its contents at a time in the recent past</p>
+</li>
+<li>
+<p><a class="olink BRADV81511" href="http://www.oracle.com/pls/db112/lookup?id=BRADV81511">Oracle Flashback Drop</a>, which enables you to retrieve deleted (dropped) database tables</p>
+</li>
+<li>
+<p><a class="olink BRADV81330" href="http://www.oracle.com/pls/db112/lookup?id=BRADV81330">Oracle Flashback Database</a>, which enables you to revert the entire database to a past point in time</p>
+</li>
+</ul>
+<p>The first two features operate at the logical level, whereas the last feature operates at the physical level. None of the preceding features requires advance preparation such as creating logical exports to allow for retrieval of your lost data. You can use all of the features while your database is available. <a class="olink BRADV80055" href="http://www.oracle.com/pls/db112/lookup?id=BRADV80055"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> discusses the flashback features of Oracle Database at greater length.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+<a id="sthref575" name="sthref575"></a>Oracle Flashback Database does not recover missing data files.</div>
+<p>The Oracle Enterprise Manager physical backup and recovery features are built on the Recovery Manager (RMAN) command-line client. Database Control makes available many of the RMAN features, and provides wizards and automatic strategies to simplify and further automate RMAN-based backup and recovery.</p>
+</div>
+<!-- class="sect1" -->
+<a id="CHDHEJBA" name="CHDHEJBA"></a><a id="ADMQS0911" name="ADMQS0911"></a>
+<div class="sect1">
+<h2 class="sect1">Database Backup and Recovery Concepts</h2>
+<p>To <span class="bold">back up <a id="sthref576" name="sthref576"></a>your database</span> means to make copies of your <a id="sthref577" name="sthref577"></a>data files, control file, and archived redo log files (if your database runs in <code>ARCHIVELOG</code> mode). <span class="bold"><a id="sthref578" name="sthref578"></a>Restoring a database</span> means copying the physical files that comprise the database from a backup medium, typically disk or tape, to their original or to new locations. <span class="bold"><a id="sthref579" name="sthref579"></a>Database recovery</span> is the process of updating database files restored from a backup with the changes made to the database after the backup, typically using online redo log files.<a id="sthref580" name="sthref580"></a></p>
+<a id="CHDIJGIJ" name="CHDIJGIJ"></a><a id="ADMQS09111" name="ADMQS09111"></a>
+<div class="sect2">
+<h3 class="sect2">Consistent and Inconsistent Backups</h3>
+<p><a id="sthref581" name="sthref581"></a><a id="sthref582" name="sthref582"></a><a id="sthref583" name="sthref583"></a>A backup is either consistent or inconsistent. To make a consistent backup, your database must have been shut down cleanly and remain closed for the duration of the backup. All committed changes in the online redo log files are written to the data files during the shut down process, so the data files are in a transaction-consistent state. When you restore your data files from a consistent backup, you can open the database immediately.</p>
+<p>If the database is in <code>ARCHIVELOG</code> mode, then you can make inconsistent backups that are recoverable using archived redo log files. Open database backups are inconsistent because the online redo log files contain changes not yet applied to the data files. The online redo log files must be archived and then backed up with the data files to ensure recoverability.</p>
+<p>Despite the name, an inconsistent backup is as robust a form of backup as a consistent backup. The advantage of making inconsistent backups is that you can back up your database while the database is open for updates.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="storage.htm#CACGGFIC">"About Archived Redo Log Files"</a></p>
+</li>
+<li>
+<p><a class="olink BRADV8003" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8003"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> to learn how to use the <code>BACKUP</code> command in the RMAN client</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDFIGIE" name="CHDFIGIE"></a><a id="ADMQS09112" name="ADMQS09112"></a>
+<div class="sect2">
+<h3 class="sect2">Media Recovery</h3>
+<p><a id="sthref584" name="sthref584"></a><a id="sthref585" name="sthref585"></a><a id="sthref586" name="sthref586"></a>If you restore the archived redo log files and data files, then you must perform media recovery before you can open the database. Any database transactions in the archived redo log files not reflected in the data files are applied to the data files, bringing them to a transaction-consistent state before the database is opened.</p>
+<p>Media recovery requires a control file, data files (typically restored from backup), and online and archived redo log files containing changes since the time the data files were backed up. Media recovery is most often used to recover from media failure, such as the loss of a file or disk, or a user error, such as the deletion of the contents of a table.</p>
+<p>Media recovery can be a complete recovery or a point-in-time recovery. In a complete recovery, you restore backup data files and apply all changes from the archived and online redo log files to the data files. The database is returned to its state at the time of failure and can be opened with no loss of data.</p>
+<p><a id="sthref587" name="sthref587"></a>In a point-in-time recovery, you return a database to its contents at a user-selected time in the past. You restore a backup of data files created before the target time and a complete set of archived redo log files from backup creation through the target time. Recovery applies changes between the backup time and the target time to the data files. All changes after the target time are discarded.</p>
+<p><a id="sthref588" name="sthref588"></a><a id="sthref589" name="sthref589"></a><a id="sthref590" name="sthref590"></a>Oracle Enterprise Manager Database Control (Database Control) provides an interface to both a complete and a point-in-time recovery in the form of a Recovery wizard. However, this documentation focuses on complete recovery.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CIHHBDDG">"Performing User-Directed Recovery"</a></p>
+</li>
+<li>
+<p><a class="olink BRADV80055" href="http://www.oracle.com/pls/db112/lookup?id=BRADV80055"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for more detailed information about complete and point-in-time recovery</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDJABGG" name="CHDJABGG"></a><a id="ADMQS09113" name="ADMQS09113"></a>
+<div class="sect2">
+<h3 class="sect2">Fast Recovery Area</h3>
+<p><a id="sthref591" name="sthref591"></a><a id="sthref592" name="sthref592"></a>To simplify the management of backup and recovery files, you can create a fast recovery area for your database. The fast recovery area is an Oracle-managed directory, file system, or Oracle Automatic Storage Management disk group that provides a centralized disk location for backup and recovery files. Oracle creates archived logs and flashback logs in the fast recovery area. RMAN can store its backup sets and image copies in the fast recovery area, and it uses it when restoring files during media recovery. The fast recovery area also acts as a disk cache for tape.</p>
+<p>Oracle Database automatically manages this storage, deleting files that are no longer needed. Periodically copying backups to tape frees space in the fast recovery area for other files. Oracle recommends that you enable a recovery area to simplify backup management. Except as noted, this documentation assumes the use of a recovery area.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDEFIHF">"Planning Space Usage and Location for the Fast Recovery Area"</a></p>
+</li>
+<li>
+<p><a class="olink BRADV8183" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8183"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for more detailed information about configuring a fast recovery area</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDIDCBI" name="CHDIDCBI"></a><a id="ADMQS09114" name="ADMQS09114"></a>
+<div class="sect2">
+<h3 class="sect2">RMAN Repository</h3>
+<p><a id="sthref593" name="sthref593"></a>RMAN maintains a record of database files and backups for each database on which it performs operations. This metadata is called the <span class="bold">RMAN repository</span>.</p>
+<p>If you back up a file without using RMAN, such as by copying the file at the host operating system level, then you can add metadata about the copy to the RMAN repository. If you later use a command such as <code>RESTORE DATABASE</code>, then RMAN uses the records in the repository to select backups needed for the recovery.</p>
+<p><a id="sthref594" name="sthref594"></a><a id="sthref595" name="sthref595"></a>The primary location for the RMAN repository for a database is its control file. The importance of this metadata for RMAN is one more reason why protecting your control file is a vital part of your backup strategy. In some installations, a second copy of the RMAN repository is stored in a schema called the <span class="bold">recovery catalog</span>. The recovery catalog is located in a separate database and can store metadata for multiple databases. Use of a recovery catalog is optional and is beyond the scope of this documentation.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#BHAHGCGE">"Displaying Backup Reports"</a></p>
+</li>
+<li>
+<p><a href="#admqs_backrest_mgbackup">"Managing Backups"</a></p>
+</li>
+<li>
+<p><a class="olink BRADV8004" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8004"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for more detailed information about RMAN reporting capabilities and querying the recovery catalog</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="i1006225" name="i1006225"></a><a id="ADMQS092" name="ADMQS092"></a>
+<div class="sect1">
+<h2 class="sect1">Configuring Your Database for Basic Backup and Recovery</h2>
+<p>This section explains how to set up your database to take advantage of Oracle suggested backup strategies. If you configured the database for automated backups with the Oracle Database Configuration Assistant (DBCA), then skip this section.</p>
+<p>To take maximum advantage of Oracle Database features that automatically manage backup and recovery files and operations, configure your database as follows:</p>
+<ul>
+<li>
+<p>Use a fast recovery area, which automates storage management for most backup-related files, and specify it as an archived redo log file destination.</p>
+</li>
+<li>
+<p>Run the database in <code>ARCHIVELOG</code> mode so you can perform online backups and have data recovery options such as complete and point-in-time media recovery.</p>
+</li>
+</ul>
+<p>You must also set several policies governing which files are backed up, what format is used to store backups on disk, and when files become eligible for deletion.</p>
+<p>This section contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CIHFCDIE">Specifying Credentials for Backup and Recovery Using Database Control</a></p>
+</li>
+<li>
+<p><a href="#CHDEFIHF">Planning Space Usage and Location for the Fast Recovery Area</a></p>
+</li>
+<li>
+<p><a href="#CHDJHFDB">Configuring Recovery Settings</a></p>
+</li>
+<li>
+<p><a href="#CHDDDDEA">Monitoring Fast Recovery Area Usage</a></p>
+</li>
+<li>
+<p><a href="#CHDEHDHC">Configuring Backup Settings</a></p>
+</li>
+</ul>
+<a id="CIHFCDIE" name="CIHFCDIE"></a><a id="ADMQS0922" name="ADMQS0922"></a>
+<div class="sect2">
+<h3 class="sect2">Specifying Credentials for Backup and Recovery Using Database Control</h3>
+<p><a id="sthref596" name="sthref596"></a><a id="sthref597" name="sthref597"></a>You must have the proper credentials to perform some configuration tasks for backup and recovery, and to schedule backup jobs and perform recovery. The following credentials may be required:</p>
+<ul>
+<li>
+<p>The Oracle Database user you specify when you log in to Oracle Enterprise Manager Database Control (Database Control)</p>
+</li>
+<li>
+<p>The host operating system user whose credentials you provide when performing backup and recovery tasks</p>
+</li>
+</ul>
+<p class="subhead2"><a id="ADMQS12217" name="ADMQS12217"></a>To enter credentials for backup and recovery tasks:</p>
+<ol>
+<li>
+<p>Log in to Database Control as a database user with <code>SYSDBA</code> privileges, or provide host operating system credentials for a user in the <code>dba</code> group on UNIX or Linux, or the <code>ora_dba</code> group on Microsoft Windows.</p>
+<p>The host operating system user must also have execute permission for the RMAN command-line client.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The host user may require certain host privileges to run background jobs such as database backups. For example, on UNIX and Linux, the host user must belong to the OSDBA group (typically <code>dba</code>), and on Windows, the host user must be a member of the <code>Administrators</code> group and must be granted the <code>Log</code> <code>on</code> <code>as</code> <code>batch</code> <code>job</code> logon right. See your platform documentation for more information.</div>
+<p>For tasks requiring host operating system credentials, a Host Credentials form appears at the bottom of the page used to perform the task. Enterprise Manager uses the credentials when it starts RMAN jobs that you requested or scheduled.</p>
+</li>
+<li>
+<p>Optionally, in the Host Credentials form, select <span class="bold">Save as Preferred Credential</span>.</p>
+<p>If you select this option before performing your action, then the provided credentials are stored persistently for the currently logged-in Oracle Database user. The preferred credentials are reused by default whenever you log in as that user and perform operations requiring host credentials.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+In situations in which the database is shut down, you may still be prompted for host credentials even if you have saved the preferred credentials.</div>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#i1006225">"Configuring Your Database for Basic Backup and Recovery"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDEFIHF" name="CHDEFIHF"></a><a id="ADMQS0921" name="ADMQS0921"></a>
+<div class="sect2">
+<h3 class="sect2">Planning Space Usage and Location for the Fast Recovery Area</h3>
+<p>You should place the fast recovery area on a separate disk from the working set of database files. Otherwise, the disk becomes a single point of failure for your database.</p>
+<p>The amount of disk space to allocate for the fast recovery area depends on the size and activity levels of your database, which determine the size of your data files and online redo log files in addition to your recovery objectives. Your objectives dictate what kinds of backups you use, when you make them, and how long to keep them.</p>
+<a id="CHDDAIFI" name="CHDDAIFI"></a><a id="ADMQS09211" name="ADMQS09211"></a>
+<div class="sect3">
+<h4 class="sect3">About the Backup Retention Policy and the Fast Recovery Area</h4>
+<p><a id="sthref598" name="sthref598"></a>Space management in the fast recovery area is governed by a backup retention policy. A retention policy determines when files are obsolete, meaning that they are no longer needed to meet your data recovery objectives.</p>
+<p>Retention policies can be based on redundancy of backups or on a recovery window (period of time). When using a policy based on redundancy, the fast recovery area considers a backup of a file obsolete only when the RMAN repository has records of a specified number of more recent backups of that file. When using a recovery policy based on a period of time (or window), you specify a time interval in days. Files are obsolete only when they are no longer needed for complete recovery or point-in-time recovery to a system change number (SCN) within the window. Therefore, a recovery retention policy based on a window is recommended.</p>
+<p>Even after files in the fast recovery area are obsolete, they are typically not deleted until space is needed for new files. If space permits, files recently moved to tape remain on disk to avoid restoring them from tape for a recovery. The automatic deletion of obsolete files and files moved to tape from the fast recovery area makes it a convenient archiving destination. Other destinations require manual deletion of logs.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDEFIHF">"Planning Space Usage and Location for the Fast Recovery Area"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="CHDIEDBA" name="CHDIEDBA"></a><a id="ADMQS09212" name="ADMQS09212"></a>
+<div class="sect3">
+<h4 class="sect3">About the Fast Recovery Area Size</h4>
+<p><a class="olink BRADV8183" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8183"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> explains how to size the fast recovery area. As a general rule, the larger the fast recovery area, the more useful it is. Ideally, the fast recovery area should be large enough for copies of the data files, control files, online redo log files, and archived redo log files needed to recover the database, and also the copies of these backup files that are kept based on the retention policy.</p>
+<p>If your backup strategy includes incremental backups, which are described in <a href="#CHDCCDIG">"Incremental Backups of Data Files"</a>, then add enough space to the fast recovery area for these files. If you can move some backups to tape, then you can reduce the size of the fast recovery area. Note that retrieving files from tape causes longer database restore operations and recovery times.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDEFIHF">"Planning Space Usage and Location for the Fast Recovery Area"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CHDJHFDB" name="CHDJHFDB"></a><a id="ADMQS099" name="ADMQS099"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Configuring Recovery Settings</h3>
+<p>In the Recovery Settings page, you can configure settings for instance recovery, media recovery, and fast recovery. In this section, you configure the fast recovery area and enable archiving for the database.</p>
+<p><a id="sthref599" name="sthref599"></a>You can configure a fast recovery area when first creating the database. If you did not perform this task at database creation time, however, then you can create a fast recovery area for your database now.</p>
+<p class="subhead2"><a id="ADMQS12218" name="ADMQS12218"></a>To configure a fast recovery area and put the database in <code><span class="codeinlinebold">ARCHIVELOG</span></code> mode:</p>
+<ol>
+<li>
+<p>On the host operating system, create a directory to hold the fast recovery area. If you are using Oracle ASM for your storage, then create a new disk group.</p>
+<p>Make sure that the operating system permissions for the directory or disk devices allow the database to create files.</p>
+</li>
+<li>
+<p>Log in to Enterprise Manager Database Control as user <code>SYS</code>.</p>
+</li>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Backup/Recovery section, click <span class="bold">Recovery Settings</span>.</p>
+<p>The Recovery Settings page appears.</p>
+</li>
+<li>
+<p>Complete the following steps:</p>
+<ol>
+<li>
+<p>In the Media Recovery section, select <span class="bold">ARCHIVELOG Mode</span>.</p>
+</li>
+<li>
+<p>If <code>USE_DB_RECOVERY_FILE_DEST</code> is not set as an archiving destination, then set it.</p>
+<p>This initialization parameter indicates that the fast recovery area should be an archiving destination.</p>
+<p>For ease of database management, the best practice is to use the fast recovery area as your <span class="italic">only</span> archiving destination.</p>
+</li>
+<li>
+<p>In the Fast Recovery section, enter the path to the fast recovery area created in Step 1 in <span class="bold">Fast Recovery Area Location</span>, and select a value for <span class="bold">Fast Recovery Area Size</span>.</p>
+</li>
+<li>
+<p>Select <span class="bold">Enable Flashback Database</span>.</p>
+<p>This option specifies that the database should generate flashback logs in the fast recovery area, enabling you to use Flashback Database. During usual operation, the database occasionally logs images of data blocks to the flashback logs. The database automatically creates, deletes, and resizes flashback logs.</p>
+</li>
+<li>
+<p>Ensure that the <span class="bold">Apply initialization parameter changes to SPFILE only</span> box is not selected.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span> to save your changes.</p>
+<p>A message prompts you to restart the database.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span>.</p>
+<p>The Restart Database: Specify Host and Target Database Credentials page appears.</p>
+</li>
+<li>
+<p>Enter your host and database credentials, and then click <span class="bold">OK</span>.</p>
+<p>See <a href="#CIHFCDIE">"Specifying Credentials for Backup and Recovery Using Database Control"</a> for information about credentials.</p>
+</li>
+<li>
+<p>On the Restart Database: Confirmation page, click <span class="bold">Yes</span> to begin the restart operations.</p>
+<p>You can click <span class="bold">Refresh</span> periodically to monitor the progress of the operation.</p>
+</li>
+<li>
+<p>Make a consistent (that is, offline) backup of your entire database <span class="italic">immediately</span> after switching your database to <code>ARCHIVELOG</code> mode.</p>
+<div class="infoboxnote">
+<p class="notep1">Caution:</p>
+You cannot use backups from <span class="italic">before</span> the switch to <code>ARCHIVELOG</code> mode to restore and recover the database to a point in time <span class="italic">after</span> the switch. Thus, if you do not <span class="italic">immediately</span> make a backup after switching, then you are running your database without a valid backup. See <a href="#i1006310">"Performing and Scheduling Backups Using Database Control"</a> to learn how to make database backups.</div>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDBHFJG">"Rewinding a Database Using Oracle Flashback Database"</a></p>
+</li>
+<li>
+<p><a class="olink BRADV8183" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8183"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for more details about configuring a fast recovery area</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDDDDEA" name="CHDDDDEA"></a><a id="ADMQS12106" name="ADMQS12106"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Monitoring Fast Recovery Area Usage</h3>
+<p>It is important to monitor space usage in the fast recovery area to ensure that it is large enough to contain backups and other recovery-related files.</p>
+<p class="subhead2"><a id="ADMQS12219" name="ADMQS12219"></a>To monitor available space in the fast recovery area:</p>
+<p>In the High Availability section of the Database Home page, click the link next to <span class="bold">Usable Fast Recovery Area (%)</span>.</p>
+<p>The Recovery Settings page appears.</p>
+<p>The Reclaimable Recovery Area (GB) and Free Recovery Area (GB) settings indicate how much space is available.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#i1006225">"Configuring Your Database for Basic Backup and Recovery"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDEHDHC" name="CHDEHDHC"></a><a id="ADMQS0925" name="ADMQS0925"></a>
+<div class="sect2">
+<h3 class="sect2">Configuring Backup Settings</h3>
+<p><a id="sthref600" name="sthref600"></a>You can configure several backup-related settings and policies. For example, you can determine how backups are stored, which data is backed up, and how long backups are retained. You can also configure settings to optimize backup performance.</p>
+<p>This section explains the concepts behind the available settings and also explains how to change them using the Backup Settings page in Database Control. The settings on the Device subpage affect how RMAN writes backups to disk and to tape.</p>
+<a id="CHDBCGGB" name="CHDBCGGB"></a><a id="ADMQS0926" name="ADMQS0926"></a>
+<div class="sect3">
+<h4 class="sect3">About RMAN Backups</h4>
+<p>Database backups created by RMAN are stored as image<a id="sthref601" name="sthref601"></a><a id="sthref602" name="sthref602"></a> copies or backup sets.</p>
+<p><span class="bold">Image copies</span> are exact byte-for-byte copies of files. You can create an image copy by copying a file at the operating system level. Unlike copying files at the operating system level, however, image copies created through RMAN or Database Control are recorded in the RMAN repository so that RMAN can use these copies during database restore operations and recovery. RMAN can restore files only if they are recorded in the RMAN repository. RMAN can create image copies only on disk.</p>
+<p><span class="bold">Backup sets</span> are logical entities produced by the RMAN <code>BACKUP</code> command. This command can produce one or more backup sets on disk or media management devices. RMAN can write backup sets only to a media manager.</p>
+<p><a id="sthref603" name="sthref603"></a><a id="sthref604" name="sthref604"></a>Each backup set contains several physical files called <span class="bold">backup pieces</span>. A backup piece stores the backup of one or more database files in a compact RMAN-specific format. One advantage of backup sets is that RMAN uses unused block compression to save space in backing up data files. Only those blocks in the data files that have been used to store data are included in the backup set.</p>
+<p><a id="sthref605" name="sthref605"></a><a id="sthref606" name="sthref606"></a>RMAN depends on server sessions, processes that run on the database server, to create backups and restore them. Each server session, in turn, corresponds to an RMAN channel, representing one stream of data to or from a backup device. Channels are either of type disk or type SBT (tape).</p>
+<p><a id="sthref607" name="sthref607"></a>RMAN supports parallelism, which is the use of multiple channels and server sessions to perform the work of one backup or recovery task. Proper use of parallelism can greatly increase performance on backup and recovery tasks.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink BRADV001" href="http://www.oracle.com/pls/db112/lookup?id=BRADV001"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for an overview of RMAN architecture</p>
+</li>
+<li>
+<p><a class="olink BRADV002" href="http://www.oracle.com/pls/db112/lookup?id=BRADV002"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for more conceptual details about RMAN backups</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="CHDFAFII" name="CHDFAFII"></a><a id="ADMQS09255" name="ADMQS09255"></a>
+<div class="sect3">
+<h4 class="sect3">Configuring Backup Device Settings</h4>
+<p>For disk-based backups, you can configure the default format for backups, the location on disk where backups are stored, and whether backup tasks run in parallel.</p>
+<p>For tape backups, you can configure settings such as the number of tape drives and whether backups are compressed. On most platforms, you must integrate a media manager with the Oracle database to use sequential media for storage.</p>
+<p>You can use Oracle Secure Backup, which supports both database and file system backups to tape, as your media manager. Oracle Secure Backup provides the same services for RMAN as other third-party SBT interfaces, but is better integrated with Database Control. This section assumes that you make only disk backups.</p>
+<p class="subhead2"><a id="ADMQS12220" name="ADMQS12220"></a>To configure backup settings for disk:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Backup/Recovery section, click <span class="bold">Backup Settings</span>.</p>
+<p>The Backup Settings page appears.</p>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Device</span>.</p>
+<p>The Device subpage of Backup Settings appears.</p>
+</li>
+<li>
+<p>Complete the following steps:</p>
+<ol>
+<li>
+<p>In <span class="bold">Parallelism</span>, enter <code><span class="codeinlinebold">1</span></code>.</p>
+<p>Later, when you have had time to review the information in <a class="olink BRADV105" href="http://www.oracle.com/pls/db112/lookup?id=BRADV105"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> about parallelism and performance in RMAN, you may want to change this value.</p>
+</li>
+<li>
+<p>Leave the Disk Backup Location field blank so that RMAN directs backups to the fast recovery area.</p>
+</li>
+<li>
+<p>In the <span class="bold">Disk Backup Type</span> section, select <span class="bold">Backup Set</span>.</p>
+<p>One advantage of backup sets is that RMAN uses unused block compression to save space when backing up data files. Only those blocks in the data files that have been used to store data are included in the backup set.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>In Host Credentials section at the bottom of the page, enter values in the <span class="bold">Username</span> and <span class="bold">Password</span> fields.</p>
+<p>Host credentials are described in <a href="#CIHFCDIE">"Specifying Credentials for Backup and Recovery Using Database Control"</a>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Test Disk Backup</span> (near the top of the page) to ensure the credentials and backup location are correct.</p>
+<p>A message appears that states whether the test was successful.</p>
+<p>In this example you do not change the settings on the Backup Set subpages.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink BRADV89399" href="http://www.oracle.com/pls/db112/lookup?id=BRADV89399"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> to learn how to use the RMAN client to configure the default device for backups</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="CHDJGJBF" name="CHDJGJBF"></a><a id="ADMQS09252" name="ADMQS09252"></a>
+<div class="sect3">
+<h4 class="sect3">Configuring Backup Policy Settings</h4>
+<p>You can set the backup policies that govern control file and server parameter file backups, tablespaces to exclude from an entire database backup, and the backup retention policy.</p>
+<p class="subhead2"><a id="ADMQS12221" name="ADMQS12221"></a>To configure the backup policy settings:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Backup/Recovery section, click <span class="bold">Backup Settings</span>.</p>
+<p>The Backup Settings page appears.</p>
+</li>
+<li>
+<p>At the top of the page, click <span class="bold">Policy</span>.</p>
+<p>The Backup Policy subpage appears.</p>
+</li>
+<li>
+<p>Perform the following actions:</p>
+<ul>
+<li>
+<p>Select the <span class="bold">Automatically backup the control file and server parameter file (SPFILE) with every backup and database structural change</span> option. Leave the Autobackup Disk Location field blank so that RMAN stores the automatic backups in the fast recovery area.</p>
+<p>The server parameter file and control file are critical to the database and RMAN, and are also relatively small compared to typical data files. Backing them up frequently results in relatively little storage overhead.</p>
+</li>
+<li>
+<p>Select the <span class="bold">Optimize the whole database backup by skipping unchanged files such as read-only and offline data files that have been backed up</span> option.</p>
+<p>This option saves space in the fast recovery area.</p>
+</li>
+<li>
+<p>Select the <span class="bold">Enable block change tracking for faster incremental backups</span> option. Either leave the Block Change Tracking File field blank (if you specified Oracle Managed Files when creating the database) or enter a file name (including path).</p>
+<p>This option takes advantage of the block change tracking feature, which greatly improves incremental backup performance at a small cost of overhead.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the Tablespaces Excluded From Whole Database Backup section, leave the settings as they are.</p>
+<p>This feature enables you to specify a list of tablespaces to exclude from a backup. For example, you do not have to include read-only tablespaces in every backup.</p>
+</li>
+<li>
+<p>In the Retention Policy section, select <span class="bold">Retain backups that are necessary for a recovery to any time within the specified number of days (point-in-time recovery)</span>. In <span class="bold">Days</span>, enter <code><span class="codeinlinebold">31</span></code>.</p>
+<p>This setting enables a recovery policy with retention based on a period of time.</p>
+</li>
+<li>
+<p>In the Archivelog Deletion Policy section, select <span class="bold">None</span>.</p>
+<p>This option specifies that logs are eligible for automatic deletion only when they have been backed up to tape or are obsolete based on the retention policy.</p>
+</li>
+<li>
+<p>At the bottom of the page, click <span class="bold">OK</span> to save your changes.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#admqs_backrest_mgbackup">"Managing Backups"</a></p>
+</li>
+<li>
+<p><a class="olink BRADV8400" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8400"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> to learn how to configure a backup retention policy</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="i1006298" name="i1006298"></a><a id="ADMQS093" name="ADMQS093"></a>
+<div class="sect1">
+<h2 class="sect1">Backing Up Your Database</h2>
+<p>This section describes how to back up your database with Oracle Enterprise Manager Database Control (Database Control). The Oracle suggested strategy for disk-only backups provides efficient daily backup of the database. This strategy enables you to quickly return your database to its state at any point during the previous 24 hours. For more flexible backup options, see <a class="olink BRADV" href="http://www.oracle.com/pls/db112/lookup?id=BRADV"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a>.</p>
+<a id="CHDBAGGE" name="CHDBAGGE"></a><a id="ADMQS0931" name="ADMQS0931"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">RMAN Backup Concepts</h3>
+<p>This section provides the concepts you need to understand the Oracle suggested backup strategy and other backup types provided through Database Control.</p>
+<a id="CHDIJEFE" name="CHDIJEFE"></a><a id="ADMQS09311" name="ADMQS09311"></a>
+<div class="sect3">
+<h4 class="sect3">Full Backups of Data Files</h4>
+<p><a id="sthref608" name="sthref608"></a><a id="sthref609" name="sthref609"></a>A full backup of a data file includes all used blocks of the data file. As explained in <a href="#CHDBCGGB">"About RMAN Backups"</a>, an RMAN backup can be either an image copy or backup set. <a id="sthref610" name="sthref610"></a>An image copy is a bit-for-bit copy of the data file, and thus includes unused blocks.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CHDCCDIG" name="CHDCCDIG"></a><a id="ADMQS09312" name="ADMQS09312"></a>
+<div class="sect3">
+<h4 class="sect3">Incremental Backups of Data Files</h4>
+<p><a id="sthref611" name="sthref611"></a>RMAN incremental backups copy only those blocks in a data file that change between backups. A level 0 incremental backup, which copies all blocks in the data file, is used as a starting point for an incremental backup strategy.</p>
+<p>Incremental backups at level 1 copy only images of blocks that have changed since a previous incremental backup. Level 1 backups can be <span class="bold">cumulative</span>, in which case all blocks changed since the most recent level 0 backup are included, or <span class="bold">differential</span>, in which case only blocks changed since the most recent level 0 or level 1 incremental backup are included. A typical incremental strategy makes level 1 backups at regular intervals such as once each day.</p>
+<p>Recovering changed blocks from incremental backups can speed media recovery. Because an incremental level 1 backup copies the final contents of all data file blocks changed during the period covered by the incremental backup strategy, the recovery process can avoid reapplying updates from the archived redo log files of that period, and update each block with its final contents. The archived redo log files are used only for changes from the period not covered by level 1 backups.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CHDDJJAD" name="CHDDJJAD"></a><a id="ADMQS09313" name="ADMQS09313"></a>
+<div class="sect3">
+<h4 class="sect3">Incrementally Updated Backups: Rolling Forward Image Copies of Data Files</h4>
+<p>RMAN enables you to apply level 1 incremental backups to an older image copy of your data files. You can roll forward the copy to the point in time of the most recent level 1 incremental backup. All blocks changed since the image copy was created are overwritten with their new contents as of the time of the last level 1 incremental backup. The effect is to roll forward the file in time, so that its contents are equivalent, for the purposes of database recovery, to an image copy of the data file made at the time of the last incremental level 1 backup.</p>
+<p>Incorporating incrementally updated backups into your backup strategy shortens expected recovery times. Media recovery to the present time or to a point in time in the recent past can begin at the time of the last level 1 backup applied, rather than at the time of the last full database backup.</p>
+</div>
+<!-- class="sect3" -->
+<a id="CHDGACCG" name="CHDGACCG"></a><a id="ADMQS09314" name="ADMQS09314"></a>
+<div class="sect3">
+<h4 class="sect3">Backup Tags</h4>
+<p>A <span class="bold">tag</span> is a text string that identifies that backup, either uniquely or as part of a group of backups. <a id="sthref612" name="sthref612"></a>All RMAN backups, including incremental backups, are labeled with a tag. For example, if you performed a full database backup every Saturday, then you could use the tag <code>FULL_SAT</code> to identify this backup.</p>
+<p>You can use tags to refer to specific backups in RMAN commands. For example, you could issue a command to move the latest <code>FULL_SAT</code> backup to tape. If you do not specify a tag, then RMAN creates a unique tag automatically.</p>
+<p>Because you can use tags to refer to different groups of backups, you can create different routines in your backup strategy that do not interfere with each other. When you schedule a backup job and give the job a name, the job name is the tag.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="i1006310" name="i1006310"></a><a id="ADMQS0932" name="ADMQS0932"></a>
+<div class="sect2">
+<h3 class="sect2">Performing and Scheduling Backups Using Database Control</h3>
+<p><a id="sthref613" name="sthref613"></a>Database Control enables you to perform RMAN backups and schedule backup jobs required by your backup strategy.</p>
+<a id="CIHCBBFC" name="CIHCBBFC"></a><a id="ADMQS09321" name="ADMQS09321"></a>
+<div class="sect3">
+<h4 class="sect3">Performing a Whole Database Backup</h4>
+<p><a id="sthref614" name="sthref614"></a>Whole backups of a database include the complete contents of all data files of the database, also the control file, archived redo log files, and server parameter file. With these files, you can perform a complete recovery.</p>
+<p>While whole database backups can be an important element in your overall backup strategy, they are also a required step in some situations, such as when you enable or disable <code>ARCHIVELOG</code> mode (see <a href="#CHDJHFDB">"Configuring Recovery Settings"</a>). This section explains how to make whole database backups to disk.</p>
+<p class="subhead2"><a id="ADMQS12222" name="ADMQS12222"></a>To perform a whole database backup when the database is open:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section of the Availability page, click <span class="bold">Schedule Backup</span>.</p>
+<p>The Schedule Backup page appears.</p>
+<img width="774" height="384" src="img/back_strat_11gr1.gif" alt="Description of back_strat_11gr1.gif follows" title="Description of back_strat_11gr1.gif follows" longdesc="img_text/back_strat_11gr1.htm" /><br />
+<a id="sthref615" name="sthref615" href="img_text/back_strat_11gr1.htm">Description of the illustration back_strat_11gr1.gif</a><br />
+<br /></li>
+<li>
+<p>In the Host Credentials section at the bottom of the page (not shown in the figure), enter values in the <span class="bold">Username</span> and <span class="bold">Password</span> fields if the Preferred Credentials are not set.</p>
+</li>
+<li>
+<p>In the Customized Backup section, select <span class="bold">Whole Database</span>, and then click <span class="bold">Schedule Customized Backup</span>.</p>
+<p>The Schedule Customized Backup: Options page appears.</p>
+</li>
+<li>
+<p><a id="CHDGEIGB" name="CHDGEIGB"></a>In the Backup Type section, select <span class="bold">Full Backup</span>.</p>
+</li>
+<li>
+<p>In the Backup Mode section, select either <span class="bold">Online Backup</span> or <span class="bold">Offline Backup</span>.</p>
+<p>Typically, you want to perform online backups to maximize database availability.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+As explained in <a href="#i1006225">"Configuring Your Database for Basic Backup and Recovery"</a>, you can make online backups only if your database is running in <code>ARCHIVELOG</code> mode.</div>
+</li>
+<li>
+<p>In the Advanced section, make the following selections, and then click <span class="bold">Next</span>:</p>
+<ul>
+<li>
+<p>If you are performing an online backup, then select <span class="bold">Also back up all archived logs on disk</span>.</p>
+<p>You do not have to back up archived logs when performing an offline backup because the database is in a consistent state at the time of backup and does not require media recovery if you restore the database from this backup. However, you can choose to include archived logs in the backup.</p>
+</li>
+<li>
+<p>If a fast recovery area is your only archiving destination, then do not select "Delete all archived logs from disk after they are successfully backed up".</p>
+<p>In this case, archived redo log files that have been backed up are deleted automatically as space is needed. If you are using some other archiving destination, then it may be useful to select this option as part of managing your backup storage.</p>
+</li>
+<li>
+<p>If the fast recovery area stores backups, then do not select the "Delete obsolete backups" option.</p>
+<p>In this case, obsolete backups are deleted automatically as space is needed. If you use another destination for your backup files, then you can select this option.</p>
+</li>
+<li>
+<p>Do not select "Use proxy copy supported by media management software to perform a backup" for now.</p>
+</li>
+<li>
+<p>Do not enter a value in the Maximum Files per Backup Set field or the Section Size field.</p>
+</li>
+</ul>
+<p>The Schedule Customized Backup: Settings page appears.</p>
+</li>
+<li>
+<p>Select <span class="bold">Disk</span> and then click <span class="bold">Next</span>.</p>
+<p>Oracle recommends backing up to disk when possible to minimize recovery time by minimizing restore operations from tape. Later, you can move disk backups to tape.</p>
+<p>The Schedule Customized Backup: Schedule page appears.</p>
+</li>
+<li>
+<p><a id="CHDCGGIG" name="CHDCGGIG"></a>Complete the following steps:</p>
+<ol>
+<li>
+<p>In the Job section, leave the default values for <span class="bold">Job Name</span> and <span class="bold">Job Description</span>.</p>
+<p>In the <span class="bold">Job Name</span> field, you can enter a user-specified tag for this backup. The job name is used as a prefix for the backup tag for backups created by this job.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+For recurring jobs, it is useful to set a <span class="bold">Job Name</span> so that the resulting backups are easy to identify as part of an ongoing series. Use a descriptive tag, such as <code>WEEKLY_FULL_BACKUP</code>.</div>
+<p>In the <span class="bold">Job Description</span> field, you can enter any descriptive text that is useful for your own reference.</p>
+</li>
+<li>
+<p>In the Schedule section, select <span class="bold">One Time (Immediately),</span> and then click <span class="bold">Next</span>.</p>
+<p>The Schedule Customized Backup: Review page appears.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><a id="CHDHGBAJ" name="CHDHGBAJ"></a>Click <span class="bold">Submit Job</span>.</p>
+<p>The Status page appears. This page should contain a message that indicates the job was successfully submitted.</p>
+</li>
+<li>
+<p>Click <span class="bold">View Job</span> to monitor the progress of the backup.</p>
+<p>The Execution page for your database appears. This page contains a Summary section describing the job. The table at the bottom of the page displays the progress of the various steps of the backup job. You can reload this page in your browser to monitor the ongoing progress of the job.</p>
+<p>In the Name column of the table, you can see the current phase of the RMAN job. Clicking the name of the phase of the backup job displays a page containing the RMAN output for that part of the job. If you clicked on a job phase link, then from your current page, click the Execution: <span class="italic">Database_name</span> link at the top of the page to return to Execution page for your database.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="ADMQS12223" name="ADMQS12223"></a>To perform a whole database backup when the database is closed:</p>
+<ul>
+<li>
+<p>Follow the same steps as for an open database backup, except select <span class="bold">Offline Backup</span> in Step <a href="#CHDGEIGB">5</a> and then continue with the steps that follow.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BABFEJGA" name="BABFEJGA"></a><a id="ADMQS09322" name="ADMQS09322"></a>
+<div class="sect3">
+<h4 class="sect3">Using the Oracle Suggested Backup Strategy</h4>
+<p><a id="sthref616" name="sthref616"></a>Database Control makes it easy to set up an Oracle suggested backup strategy for backups to disk that protects your data and provides efficient recoverability to any point in the user-specified recovery window (time period). The Oracle suggested strategy leverages the incremental backup and incrementally updated backup features to provide faster backups than whole database backups, and faster recoverability than is possible through applying database changes from the archive log to your data files.</p>
+<a id="BABJDHAG" name="BABJDHAG"></a><a id="ADMQS12224" name="ADMQS12224"></a>
+<div class="sect4"><!-- infolevel="all" infotype="General" -->
+<h5 class="sect4">About the Oracle Suggested Backup Strategy</h5>
+<p>The Oracle suggested strategy is based on creating an image copy of your database. The database rolls forward this copy by using incrementally updated backups. Oracle Enterprise Manager schedules RMAN backup jobs during the overnight hours.</p>
+<p><a id="sthref617" name="sthref617"></a>For each data file, the strategy calls for backups as follows:</p>
+<ul>
+<li>
+<p>At the beginning of day 1 of the strategy (the time the first scheduled job actually runs), RMAN creates an incremental level 0 data file copy. It contains the data file contents at the beginning of day 1.</p>
+<p>If a recovery is required, then the archived redo log files from day 1 can be used to recover to any point during day 1.</p>
+</li>
+<li>
+<p>At the beginning of day 2, RMAN creates a differential incremental level 1 backup that contains the blocks changed during day 1.</p>
+<p>If a recovery is required, then RMAN can apply this incremental level 1 to roll forward the level 0 backup to the beginning of day 2. RMAN can use archived redo log files to recover to any point during day 2.</p>
+</li>
+<li>
+<p>At the beginning of each day <span class="italic">n</span> for day 3 and onward, RMAN applies the level 1 backup from the beginning of day <span class="italic">n</span>-1 to the level 0 backup. This action brings the data file copy to its state at the beginning of day <span class="italic">n</span>-1. Then, RMAN creates a new level 1 backup that contains the blocks changed during day <span class="italic">n</span>-1.</p>
+<p>If a recovery is required, then RMAN can apply this incremental level 1 backup to the data file rolled forward on day <span class="italic">n</span>-1 to the beginning of day <span class="italic">n</span>. RMAN can use archived redo log files to recover the database to any point during day <span class="italic">n</span>.</p>
+</li>
+</ul>
+<p>In the Oracle suggested backup strategy, data file copies have the tag <code>ORA$OEM_LEVEL_0</code>. The differential level 1 incremental backups in this strategy share the same tag. You can safely implement other backup strategies without interfering with the Oracle suggested backup strategy.</p>
+<p>Oracle suggested backup strategies also use tape backups in addition to disk backups, but these are beyond the scope of this section.</p>
+</div>
+<!-- class="sect4" -->
+<a id="CHDDIICE" name="CHDDIICE"></a><a id="ADMQS09325" name="ADMQS09325"></a>
+<div class="sect4">
+<h5 class="sect4">Backing Up Your Database Using the Oracle Suggested Disk Backup Strategy</h5>
+<p>The following procedure schedules daily database backups. The strategy uses incremental backups and incrementally applied backups to enable quick recovery to any time in the preceding 24 hours.</p>
+<p class="subhead2"><a id="ADMQS12225" name="ADMQS12225"></a>To backup your database using the Oracle-suggested disk backup strategy:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section of the Availability page, click <span class="bold">Schedule Backup</span>.</p>
+<p>The Schedule Backup page appears.</p>
+</li>
+<li>
+<p>In the Oracle-Suggested Backup section, click <span class="bold">Schedule Oracle-Suggested Backup</span>.</p>
+<p>The Schedule Oracle-Suggested Backup: Destination page appears. On this page, you select the destination media for the backup, which can be disk, tape, or both.</p>
+</li>
+<li>
+<p>Select <span class="bold">Disk</span> and then click <span class="bold">Next</span>.</p>
+<p>The Schedule Oracle-Suggested Backup: Setup page appears.</p>
+<p>This page describes the backups that are performed each day as part of the disk-based strategy.</p>
+</li>
+<li>
+<p>Review the information and then click <span class="bold">Next</span>.</p>
+<p>The Schedule Oracle-Suggested Backup: Schedule page appears.</p>
+</li>
+<li>
+<p>Choose a <span class="bold">Start Date</span>, <span class="bold">Time Zone</span>, and <span class="bold">Daily Backup Time</span> for the daily backups, and then click <span class="bold">Next</span>.</p>
+<p>The Schedule Oracle-Suggested Backup: Review page appears.</p>
+<p>Database Control displays the backup script that RMAN will run (although you cannot edit the script directly). The script should look similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">Daily Script:
+run {
+allocate channel oem_disk_backup device type disk;
+recover copy of database with tag 'ORA_OEM_LEVEL_0';
+backup incremental level 1 copies=1 for recover of copy with tag 'ORA_OEM_LEVEL_0' database;
+}
+</pre></li>
+<li>
+<p>Click <span class="bold">Submit Job</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect4" --></div>
+<!-- class="sect3" -->
+<a id="CHDHGJBJ" name="CHDHGJBJ"></a><a id="ADMQS09323" name="ADMQS09323"></a>
+<div class="sect3">
+<h4 class="sect3">Scheduling Miscellaneous Backup Tasks</h4>
+<p>After taking some time to understand the full range of available backup options described in <a class="olink BRADV" href="http://www.oracle.com/pls/db112/lookup?id=BRADV"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> you may decide to schedule backup tasks beyond those used to implement the Oracle suggested backup strategy.</p>
+<p class="subhead2"><a id="ADMQS12226" name="ADMQS12226"></a>To schedule miscellaneous backup tasks:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section of the Availability page, click <span class="bold">Schedule Backup</span>.</p>
+<p>The Schedule Backup page appears.</p>
+</li>
+<li>
+<p>In the Customized Backup section, select the object to back up. For example, select <span class="bold">Tablespaces</span> or <span class="bold">Archivelogs</span>.</p>
+</li>
+<li>
+<p><a id="sthref618" name="sthref618"></a>Make sure the host credentials have been filled in, then click <span class="bold">Schedule Customized Backup</span> to start the Schedule Customized Backup wizard.</p>
+</li>
+<li>
+<p>On the following pages of the wizard, specify details such as objects to back up, and required options and settings. Click <span class="bold">Next</span> on each page to proceed to the next page.</p>
+<p>The choices presented on these pages are determined by the type of objects being backed up. For example, to backup a tablespace, on the first page of the wizard you would click the <span class="bold">Add</span> button to specify the tablespaces you want to include in the backup job. On the following pages, you would select the backup options, location, and schedule.</p>
+<p>For more information about using the wizard, click <span class="bold">Help</span> on any page.</p>
+</li>
+<li>
+<p>Click <span class="bold">Submit Job</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BHAGJJGC" name="BHAGJJGC"></a><a id="ADMQS0933" name="ADMQS0933"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Validating Backups and Testing Your Backup Strategy</h3>
+<p><a id="sthref619" name="sthref619"></a>As part of your backup strategy, you should periodically check whether your backups are intact and can be used to meet your recoverability objectives. You can validate your backups in the following ways:</p>
+<ul>
+<li>
+<p>Select specific backup sets or image copies in Database Control and validate them. This technique indicates if a backup exists and can be restored. For this form of validation, use the Manage Current Backups pages as described in <a href="#CHDFDJIF">"Validating Selected Backups"</a>.</p>
+</li>
+<li>
+<p>Specify database files and let RMAN select backups to use when restoring those files, as it would for an actual restore operation. This technique ensures that your available backups are sufficient to restore the database. For this form of validation, use the Perform Recovery pages as described in <a href="#BHAJJHBG">"Validating Backups for Restore Operations"</a>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Validating backups stored on tape can be time-consuming because the entire backup is read from tape.</div>
+</li>
+</ul>
+<p>You can set up both forms of validation as scheduled tasks in Database Control. You should incorporate both forms of validation into your backup strategy to ensure that your recoverability goals are met by your available backups.</p>
+<a id="CHDFDJIF" name="CHDFDJIF"></a><a id="ADMQS09525" name="ADMQS09525"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Validating Selected Backups</h4>
+<p>Validating specific backups checks whether these backups exist and can be restored. It does not test whether the set of available backups meet your recoverability goals. For example, image copies of data files for several tablespaces from your database may exist, each of which can be validated. If there are some tablespaces for which no valid backups exist, however, then you cannot restore and recover the database.</p>
+<p class="subhead2"><a id="ADMQS12227" name="ADMQS12227"></a>To validate selected backups:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Availability page, in the Manage section, click <span class="bold">Manage Current Backups</span>.</p>
+<p>The Manage Current Backups page appears.</p>
+</li>
+<li>
+<p>Use the search features on this page to identify the backups whose contents you want to validate.</p>
+</li>
+<li>
+<p>Select the check boxes next to each backup of interest in the list of current backups, and then click <span class="bold">Validate</span>.</p>
+<p>The Validate: Specify Job Parameters page appears.</p>
+</li>
+<li>
+<p>Specify a job name and description (or use the default values), and time settings for starting and repeating the operation. Click <span class="bold">Submit Job</span>.</p>
+<p>A message confirms the submission of the job.</p>
+</li>
+<li>
+<p>Click the <span class="bold">View Job</span> link to display details about the validation.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink BRADV8156" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8156"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> to learn how to use the <code>VALIDATE</code> command</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" -->
+<a id="BHAJJHBG" name="BHAJJHBG"></a><a id="ADMQS0942" name="ADMQS0942"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Validating Backups for Restore Operations</h4>
+<p>You can test whether a sufficient set of backups exists that can be used to restore the specified database files. After you specify which tablespaces to restore and, possibly, a time as of which to restore them, RMAN selects a set of backups that contain the needed data. RMAN reads the selected backups in their entirety to confirm that they are not corrupt, but does not produce output files.</p>
+<p>Validating the restoration of files tests whether the file can be restored given the available backups, but it does not test whether all backups of the specified object are valid.</p>
+<p class="subhead2"><a id="ADMQS12228" name="ADMQS12228"></a>To verify whether specified database files can be restored:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section of Availability page, click <span class="bold">Perform Recovery</span>.</p>
+<p>The Perform Recovery page appears.</p>
+</li>
+<li>
+<p><a id="sthref620" name="sthref620"></a>In the User-Directed Recovery section, select <span class="bold">Datafiles</span> or <span class="bold">Tablespaces</span> from the Recovery Scope list, depending on what you want to validate.</p>
+</li>
+<li>
+<p>For the Operation Type, select <span class="bold">Restore Datafiles</span> or <span class="bold">Restore Tablespaces</span> and then click <span class="bold">Recover</span>.</p>
+<p>The Perform Object Level Recovery page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Add</span> to add tablespaces or data files for the validate operation. Select the data files or tablespaces to restore, then click <span class="bold">Select</span>. After making your selections, click <span class="bold">Next</span>.</p>
+<p>The Perform Object Level Recovery: Restore page appears.</p>
+</li>
+<li>
+<p>In the Backup Selection section, specify which backups should be restored. Typically you would select the most recent backup.</p>
+</li>
+<li>
+<p>In the Backup Validation section, select <span class="bold">Validate the specified backup without restoring the data files</span>. Then, click <span class="bold">Next</span>.</p>
+<p>The Perform Object Level Recovery: Schedule page appears.</p>
+</li>
+<li>
+<p>The job to validate the backup runs immediately. You can specify a Job Name and Job Description, or use the default values. Click <span class="bold">Next</span>.</p>
+<p>The Perform Object Level Recovery: Review page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Submit Job</span> to run the validation.</p>
+<p>The Perform Recovery: Result page appears.</p>
+</li>
+<li>
+<p>(Optional) Click <span class="bold">View Job</span> to see the results of the Backup Validation job.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink CNCPT88772" href="http://www.oracle.com/pls/db112/lookup?id=CNCPT88772"><span class="italic">Oracle Database Concepts</span></a> for datafile recovery concepts</p>
+</li>
+<li>
+<p><a class="olink BRADV8156" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8156"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> to learn how to use the <code>RESTORE</code> <code>...</code> <code>VALIDATE</code> command</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BHAHGCGE" name="BHAHGCGE"></a><a id="ADMQS096" name="ADMQS096"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Displaying Backup Reports</h2>
+<p>Backup reports contain summary and detailed information about past backup jobs run by RMAN, including both backups run through Oracle Enterprise Manager Database Control (Database Control) and the RMAN command-line client.</p>
+<p class="subhead2"><a id="ADMQS12229" name="ADMQS12229"></a>To display backup reports:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Availability page, in the Manage section, click <span class="bold">Backup Reports</span>.</p>
+<img width="750" height="330" src="img/backup_reports_11gr1.gif" alt="Description of backup_reports_11gr1.gif follows" title="Description of backup_reports_11gr1.gif follows" longdesc="img_text/backup_reports_11gr1.htm" /><br />
+<a id="sthref621" name="sthref621" href="img_text/backup_reports_11gr1.htm">Description of the illustration backup_reports_11gr1.gif</a><br />
+<br />
+<p>The Backup Reports page contains a list of recent backup jobs. You can use the Search section of the page to restrict (filter) the backups listed by the status of the job, the start time of the backup, and the type. In the Search sections, specify any filter conditions and click <span class="bold">Go</span>.</p>
+</li>
+<li>
+<p>Click a link in the <span class="bold">Backup Name</span> column to display detailed information about any backup.</p>
+<p>The Backup Report page is displayed for the selected backup. Use the Back button of your browser to return to the Backup Reports page.</p>
+</li>
+<li>
+<p>Click the link in the <span class="bold">Status</span> column to view a log of RMAN output for the job.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The control file view <code>V$RMAN_OUTPUT</code> contains the output of recent RMAN jobs. The contents of this view are not preserved when the instance is restarted. Therefore, the output from past RMAN jobs may not be available.</div>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="admqs_backrest_mgbackup" name="admqs_backrest_mgbackup"></a><a id="ADMQS095" name="ADMQS095"></a>
+<div class="sect1">
+<h2 class="sect1">Managing Backups</h2>
+<p><a id="sthref622" name="sthref622"></a>As part of a backup strategy, you must manage database backups. A related task is managing the record of those backups in the RMAN repository. Oracle Enterprise Manager Database Control (Database Control) simplifies these tasks.</p>
+<a id="CHDGDGEJ" name="CHDGDGEJ"></a><a id="ADMQS0951" name="ADMQS0951"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Backup Management</h3>
+<p>An essential part of a backup and recovery strategy is managing backups after you create them. Backup management includes deleting obsolete backups and performing periodic checks to ensure that backups are available and usable.</p>
+<p>You can perform backup management tasks from the Manage Current Backups page.</p>
+<p class="subhead2"><a id="ADMQS12390" name="ADMQS12390"></a>To display the Manage Current Backups page:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Availability page, in the Manage section, click <span class="bold">Manage Current Backups</span>.</p>
+</li>
+</ol>
+<p>This page has two subpages: Backup Sets and Image Copies. Both pages have similar purposes: listing backups based on the record in the RMAN repository and enabling you to manage the backups.</p>
+<img width="842" height="419" src="img/manage_backups_11gr2.gif" alt="Description of manage_backups_11gr2.gif follows" title="Description of manage_backups_11gr2.gif follows" longdesc="img_text/manage_backups_11gr2.htm" /><br />
+<a id="sthref623" name="sthref623" href="img_text/manage_backups_11gr2.htm">Description of the illustration manage_backups_11gr2.gif</a><br />
+<br />
+<p>A backup recorded in the RMAN repository has one of the following status values:</p>
+<ul>
+<li>
+<p>Available, <a id="sthref624" name="sthref624"></a>meaning that the backup is still present on disk or tape, as recorded in the repository</p>
+</li>
+<li>
+<p>Expired, <a id="sthref625" name="sthref625"></a>meaning that the backup no longer exists on disk or tape, but is still listed in the repository</p>
+</li>
+<li>
+<p>Unavailable,<a id="sthref626" name="sthref626"></a> meaning that the backup is temporarily not available for data recovery operations (because, for example, it is stored on a tape that is stored offsite or on a disk that is currently not mounted)</p>
+</li>
+</ul>
+<p><a id="sthref627" name="sthref627"></a>Backups can also be obsolete. An obsolete backup is, based on the currently configured retention policy, no longer needed to satisfy data recovery goals.</p>
+<p>Maintenance tasks that you can perform in Database Control include the following:</p>
+<ul>
+<li>
+<p>Viewing details about your backups</p>
+</li>
+<li>
+<p>Cross-checking<a id="sthref628" name="sthref628"></a> your repository, which means checking whether backups listed in the repository exist and are accessible, and marking as expired any backups not accessible at the time of the cross-check</p>
+</li>
+<li>
+<p>Deleting the record of expired backups from your RMAN repository</p>
+</li>
+<li>
+<p>Deleting obsolete backups from the repository and from the backup media</p>
+</li>
+<li>
+<p>Validating backups to ensure that a given backup is available and not corrupted</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If a backup no longer exists, then immediately delete the backup record from the RMAN repository. Without an accurate record of available backups, you may discover that you no longer have complete backups of your database when you must perform a recovery.</div>
+<p>As with the backup and restore commands in Database Control, the commands to cross-check, delete, and change the status of backups are translated to RMAN commands. The commands are submitted as RMAN jobs that can be run immediately or be scheduled. Some tasks, such as periodic cross-checks of your backups, should be among the regularly scheduled components of your backup strategy.</p>
+<p>If you use a fast recovery area for backup storage, then many maintenance activities are reduced or eliminated. The automatic disk space management mechanisms delete backups and other files as needed, thereby satisfying disk space demands for ongoing database operations without compromising the retention policy.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDGIDEE" name="CHDGIDEE"></a><a id="ADMQS0953" name="ADMQS0953"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Cross-Checking Backups</h3>
+<p><a id="sthref629" name="sthref629"></a>Cross-checking a backup synchronizes the physical reality of backups with their logical records in the RMAN repository. For example, if a backup on disk was deleted with an operating system command, then a cross-check detects this condition. After the cross-check, the RMAN repository correctly reflects the state of the backups.</p>
+<p>Backups to disk are listed as available if they are still on disk in the location listed in the RMAN repository, and if they have no corruption in the file header. Backups on tape are listed as available if they are still on tape. The file headers are not checked for corruption. Backups that are missing or corrupt are listed as expired.</p>
+<p class="subhead2"><a id="ADMQS12230" name="ADMQS12230"></a>To cross-check individual files:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section, click <span class="bold">Manage Current Backups</span>.</p>
+<p>The Manage Current Backups page appears.</p>
+</li>
+<li>
+<p>Search for the backup sets or image copies whose contents you want to cross-check.</p>
+</li>
+<li>
+<p>In the Results section, select each backup to be included in the cross-check operation.</p>
+<p>Database Control does not support selecting both image copies and backup sets for a cross-check within a single operation.</p>
+</li>
+<li>
+<p>Click <span class="bold">Crosscheck</span> at the top of the Results list.</p>
+<p>A confirmation page is displayed. After you click <span class="bold">Yes</span>, Database Control performs the cross-check.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="ADMQS12231" name="ADMQS12231"></a>To cross-check all files:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section, click <span class="bold">Manage Current Backups</span>.</p>
+<p>The Manage Current Backups page appears.</p>
+</li>
+<li>
+<p>In the Manage Current Backups page, click <span class="bold">Crosscheck All</span>.</p>
+<p>The Crosscheck All: Specify Job Parameters page appears. You can schedule the cross-check to run now or later, or specify regularly scheduled cross-checks.</p>
+</li>
+<li>
+<p>Click <span class="bold">Submit Job</span>.</p>
+</li>
+</ol>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Cross-checking all backups in the RMAN repository may take a long time, especially for tape backups. A cross-check of all files, unlike cross-checking individual files, is handled as a scheduled job.</div>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#admqs_backrest_mgbackup">"Managing Backups"</a></p>
+</li>
+<li>
+<p><a class="olink BRADV8171" href="http://www.oracle.com/pls/db112/lookup?id=BRADV8171"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for details on how to perform this procedure using the RMAN <code>CROSSCHECK</code> command</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDIDAFI" name="CHDIDAFI"></a><a id="ADMQS0954" name="ADMQS0954"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Deleting Expired Backups</h3>
+<p><a id="sthref630" name="sthref630"></a>Deleting expired backups removes from the RMAN repository those backups that are listed as <code>EXPIRED</code>. Expired backups are those found to be inaccessible during a cross-check. No attempt is made to delete the files containing the backup from disk or tape; this action updates only the RMAN repository.</p>
+<p class="subhead2"><a id="ADMQS12232" name="ADMQS12232"></a>To delete expired backups:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section, click <span class="bold">Manage Current Backups</span>.</p>
+<p>The Manage Current Backups page appears.</p>
+</li>
+<li>
+<p>In the Manage Current Backups page, click <span class="bold">Delete All Expired</span>.</p>
+<p>This action deletes expired backup sets and expired image copies from the RMAN repository, regardless of which subpage is currently active.</p>
+<p>The Delete All Expired: Specify Job Parameters page appears.</p>
+</li>
+<li>
+<p>Optionally, select <span class="bold">Perform the operation 'Crosscheck All' before 'Delete All Expired'</span>.</p>
+<p>By performing the cross-check immediately before deleting expired backups, RMAN has up-to-date information about which backups are expired.</p>
+</li>
+<li>
+<p>Click <span class="bold">Submit Job</span>.</p>
+<p>A message should appear indicating that your job was successfully submitted.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDHIEFG" name="CHDHIEFG"></a><a id="ADMQS0955" name="ADMQS0955"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Marking Backups as Available or Unavailable</h3>
+<p><a id="sthref631" name="sthref631"></a>If one or more specific backups are unavailable because of a temporary condition, such as a disk drive that is temporarily offline or a tape stored offsite, then you can mark those backups as unavailable. RMAN does not use unavailable backups to restore or recover data.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Backups stored in the fast recovery area cannot be marked as unavailable.</div>
+<p>RMAN keeps the record of unavailable backups in the RMAN repository and does not delete backups listed as unavailable when you delete expired backups. If the unavailable backups become accessible again, then you can mark them as available.</p>
+<p class="subhead2"><a id="ADMQS12233" name="ADMQS12233"></a>To mark backups as available or unavailable:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section, click <span class="bold">Manage Current Backups</span>.</p>
+<p>The Manage Current Backups page appears.</p>
+</li>
+<li>
+<p>In the Search section, find the backups whose status you want to change.</p>
+</li>
+<li>
+<p>Click the <span class="bold">Select</span> check box next to each backup in the Results list of backups for which you want to change its availability.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>Select <span class="bold">Change to Available</span>.</p>
+</li>
+<li>
+<p>Select <span class="bold">Change to Unavailable</span>.</p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If you restricted the backups listed by searching only for available backups, then only the <span class="bold">Change to Unavailable</span> button appears. If you restricted the backups listed by searching only for unavailable backups, then only the <span class="bold">Change to Available</span> button appears.</div>
+<p>A confirmation message appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span> to perform the change operation.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDJCHDD" name="CHDJCHDD"></a><a id="ADMQS0956" name="ADMQS0956"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Deleting Obsolete Backups</h3>
+<p><a id="sthref632" name="sthref632"></a>This section explains how to delete obsolete backups, which are those no longer needed by the configured retention policy. If you use a fast recovery area as your only disk-based backup destination, then you never have to delete obsolete backups from disk. The fast recovery area keeps files as specified by the retention policy, and deletes them only when space is needed.</p>
+<p class="subhead2"><a id="ADMQS12234" name="ADMQS12234"></a>To delete obsolete backups:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>In the Manage section, click <span class="bold">Manage Current Backups</span>.</p>
+<p>The Manage Current Backups page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Delete All Obsolete</span>.</p>
+<p>All obsolete backups (both backup sets and image copies) are deleted, regardless of whether you clicked <span class="bold">Delete All Obsolete</span> while viewing the Backup Sets or Image Copies subpage.</p>
+<p>The Delete All Obsolete: Specify Job Parameters page appears.</p>
+</li>
+<li>
+<p>In the Schedule section, do one of the following:</p>
+<ul>
+<li>
+<p>Select <span class="bold">One Time (Immediately)</span> to run the deletion job immediately.</p>
+</li>
+<li>
+<p>Schedule the deletion as you would a backup job.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <span class="bold">Submit Job</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDFJGHE" name="CHDFJGHE"></a><a id="ADMQS098" name="ADMQS098"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Performing Oracle Advised Recovery</h2>
+<p>The Oracle advised recovery feature uses <a id="sthref633" name="sthref633"></a><a id="sthref634" name="sthref634"></a><a id="sthref635" name="sthref635"></a>Data Recovery Advisor, which is an Oracle Database feature that automatically diagnoses data failures, determines and presents appropriate repair options, and performs repairs if requested by the user. By providing a centralized tool for automated data repair, Data Recovery Advisor improves the manageability and reliability of an Oracle database.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+To recover an Oracle RAC database using Data Recovery Advisor you must use the RMAN interface. You cannot use Enterprise Manager.</div>
+<a id="CHDFFGGI" name="CHDFFGGI"></a><a id="ADMQS100" name="ADMQS100"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">About Data Recovery Advisor</h3>
+<p>In the context of Data Recovery Advisor, a health check is a diagnostic procedure run by the Health Monitor to assess the state of the database or its components. Health checks are invoked reactively when an error occurs. You can also invoke checks manually.</p>
+<p>A <span class="glossaryterm">failure</span> is a persistent data corruption detected by a health check. Failures are usually detected reactively. A database operation involving corrupted data results in an error, which automatically invokes a health check in the database. The check searches the database for failures related to the error. If failures are diagnosed, then they are recorded in the Automatic Diagnostic Repository (ADR).</p>
+<p>You can use Data Recovery Advisor to generate repair advice and repair failures only after failures have been detected by the database and stored in ADR. Data Recovery Advisor can report on and repair failures such as inaccessible files, physical and logical block corruptions, and I/O failures. Every failure has a failure priority: CRITICAL, HIGH, or LOW. Every failure also has a failure status of OPEN or CLOSED.</p>
+<p>You can also use Data Recovery Advisor to view repair options. A <span class="glossaryterm">repair</span> is an action that fixes one or more failures. Examples of repairs include block media recovery, data file media recovery, and Oracle Flashback Database. Typically, Data Recovery Advisor presents both automated and manual repair options. If appropriate, you can choose an automated repair option in order to perform a repair. In this case, Data Recovery Advisor verifies the repair success, and closes the relevant repaired failures.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDCBAID" name="CHDCBAID"></a><a id="ADMQS0982" name="ADMQS0982"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Using Data Recovery Advisor</h3>
+<p>The recovery process begins when you either suspect or discover a failure. You can discover failures in many ways, including error messages, alerts, trace files, and health checks. You can then use Data Recovery Advisor to gain information and advice about failures and repair them automatically.</p>
+<p>This section describes a scenario in which you use Data Recovery Advisor to repair a corrupted block. Assume that the Health Meter on the Database Home page indicates that an incident has occurred. The Alerts section of the page indicates that a block corruption has occurred.</p>
+<p class="subhead2"><a id="ADMQS12235" name="ADMQS12235"></a>To use the Oracle advised recovery strategy:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>Click <span class="bold">Perform Recovery</span> in the Manage section.</p>
+<p>The Perform Recovery page appears. The Perform Recovery page is divided into two sections: Oracle Advised Recovery and User-Directed Recovery. The Oracle Advised Recovery section uses Data Recovery Advisor to automate recovery.</p>
+<img width="773" height="545" src="img/perform_reco_11gr1.gif" alt="Description of perform_reco_11gr1.gif follows" title="Description of perform_reco_11gr1.gif follows" longdesc="img_text/perform_reco_11gr1.htm" /><br />
+<a id="sthref636" name="sthref636" href="img_text/perform_reco_11gr1.htm">Description of the illustration perform_reco_11gr1.gif</a><br />
+<br /></li>
+<li>
+<p><a id="sthref637" name="sthref637"></a>Look for failures in the Oracle Advised Recovery section.</p>
+<p>In the screenshot shown in Step 2, the section indicates that one failure with high priority exists. The failure indicates that 1 or more data files are offline.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>Click <span class="bold">Advise and Recover</span>.</p>
+</li>
+<li>
+<p>Click the number next to the failure status.</p>
+</li>
+</ul>
+<p>The View and Manage Failures page appears.</p>
+</li>
+<li>
+<p>In the Priority drop-down list, select <span class="bold">All</span> and then click <span class="bold">Go</span>.</p>
+<p>This action enables you to view all failures known to Data Recovery Advisor. The data failures are represented as a navigation tree at the bottom of the page.</p>
+</li>
+<li>
+<p>Perform the following actions:</p>
+<ol>
+<li>
+<p>Select <span class="bold">Data Failures</span> from the navigation tree to expand it (if it is not expanded).</p>
+</li>
+<li>
+<p>Select the failure to expand it.</p>
+</li>
+<li>
+<p>Click <span class="bold">Advise</span>.</p>
+</li>
+</ol>
+<p>The Recovery Advice page appears.</p>
+<p>This page shows the RMAN script that is used to repair the failure. For example, for a corrupted block, the script might look similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn"># block media recovery
+recover data file 1 block 63467;
+</pre></li>
+<li>
+<p>Click <span class="bold">Continue</span>.</p>
+<p>The Review page appears. This page summarizes the recovery job.</p>
+<img width="563" height="421" src="img/review_repair_11gr1.gif" alt="Description of review_repair_11gr1.gif follows" title="Description of review_repair_11gr1.gif follows" longdesc="img_text/review_repair_11gr1.htm" /><br />
+<a id="sthref638" name="sthref638" href="img_text/review_repair_11gr1.htm">Description of the illustration review_repair_11gr1.gif</a><br />
+<br /></li>
+<li>
+<p>Click <span class="bold">Submit Recovery Job</span>.</p>
+<p>The Job Activity page appears.</p>
+<p>A table describes details of the repair such as the job name, the job status, the time that the repair is scheduled to be performed, the owner of the job, and so on.</p>
+</li>
+<li>
+<p>Click the name of the repair job and click <span class="bold">View Results</span>.</p>
+<p>The Job Run page appears.</p>
+<p>You can click the job step in the navigation tree to view the results of the job.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CIHHBDDG" name="CIHHBDDG"></a><a id="ADMQS094" name="ADMQS094"></a>
+<div class="sect1">
+<h2 class="sect1">Performing User-Directed Recovery</h2>
+<p><a id="sthref639" name="sthref639"></a><a id="sthref640" name="sthref640"></a><a id="sthref641" name="sthref641"></a>Oracle Enterprise Manager Database Control (Database Control) User-Directed Recovery provides a Recovery wizard that enables you to use flashback features and perform restore operations and recovery procedures. For example, you can do the following:</p>
+<ul>
+<li>
+<p>Repair unwanted changes to database objects with the logical flashback features</p>
+</li>
+<li>
+<p>Rewind the entire database with Oracle Flashback Database</p>
+</li>
+<li>
+<p>Completely restore and recover the database</p>
+</li>
+<li>
+<p>Perform point-in-time recovery of the database or selected tablespaces</p>
+</li>
+<li>
+<p>Perform block media recovery of data files that have corrupted blocks</p>
+</li>
+</ul>
+<p>Database Control can determine which parts of the database must be restored and recovered, including detecting situations such as corrupted database files before they affect database operations. Database Control guides you through the recovery, prompting you for any required information and performing the specified recovery actions.</p>
+<p>This section contains a few typical recovery examples so that you can become familiar with the Perform Recovery page. You can use the Perform Recovery page to access other whole database or object-level recovery features of Database Control.</p>
+<a id="CHDDIFGJ" name="CHDDIFGJ"></a><a id="ADMQS0943" name="ADMQS0943"></a>
+<div class="sect2">
+<h3 class="sect2">Rewinding a Table Using Oracle Flashback Table</h3>
+<p><a id="sthref642" name="sthref642"></a><a id="sthref643" name="sthref643"></a>Oracle Flashback Table enables you to rewind one or more tables back to their contents at a previous time without affecting other database objects. Thus, you can recover from logical data corruptions such as table rows added or deleted accidentally. Unlike point-in-time recovery, the database remains available during the flashback operation.</p>
+<p>For this example, you use Flashback Table on the <code>employees</code> table in the <code>hr</code> schema. Assume that an erroneous update shortly after October 23, 2005 at 15:30:00 has changed the <code>lastname</code> column for all employees to an empty string, and you must return the original <code>lastname</code> values to the table.</p>
+<a id="CHDFJJJH" name="CHDFJJJH"></a><a id="ADMQS09431" name="ADMQS09431"></a>
+<div class="sect3">
+<h4 class="sect3">Enabling Row Movement on a Table</h4>
+<p>Before you can use Flashback Table, you must ensure that row movement is enabled on the table to be <span class="italic">flashed back</span>, or returned to a previous state. Row movement indicates that rowids will change after the flashback occurs. This restriction exists because if rowids before the flashback were stored by an application, then there is no guarantee that the rowids will correspond to the same rows after the flashback.</p>
+<p class="subhead2"><a id="ADMQS12236" name="ADMQS12236"></a>To enable row movement on a table:</p>
+<ol>
+<li>
+<p><a id="CHDJIHBF" name="CHDJIHBF"></a>On the Database Home page, click <span class="bold">Schema</span> to display the Schema subpage.</p>
+</li>
+<li>
+<p>Click <span class="bold">Tables</span> in the Database Objects section.</p>
+<p>The Tables page appears.</p>
+</li>
+<li>
+<p>To find the target table for Flashback Table, do the following:</p>
+<ol>
+<li>
+<p>Enter the schema name in the <span class="bold">Schema</span> field and, optionally, the table name in the <span class="bold">Object Name</span> field.</p>
+</li>
+<li>
+<p>Click <span class="bold">Go</span> to search for the table.</p>
+<p>When you search for tables, for example, in the <code>hr</code> schema, you may have to page through the search results to find your table.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Select the table from the list of tables and click <span class="bold">Edit</span>.</p>
+<p>In this scenario, select <code>employees</code>.</p>
+<p>The Edit Table: <span class="italic">table_name</span> page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Options</span> to go to the Options subpage.</p>
+</li>
+<li>
+<p><a id="CHDCFEDC" name="CHDCFEDC"></a>Complete the following steps:</p>
+<ol>
+<li>
+<p>Set <span class="bold">Enable Row Movement</span> to <span class="bold">Yes</span>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Apply</span> to update the options for the table.</p>
+</li>
+</ol>
+<p>An update message appears.</p>
+</li>
+<li>
+<p>Complete the following steps:</p>
+<ol>
+<li>
+<p>Click <span class="bold">Tables</span> at the top of the page to return to the search results.</p>
+</li>
+<li>
+<p>Enable row movement on more tables by repeating Step <a href="#CHDJIHBF">1</a> through Step <a href="#CHDCFEDC">6</a> for each table.</p>
+</li>
+</ol>
+<p>For this example, you should also enable row movement on the tables <code>hr.jobs</code> and <code>hr.departments</code>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="CHDGIIDD" name="CHDGIIDD"></a><a id="ADMQS09432" name="ADMQS09432"></a>
+<div class="sect3">
+<h4 class="sect3">Performing a Flashback Table Operation</h4>
+<p><a id="sthref644" name="sthref644"></a>In this example, you rewind the <code>hr.employees</code> table and its dependent tables to a previous point in time.</p>
+<p class="subhead2"><a id="ADMQS12237" name="ADMQS12237"></a>To perform the Flashback Table operation:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>Select <span class="bold">Perform Recovery</span> from the Manage section.</p>
+<p>The Perform Recovery page appears.</p>
+</li>
+<li>
+<p>In the User Directed Recovery section, select <span class="bold">Tables</span> from the Recovery Scope list.</p>
+<p>The page reloads with options appropriate for object-level recovery of tables.</p>
+</li>
+<li>
+<p>For <span class="bold">Operation Type</span>, choose <span class="bold">Flashback Existing Tables</span>, and click <span class="bold">Recover</span>.</p>
+<p>The Perform Object Level Recovery: Point-in-time page appears.</p>
+</li>
+<li>
+<p>Choose the target time for the Flashback Table operation, and click <span class="bold">Next</span>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+If you do not know the time at which the unwanted changes occurred, then you can investigate the history of transactions affecting this table by selecting <span class="bold">Evaluate row changes and transactions to decide upon a point in time</span>. Oracle Flashback Version Query enables you to review all recent changes to the target table. Use of this feature is beyond the scope of this documentation.</div>
+<p>For this example, assume that rows were accidentally inserted 5 minutes ago. Select <span class="bold">Flashback to a timestamp</span> and enter a time 5 minutes before now.</p>
+<p>The Perform Object Level Recovery: Flashback Tables page appears.</p>
+</li>
+<li>
+<p>Enter table names in the <span class="bold">Tables to Flashback</span> text box and then click <span class="bold">Next</span>.</p>
+<p>You can enter multiple table names to flash back several tables to the same time. You can also click <span class="bold">Add Tables</span> and search for more tables. For this example, enter the text <code><span class="codeinlinebold">hr.employees</span></code> in the <span class="bold">Tables to Flashback</span> text box.</p>
+<p>If your table has other dependent tables, then the Dependency Options page appears. This page asks how dependencies should be handled.</p>
+</li>
+<li>
+<p>Do one of the following, and then click <span class="bold">Next</span>:</p>
+<ul>
+<li>
+<p>Select <span class="bold">Cascade</span> to flash back any dependent tables.</p>
+</li>
+<li>
+<p>Select <span class="bold">Restrict</span> to flash back only the target table.</p>
+</li>
+<li>
+<p>Select <span class="bold">Customize</span> to choose which dependent tables to flash back and which to leave as they are.</p>
+</li>
+</ul>
+<p>You can click <span class="bold">Show Dependencies</span> to see which tables will be affected.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Row movement must be enabled on all affected tables, not just the initial target tables.</div>
+<p>In this example, the <code>hr.employees</code> table has dependent tables <code>hr.jobs</code> and <code>hr.departments</code>, so select <span class="bold">Cascade</span> and then click <span class="bold">Next</span>.</p>
+<p>The Perform Object Level Recovery: Review page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Submit</span>.</p>
+<p>When the operation is completed, a Confirmation page displays the results. Click <span class="bold">OK</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CHDBDGHF" name="CHDBDGHF"></a><a id="ADMQS0944" name="ADMQS0944"></a>
+<div class="sect2">
+<h3 class="sect2">Recovering a Dropped Table Using Oracle Flashback Drop</h3>
+<p><a id="sthref645" name="sthref645"></a><a id="sthref646" name="sthref646"></a>Oracle Flashback Drop enables you to reverse the effects of dropping (deleting) a table, returning the dropped table to the database along with dependent objects such as indexes and triggers. This feature stores dropped objects in a recycle bin, from which they can be retrieved until the recycle bin is purged, either explicitly or because space is needed.</p>
+<p>As with Flashback Table, you can use Flashback Drop while the database is open. Also, you can perform the flashback without undoing changes in objects not affected by the Flashback Drop operation. Flashback Table is more convenient than forms of media recovery that require taking the database offline and restoring files from backup.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+For a table to be recoverable using Flashback Drop, it must reside in a locally managed tablespace. Also, you cannot recover tables in the <code>SYSTEM</code> tablespaces with Flashback Drop, regardless of the tablespace type.</div>
+<a id="CHDBJHIA" name="CHDBJHIA"></a><a id="ADMQS0945" name="ADMQS0945"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Dropping a Table</h4>
+<p><a id="sthref647" name="sthref647"></a>For the purpose of learning about Flashback Drop, you will create a new table named <code>reg_hist</code> and then drop it. The database places the table in the recycle bin so that it can be retrieved with the Flashback Drop feature.</p>
+<p class="subhead2"><a id="ADMQS12238" name="ADMQS12238"></a>To create and then drop a table:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Schema</span> to display the Schema subpage.</p>
+</li>
+<li>
+<p>Click <span class="bold">Tables</span>.</p>
+<p>The Tables page appears.</p>
+</li>
+<li>
+<p>Enter <code><span class="codeinlinebold">hr</span></code> in the <span class="bold">Schema</span> field and <code><span class="codeinlinebold">regions</span></code> in the <span class="bold">Object Name</span> field. Click <span class="bold">Go</span>.</p>
+<p>The schema and table are listed in the table at the bottom of the page.</p>
+</li>
+<li>
+<p>In the Actions list, select <span class="bold">Create Like</span> and click <span class="bold">Go</span>.</p>
+<p>The General subpage of the Create Table page appears.</p>
+</li>
+<li>
+<p>Complete the following steps:</p>
+<ol>
+<li>
+<p>In the <span class="bold">Name</span> field, enter <code><span class="codeinlinebold">reg_hist</span></code>.</p>
+</li>
+<li>
+<p>Deselect <span class="bold">Not Null</span> for the <code><span class="codeinlinebold">REGION_ID</span></code> column.</p>
+</li>
+<li>
+<p>Click <span class="bold">Constraints</span> to open the Constraints subpage.</p>
+<p>The Constraints subpage appears.</p>
+</li>
+<li>
+<p>Select each constraint and click <span class="bold">Delete</span>.</p>
+</li>
+<li>
+<p>Click <span class="bold">OK</span> to create the table.</p>
+<p>A confirmation message appears.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>In the <span class="bold">Object Name</span> field, enter <code><span class="codeinlinebold">reg_hist</span></code> and click <span class="bold">Go</span>.</p>
+<p>The Tables page displays information about this table.</p>
+</li>
+<li>
+<p>Click <span class="bold">Delete with Options</span> to delete the table.</p>
+<p>The Delete With Options page appears.</p>
+</li>
+<li>
+<p>Select <span class="bold">Delete the table definition, all its data, and dependent objects (DROP)</span>, and then click <span class="bold">Yes</span>.</p>
+<p>A message confirms that the table was deleted.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="CHDBBAJI" name="CHDBBAJI"></a><a id="ADMQS0946" name="ADMQS0946"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3">Retrieving a Dropped Table</h4>
+<p><a id="sthref648" name="sthref648"></a>This section assumes that you created and then dropped the <code>reg_hist</code> table, as described in <a href="#CHDBJHIA">"Dropping a Table"</a>. The following procedure retrieves <code>reg_hist</code> from the recycle bin.</p>
+<p class="subhead2"><a id="ADMQS12239" name="ADMQS12239"></a>To perform the Flashback Drop operation:</p>
+<ol>
+<li>
+<p>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>Click <span class="bold">Perform Recovery</span> in the Backup/Recovery section.</p>
+<p>The Perform Recovery page appears.</p>
+</li>
+<li>
+<p>In the User-Directed Recovery section, select <span class="bold">Tables</span> from the Recovery Scope list.</p>
+<p>The page reloads with options appropriate for object-level recovery of tables.</p>
+</li>
+<li>
+<p>Select <span class="bold">Flashback Dropped Tables</span> for the Operation Type, and then click <span class="bold">Recover</span>.</p>
+<p>The Perform Object Level Recovery: Dropped Objects Selection page appears.</p>
+</li>
+<li>
+<p>Search among the dropped objects in the recycle bin for the objects to retrieve.</p>
+<p>For this example, enter <code><span class="codeinlinebold">hr</span></code> in the <span class="bold">Schema Name</span> field and <code><span class="codeinlinebold">reg_hist</span></code> in the <span class="bold">Table</span> field, and click <span class="bold">Go</span>.</p>
+<p>The Results section lists the objects matching your search. If needed, click the arrow next to Recycle Bin to expand its contents by one level, showing dropped tables matching your search but not their dependent objects.</p>
+</li>
+<li>
+<p>Select each table to retrieve using Flashback Drop.</p>
+<p>For this example, select <code><span class="codeinlinebold">reg_hist</span></code> and then click <span class="bold">Next</span>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+When a table is retrieved from the recycle bin, all the dependent objects for the table that are in the recycle bin are retrieved with it. They cannot be retrieved separately.</div>
+<p>The Perform Object Level Recovery: Rename page appears.</p>
+</li>
+<li>
+<p>If needed, enter new names for dropped objects that you are retrieving. For this scenario, do not specify a new name. Click <span class="bold">Next</span>.</p>
+<p>The primary reason for renaming objects when you retrieve them from the recycle bin is because you might have created new tables with the same names as tables being retrieved. If you must rename some objects, then enter new names as needed in the <span class="bold">New Name</span> field.</p>
+<p>The Perform Object Level Recovery: Review page appears. This page displays an impact analysis, showing the full set of objects to be flashed back, including the dependent objects, and the names they will have when the Flashback Drop operation is complete.</p>
+</li>
+<li>
+<p>Review the changes and then click <span class="bold">Submit</span>.</p>
+<p>A confirmation page should indicate the success of the operation.</p>
+</li>
+<li>
+<p>Click <span class="bold">OK</span> to return to the Availability page.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CHDBHFJG" name="CHDBHFJG"></a><a id="ADMQS101" name="ADMQS101"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Rewinding a Database Using Oracle Flashback Database</h3>
+<p><a id="sthref649" name="sthref649"></a><a id="sthref650" name="sthref650"></a>Unlike the other flashback features, Oracle Flashback Database operates at a physical level. When you use Flashback Database, your current data files revert to their contents at a previous time. The result is similar to database point-in-time recovery, but Flashback Database can be much faster because it does not require you to restore and recover data files. Also, Flashback Database requires limited application of redo data as compared to media recovery.</p>
+<p>Flashback Database uses flashback logs to access previous versions of data blocks and also uses some data in the archived redo log files. To have the option of using Flashback Database to repair your database, you must have configured the database to generate flashback logs as explained in <a href="#CHDJHFDB">"Configuring Recovery Settings"</a>.</p>
+<p class="subhead2"><a id="ADMQS12240" name="ADMQS12240"></a>To perform a Flashback Database operation:</p>
+<ol>
+<li>
+<p><a id="CHDCIGGH" name="CHDCIGGH"></a>On the Database Home page, click <span class="bold">Availability</span> to display the Availability subpage.</p>
+</li>
+<li>
+<p>Click <span class="bold">Perform Recovery</span>.</p>
+<p>The Perform Recovery page appears.</p>
+</li>
+<li>
+<p>Complete the following steps:<a id="sthref651" name="sthref651"></a></p>
+<ol>
+<li>
+<p>In the User-Directed Recovery section, select <span class="bold">Whole Database</span>.</p>
+</li>
+<li>
+<p>Select <span class="bold">Recover to the current time or a previous point-in-time</span>.</p>
+</li>
+<li>
+<p>If necessary, provide the host computer credentials.</p>
+</li>
+<li>
+<p>Click <span class="bold">Recover</span>.</p>
+</li>
+</ol>
+<p>A Confirmation page appears.</p>
+</li>
+<li>
+<p><a id="sthref652" name="sthref652"></a>Click <span class="bold">Yes</span> to confirm the shutdown of the database.</p>
+<p>The Recovery Wizard page appears. At this point, the shutdown begins.</p>
+<p>When the database is shut down and brought to the mounted state, Database Control is also shut down briefly and restarted. During this process, there is a period during which Database Control cannot respond to your browser. Refresh the page until Database Control responds again.</p>
+<p>When Database Control has restarted and the database is being started and mounted, Database Control may also briefly report that the database is in the <code>NOMOUNT</code> state. You are given the choices <span class="bold">Refresh</span>, <span class="bold">Startup</span>, and <span class="bold">Perform Recovery</span>. Refresh the page periodically until the Database Instance page reports that the database instance is mounted before you proceed.</p>
+</li>
+<li>
+<p>Click <span class="bold">Perform Recovery</span> to resume your recovery session.</p>
+</li>
+<li>
+<p>If you are prompted for host computer and database credentials, then connect with the <code>SYSDBA</code> privilege, or provide host computer credentials for a user in the <code>DBA</code> group.</p>
+<p>See <a href="#CIHFCDIE">"Specifying Credentials for Backup and Recovery Using Database Control"</a> for information about credentials.</p>
+<p>When the Perform Recovery page is displayed again, it shows that the database is mounted, which is required to restore and recover the entire database.</p>
+</li>
+<li>
+<p><a id="CHDIEADG" name="CHDIEADG"></a>Complete the following steps:<a id="sthref653" name="sthref653"></a></p>
+<ol>
+<li>
+<p>In the User-Directed Recovery section, select <span class="bold">Whole Database</span>.</p>
+</li>
+<li>
+<p>Select <span class="bold">Recover to the current time or a previous point-in-time</span>.</p>
+</li>
+<li>
+<p>If necessary, provide the host credentials.</p>
+</li>
+<li>
+<p>Click <span class="bold">Recover</span>.</p>
+</li>
+</ol>
+<p>A Confirmation page appears.</p>
+</li>
+<li>
+<p>Complete the following steps:</p>
+<ol>
+<li>
+<p>Select <span class="bold">Recover to a prior point-in-time</span>.</p>
+</li>
+<li>
+<p>In the <span class="bold">Date</span> field, select a time 5 minutes before now.</p>
+</li>
+<li>
+<p>Click <span class="bold">Next</span>.</p>
+</li>
+</ol>
+<p>The Perform Whole Database Recovery: Flashback page appears.</p>
+</li>
+<li>
+<p>Select <span class="bold">Yes</span> to use Flashback Database and then click <span class="bold">Next</span>.</p>
+<p>The Perform Whole Database Recovery: Review page appears.</p>
+</li>
+<li>
+<p>Review the options that you selected and click <span class="bold">Submit</span>.</p>
+<p>When the flashback operation completes, the Perform Recovery: Result page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Open Database</span>.</p>
+<p>After the database has opened successfully, click <span class="bold">OK</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDIIIAB" name="CHDIIIAB"></a><a id="ADMQS0941" name="ADMQS0941"></a>
+<div class="sect2">
+<h3 class="sect2">Restoring and Recovering the Database</h3>
+<p><a id="sthref654" name="sthref654"></a>This section demonstrates how to restore and recover the entire database. This example assumes that you are restoring and recovering your database after the loss of one or more data files, but you still have a usable server parameter file and control file. You can also use Database Control to restore a lost server parameter file or control file.</p>
+<p class="subhead2"><a id="ADMQS12241" name="ADMQS12241"></a>To restore and recover the entire database:</p>
+<ol>
+<li>
+<p>Perform Step <a href="#CHDCIGGH">1</a> through Step <a href="#CHDIEADG">7</a> from the procedure in <a href="#CHDBHFJG">"Rewinding a Database Using Oracle Flashback Database"</a>.</p>
+</li>
+<li>
+<p>Do one of the following:</p>
+<ul>
+<li>
+<p>Select <span class="bold">Recover to the current time</span> to recover all transactions to your database up until now.</p>
+</li>
+<li>
+<p>Select <span class="bold">Recover to a prior point-in-time</span> to recover transactions only up through some point in time in the past.</p>
+</li>
+</ul>
+<p>For this example, select <span class="bold">Recover to the current time</span>, and then click <span class="bold">Next</span>.</p>
+<p>The Perform Whole Database Recovery: Rename page appears.</p>
+</li>
+<li>
+<p>Select <span class="bold">No</span> to restore the files to their default locations, and then click <span class="bold">Next</span>.</p>
+<p>The Perform Whole Database Recovery: Review page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Submit</span> to start the restoration and recovery of the database.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+In some repair scenarios, such as a complete restoration and recovery of your database, the database state is altered by steps you take while using the wizard. Database Control displays warnings each time a significant database change results from selecting <span class="bold">Continue</span> during the recovery process. Pay close attention to these warnings.</div>
+<p>When the recovery completes, the Perform Recovery: Result page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Open Database</span> and then <span class="bold">OK</span>.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink BRADV80055" href="http://www.oracle.com/pls/db112/lookup?id=BRADV80055"><span class="italic">Oracle Database Backup and Recovery User's Guide</span></a> for more details about point-in-time recovery</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BHADAIJJ" name="BHADAIJJ"></a><a id="ADMQS097" name="ADMQS097"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Backup and Recovery: Oracle By Example Series</h2>
+<p>Oracle By Example (OBE) has a series on the <span class="italic">Oracle Database 2 Day DBA</span> guide. This OBE steps you through the tasks in this section, and includes annotated screenshots. To view the Backup and Recovery OBE, in your browser, enter the following URL:</p>
+<p><code><a href="http://www.oracle.com/technology/obe/11gr2_2day_dba/backup/backup.htm">http://www.oracle.com/technology/obe/11gr2_2day_dba/backup/backup.htm</a></code></p>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="schema.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="montune.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2004, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>How to Upgrade to Oracle Grid Infrastructure 11g Release 2</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-03-24T11:1:7Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Grid Infrastructure Installation Guide 11g Release 2 (11.2) for Linux" />
+<meta name="partno" content="E17212-11" />
+<meta name="docid" content="CWLIN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="manpreins.htm" title="Previous" type="text/html" />
+<link rel="Next" href="index.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17212.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Grid Infrastructure Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux</b><br />
+Part Number E17212-11</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="manpreins.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17212.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BABEHGJG" name="BABEHGJG"></a><a id="CWLIN417" name="CWLIN417"></a>
+<h1 class="appendix"><span class="secnum">F</span> How to Upgrade to Oracle Grid Infrastructure 11<span class="italic">g</span> Release 2</h1>
+<p>This appendix describes how to perform Oracle Clusterware and Oracle Automatic Storage Management upgrades.</p>
+<p>Oracle Clusterware upgrades can be rolling upgrades, in which a subset of nodes are brought down and upgraded while other nodes remain active. Oracle Automatic Storage Management 11<span class="italic">g</span> release 2 (11.2) upgrades can be rolling upgrades. If you upgrade a subset of nodes, then a software-only installation is performed on the existing cluster nodes that you do not select for upgrade.</p>
+<p>This appendix contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#BABEJEJE">Back Up the Oracle Software Before Upgrades</a></p>
+</li>
+<li>
+<p><a href="#BABIFEFI">Unset Oracle Environment Variables</a></p>
+</li>
+<li>
+<p><a href="#CEGJHHFJ">About Oracle ASM and Oracle Grid Infrastructure Installation and Upgrade</a></p>
+</li>
+<li>
+<p><a href="#BABEIBEE">Restrictions for Clusterware and Oracle ASM Upgrades</a></p>
+</li>
+<li>
+<p><a href="#BABCHHDD">Preparing to Upgrade an Existing Oracle Clusterware Installation</a></p>
+</li>
+<li>
+<p><a href="#BABHGAGJ">Performing Rolling Upgrades From an Earlier Release</a></p>
+</li>
+<li>
+<p><a href="#BABJEFCC">Updating DB Control and Grid Control Target Parameters</a></p>
+</li>
+<li>
+<p><a href="#CEGGHAFG">Unlocking the Existing Oracle Clusterware Installation</a></p>
+</li>
+<li>
+<p><a href="#BABFCIAG">Downgrading Oracle Clusterware After an Upgrade</a></p>
+</li>
+<li>
+<p><a href="#CEGCDBDI">Checking Cluster Health Monitor Repository Size After Upgrading</a></p>
+</li>
+</ul>
+<a id="BABEJEJE" name="BABEJEJE"></a><a id="CWLIN418" name="CWLIN418"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.1</span> Back Up the Oracle Software Before Upgrades</h2>
+<p>Before you make any changes to the Oracle software, Oracle recommends that you create a backup of the Oracle software and databases.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABIFEFI" name="BABIFEFI"></a><a id="CWLIN419" name="CWLIN419"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.2</span> Unset Oracle Environment Variables</h2>
+<p>Unset Oracle environment variables.</p>
+<p>If you have set ORA_CRS_HOME as an environment variable, following instructions from Oracle Support, then unset it before starting an installation or upgrade. You should never use ORA_CRS_HOME as an environment variable except under explicit direction from Oracle Support.</p>
+<p>Check to ensure that installation owner login shell profiles (for example, <code>.profile</code> or <code>.cshrc</code>) do not have ORA_CRS_HOME set.</p>
+<p>If you have had an existing installation on your system, and you are using the same user account to install this installation, then unset the following environment variables: ORA_CRS_HOME; ORACLE_HOME; ORA_NLS10; TNS_ADMIN; and any other environment variable set for the Oracle installation user that is connected with Oracle software homes.</p>
+</div>
+<!-- class="sect1" -->
+<a id="CEGJHHFJ" name="CEGJHHFJ"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.3</span> About Oracle ASM and Oracle Grid Infrastructure Installation and Upgrade</h2>
+<p>In past releases, Oracle Automatic Storage Management (Oracle ASM) was installed as part of the Oracle Database installation. With Oracle Database 11g release 2 (11.2), Oracle ASM is installed when you install the Oracle Grid Infrastructure components and shares an Oracle home with Oracle Clusterware when installed in a cluster such as with Oracle RAC or with Oracle Restart on a standalone server.</p>
+<p>If you have an existing Oracle ASM instance, you can either upgrade it at the time that you install Oracle Grid Infrastructure, or you can upgrade it after the installation, using Oracle ASM Configuration Assistant (ASMCA). However, be aware that a number of Oracle ASM features are disabled until you upgrade Oracle ASM, and Oracle Clusterware management of Oracle ASM does not function correctly until Oracle ASM is upgraded, because Oracle Clusterware only manages Oracle ASM when it is running in the Oracle Grid Infrastructure home. For this reason, Oracle recommends that if you do not upgrade Oracle ASM at the same time as you upgrade Oracle Clusterware, then you should upgrade Oracle ASM immediately afterward.</p>
+<p>You can perform out-of-place upgrades to an Oracle ASM instance using Oracle ASM Configuration Assistant (ASMCA). In addition to running ASMCA using the graphic user interface, you can run ASMCA in non-interactive (silent) mode.</p>
+<p>In prior releases, you could use Database Upgrade Assistant (DBUA) to upgrade either an Oracle Database, or Oracle ASM. That is no longer the case. You can only use DBUA to upgrade an Oracle Database instance. Use Oracle ASM Configuration Assistant (ASMCA) to upgrade Oracle ASM.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink UPGRD" href="http://www.oracle.com/pls/db112/lookup?id=UPGRD"><span class="italic">Oracle Database Upgrade Guide</span></a> and <a class="olink OSTMG" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for additional information about upgrading existing Oracle ASM installations</div>
+</div>
+<!-- class="sect1" -->
+<a id="BABEIBEE" name="BABEIBEE"></a><a id="CWLIN420" name="CWLIN420"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.4</span> Restrictions for Clusterware and Oracle ASM Upgrades</h2>
+<p><a id="sthref880" name="sthref880"></a>Be aware of the following restrictions and changes for upgrades to Oracle Grid Infrastructure installations, which consists of Oracle Clusterware and Oracle Automatic Storage Management (Oracle ASM):</p>
+<ul>
+<li>
+<p>To upgrade existing Oracle Clusterware installations to Oracle Grid Infrastructure 11<span class="italic">g</span>, your release must be greater than or equal to 10.1.0.3, 10.2.0.3, 11.1.0.6, or 11.2.</p>
+</li>
+<li>
+<p>If you have Oracle ACFS file systems on Oracle Grid Infrastructure 11<span class="italic">g</span> release 2 (11.2.0.1), you upgrade Oracle Grid Infrastructure to 11g release 2 (11.2.0.2), and you take advantage of Redundant Interconnect Usage and add one or more additional private interfaces to the private network, then you must restart the Oracle ASM instance on each upgraded cluster member node.</p>
+</li>
+<li>
+<p>To upgrade existing Oracle ASM installations to Oracle Grid Infrastructure 11<span class="italic">g</span> release 2 (11.2) in a rolling fashion, your release must be at least 11.1.0.6.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+"Oracle 11gR2 Upgrade Companion" Note 785351.1 on My Oracle Support:
+<p><code><a href="https://support.oracle.com">https://support.oracle.com</a></code></p>
+</div>
+</li>
+<li>
+<p>To upgrade existing 11.2.0.1 Oracle Grid Infrastructure installations to Oracle Grid Infrastructure 11.2.0.2, you must patch the release 11.2.0.1 Oracle Grid Infrastructure home (11.2.0.1.0) with the 9706490 patch.</p>
+</li>
+<li>
+<p>Oracle Clusterware and Oracle ASM upgrades are always out-of-place upgrades. With 11<span class="italic">g</span> release 2 (11.2), you cannot perform an in-place upgrade of Oracle Clusterware and Oracle ASM to existing homes.</p>
+</li>
+<li>
+<p>If the existing Oracle Clusterware home is a shared home, note that you can use a non-shared home for the Oracle Grid Infrastructure for a Cluster home for Oracle Clusterware and Oracle ASM 11<span class="italic">g</span> release 2 (11.2).</p>
+</li>
+<li>
+<p>With Oracle Clusterware 11<span class="italic">g</span> release 1 and later releases, the same user that owned the Oracle Clusterware 10<span class="italic">g</span> software must perform the Oracle Clusterware 11<span class="italic">g</span> upgrade. Before Oracle Database 11<span class="italic">g</span>, either all Oracle software installations were owned by the Oracle user, typically <code>oracle</code>, or Oracle Database software was owned by <code>oracle</code>, and Oracle Clusterware software was owned by a separate user, typically <code>crs</code>.</p>
+</li>
+<li>
+<p>Oracle ASM and Oracle Clusterware both run in the Oracle Grid Infrastructure home.</p>
+</li>
+<li>
+<p>During a major version upgrade to 11<span class="italic">g</span> release 2 (11.2), the software in the 11<span class="italic">g</span> release 2 (11.2) Oracle Grid Infrastructure home is not fully functional until the upgrade is completed. <a id="sthref881" name="sthref881"></a><a id="sthref882" name="sthref882"></a><a id="sthref883" name="sthref883"></a>Running <code>srvctl</code>, <code>crsctl</code>, and other commands from the 11<span class="italic">g</span> release 2 (11.2) home is not supported until the final <code>rootupgrade.sh</code> script is run and the upgrade is complete across all nodes.</p>
+<p>To manage databases in the existing earlier version (release 10.x or 11.1) database homes during the Oracle Grid Infrastructure upgrade, use the <code>srvctl</code> from the existing database homes.</p>
+</li>
+<li>
+<p>During Oracle Clusterware installation, if there is a single instance Oracle ASM version on the local node, then it is converted to a clustered Oracle ASM 11<span class="italic">g</span> release 2 (11.2) installation, and Oracle ASM runs in the Oracle Grid Infrastructure home on all nodes.</p>
+</li>
+<li>
+<p>If a single instance (non-clustered) Oracle ASM installation is on a remote node, which is a node other than the local node (the node on which the Oracle Grid Infrastructure installation is being performed), then it will remain a single instance Oracle ASM installation. However, during installation, if you select to place the Oracle Cluster Registry (OCR) and voting disk files on Oracle ASM, then a clustered Oracle ASM installation is created on all nodes in the cluster, and the single instance Oracle ASM installation on the remote node will become nonfunctional.</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink UPGRD" href="http://www.oracle.com/pls/db112/lookup?id=UPGRD"><span class="italic">Oracle Database Upgrade Guide</span></a></div>
+</div>
+<!-- class="sect1" -->
+<a id="BABCHHDD" name="BABCHHDD"></a><a id="CWLIN422" name="CWLIN422"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.5</span> Preparing to Upgrade an Existing Oracle Clusterware Installation</h2>
+<p>If you have an existing Oracle Clusterware installation, then you upgrade your existing cluster by performing an out-of-place upgrade. You cannot perform an in-place upgrade.</p>
+<a id="BABEGDAJ" name="BABEGDAJ"></a><a id="CWLIN423" name="CWLIN423"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">F.5.1</span> Verifying System Readiness for Upgrades</h3>
+<p>Use Cluster Verification Utility to assist you with system checks in preparation for starting a database upgrade. The installer runs the appropriate CVU checks automatically, and either prompts you to fix problems, or provides a fixup script to be run on all nodes in the cluster before proceeding with the upgrade.</p>
+<p>With Oracle Clusterware 11<span class="italic">g</span> release 2 (11.2), you can perform upgrades on a shared Oracle Clusterware home.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink UPGRD" href="http://www.oracle.com/pls/db112/lookup?id=UPGRD"><span class="italic">Oracle Database Upgrade Guide</span></a></div>
+</div>
+<!-- class="sect2" -->
+<a id="CWLIN424" name="CWLIN424"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref884" name="sthref884"></a>
+<h3 class="sect2"><span class="secnum">F.5.2</span> Checks to Complete Before Upgrade an Existing Oracle Clusterware Installation</h3>
+<p>Complete the following tasks before starting an upgrade:</p>
+<ol>
+<li>
+<p>For each node, use Cluster Verification Utility to ensure that you have completed preinstallation steps. It can generate Fixup scripts to help you to prepare servers. In addition, the installer will help you to ensure all required prerequisites are met.</p>
+<p>Ensure that you have information you will need during installation, including the following:</p>
+<ul>
+<li>
+<p>An Oracle base location for Oracle Clusterware.</p>
+</li>
+<li>
+<p>An Oracle Grid Infrastructure home location that is different from your existing Oracle Clusterware location</p>
+</li>
+<li>
+<p>A SCAN address</p>
+</li>
+<li>
+<p>Privileged user operating system groups to grant access to Oracle ASM data files (the OSDBA for ASM group), to grant administrative privileges to the Oracle ASM instance (OSASM group), and to grant a subset of administrative privileges to the Oracle ASM instance (OSOPER for ASM group)</p>
+</li>
+<li>
+<p><code>root</code> user access, to run scripts as <code>root</code> during installation</p>
+</li>
+</ul>
+</li>
+<li>
+<p><a id="sthref885" name="sthref885"></a><a id="sthref886" name="sthref886"></a><a id="sthref887" name="sthref887"></a><a id="sthref888" name="sthref888"></a>For the installation owner running the installation, if you have environment variables set for the existing installation, then unset the environment variables <code>$ORACLE_HOME</code> and <code>$ORACLE_SID</code>, as these environment variables are used during upgrade. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ unset ORACLE_BASE
+$ unset ORACLE_HOME
+$ unset ORACLE_SID
+</pre>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="#BABIFEFI">Section F.2, "Unset Oracle Environment Variables"</a></div>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABHGAGJ" name="BABHGAGJ"></a><a id="CWLIN425" name="CWLIN425"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.6</span> Performing Rolling Upgrades From an Earlier Release</h2>
+<p>Use the following procedures to upgrade Oracle Clusterware or Oracle Automatic Storage Management:</p>
+<ul>
+<li>
+<p><a href="#BABDFGBA">Performing a Rolling Upgrade of Oracle Clusterware</a></p>
+</li>
+<li>
+<p><a href="#BABGGGBI">Performing a Rolling Upgrade of Oracle Automatic Storage Management</a></p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+When you upgrade to Oracle Clusterware 11<span class="italic">g</span> release 2 (11.2), Oracle Automatic Storage Management (Oracle ASM) is installed in the same home as Oracle Clusterware. In Oracle documentation, this home is called the Oracle Grid Infrastructure home, or Grid home. Also note that Oracle does not support attempting to add additional nodes to a cluster during a rolling upgrade.</div>
+<a id="BABDFGBA" name="BABDFGBA"></a><a id="CWLIN426" name="CWLIN426"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">F.6.1</span> Performing a Rolling Upgrade of Oracle Clusterware</h3>
+<p>Use the following procedure to upgrade Oracle Clusterware from an earlier release to a later release:</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Oracle recommends that you leave Oracle RAC instances running. When you start the root script on each node, that node's instances are shut down and then started up again by the <code>rootupgrade.sh</code> script. If you upgrade from release 11.2.0.1 to 11.2.0.2, then all nodes are selected by default. You cannot select or de-select the nodes.
+<p>For single instance Oracle Databases on the cluster, only those that use Oracle ASM need to be shut down. Listeners do not need to be shut down.</p>
+</div>
+<ol>
+<li>
+<p>Start the installer, and select the option to upgrade an existing Oracle Clusterware and Oracle ASM installation.</p>
+</li>
+<li>
+<p>On the node selection page, select all nodes.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+In contrast with releases prior to Oracle Clusterware 11<span class="italic">g</span> release 2, all upgrades are rolling upgrades, even if you select all nodes for the upgrade. If you are upgrading from 11.2.0.1 to 11.2.0.2, then all nodes are selected by default. You cannot select or de-select the nodes.
+<p>Oracle recommends that you select all cluster member nodes for the upgrade, and then shut down database instances on each node before you run the upgrade <code>root</code> script, starting the database instance up again on each node after the upgrade is complete. You can also use this procedure to upgrade a subset of nodes in the cluster.</p>
+</div>
+</li>
+<li>
+<p>Select installation options as prompted.</p>
+</li>
+<li>
+<p>When prompted, run the <code>rootupgrade.sh</code> script on each node in the cluster that you want to upgrade.</p>
+<p>Run the script on the local node first. The script shuts down the earlier release installation, replaces it with the new Oracle Clusterware release, and starts the new Oracle Clusterware installation.</p>
+<p>After the script completes successfully, you can run the script in parallel on all nodes except for one, which you select as the last node. When the script is run successfully on all the nodes except the last node, run the script on the last node.</p>
+</li>
+<li>
+<p>After running the <code>rootupgrade.sh</code> script on the last node in the cluster, if you are upgrading from a release earlier than release 11.2.0.1, and left the check box with ASMCA marked, as is the default, then Oracle ASM Configuration Assistant runs automatically, and the Oracle Clusterware upgrade is complete. If you uncloaked the box on the interview stage of the upgrade, then ASMCA is not run automatically.</p>
+<p>If an earlier version of Oracle Automatic Storage Management is installed, then the installer starts Oracle ASM Configuration Assistant to upgrade Oracle ASM to 11<span class="italic">g</span> release 2 (11.2). You can choose to upgrade Oracle ASM at this time, or upgrade it later.</p>
+<p>Oracle recommends that you upgrade Oracle ASM at the same time that you upgrade the Oracle Clusterware binaries. Until Oracle ASM is upgraded, Oracle databases that use Oracle ASM cannot be created. Until Oracle ASM is upgraded, the 11<span class="italic">g</span> release 2 (11.2) Oracle ASM management tools in the Grid home (for example, <code>srvctl</code>) will not work.</p>
+</li>
+<li>
+<p>Because the Oracle Grid Infrastructure home is in a different location than the former Oracle Clusterware and Oracle ASM homes, update any scripts or applications that use utilities, libraries, or other files that reside in the Oracle Clusterware and Oracle ASM homes.</p>
+</li>
+</ol>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+At the end of the upgrade, if you set the OCR backup location manually to the older release Oracle Clusterware home (CRS home), then you must change the OCR backup location to the Oracle Grid Infrastructure home (Grid home). If you did not set the OCR backup location manually, then this issue does not concern you.
+<p>Because upgrades of Oracle Clusterware are out-of-place upgrades, the previous release Oracle Clusterware home cannot be the location of the OCR backups. Backups in the old Oracle Clusterware home could be deleted.</p>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="BABGGGBI" name="BABGGGBI"></a><a name="CWLIN00001" id="CWLIN00001"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">F.6.2</span> Performing a <a id="sthref889" name="sthref889"></a><a id="sthref890" name="sthref890"></a>Rolling Upgrade of Oracle Automatic Storage Management</h3>
+<p><a id="sthref891" name="sthref891"></a><a id="sthref892" name="sthref892"></a>After you have completed the Oracle Clusterware 11<span class="italic">g</span> release 2 (11.2) upgrade, if you did not choose to upgrade Oracle ASM when you upgraded Oracle Clusterware, then you can do it separately using the Oracle Automatic Storage Management Configuration Assistant (<code>asmca</code>) to perform rolling upgrades.</p>
+<p>You can use asmca to complete the upgrade separately, but you should do it soon after you upgrade Oracle Clusterware, as Oracle ASM management tools such as <code>srvctl</code> will not work until Oracle ASM is upgraded.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+ASMCA performs a rolling upgrade only if the earlier version of Oracle ASM is either 11.1.0.6 or 11.1.0.7. Otherwise, ASMCA performs a normal upgrade, in which ASMCA brings down all Oracle ASM instances on all nodes of the cluster, and then brings them all up in the new Grid home.</div>
+<a id="CWLIN427" name="CWLIN427"></a>
+<div class="sect3"><a id="sthref893" name="sthref893"></a>
+<h4 class="sect3"><span class="secnum">F.6.2.1</span> Preparing to Upgrade Oracle ASM</h4>
+<p>Note the following if you intend to perform rolling upgrades of Oracle ASM:</p>
+<ul>
+<li>
+<p>The active version of<a id="sthref894" name="sthref894"></a> Oracle Clusterware must be 11<span class="italic">g</span> release 2 (11.2). To determine the active version, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ crsctl query crs activeversion
+</pre></li>
+<li>
+<p>You can upgrade a single instance Oracle ASM installation to a clustered Oracle ASM installation. However, you can only upgrade an existing single instance Oracle ASM installation if you run the installation from the node on which the Oracle ASM installation is installed. You cannot upgrade a single instance Oracle ASM installation on a remote node.</p>
+</li>
+<li>
+<p>You must ensure that any rebalance operations on your existing Oracle ASM installation are completed before starting the upgrade process.</p>
+</li>
+<li>
+<p>During the upgrade process, you alter the Oracle ASM instances to an upgrade state. Because this upgrade state limits Oracle ASM operations, you should complete the upgrade process soon after you begin. The following are the operations allowed when an Oracle ASM instance is in the upgrade state:</p>
+<ul>
+<li>
+<p>Diskgroup mounts and dismounts</p>
+</li>
+<li>
+<p>Opening, closing, resizing, or deleting database files</p>
+</li>
+<li>
+<p>Recovering instances</p>
+</li>
+<li>
+<p>Queries of fixed views and packages: Users are allowed to query fixed views and run anonymous PL/SQL blocks using fixed packages, such as <code>dbms_diskgroup</code>)</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="CWLIN428" name="CWLIN428"></a>
+<div class="sect3"><a id="sthref895" name="sthref895"></a>
+<h4 class="sect3"><span class="secnum">F.6.2.2</span> Upgrading Oracle ASM</h4>
+<p>Complete the following procedure to upgrade Oracle ASM:</p>
+<ol>
+<li>
+<p>On the node you plan to start the upgrade, set the environment variable ASMCA_ROLLING_UPGRADE as true. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ export ASMCA_ROLLING_UPGRADE=true
+</pre></li>
+<li>
+<p>From the Oracle Grid Infrastructure 11<span class="italic">g</span> release 2 (11.2) home, start ASMCA. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cd /u01/11.2/grid/bin
+$ ./asmca
+</pre></li>
+<li>
+<p>Select <span class="bold">Upgrade</span>.</p>
+<p>ASM Configuration Assistant upgrades Oracle ASM in succession for all nodes in the cluster.</p>
+</li>
+<li>
+<p>After you complete the upgrade, run the command to unset the ASMCA_ROLLING_UPGRADE environment variable.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink UPGRD" href="http://www.oracle.com/pls/db112/lookup?id=UPGRD"><span class="italic">Oracle Database Upgrade Guide</span></a> and <a class="olink OSTMG" href="http://www.oracle.com/pls/db112/lookup?id=OSTMG"><span class="italic">Oracle Automatic Storage Management Administrator's Guide</span></a> for additional information about preparing an upgrade plan for Oracle ASM, and for starting, completing, and stopping Oracle ASM upgrades</div>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABJEFCC" name="BABJEFCC"></a><a id="CWLIN429" name="CWLIN429"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.7</span> Updating DB Control and Grid Control Target Parameters</h2>
+<p>Because Oracle Clusterware release 2 (11.2) is an out-of-place upgrade of the Oracle Clusterware home in a new location (the Oracle Grid Infrastructure for a Cluster home, or Grid home), the path for the CRS_HOME parameter in some parameter files must be changed. If you do not change the parameter, then you encounter errors such as "cluster target broken" on DB control or Grid control.</p>
+<p>Use the following procedure to resolve this issue:</p>
+<ol>
+<li>
+<p>Log in to <code>dbconsole</code> or <code>gridconsole</code>.</p>
+</li>
+<li>
+<p>Navigate to the <span class="bold">Cluster</span> tab.</p>
+</li>
+<li>
+<p>Click <span class="bold">Monitoring Configuration</span></p>
+</li>
+<li>
+<p>Update the value for <span class="bold">Oracle Home</span> with the new Grid home path.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="CEGGHAFG" name="CEGGHAFG"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.8</span> Unlocking the Existing Oracle Clusterware Installation</h2>
+<p>After upgrade from previous releases, if you want to deinstall the previous release Oracle Grid Infrastructure Grid home, then you must first change the permission and ownership of the previous release Grid home. Complete this task using the following procedure:</p>
+<p>Log in as root, and change the permission and ownership of the previous release Grid home using the following command syntax, where <span class="italic">oldGH</span> is the previous release Grid home, <span class="italic">swowner</span> is the Oracle Grid Infrastructure installation owner, and <span class="italic">oldGHParent</span> is the parent directory of the previous release Grid home:</p>
+<br />
+#chmod -R 755 <span class="italic">oldGH</span><br />
+#chown -R s<span class="italic">wowner</span> <span class="italic">oldGH</span><br />
+#chown <span class="italic">swowner</span> <span class="italic">oldGHParent</span><br />
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">#chmod -R 755 /u01/app/11.2.0.1/grid
+#chown -R grid /u01/app/11.2.0.1/grid
+#chown grid /u01/app/11.2.0.1
+</pre>
+<p>After you change the permissions and ownership of the previous release Grid home, log in as the Oracle Grid Infrastructure Installation owner (grid, in the preceding example), and use the 11.2.0.2.0 standalone deinstallation tool to remove the previous release Grid home (<span class="italic">oldGH</span>).</p>
+<p>You can obtain the standalone deinstallation tool from the following URL:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html">http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html</a>
+</pre>
+<p>Click the <span class="bold">See All</span> link for the downloads for your operating system platform, and scan the list of downloads for the deinstall utility.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABFCIAG" name="BABFCIAG"></a><a id="CWLIN430" name="CWLIN430"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.9</span> Downgrading Oracle Clusterware After an Upgrade</h2>
+<p>After a successful or a failed upgrade to Oracle Clusterware 11<span class="italic">g</span> release 2 (11.2), you can restore Oracle Clusterware to the previous version.</p>
+<p>The restoration procedure in this section restores the Oracle Clusterware configuration to the state it was in before the Oracle Clusterware 11<span class="italic">g</span> release 2 (11.2) upgrade. Any configuration changes you performed during or after the Oracle Grid Infrastructure 11<span class="italic">g</span> release 2 (11.2) upgrade are removed and cannot be recovered.</p>
+<p>To restore Oracle Clusterware to the previous release:</p>
+<ol>
+<li>
+<p>On all remote nodes, use the command syntax <span class="italic">Grid_home</span>/crs/install/rootcrs.pl -downgrade [-force] to stop the 11<span class="italic">g</span> release 2 (11.2) resources, shut down the 11<span class="italic">g</span> release 2 (11.2) stack.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+This command does not reset the OCR, or delete <code>ocr.loc</code>.</div>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn"># /u01/app/11.2.0/grid/crs/install/rootcrs.pl -downgrade
+</pre>
+<p>If you want to stop a partial or failed 11<span class="italic">g</span> release 2 (11.2) installation and restore the previous release Oracle Clusterware, then use the <code>-force</code> flag with this command.</p>
+</li>
+<li>
+<p>After the <code>rootcrs.pl -downgrade</code> script has completed on all remote nodes, on the local node use the command syntax <span class="italic">Grid_home</span>/crs/install/rootcrs.pl -downgrade -lastnode -oldcrshome <span class="italic">pre11.2_crs_home</span> -version <span class="italic">pre11.2_crs_version</span> [-force], where <span class="italic">pre11.2_crs_home</span> is the home of the earlier Oracle Clusterware installation, and <span class="italic">pre11.2_crs_version</span> is the release number of the earlier Oracle Clusterware installation.</p>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn"># /u01/app/11.2.0/grid/crs/install/rootcrs.pl -downgrade  -lastnode -oldcrshome 
+/u01/app/crs -version 11.1.0.6.0
+</pre>
+<p>This script downgrades the OCR. If you want to stop a partial or failed 11<span class="italic">g</span> release 2 (11.2) installation and restore the previous release Oracle Clusterware, then use the <code>-force</code> flag with this command.</p>
+</li>
+<li>
+<p>Log in as the Grid infrastructure installation owner, and run the following commands, where <code>/u01/app/grid</code> is the location of the new Grid home (11.2):</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -nowait -noconsole -waitforcompletion -ignoreSysPrereqs -updateNodeList -silent CRS=false ORACLE_HOME=/u01/app/grid
+</pre></li>
+<li>
+<p>As the Grid infrastructure installation owner, run the command ./runInstaller -nowait -noconsole -waitforcompletion -ignoreSysPrereqs -updateNodeList -silent CRS=true ORACLE_HOME=<span class="italic">pre11.2_crs_home</span>, where <span class="italic">pre11.2_crs_home</span> is the home of the earlier Oracle Clusterware installation.</p>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller -nowait -noconsole -waitforcompletion -ignoreSysPrereqs -updateNodeList -silent CRS=true ORACLE_HOME=/u01/app/crs
+</pre></li>
+<li>
+<p>After the local node script completes, you are prompted to run <code>root.sh</code> from the earlier release Oracle Clusterware installation home in sequence on each member node of the cluster. After you complete this task, downgrade is completed.</p>
+<p>Running <code>root.sh</code> from the earlier release Oracle Clusterware installation home restarts the Oracle Clusterware stack, starts up all the resources previously registered with Oracle Clusterware in the older version, and configures the old initialization scripts to run the earlier release Oracle Clusterware stack.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="CEGCDBDI" name="CEGCDBDI"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">F.10</span> Checking Cluster Health Monitor Repository Size After Upgrading</h2>
+<p>If you are upgrading from a prior release using IPD/OS to Oracle Grid Infrastructure release 2 (11.2.0.2 and later), then you should review the Cluster Health Monitor repository size (the CHM repository). Oracle recommends that you review your CHM repository needs, and enlarge the repository size if you want to maintain a larger CHM repository.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Your previous IPD/OS repository is deleted when you install Oracle Grid Infrastructure, and you run the <code>root.sh</code> script on each node.
+<p>Cluster Health Monitor is not available with IBM: Linux on System z configurations.</p>
+</div>
+<p>By default, the CHM repository size is one Gigabyte (1 GB), regardless of the size of the cluster.</p>
+<p>To enlarge the CHM repository, use the following command syntax, where <span class="italic">RETENTION_TIME</span> is the size of CHM repository in number of seconds:</p>
+<p>oclumon manage -repos resize <span class="italic">RETENTION_TIME</span></p>
+<p>The value for <span class="italic">RETENTION_TIME</span> must be more than <code>3600</code> (one hour) and less than <code>259200</code> (three days). If you enlarge the CHM repository size, then you must ensure that there is local space available for the repository size you select on each node of the cluster. If there is not sufficient space available, then you can move the repository to shared storage.</p>
+<p>For example, to set the repository size to four hours:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ocumon manage -repos resize 14400
+</pre></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="manpreins.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2007, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

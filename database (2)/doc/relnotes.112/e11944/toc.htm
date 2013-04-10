@@ -1,0 +1,697 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Oracle&reg; Application Express</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.1 Build 007" />
+<meta name="Date" content="2009-07-27T14:25:14Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Application Express Release Notes Release 3.2" />
+<meta name="partno" content="E11944-01" />
+<meta name="docid" content="HTMRN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="alternate" href="../e11944.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Application Express Release Notes<br />
+Release 3.2</b><br />
+Part Number E11944-01</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="196">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">&nbsp;</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e11944.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header -->
+<h1>Oracle&reg; Application Express</h1>
+<p class="booktitle">Release Notes</p>
+<p><span class="revnumber">Release 3.2</span></p>
+<p class="invpartnumber">E11944-01</p>
+<p class="date">July 2009</p>
+<p>These <span class="italic">Release Notes</span> contain important information not included in the Oracle Application Express documentation. For the most current information, refer to updates of this document, which are located at the following Web site:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://www.oracle.com/technology/documentation/">http://www.oracle.com/technology/documentation/</a>
+</pre>
+<p>For a complete description of each new 3.2 feature, please see "What's New in Oracle Application Express" in the <a class="olink HTMDB01050" href="http://www.oracle.com/pls/db112/lookup?id=HTMDB01050"><span class="italic">Oracle Application Express Application Builder User's Guide</span></a>.</p>
+<p>This document contains these topics:</p>
+<ul>
+<li>
+<p><a href="#BGBCJIEA">Configuration Requirements</a></p>
+</li>
+<li>
+<p><a href="#CHDGGGFC">Checking for the Most Current Release</a></p>
+</li>
+<li>
+<p><a href="#CHDICFFC">New Features</a></p>
+</li>
+<li>
+<p><a href="#CACCEDHG">Components and Features Not Supported</a></p>
+</li>
+<li>
+<p><a href="#CHDCBDAF">Open Bugs and Known Issues</a></p>
+</li>
+<li>
+<p><a href="#BAJBCDEA">Documentation Accessibility</a></p>
+</li>
+</ul>
+<a id="BGBCJIEA" name="BGBCJIEA"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">1</span> Configuration Requirements</h2>
+<p>The value of the character set portion of PlsqlNLSLanguage in the configuration of the <code>mod_plsql</code> Database Access Descriptor (DAD) must be set to <code>AL32UTF8</code>, regardless of the underlying database character set.</p>
+<p>The Database Access Descriptor now contains a parameter for <code>PlsqlRequestValidationFunction</code>. The purpose of this parameter is to limit the number of procedures which can be invoked through <code>mod_plsql</code>. By default, the only procedures permitted are the public entry points of Oracle Application Express. This can be extended using the validation functions shipped with Oracle Application Express. To learn more, see "Restricting Access to Oracle Application Express by Database Access Descriptor (DAD)" in <span class="italic"><a class="olink HTMDB21030" href="http://www.oracle.com/pls/db112/lookup?id=HTMDB21030">Oracle Application Express Application Builder User's Guide</a></span>.</p>
+<p>Enabling the <code>PlsqlRequestValidationFunction</code> for a Database Access Descriptor may cause existing applications which relied upon publicly executable procedures to fail. You may choose to either omit the <code>PlsqlRequestValidationFunction</code> from the Database Access Descriptor definition, or follow the recommended approach of extending the supplied validation function.</p>
+</div>
+<!-- class="sect1" -->
+<a id="CHDGGGFC" name="CHDGGGFC"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">2</span> Checking for the Most Current Release</h2>
+<p>Oracle Application Express is released more frequently than the Oracle Database. To view information about or download a more current release, refer to:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://www.oracle.com/technology/products/database/application_express/index.html">http://www.oracle.com/technology/products/database/application_express/index.html</a>
+</pre></div>
+<!-- class="sect1" -->
+<a id="CHDICFFC" name="CHDICFFC"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">3</span> New Features</h2>
+<p>This section describes new features of Oracle Application Express that are not documented elsewhere.</p>
+<p>This section contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CHDCFBDE">AnyChart AnyGantt Flash Gantt and AnyChart AnyMap</a></p>
+</li>
+</ul>
+<a id="CHDCFBDE" name="CHDCFBDE"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">3.1</span> AnyChart AnyGantt Flash Gantt and AnyChart AnyMap</h3>
+<p>This release of Oracle Application Express includes the AnyChart AnyGantt Flash Gantt Component and the AnyChart AnyMap extension. These products are not exposed through the Oracle Application Express user interface, but can be used programatically in any Oracle Application Express application. To learn more, see:</p>
+<ul>
+<li>
+<p>AnyChart AnyGantt Flash Gantt Component:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://www.anychart.com/products/anygantt/overview/">http://www.anychart.com/products/anygantt/overview/</a>
+</pre></li>
+<li>
+<p>AnyChart AnyMap extension:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://www.anychart.com/products/anymap/overview/">http://www.anychart.com/products/anymap/overview/</a>
+</pre></li>
+</ul>
+<p>For specifics about the XML structures necessary to use these products, see:</p>
+<ul>
+<li>
+<p>AnyChart AnyGantt Flash Gantt Component:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://anychart.com/products/anygantt/docs/">http://anychart.com/products/anygantt/docs/</a>
+</pre></li>
+<li>
+<p>AnyChart AnyMap extension:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://anychart.com/products/anymap/docs/">http://anychart.com/products/anymap/docs/</a>
+</pre></li>
+</ul>
+<p>Please note that to use these products, you must manually enter the necessary XML code into the Custom XML property of the chart.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CACCEDHG" name="CACCEDHG"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">4</span> Components and Features Not Supported</h2>
+<p>The following are not supported in Oracle Application Express, release 3.2.</p>
+<a id="BAJHIDBJ" name="BAJHIDBJ"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">4.1</span> Web Browsers Not Supported</h3>
+<p>The following Web browsers are not supported:</p>
+<ul>
+<li>
+<p>Netscape Communicator 7.2 or higher</p>
+</li>
+<li>
+<p>Mozilla 1.7 or higher</p>
+</li>
+<li>
+<p>Google Chrome 1.0 or higher</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="#CHDEDAIA">"Supported Web Browsers"</a></div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDGCIFG" name="CHDGCIFG"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">4.2</span> No Support for Running in an EBCDIC Character Set</h3>
+<p>Oracle Application Express does not support an EBCDIC character set. The value of the character set in the configuration of the <code>mod_plsql</code> Database Access Descriptor (DAD) must be set to <code>AL32UTF8</code>, regardless of the underlying database character set.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="#BGBCJIEA">"Configuration Requirements"</a></div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDCBDAF" name="CHDCBDAF"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">5</span> Open Bugs and Known Issues</h2>
+<p>This section describes bugs and known issues for Oracle Application Express:</p>
+<ul>
+<li>
+<p><a href="#CHDHIIAA">Problem Applying the Oracle Application Express 3.2.1 Patch Set Against Oracle Database Release 11.1.0.7</a></p>
+</li>
+<li>
+<p><a href="#CHDJGDAD">Access Denied When Validating Migration Export File</a></p>
+</li>
+<li>
+<p><a href="#CHDEDAIA">Supported Web Browsers</a></p>
+</li>
+<li>
+<p><a href="#CHDDDIDJ">Editing Scripts with Multibyte Characters in the First Line</a></p>
+</li>
+<li>
+<p><a href="#CHDJGEJJ">Problems with SVG Charts</a></p>
+</li>
+<li>
+<p><a href="#CHDFADHJ">Problems with Queries Containing a Bind Variable and a String with Two Dashes</a></p>
+</li>
+<li>
+<p><a href="#CHDDDHBE">Importing Spreadsheet Data Containing Quotation Marks</a></p>
+</li>
+<li>
+<p><a href="#CHDFDHDE">Creating an Item with Multibyte Characters</a></p>
+</li>
+<li>
+<p><a href="#CHDJEIGE">Runtime Errors in an Application Imported from a Previous Release</a></p>
+</li>
+<li>
+<p><a href="#CHDBACBH">Enabling Network Services in Oracle Database 11<span class="italic">g</span></a></p>
+</li>
+<li>
+<p><a href="#CHDCDHJF">Enabling Indexing of Online Help in Oracle Database 11gR2 and Higher</a></p>
+</li>
+<li>
+<p><a href="#CHDFDCDA">Issues with HTML Editor Item Type</a></p>
+</li>
+<li>
+<p><a href="#CHDCJIEJ">DBA Authentication Restrictions</a></p>
+</li>
+<li>
+<p><a href="#CHDHGAEG">Exporter Tool Support for Microsoft Access</a></p>
+</li>
+<li>
+<p><a href="#CHDJHIBG">Issue with Online Help Table of Contents</a></p>
+</li>
+<li>
+<p><a href="#CHDDBGDD">Incorrect Default Tablespace when Creating New Database Users through Application Express Administration Services</a></p>
+</li>
+</ul>
+<a id="CHDHIIAA" name="CHDHIIAA"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.1</span> Problem Applying the Oracle Application Express 3.2.1 Patch Set Against Oracle Database Release 11.1.0.7</h3>
+<p>When applying the Oracle Application Express 3.2.1 patch set against an Oracle Database release 11.1.0.7, you may encounter the error <code>ORA-00600: internal error code, arguments: [kgiinb_invalid_obj]</code>. This will be recorded in the generated patch set installation log, <code>apxpatch.log</code>.</p>
+<p><span class="bold">Workaround:</span></p>
+<p>If you encounter this error, you should download and apply the patch for database bug 7420394 from Oracle MetaLink, and then attempt to install the Oracle Application Express 3.2.1 patch set again.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDJGDAD" name="CHDJGDAD"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.2</span> Access Denied When Validating Migration Export File</h3>
+<p>If you enter invalid text in the Migration Export File field in the first step of the Create Project wizard, you might receive an Access Denied error and the progress bar might persist. This may occur when you are using Internet Explorer 6.0 on Windows XP.</p>
+<p><span class="bold">Workaround:</span></p>
+<p>Use either the Browse option or enter the full path manually. Be sure to enter a valid SQL script and path in this field.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDEDAIA" name="CHDEDAIA"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.3</span> Supported Web Browsers</h3>
+<p>To view or develop Oracle Application Express applications, Web browsers must support JavaScript and the HTML 4.0 and CSS 1.0 standards. The following browsers meet this requirement:</p>
+<ul>
+<li>
+<p>Microsoft Internet Explorer 6.0 or higher (Windows only)</p>
+</li>
+<li>
+<p>Firefox 1.0 or higher</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="#BAJHIDBJ">"Web Browsers Not Supported"</a></div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDDDIDJ" name="CHDDDIDJ"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.4</span> Editing Scripts with Multibyte Characters in the First Line</h3>
+<p>SQL scripts containing multibyte characters cannot be edited in the SQL Script editor if multibyte characters occur in the first line. Note that this issue does not occur when using Internet Explorer 7.0 and Firefox 1.5.0 or higher.</p>
+<p><span class="bold">Workaround</span>:</p>
+<p>This issue most often occurs when the first line of the script contains multibyte characters. You can correct this problem by adding a new first line containing non-multibyte characters, for example two hyphens (--), and making sure the line containing multibyte characters moves to the second line.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDJGEJJ" name="CHDJGEJJ"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.5</span> Problems with SVG Charts</h3>
+<p>If you experience problems with an SVG chart, try migrating the chart to a Flash chart.</p>
+<p>To migrate an SVG chart to Flash:</p>
+<ol>
+<li>
+<p>Navigate to the appropriate Page Definition.</p>
+</li>
+<li>
+<p>Under Regions, click the region name. The region name displays to the left of SVG Chart.</p>
+</li>
+<li>
+<p>On the Region Definition, click <span class="bold">Migrate SVG Chart to Flash Chart</span> on the Tasks list.</p>
+</li>
+<li>
+<p>Click <span class="bold">Migrate</span>.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+"Creating Charts" in <span class="italic"><a class="olink HTMDB05007" href="http://www.oracle.com/pls/db112/lookup?id=HTMDB05007">Oracle Application Express Application Builder User's Guide</a></span></div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDFADHJ" name="CHDFADHJ"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.6</span> Problems with Queries Containing a Bind Variable and a String with Two Dashes</h3>
+<p>Creating a report region based on a query that contains a string with two dashes may hinder the Application Express Engine's ability to handle item bind variable references. Consider the following example:</p>
+<pre xml:space="preserve" class="oac_no_warn">SELECT ename, job, sal, comm, deptno
+FROM   emp
+WHERE instr ('-'||'-dash-'||'-','uu') = 0 
+AND deptno = :P18_X 
+AND 1 = 1 
+</pre>
+<p><span class="bold">Workaround</span>:</p>
+<p>You can correct this behavior by changing the bind variable format. For example, to correct this issue in the previous example you would change <code>:P18_X</code> to <code>v('P18_X')</code>.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDDDHBE" name="CHDDDHBE"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.7</span> Importing Spreadsheet Data Containing Quotation Marks</h3>
+<p>If you import spreadsheet data by copying and pasting and a column value contains a double quotation mark, the data will not import correctly (for example, <code>54" Plasma Flat Screen</code>). To avoid this problem, you have two options:</p>
+<ul>
+<li>
+<p>Option 1:</p>
+<ol>
+<li>
+<p>Save the data in a delimited format (such as comma-delimited (.csv) or tab-delimited).</p>
+</li>
+<li>
+<p>Use Import Text Data wizard to upload and import the saved file.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Option 2:</p>
+<ol>
+<li>
+<p>Replace the quotation mark with two double quotation marks as shown in the following example:</p>
+<pre xml:space="preserve" class="oac_no_warn">54"" Plasma Flat Screen
+</pre></li>
+<li>
+<p>Use the Import Spreadsheet Data wizard to import the file.</p>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<a id="CHDFDHDE" name="CHDFDHDE"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.8</span> Creating an Item with Multibyte Characters</h3>
+<p>If you create a form on a table or view using a wizard and the included column name contains multibyte characters, the name of the new item will contain multibyte characters.</p>
+<p>This issue is tracked with Oracle bug 3393090.</p>
+<p><span class="bold">Workaround</span>:</p>
+<p>To correct this problem, when you create new items on the Page Definition use alphanumeric characters A_Z, 0-9 and '_' for the item names. You may also need to changes item names to alphanumeric before you apply changes to the item.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDJEIGE" name="CHDJEIGE"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.9</span> Runtime Errors in an Application Imported from a Previous Release</h3>
+<p>If you export an application from an earlier Oracle Application Express release and then import and install it using the installation pages in Application Builder, in rare situations you may encounter runtime errors after the application installs.</p>
+<p>These errors often manifest themselves as PL/SQL parser or execution errors pertaining to blocks of PL/SQL code embedded within application components. The installation process sometimes splits strings greater than 200 characters into multiple lines. For example, lines may split between PL/SQL keywords, or at other places that cause parsing errors.</p>
+<p><span class="bold">Workaround</span>:</p>
+<p>If you encounter these types of errors and suspect the installation process has split large strings:</p>
+<ol>
+<li>
+<p>Isolate the failing component containing the suspect PL/SQL within the application by editing the failing page in Application Builder.</p>
+</li>
+<li>
+<p>Locate the blocks of code that appear to split incorrectly.</p>
+</li>
+<li>
+<p>Attempt to split the blocks of code in more appropriate places, or insert white space with the lines until no runtime errors are observed.</p>
+</li>
+<li>
+<p>Export the application, import the export file, and then reinstall it.</p>
+</li>
+<li>
+<p>Retain the new export file as a permanent backup copy.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDBACBH" name="CHDBACBH"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.10</span> Enabling Network Services in Oracle Database 11<span class="italic">g</span></h3>
+<p>By default, the ability to interact with network services is disabled in Oracle Database 11<span class="italic">g</span> release 1 (11.1). Therefore, if you are running Oracle Application Express with Oracle Database 11<span class="italic">g</span> release 1 (11.1), you need to use the new <code>DBMS_NETWORK_ACL_ADMIN</code> package to grant connect privileges to any host for the <code>APEX_030200</code> database user. Failing to grant these privileges results in issues with:</p>
+<ul>
+<li>
+<p>Sending outbound mail in Oracle Application Express.</p>
+<p>Users can call methods from the <code>APEX_MAIL</code> package, but issues arise when sending outbound email.</p>
+</li>
+<li>
+<p>Using Web services in Oracle Application Express.</p>
+</li>
+<li>
+<p>PDF/report printing.</p>
+</li>
+<li>
+<p>Searching for content in online Help (that is, using the Find link).</p>
+</li>
+</ul>
+<p>Topics in this section include:</p>
+<ul>
+<li>
+<p><a href="#CHDHGCGB">Granting Connect Privileges to a Host</a></p>
+</li>
+<li>
+<p><a href="#CHDFJEBC">Granting Connect Privileges to a Local Host</a></p>
+</li>
+<li>
+<p><a href="#CHDJCCGD">Troubleshooting an Invalid ACL Error</a></p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">Tip:</p>
+To run the examples described in this section, the compatible initialization parameter of the database must be set to at least 11.1.0.0.0. By default an 11<span class="italic">g</span> database will already have the parameter set properly, but a database upgraded to 11<span class="italic">g</span> from a prior version may not. See "Creating and Configuring an Oracle Database" in <span class="italic"><a class="olink ADMIN002" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN002">Oracle Database Administrator's Guide</a></span> for information about changing database initialization parameters.</div>
+<a id="CHDHGCGB" name="CHDHGCGB"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><span class="secnum">5.10.1</span> Granting Connect Privileges to a Host</h4>
+<p>The following example demonstrates how to grant connect privileges to any host for the <code>APEX_030200</code> database user.</p>
+<pre xml:space="preserve" class="oac_no_warn">DECLARE
+  ACL_PATH  VARCHAR2(4000);
+  ACL_ID    RAW(16);
+BEGIN
+  -- Look for the ACL currently assigned to '*' and give APEX_030200
+  -- the "connect" privilege if APEX_030200 does not have the privilege yet.
+
+  SELECT ACL INTO ACL_PATH FROM DBA_NETWORK_ACLS
+   WHERE HOST = '*' AND LOWER_PORT IS NULL AND UPPER_PORT IS NULL;
+
+  -- Before checking the privilege, make sure that the ACL is valid
+  -- (for example, does not contain stale references to dropped users).
+  -- If it does, the following exception will be raised:
+  --
+  -- ORA-44416: Invalid ACL: Unresolved principal 'APEX_030200'
+  -- ORA-06512: at "XDB.DBMS_XDBZ", line ...
+  --
+  SELECT SYS_OP_R2O(extractValue(P.RES, '/Resource/XMLRef')) INTO ACL_ID
+    FROM XDB.XDB$ACL A, PATH_VIEW P
+   WHERE extractValue(P.RES, '/Resource/XMLRef') = REF(A) AND
+         EQUALS_PATH(P.RES, ACL_PATH) = 1;
+
+  DBMS_XDBZ.ValidateACL(ACL_ID);
+   IF DBMS_NETWORK_ACL_ADMIN.CHECK_PRIVILEGE(ACL_PATH, 'APEX_030200', 
+     'connect') IS NULL THEN 
+      DBMS_NETWORK_ACL_ADMIN.ADD_PRIVILEGE(ACL_PATH, 
+     'APEX_030200', TRUE, 'connect'); 
+  END IF;
+
+EXCEPTION
+  -- When no ACL has been assigned to '*'.
+  WHEN NO_DATA_FOUND THEN
+  DBMS_NETWORK_ACL_ADMIN.CREATE_ACL('power_users.xml',
+    'ACL that lets power users to connect to everywhere',
+    'APEX_030200', TRUE, 'connect');
+  DBMS_NETWORK_ACL_ADMIN.ASSIGN_ACL('power_users.xml','*');
+END;
+/
+COMMIT;
+</pre></div>
+<!-- class="sect3" -->
+<a id="CHDFJEBC" name="CHDFJEBC"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><span class="secnum">5.10.2</span> Granting Connect Privileges to a Local Host</h4>
+<p>The following example is a less privileged demonstration of how to access resources on a local host. This example would enable indexing of Oracle Application Express Online Help and could possibly enable email and PDF printing if those servers were also on the local host.</p>
+<pre xml:space="preserve" class="oac_no_warn">DECLARE
+  ACL_PATH  VARCHAR2(4000);
+  ACL_ID    RAW(16);
+BEGIN
+  -- Look for the ACL currently assigned to 'localhost' and give APEX_030200
+  -- the "connect" privilege if APEX_030200 does not have the privilege yet.
+  SELECT ACL INTO ACL_PATH FROM DBA_NETWORK_ACLS
+   WHERE HOST = 'localhost' AND LOWER_PORT IS NULL AND UPPER_PORT IS NULL;
+
+  -- Before checking the privilege, make sure that the ACL is valid
+  -- (for example, does not contain stale references to dropped users).
+  -- If it does, the following exception will be raised:
+  --
+  -- ORA-44416: Invalid ACL: Unresolved principal 'APEX_030200'
+  -- ORA-06512: at "XDB.DBMS_XDBZ", line ...
+  --
+
+  SELECT SYS_OP_R2O(extractValue(P.RES, '/Resource/XMLRef')) INTO ACL_ID
+    FROM XDB.XDB$ACL A, PATH_VIEW P
+   WHERE extractValue(P.RES, '/Resource/XMLRef') = REF(A) AND
+         EQUALS_PATH(P.RES, ACL_PATH) = 1;
+
+  DBMS_XDBZ.ValidateACL(ACL_ID);
+   IF DBMS_NETWORK_ACL_ADMIN.CHECK_PRIVILEGE(ACL_PATH, 'APEX_030200', 
+     'connect') IS NULL THEN 
+      DBMS_NETWORK_ACL_ADMIN.ADD_PRIVILEGE(ACL_PATH, 
+     'APEX_030200', TRUE, 'connect'); 
+  END IF;
+
+EXCEPTION
+  -- When no ACL has been assigned to 'localhost'.
+  WHEN NO_DATA_FOUND THEN
+  DBMS_NETWORK_ACL_ADMIN.CREATE_ACL('local-access-users.xml',
+    'ACL that lets power users to connect to everywhere',
+    'APEX_030200', TRUE, 'connect');
+  DBMS_NETWORK_ACL_ADMIN.ASSIGN_ACL('local-access-users.xml','localhost');
+END;
+/
+COMMIT;
+</pre></div>
+<!-- class="sect3" -->
+<a id="CHDJCCGD" name="CHDJCCGD"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h4 class="sect3"><span class="secnum">5.10.3</span> Troubleshooting an Invalid ACL Error</h4>
+<p>If you receive an <code>ORA-44416: Invalid ACL</code> error after running the previous script, use the following query to identify the invalid ACL:</p>
+<pre xml:space="preserve" class="oac_no_warn">REM Show the dangling references to dropped users in the ACL that is assigned
+REM to '*'.
+
+SELECT ACL, PRINCIPAL
+  FROM DBA_NETWORK_ACLS NACL, XDS_ACE ACE
+ WHERE HOST = '*' AND LOWER_PORT IS NULL AND UPPER_PORT IS NULL AND
+       NACL.ACLID = ACE.ACLID AND
+       NOT EXISTS (SELECT NULL FROM ALL_USERS WHERE USERNAME = PRINCIPAL);
+</pre>
+<p>Next, run the following code to fix the ACL:</p>
+<pre xml:space="preserve" class="oac_no_warn">DECLARE
+  ACL_ID   RAW(16);
+  CNT      NUMBER;
+BEGIN
+  -- Look for the object ID of the ACL currently assigned to '*'
+  SELECT ACLID INTO ACL_ID FROM DBA_NETWORK_ACLS
+   WHERE HOST = '*' AND LOWER_PORT IS NULL AND UPPER_PORT IS NULL;
+
+  -- If just some users referenced in the ACL are invalid, remove just those
+  -- users in the ACL. Otherwise, drop the ACL completely.
+  SELECT COUNT(PRINCIPAL) INTO CNT FROM XDS_ACE
+   WHERE ACLID = ACL_ID AND
+         EXISTS (SELECT NULL FROM ALL_USERS WHERE USERNAME = PRINCIPAL);
+
+  IF (CNT &gt; 0) THEN
+
+    FOR R IN (SELECT PRINCIPAL FROM XDS_ACE
+               WHERE ACLID = ACL_ID AND
+                     NOT EXISTS (SELECT NULL FROM ALL_USERS
+                                  WHERE USERNAME = PRINCIPAL)) LOOP
+      UPDATE XDB.XDB$ACL
+         SET OBJECT_VALUE =
+               DELETEXML(OBJECT_VALUE,
+                         '/ACL/ACE[PRINCIPAL="'||R.PRINCIPAL||'"]')
+       WHERE OBJECT_ID = ACL_ID;
+    END LOOP;
+
+  ELSE
+    DELETE FROM XDB.XDB$ACL WHERE OBJECT_ID = ACL_ID;
+  END IF;
+
+END;
+/
+
+REM commit the changes.
+
+COMMIT;
+</pre>
+<p>Once the ACL has been fixed, you need to run the first script in this section to apply the ACL to the <code>APEX_030200</code> user. See <a href="#CHDHGCGB">"Granting Connect Privileges to a Host"</a>.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="CHDCDHJF" name="CHDCDHJF"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.11</span> Enabling Indexing of Online <a id="sthref1" name="sthref1"></a><a id="sthref2" name="sthref2"></a>Help in Oracle Database 11gR2 and Higher</h3>
+<p>The ability to search Oracle Application Express online Help is accomplished through Oracle Text and a URL datastore. There is a change in the default behavior and permissions to use an Oracle Text URL datastore in database 11gR2 and higher.</p>
+<p>If users attempt to search Oracle Application Express online Help in Oracle database 11gR2 and encounter the following error, then the permission to use an Oracle Text URL datastore has not been granted to database user <code>APEX_030200</code>.</p>
+<pre xml:space="preserve" class="oac_no_warn">ORA-29855: error occurred in the execution of ODCIINDEXCREATE routine 
+ORA-20000: Oracle Text error: 
+DRG-10758: index owner does not have the privilege to use file or URL datastore
+</pre>
+<p>To enable the indexing of online Help in Oracle Application Express, the permission to use an Oracle Text URL datastore must be granted to the <code>APEX_030200</code> database user. This is accomplished by assigning this specific privilege to a datbase role and then granting this role to the <code>APEX_030200</code> database user.</p>
+<p>To determine if the ability to use an Oracle Text URL datastore is already granted to a database role:</p>
+<ol>
+<li>
+<p>Start SQL*Plus and connect to the database where Oracle Application Express is installed as <code>SYS</code> specifying the <code>SYSDBA</code> role. For example:</p>
+<ul>
+<li>
+<p>On Windows:</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="italic">SYSTEM_DRIVE:\</span> sqlplus /nolog
+SQL&gt; CONNECT SYS as SYSDBA
+Enter password: <span class="italic">SYS_password</span>
+</pre></li>
+<li>
+<p>On UNIX and Linux:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ sqlplus /nolog
+SQL&gt; CONNECT SYS as SYSDBA
+Enter password: <span class="italic">SYS_password</span>
+</pre></li>
+</ul>
+</li>
+<li>
+<p>Run the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">SELECT par_value FROM ctxsys.ctx_parameters WHERE par_name = 'FILE_ACCESS_ROLE';
+</pre>
+<p>This returns either <code>NULL</code> or the database role which is granted the ability to use an Oracle Text URL datastore.</p>
+</li>
+<li>
+<p>If no value is returned by step 2, then create a new database role as shown in the following example:</p>
+<pre xml:space="preserve" class="oac_no_warn">CREATE ROLE APEX_URL_DATASTORE_ROLE;
+</pre></li>
+<li>
+<p>Grant this role to the database user <code>APEX_030200</code> with the following statement:</p>
+<pre xml:space="preserve" class="oac_no_warn">GRANT <span class="italic">APEX_URL_DATASTORE_ROLE</span> to APEX_030200;
+</pre>
+<p>If step 2 returned a value, use this database role name instead of the example <code><span class="codeinlineitalic">APEX_URL_DATASTORE_ROLE</span></code>.</p>
+</li>
+<li>
+<p>Lastly, if step 2 did not return a value, then use the Oracle Text API to grant permission to the newly created database role with the following statement:</p>
+<pre xml:space="preserve" class="oac_no_warn">EXEC ctxsys.ctx_adm.set_parameter('file_access_role', 'APEX_URL_DATASTORE_ROLE');
+</pre></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDFDCDA" name="CHDFDCDA"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.12</span> Issues with HTML Editor Item Type</h3>
+<p>Users may encounter unexpected results when using the item type HTML Editor Standard and the Find functionality. When using an item of type HTML Editor Standard with a Firefox browser, the cursor must be placed at the beginning of the text for the Find feature to function properly. In certain situations, the Find functionality may incorrectly report that the text is not found.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDCJIEJ" name="CHDCJIEJ"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.13</span> DBA Authentication Restrictions</h3>
+<p>The following restriction applies to features in Oracle Application Express that require DBA authentication (for example, the Session report on the Database Monitor page). The DBA account used for authentication must not require double-quoting. In other words, it cannot be lower or mixed case.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDHGAEG" name="CHDHGAEG"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.14</span> Exporter Tool Support for Microsoft Access</h3>
+<p>When migrating a Microsoft Access application to an Oracle Application Express application, you export your Microsoft Access metadata using the Exporter tool. Note that Exporter Tool for Microsoft Access supports Microsoft Access 97, Microsoft Access 2000, Microsoft Access 2002, Microsoft Access 2003, and Microsoft Access 2007.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDJHIBG" name="CHDJHIBG"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.15</span> Issue with Online Help Table of Contents</h3>
+<p>The table of contents does not always highlight the topic being viewed in the right pane. This occurs when a user navigates from one help topic to another using links within the topic, rather than using the table of contents to navigate. This issue is being tracked by bug 8198833.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDDBGDD" name="CHDDBGDD"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">5.16</span> Incorrect Default Tablespace when Creating New Database Users through Application Express Administration Services</h3>
+<p>When creating a new database user through the in Application Express Administration Services, if the default tablespace is not specified in all uppercase, then the default tablespace for the newly created user will be the <code>USERS</code> tablespace and the newly created user will not have any quota on the <code>USERS</code> tablespace. To avoid this situtation, ensure that the default tablespace value is specified in all uppercase.</p>
+<p>To recover from this situation, a database administrator can alter the default tablspace for the newly created database user and also assign quota on the correct tablespace.</p>
+<p>This issue is tracked with Oracle bug 8669412.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BAJBCDEA" name="BAJBCDEA"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">6</span> Documentation Accessibility</h2>
+<p>Our goal is to make Oracle products, services, and supporting documentation accessible to all users, including users that are disabled. To that end, our documentation includes features that make information available to users of assistive technology. This documentation is available in HTML format, and contains markup to facilitate access by the disabled community. Accessibility standards will continue to evolve over time, and Oracle is actively engaged with other market-leading technology vendors to address technical obstacles so that our documentation can be accessible to all of our customers. For more information, visit the Oracle Accessibility Program Web site at <code><a href="http://www.oracle.com/accessibility/">http://www.oracle.com/accessibility/</a></code>.</p>
+<p class="subhead2"><a id="sthref3" name="sthref3"></a>Accessibility of Code Examples in Documentation</p>
+<p>Screen readers may not always correctly read the code examples in this document. The conventions for writing code require that closing braces should appear on an otherwise empty line; however, some screen readers may not always read a line of text that consists solely of a bracket or brace.</p>
+<p class="subhead2"><a id="sthref4" name="sthref4"></a>Accessibility of Links to External Web Sites in Documentation</p>
+<p>This documentation may contain links to Web sites of other companies or organizations that Oracle does not own or control. Oracle neither evaluates nor makes any representations regarding the accessibility of these Web sites.</p>
+<p class="subhead2"><a id="sthref5" name="sthref5"></a>Deaf/Hard of Hearing Access to Oracle Support Services</p>
+<p>To reach Oracle Support Services, use a telecommunications relay service (TRS) to call Oracle Support at 1.800.223.1711. An Oracle Support Services engineer will handle technical issues and provide customer support according to the Oracle service request process. Information about TRS is available at <code><a href="http://www.fcc.gov/cgb/consumerfacts/trs.html">http://www.fcc.gov/cgb/consumerfacts/trs.html</a></code>, and a list of phone numbers is available at <code><a href="http://www.fcc.gov/cgb/dro/trsphonebk.html">http://www.fcc.gov/cgb/dro/trsphonebk.html</a></code>.</p>
+</div>
+<!-- class="sect1" -->
+<a id="sthref6" name="sthref6"></a>
+<hr />
+<p>Oracle Application Express Application Builder User's Guide, Release 3.2</p>
+<p>E11944-01</p>
+<p>Copyright &copy; 2009, Oracle and/or its affiliates. All rights reserved.</p>
+<p>This software and related documentation are provided under a license agreement containing restrictions on use and disclosure and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law, you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish, or display any part, in any form, or by any means. Reverse engineering, disassembly, or decompilation of this software, unless required by law for interoperability, is prohibited.</p>
+<p>The information contained herein is subject to change without notice and is not warranted to be error-free. If you find any errors, please report them to us in writing.</p>
+<p>If this software or related documentation is delivered to the U.S. Government or anyone licensing it on behalf of the U.S. Government, the following notice is applicable:</p>
+<p>U.S. GOVERNMENT RIGHTS Programs, software, databases, and related documentation and technical data delivered to U.S. Government customers are "commercial computer software" or "commercial technical data" pursuant to the applicable Federal Acquisition Regulation and agency-specific supplemental regulations. As such, the use, duplication, disclosure, modification, and adaptation shall be subject to the restrictions and license terms set forth in the applicable Government contract, and, to the extent applicable by the terms of the Government contract, the additional rights set forth in FAR 52.227-19, Commercial Computer Software License (December 2007). Oracle USA, Inc., 500 Oracle Parkway, Redwood City, CA 94065.</p>
+<p>This software is developed for general use in a variety of information management applications. It is not developed or intended for use in any inherently dangerous applications, including applications which may create a risk of personal injury. If you use this software in dangerous applications, then you shall be responsible to take all appropriate fail-safe, backup, redundancy, and other measures to ensure the safe use of this software. Oracle Corporation and its affiliates disclaim any liability for any damages caused by use of this software in dangerous applications.</p>
+<p>Oracle is a registered trademark of Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners.</p>
+<p>This software and documentation may provide access to or information on content, products, and services from third parties. Oracle Corporation and its affiliates are not responsible for and expressly disclaim all warranties of any kind with respect to third-party content, products, and services. Oracle Corporation and its affiliates will not be responsible for any loss, costs, or damages incurred due to your access to or use of third-party content, products, or services.</p>
+</div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">&nbsp;</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2009,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="196">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

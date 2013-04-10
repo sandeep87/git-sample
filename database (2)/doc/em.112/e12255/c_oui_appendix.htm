@@ -1,0 +1,873 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Understanding Oracle Universal Installer Commands</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.1" />
+<meta name="Date" content="2011-03-15T16:57:53Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Universal Installer and OPatch User's Guide 11g Release 2 (11.2) for Windows and UNIX" />
+<meta name="partno" content="E12255-11" />
+<meta name="docid" content="OUICG" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="b_oui_appendix.htm" title="Previous" type="text/html" />
+<link rel="Next" href="d_oui_appendix.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e12255.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Universal Installer and OPatch User's Guide<br />
+11<i>g</i> Release 2 (11.2) for Windows and UNIX</b><br />
+Part Number E12255-11</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="b_oui_appendix.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="d_oui_appendix.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e12255.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BABGHAIA" name="BABGHAIA"></a>
+<h1 class="appendix"><span class="secnum">C</span> <a name="OUICG378" id="OUICG378"></a> Understanding Oracle Universal Installer Commands</h1>
+<p>The Oracle Universal Installer is run with various options and command-line arguments. This appendix lists the syntax of Oracle Universal Installer and the various command-line options available in Oracle Universal Installer. The following command shows the syntax for running the Oracle Universal Installer:</p>
+<pre xml:space="preserve" class="oac_no_warn">./runInstaller or setup.exe &lt;option&gt; [-command_line_variable=value]
+</pre>
+<p>In the preceding command, the following variables are used:</p>
+<ul>
+<li>
+<p><span class="italic">option</span>: The options available in Oracle Universal Installer. They are described in <a href="#BABDADJE">Table C-1, "Options in Oracle Universal Installer"</a>.</p>
+</li>
+<li>
+<p><span class="italic">command_line_variable</span>: The command-line variable for the option. They are described in <a href="#BABBEGCB">Table C-2, "Command Line Variables in Oracle Universal Installer"</a>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+You can pass the command line variable in either of the following three ways:
+<ol>
+<li>
+<p><span class="italic">&lt;command_line_variable&gt;={"value1","value2"}</span></p>
+</li>
+<li>
+<p><span class="italic">"&lt;command_line_variable&gt;={value1,value2}"</span></p>
+</li>
+<li>
+<p>&lt;command_line_variable&gt;="{value1,value2}"</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref858" name="sthref858"></a>
+<h2 class="sect1"><a name="OUICG379" id="OUICG379"></a>Options Available in Oracle Universal Installer</h2>
+<p><a href="#BABDADJE">Table C-1</a> lists the various options available in Oracle Universal Installer.</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref859" name="sthref859"></a><a id="BABDADJE" name="BABDADJE"></a>Table C-1 Options in Oracle Universal Installer</p>
+<table class="Formal" title="Options in Oracle Universal Installer" summary="This table lists the options in OUI" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="32%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t3">Option</th>
+<th align="left" valign="bottom" id="r1c2-t3">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t3" headers="r1c1-t3">
+<p>-clusterware oracle.crs,&lt;crs version&gt;</p>
+</td>
+<td align="left" headers="r2c1-t3 r1c2-t3">
+<p>Version of the Oracle Clusterware installed.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t3" headers="r1c1-t3">
+<p>-crsLocation &lt;Path&gt;</p>
+</td>
+<td align="left" headers="r3c1-t3 r1c2-t3">
+<p>Specifies the path to the Oracle Clusterware home location. This flag is used only for cluster installations. Specifying this flag overrides the Oracle Clusterware information obtained from the Central Inventory.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t3" headers="r1c1-t3">
+<p>-invPtrLoc &lt;full path of oraInst.loc&gt;</p>
+</td>
+<td align="left" headers="r4c1-t3 r1c2-t3">
+<p>Points to a different inventory location. The <code>orainst.loc</code> file contains the following entries:</p>
+<p><code>inventory_loc=&lt;location of central inventory&gt;</code><code>inst_group=&lt;&gt;</code></p>
+<p>This flag can only be passed on UNIX platforms.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t3" headers="r1c1-t3">
+<p>-jreLoc &lt;location&gt;</p>
+</td>
+<td align="left" headers="r5c1-t3 r1c2-t3">
+<p>Path where the Java Runtime Environment is installed. You need to mention this path to override the default path. This option does not support relative paths, so you need to specify the absolute path.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t3" headers="r1c1-t3">
+<p>-logLevel &lt;level&gt;</p>
+</td>
+<td align="left" headers="r6c1-t3 r1c2-t3">
+<p>Filters log messages that have a lesser priority level than the level specified. Valid options are: severe, warning, info, config, fine, finer, and finest.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t3" headers="r1c1-t3">
+<p>-paramFile &lt;location of file&gt;</p>
+</td>
+<td align="left" headers="r7c1-t3 r1c2-t3">
+<p>Specifies the location of the <code>oraparam.ini</code> file to be used by Oracle Universal Installer.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t3" headers="r1c1-t3">
+<p>-responseFile &lt;Path&gt;</p>
+</td>
+<td align="left" headers="r8c1-t3 r1c2-t3">
+<p>Specifies the location of the response file to use. This option is used with the <code>-silent</code> flag.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t3" headers="r1c1-t3">
+<p>-sourceLoc &lt;location of products.xml&gt;</p>
+</td>
+<td align="left" headers="r9c1-t3 r1c2-t3">
+<p>Specifies the shiphome location.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r10c1-t3" headers="r1c1-t3">
+<p>-addLangs</p>
+</td>
+<td align="left" headers="r10c1-t3 r1c2-t3">
+<p>Adds new languages to an already installed product.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r11c1-t3" headers="r1c1-t3">
+<p>-addNode</p>
+</td>
+<td align="left" headers="r11c1-t3 r1c2-t3">
+<p>Adds node(s) to the installation. You cannot use this flag in silent mode with response files. You can pass the required session variable through the command line. You must pass the CLUSTER_NEW_NODES, CLUSTER_NEW_PRIVATE_NODE_NAMES, and CLUSTER_NEW_VIRTUAL_HOSTNAMES session variables when using this flag.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r12c1-t3" headers="r1c1-t3">
+<p>-attachHome</p>
+</td>
+<td align="left" headers="r12c1-t3 r1c2-t3">
+<p>Attaches homes to the Oracle Universal Installer inventory. You must pass the ORACLE_HOME session variable when using this flag.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r13c1-t3" headers="r1c1-t3">
+<p>-cfs</p>
+</td>
+<td align="left" headers="r13c1-t3 r1c2-t3">
+<p>Indicates that the Oracle home specified is on a cluster file system (shared). This is mandatory when '-local' flag is specified so that Oracle Universal Installer can register the home appropriately into the inventory.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r14c1-t3" headers="r1c1-t3">
+<p>-clone</p>
+</td>
+<td align="left" headers="r14c1-t3 r1c2-t3">
+<p>Used for cloning an Oracle home from a source location to a target location. You must pass the ORACLE_HOME session variable when using this flag.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r15c1-t3" headers="r1c1-t3">
+<p>-debug</p>
+</td>
+<td align="left" headers="r15c1-t3 r1c2-t3">
+<p>Used for getting the debug information from Oracle Universal Installer.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r16c1-t3" headers="r1c1-t3">
+<p>-detachHome</p>
+</td>
+<td align="left" headers="r16c1-t3 r1c2-t3">
+<p>Detaches homes from the Oracle Universal Installer inventory without deleting the inventory directory inside the Oracle home. You must pass the ORACLE_HOME session variable when using this flag.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r17c1-t3" headers="r1c1-t3">
+<p>-enableRollingUpgrade</p>
+</td>
+<td align="left" headers="r17c1-t3 r1c2-t3">
+<p>Used in cluster environments to enable an upgrade of a product on a subset of nodes (on which the product was installed).</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r18c1-t3" headers="r1c1-t3">
+<p>-executeSysPrereqs</p>
+</td>
+<td align="left" headers="r18c1-t3 r1c2-t3">
+<p>Executes system prerequisite checks and exits.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r19c1-t3" headers="r1c1-t3">
+<p>-force</p>
+</td>
+<td align="left" headers="r19c1-t3 r1c2-t3">
+<p>Enables silent mode installation on a non-empty directory without warning.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r20c1-t3" headers="r1c1-t3">
+<p>-help</p>
+</td>
+<td align="left" headers="r20c1-t3 r1c2-t3">
+<p>Lists the syntax and help information.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r21c1-t3" headers="r1c1-t3">
+<p>-ignorePatchConflicts</p>
+</td>
+<td align="left" headers="r21c1-t3 r1c2-t3">
+<p>Ignores all conflicts with existing interim patches during an upgrade. The conflicting interim patches are removed from the home.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r22c1-t3" headers="r1c1-t3">
+<p>-ignoreSysPrereqs</p>
+</td>
+<td align="left" headers="r22c1-t3 r1c2-t3">
+<p>Ignores the results of the system prerequisite checks.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r23c1-t3" headers="r1c1-t3">
+<p>-local</p>
+</td>
+<td align="left" headers="r23c1-t3 r1c2-t3">
+<p>Performs the specified operation on the local node irrespective of the cluster nodes specified.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r24c1-t3" headers="r1c1-t3">
+<p>-printdiskusage</p>
+</td>
+<td align="left" headers="r24c1-t3 r1c2-t3">
+<p>Logs debug information for disk usage.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r25c1-t3" headers="r1c1-t3">
+<p>-printmemory</p>
+</td>
+<td align="left" headers="r25c1-t3 r1c2-t3">
+<p>Logs debug information for memory usage.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r26c1-t3" headers="r1c1-t3">
+<p>-printtime</p>
+</td>
+<td align="left" headers="r26c1-t3 r1c2-t3">
+<p>Logs debug information for time usage.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r27c1-t3" headers="r1c1-t3">
+<p>-removeAllPatches</p>
+</td>
+<td align="left" headers="r27c1-t3 r1c2-t3">
+<p>Removes all interim patches from the home.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r28c1-t3" headers="r1c1-t3">
+<p>-silent</p>
+</td>
+<td align="left" headers="r28c1-t3 r1c2-t3">
+<p>Used for silent mode operations. The input can be a response file or a list of command line variable value pairs. You can use the -responsefile flag along with this flag.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r29c1-t3" headers="r1c1-t3">
+<p>-updateNodeList</p>
+</td>
+<td align="left" headers="r29c1-t3 r1c2-t3">
+<p>Updates the node list for this home in the Oracle Universal Installer inventory. You can pass the ORACLE_HOME, LOCAL_NODE, and CLUSTER_NODES session variable when using this flag</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r30c1-t3" headers="r1c1-t3">
+<p>-waitforcompletion</p>
+</td>
+<td align="left" headers="r30c1-t3 r1c2-t3">
+<p>The command console will wait for Oracle Universal Installer to exit if you specify this flag.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r31c1-t3" headers="r1c1-t3">
+<p>-nobackground</p>
+</td>
+<td align="left" headers="r31c1-t3 r1c2-t3">
+<p>Specifies to Oracle Universal Installer not to show background images.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r32c1-t3" headers="r1c1-t3">
+<p>-noclusterEnabled</p>
+</td>
+<td align="left" headers="r32c1-t3 r1c2-t3">
+<p>Indicates that no cluster nodes are specified.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r33c1-t3" headers="r1c1-t3">
+<p>-noconsole</p>
+</td>
+<td align="left" headers="r33c1-t3 r1c2-t3">
+<p>Suppresses the display of messages to the console.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r34c1-t3" headers="r1c1-t3">
+<p>-nowait</p>
+</td>
+<td align="left" headers="r34c1-t3 r1c2-t3">
+<p>Used on a Windows platform. Specifies not to wait for the user to press Enter on the console after the task (installation, etc.) is complete.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r35c1-t3" headers="r1c1-t3">
+<p>-formCluster</p>
+</td>
+<td align="left" headers="r35c1-t3 r1c2-t3">
+<p>Installs the Oracle Clusterware in order to form the cluster.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r36c1-t3" headers="r1c1-t3">
+<p>-remotecp &lt;Path&gt;</p>
+</td>
+<td align="left" headers="r36c1-t3 r1c2-t3">
+<p>This flag can only be passed on UNIX platforms. This is used only for cluster installs. This flag specifies the path to the remote copy program on the local cluster node. For example, the path for scp is /usr/bin/scp.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r37c1-t3" headers="r1c1-t3">
+<p>-remoteshell &lt;Path&gt;</p>
+</td>
+<td align="left" headers="r37c1-t3 r1c2-t3">
+<p>This flag can only be passed on UNIX platforms. This is used only for cluster installs. This specifies the path to the remote shell program on the local cluster node. For example, the path for ssh is /usr/bin/ssh.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect1" -->
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref860" name="sthref860"></a>
+<h2 class="sect1"><a name="OUICG380" id="OUICG380"></a>Command-line Variables Available in Oracle Universal Installer</h2>
+<p><a href="#BABBEGCB">Table C-2</a> lists the command-line variables available in Oracle Universal Installer:</p>
+<div class="tblformal">
+<p class="titleintable"><a id="sthref861" name="sthref861"></a><a id="BABBEGCB" name="BABBEGCB"></a>Table C-2 Command Line Variables in Oracle Universal Installer</p>
+<table class="Formal" title="Command Line Variables in Oracle Universal Installer" summary="This table lists the command line variables in OUI" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="25%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t4">Command Line Variable</th>
+<th align="left" valign="bottom" id="r1c2-t4">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t4" headers="r1c1-t4">
+<p>INVENTORY_LOCATION</p>
+</td>
+<td align="left" headers="r2c1-t4 r1c2-t4">
+<p>Specifies the inventory location.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t4" headers="r1c1-t4">
+<p>ORACLE_HOME</p>
+</td>
+<td align="left" headers="r3c1-t4 r1c2-t4">
+<p>Specifies the <code>ORACLE_HOME</code> location.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t4" headers="r1c1-t4">
+<p>ORACLE_HOME_KEY</p>
+</td>
+<td align="left" headers="r4c1-t4 r1c2-t4">
+<p>Specifies the ORACLE HOME key name. This is used only on Windows platform.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t4" headers="r1c1-t4">
+<p>ORACLE_HOME_FOLDER</p>
+</td>
+<td align="left" headers="r5c1-t4 r1c2-t4">
+<p>Specifies the ORACLE HOME folder name. This is used only on Windows platform.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t4" headers="r1c1-t4">
+<p>ORACLE_HOME_SERVICE</p>
+</td>
+<td align="left" headers="r6c1-t4 r1c2-t4">
+<p>Specifies the ORACLE HOME service name. This is used only on Windows platform.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t4" headers="r1c1-t4">
+<p>ANONYMOUS_LOGIN</p>
+</td>
+<td align="left" headers="r7c1-t4 r1c2-t4">
+<p>Specifies an anonymous login.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t4" headers="r1c1-t4">
+<p>LOGIN_NAME</p>
+</td>
+<td align="left" headers="r8c1-t4 r1c2-t4">
+<p>Specifies the login name.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t4" headers="r1c1-t4">
+<p>PASSWORD</p>
+</td>
+<td align="left" headers="r9c1-t4 r1c2-t4">
+<p>Specifies the password.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r10c1-t4" headers="r1c1-t4">
+<p>LOGIN_CATEGORY</p>
+</td>
+<td align="left" headers="r10c1-t4 r1c2-t4">
+<p>Specifies the login category.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r11c1-t4" headers="r1c1-t4">
+<p>UNIX_GROUP_NAME</p>
+</td>
+<td align="left" headers="r11c1-t4 r1c2-t4">
+<p>Specifies the group name on a UNIX platform.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r12c1-t4" headers="r1c1-t4">
+<p>FROM_LOCATION</p>
+</td>
+<td align="left" headers="r12c1-t4 r1c2-t4">
+<p>Specifies the location from where the component gets installed. This is the complete path to the products.xml file.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r13c1-t4" headers="r1c1-t4">
+<p>FROM_LOCATION_CD_LABEL</p>
+</td>
+<td align="left" headers="r13c1-t4 r1c2-t4">
+<p>Specifies the label of the CD where the products.xml file resides in a multi-CD installation. The label can be found in the file disk label in the directory where the products.xml resides.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r14c1-t4" headers="r1c1-t4">
+<p>COMPONENT_LANGUAGES</p>
+</td>
+<td align="left" headers="r14c1-t4 r1c2-t4">
+<p>Specifies the languages in which the components will be installed.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r15c1-t4" headers="r1c1-t4">
+<p>SELECTED_LANGUAGES</p>
+</td>
+<td align="left" headers="r15c1-t4 r1c2-t4">
+<p>Specifies the selected languages.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r16c1-t4" headers="r1c1-t4">
+<p>SELECTED_PLATFORMS</p>
+</td>
+<td align="left" headers="r16c1-t4 r1c2-t4">
+<p>Specifies the selected platforms.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r17c1-t4" headers="r1c1-t4">
+<p>TOPLEVEL_COMPONENT</p>
+</td>
+<td align="left" headers="r17c1-t4 r1c2-t4">
+<p>Specifies the top level component to be installed in the current session.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r18c1-t4" headers="r1c1-t4">
+<p>ToplevelComp</p>
+</td>
+<td align="left" headers="r18c1-t4 r1c2-t4">
+<p>Specifies the top level component id.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r19c1-t4" headers="r1c1-t4">
+<p>INSTALL_TYPE</p>
+</td>
+<td align="left" headers="r19c1-t4 r1c2-t4">
+<p>Specifies the installation type of the components.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r20c1-t4" headers="r1c1-t4">
+<p>NEXT_SESSION</p>
+</td>
+<td align="left" headers="r20c1-t4 r1c2-t4">
+<p>Specifies if you want users to go back to the File Locations page for another installation. This flag also needs to be set to true in order to process another response file (see NEXT_SESSION_RESPONSE). This argument is used for chain installs.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r21c1-t4" headers="r1c1-t4">
+<p>NEXT_SESSION_ON_FAIL</p>
+</td>
+<td align="left" headers="r21c1-t4 r1c2-t4">
+<p>Specifies the next session response. Set to true to enable users to invoke another session even if the current installation session has failed. This flag is only relevant if NEXT_SESSION is set to true. This argument is used for chain installs.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r22c1-t4" headers="r1c1-t4">
+<p>NEXT_SESSION_RESPONSE</p>
+</td>
+<td align="left" headers="r22c1-t4 r1c2-t4">
+<p>Specifies the full path of the next session's response file. If only a file name is specified, the response file is retrieved from the &lt;TEMP&gt;/oraInstall directory. This variable is active only if NEXT_SESSION is set to true. This argument is used for chain installs.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r23c1-t4" headers="r1c1-t4">
+<p>LOCATION_FOR_DISK</p>
+</td>
+<td align="left" headers="r23c1-t4 r1c2-t4">
+<p>Name used to specify the complete path to the other disks.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r24c1-t4" headers="r1c1-t4">
+<p>CLUSTER_NODES</p>
+</td>
+<td align="left" headers="r24c1-t4 r1c2-t4">
+<p>Specifies the cluster node names selected by the user for installation.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r25c1-t4" headers="r1c1-t4">
+<p>CLUSTER_NEW_NODES</p>
+</td>
+<td align="left" headers="r25c1-t4 r1c2-t4">
+<p>Specifies the new cluster nodes to be used for node addition.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r26c1-t4" headers="r1c1-t4">
+<p>REMOTE_NODES</p>
+</td>
+<td align="left" headers="r26c1-t4 r1c2-t4">
+<p>Specifies the remote nodes.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r27c1-t4" headers="r1c1-t4">
+<p>REMOTE_CLEAN_MACHINES</p>
+</td>
+<td align="left" headers="r27c1-t4 r1c2-t4">
+<p>Specifies the remote nodes which do not have an installation inventory set up.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r28c1-t4" headers="r1c1-t4">
+<p>LOCAL_NODE</p>
+</td>
+<td align="left" headers="r28c1-t4 r1c2-t4">
+<p>Specifies the local node.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r29c1-t4" headers="r1c1-t4">
+<p>EXISTING_REMOTE_NODES</p>
+</td>
+<td align="left" headers="r29c1-t4 r1c2-t4">
+<p>Specifies the remote nodes on which the current home is already installed.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r30c1-t4" headers="r1c1-t4">
+<p>CRS</p>
+</td>
+<td align="left" headers="r30c1-t4 r1c2-t4">
+<p>Specifies whether the Oracle home is an Oracle Clusterware home or not.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r31c1-t4" headers="r1c1-t4">
+<p>CLUSTER_NEW_PRIVATE_NODE_NAMES</p>
+</td>
+<td align="left" headers="r31c1-t4 r1c2-t4">
+<p>Specifies the private node names for the new nodes that are used for node addition.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r32c1-t4" headers="r1c1-t4">
+<p>CLUSTER_NEW_HOST_NAMES</p>
+</td>
+<td align="left" headers="r32c1-t4 r1c2-t4">
+<p>Specifies the host names for the new cluster nodes.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r33c1-t4" headers="r1c1-t4">
+<p>CLUSTER_NEW_NODE_NUMBERS</p>
+</td>
+<td align="left" headers="r33c1-t4 r1c2-t4">
+<p>Specifies the node numbers of the new cluster nodes</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r34c1-t4" headers="r1c1-t4">
+<p>CLUSTER_NEW_VIRTUAL_HOSTNAMES</p>
+</td>
+<td align="left" headers="r34c1-t4 r1c2-t4">
+<p>Specifies the virtual host names for the new cluster nodes.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r35c1-t4" headers="r1c1-t4">
+<p>ACCEPT_LICENSE_AGREEMENT</p>
+</td>
+<td align="left" headers="r35c1-t4 r1c2-t4">
+<p>Specifies the license agreement status. By setting this variable to true, you are accepting the license agreement.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r36c1-t4" headers="r1c1-t4">
+<p>REGISTRATION_KEYWORD</p>
+</td>
+<td align="left" headers="r36c1-t4 r1c2-t4">
+<p>Specifies the registration keyword value. This can be obtained from the URL specified in the Product Registration Page.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r37c1-t4" headers="r1c1-t4">
+<p>RESTART_SYSTEM</p>
+</td>
+<td align="left" headers="r37c1-t4 r1c2-t4">
+<p>Specifies whether to restart the system or not. Set to true to enable automatic restart of the system. If set to false, the installer exits without restarting. No exit confirmation dialog is shown.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r38c1-t4" headers="r1c1-t4">
+<p>RESTART_REMOTE_SYSTEM</p>
+</td>
+<td align="left" headers="r38c1-t4 r1c2-t4">
+<p>Specifies whether to restart the remote system or not. Set to true to enable automatic restarting of the remote system. If set to false, the installer does not restart remote systems. No exit confirmation dialog is shown.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r39c1-t4" headers="r1c1-t4">
+<p>SESSION_MODE</p>
+</td>
+<td align="left" headers="r39c1-t4 r1c2-t4">
+<p>This session variable holds the current Oracle Universal Installer execution mode; that is, "Install" for an install and/or de-install session, or "Clone" for a cloning (home fix-up) session.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r40c1-t4" headers="r1c1-t4">
+<p>LOG_LOCATION</p>
+</td>
+<td align="left" headers="r40c1-t4 r1c2-t4">
+<p>Specifies the log file location. This variable specifies the directory that contains the log files generated during installation. This directory is located within the Oracle home.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r41c1-t4" headers="r1c1-t4">
+<p>IGNORE_PREREQ</p>
+</td>
+<td align="left" headers="r41c1-t4 r1c2-t4">
+<p>Specifies whether to skip the prerequisite checks or not. Set to true to continue component installation even when the prerequisite check fails.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r42c1-t4" headers="r1c1-t4">
+<p>ORACLE_HOSTNAME</p>
+</td>
+<td align="left" headers="r42c1-t4 r1c2-t4">
+<p>Specifies the host name of the system.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r43c1-t4" headers="r1c1-t4">
+<p>PREREQ_CONFIG_LOCATION</p>
+</td>
+<td align="left" headers="r43c1-t4 r1c2-t4">
+<p>Specifies the location where prerequisite configuration files are available.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r44c1-t4" headers="r1c1-t4">
+<p>PREREQ_LOG_LOCATION</p>
+</td>
+<td align="left" headers="r44c1-t4 r1c2-t4">
+<p>Specifies the prereqs log location where prerequisite results will be generated.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r45c1-t4" headers="r1c1-t4">
+<p>PREREQ_ENTRY_POINT</p>
+</td>
+<td align="left" headers="r45c1-t4 r1c2-t4">
+<p>Specifies the log location where prerequisite results will be generated.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r46c1-t4" headers="r1c1-t4">
+<p>ROOTSH_STATUS</p>
+</td>
+<td align="left" headers="r46c1-t4 r1c2-t4">
+<p>Specifies the root.sh status &#x2014; whether root.sh is required/before config or after config. This flag is used only on UNIX platforms.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r47c1-t4" headers="r1c1-t4">
+<p>ROOTSH_LOCATION</p>
+</td>
+<td align="left" headers="r47c1-t4 r1c2-t4">
+<p>Specifies the Root.sh location. By default it is set to OH\root.sh. This flag is used only on UNIX platforms.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r48c1-t4" headers="r1c1-t4">
+<p>USE_PREREQ_CHECKER</p>
+</td>
+<td align="left" headers="r48c1-t4 r1c2-t4">
+<p>Specifies if the prereq checker is to be used during the installation or not. The value for this variable is set based on the value in the oraparam.ini file.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r49c1-t4" headers="r1c1-t4">
+<p>USE_OLD_INSTALL_PREREQS</p>
+</td>
+<td align="left" headers="r49c1-t4 r1c2-t4">
+<p>Specifies if old style system prereqs are to be enabled in the installation scripts. The PRE_REQUISITE code should use this variable to determine which checks can be turned on or off. The value of this variable is set based on the value in the Oraparam.ini.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r50c1-t4" headers="r1c1-t4">
+<p>NEXT_SESSION_PROGRESS_TITLE</p>
+</td>
+<td align="left" headers="r50c1-t4 r1c2-t4">
+<p>Specifies the title of the progress dialog shown during the setup of the next session. This flag is used in chain installs.</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r51c1-t4" headers="r1c1-t4">
+<p>NEXT_SESSION_PROGRESS_TEXT</p>
+</td>
+<td align="left" headers="r51c1-t4 r1c2-t4">
+<p>Specifies the text above the progress bar in the progress dialog shown during the setup of next session. This flag is used in chain installs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformal" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="b_oui_appendix.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="d_oui_appendix.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;1996, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

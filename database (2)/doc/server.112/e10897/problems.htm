@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Investigating, Reporting, and Resolving Problems</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 009" />
+<meta name="Date" content="2010-08-02T19:33:10Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Database 2 Day DBA 11g Release 2 (11.2)" />
+<meta name="partno" content="E10897-05" />
+<meta name="docid" content="ADMQS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="montune.htm" title="Previous" type="text/html" />
+<link rel="Next" href="software.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e10897.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Database 2 Day DBA<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E10897-05</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="montune.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="software.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e10897.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CHDGJDHG" name="CHDGJDHG"></a><a id="ADMQS12010" name="ADMQS12010"></a>
+<h1 class="chapter"><span class="secnum">11</span> Investigating, Reporting, and Resolving Problems</h1>
+<p><a id="sthref739" name="sthref739"></a>Oracle Enterprise Manager Database Control (Database Control) includes a feature called the Support Workbench that enables you to view and investigate critical database errors, report these errors to Oracle Support Services, and in some cases, resolve the errors.</p>
+<p>This chapter explains critical errors and describes how to use the Database Home page and the Support Workbench to do the following:</p>
+<ul>
+<li>
+<p>View critical error alerts</p>
+</li>
+<li>
+<p>View diagnostic data for critical errors</p>
+</li>
+<li>
+<p>Package diagnostic data for upload to Oracle Support Services</p>
+</li>
+<li>
+<p>Create and track a service request</p>
+</li>
+<li>
+<p>Repair some classes of critical errors</p>
+</li>
+</ul>
+<p>The following topics are covered:</p>
+<ul>
+<li>
+<p><a href="#CHDFEDGJ">About Database Problems and Incidents</a></p>
+</li>
+<li>
+<p><a href="#CHDJDBCH">Investigating, Reporting, and Resolving a Problem</a></p>
+</li>
+<li>
+<p><a href="#CHDBCHID">Viewing Problems Using the Enterprise Manager Support Workbench</a></p>
+</li>
+</ul>
+<a id="CHDFEDGJ" name="CHDFEDGJ"></a><a id="ADMQS12011" name="ADMQS12011"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">About Database Problems and Incidents</h2>
+<p><a id="sthref740" name="sthref740"></a>To help diagnosis and resolution of critical errors, Oracle Database Release 11<span class="italic">g</span> introduces two concepts for Oracle Database: problems and incidents.</p>
+<p>A <span class="bold">problem</span> is a critical error in the database. Critical errors manifest as internal errors, such as <code>ORA-00600</code>, and other severe errors, such as <code>ORA-07445</code> (operating system exception) or <code>ORA-04031</code> (out of memory in the shared pool portion). <a id="sthref741" name="sthref741"></a>Problems are tracked in the <span class="bold">Automatic Diagnostic Repository</span> (<span class="bold">ADR</span>). The ADR is a file-based repository for storing diagnostic data. Because this repository is stored outside the database, the diagnostic data is available even when the database is down. As of Release 11<span class="italic">g</span>, the alert log, all trace and dump files, and other diagnostic data are also stored in the ADR.</p>
+<p><a id="sthref742" name="sthref742"></a>Each problem has a <span class="bold">problem key</span>, which is a text string that describes the problem. The problem key includes the error code (such as <code>ORA 600</code>), and in some cases, one or more error parameter values or other information.</p>
+<p><a id="sthref743" name="sthref743"></a>An <span class="bold">incident</span> is a single occurrence of a problem. When a problem occurs multiple times, an incident is created for each occurrence. <a id="sthref744" name="sthref744"></a>Incidents are timestamped and tracked in the Automatic Diagnostic Repository (ADR).</p>
+<p>Each incident is identified by a numeric incident ID, which is unique within the ADR. When an incident occurs, the database performs the following steps:</p>
+<ul>
+<li>
+<p>Makes an entry in the alert log.</p>
+</li>
+<li>
+<p>Sends an incident alert to Enterprise Manager.</p>
+</li>
+<li>
+<p>Gathers first-failure diagnostic data about the incident (such as trace files).</p>
+</li>
+<li>
+<p>Tags the diagnostic data with the incident ID.</p>
+</li>
+<li>
+<p>Stores the data in an ADR subdirectory created for that incident.</p>
+</li>
+</ul>
+<p>Each incident has a problem key and is mapped to a single problem.</p>
+<p>Diagnosis and resolution of a critical error usually starts with an incident alert. The incident alert is displayed on the Enterprise Manager Database Home page. You can then view the problem and its associated incidents with Enterprise Manager.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDBFADF">"Task 1 &#x2013; View Critical Error Alerts in Enterprise Manager"</a></p>
+</li>
+<li>
+<p><a class="olink ADMIN11008" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN11008"><span class="italic">Oracle Database Administrator's Guide</span></a> for more information about the ADR</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect1" -->
+<a id="CHDJDBCH" name="CHDJDBCH"></a><a id="ADMQS12107" name="ADMQS12107"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Investigating, Reporting, and Resolving a Problem</h2>
+<p>This section describes the typical set of tasks that you perform to investigate and report a problem (critical error), and in some cases, resolve the problem. It includes the following topics:</p>
+<ul>
+<li>
+<p><a href="#CHDFBGHF">Roadmap: Investigating, Reporting, and Resolving a Problem</a></p>
+</li>
+<li>
+<p><a href="#CHDBFADF">Task 1 &#x2013; View Critical Error Alerts in Enterprise Manager</a></p>
+</li>
+<li>
+<p><a href="#CHDJBEHD">Task 2 &#x2013; View Problem Details</a></p>
+</li>
+<li>
+<p><a href="#CHDDCGCA">Task 3 &#x2013; (Optional) Create a Service Request</a></p>
+</li>
+<li>
+<p><a href="#CHDCAECH">Task 4 &#x2013; Package and Upload Diagnostic Data to Oracle Support Services</a></p>
+</li>
+<li>
+<p><a href="#CHDFGDGB">Task 5 &#x2013; Track the Service Request and Implement Any Repairs</a></p>
+</li>
+<li>
+<p><a href="#CHDHJHCD">Task 6 &#x2013; Close Incidents</a></p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The workflow described in this section includes only the minimum tasks that are required to investigate, report, and in some cases, repair a problem. See <a class="olink ADMIN11007" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN11007"><span class="italic">Oracle Database Administrator's Guide</span></a> for a more complete workflow that includes additional diagnostics-gathering activities and data customization activities that you can do before uploading the diagnostic data to Oracle Support Services. In some cases, these additional activities may result in a shorter time to problem resolution.</div>
+<a id="CHDFBGHF" name="CHDFBGHF"></a><a id="ADMQS12108" name="ADMQS12108"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Roadmap: Investigating, Reporting, and Resolving a Problem</h3>
+<p><a id="sthref745" name="sthref745"></a>You can begin investigating a problem by starting from the Support Workbench Home page. However, the more typical workflow begins with a critical error alert on the Database Home page. This documentation provides an overview of that workflow.</p>
+<p><a href="#CHDFDIIA">Figure 11-1</a> illustrates the basic tasks that you complete when encountering a problem.</p>
+<div class="figure">
+<p class="titleinfigure"><a id="CHDFDIIA" name="CHDFDIIA"></a><a id="ADMQS12350" name="ADMQS12350"></a>Figure 11-1 Workflow for Investigating, Reporting, and Resolving a Problem</p>
+<img width="444" height="422" src="img/admqs006.gif" alt="Description of Figure 11-1 follows" title="Description of Figure 11-1 follows" longdesc="img_text/admqs006.htm" /><br />
+<a id="sthref746" name="sthref746" href="img_text/admqs006.htm">Description of "Figure 11-1 Workflow for Investigating, Reporting, and Resolving a Problem"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>The following are task descriptions. Subsequent sections provide details for each task.</p>
+<ul>
+<li>
+<p><a href="#CHDBFADF"><span class="xreftitlebold">Task 1 &#x2013; View Critical Error Alerts in Enterprise Manager</span></a></p>
+<p>Start by accessing the Database Home page in Enterprise Manager, and reviewing critical error alerts. Select an alert for which to view details. From the alert details page, go to the Problem Details page.</p>
+</li>
+<li>
+<p><a href="#CHDJBEHD"><span class="xreftitlebold">Task 2 &#x2013; View Problem Details</span></a></p>
+<p>Examine the problem details and view a list of incidents that were recorded for the problem. Display findings from any health checks that were automatically run.</p>
+</li>
+<li>
+<p><a href="#CHDDCGCA"><span class="xreftitlebold">Task 3 &#x2013; (Optional) Create a Service Request</span></a></p>
+<p>Create a service request using My Oracle Support and optionally record the service request number with the problem information. If you skip this step, then you can create a service request later, or the Support Workbench can create one for you.</p>
+</li>
+<li>
+<p><a href="#CHDCAECH"><span class="xreftitlebold">Task 4 &#x2013; Package and Upload Diagnostic Data to Oracle Support Services</span></a></p>
+<p><a id="sthref747" name="sthref747"></a>Invoke a guided workflow (a <span class="italic">wizard</span>) that automatically packages all gathered diagnostic data for a problem and uploads the data to Oracle Support Services.</p>
+</li>
+<li>
+<p><a href="#CHDFGDGB"><span class="xreftitlebold">Task 5 &#x2013; Track the Service Request and Implement Any Repairs</span></a></p>
+<p>Optionally maintain an activity log for the service request in the Support Workbench. If appropriate, run Oracle advisors to help repair SQL failures or corrupted data.</p>
+</li>
+<li>
+<p><a href="#CHDHJHCD"><span class="xreftitlebold">Task 6 &#x2013; Close Incidents</span></a></p>
+<p>Set the status for one, some, or all incidents for the problem to Closed.</p>
+</li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDBCHID">"Viewing Problems Using the Enterprise Manager Support Workbench"</a></p>
+</li>
+<li>
+<p><a href="#CHDFEDGJ">"About Database Problems and Incidents"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDBFADF" name="CHDBFADF"></a><a id="ADMQS12109" name="ADMQS12109"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Task 1 &#x2013; View Critical Error Alerts in Enterprise Manager</h3>
+<p><a id="sthref748" name="sthref748"></a>You begin the process of investigating problems (critical errors) by reviewing critical error alerts on the Database Home page.</p>
+<p class="subhead2"><a id="ADMQS12260" name="ADMQS12260"></a>To view critical error alerts:</p>
+<ol>
+<li>
+<p>Go to the Database Home page in Enterprise Manager.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>In the Alerts section, examine the table of alerts.</p>
+<p>Critical error alerts are indicated by an X in the Severity column, and the text "Incident" in the Category column.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+You may have to click the hide/show arrowhead icon next to the Alerts heading to display the alerts table.</div>
+<img width="779" height="279" src="img/critical_alert_home_new.gif" alt="Description of critical_alert_home_new.gif follows" title="Description of critical_alert_home_new.gif follows" longdesc="img_text/critical_alert_home_new.htm" /><br />
+<a id="sthref749" name="sthref749" href="img_text/critical_alert_home_new.htm">Description of the illustration critical_alert_home_new.gif</a><br />
+<br /></li>
+<li>
+<p>(Optional) In the Category list, select <span class="bold">Incident</span> to view alerts of type Incident only.</p>
+</li>
+<li>
+<p>In the <span class="bold">Message</span> column, click the message of the critical error alert to investigate.</p>
+<p>An Incident detail or Data Failure page appears for the type of incident you selected. For example, if you clicked a message about an ORA-600 error, then the Incident - Generic Internal Error page appears.</p>
+<p>This page displays:</p>
+<ul>
+<li>
+<p>Problem information, including the number of incidents for the problem</p>
+</li>
+<li>
+<p>A Performance and Critical Error graphical timeline for the 24-hour time period in which the critical error occurred</p>
+</li>
+<li>
+<p>Alert details, including severity, timestamp, and message</p>
+</li>
+<li>
+<p>Controls that enable you to clear the alert or record a comment about it</p>
+</li>
+</ul>
+<img width="888" height="477" src="img/critical_alert_new.gif" alt="Description of critical_alert_new.gif follows" title="Description of critical_alert_new.gif follows" longdesc="img_text/critical_alert_new.htm" /><br />
+<a id="sthref750" name="sthref750" href="img_text/critical_alert_new.htm">Description of the illustration critical_alert_new.gif</a><br />
+<br /></li>
+<li>
+<p>Review the Performance and Critical Error graphical timeline, and note any time correlation between performance issues and the critical error. Optionally clear the alert or leave a comment about it.</p>
+</li>
+<li>
+<p>Perform one of the following actions:</p>
+<ul>
+<li>
+<p>To view the details of the problem associated with the critical error alert that you are investigating, proceed with <a href="#CHDJBEHD">Task 2 &#x2013; View Problem Details</a>.</p>
+</li>
+<li>
+<p>If the graphical timeline shows a large number of different problems during the 24-hour time period and you want to view a summary of all those problems, then complete these steps:</p>
+<ul>
+<li>
+<p>Click <span class="bold">View All Problems</span>.</p>
+<p>The Support Workbench Home page appears.</p>
+</li>
+<li>
+<p>View problems and incidents as described in <a href="#CHDBCHID">"Viewing Problems Using the Enterprise Manager Support Workbench"</a>.</p>
+</li>
+<li>
+<p>Select a single problem and view problem details, as described in <a href="#CHDBCHID">"Viewing Problems Using the Enterprise Manager Support Workbench"</a>.</p>
+</li>
+<li>
+<p>Continue with <a href="#CHDDCGCA">Task 3 &#x2013; (Optional) Create a Service Request</a>.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDJBEHD" name="CHDJBEHD"></a><a id="ADMQS12110" name="ADMQS12110"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Task 2 &#x2013; View Problem Details</h3>
+<p><a id="sthref751" name="sthref751"></a>You continue your investigation with the Problem Details page.</p>
+<p class="subhead2"><a id="ADMQS12261" name="ADMQS12261"></a>To view problem details:</p>
+<ol>
+<li>
+<p>On the Incident detail or Data Failure page, click <span class="bold">View Problem Details</span>.</p>
+<p>The Problem Details page appears, showing the Incidents subpage.</p>
+</li>
+<li>
+<p>(Optional) To view incident details, in the Incidents subpage, select an incident, and then click <span class="bold">View</span>.</p>
+<p>The Incident Details page appears, showing the Dump Files subpage.</p>
+</li>
+<li>
+<p>(Optional) On the Incident Details page, select <span class="bold">Checker Findings</span> to view the Checker Findings subpage.</p>
+<p>This page displays findings from any health checks that were automatically run when the critical error was detected.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a class="olink ADMIN11269" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN11269"><span class="italic">Oracle Database Administrator's Guide</span></a> for information about health checks and checker findings</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDDCGCA" name="CHDDCGCA"></a><a id="ADMQS12111" name="ADMQS12111"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Task 3 &#x2013; (Optional) Create a Service Request</h3>
+<p><a id="sthref752" name="sthref752"></a><a id="sthref753" name="sthref753"></a>At this point, you can create an Oracle Support service request and record the service request number with the problem information. If you choose to skip this task, then the Support Workbench automatically creates a draft service request for you in Task 4.</p>
+<p class="subhead2"><a id="ADMQS12262" name="ADMQS12262"></a>To create a service request:</p>
+<ol>
+<li>
+<p>On the Problem Details page, in the Investigate and Resolve section, click <span class="bold">Go to My Oracle Support</span>.</p>
+<div class="infoboxnotealso">
+<p class="notep1">Tip:</p>
+If you followed the steps described in Task 2, then from the Incident Details page, click Problem Details in the breadcrumb to return to the Problem Details page.</div>
+<img width="787" height="595" src="img/problem_details_new.gif" alt="Description of problem_details_new.gif follows" title="Description of problem_details_new.gif follows" longdesc="img_text/problem_details_new.htm" /><br />
+<a id="sthref754" name="sthref754" href="img_text/problem_details_new.htm">Description of the illustration problem_details_new.gif</a><br />
+<br />
+<p>The My Oracle Support Login and Registration page appears in a new browser window.</p>
+</li>
+<li>
+<p>Log in to My Oracle Support and create a service request in the usual manner.</p>
+<p>(Optional) Remember the service request number (SR#) for the next step.</p>
+</li>
+<li>
+<p>(Optional) Return to the Problem Details page, and then do the following:</p>
+<ol>
+<li>
+<p>In the Summary section, click the <span class="bold">Edit</span> button that is adjacent to the SR# label.</p>
+</li>
+<li>
+<p>In the page that opens, enter the SR#, and then click <span class="bold">OK</span>.</p>
+</li>
+</ol>
+<p>The SR# is recorded in the Problem Details page. This is for your reference only.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="CHDCAECH" name="CHDCAECH"></a><a id="ADMQS12112" name="ADMQS12112"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Task 4 &#x2013; Package and Upload Diagnostic Data to Oracle Support Services</h3>
+<p><a id="sthref755" name="sthref755"></a><a id="sthref756" name="sthref756"></a>For this task, you use the quick packaging process of the Support Workbench to package and upload the diagnostic information for the problem to Oracle Support Services. Quick packaging has a minimum of steps, organized in a guided workflow (a wizard). The wizard assists you with creating an incident package (referred to as a <span class="italic">package</span>) for a single problem, creating a ZIP file from the package, and uploading the file. With quick packaging, you are not able to edit or otherwise customize the diagnostic information that is uploaded. Using quick packaging is the direct, straightforward method to package and upload diagnostic data.</p>
+<p><a id="sthref757" name="sthref757"></a>To edit or remove sensitive data from the diagnostic information, enclose additional user files (such as application configuration files or scripts), or perform other customizations before uploading, you must use the custom packaging process. See <a class="olink ADMIN12302" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN12302"><span class="italic">Oracle Database Administrator's Guide</span></a> for instructions. When you complete those instructions, you may continue with <a href="#CHDFGDGB">Task 5 &#x2013; Track the Service Request and Implement Any Repairs</a>.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The Support Workbench uses Oracle Configuration Manager to upload the diagnostic data. If Oracle Configuration Manager is not installed or properly configured, then the upload may fail. In this case, a message is displayed with a request that you upload the file to Oracle Support manually. You can upload files manually with My Oracle Support.
+<p>For more information about Oracle Configuration Manager, see <a class="olink CCRIA" href="http://www.oracle.com/pls/db112/lookup?id=CCRIA"><span class="italic">Oracle Configuration Manager Installation and Administration Guide</span></a>.</p>
+</div>
+<p class="subhead2"><a id="ADMQS12263" name="ADMQS12263"></a>To package and upload diagnostic data to Oracle Support:</p>
+<ol>
+<li>
+<p>On the Problem Details page, in the Investigate and Resolve section, click <span class="bold">Quick Package</span>.</p>
+<p><a id="sthref758" name="sthref758"></a>The Create New Package page of the Quick Packaging wizard appears.</p>
+<img width="889" height="416" src="img/quick_package_1_11gr2.gif" alt="Description of quick_package_1_11gr2.gif follows" title="Description of quick_package_1_11gr2.gif follows" longdesc="img_text/quick_package_1_11gr2.htm" /><br />
+<a id="sthref759" name="sthref759" href="img_text/quick_package_1_11gr2.htm">Description of the illustration quick_package_1_11gr2.gif</a><br />
+<br /></li>
+<li>
+<p>(Optional) Enter a package name and description.</p>
+</li>
+<li>
+<p>Fill in the remaining fields on the page. If you have created a service request for this problem, then select the <span class="bold">No</span> option button for Create new Service Request (SR).</p>
+<p>If you select the Yes option button for Create new Service Request (SR), then the Quick Packaging wizard creates a draft service request on your behalf. You must later log in to My Oracle Support and fill in the details of the service request.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<p>The Quick Packaging wizard displays a page indicating that it is processing the command to create a new package. When it finished, the Quick Packaging: View Contents page is displayed.</p>
+</li>
+<li>
+<p>Review the contents on the page, making note of the size of the created package, then click <span class="bold">Next</span>.</p>
+<p>The Quick Packaging: View Manfiest page appears.</p>
+</li>
+<li>
+<p>Review the information on this page, making note of the location of the manifest (listed next to the heading Path). After you have reviewed the information, click <span class="bold">Next</span>.</p>
+<p>The Quick Packaging: Schedule page appears.</p>
+</li>
+<li>
+<p>Choose either Immediately, or Later. If you select Later, then you provide additional information about the time the package should be submitted to My Oracle Support. After you have made your choice and provided any necessary information, click <span class="bold">Submit</span>.</p>
+<p>The Processing: Packaging and Sending the Package progress page appears.</p>
+</li>
+</ol>
+<p>When the Quick Packaging wizard is complete, the package that it creates remains available in the Support Workbench. You can modify the incident package with custom packaging operations (such as adding new incidents) and reupload the package at a later time.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CHDFGDGB" name="CHDFGDGB"></a><a id="ADMQS12113" name="ADMQS12113"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Task 5 &#x2013; Track the Service Request and Implement Any Repairs</h3>
+<p><a id="sthref760" name="sthref760"></a>After uploading diagnostic information to Oracle Support Services, you might perform various activities to track the service request, collect additional diagnostic information, and implement repairs. Among these activities are the following:</p>
+<ul>
+<li>
+<p>Adding an Oracle bug number to the problem information.</p>
+<p>To do so, on the Problem Details page, click the <span class="bold">Edit</span> button that is adjacent to the Bug# label. This is for your reference only.</p>
+</li>
+<li>
+<p><a id="sthref761" name="sthref761"></a><a id="sthref762" name="sthref762"></a><a id="sthref763" name="sthref763"></a>Adding comments to the problem activity log.</p>
+<p>You may want to share problem status or history information with other DBAs in your organization. For example, you could record the results of your conversations with Oracle Support.</p>
+<p><span class="bold">To add comments to the problem activity log:</span></p>
+<ol>
+<li>
+<p>Go to the Problem Details page for the problem, as described in <a href="#CHDBCHID">"Viewing Problems Using the Enterprise Manager Support Workbench"</a>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Activity Log</span> to display the Activity Log subpage.</p>
+<img width="952" height="305" src="img/activity_log_new.gif" alt="Description of activity_log_new.gif follows" title="Description of activity_log_new.gif follows" longdesc="img_text/activity_log_new.htm" /><br />
+<a id="sthref764" name="sthref764" href="img_text/activity_log_new.htm">Description of the illustration activity_log_new.gif</a><br />
+<br /></li>
+<li>
+<p>In the <span class="bold">Comment</span> field, enter a comment, and then click <span class="bold">Add Comment</span>.</p>
+<p>Your comment is recorded in the activity log.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Adding new incidents, if they occur, to the package and reuploading the package to Oracle Support Services.</p>
+<p>For this activity, you must use the custom packaging method described in <a class="olink ADMIN12302" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN12302"><span class="italic">Oracle Database Administrator's Guide</span></a>.</p>
+</li>
+<li>
+<p>Running health checks.</p>
+<p>See <a class="olink ADMIN11269" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN11269"><span class="italic">Oracle Database Administrator's Guide</span></a> for information about health checks.</p>
+</li>
+<li>
+<p>Running a suggested Oracle advisor to implement repairs.</p>
+<p>You can access the suggested advisor in one of the following ways:</p>
+<ul>
+<li>
+<p><span class="bold">Problem Details page</span>&#x2014;In the Self-Service tab of the Investigate and Resolve section</p>
+</li>
+<li>
+<p><span class="bold">Support Workbench Home page</span>&#x2014;On the Checker Findings subpage</p>
+</li>
+<li>
+<p><span class="bold">Incident Details page</span>&#x2014;On the Checker Findings subpage</p>
+</li>
+</ul>
+<p><a href="#CHDJJCIJ">Table 11-1</a> lists the advisors that help repair critical errors.</p>
+<div class="tblformalwide">
+<p class="titleintable"><a id="ADMQS12351" name="ADMQS12351"></a><a id="sthref765" name="sthref765"></a><a id="CHDJJCIJ" name="CHDJJCIJ"></a>Table 11-1 Oracle Advisors that Help Repair Critical Errors</p>
+<table class="FormalWide" title="Oracle Advisors that Help Repair Critical Errors" summary="This table contains two columns: Advisor Name and Purpose. It has two rows: one for the Data Recovery Advisor and one for the SQL Repair Advisor" dir="ltr" border="1" width="100%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<col width="25%" />
+<col width="*" />
+<col width="32%" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t9">Advisor</th>
+<th align="left" valign="bottom" id="r1c2-t9">Critical Errors Addressed</th>
+<th align="left" valign="bottom" id="r1c3-t9">See</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t9" headers="r1c1-t9">
+<p>Data <a id="sthref766" name="sthref766"></a>Recovery Advisor</p>
+</td>
+<td align="left" headers="r2c1-t9 r1c2-t9">
+<p>Corrupted blocks, corrupted or missing files, and other data failures</p>
+</td>
+<td align="left" headers="r2c1-t9 r1c3-t9">
+<p><a href="backrest.htm#CHDFJGHE">"Performing Oracle Advised Recovery"</a></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t9" headers="r1c1-t9">
+<p>SQL Repair Advisor</p>
+</td>
+<td align="left" headers="r3c1-t9 r1c2-t9">
+<p>SQL statement failures</p>
+</td>
+<td align="left" headers="r3c1-t9 r1c3-t9">
+<p><a class="olink ADMIN12301" href="http://www.oracle.com/pls/db112/lookup?id=ADMIN12301"><span class="italic">Oracle Database Administrator's Guide</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblformalwide" --></li>
+</ul>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<ul>
+<li>
+<p><a href="#CHDBCHID">"Viewing Problems Using the Enterprise Manager Support Workbench"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- class="sect2" -->
+<a id="CHDHJHCD" name="CHDHJHCD"></a><a id="ADMQS12114" name="ADMQS12114"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2">Task 6 &#x2013; Close Incidents</h3>
+<p><a id="sthref767" name="sthref767"></a>When a particular incident is no longer of interest, you can close it. By default, closed incidents are not displayed on the Problem Details page.</p>
+<p>All incidents, whether closed or not, are purged after 30 days. You can disable purging for an incident on the Incident Details page.</p>
+<p class="subhead2"><a id="ADMQS12264" name="ADMQS12264"></a>To close incidents:</p>
+<ol>
+<li>
+<p>Go to the Support Workbench Home page.</p>
+<p>See <a href="#CHDBCHID">"Viewing Problems Using the Enterprise Manager Support Workbench"</a>.</p>
+</li>
+<li>
+<p>Select the desired problem, and then click <span class="bold">View</span>.</p>
+<p>The Problem Details page appears.</p>
+</li>
+<li>
+<p>Select the incidents to close and then click <span class="bold">Close</span>.</p>
+<p>A confirmation page appears.</p>
+</li>
+<li>
+<p>Click <span class="bold">Yes</span> to close the incident.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="CHDBCHID" name="CHDBCHID"></a><a id="ADMQS12115" name="ADMQS12115"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Viewing Problems Using the Enterprise Manager Support Workbench</h2>
+<p><a id="sthref768" name="sthref768"></a><a id="sthref769" name="sthref769"></a>You use the Enterprise Manager Support Workbench home page to view all problems or only those within a specified time period.</p>
+<p class="subhead2"><a id="ADMQS12265" name="ADMQS12265"></a>To access the Support Workbench home page:</p>
+<ol>
+<li>
+<p>Go to the Database Home page in Enterprise Manager.</p>
+<p>See <a href="em_manage.htm#BABHJAGE">"Accessing the Database Home Page"</a>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Software and Support</span> to view the Software and Support page.</p>
+</li>
+<li>
+<p>In the Support section, click <span class="bold">Support Workbench</span>.</p>
+<p>The Support Workbench home page appears, showing the Problems subpage. By default the problems from the last 24 hours are displayed.</p>
+<img width="879" height="381" src="img/support_workbench_new.gif" alt="Description of support_workbench_new.gif follows" title="Description of support_workbench_new.gif follows" longdesc="img_text/support_workbench_new.htm" /><br />
+<a id="sthref770" name="sthref770" href="img_text/support_workbench_new.htm">Description of the illustration support_workbench_new.gif</a><br />
+<br /></li>
+<li>
+<p>To view all problems, select <span class="bold">All</span> from the View list.</p>
+</li>
+<li>
+<p>(Optional) If the Performance and Critical Error section is hidden, then click the <span class="bold">Show/Hide</span> icon adjacent to the section heading to show the section.</p>
+<p>This section enables you to view any correlation between performance changes for your database and incident occurrences.</p>
+</li>
+<li>
+<p>(Optional) Under the Details column, click <span class="bold">Show</span> to display a list of all incidents for a problem, and then click an incident ID to display the Incident Details page.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="ADMQS12266" name="ADMQS12266"></a>To view details for a particular problem:</p>
+<ol>
+<li>
+<p>On the Support Workbench home page, select the problem, and then click <span class="bold">View</span>.</p>
+<p>The Problem Details page appears, showing the Incidents subpage.</p>
+</li>
+<li>
+<p>(Optional) To view <a id="sthref771" name="sthref771"></a>closed incidents and open incidents, select <span class="bold">All</span> from the View list.</p>
+</li>
+<li>
+<p>(Optional) To view details for an incident, select the incident, and then click <span class="bold">View</span>.</p>
+<p>The Incident Details page appears.</p>
+</li>
+<li>
+<p>(Optional) To view the contents of an associated trace file, on the Dump Files subpage of the Incident Details page, click the icon in the View Contents column for the trace file.</p>
+<p>Enter the host credentials, then click <span class="bold">Continue</span>. The contents of the trace file are displayed. Click <span class="bold">OK</span> to return.</p>
+</li>
+<li>
+<p>(Optional) To view checker findings for the incident, on the Incident Details page, click <span class="bold">Checker Findings</span>.</p>
+<p>The Checker Findings subpage appears.</p>
+</li>
+<li>
+<p>(Optional) On the Incident Details page, to view the user actions that are available to you for the incident, click <span class="bold">Additional Diagnostics</span>. Each user action provides a way for you to gather additional diagnostics for the incident or its problem.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="montune.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="software.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2004, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

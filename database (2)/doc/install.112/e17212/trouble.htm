@@ -1,0 +1,776 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Troubleshooting the Oracle Grid Infrastructure Installation Process</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 020" />
+<meta name="Date" content="2011-03-24T11:1:7Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Grid Infrastructure Installation Guide 11g Release 2 (11.2) for Linux" />
+<meta name="partno" content="E17212-11" />
+<meta name="docid" content="CWLIN" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="rem_orcl.htm" title="Previous" type="text/html" />
+<link rel="Next" href="app_nonint.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17212.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Grid Infrastructure Installation Guide<br />
+11<i>g</i> Release 2 (11.2) for Linux</b><br />
+Part Number E17212-11</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="rem_orcl.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="app_nonint.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17212.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="CIACEGFJ" name="CIACEGFJ"></a><a id="CWLIN354" name="CWLIN354"></a>
+<h1 class="appendix"><span class="secnum">A</span> Troubleshooting the Oracle Grid Infrastructure Installation Process</h1>
+<p>This appendix provides troubleshooting information for installing Oracle Grid Infrastructure.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+The Oracle Database 11<span class="italic">g</span> Oracle RAC documentation set in the Documentation directory:
+<ul>
+<li>
+<p><a class="olink CWADD" href="http://www.oracle.com/pls/db112/lookup?id=CWADD"><span class="italic">Oracle Clusterware Administration and Deployment Guide</span></a></p>
+</li>
+<li>
+<p><a class="olink RACAD" href="http://www.oracle.com/pls/db112/lookup?id=RACAD"><span class="italic">Oracle Real Application Clusters Administration and Deployment Guide</span></a></p>
+</li>
+</ul>
+</div>
+<p>This appendix contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CIAHHGEB">General Installation Issues</a></p>
+</li>
+<li>
+<p><a href="#CIAJGEAC">Interpreting CVU "Unknown" Output Messages Using Verbose Mode</a></p>
+</li>
+<li>
+<p><a href="#CIAFEFAD">Interpreting CVU Messages About Oracle Grid Infrastructure Setup</a></p>
+</li>
+<li>
+<p><a href="#CIAFFECC">About the Oracle Clusterware Alert Log</a></p>
+</li>
+<li>
+<p><a href="#CIADFEDG">Missing Operating System Packages On Linux</a></p>
+</li>
+<li>
+<p><a href="#CIAJDDHB">Performing Cluster Diagnostics During Oracle Grid Infrastructure Installations</a></p>
+</li>
+<li>
+<p><a href="#CIADFHJJ">Interconnect Configuration Issues</a></p>
+</li>
+<li>
+<p><a href="#BABCEEBE">Storage Configuration Issues</a></p>
+</li>
+</ul>
+<a id="CIAHHGEB" name="CIAHHGEB"></a><a id="CWLIN355" name="CWLIN355"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">A.1</span> General Installation Issues<a id="sthref732" name="sthref732"></a></h2>
+<p>The following is a list of examples of types of errors that can occur during installation. It contains the following issues:</p>
+<ul>
+<li>
+<p><a href="#CIAIICFE">An error occurred while trying to get the disks</a></p>
+</li>
+<li>
+<p><a href="#CIAJGEED">Could not execute auto check for display colors using command /usr/X11R6/bin/xdpyinfo</a></p>
+</li>
+<li>
+<p><a href="#tahiti51693160">CRS-5823:Could not initialize agent framework.</a></p>
+</li>
+<li>
+<p><a href="#CIAICBJC">Failed to connect to server, Connection refused by server, or Can't open display</a></p>
+</li>
+<li>
+<p><a href="#CIAHAFGH">Failed to initialize ocrconfig</a></p>
+</li>
+<li>
+<p><a href="#tahiti50879744">INS-32026 INSTALL_COMMON_HINT_DATABASE_LOCATION_ERROR</a></p>
+</li>
+<li>
+<p><a href="#BABECCGE">MEMORY_TARGET not supported on this system</a></p>
+</li>
+<li>
+<p><a href="#CIAHIBGD">Nodes unavailable for selection from the OUI Node Selection screen</a></p>
+</li>
+<li>
+<p><a href="#CIAHGBGC">Node <span class="italic">nodename</span> is unreachable</a></p>
+</li>
+<li>
+<p><a href="#CIACEGGA">PROT-8: Failed to import data from specified file to the cluster registry</a></p>
+</li>
+<li>
+<p><a href="#tahiti51329677">PRVE-0033 : Core files are not enabled on node</a></p>
+</li>
+<li>
+<p><a href="#tahiti51696606">PRVE-0038 : The SSH LoginGraceTime setting, or fatal: Timeout before authentication</a></p>
+</li>
+<li>
+<p><a href="#tahiti51318289">Timed out waiting for the CRS stack to start</a></p>
+</li>
+<li>
+<p><a href="#CIACEDHA">YPBINDPROC_DOMAIN: Domain not bound</a></p>
+</li>
+</ul>
+<a id="CIACBFEA" name="CIACBFEA"></a>
+<div class="msgset"><a id="CIAIICFE" name="CIAIICFE"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref733" name="sthref733"></a>An error occurred while trying to get the disks</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> There is an entry in <code>/etc/oratab</code> pointing to a non-existent Oracle home. The OUI log file should show the following error: "java.io.IOException: /home/oracle/OraHome/bin/kfod: not found"</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Remove the entry in <code>/etc/oratab</code> pointing to a non-existing Oracle home.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti51331524" name="tahiti51331524"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref734" name="sthref734"></a>CRS-5018:(:CLSN00037:) Removed unused HAIP route:</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Typically, this error indicates that something (usually Zero Configuration Networking, <code>zeroconf</code>) has created the indicated route that is conflicting with the HAIP code. The error indicates that the Oracle software has removed the route to ensure appropriate stack functioning.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> The Zero Configuration Networking feature should be disabled when using Oracle Clusterware, as this feature may cause communication issues between cluster member nodes.
+<p>To disable Zero Configuration Networking:</p>
+<ol>
+<li>
+<p>Log in as root.</p>
+</li>
+<li>
+<p>Change directory to <code>/etc/sysconfig</code></p>
+</li>
+<li>
+<p>Create a copy of <code>/etc/sysconfig/network</code>. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn"># cp network network_old
+</pre></li>
+<li>
+<p>Use a text editor to open the file <code>/etc/sysconfig/network</code>.</p>
+</li>
+<li>
+<p>Check the file for the value for <code>NOZERCONF</code> to confirm that it is set to yes. If you do not find this parameter in the file, then append the following entry to the file:</p>
+<pre xml:space="preserve" class="oac_no_warn">NOZERCONF=yes
+</pre>
+<p>Save the file after you update this setting.</p>
+</li>
+<li>
+<p>Restart the network services. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn"># service network restart
+</pre></li>
+<li>
+<p>Repeat this process on each cluster member node.</p>
+</li>
+</ol>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIAJGEED" name="CIAJGEED"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref735" name="sthref735"></a>Could not execute auto check for display colors using command /usr/X11R6/bin/xdpyinfo</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Either the DISPLAY variable is not set, or the user running the installation is not authorized to open an X window. This can occur if you run the installation from a remote terminal, or if you use an <code>su</code> command to change from a user that is authorized to open an X window to a user account that is not authorized to open an X window on the display, such as a lower-privileged user opening windows on the <code>root</code> user's console display.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Run the command <code>echo $DISPLAY</code> to ensure that the variable is set to the correct visual or to the correct host. If the display variable is set correctly then either ensure that you are logged in as the user authorized to open an X window, or run the command <code>xhost +</code> to allow any user to open an X window.
+<p>If you are logged in locally on the server console as <code>root</code>, and used the su - command to change to the Oracle Grid Infrastructure installation owner, then log out of the server, and log back in as the grid installation owner.</p>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti51693160" name="tahiti51693160"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref736" name="sthref736"></a>CRS-5823:Could not initialize agent framework.</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Installation of Oracle Grid Infrastructure fails when you run <code>root.sh</code>. Oracle Grid Infrastructure fails to start because the local host entry is missing from the hosts file.
+<p>The Oracle Grid Infrastructure alert.log file shows the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">[/oracle/app/grid/bin/orarootagent.bin(11392)]CRS-5823:Could not initialize
+agent framework. Details at (:CRSAGF00120:) in
+/oracle/app/grid/log/node01/agent/crsd/orarootagent_root/orarootagent_root.log
+2010-10-04 12:46:25.857
+[ohasd(2401)]CRS-2765:Resource 'ora.crsd' has failed on server 'node01'.
+</pre>
+<p>You can verify this as the cause by checking <code>crsdOUT.log</code> file, and finding the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">Unable to resolve address for localhost:2016
+ONS runtime exiting
+Fatal error: eONS: eonsapi.c: Aug 6 2009 02:53:02
+</pre></div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Add the local host entry in the hosts file.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIAICBJC" name="CIAICBJC"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref737" name="sthref737"></a>Failed to connect to server, Connection refused by server, or Can't open display</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> These are typical of X Window display errors on Windows or UNIX systems, where <code>xhost</code> is not properly configured, or where you are running as a user account that is different from the account you used with the <code>startx</code> command to start the X server.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> In a local terminal window, log in as the user that started the X Window session, and enter the following command:
+<p>$ xhost <span class="italic">fullyqualifiedRemoteHostname</span></p>
+<p>For example:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ xhost somehost.example.com
+</pre>
+<p>Then, enter the following commands, where <code><span class="codeinlineitalic">workstationname</span></code> is the host name or IP address of your workstation.</p>
+<p>Bourne, Bash, or Korn shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ DISPLAY=<span class="italic">workstationname</span>:0.0
+$ export DISPLAY
+</pre>
+<p>To determine whether X Window applications display correctly on the local system, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ xclock
+</pre>
+<p>The X clock should appear on your monitor. If this fails to work, then use of the <code>xhost</code> command may be restricted.</p>
+<p>If you are using a VNC client to access the server, then ensure that you are accessing the visual that is assigned to the user that you are trying to use for the installation. For example, if you used the <code>su</code> command to become the installation owner on another user visual, and the <code>xhost</code> command use is restricted, then you cannot use the <code>xhost</code> command to change the display. If you use the visual assigned to the installation owner, then the correct display will be available, and entering the <code>xclock</code> command will display the X clock.</p>
+<p>When the X clock appears, then close the X clock and start the installer again.</p>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIAHAFGH" name="CIAHAFGH"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref738" name="sthref738"></a>Failed to initialize ocrconfig</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> You have the wrong options configured for NFS in the <code>/etc/fstab</code> file.
+<p>You can confirm this by checking <code>ocrconfig.log</code> files located in the path <code><span class="codeinlineitalic">Grid_home</span></code><code>/log/node</code><code><span class="codeinlineitalic">number</span></code><code>/client</code> and finding the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">/u02/app/crs/clusterregistry, ret -1, errno 75, os err string Value too large
+for defined data type
+2007-10-30 11:23:52.101: [ OCROSD][3085960896]utopen:6'': OCR location
+</pre></div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> For file systems mounted on NFS, provide the correct mount configuration for NFS mounts in the <code>/etc/fstab</code> file:
+<pre xml:space="preserve" class="oac_no_warn">rw,sync,bg,hard,nointr,tcp,vers=3,timeo=300,rsize=32768,wsize=32768,actimeo=0
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+You should not have <code>netdev</code> in the mount instructions, or <code>vers=2</code>. The <code>netdev</code> option is only required for OCFS file systems, and <code>vers=2</code> forces the kernel to mount NFS using the older version 2 protocol.</div>
+<p>After correcting the NFS mount information, remount the NFS mount point, and run the <code>root.sh</code> script again. For example, with the mount point <code>/u02</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">#umount /u02
+#mount -a -t nfs
+#cd $GRID_HOME
+#sh root.sh
+</pre></div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti50879744" name="tahiti50879744"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref739" name="sthref739"></a>INS-32026 INSTALL_COMMON_HINT_DATABASE_LOCATION_ERROR</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> The location selected for the Grid home for a cluster installation is located under an Oracle base directory.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> For Oracle Grid Infrastructure for a Cluster installations, the Grid home must not be placed under one of the Oracle base directories, or under Oracle home directories of Oracle Database installation owners, or in the home directory of an installation owner. During installation, ownership of the path to the Grid home is changed to <code>root</code>. This change causes permission errors for other installations. In addition, the Oracle Clusterware software stack may not come up under an Oracle base path.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="BABECCGE" name="BABECCGE"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref740" name="sthref740"></a>MEMORY_TARGET not supported on this system</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> On Linux systems, insufficient <code>/dev/shm</code> size for PGA and SGA.
+<p>If you are installing on a Linux system, note that Memory Size (SGA and PGA), which sets the initialization parameter MEMORY_TARGET or MEMORY_MAX_TARGET, cannot be greater than the shared memory file system (<code>/dev/shm</code>) on your operating system.</p>
+</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Increase the <code>/dev/shm</code> mountpoint size. For example:
+<pre xml:space="preserve" class="oac_no_warn"># mount -t tmpfs shmfs -o size=4g /dev/shm
+</pre>
+<p>Also, to make this change persistent across system restarts, add an entry in <code>/etc/fstab</code> similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">shmfs /dev/shm tmpfs size=4g 0
+</pre></div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIAHIBGD" name="CIAHIBGD"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref741" name="sthref741"></a>Nodes unavailable for selection from the OUI Node Selection screen</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Oracle Grid Infrastructure is either not installed, or the Oracle Grid Infrastructure services are not up and running.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Install Oracle Grid Infrastructure, or review the status of your installation. Consider restarting the nodes, as doing so may resolve the problem.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIAHGBGC" name="CIAHGBGC"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref742" name="sthref742"></a>Node <span class="italic">nodename</span> is unreachable</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Unavailable IP host</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Attempt the following:
+<ol>
+<li>
+<p>Run the shell command <code>ifconfig -a</code>. Compare the output of this command with the contents of the <code>/etc/hosts</code> file to ensure that the node IP is listed.</p>
+</li>
+<li>
+<p>Run the shell command <code>nslookup</code> to see if the host is reachable.</p>
+</li>
+</ol>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIACEGGA" name="CIACEGGA"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref743" name="sthref743"></a>PROT-8: Failed to import data from specified file to the cluster registry</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Insufficient space in an existing Oracle Cluster Registry device partition, which causes a migration failure while running <code>rootupgrade.sh</code>. To confirm, look for the error "utopen:12:Not enough space in the backing store" in the log file <code>$GRID_HOME/log/</code><span class="italic">hostname</span><code>/client/ocrconfig_</code><code><span class="codeinlineitalic">pid</span></code><code>.log</code>, where <code><span class="codeinlineitalic">pid</span></code> stands for the process id.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Identify a storage device that has 300 MB or more available space. Oracle recommends that you allocate the entire disk to Oracle ASM.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti51329677" name="tahiti51329677"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref744" name="sthref744"></a>PRVE-0033 : Core files are not enabled on node</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> The core file setting currently prevents the creation of a core file for process aborts and exceptions.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Enable core file creation. For example:
+<pre xml:space="preserve" class="oac_no_warn"># /sbin/sysctl -w fs.suid_dumpable=1
+</pre>
+<p>Also update the parameter value in <code>/etc/sysctl.conf</code> to enable core file creation. Enabling core file creation can vary between Linux distributions; refer to your Linux vendor documentation for details.</p>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti51696606" name="tahiti51696606"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref745" name="sthref745"></a>PRVE-0038 : The SSH LoginGraceTime setting, or fatal: Timeout before authentication</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> <a id="sthref746" name="sthref746"></a><a id="sthref747" name="sthref747"></a>PRVE-0038: The SSH LoginGraceTime setting on node "<span class="italic">nodename</span>" may result in users being disconnected before login is completed. This error may because the default timeout value for SSH connections is too low, or if the LoginGraceTime parameter is commented out.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Oracle recommends uncommenting the LoginGraceTime parameter in the OpenSSH configuration file <code>/etc/ssh/sshd_config</code>, and setting it to a value of 0 (unlimited).</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="tahiti51318289" name="tahiti51318289"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref748" name="sthref748"></a>Timed out waiting for the CRS stack to start</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> If a configuration issue prevents the Oracle Grid Infrastructure software from installing successfully on all nodes, then you may see error messages such as "Timed out waiting for the CRS stack to start," or you may notice that Oracle Clusterware-managed resources were not create on some nodes after you exit the installer. You also may notice that resources have a status other than ONLINE.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Deconfigure the Oracle Grid Infrastructure installation without removing binaries, and review log files to determine the cause of the configuration issue. After you have fixed the configuration issue, rerun the scripts used during installation to configure Oracle Clusterware.
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="rem_orcl.htm#CBHJAGJC">Section 6.5, "Deconfiguring Oracle Clusterware Without Removing Binaries"</a></div>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIACEDHA" name="CIACEDHA"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref749" name="sthref749"></a>YPBINDPROC_DOMAIN: Domain not bound</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> This error can occur during postinstallation testing when the public network interconnect for a node is pulled out, and the VIP does not fail over. Instead, the node hangs, and users are unable to log in to the system. This error occurs when the Oracle home, <code>listener.ora</code>, Oracle log files, or any action scripts are located on an NAS device or NFS mount, and the name service cache daemon <code>nscd</code> has not been activated.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Enter the following command on all nodes in the cluster to start the nscd service:
+<pre xml:space="preserve" class="oac_no_warn">/sbin/service  nscd start
+</pre></div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" --></div>
+<!-- class="msgset" --></div>
+<!-- class="sect1" -->
+<a id="CIAJGEAC" name="CIAJGEAC"></a><a id="CWLIN356" name="CWLIN356"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">A.2</span> Interpreting CVU "Unknown" Output Messages Using Verbose Mode</h2>
+<p>If you run Cluster Verification Utility using the <code>-verbose</code> argument, and a Cluster Verification Utility command responds with <code>UNKNOWN</code> for a particular node, then this is because Cluster Verification Utility cannot determine if a check passed or failed. The following is a list of possible causes for an "Unknown" response:</p>
+<ul>
+<li>
+<p>The node is down</p>
+</li>
+<li>
+<p>Common operating system command binaries required by Cluster Verification Utility are missing in the <code>/bin</code> directory in the Oracle Grid Infrastructure home or Oracle home directory</p>
+</li>
+<li>
+<p>The user account starting Cluster Verification Utility does not have privileges to run common operating system commands on the node</p>
+</li>
+<li>
+<p>The node is missing an operating system patch, or a required package</p>
+</li>
+<li>
+<p>The node has exceeded the maximum number of processes or maximum number of open files, or there is a problem with IPC segments, such as shared memory or semaphores</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="CIAFEFAD" name="CIAFEFAD"></a><a id="CWLIN357" name="CWLIN357"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">A.3</span> Interpreting CVU Messages About Oracle Grid Infrastructure Setup</h2>
+<p>If the Cluster Verification Utility report indicates that your system fails to meet the requirements for Oracle Grid Infrastructure installation, then use the topics in this section to correct the problem or problems indicated in the report, and run Cluster Verification Utility again.</p>
+<ul>
+<li>
+<p><a href="#CIAJDJHF">User Equivalence Check Failed</a></p>
+</li>
+<li>
+<p><a href="#CIAIJCCB">Node Reachability Check or Node Connectivity Check Failed</a></p>
+</li>
+<li>
+<p><a href="#CIAEAIID">User Existence Check or User-Group Relationship Check Failed</a></p>
+</li>
+</ul>
+<a id="CIAJBAJD" name="CIAJBAJD"></a>
+<div class="msgset"><a id="CIACHDGD" name="CIACHDGD"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAJDJHF" name="CIAJDJHF"></a>User Equivalence Check Failed</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> Failure to establish user equivalency across all nodes. This can be due to not creating the required users, or failing to complete secure shell (SSH) configuration properly.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Cluster Verification Utility provides a list of nodes on which user equivalence failed.
+<p>For each node listed as a failure node, review the installation owner user configuration to ensure that the user configuration is properly completed, and that SSH configuration is properly completed. The user that runs the Oracle Clusterware installation must have permissions to create SSH connections.</p>
+<p>Oracle recommends that you use the SSH configuration option in OUI to configure SSH. You can use Cluster Verification Utility before installation if you configure SSH manually, or after installation, when SSH has been configured for installation.</p>
+<p>For example, to check user equivalency for the user account <code>oracle</code>, use the command <code>su - oracle</code> and <a id="sthref750" name="sthref750"></a><a id="sthref751" name="sthref751"></a>check <a id="sthref752" name="sthref752"></a>user equivalence manually by running the <code>ssh</code> command on the local node with the <code>date</code> command argument using the following syntax:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ssh <span class="italic">nodename</span> date
+</pre>
+<p>The output from this command should be the timestamp of the remote node identified by the value that you use for <code>nodename</code>. If you are prompted for a password, then you need to configure SSH. If <code>ssh</code> is in the default location, the <code>/usr/bin</code> directory, then use <code>ssh</code> to configure user equivalence. You can also use <code>rsh</code> to confirm user equivalence.</p>
+<p>If you see a message similar to the following when entering the date command with SSH, then this is the probable cause of the user equivalence error:</p>
+<pre xml:space="preserve" class="oac_no_warn">The authenticity of host 'node1 (140.87.152.153)' can't be established.
+RSA key fingerprint is 7z:ez:e7:f6:f4:f2:4f:8f:9z:79:85:62:20:90:92:z9.
+Are you sure you want to continue connecting (yes/no)?
+</pre>
+<p>Enter yes, and then run Cluster Verification Utility to determine if the user equivalency error is resolved.</p>
+<p>If <code>ssh</code> is in a location other than the default, <code>/usr/bin</code>, then Cluster Verification Utility reports a user equivalence check failure. To avoid this error, navigate to the directory <code><span class="codeinlineitalic">Grid_home</span></code><code>/cv/admin</code>, open the file <code>cvu_config</code> with a text editor, and add or update the key <code>ORACLE_SRVM_REMOTESHELL</code> to indicate the <code>ssh</code> path location on your system. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn"># Locations for ssh and scp commands
+ORACLE_SRVM_REMOTESHELL=/usr/local/bin/ssh
+ORACLE_SRVM_REMOTECOPY=/usr/local/bin/scp
+</pre>
+<p>Note the following rules for modifying the <code>cvu_config</code> file:</p>
+<ul>
+<li>
+<p>Key entries have the syntax <span class="italic">name</span>=<span class="italic">value</span></p>
+</li>
+<li>
+<p>Each key entry and the value assigned to the key defines one property only</p>
+</li>
+<li>
+<p>Lines beginning with the number sign (#) are comment lines, and are ignored</p>
+</li>
+<li>
+<p>Lines that do not follow the syntax <span class="italic">name</span>=<span class="italic">value</span> are ignored</p>
+</li>
+</ul>
+<p>When you have changed the path configuration, run Cluster Verification Utility again. If <code>ssh</code> is in another location than the default, you also need to start OUI with additional arguments to specify a different location for the remote shell and remote copy commands. Enter <code>runInstaller -help</code> to obtain information about how to use these arguments.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+When you or OUI run <code>ssh</code> or <code>rsh</code> commands, including any login or other shell scripts they start, you may see errors about invalid arguments or standard input if the scripts generate any output. You should correct the cause of these errors.
+<p>To stop the errors, remove all commands from the <code>oracle</code> user's login scripts that generate output when you run <code>ssh</code> or <code>rsh</code> commands.</p>
+<p>If you see messages about X11 forwarding, then complete the task <a href="prelinux.htm#BABDFDJI">"Setting Display and X11 Forwarding Configuration"</a> to resolve this issue.</p>
+<p>If you see errors similar to the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">stty: standard input: Invalid argument
+stty: standard input: Invalid argument
+</pre>
+<p>These errors are produced if hidden files on the system (for example, <code>.bashrc</code> or <code>.cshrc</code>) contain <code>stty</code> commands. If you see these errors, then refer to <a href="prelinux.htm#BABFDGHJ">Chapter 2</a>, <a href="prelinux.htm#BABFACIJ">"Preventing Installation Errors Caused by Terminal Output Commands"</a> to correct the cause of these errors.</p>
+</div>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIAGABBB" name="CIAGABBB"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAIJCCB" name="CIAIJCCB"></a>Node Reachability Check or Node Connectivity Check Failed</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> One or more nodes in the cluster cannot be reached using TCP/IP protocol, through either the public or private interconnects.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Use the command <code>/bin/ping</code> <code><span class="codeinlineitalic">address</span></code> to check each node address. When you find an address that cannot be reached, check your list of public and private addresses to make sure that you have them correctly configured. If you use third-party vendor clusterware, then refer to the vendor documentation for assistance. Ensure that the public and private network interfaces have the same interface names on each node of your cluster.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" -->
+<a id="CIAGFBBJ" name="CIAGFBBJ"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="CIAEAIID" name="CIAEAIID"></a>User Existence Check or User-Group Relationship Check Failed</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> The administrative privileges for users and groups required for installation are missing or incorrect.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> Use the <code>id</code> command on each node to confirm that the installation owner user (for example, <code>grid</code> or <code>oracle</code>) is created with the correct group membership. Ensure that you have created the required groups, and create or modify the user account on affected nodes to establish required group membership.
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a href="prelinux.htm#BABBIDCF">"Creating Groups, Users and Paths for Oracle Grid Infrastructure"</a> in <a href="prelinux.htm#BABFDGHJ">Chapter 2</a> for instructions about how to create required groups, and how to configure the installation owner user</div>
+</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" --></div>
+<!-- class="msgset" --></div>
+<!-- class="sect1" -->
+<a id="CIAFFECC" name="CIAFFECC"></a><a id="CWLIN358" name="CWLIN358"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">A.4</span> About the Oracle Clusterware Alert Log</h2>
+<p>The Oracle Clusterware alert log is the first place to look for serious errors. In the event of an error, it can contain path information to diagnostic logs that can provide specific information about the cause of errors.</p>
+<p>After installation, Oracle Clusterware posts alert messages when important events occur. For example, you might see alert messages from the Cluster Ready Services (CRS) daemon process when it starts, if it aborts, if the failover process fails, or if automatic restart of a CRS resource failed.</p>
+<p>Oracle Enterprise Manager monitors the Clusterware log file and posts an alert on the Cluster Home page if an error is detected. For example, if a voting disk is not available, a <code>CRS-1604</code> error is raised, and a critical alert is posted on the Cluster Home page. You can customize the error detection and alert settings on the Metric and Policy Settings page.</p>
+<p>The location of the Oracle Clusterware log file is <code><span class="codeinlineitalic"><span class="italic">CRS_home</span></span></code><code>/log/</code><code><span class="codeinlineitalic">hostname</span></code><code>/alert</code><code><span class="codeinlineitalic">hostname</span></code><code>.log</code>, where <code><span class="codeinlineitalic"><span class="italic">CRS_home</span></span></code> is the directory in which Oracle Clusterware was installed and <code><span class="codeinlineitalic">hostname</span></code> is the host name of the local node.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink RACAD" href="http://www.oracle.com/pls/db112/lookup?id=RACAD"><span class="italic">Oracle Real Application Clusters Administration and Deployment Guide</span></a></div>
+</div>
+<!-- class="sect1" -->
+<a id="CIADFEDG" name="CIADFEDG"></a><a id="CWLIN359" name="CWLIN359"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">A.5</span> Missing Operating System Packages On Linux<a id="sthref753" name="sthref753"></a><a id="sthref754" name="sthref754"></a></h2>
+<p>You have missing operating system packages on your system if you receive error messages such as the following during Oracle Grid Infrastructure, Oracle RAC, or Oracle Database installation:</p>
+<pre xml:space="preserve" class="oac_no_warn">libstdc++.so.5: cannot open shared object file: No such file or directory
+libXp.so.6: cannot open shared object file: No such file or directory
+</pre>
+<p>Errors such as these should not occur, as missing packages should have been identified during installation. They may indicate that you are using an operating system distribution that has not been certified, or that you are using an older version of the Cluster Verification Utility.</p>
+<p>If you have a Linux support network configured, such as the Red Hat network or Oracle Unbreakable Linux support, then use the <code>up2date</code> command to determine the name of the package. For example:</p>
+<pre xml:space="preserve" class="oac_no_warn"># up2date --whatprovides libstdc++.so.5
+compat-libstdc++-33.3.2.3-47.3
+</pre>
+<p>Also, download the most recent version of Cluster Verification Utility to make sure that you have the current required packages list. You can obtain the most recent version at the following URL:</p>
+<pre xml:space="preserve" class="oac_no_warn"><a href="http://www.oracle.com/technology/products/database/clustering/cvu/cvu_download_homepage.html">http://www.oracle.com/technology/products/database/clustering/cvu/cvu_download_homepage.html</a>
+</pre></div>
+<!-- class="sect1" -->
+<a id="CIAJDDHB" name="CIAJDDHB"></a><a id="CWLIN360" name="CWLIN360"></a>
+<div class="sect1">
+<h2 class="sect1"><span class="secnum">A.6</span> Performing Cluster Diagnostics During Oracle Grid Infrastructure Installations</h2>
+<p>If the installer does not display the Node Selection page, then use the following command syntax to check the integrity of the Cluster Manager:</p>
+<pre xml:space="preserve" class="oac_no_warn">cluvfy comp clumgr -n <span class="italic">node_list</span> -verbose
+</pre>
+<p>In the preceding syntax example, the variable <code><span class="codeinlineitalic">node_list</span></code> is the list of nodes in your cluster, separated by commas.</p>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+<a id="sthref755" name="sthref755"></a><a id="sthref756" name="sthref756"></a>If you encounter unexplained installation errors during or after a period when cron jobs are run, then your cron job may have deleted temporary files before the installation is finished. Oracle recommends that you complete installation before daily cron jobs are run, or disable daily cron jobs that perform cleanup until after the installation is completed.</div>
+</div>
+<!-- class="sect1" -->
+<a id="CIADFHJJ" name="CIADFHJJ"></a><a id="CWLIN361" name="CWLIN361"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">A.7</span> Interconnect Configuration Issues</h2>
+<p>If you plan to use multiple network interface cards (NICs) for the interconnect, and you do not configure them during installation or after installation with Redundant Interconnect Usage, then you should use a third party solution to bond the interfaces at the operating system level. Otherwise, the failure of a single NIC will affect the availability of the cluster node.</p>
+<p>If you install Oracle Grid Infrastructure and Oracle RAC, then they must use the same NIC or bonded NIC cards for the interconnect.</p>
+<p>If you use bonded NIC cards, then they must be on the same subnet.</p>
+<p>If you encounter errors, then carry out the following system checks:</p>
+<ul>
+<li>
+<p>Verify with your network providers that they are using correct cables (length, type) and software on their switches. In some cases, to avoid bugs that cause disconnects under loads, or to support additional features such as Jumbo Frames, you may need a firmware upgrade on interconnect switches, or you may need newer NIC driver or firmware at the operating system level. Running without such fixes can cause later instabilities to Oracle RAC databases, even though the initial installation seems to work.</p>
+</li>
+<li>
+<p>Review VLAN configurations, duplex settings, and auto-negotiation in accordance with vendor and Oracle recommendations.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+<a id="BABCEEBE" name="BABCEEBE"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><span class="secnum">A.8</span> Storage Configuration Issues</h2>
+<p>The following is a list of issues involving storage configuration:</p>
+<ul>
+<li>
+<p><a href="#BABCABHH">Recovery from Losing a Node Filesystem or Grid Home</a></p>
+</li>
+<li>
+<p><a href="#BABJIBJE">Oracle ASM Library Driver Issues</a></p>
+</li>
+</ul>
+<a id="BABCABHH" name="BABCABHH"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><span class="secnum">A.8.1</span> Recovery from Losing a Node Filesystem or Grid Home</h3>
+<p>With Oracle Clusterware release 11.2 and later, if you remove a filesystem by mistake, or encounter another storage configuration issue that results in losing the Oracle Local Registry or otherwise corrupting a node, you can recover the node in one of two ways:</p>
+<ol>
+<li>
+<p>Restore the node from an operating system level backup (preferred)</p>
+</li>
+<li>
+<p>Remove the node, and then add the node. With 11.2 and later clusters, profile information for is copied to the node, and the node is restored.</p>
+</li>
+</ol>
+<p>The feature that enables cluster nodes to be removed and added again, so that they can be restored from the remaining nodes in the cluster, is called Grid Plug and Play (GPnP). Grid Plug and Play eliminates per-node configuration data and the need for explicit add and delete nodes steps. This allows a system administrator to take a template system image and run it on a new node with no further configuration. This removes many manual operations, reduces the opportunity for errors, and encourages configurations that can be changed easily. Removal of the per-node configuration makes the nodes easier to replace, because they do not need to contain individually-managed state.</p>
+<p>Grid Plug and Play reduces the cost of installing, configuring, and managing database nodes by making their per-node state disposable. It allows nodes to be easily replaced with regenerated state.</p>
+<p>Initiate recovery of a node using addnode syntax similar to the following, where <code><span class="codeinlineitalic">lostnode</span></code> is the node that you are adding back to the cluster:</p>
+<p>If you are using Grid Naming Service (GNS):</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ./addNode.sh -silent "CLUSTER_NEW_NODES=<span class="italic">lostnode</span>"
+</pre>
+<p>If you are not using GNS:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ ./addNode.sh -silent "CLUSTER_NEW_NODES={lostnode}" "CLUSTER_NEW_VIRTUAL_HOSTNAMES={<span class="italic">lostnode</span>-vip}"
+</pre>
+<p>Note that you require access to root to be able to run the root.sh script on the node you restore, to recreate OCR keys and to perform other configuration tasks. When you see prompts to overwrite your existing information in /usr/local/bin, accept the default (n):</p>
+<pre xml:space="preserve" class="oac_no_warn">The file "dbhome" already exists in /usr/local/bin. Overwrite it? (y/n) [n]:
+The file "oraenv" already exists in /usr/local/bin. Overwrite it? (y/n) [n]:
+The file "coraenv" already exists in /usr/local/bin. Overwrite it? (y/n) [n]:
+</pre></div>
+<!-- class="sect2" -->
+<a id="BABJIBJE" name="BABJIBJE"></a>
+<div class="sect2">
+<h3 class="sect2"><span class="secnum">A.8.2</span> Oracle ASM Library Driver Issues</h3>
+<p>The following is a list of Oracle ASM driver library error messages, and how to address these errors:</p>
+<div class="msgset"><a id="tahiti51319173" name="tahiti51319173"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref757" name="sthref757"></a><a id="sthref758" name="sthref758"></a>Asmtool: Unable to clear device "<span class="italic">devicepath</span>": Input/output error</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> This is a write access error that can have several causes</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> If the disk is mounted, then unmount it. For example: <code>umount /dev/sdb1</code>. Make sure that the group and user that owns the device is the Oracle Grid Infrastructure installation owner and the oraInventory group. For example: <code>chown grid:oinstall</code>.</div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" --></div>
+<!-- class="msgset" -->
+<div class="msgset"><a id="tahiti51319279" name="tahiti51319279"></a>
+<div class="msgentry">
+<dl>
+<dt><span class="msg"><a id="sthref759" name="sthref759"></a><a id="sthref760" name="sthref760"></a><a id="sthref761" name="sthref761"></a>Unable to open ASMLib; Unable to find candidate disks 'ORCL:*'</span> <!-- class="msg" --></dt>
+<dd>
+<div class="msgexplan"><span class="msgexplankw">Cause:</span> If you have created disks but you cannot discover candidate disks from Oracle Universal Installer, this could be due to a variety of configuration errors that prevent access to Oracle ASM storage.</div>
+<!-- class="msgexplan" --></dd>
+<dd>
+<div class="msgaction"><span class="msgactionkw">Action:</span> As the Oracle Grid Infrastructure installation owner, enter the command <code>/usr/sbin/oracleasm-discover</code>, using the ASM disk path <span class="italic">asm_diskstring</span>. For example:
+<pre xml:space="preserve" class="oac_no_warn">[grid@node1]$ /usr/sbin/oracleasm-discover 'ORCL:*'
+</pre>
+<p>If you do not have <code>/usr/sbin/oracleasm-discover</code>, then you do not have <code>oracleasmlib</code> installed. If you do have the command, then you should be able to determine if ASMLib is enabled, if disks are created, and if other tasks to create candidate disks are completed.</p>
+<p>If you have resolved the issue, then you should see output similar to the following when you enter the command:</p>
+<pre xml:space="preserve" class="oac_no_warn">[grid@node1]$ /usr/sbin/oracleasm-discover 'ORCL:*'
+ 
+Using ASMLib from /opt/oracle/extapi/64/asm/orcl/1/libasm.so
+ 
+[ASM Library - Generic Linux, version 2.0.4 (KABI_V2)]
+Discovered disk: ORCL:DISK1 [78140097 blocks (40007729664 bytes), maxio 512]
+Discovered disk: ORCL:DISK2 [78140097 blocks (40007729664 bytes), maxio 512]
+Discovered disk: ORCL:DISK3 [78140097 blocks (40007729664 bytes), maxio 512]
+</pre></div>
+<!-- class="msgaction" --></dd>
+</dl>
+</div>
+<!-- class="msgentry" --></div>
+<!-- class="msgset" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="rem_orcl.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="app_nonint.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2007, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

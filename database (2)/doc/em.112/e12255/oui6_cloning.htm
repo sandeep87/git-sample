@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Cloning Oracle Software</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.1" />
+<meta name="Date" content="2011-03-15T16:57:53Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Universal Installer and OPatch User's Guide 11g Release 2 (11.2) for Windows and UNIX" />
+<meta name="partno" content="E12255-11" />
+<meta name="docid" content="OUICG" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="oui5_cluster_environment.htm" title="Previous" type="text/html" />
+<link rel="Next" href="oui7_opatch.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e12255.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Universal Installer and OPatch User's Guide<br />
+11<i>g</i> Release 2 (11.2) for Windows and UNIX</b><br />
+Part Number E12255-11</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="oui5_cluster_environment.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="oui7_opatch.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e12255.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BCGEJGAJ" name="BCGEJGAJ"></a>
+<h1 class="chapter"><span class="secnum">6</span> <a name="OUICG294" id="OUICG294"></a>Cloning Oracle Software</h1>
+<p>This chapter provides information about Oracle cloning using Oracle Universal Installer (OUI). This chapter contains the following topics:</p>
+<ul>
+<li>
+<p><a href="#CEGCIEJD">About Cloning</a></p>
+</li>
+<li>
+<p><a href="#CEGBFJCE">Overview of the Cloning Process</a></p>
+</li>
+<li>
+<p><a href="#BCGJCDBB">Locating and Viewing Log Files</a></p>
+</li>
+</ul>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+For procedures to clone an Oracle Database Oracle Home, refer to the following documentation depending on your platform:
+<ul>
+<li>
+<p>Oracle&reg; <span class="italic">Database Installation Guide for Linux</span> 11g Release 2 (11.2)</p>
+</li>
+<li>
+<p>Oracle&reg; <span class="italic">Database Installation Guide for Microsoft Windows</span> 11g Release 2 (11.2)</p>
+</li>
+</ul>
+<p>For procedures to clone Oracle Clusterware and Oracle Real Application Clusters homes, refer to the following documentation:</p>
+<ul>
+<li>
+<p><span class="italic">Oracle&reg; Real Application Clusters Administration and Deployment Guide 11g Release 2 (11.2)</span></p>
+</li>
+<li>
+<p><span class="italic">Oracle&reg; Clusterware Administration and Deployment Guide 11g Release 2 (11.2)</span></p>
+</li>
+</ul>
+</div>
+<a id="CEGCIEJD" name="CEGCIEJD"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG295" id="OUICG295"></a><a id="sthref577" name="sthref577"></a>About Cloning</h2>
+<p>Cloning is the process of copying an existing Oracle installation to a different location and updating the copied bits to work in the new environment. The changes made by applying one-off patches on the source Oracle home are also present after the clone operation. The source and the destination path (host to be cloned) need not be the same. During cloning, OUI replays the actions that were run to install the home. Cloning is similar to installation, except that OUI runs the actions in a special mode referred to as clone mode. Some situations in which cloning is useful are:</p>
+<ul>
+<li>
+<p>Creating an installation that is a copy of a production, test, or development installation. Cloning enables you to create a new installation with all patches applied to it in a single step. This contrasts with going through the installation process by performing separate steps to install, configure, and patch the installation.</p>
+</li>
+<li>
+<p>Rapidly deploying an instance and the applications that it hosts.</p>
+</li>
+<li>
+<p>Preparing an Oracle home and deploying it to many hosts.</p>
+</li>
+</ul>
+<p>The cloned installation behaves the same as the source installation. For example, the cloned Oracle home can be removed using OUI or patched using OPatch. You can also use the cloned Oracle home as the source for another cloning operation. You can create a cloned copy of a test, development, or production installation by using the command-line cloning scripts. The default cloning procedure is adequate for most usage cases. However, you can also customize various aspects of cloning, for example, to specify custom port assignments, or to preserve custom settings.</p>
+<p>The cloning process copies all of the files from the source Oracle home to the destination Oracle home. Thus, any files used by the source instance located outside the source Oracle home's directory structure are not copied to the destination location.</p>
+<p>The size of the binaries at the source and the destination may differ because these are relinked as part of the clone operation, and the operating system patch levels may also differ between these two locations. Additionally, the number of files in the cloned home would increase because several files copied from the source, specifically those being instantiated, are backed up as part of the clone operation.</p>
+<p>OUI cloning is more beneficial than using the tarball approach, because cloning configures the Central Inventory and the Oracle home inventory in the cloned home. Cloning also makes the home manageable and enables the paths in the cloned home and the target home to be different.</p>
+</div>
+<!-- class="sect1" -->
+<a id="CEGBFJCE" name="CEGBFJCE"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG296" id="OUICG296"></a><a id="sthref578" name="sthref578"></a>Overview of the Cloning Process</h2>
+<p>The cloning process uses the OUI cloning functionality. This operation is driven by a set of scripts and add-ons that are included in the respective Oracle software. The cloning process has two phases:</p>
+<ul>
+<li>
+<p><a href="#BCGDHAJF">Source Preparation Phase</a></p>
+</li>
+<li>
+<p><a href="#BCGEEFIF">Cloning Phase</a></p>
+</li>
+</ul>
+<a id="BCGDHAJF" name="BCGDHAJF"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a name="OUICG297" id="OUICG297"></a><a id="sthref579" name="sthref579"></a>Source Preparation Phase</h3>
+<p>To prepare the source Oracle home for cloning, archive and compress the source Oracle home using your preferred archiving tool. For example, you can use WinZip on Microsoft Windows system computers and <code>tar</code> or <code>gzip</code> on UNIX.</p>
+<p>During this process, ensure the following:</p>
+<ul>
+<li>
+<p>The tool that you use should preserve the permissions and file time stamps.</p>
+</li>
+<li>
+<p>When archiving the home, skip the <code>*.log</code>, <code>*.dbf</code>, <code>listener.ora</code>, <code>sqlnet.ora,</code> and <code>tnsnames.ora</code> files for archiving.</p>
+</li>
+<li>
+<p>Do not archive the following folders:</p>
+<pre xml:space="preserve" class="oac_no_warn">$ORACLE_HOME/&lt;Hostname&gt;_&lt;SID&gt;
+$ORACLE_HOME/oc4j/j2ee/OC4J_DBConsole_&lt;Hostname&gt;_&lt;SID&gt;
+</pre></li>
+</ul>
+<p>Example&nbsp;6&#x2013;1 shows an example of an excluded file list.</p>
+<div class="example">
+<p class="titleinexample"><a id="sthref580" name="sthref580"></a>Example 6-1 Excluded File List</p>
+<pre xml:space="preserve" class="oac_no_warn">$ cat excludedFileList.txt
+./install/make.log
+./cfgtoollogs/cfgfw/CfmLogger_2009-07-13_12-03-16-PM.log
+./cfgtoollogs/cfgfw/oracle.server_2009-07-13_12-03-17-PM.log
+./cfgtoollogs/cfgfw/oracle.network.client_2009-07-13_12-03-18-PM.log
+./cfgtoollogs/cfgfw/oracle.has.common_2009-07-13_12-03-18-PM.log
+./cfgtoollogs/cfgfw/oracle.assistants.server_2009-07-13_12-03-18-PM.log
+./cfgtoollogs/cfgfw/OuiConfigVariables_2009-07-13_12-03-18-PM.log
+./cfgtoollogs/cfgfw/oracle.sysman.console.db_2009-07-13_12-03-18-PM.log
+./cfgtoollogs/cfgfw/oracle.sqlplus.isqlplus_2009-07-13_12-03-18-PM.log
+./cfgtoollogs/oui/cloneActions2009-07-13_11-52-19AM.log
+./cfgtoollogs/oui/silentInstall2009-07-13_11-52-19AM.log
+</pre></div>
+<!-- class="example" -->
+<p>Example&nbsp;6&#x2013;2 shows how to archive and compress the source for various platforms.</p>
+<div class="example">
+<p class="titleinexample"><a id="sthref581" name="sthref581"></a>Example 6-2 Archiving and Compressing the Source</p>
+<pre xml:space="preserve" class="oac_no_warn">tar cpf - . | compress -fv &gt; temp_dir/archiveName.tar.Z  ( for "aix" or $^O eq "hpux")
+tar cpfX - excludeListFile . | compress -fv &gt; temp_dir/archiveName.tar.Z (for remaining UNIX based systems)
+</pre></div>
+<!-- class="example" -->
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+Do not use the jar utility to archive and compress the Oracle home.</div>
+</div>
+<!-- class="sect2" -->
+<a id="BCGEEFIF" name="BCGEEFIF"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a name="OUICG298" id="OUICG298"></a><a id="sthref582" name="sthref582"></a>Cloning Phase</h3>
+<p>On the destination system, you unarchive the Oracle home and run the following OUI clone command from the destination home:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;destination home location&gt;/oui/bin/runInstaller -clone -silent -defaultHomeName ORACLE_HOME=&lt;destination home location&gt;
+</pre>
+<p>The following example shows how to unarchive and decompress the source for various platforms:</p>
+<pre xml:space="preserve" class="oac_no_warn">To unarchive:
+mkdir  Destination_oracle_homecd   Destination_oracle_homezcat temp_dir/archiveName.tar.Z | tar xpf - (for "hpux")zcat temp_dir/archiveName.tar.Z | tar xBpf -  (for remaining UNIX based systems)
+</pre>
+<div class="infoboxnote">
+<p class="notep1">Note:</p>
+The cloned home and source home will not be identical in size, because the cloned home will have additional files created during the cloning operation.</div>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BCGJCDBB" name="BCGJCDBB"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a name="OUICG299" id="OUICG299"></a><a id="sthref583" name="sthref583"></a><a id="sthref584" name="sthref584"></a>Locating and Viewing Log Files</h2>
+<p>The cloning script runs multiple tools, each of which may generate its own log files. However, the following log files that OUI and the cloning scripts generate are the key log files of interest for diagnostic purposes:</p>
+<ul>
+<li>
+<p><span class="bold">&lt;Central_Inventory&gt;/logs/cloneActions timestamp.log:</span> Contains a detailed log of the actions that occur during the OUI part of the cloning.</p>
+</li>
+<li>
+<p><span class="bold">&lt;Central_Inventory&gt;/logs/oraInstall timestamp.err:</span> Contains information about errors that occur when OUI is running.</p>
+</li>
+<li>
+<p><span class="bold">&lt;Central_Inventory&gt;/logs/oraInstall timestamp.out:</span> Contains other miscellaneous messages generated by OUI.</p>
+</li>
+<li>
+<p><span class="bold">$ORACLE_HOME/clone/logs/clone timestamp.log:</span> Contains a detailed log of the actions that occur during the pre-cloning and cloning operations.</p>
+</li>
+<li>
+<p><span class="bold">$ORACLE_HOME/clone/logs/error timestamp.log:</span> Contains information about errors that occur during the pre-cloning and cloning operations.</p>
+</li>
+</ul>
+<p>To find the location of the Oracle inventory directory:On all UNIX system computers except Linux and IBM AIX, look in the <code>/var/opt/oracle/oraInst.loc</code> file. On IBM AIX and Linux-based systems, look in the <code>/etc/oraInst.loc</code> file.</p>
+<p>On Windows system computers, you can obtain the location from the Windows Registry key: <code>HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\INST_LOC</code>.</p>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="oui5_cluster_environment.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="oui7_opatch.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;1996, 2011,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

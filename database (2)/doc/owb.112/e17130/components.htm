@@ -1,0 +1,1046 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Configuring Repository Browser, Control Center Agent, and Other Components</title>
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 5.1.2 Build 014" />
+<meta name="Date" content="2010-10-19T15:11:45Z" />
+<meta name="robots" content="all" scheme="http://www.robotstxt.org/" />
+<meta name="doctitle" content="Oracle&reg; Warehouse Builder Installation and Administration Guide 11g Release 2 (11.2)" />
+<meta name="partno" content="E17130-03" />
+<meta name="docid" content="WBINS" />
+<link rel="Start" href="../../index.htm" title="Home" type="text/html" />
+<link rel="Copyright" href="../../dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+<link rel="Stylesheet" href="../../dcommon/css/blafdoc.css" title="Default" type="text/css" />
+<script type="text/javascript" src="../../dcommon/js/doccd.js">
+</script>
+<link rel="Contents" href="toc.htm" title="Contents" type="text/html" />
+<link rel="Index" href="index.htm" title="Index" type="text/html" />
+<link rel="Prev" href="migrate.htm" title="Previous" type="text/html" />
+<link rel="Next" href="part_2.htm" title="Next" type="text/html" />
+<link rel="alternate" href="../e17130.pdf" title="PDF version" type="application/pdf" />
+</head>
+<body>
+<div class="header">
+<div class="zz-skip-header"><a name="top" id="top" href="#BEGIN">Skip Headers</a></div>
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><b>Oracle&reg; Warehouse Builder Installation and Administration Guide<br />
+11<i>g</i> Release 2 (11.2)</b><br />
+Part Number E17130-03</td>
+<td valign="bottom" align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="migrate.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="part_2.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td align="right" valign="top" style="font-size: 90%"><a href="../e17130.pdf">View PDF</a></td>
+</tr>
+</table>
+<a name="BEGIN" id="BEGIN"></a></div>
+<div class="IND"><!-- End Header --><a id="BABHHDGF" name="BABHHDGF"></a><a id="WBINS08000" name="WBINS08000"></a>
+<h1 class="chapter"><span class="secnum">7</span> <a id="sthref284" name="sthref284"></a><a id="sthref285" name="sthref285"></a>Configuring Repository Browser, Control Center Agent, and Other Components</h1>
+<p>This section discusses how to configure the Repository Browser environment within OWB, and Control Center Agent for Oracle Application Server. Procedures for installing optional components are also described.</p>
+<p>This section includes the following topics:</p>
+<ul>
+<li>
+<p><a href="#BABHIGEI">"Configuring the Repository Browser Environment"</a></p>
+</li>
+<li>
+<p><a href="#BABDJABI">"Configuring Control Center Agent for Oracle Application Server"</a></p>
+</li>
+<li>
+<p><a href="#BABIGHDF">"Integrating with E-Business Suite"</a></p>
+</li>
+<li>
+<p><a href="#BABDHAFF">"Installing Third-Party Name and Address Data"</a></p>
+</li>
+<li>
+<p><a href="#BABGAABJ">"Integrating with Oracle Workflow"</a></p>
+</li>
+</ul>
+<a id="BABHIGEI" name="BABHIGEI"></a><a id="WBINS08100" name="WBINS08100"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a id="sthref286" name="sthref286"></a><a id="sthref287" name="sthref287"></a>Configuring the Repository Browser Environment</h2>
+<p><a id="sthref288" name="sthref288"></a><a id="sthref289" name="sthref289"></a>The Repository Browser connects to Warehouse Builder repositories and enables you to view <a id="sthref290" name="sthref290"></a>metadata, run Web reports, perform lineage and impact analysis on your metadata, and audit run-time executions.</p>
+<p>When you install Warehouse Builder from Oracle Universal Installer, the Repository Browser is also installed and runs in all the languages that you selected during installation.</p>
+<p>To verify the installation, start the Repository Browser listener and then the Repository Browser. For information on how to use the Repository Browser, refer to <a class="olink WBDOD" href="http://www.oracle.com/pls/db112/lookup?id=WBDOD"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a>.</p>
+<a id="WBINS08120" name="WBINS08120"></a>
+<div class="sect2"><a id="sthref291" name="sthref291"></a>
+<h3 class="sect2"><a id="sthref292" name="sthref292"></a><a id="sthref293" name="sthref293"></a>Changing the Session Timeout</h3>
+<p>By default, Repository Browser sessions time out after one hour of inactivity. To change this, edit the <code><a id="sthref294" name="sthref294"></a>web.xml</code> file located at <code><span class="codeinlineitalic">OWB_HOME</span></code><code>\owb\j2ee\applications\owbb\WEB-INF</code> by updating the <a id="sthref295" name="sthref295"></a><code>session-config</code> tag.</p>
+<p>By default, the tag displays as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;session-config&gt;
+&lt;session-timeout&gt;60&lt;/session-timeout&gt;
+&lt;/session-config&gt;
+</pre></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABDJABI" name="BABDJABI"></a><a id="WBINS26351" name="WBINS26351"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Configuring Control Center Agent for Oracle Application Server</h2>
+<p>The procedures in this section describe how to install and configure Control Center Agent to run in Oracle Application Server. This section includes the following topics:</p>
+<ul>
+<li>
+<p><a href="#BGBJDJAH">Modifying the OC4J Startup Script</a></p>
+</li>
+<li>
+<p><a href="#BGBBBBGD">Configuring Control Center Agent Server-side Logging</a></p>
+</li>
+<li>
+<p><a href="#BABDEBJF">Configuring the Audit Data Source</a></p>
+</li>
+<li>
+<p><a href="#BGBHJEBH">Setting Control Center Agent Security Roles</a></p>
+</li>
+<li>
+<p><a href="#BGBDAEAH">Creating JMS Queues</a></p>
+</li>
+<li>
+<p><a href="#BGBCGGJA">Setting the PATH Environment Variable</a></p>
+</li>
+<li>
+<p><a href="#BGBCJEIJ">Deploying the Control Center Agent to OC4J</a></p>
+</li>
+<li>
+<p><a href="#BGBGCIAG">Configuring the Control Center Agent Web Service (jrt-web.war)</a></p>
+</li>
+<li>
+<p><a href="#BGBJFGIG">Enabling Control Center Agent Audit Table Logging</a></p>
+</li>
+<li>
+<p><a href="#BGBICCFF">Installing JDBC Drivers for OC4J</a></p>
+</li>
+<li>
+<p><a href="#BGBGJHBA">Overview of Control Center Agent Files</a></p>
+</li>
+<li>
+<p><a href="#BGBJHDIC">Installing Code Templates for Use from Control Center Agent</a></p>
+</li>
+</ul>
+<a id="BGBJDJAH" name="BGBJDJAH"></a><a id="WBINS05100" name="WBINS05100"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a id="sthref296" name="sthref296"></a><a id="sthref297" name="sthref297"></a>Modifying the OC4J Startup Script</h3>
+<p>OWB has several OC4J startup scripts for its components. Some are for starting OC4J for OWB Browser, and others are for starting OC4J for Control Center Agent.</p>
+<p class="subhead2"><a id="WBINS16067" name="WBINS16067"></a>To modify the OC4J startup script:</p>
+<ol>
+<li>
+<p>Ensure that you are in the application server configuration directory, <code><span class="codeinlineitalic">AS_HOME</span></code><code>/opmn/config</code>. <code><span class="codeinlineitalic">AS_HOME</span></code> stands for the root home directory of the application server.</p>
+</li>
+<li>
+<p>Open the file <code><a id="sthref298" name="sthref298"></a>opmn.xml</code> in a text editor.</p>
+</li>
+<li>
+<p>Alter the contents of the file as demonstrated in the following example, where bold font indicates the edits you must make.</p>
+<p>Note that:</p>
+<ul>
+<li>
+<p>Setting <a id="sthref299" name="sthref299"></a><code>MaxPermSize</code> parameter at <code>128M</code> allocates enough <code><a id="sthref300" name="sthref300"></a>PermGen</code> space to OC4J to run the Control Center Agent.</p>
+</li>
+<li>
+<p>The <code><a id="sthref301" name="sthref301"></a>Python.path</code> sets the path for the Python library files used by the Control Center Agent: <a id="sthref302" name="sthref302"></a><code>jython_lib.zip</code> and <code><a id="sthref303" name="sthref303"></a>jython_owblib.jar</code>. These two files are in the <code><span class="codeinlineitalic">OWB_HOME</span></code><code>/owb/lib/int</code> directory.</p>
+</li>
+<li>
+<p>The <a id="sthref304" name="sthref304"></a><code>km_security_needed</code> property determines if restrictions are applied to the types of operating system commands allowed by the OWB <a id="sthref305" name="sthref305"></a>Code Template script that runs in the Control Center Agent. Setting it to <code>true</code> enforces restrictions.</p>
+<p>To review the list of commands allowed by this security mechanism, check the file <code><span class="codeinlineitalic">AS_HOME</span></code><code>/j2ee/home/config/<a id="sthref306" name="sthref306"></a>ct_permissions.properties</code> (it can be specified in the <code>jrt.xml</code> configuration file), which is available after Control Center Agent successfully installs in the OC4J in Application Server.</p>
+</li>
+</ul>
+<pre xml:space="preserve" class="oac_no_warn">&lt;ias-component id="default_group"&gt;
+  &lt;process-type id="home" module-id="OC4J" status="enabled"&gt;
+  &lt;module-data&gt;
+  &lt;category id="start-parameters"&gt;
+  &lt;data id="java-options" value="-server
+    <span class="bold">-XX:MaxPermSize=128M</span>
+    -ms512M -mx1024M
+    -XX:AppendRatio=3 
+    <span class="bold">-Dpython.path=/home/lib/jython_lib.zip:/home/lib/jython_</span><span class="bold">owblib.jar</span> 
+    <span class="bold">-Dkm_security_needed=true</span> 
+...
+ &lt;/ias-component&gt;
+</pre></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBBBBGD" name="BGBBBBGD"></a><a id="WBINS05200" name="WBINS05200"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect2"><a id="sthref307" name="sthref307"></a><a id="sthref308" name="sthref308"></a>Configuring Control Center Agent Server-side Logging</h3>
+<p class="subhead2"><a id="WBINS16068" name="WBINS16068"></a>To set up the Control Center Agent server-side logging:</p>
+<ol>
+<li>
+<p>Ensure that you are in the OC4J server configuration directory, <code><span class="codeinlineitalic">OC4J_HOME</span></code><code>/j2ee/home/config</code>/. <code><span class="codeinlineitalic">OC4J_HOME</span></code> stands for the root home directory of the OC4J.</p>
+</li>
+<li>
+<p>Open the file <code><a id="sthref309" name="sthref309"></a>j2ee-logging.xml</code> in a text editor.</p>
+</li>
+<li>
+<p>Alter the contents of the file as demonstrated in the following example, where bold font indicates the edits you must make.</p>
+<p>Note that:</p>
+<ul>
+<li>
+<p>In the log handler section, the <a id="sthref310" name="sthref310"></a><code>jrt-internal-log-handler</code> is the handler used by Control Center Agent run-time logger to create log files.</p>
+</li>
+<li>
+<p>In the logger section, you are creating the logger for Control Center Agent run-time auditing.</p>
+</li>
+</ul>
+<pre xml:space="preserve" class="oac_no_warn">&lt;!-- The log handler used by JRT run-time logger --&gt;
+<span class="bold">&lt;log_handler name="jrt-internal-log-handler"</span> <span class="bold">  class="oracle.core.ojdl.logging.ODLHandlerFactory"&gt;</span>
+<span class="bold">    &lt;property name="path" value="../log"/&gt;</span>
+<span class="bold">    &lt;property name="maxFileSize" value="10485760"/&gt;</span>
+<span class="bold">    &lt;property name="maxLogSize" value="104857600"/&gt;</span>
+<span class="bold">    &lt;property name="encoding" value="UTF-8"/&gt;</span>
+&lt;/log_handler&gt;
+...
+&lt;!-- The JRT run-time logger for run-time auditing --&gt;
+<span class="bold">&lt;logger name="oracle.wh.jrt.server.audit" level="ALL"</span> 
+<span class="bold">   useParentHandlers="false"&gt;</span>
+<span class="bold">    &lt;handler name="jrt-internal-log-handler"/&gt;</span>
+<span class="bold">&lt;/logger&gt;</span>
+</pre></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BABDEBJF" name="BABDEBJF"></a><a id="WBINS16362" name="WBINS16362"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref311" name="sthref311"></a><a id="sthref312" name="sthref312"></a>Configuring the Audit Data Source</h3>
+<p class="subhead2"><a id="WBINS16363" name="WBINS16363"></a>To configure the audit data source:</p>
+<ol>
+<li>
+<p>Ensure that you are in the OC4J server configuration directory, <code><span class="codeinlineitalic">OC4J_HOME</span></code><code>/j2ee/home/config</code>/. <code><span class="codeinlineitalic">OC4J_HOME</span></code> stands for the root home directory of the OC4J.</p>
+</li>
+<li>
+<p>Open the file <code><a id="sthref313" name="sthref313"></a>data-sources.xml</code> in a text editor.</p>
+</li>
+<li>
+<p>Define the audit data source as demonstrated in the following example, where bold font indicates the edits you must make.</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="bold">&lt;managed-data-source name="AuditDS" connection-pool-name="OWBSYS Audit</span>
+<span class="bold">  Connection Pool" jndi-name="jdbc/AuditDS"/&gt; </span>
+<span class="bold">&lt;connection-pool name="Oracle Audit Connection Pool"&gt;</span> 
+<span class="bold">  &lt;connection-factory factory-class="oracle.jdbc.pool.OracleDataSource"</span>
+<span class="bold">    user="</span><span class="bolditalic">username</span><span class="bold">" password="</span><span class="bolditalic">password</span><span class="bold">"</span>
+<span class="bold">    url="jdbc:oracle:thin:@//localhost:1521/ORCL"/&gt;</span> 
+<span class="bold">&lt;/connection-pool&gt;</span>
+</pre></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBHJEBH" name="BGBHJEBH"></a><a id="WBINS05300" name="WBINS05300"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref314" name="sthref314"></a><a id="sthref315" name="sthref315"></a>Setting Control Center Agent Security Roles</h3>
+<p class="subhead2"><a id="WBINS16069" name="WBINS16069"></a>To configure <a id="sthref316" name="sthref316"></a><a id="sthref317" name="sthref317"></a>Control Center Agent security roles:</p>
+<ol>
+<li>
+<p>In a web browser, navigate to the Enterprise Manager home page.</p>
+</li>
+<li>
+<p>Log in using the <code>oc4jadmin</code> credentials. You may be prompted to activate the oc4jadmin account. If prompted to activate the account:</p>
+<p>Create a password for the oc4jadmin account to activate it. Enter the password you want to use. Confirm the password and click <span class="bold">OK</span> to activate the account.</p>
+</li>
+<li>
+<p>On the <a id="sthref318" name="sthref318"></a>Cluster Topology page, locate the link to the OC4J instance installed under the Application Server.</p>
+<img width="507" height="384" src="img/jrt_security_01.gif" alt="Description of jrt_security_01.gif follows" title="Description of jrt_security_01.gif follows" longdesc="img_text/jrt_security_01.htm" /><br />
+<a id="sthref319" name="sthref319" href="img_text/jrt_security_01.htm">Description of the illustration jrt_security_01.gif</a><br />
+<br /></li>
+<li>
+<p>Click <span class="bold">home</span> (the OC4J instance).</p>
+<p>This takes you to the home page of the OC4J instance.</p>
+</li>
+<li>
+<p>On the OC4J home screen, click the <span class="bold">Administration</span> tab.</p>
+<img width="610" height="343" src="img/jrt_security_02.gif" alt="Description of jrt_security_02.gif follows" title="Description of jrt_security_02.gif follows" longdesc="img_text/jrt_security_02.htm" /><br />
+<a id="sthref320" name="sthref320" href="img_text/jrt_security_02.htm">Description of the illustration jrt_security_02.gif</a><br />
+<br /></li>
+<li>
+<p>On the Administration Tasks screen, expand <span class="bold">Security</span>.</p>
+</li>
+<li>
+<p>Click the task icon next to <span class="bold"><a id="sthref321" name="sthref321"></a>Security Providers</span>.</p>
+<img width="620" height="408" src="img/jrt_security_03.gif" alt="Description of jrt_security_03.gif follows" title="Description of jrt_security_03.gif follows" longdesc="img_text/jrt_security_03.htm" /><br />
+<a id="sthref322" name="sthref322" href="img_text/jrt_security_03.htm">Description of the illustration jrt_security_03.gif</a><br />
+<br /></li>
+<li>
+<p>On Security Providers screen, click <a id="sthref323" name="sthref323"></a><span class="bold">Instance Level Security</span>.</p>
+<img width="480" height="164" src="img/jrt_security_04.gif" alt="Description of jrt_security_04.gif follows" title="Description of jrt_security_04.gif follows" longdesc="img_text/jrt_security_04.htm" /><br />
+<a id="sthref324" name="sthref324" href="img_text/jrt_security_04.htm">Description of the illustration jrt_security_04.gif</a><br />
+<br /></li>
+<li>
+<p>On Instance <a id="sthref325" name="sthref325"></a>Level Security screen, click the <span class="bold"><a id="sthref326" name="sthref326"></a>Realms</span> tab.</p>
+<img width="551" height="329" src="img/jrt_security_05.gif" alt="Description of jrt_security_05.gif follows" title="Description of jrt_security_05.gif follows" longdesc="img_text/jrt_security_05.htm" /><br />
+<a id="sthref327" name="sthref327" href="img_text/jrt_security_05.htm">Description of the illustration jrt_security_05.gif</a><br />
+<br /></li>
+<li>
+<p>Under the <a id="sthref328" name="sthref328"></a><span class="bold">Realms</span> tab, in the default realm <code><a id="sthref329" name="sthref329"></a>jazn.com</code>, click the number in <a id="sthref330" name="sthref330"></a><span class="bold">Roles</span> column.</p>
+<img width="506" height="340" src="img/jrt_security_06.gif" alt="Description of jrt_security_06.gif follows" title="Description of jrt_security_06.gif follows" longdesc="img_text/jrt_security_06.htm" /><br />
+<a id="sthref331" name="sthref331" href="img_text/jrt_security_06.htm">Description of the illustration jrt_security_06.gif</a><br />
+<br /></li>
+<li>
+<p>On the Roles screen, click <span class="bold">Create</span>.</p>
+<img width="550" height="232" src="img/jrt_security_07.gif" alt="Description of jrt_security_07.gif follows" title="Description of jrt_security_07.gif follows" longdesc="img_text/jrt_security_07.htm" /><br />
+<a id="sthref332" name="sthref332" href="img_text/jrt_security_07.htm">Description of the illustration jrt_security_07.gif</a><br />
+<br /></li>
+<li>
+<p>On the <a id="sthref333" name="sthref333"></a><a id="sthref334" name="sthref334"></a>Add Role screen, enter Name <code><a id="sthref335" name="sthref335"></a>OWB_J2EE_EXECUTOR</code>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="512" height="170" src="img/jrt_security_08.gif" alt="Description of jrt_security_08.gif follows" title="Description of jrt_security_08.gif follows" longdesc="img_text/jrt_security_08.htm" /><br />
+<a id="sthref336" name="sthref336" href="img_text/jrt_security_08.htm">Description of the illustration jrt_security_08.gif</a><br />
+<br /></li>
+<li>
+<p>On the Add Role screen, enter Name <a id="sthref337" name="sthref337"></a><code>OWB_J2EE_OPERATOR</code>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="512" height="170" src="img/jrt_security_08.gif" alt="Description of jrt_security_08.gif follows" title="Description of jrt_security_08.gif follows" longdesc="img_text/jrt_security_08.htm" /><br />
+<a id="sthref338" name="sthref338" href="img_text/jrt_security_08.htm">Description of the illustration jrt_security_08.gif</a><br />
+<br /></li>
+<li>
+<p>On the Add Role screen, enter <span class="bold">Name</span> <code>OWB_J2EE_OPERATOR</code>.</p>
+<p>Under Assign Roles, in the list of <span class="bold"><a id="sthref339" name="sthref339"></a><a id="sthref340" name="sthref340"></a>Available Roles</span>, select <code>OWB_J2EE_EXECUTOR</code> and <a id="sthref341" name="sthref341"></a><code>oc4j-administrators</code>, and move to the list of <span class="bold">Selected Roles</span>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="600" height="440" src="img/jrt_security_09.gif" alt="Description of jrt_security_09.gif follows" title="Description of jrt_security_09.gif follows" longdesc="img_text/jrt_security_09.htm" /><br />
+<a id="sthref342" name="sthref342" href="img_text/jrt_security_09.htm">Description of the illustration jrt_security_09.gif</a><br />
+<br /></li>
+<li>
+<p>On the Add Role screen, enter <span class="bold">Name</span> <code><a id="sthref343" name="sthref343"></a>OWB_J2EE_ADMINISTRATOR</code>.</p>
+<p>Under Assign Roles, in the list of <span class="bold">Available Roles</span>, select <code><a id="sthref344" name="sthref344"></a>OWB_J2EE_OPERATOR</code> and <code><a id="sthref345" name="sthref345"></a>OWB_J2EE_EXECUTOR</code>, and move to the list of <span class="bold">Selected Roles</span>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="600" height="440" src="img/jrt_security_10.gif" alt="Description of jrt_security_10.gif follows" title="Description of jrt_security_10.gif follows" longdesc="img_text/jrt_security_10.htm" /><br />
+<a id="sthref346" name="sthref346" href="img_text/jrt_security_10.htm">Description of the illustration jrt_security_10.gif</a><br />
+<br /></li>
+<li>
+<p>On the bread crumb, click <a id="sthref347" name="sthref347"></a><span class="bold">Instance Level Security</span>.</p>
+</li>
+<li>
+<p>Under the <span class="bold">Realms</span> tab, in the default realm <code><a id="sthref348" name="sthref348"></a>jazn.com</code>, click the number in <span class="bold">Users</span> column.</p>
+</li>
+<li>
+<p>On the Users screen, click user <span class="bold"><a id="sthref349" name="sthref349"></a>oc4jadmin</span>.</p>
+<img width="580" height="311" src="img/jrt_security_11.gif" alt="Description of jrt_security_11.gif follows" title="Description of jrt_security_11.gif follows" longdesc="img_text/jrt_security_11.htm" /><br />
+<a id="sthref350" name="sthref350" href="img_text/jrt_security_11.htm">Description of the illustration jrt_security_11.gif</a><br />
+<br /></li>
+<li>
+<p>Under Assign Roles, in the list of <span class="bold">Available Roles</span>, select <code><a id="sthref351" name="sthref351"></a>OWB_J2EE_ADMINISTRATOR</code> and <code><a id="sthref352" name="sthref352"></a>oc4j_app_administrators</code>, and move to the list of <span class="bold">Selected Roles</span>.</p>
+<p>Click <span class="bold">Apply</span>.</p>
+</li>
+<li>
+<p>On the breadcrumb, click <span class="bold">Instance Level Security</span>.</p>
+</li>
+<li>
+<p>Under the <span class="bold">Realms</span> tab, in the default realm <code><a id="sthref353" name="sthref353"></a>jazn.com</code>, click the number in <span class="bold">Roles</span> column.</p>
+</li>
+<li>
+<p>Click <span class="bold">Create</span>.</p>
+</li>
+<li>
+<p>On the Add Role screen, enter Name <code><a id="sthref354" name="sthref354"></a>OWB_INTERNAL_USERS</code>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBDAEAH" name="BGBDAEAH"></a><a id="WBINS05400" name="WBINS05400"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref355" name="sthref355"></a><a id="sthref356" name="sthref356"></a>Creating JMS Queues</h3>
+<p>You must create two JMS queues, for <code><a id="sthref357" name="sthref357"></a>JRT:owbQueue</code>, and for <code><a id="sthref358" name="sthref358"></a>JRT:owb_abortQueue</code>.</p>
+<p class="subhead2"><a id="WBINS16070" name="WBINS16070"></a>To create JMS Queues:</p>
+<ol>
+<li>
+<p>On the breadcrumb, click <span class="bold">OC4J:home</span>.</p>
+</li>
+<li>
+<p>On the OC4J:home screen, click the <span class="bold">Administration</span> tab.</p>
+</li>
+<li>
+<p>Expand <span class="bold">Services</span>, and then expand <span class="bold">Enterprise Messaging Service</span>.</p>
+<img width="620" height="620" src="img/jms_queues_01.gif" alt="Description of jms_queues_01.gif follows" title="Description of jms_queues_01.gif follows" longdesc="img_text/jms_queues_01.htm" /><br />
+<a id="sthref359" name="sthref359" href="img_text/jms_queues_01.htm">Description of the illustration jms_queues_01.gif</a><br />
+<br /></li>
+<li>
+<p>Click the task icon next to <span class="bold"><a id="sthref360" name="sthref360"></a>JMS Destinations</span>.</p>
+</li>
+<li>
+<p>On JMS Destinations screen, click <span class="bold">Create New</span>.</p>
+<img width="500" height="155" src="img/jms_queues_02.gif" alt="Description of jms_queues_02.gif follows" title="Description of jms_queues_02.gif follows" longdesc="img_text/jms_queues_02.htm" /><br />
+<a id="sthref361" name="sthref361" href="img_text/jms_queues_02.htm">Description of the illustration jms_queues_02.gif</a><br />
+<br /></li>
+<li>
+<p>On Add Destination screen, choose <a id="sthref362" name="sthref362"></a><span class="bold">Destination Type</span> <code>Queue</code>, enter <span class="bold"><a id="sthref363" name="sthref363"></a>Destination Name</span> <code>owbQueue</code>, select <span class="bold"><a id="sthref364" name="sthref364"></a>Persistence</span> <code>In Memory Persistence Only</code>, and enter <a id="sthref365" name="sthref365"></a><span class="bold">JNDI Location</span> <code>jms/owbQueue</code>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+<img width="600" height="550" src="img/jms_queues_03.gif" alt="Description of jms_queues_03.gif follows" title="Description of jms_queues_03.gif follows" longdesc="img_text/jms_queues_03.htm" /><br />
+<a id="sthref366" name="sthref366" href="img_text/jms_queues_03.htm">Description of the illustration jms_queues_03.gif</a><br />
+<br /></li>
+<li>
+<p>On Add Destination screen, choose <a id="sthref367" name="sthref367"></a><span class="bold">Destination Type</span> <code>Queue</code>, enter <span class="bold"><a id="sthref368" name="sthref368"></a>Destination Name</span> <code>owb_abortQueue</code>, select <span class="bold"><a id="sthref369" name="sthref369"></a>Persistence</span> <code>In Memory Persistence Only</code>, and enter <span class="bold"><a id="sthref370" name="sthref370"></a>JNDI Location</span> <code>jms/owb_abortQueue</code>.</p>
+<p>Click <span class="bold">OK</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBCGGJA" name="BGBCGGJA"></a><a id="WBINS05500" name="WBINS05500"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref371" name="sthref371"></a><a id="sthref372" name="sthref372"></a>Setting the PATH Environment Variable</h3>
+<p>To ensure that system commands such as <code>linux ls</code>, <code>sh</code>, and so on, can run normally in scripts within the Control Center Agent, the environment variable <code>PATH</code> must be hold the directory that contains the system commands.</p>
+<p class="subhead2"><a id="WBINS16071" name="WBINS16071"></a>To set the PATH environment variable:</p>
+<ol>
+<li>
+<p>On the breadcrumb, click <span class="bold">OC4J:home</span>.</p>
+</li>
+<li>
+<p>On the OC4J:home screen, click the <span class="bold">Administration</span> tab.</p>
+</li>
+<li>
+<p>Expand <span class="bold">Administration Tasks</span>, then expand <span class="bold">Properties</span>.</p>
+<img width="635" height="527" src="img/jrt_path_01.gif" alt="Description of jrt_path_01.gif follows" title="Description of jrt_path_01.gif follows" longdesc="img_text/jrt_path_01.htm" /><br />
+<a id="sthref373" name="sthref373" href="img_text/jrt_path_01.htm">Description of the illustration jrt_path_01.gif</a><br />
+<br /></li>
+<li>
+<p>Click the task icon next to <span class="bold">Server Properties</span>.</p>
+</li>
+<li>
+<p>On the Server Properties screen, scroll downwards to Environment Variables section.</p>
+</li>
+<li>
+<p>Under Environment Variables, click <span class="bold">Add Another Row</span>.</p>
+</li>
+<li>
+<p>Enter <code>PATH</code> in <span class="bold">Name</span>, and fill <span class="bold">Value</span> with directories that contain the system commands.</p>
+<p>Click <span class="bold">Apply</span>.</p>
+<img width="550" height="180" src="img/jrt_path_02.gif" alt="Description of jrt_path_02.gif follows" title="Description of jrt_path_02.gif follows" longdesc="img_text/jrt_path_02.htm" /><br />
+<a id="sthref374" name="sthref374" href="img_text/jrt_path_02.htm">Description of the illustration jrt_path_02.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBCJEIJ" name="BGBCJEIJ"></a><a id="WBINS05600" name="WBINS05600"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref375" name="sthref375"></a><a id="sthref376" name="sthref376"></a>Deploying the Control Center Agent to OC4J</h3>
+<p class="subhead2"><a id="WBINS16072" name="WBINS16072"></a>To deploy the Control Center Agent to OC4J:</p>
+<ol>
+<li>
+<p>On the breadcrumb, click <span class="bold">OC4J:home</span>.</p>
+</li>
+<li>
+<p>On the OC4J:home screen, click the <span class="bold">Applications</span> tab.</p>
+</li>
+<li>
+<p>Click <span class="bold">Deploy</span> to begin deploying Control Center Agent.</p>
+<img width="535" height="116" src="img/deploy_01.gif" alt="Description of deploy_01.gif follows" title="Description of deploy_01.gif follows" longdesc="img_text/deploy_01.htm" /><br />
+<a id="sthref377" name="sthref377" href="img_text/deploy_01.htm">Description of the illustration deploy_01.gif</a><br />
+<br /></li>
+<li>
+<p>On the Deploy: Select Archive screen, under Archive, select <span class="bold">Archive is present on local host. Upload the archive to the server where Application Server Control is running.</span></p>
+<p>Click <span class="bold">Browse</span> and locate the <code>jrt.ear</code> file in the <code><span class="codeinlineitalic">OWB_HOME</span></code><code>/owb/jrt/applications</code> directory.</p>
+<img width="562" height="666" src="img/deploy_02.gif" alt="Description of deploy_02.gif follows" title="Description of deploy_02.gif follows" longdesc="img_text/deploy_02.htm" /><br />
+<a id="sthref378" name="sthref378" href="img_text/deploy_02.htm">Description of the illustration deploy_02.gif</a><br />
+<br /></li>
+<li>
+<p>Under <a id="sthref379" name="sthref379"></a>Deployment Plan, select <span class="bold">Automatically create a new deployment plan</span>.</p>
+<p>Click <span class="bold">Next.</span></p>
+<p>While the upload is in progress, you see the Deploy: Uploading screen.</p>
+<img width="500" height="212" src="img/deploy_03.gif" alt="Description of deploy_03.gif follows" title="Description of deploy_03.gif follows" longdesc="img_text/deploy_03.htm" /><br />
+<a id="sthref380" name="sthref380" href="img_text/deploy_03.htm">Description of the illustration deploy_03.gif</a><br />
+<br /></li>
+<li>
+<p>On the Deploy: Application Attributes screen, enter <span class="bold"><a id="sthref381" name="sthref381"></a>Application Name</span> <code>jrt</code>, and <a id="sthref382" name="sthref382"></a><span class="bold">Context Root</span> <code>jrt</code>. Leave the other attributes at their default values.</p>
+<p>Click <span class="bold">Next</span>.</p>
+<img width="520" height="334" src="img/deploy_04.gif" alt="Description of deploy_04.gif follows" title="Description of deploy_04.gif follows" longdesc="img_text/deploy_04.htm" /><br />
+<a id="sthref383" name="sthref383" href="img_text/deploy_04.htm">Description of the illustration deploy_04.gif</a><br />
+<br /></li>
+<li>
+<p>On Deploy: Deployment Settings screen, leave all attributes at their default values, and click <span class="bold">Deploy</span>.</p>
+<img width="642" height="718" src="img/deploy_05.gif" alt="Description of deploy_05.gif follows" title="Description of deploy_05.gif follows" longdesc="img_text/deploy_05.htm" /><br />
+<a id="sthref384" name="sthref384" href="img_text/deploy_05.htm">Description of the illustration deploy_05.gif</a><br />
+<br /></li>
+<li>
+<p>Once the application is successfully deployed, a confirmation message displays.</p>
+<img width="512" height="280" src="img/deploy_06.gif" alt="Description of deploy_06.gif follows" title="Description of deploy_06.gif follows" longdesc="img_text/deploy_06.htm" /><br />
+<a id="sthref385" name="sthref385" href="img_text/deploy_06.htm">Description of the illustration deploy_06.gif</a><br />
+<br /></li>
+<li>
+<p>On the Confirmation screen, click <span class="bold">Return</span>.</p>
+<p>Under the Applications tab, expand <span class="bold">All Applications</span>, then expand <span class="bold">default</span>.</p>
+<p>Note that the new application CCA is up.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBGCIAG" name="BGBGCIAG"></a><a id="WBINS05700" name="WBINS05700"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref386" name="sthref386"></a><a id="sthref387" name="sthref387"></a><a id="sthref388" name="sthref388"></a>Configuring the Control Center Agent Web Service (jrt-web.war)</h3>
+<p>The Control Center Agent Web Service is deployed automatically with Control Center Agent. No additional setup is required.</p>
+<p class="subhead2"><a id="WBINS16073" name="WBINS16073"></a>To check that the Web Service is running:</p>
+<ol>
+<li>
+<p>On the breadcrumb, click <span class="bold">OC4J:home</span>.</p>
+</li>
+<li>
+<p>On the OC4J:home screen, click the <span class="bold">Web Services</span> tab.</p>
+<p>Note that <a id="sthref389" name="sthref389"></a><span class="bold">JRTWebService</span> is listed.</p>
+<img width="562" height="254" src="img/jrt_web_services_01.gif" alt="Description of jrt_web_services_01.gif follows" title="Description of jrt_web_services_01.gif follows" longdesc="img_text/jrt_web_services_01.htm" /><br />
+<a id="sthref390" name="sthref390" href="img_text/jrt_web_services_01.htm">Description of the illustration jrt_web_services_01.gif</a><br />
+<br /></li>
+</ol>
+<p class="subhead2"><a id="WBINS16074" name="WBINS16074"></a><a id="sthref391" name="sthref391"></a><a id="sthref392" name="sthref392"></a>To test the Web Service:</p>
+<ol>
+<li>
+<p>Under the Web Services tab, select <span class="bold">JRTWebService</span> and click <span class="bold">Test Service</span>.</p>
+</li>
+<li>
+<p>On the Test Web Service: HttpSoap11 screen, under Discovered Websites, select the http site and click <span class="bold">Test Web Service</span>.</p>
+<img width="551" height="238" src="img/jrt_web_services_02.gif" alt="Description of jrt_web_services_02.gif follows" title="Description of jrt_web_services_02.gif follows" longdesc="img_text/jrt_web_services_02.htm" /><br />
+<a id="sthref393" name="sthref393" href="img_text/jrt_web_services_02.htm">Description of the illustration jrt_web_services_02.gif</a><br />
+<br /></li>
+<li>
+<p>The JRTWebService endpoint screen displays that the Web Service is running.</p>
+<p>You can access the operations available from the Operation drop down box, fill in the required parameters, and then click <span class="bold">Invoke</span> to execute the operation.</p>
+<img width="472" height="387" src="img/jrt_web_services_03.gif" alt="Description of jrt_web_services_03.gif follows" title="Description of jrt_web_services_03.gif follows" longdesc="img_text/jrt_web_services_03.htm" /><br />
+<a id="sthref394" name="sthref394" href="img_text/jrt_web_services_03.htm">Description of the illustration jrt_web_services_03.gif</a><br />
+<br /></li>
+<li>
+<p>[Optional] Alternatively, go to <code>http://</code><code><span class="codeinlineitalic">AS_hostname</span></code><code>/jrt/webservice</code>.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="WBINS16075" name="WBINS16075"></a><a id="sthref395" name="sthref395"></a><a id="sthref396" name="sthref396"></a><a id="sthref397" name="sthref397"></a>To use the Web Service with a secure Web site (available only to admin users):</p>
+<ol>
+<li>
+<p>Create or modify the <code><a id="sthref398" name="sthref398"></a>secure-web-site.xml</code> file in the <code>config</code> directory.</p>
+</li>
+<li>
+<p>A sample <code>secure-web-site.xml</code> file is listed below.</p>
+<p>Note that the relevant code is in bold typeface.</p>
+<p>Particularly, ensure that <code>protocol</code> is set to <code>https</code>, <code>secure</code> is set to <code>true</code>, and a secure http <code>port</code> is identified. Additionally, you must create a <code>keystore</code> file and add the <code>ssl-config</code> entry (you must use an absolute path for the key store file).</p>
+<pre xml:space="preserve" class="oac_no_warn">&lt;?xml version="1.0" standalone="yes"?&gt;
+
+&lt;web-site
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation=
+    "http://xmlns.oracle.com/oracleas/schema/web-site-10_0.xsd"
+  display-name="OC4J 10g (10.1.3) Secure Web Service"
+  schema-major-version="10"
+  schema-minor-version="0"
+  <span class="bold">protocol="https"</span>
+  <span class="bold">port="4443"</span>
+  <span class="bold">secure="true"</span>
+&gt;
+  <span class="bold">&lt;ssl-config keystore="</span><span class="bolditalic">directory_path</span><span class="bold">/owb/jrtrun/config/serverkeystore.jks"</span>
+    <span class="bold">keystore-password="</span><span class="bolditalic">password</span><span class="bold">"/&gt;</span>
+
+  &lt;default_web_app application="default" name="defaultWebApp" /&gt;
+  &lt;web-app application="system" name="dms0" root="/dmsoc4j" access-log="false"
+    load-on-startup="true" /&gt;
+  &lt;web-app application="system" name="dms0" root="/dms0" access-log="false"
+    load-on-startup="true" /&gt;
+  &lt;web-app application="system" name="JMXSoapAdapter-web"     root="/JMXSoapAdapter" /&gt;
+  &lt;web-app application="default" name="jmsrouter_web" root="/jmsrouter"
+    load-on-startup="true" /&gt;
+  &lt;web-app application="javasso" name="javasso-web" root="/jsso"
+    load-on-startup="false" /&gt;
+  &lt;web-app application="ascontrol" name="ascontrol" root="/em"
+    load-on-startup="true" ohs-routing="false"/&gt;
+  &lt;web-app application="jrt" name="jrtws" load-on-startup="true" root="/jrt" /&gt;
+
+  &lt;!-- Access Log, where requests are logged to --&gt;
+  &lt;access-log path="../log/secure-web-access.log"
+             split="day" /&gt;
+
+  &lt;!- Uncomment this if you want to use ODL logging capabilities
+  &lt;odl-access-log path="../log/secure-web-access" max-file-size="1000"  
+  max-directory-size="10000" /&gt;
+  --&gt;
+
+&lt;/web-site&gt;
+</pre></li>
+<li>
+<p>After you create the <a id="sthref399" name="sthref399"></a><code>secure-web-site.xml</code> file, deploy it to <a id="sthref400" name="sthref400"></a><code>jrtws.war</code>, you may access the <a id="sthref401" name="sthref401"></a>JRTWebService securely through <code>https://</code><code><span class="codeinlineitalic">hostname</span></code><code>:4443/jrt/webservice</code>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBJFGIG" name="BGBJFGIG"></a><a id="WBINS05800" name="WBINS05800"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref402" name="sthref402"></a><a id="sthref403" name="sthref403"></a><a id="sthref404" name="sthref404"></a><a id="sthref405" name="sthref405"></a>Enabling Control Center Agent Audit Table Logging</h3>
+<p>To enable Audit Table logging, you must set up a connection pool, and then a managed data source prior to Control Center Agent deployment.</p>
+<a id="WBINS05810" name="WBINS05810"></a>
+<div class="sect3"><a id="sthref406" name="sthref406"></a>
+<h4 class="sect3"><a id="sthref407" name="sthref407"></a><a id="sthref408" name="sthref408"></a><a id="sthref409" name="sthref409"></a>Configuring OWBSYS Audit Connection Pool</h4>
+<p class="subhead2"><a id="WBINS16076" name="WBINS16076"></a>To configure the OWBSYS Audit Connection Pool:</p>
+<ol>
+<li>
+<p>On the breadcrumb, click <span class="bold">OC4J:home</span>.</p>
+</li>
+<li>
+<p>On the OC4J:home screen, click the <span class="bold">Administration</span> tab.</p>
+</li>
+<li>
+<p>Expand <span class="bold">Services</span>.</p>
+<img width="725" height="393" src="img/audit_conn_pool_01.gif" alt="Description of audit_conn_pool_01.gif follows" title="Description of audit_conn_pool_01.gif follows" longdesc="img_text/audit_conn_pool_01.htm" /><br />
+<a id="sthref410" name="sthref410" href="img_text/audit_conn_pool_01.htm">Description of the illustration audit_conn_pool_01.gif</a><br />
+<br /></li>
+<li>
+<p>Click the task icon next to <span class="bold"><a id="sthref411" name="sthref411"></a>JDBC Resources</span>.</p>
+</li>
+<li>
+<p>On the JDBC Resources screen, under <a id="sthref412" name="sthref412"></a>Connection Pools, click <span class="bold">Create</span>.</p>
+<img width="500" height="230" src="img/audit_table_02.gif" alt="Description of audit_table_02.gif follows" title="Description of audit_table_02.gif follows" longdesc="img_text/audit_table_02.htm" /><br />
+<a id="sthref413" name="sthref413" href="img_text/audit_table_02.htm">Description of the illustration audit_table_02.gif</a><br />
+<br /></li>
+<li>
+<p>On the Create Connection Pool - Application screen, under Application, select <span class="bold">default</span>.</p>
+<p>Under <a id="sthref414" name="sthref414"></a>Connection Pool Type, select <span class="bold">New Connection Pool</span>.</p>
+<p>Click <span class="bold">Continue</span>.</p>
+<img width="570" height="300" src="img/audit_conn_pool_02.gif" alt="Description of audit_conn_pool_02.gif follows" title="Description of audit_conn_pool_02.gif follows" longdesc="img_text/audit_conn_pool_02.htm" /><br />
+<a id="sthref415" name="sthref415" href="img_text/audit_conn_pool_02.htm">Description of the illustration audit_conn_pool_02.gif</a><br />
+<br /></li>
+<li>
+<p>On the Create Connection Pool screen, enter the <span class="bold">Name</span> <code>OWBSYS Audit Connection Pool</code>. Under URL, select <span class="bold"><a id="sthref416" name="sthref416"></a>JDBC URL</span>, and enter the URL (in this example, <code>jdbc:oracle:thin:@localhost:1521:ora111</code> is used for a local installation).</p>
+<p>Under the Credential section, enter the User Name (in this example, <a id="sthref417" name="sthref417"></a><code>owbsys_audit</code>), and enter the <span class="bold">Use Cleartext Password</span>.</p>
+<img width="570" height="620" src="img/audit_conn_pool_03.gif" alt="Description of audit_conn_pool_03.gif follows" title="Description of audit_conn_pool_03.gif follows" longdesc="img_text/audit_conn_pool_03.htm" /><br />
+<a id="sthref418" name="sthref418" href="img_text/audit_conn_pool_03.htm">Description of the illustration audit_conn_pool_03.gif</a><br />
+<br /></li>
+<li>
+<p>[Optional] On the Confirmation screen, test the availability of the connection. Click <span class="bold"><a id="sthref419" name="sthref419"></a><a id="sthref420" name="sthref420"></a>Test Connection</span>.</p>
+<img width="752" height="540" src="img/audit_conn_pool_04.gif" alt="Description of audit_conn_pool_04.gif follows" title="Description of audit_conn_pool_04.gif follows" longdesc="img_text/audit_conn_pool_04.htm" /><br />
+<a id="sthref421" name="sthref421" href="img_text/audit_conn_pool_04.htm">Description of the illustration audit_conn_pool_04.gif</a><br />
+<br /></li>
+<li>
+<p>On the Test Connection: "OWBSYS Audit Connection Pool" screen, click Test.</p>
+<img width="477" height="148" src="img/audit_conn_pool_05.gif" alt="Description of audit_conn_pool_05.gif follows" title="Description of audit_conn_pool_05.gif follows" longdesc="img_text/audit_conn_pool_05.htm" /><br />
+<a id="sthref422" name="sthref422" href="img_text/audit_conn_pool_05.htm">Description of the illustration audit_conn_pool_05.gif</a><br />
+<br />
+<p>A confirmation screen appears.</p>
+</li>
+</ol>
+<div class="infoboxnotealso">
+<p class="notep1">Note:</p>
+Application Server 10<span class="italic">g</span> is not case-sensitive when verifying Oracle Database credentials; it converts all letters to lower case before attempting to connect to the database. Because Oracle Database Release 11g R1 and subsequent releases are case sensitive, create user credentials in lowercase when using for Audit Table logging to prevent the <code>Invalid username/password</code> error message.</div>
+</div>
+<!-- class="sect3" -->
+<a id="WBINS05820" name="WBINS05820"></a>
+<div class="sect3"><a id="sthref423" name="sthref423"></a>
+<h4 class="sect3"><a id="sthref424" name="sthref424"></a><a id="sthref425" name="sthref425"></a>Configuring an Audit Table Data Source</h4>
+<p>To deploy Control Center Agent to OC4J, you must also configure the data source for the audit table. This data source is required by Control Center Agent; if not configured, the Control Center Agent deployment fails.</p>
+<p class="subhead2"><a id="WBINS16077" name="WBINS16077"></a>To configure the audit table data source:</p>
+<ol>
+<li>
+<p>On the breadcrumb, click <span class="bold">OC4J:home</span>.</p>
+</li>
+<li>
+<p>On the OC4J:home screen, click the <span class="bold">Administration</span> tab.</p>
+</li>
+<li>
+<p>Expand <span class="bold">Services</span>.</p>
+<img width="556" height="433" src="img/audit_table_01.gif" alt="Description of audit_table_01.gif follows" title="Description of audit_table_01.gif follows" longdesc="img_text/audit_table_01.htm" /><br />
+<a id="sthref426" name="sthref426" href="img_text/audit_table_01.htm">Description of the illustration audit_table_01.gif</a><br />
+<br /></li>
+<li>
+<p>Click the task icon next to <span class="bold"><a id="sthref427" name="sthref427"></a>JDBC Resources</span>.</p>
+</li>
+<li>
+<p>On the JDBC Resources screen, under <a id="sthref428" name="sthref428"></a>Data Sources, click <span class="bold">Create</span>.</p>
+<img width="500" height="230" src="img/audit_table_02.gif" alt="Description of audit_table_02.gif follows" title="Description of audit_table_02.gif follows" longdesc="img_text/audit_table_02.htm" /><br />
+<a id="sthref429" name="sthref429" href="img_text/audit_table_02.htm">Description of the illustration audit_table_02.gif</a><br />
+<br /></li>
+<li>
+<p>On the Create Data Source - Application &amp; Type screen:</p>
+<ul>
+<li>
+<p>Under Application, select <span class="bold">Application</span> <code>default</code>.</p>
+</li>
+<li>
+<p>Under <a id="sthref430" name="sthref430"></a>Data Source Type, select <span class="bold">Managed Data Source</span>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Continue</span>.</p>
+</li>
+</ul>
+<img width="590" height="500" src="img/audit_table_03.gif" alt="Description of audit_table_03.gif follows" title="Description of audit_table_03.gif follows" longdesc="img_text/audit_table_03.htm" /><br />
+<a id="sthref431" name="sthref431" href="img_text/audit_table_03.htm">Description of the illustration audit_table_03.gif</a><br />
+<br /></li>
+<li>
+<p>On the Create Data Source - Managed Data Source screen,</p>
+<ul>
+<li>
+<p>Enter <span class="bold">Name</span> <code>AuditDS</code>.</p>
+</li>
+<li>
+<p>Enter <a id="sthref432" name="sthref432"></a><span class="bold">JNDI Location</span> <code>jdbc/AuditDS</code>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Finish</span>.</p>
+</li>
+</ul>
+<p>If you do not require audit table logging, leave other parameters at their default values.</p>
+<img width="520" height="248" src="img/audit_table_04.gif" alt="Description of audit_table_04.gif follows" title="Description of audit_table_04.gif follows" longdesc="img_text/audit_table_04.htm" /><br />
+<a id="sthref433" name="sthref433" href="img_text/audit_table_04.htm">Description of the illustration audit_table_04.gif</a><br />
+<br /></li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BGBICCFF" name="BGBICCFF"></a><a id="WBINS05900" name="WBINS05900"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref434" name="sthref434"></a><a id="sthref435" name="sthref435"></a>Installing JDBC Drivers for OC4J</h3>
+<p>The following instructions demonstrate how to install JDBC drivers for OC4J.</p>
+<p class="subhead2"><a id="WBINS16078" name="WBINS16078"></a>To install the JDBC drivers for OC4J:</p>
+<ol>
+<li>
+<p>Obtain the <code>*.jar</code> file that contains the JDBC driver for your desired platform.</p>
+</li>
+<li>
+<p>Stop the OC4J service.</p>
+</li>
+<li>
+<p>Copy the JDBC driver file into the <code><span class="codeinlineitalic">AS_HOME</span></code><code>/j2ee/home/applib</code> directory, where <code><span class="codeinlineitalic">AS_HOME</span></code> is the Application Server home.</p>
+</li>
+<li>
+<p>Restart the OC4J service.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BGBGJHBA" name="BGBGJHBA"></a><a id="WBINS05940" name="WBINS05940"></a>
+<div class="sect2">
+<h3 class="sect2">Overview of <a id="sthref436" name="sthref436"></a>Control Center Agent Files</h3>
+<p>This section describes the files generated at run time. Note that if you application name is other than <code>jrt</code>, it appears in these directory paths as <code><span class="codeinlineitalic">app_name</span></code>.</p>
+<p>The Control Center Agent files include:</p>
+<ul>
+<li>
+<p><a href="#BGBDEAJE">"ODL Job Log Files"</a></p>
+</li>
+<li>
+<p><a href="#BGBEJAIH">"Control Center Agent Run-Time Log File"</a></p>
+</li>
+<li>
+<p><a href="#BGBGIBBC">"JobID File"</a></p>
+</li>
+<li>
+<p><a href="#BGBEGFGE">"Control Center Agent Settings"</a></p>
+</li>
+<li>
+<p><a href="#BGBIDHAD">"JRTAdministratorMBean"</a></p>
+</li>
+</ul>
+<a id="BGBDEAJE" name="BGBDEAJE"></a><a id="WBINS05941" name="WBINS05941"></a>
+<div class="sect3">
+<h4 class="sect3"><a id="sthref437" name="sthref437"></a>ODL Job Log Files</h4>
+<p>By default, ODL Job log files are located in the <code><span class="codeinlineitalic">AS_HOME</span></code><code>/j2ee/home/log/</code><code><span class="codeinlineitalic">app_name</span></code> directory.</p>
+<p>Each job log resides in its own directory. For example, log file for job 10 is in <code><span class="codeinlineitalic">AS_HOME</span></code><code>/j2ee/home/log/</code><code><span class="codeinlineitalic">app_name</span></code><code>/job10/log.xml</code>, and the metadata file for job 10 in <code><span class="codeinlineitalic">AS_HOME</span></code><code>/j2ee/home/log/</code><code><span class="codeinlineitalic">app_name</span></code><code>/job10/meta_data.txt</code>.</p>
+<p>You may choose to configure Control Center Agent to store the log files in other directories; ensure that Control Center Agent can access these log directories.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BGBEJAIH" name="BGBEJAIH"></a><a id="WBINS05942" name="WBINS05942"></a>
+<div class="sect3">
+<h4 class="sect3"><a id="sthref438" name="sthref438"></a>Control Center Agent Run-Time Log File</h4>
+<p>The Control Center Agent run-time log file <code><span class="codeinlineitalic">app_name</span></code><code>.log</code> employs the ODL log file rotation mechanism. The current run-time log is always <code><span class="codeinlineitalic">app_name</span></code><code>.log</code>, while older log files are <code><span class="codeinlineitalic">app_name</span></code><code>.log</code><code>.</code><code><span class="codeinlineitalic">N</span></code>, where <code><span class="codeinlineitalic">N</span></code> is the round of log rotation). By default, this file is:</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="italic">AS_HOME</span>/j2ee/home/log/<span class="italic">app_name</span>.log
+</pre></div>
+<!-- class="sect3" -->
+<a id="BGBGIBBC" name="BGBGIBBC"></a><a id="WBINS05943" name="WBINS05943"></a>
+<div class="sect3">
+<h4 class="sect3"><a id="sthref439" name="sthref439"></a>JobID File</h4>
+<p>Control Center Agent uses a file to keep track of the current job ID in the system; be careful not to remove this file. This file can be in one of two possible locations:</p>
+<ul>
+<li>
+<p>When the Control Center Agent is installed as part of the larger OWB installation, the file is at:</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="italic">OWB_HOME</span>/owb/jrt/application-deployments/jrt/counter/counter.info 
+</pre></li>
+<li>
+<p>When the Control Center Agent is installed on the Application Server, the file is at:</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="italic">AS_HOME</span>/j2ee/home/applications/<span class="italic">application_name</span>/counter/counter.info
+</pre></li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BGBEGFGE" name="BGBEGFGE"></a><a id="WBINS05944" name="WBINS05944"></a>
+<div class="sect3">
+<h4 class="sect3"><a id="sthref440" name="sthref440"></a>Control Center Agent Settings</h4>
+<p>Control Center Agent settings are persisted in the file <code>jrt.xml</code>. You may modify the settings in this file directly, and then restart Control Center Agent. Alternatively, you can modify these settings by changing the attributes of the <a href="#BGBIDHAD">JRTAdministratorMBean</a> in Enterprise Manager. This file is:</p>
+<pre xml:space="preserve" class="oac_no_warn"><span class="italic">AS_HOME</span>/j2ee/home/applications/<span class="italic">app_name</span>/config/jrt.xml
+</pre></div>
+<!-- class="sect3" -->
+<a id="BGBIDHAD" name="BGBIDHAD"></a><a id="WBINS05945" name="WBINS05945"></a>
+<div class="sect3">
+<h4 class="sect3"><a id="sthref441" name="sthref441"></a>JRTAdministratorMBean</h4>
+<p>The <code>JRTAdministratorMBean</code> enables you to dynamically change Control Center Agent settings without restarting the Control Center Agent.</p>
+<p class="subhead2"><a id="WBINS16079" name="WBINS16079"></a>To <a id="sthref442" name="sthref442"></a><a id="sthref443" name="sthref443"></a>change Control Center Agent settings with the JRTAdministratorMBean</p>
+<ol>
+<li>
+<p>On the breadcrumb, click <span class="bold">OC4J:home</span>.</p>
+</li>
+<li>
+<p>On the OC4J:home screen, click the <span class="bold">Applications</span> tab.</p>
+</li>
+<li>
+<p>Expand <span class="bold">All Applications</span>, then expand <span class="bold">default</span>.</p>
+</li>
+<li>
+<p>In the <span class="bold">jrt</span> row, click the task icon in column <span class="bold">Application Defined MBeans</span>.</p>
+<img width="705" height="351" src="img/admin_bean_01.gif" alt="Description of admin_bean_01.gif follows" title="Description of admin_bean_01.gif follows" longdesc="img_text/admin_bean_01.htm" /><br />
+<a id="sthref444" name="sthref444" href="img_text/admin_bean_01.htm">Description of the illustration admin_bean_01.gif</a><br />
+<br /></li>
+<li>
+<p>On the Application MBeans screen, in the left-hand side navigation menu, select <a id="sthref445" name="sthref445"></a><span class="bold">JRTAdministrator</span>.</p>
+<p>The right-hand side shows all the Attributes and Operations of JRTAdministrator MBean, under the corresponding tabs.</p>
+<img width="780" height="593" src="img/admin_bean_02.gif" alt="Description of admin_bean_02.gif follows" title="Description of admin_bean_02.gif follows" longdesc="img_text/admin_bean_02.htm" /><br />
+<a id="sthref446" name="sthref446" href="img_text/admin_bean_02.htm">Description of the illustration admin_bean_02.gif</a><br />
+<br /></li>
+<li>
+<p>Change the attributes to desired values, then click <span class="bold">Apply</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BGBJHDIC" name="BGBJHDIC"></a><a id="WBINS05970" name="WBINS05970"></a>
+<div class="sect2">
+<h3 class="sect2"><a id="sthref447" name="sthref447"></a><a id="sthref448" name="sthref448"></a>Installing Code Templates for Use from Control Center Agent</h3>
+<p>If you want to use a code template, you must install any additional JDBC driver files that it requires to access heterogeneous systems on all the client computers and on the computer that hosts the Control Center Agent.</p>
+<p class="subhead2"><a id="WBINS16080" name="WBINS16080"></a>To install a Code Template:</p>
+<ol>
+<li>
+<p>Load the required JDBC drivers to the <code><span class="codeinlineitalic">OWB_HOME</span></code><code>/owb/lib/ext</code> directory.</p>
+</li>
+<li>
+<p>Import the code templates into any projects that uses them, in the design client.</p>
+<p>You only import the code template once for the project. After it is imported, all users working on the project can use the code template.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" -->
+<a id="BABIGHDF" name="BABIGHDF"></a><a id="WBINS08200" name="WBINS08200"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a id="sthref449" name="sthref449"></a><a id="sthref450" name="sthref450"></a>Integrating with E-Business Suite</h2>
+<p>When integrating with Oracle E-Business Suite (EBS), you must first import its metadata, and then design mappings for moving and transforming data. Specifically:</p>
+<ul>
+<li>
+<p>During the design phase, Oracle Warehouse Builder users must have access to metadata in the <code>APPS</code> schema.</p>
+</li>
+<li>
+<p>During the execution phase, Oracle Warehouse Builder users must access the data in the <code>APPS</code> schema.</p>
+</li>
+</ul>
+<p>Because direct access to the <code>APPS</code> production schema may be limited and restricted, you may define a user on the EBS database for Oracle Warehouse Builder users to access only the relevant metadata and data.</p>
+<p class="subhead2"><a id="WBINS16081" name="WBINS16081"></a>To <a id="sthref451" name="sthref451"></a><a id="sthref452" name="sthref452"></a>enable access to EBS data and metadata:</p>
+<ol>
+<li>
+<p>Create a user on the database that hosts the EBS. This user needs, at minimum, <code>CONNECT</code> and <code>RESOURCE</code> privileges.</p>
+</li>
+<li>
+<p>Grant access to the relevant metadata by running the <code>OWB_ORACLE_HOME\owb\cmi\ebs\owbebs.sql</code> script.</p>
+<p>This script grants access to the following tables in the APPS schema, which contain metadata for EBS tables, views, sequences, and keys:</p>
+<ul>
+<li>
+<p><a id="sthref453" name="sthref453"></a><code>FND_APPLICATION</code></p>
+</li>
+<li>
+<p><a id="sthref454" name="sthref454"></a><code>FND_APPLICATION_VL</code></p>
+</li>
+<li>
+<p><code><a id="sthref455" name="sthref455"></a>FND_TABLES</code></p>
+</li>
+<li>
+<p><code><a id="sthref456" name="sthref456"></a>FND_VIEWS</code></p>
+</li>
+<li>
+<p><code><a id="sthref457" name="sthref457"></a>FND_SEQUENCES</code></p>
+</li>
+<li>
+<p><code><a id="sthref458" name="sthref458"></a>FND_COLUMNS</code></p>
+</li>
+<li>
+<p><code><a id="sthref459" name="sthref459"></a>FND_PRIMARY_KEYS</code></p>
+</li>
+<li>
+<p><code><a id="sthref460" name="sthref460"></a>FND_FOREIGN_KEYS</code></p>
+</li>
+<li>
+<p><a id="sthref461" name="sthref461"></a><code>FND_PRIMARY_KEY_COLUMNS</code></p>
+</li>
+<li>
+<p><code><a id="sthref462" name="sthref462"></a>FND_FOREIGN_KEY_COLUMNS</code></p>
+</li>
+</ul>
+<p>The script also creates a synonym in the user schema for each of the preceding objects.</p>
+</li>
+<li>
+<p>Enable a user to extract data from the EBS database.</p>
+<p>You can create a new user, or grant the appropriate privileges to the same user you created earlier. For each object from which you want to enable data extraction, grant this user at least <code>SELECT</code> access.</p>
+</li>
+</ol>
+<p>Warehouse Builder users can now import the E-Business Suite metadata as described in the importing section of <a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a>.</p>
+</div>
+<!-- class="sect1" -->
+<a id="BABDHAFF" name="BABDHAFF"></a><a id="WBINS08300" name="WBINS08300"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1"><a id="sthref463" name="sthref463"></a><a id="sthref464" name="sthref464"></a>Installing Third-Party Name and Address Data</h2>
+<p><a id="sthref465" name="sthref465"></a><a id="sthref466" name="sthref466"></a>Warehouse Builder gives you the option to perform name and address cleansing on your data with the Name and Address operator. The Name and Address operator identifies and corrects errors and inconsistencies in name and address source data. The operator identifies inconsistencies by comparing input data to data libraries supplied by the third-party name and address cleansing software vendors. Purchase the data libraries directly from these vendors.</p>
+<p>To install data libraries, refer to the installation instructions of the name and address cleansing software vendor of your choice. For the list of certified name and address cleansing software providers, refer to Oracle Technology Network at <code><a href="http://www.oracle.com/technetwork/developer-tools/warehouse/overview/index.html">http://www.oracle.com/technetwork/developer-tools/warehouse/overview/index.html</a></code>.<a id="sthref467" name="sthref467"></a><a id="sthref468" name="sthref468"></a></p>
+<p class="subhead2"><a id="WBINS16082" name="WBINS16082"></a>To integrate with third-party name and address data libraries:</p>
+<ol>
+<li>
+<p>Install Warehouse Builder as instructed in this guide.</p>
+</li>
+<li>
+<p>Purchase data libraries from one of the certified vendors listed on My Oracle Support at <code><a href="https://support.oracle.com">https://support.oracle.com</a></code>.</p>
+</li>
+<li>
+<p>Install and access the certified vendor's data libraries and Name and Address adapter following the vendor's instructions.</p>
+<p>If you are installing in a Real Application Cluster environment, then you may be able to install the name and address adapter on many nodes to benefit from the parallelism and failover enabled by the RAC architecture. Check with your vendor to see if your purchase license allows a multiple-node installation.</p>
+<p>You do not need to install the data libraries on multiple nodes. However, if you install all data libraries on one node, then performance may suffer due to file access time latency. Follow the recommendations of your name and address cleansing software vendor.</p>
+</li>
+<li>
+<p>Design a mapping using the Name and Address operator to cleanse name or address data. Refer to <a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a> for information on designing mappings using the Name and Address operator.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="BABGAABJ" name="BABGAABJ"></a><a id="WBINS08400" name="WBINS08400"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect1">Integrating with Oracle Workflow</h2>
+<p><a id="sthref469" name="sthref469"></a><a id="sthref470" name="sthref470"></a>If you plan to use Warehouse Builder process flows, then use Oracle Workflow to enable deployment as described in this section.</p>
+<div class="infoboxnotealso">
+<p class="notep1">See Also:</p>
+<a class="olink WBETL" href="http://www.oracle.com/pls/db112/lookup?id=WBETL"><span class="italic">Oracle Warehouse Builder Data Modeling, ETL, and Data Quality Guide</span></a> for more information about schedules</div>
+<p class="subhead2"><a id="WBINS16083" name="WBINS16083"></a>To enable integration with Oracle Workflow:</p>
+<ol>
+<li>
+<p>Stop all running OC4J instances.</p>
+</li>
+<li>
+<p>Locate Oracle Workflow installation program, at <code><span class="codeinlineitalic">OWB_HOME</span></code><code>\owb\wf\install\wfinstall.*</code>.</p>
+<p>If you installed Oracle Warehouse Builder 11<span class="italic">g</span> on Oracle Database 10<span class="italic">g</span> Release&nbsp;2, separately download the software for Oracle Workflow 2.6.4.</p>
+</li>
+<li>
+<p>Start Oracle Workflow installation program.</p>
+<p><span class="bolditalic">For Windows</span>, enter the following at the command prompt:</p>
+<pre xml:space="preserve" class="oac_no_warn">C:\&gt;  <span class="bold">cd OWB112\owb\wf\install</span>
+C:\OWB112\owb\wf\install&gt; <a id="sthref471" name="sthref471"></a><span class="bold">wfinstall.bat</span>
+</pre>
+<p><span class="bolditalic">For Linux,</span> enter the following in the shell:</p>
+<pre xml:space="preserve" class="oac_no_warn">% <span class="bold">cd OWB112/owb/wf/install</span>
+% <a id="sthref472" name="sthref472"></a><span class="bold">wfinstall.csh</span>
+</pre>
+<p>Note that if you use multiple Oracle databases, you must unset the environment variables related to Oracle, such as <code><a id="sthref473" name="sthref473"></a>ORACLE_HOME</code>, <code><a id="sthref474" name="sthref474"></a>ORACLE_SID</code>, <code><a id="sthref475" name="sthref475"></a>ORACLE_PORT</code>, and <a id="sthref476" name="sthref476"></a><code>LD_LIBRARY_PATH</code>.</p>
+</li>
+<li>
+<p>Complete the Workflow Configuration Assistant using following values:</p>
+<ul>
+<li>
+<p><span class="bold"><a id="sthref477" name="sthref477"></a>Install Option:</span> Server Only</p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref478" name="sthref478"></a>Workflow Account:</span> <code>owf_mgr</code></p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref479" name="sthref479"></a>Workflow Password:</span> <code><span class="codeinlineitalic">wf_password</span></code></p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref480" name="sthref480"></a>SYS Password:</span> <code><span class="codeinlineitalic">sys_password</span></code>; use the <code>SYS</code> password for the database where installing Oracle Workflow.</p>
+</li>
+<li>
+<p><a id="sthref481" name="sthref481"></a><span class="bold">TNS Connect Descriptor:</span> <code><span class="codeinlineitalic">hostname:port:service_name</span></code>, where the values correspond to your database.</p>
+<p>Because the assistant does not reference the <code>tnsnames.ora</code> file, do not use a net service name.</p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref482" name="sthref482"></a>LDAP Parameters:</span> this is optional; see Oracle Workflow documentation for details.</p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref483" name="sthref483"></a>Mailer Parameters:</span> this is optional; see Oracle Workflow documentation for details.</p>
+</li>
+<li>
+<p><span class="bold"><a id="sthref484" name="sthref484"></a>Tablespace:</span> this is optional; you may change the tablespace.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <span class="bold">Submit</span> to start the Workflow configuration process.</p>
+<p>The configuration process can take several minutes. Check <code>OWB112/owb/wf/install/<a id="sthref485" name="sthref485"></a>wf.log</code> for messages to follow the progress of the configuration process.</p>
+<p>When the process is complete, the <a id="sthref486" name="sthref486"></a>Workflow Configuration Assistant displays a message of completion.</p>
+</li>
+<li>
+<p>Install the <a id="sthref487" name="sthref487"></a>Workflow Client [Optional]</p>
+<p>The installation of Oracle Workflow client is optional because the <a id="sthref488" name="sthref488"></a>Process Flow Editor in Warehouse Builder replaces its functionality. You may want to install Oracle Workflow client if you want to view the deployed Warehouse Builder processes in Oracle Workflow.</p>
+<p>On the computer that hosts the Warehouse Builder client, install Oracle Workflow client from Oracle Workflow client CD.</p>
+</li>
+<li>
+<p>Create a <a id="sthref489" name="sthref489"></a>Workflow Proxy User.</p>
+<p>When the Workflow instance is not on the same computer that hosts the Warehouse Builder repository, you need to create a proxy user.</p>
+<p>Within the database hosting the repository, use SQL Plus to create a user and grant it the <code><a id="sthref490" name="sthref490"></a>OWB_USER</code> role as a default. This enables the remote Oracle Workflow instance to connect to the services provided by the Control Center.</p>
+</li>
+</ol>
+<p class="subhead2"><a id="sthref491" name="sthref491"></a>Considerations for the OWB_USER Role</p>
+<p>If you encounter a problem when trying to grant the <code>OWB_USER</code> role, then it is possible that <code>OWB_USER</code> already exists in an earlier OWB implementation. In this case, you must first rename the existing <code>OWB_USER</code> to something else before you can grant a user the <code>OWB_USER</code> role in the current release. In order to retain the properties for the renamed role, you must register it in the new installation of release 11.2.</p>
+</div>
+<!-- class="sect1" --></div>
+<!-- class="ind" -->
+<div class="footer">
+<hr />
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="100%">
+<col width="33%" />
+<col width="*" />
+<col width="33%" />
+<tr>
+<td align="left">
+<table class="simple oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="98">
+<tr>
+<td align="center" valign="top"><a href="migrate.htm"><img width="24" height="24" src="../../dcommon/gifs/leftnav.gif" alt="Go to previous page" /><br />
+<span class="icon">Previous</span></a></td>
+<td align="center" valign="top"><a href="part_2.htm"><img width="24" height="24" src="../../dcommon/gifs/rightnav.gif" alt="Go to next page" /><br />
+<span class="icon">Next</span></a></td>
+</tr>
+</table>
+</td>
+<td style="font-size: 90%" align="center" class="copyrightlogo"><img width="144" height="18" src="../../dcommon/gifs/oracle.gif" alt="Oracle" /><br />
+Copyright&nbsp;&copy;&nbsp;2000, 2010,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.<br />
+<a href="../../dcommon/html/cpyr.htm">Legal Notices</a></td>
+<td align="right">
+<table class="icons oac_no_warn" summary="" cellspacing="0" cellpadding="0" width="245">
+<tr>
+<td align="center" valign="top"><a href="../../index.htm"><img width="24" height="24" src="../../dcommon/gifs/doclib.gif" alt="Go to Documentation Home" /><br />
+<span class="icon">Home</span></a></td>
+<td align="center" valign="top"><a href="../../nav/portal_booklist.htm"><img width="24" height="24" src="../../dcommon/gifs/booklist.gif" alt="Go to Book List" /><br />
+<span class="icon">Book List</span></a></td>
+<td align="center" valign="top"><a href="toc.htm"><img width="24" height="24" src="../../dcommon/gifs/toc.gif" alt="Go to Table of Contents" /><br />
+<span class="icon">Contents</span></a></td>
+<td align="center" valign="top"><a href="index.htm"><img width="24" height="24" src="../../dcommon/gifs/index.gif" alt="Go to Index" /><br />
+<span class="icon">Index</span></a></td>
+<td align="center" valign="top"><a href="../../dcommon/html/feedback.htm"><img width="24" height="24" src="../../dcommon/gifs/feedbck2.gif" alt="Go to Feedback page" /><br />
+<span class="icon">Contact Us</span></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<noscript>
+<p>Scripting on this page enhances content navigation, but does not change the content in any way.</p>
+</noscript>
+</body>
+</html>

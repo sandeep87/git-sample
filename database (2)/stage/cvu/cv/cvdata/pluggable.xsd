@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright (c) 2008, 2010, Oracle and/or its affiliates. All rights reserved. 
+
+   NAME
+     pluggable.xsd - CVU pluggable task Schema
+
+   DESCRIPTION
+     XML schema for CVU pluggable task configuration xmls
+
+   NOTES
+     Original version of Pluggable.xsd  credits to
+     nvira/dsaggi
+
+   MODIFIED   (MM/DD/YY)
+      nvira    04/22/10 - add task severity attribute
+    narbalas   09/21/09
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd"
+  elementFormDefault="qualified">
+  <xs:element name="ROOT">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="TASK_DEFINITION_LIST" minOccurs="1"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TASK_DEFINITION" type="TASK_DEFINITION_TYPE"
+                minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TARGET_LIST" type="TARGET_LIST_TYPE"
+          minOccurs="1" maxOccurs="1" />
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TASK_DEFINITION_TYPE">
+    <xs:all>
+      <xs:element name="EXECUTABLE_INFO" type="EXECUTABLE_INFO_TYPE"
+        minOccurs="1" maxOccurs="1" />
+      <!--
+        ANALYZER is required if the executable result type is
+        TO_BE_ANALYZED
+      -->
+      <xs:element name="ANALYZER" type="ANALYZER_TYPE"
+        minOccurs="0" maxOccurs="1" />
+
+      <!--
+        NODE_LIST if present, must define either LOCAL_NODE or
+        LOCAL_NODE attribute
+      -->
+      <xs:element name="NODE_LIST" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="LOCAL_NODE" type="xs:boolean"
+            use="optional" />
+          <xs:attribute name="VAR" use="optional">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="INPUT_NODE_LIST" />
+                <xs:enumeration value="CLUSTER_NODES" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="INITIAL_VALIDATION_LIST" minOccurs="0"
+        maxOccurs="1">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="CRS_INSTALLED" minOccurs="0"
+              maxOccurs="1" />
+            <!-- Contents under DB_INSTALLED are not finalized -->
+            <xs:element name="DB_INSTALLED" minOccurs="0"
+              maxOccurs="1">
+              <xs:complexType>
+                <xs:attribute name="VAR" use="optional"
+                  type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OPERATING_SYSTEM_LIST" minOccurs="1"
+        maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="OPERATING_SYSTEM" minOccurs="1"
+              maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="TYPE" type="xs:string"
+                    minOccurs="1" maxOccurs="1" /> <!-- ALL,UNIX,WINDOWS,LINUX,SOLARIS etc -->
+                  <xs:element name="ARCHITECTURE" type="xs:string"
+                    minOccurs="1" maxOccurs="1" /> <!-- ALL,x86, x64, ppc64, etc -->
+                  <xs:element name="VERSION" type="xs:string"
+                    minOccurs="1" maxOccurs="1" /> <!-- ALL, RHEL5, OEL4, 5.3, 5.9 etc -->
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="ID" type="xs:string" use="required" />
+    <xs:attribute name="ROOT_PRIVILEGE_REQUIRED" type="xs:boolean"
+      use="optional" />
+    <xs:attribute name="SEVERITY" type="SEVERITY_TYPE"
+      use="optional" />
+  </xs:complexType>
+  <xs:simpleType name="SEVERITY_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CRITICAL" />
+      <xs:enumeration value="IGNORABLE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EXECUTABLE_INFO_TYPE">
+    <xs:sequence>
+      <xs:element name="REQUIRED_VERSION" minOccurs="0"
+        maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="EQ" type="xs:string" use="optional" />
+          <xs:attribute name="EQ_NO_CASE" type="xs:string" use="optional" />
+          <xs:attribute name="LE" type="xs:string" use="optional" />
+          <xs:attribute name="LT" type="xs:string" use="optional" />
+          <xs:attribute name="GT" type="xs:string" use="optional" />
+          <xs:attribute name="GE" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="EXTERNAL">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="NAME" minOccurs="1"
+                maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="VALUE" use="required"
+                    type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ARGS" minOccurs="0"
+                maxOccurs="1" type="ARGS_TYPE" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <!--  The contents of INLINE element should be in a CDATA section -->
+        <xs:element name="INLINE">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="RESULT_TYPE" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="VALUE" use="required">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="ANALYZED" />
+                <xs:enumeration value="TO_BE_ANALYZED" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="TYPE" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SHELL" />
+          <xs:enumeration value="SQL" />
+          <xs:enumeration value="SQL" />
+          <xs:enumeration value="PLSQL" />
+          <xs:enumeration value="PERL" />
+          <xs:enumeration value="NATIVE" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ANALYZER_TYPE">
+    <xs:choice>
+      <xs:element name="STANDARD_ANALYZER">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="COMPARATOR" minOccurs="1"
+              maxOccurs="1">
+              <xs:complexType>
+                <xs:attribute name="TYPE" use="required">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="string" />
+                      <xs:enumeration value="numeric" />
+                      <xs:enumeration value="boolean" />
+                      <xs:enumeration value="list" />
+                      <xs:enumeration value="executable" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="EQ" type="xs:string"
+                  use="optional" />
+                <xs:attribute name="EQ_NO_CASE" type="xs:string"
+                  use="optional" />
+                <xs:attribute name="LE" type="xs:string"
+                  use="optional" />
+                <xs:attribute name="LT" type="xs:string"
+                  use="optional" />
+                <xs:attribute name="GT" type="xs:string"
+                  use="optional" />
+                <xs:attribute name="GE" type="xs:string"
+                  use="optional" />
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EXTERNAL_ANALYZER">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="EXECUTABLE_INFO" type="EXECUTABLE_INFO_TYPE"
+              minOccurs="1" maxOccurs="1"></xs:element>
+          </xs:sequence>
+          <xs:attribute name="GLOBAL_ANALYZER" type="xs:boolean"
+            use="optional"></xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="TARGET_LIST_TYPE">
+    <xs:sequence>
+      <xs:element name="SOFTWARE" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TARGET" minOccurs="0"
+              maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="TASK_LIST" minOccurs="0"
+              maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:group ref="TASK_GROUP" minOccurs="0"
+                        maxOccurs="unbounded" />
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="ID" type="xs:string"
+                  use="required" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="VERSION" type="xs:string"
+            use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="TASK_GROUP">
+    <xs:choice>
+      <xs:element name="TASK">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="EXECUTABLE_ARGUMENTS"
+              minOccurs="0" maxOccurs="1" type="ARGS_TYPE" />
+            <xs:element name="ANALYZER" type="ANALYZER_TYPE"
+              minOccurs="0" maxOccurs="1" />
+          </xs:all>
+          <xs:attribute name="ID" type="xs:string" use="required" />
+          <xs:attribute name="SEVERITY" type="SEVERITY_TYPE"
+            use="optional" />
+          
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CONDITION" type="TASK_CONDITION_TYPE" />
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="TASK_CONDITION_TYPE">
+    <xs:sequence>
+      <!--
+        Condition must be specified as either a discovered condition,
+        specified as VAR attribute, eg. VAR=OCFS2, VAR=ASM etc, or in
+        terms of other task, as defined by VAR_TASK element
+      -->
+      <xs:element name="VAR_TASK" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="EXECUTABLE_ARGUMENTS"
+              minOccurs="0" maxOccurs="1" type="ARGS_TYPE" />
+            <xs:element name="ANALYZER" type="ANALYZER_TYPE"
+              minOccurs="0" maxOccurs="1" />
+          </xs:all>
+          <xs:attribute name="ID" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:group ref="TASK_GROUP" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="ELSE" type="TASK_CONDITION_TYPE"
+        minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="VAR" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="ARGS_TYPE">
+    <xs:sequence>
+      <xs:element name="ARG" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NAME" minOccurs="1" maxOccurs="1">
+              <xs:complexType>
+                <xs:attribute name="VALUE" use="required"
+                  type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="TYPE" minOccurs="1" maxOccurs="1">
+              <xs:complexType>
+                <xs:attribute name="VALUE" use="required">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="string" />
+                      <xs:enumeration value="numeric" />
+                      <xs:enumeration value="boolean" />
+                      <xs:enumeration value="list" />
+                      <xs:enumeration value="executable" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <!-- either VAL or VAR must be specified -->
+            <xs:element name="VAL" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:attribute name="VALUE" use="required"
+                  type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="VAR" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:attribute name="VALUE" use="required"
+                  type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

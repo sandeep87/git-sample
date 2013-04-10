@@ -1,0 +1,25 @@
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-Jar-URL: MiniApps.jar
+MIDlet-Name: MiniApps MIDlet Suite
+MIDlet-9: Empty content,/list_empty.png,com.nokia.example.miniapp.emptycontent.EmptyContentExample
+MIDlet-8: Confirmation,/list_confirmation.png,com.nokia.example.miniapp.confirmation.ConfirmationExample
+MIDlet-7: Ticker,/list_ticker.png,com.nokia.example.miniapp.ticker.TickerExample
+MIDlet-6: Categories,/list_categorybar.png,com.nokia.example.miniapp.categorybar.CategoryBarExample
+MIDlet-5: Form,/list_form.png,com.nokia.example.miniapp.form.FormExample
+MIDlet-4: Canvas,/list_canvas.png,com.nokia.example.miniapp.canvas.CanvasExample
+MIDlet-3: Dialogs,/list_dialog.png,com.nokia.example.miniapp.dialogs.DialogExample
+MIDlet-2: Text,/list_text.png,com.nokia.example.miniapp.text.Text
+MIDlet-1: Lists,/list_list.png,com.nokia.example.miniapp.lists.ListsExample
+MIDlet-15: Menus,/list_menu.png, com.nokia.example.miniapp.menus.Menus
+MicroEdition-Profile: MIDP-2.1
+MIDlet-14: Keypads,/list_keypad.png, com.nokia.example.miniapp.keypads.Keypads
+MIDlet-Vendor: MIDlet Suite Vendor
+MIDlet-13: Interdependent,/list_interdependent.png,com.nokia.example.miniapp.interdependent.InterdependentExample
+MIDlet-12: Add new,/list_custom.png,com.nokia.example.miniapp.addnew.AddNewExample
+MIDlet-11: Zoom,/list_zoom.png,com.nokia.example.miniapp.zoom.ZoomExample
+MIDlet-10: Multiple items,/list_multiple.png,com.nokia.example.miniapp.multipleitems.MultipleItemsExample
+MIDlet-Icon: /menu_miniappsuite.png
+Nokia-MIDlet-App-Orientation: manual
+Nokia-MIDlet-On-Screen-Keypad: no
+Nokia-UI-Enhancement: CanvasHasBackground
