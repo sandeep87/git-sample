@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">ContextMenuActivity!</string>
+    <string name="app_name">ContextMenu</string>
+
+    <string-array name="names">
+        <item>Android</item>
+        <item>Iphone</item>
+        <item>Nokia</item>
+        <item>Samsung</item>
+        <item>BlackBerry</item>
+    </string-array>
+
+    <string name="edit">edit</string>
+    <string name="save">save</string>
+    <string name="delete">delete</string>
+    <string name="view">view</string>
+
+</resources>

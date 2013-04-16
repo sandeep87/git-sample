@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ContentProviderSample</string>
+    <string name="menu_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="bt_text">View</string>
+    <string name="bt_create">Create</string>
+    <string name="bt_update">Update</string>
+    <string name="bt_delete">Delete</string>
+
+</resources>

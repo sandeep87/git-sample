@@ -1,25 +1,19 @@
 package com.paradigmcreatives.customadapterdemo;
 
-import java.util.ArrayList;
-
 import android.content.Context;
-import android.text.TextUtils;
-import android.text.style.DynamicDrawableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
+/*import android.widget.Button;
+import android.widget.EditText;*/
 import android.widget.TextView;
 
 public class CustomAdapterDemo extends BaseAdapter {
 	private String[] listItems;
 	private Context mContext;
-	private EditText mEditText;
-	private Button mButton;
+	/*private EditText mEditText;
+	private Button mButton;*/
 	
     public CustomAdapterDemo(ListMobileActivity listMobileActivity,
 			String[] mobiles) {

@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:animationCache="true"
+    android:background="#FFFFFF"
     android:orientation="vertical" >
 
     <TextView
@@ -15,8 +17,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="210dp"
-        android:background="#FFFF00"
-        android:text="@string/button" />
+        android:soundEffectsEnabled="true"
+        android:text="@string/button"
+        android:typeface="monospace" />
+    <!-- android:background="#FFFF00" -->
 
     <Button
         android:id="@+id/post_on_wall"
@@ -24,10 +28,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_below="@id/login"
         android:layout_marginBottom="163dp"
         android:background="#FFFF00"
-        android:text="@string/post_on_wall" 
-        android:layout_below="@id/login"/>
+        android:text="@string/post_on_wall" />
 
     <Button
         android:id="@+id/logout"

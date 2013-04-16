@@ -13,20 +13,24 @@ public class MazeGameActivity extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
 
 	private static final String EXTRA_BUNDLE = "maze";
+	private Button newGame;
+	private Button exit;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		Button newGame = (Button) findViewById(R.id.bNew);
-		Button exit = (Button) findViewById(R.id.bExit);
+		newGame = (Button) findViewById(R.id.bNew);
+		exit = (Button) findViewById(R.id.bExit);
 		newGame.setOnClickListener(this);
 		exit.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
+
 		switch (v.getId()) {
+
 		case R.id.bExit:
 			finish();
 			break;

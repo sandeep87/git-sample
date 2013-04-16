@@ -29,7 +29,7 @@ public class MapViewActivity extends MapActivity {
 		OverlayItem overLayItem = new OverlayItem(point, "Welcome",
 				"We are in Hyderabad,India");
 
-		GeoPoint point1 = new GeoPoint(1770000, 8330000);
+		GeoPoint point1 = new GeoPoint(17705339,85584095);
 		OverlayItem overLayItem1 = new OverlayItem(point1, "Welcome",
 				"We are in Vizag,India");
 

@@ -7,11 +7,11 @@
   android:layout_gravity="center_horizontal">
   	
   	<TextView android:text="@string/finished_text"
-  			  android:layout_width="fill_parent"
+  	    	  android:layout_width="fill_parent"
   			  android:layout_height="wrap_content"
-  			  android:paddingLeft="10dp"/>
-	
-	<Button android:text="@string/finished_button" 
+  			  android:paddingLeft="10dip"/>
+  	
+  		<Button android:text="@string/finished_button" 
 			android:id="@+id/closeGame" 
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content"/>

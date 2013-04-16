@@ -14,14 +14,13 @@ public class SnakeAndLadderActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fisrt);
-System.out.println("the game");
         
         go_btn = (Button) findViewById(R.id.go);
         go_btn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(SnakeAndLadderActivity.this,ThirdActivity.class);
+				Intent intent = new Intent(SnakeAndLadderActivity.this,SecondActivity.class);
 				startActivity(intent);
 				finish();
 				

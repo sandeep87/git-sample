@@ -125,6 +125,9 @@ public class FaceBookLoginOutActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				postOnWall("http://www.paradigmcreatives.com/");
+				Toast.makeText(FaceBookLoginOutActivity.this,
+						"The message has successfully posted on your wall",
+						Toast.LENGTH_LONG).show();
 			}
 		});
 

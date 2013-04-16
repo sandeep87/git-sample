@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ViewSwitcher
+        android:id="@+id/viewswitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <include layout="@layout/first_layout" />
+
+        <include layout="@layout/second_layout" />
+    </ViewSwitcher>
+
+</RelativeLayout>

@@ -40,7 +40,7 @@ public class ReverseGeoCodingActivity extends Activity {
 				longitude = mEditTwo.getText().toString();
 
 				List<Address> address = null;
-				Geocoder mGeocoder = new Geocoder(getApplicationContext(),
+				Geocoder mGeocoder = new Geocoder(ReverseGeoCodingActivity.this,
 						Locale.getDefault());
 				try {
 					address = mGeocoder.getFromLocation(

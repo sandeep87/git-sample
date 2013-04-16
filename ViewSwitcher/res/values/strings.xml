@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">ViewSwitcherActivity!</string>
+    <string name="app_name">ViewSwitcher</string>
+    <string name="previous">Click to next switch view</string>
+    <string name="next">Click to previous switch view</string>
+
+</resources>

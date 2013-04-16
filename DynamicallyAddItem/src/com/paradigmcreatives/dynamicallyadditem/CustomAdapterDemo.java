@@ -58,6 +58,7 @@ public class CustomAdapterDemo extends BaseAdapter {
 
 			adapter.add(mEditText.getText().toString());
 			adapter.notifyDataSetChanged();
+			
 		}
 
 	}

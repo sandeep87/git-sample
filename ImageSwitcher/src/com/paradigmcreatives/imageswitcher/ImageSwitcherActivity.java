@@ -32,6 +32,7 @@ public class ImageSwitcherActivity extends Activity implements ViewFactory {
 				android.R.anim.fade_in));
 		iSwitcher.setInAnimation(AnimationUtils.loadAnimation(this,
 				android.R.anim.fade_out));
+		
 		gallery = (Gallery) findViewById(R.id.gallery01);
 		gallery.setAdapter(new ImageAdapter(this));
 		gallery.setOnItemClickListener(new OnItemClickListener() {

@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save stuff to the SD:" />
+
+    <EditText
+        android:id="@+id/filename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/savePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save A Picture" />
+
+    <Button
+        android:id="@+id/saveSound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save A Sound" />
+
+</LinearLayout>

@@ -38,6 +38,7 @@ public class DynamicallyAddItemActivity extends Activity {
 				mEditText.setText("");				
 				 mAdapterDemo = new CustomAdapterDemo(DynamicallyAddItemActivity.this, list);
 			       mListView.setAdapter(mAdapterDemo);
+			       
 				
 			}
 		});

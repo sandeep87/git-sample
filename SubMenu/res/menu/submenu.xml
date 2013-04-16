@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/messages"
+        android:orderInCategory="1"
+        android:title="@string/messages">
+        <menu>
+            <item
+                android:id="@+id/composemessage"
+                android:title="Compose Message"/>
+            <item
+                android:id="@+id/inbox"
+                android:title="Inbox"/>
+            <item
+                android:id="@+id/sentbox"
+                android:title="SentBox"/>
+            <item
+                android:id="@+id/drafts"
+                android:title="Drafts"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/contacts"
+        android:orderInCategory="2"
+        android:title="@string/contacts">
+        <menu>
+            <item
+                android:id="@+id/addcontact"
+                android:title="Add Contact"/>
+            <item
+                android:id="@+id/editcontact"
+                android:title="Edit Contact"/>
+            <item
+                android:id="@+id/speeddial"
+                android:title="SpeedDial"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/calllog"
+        android:orderInCategory="3"
+        android:title="@string/calllog">
+        <menu>
+            <item
+                android:id="@+id/missedcall"
+                android:title="Missed Call"/>
+            <item
+                android:id="@+id/receivedcall"
+                android:title="Received Call"/>
+            <item
+                android:id="@+id/dialledhistory"
+                android:title="Dialled History"/>
+            <item
+                android:id="@+id/callregistry"
+                android:title="Call Registry"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/gallery"
+        android:orderInCategory="4"
+        android:title="@string/gallery">
+        <menu>
+            <item
+                android:id="@+id/music"
+                android:title="Music"/>
+            <item
+                android:id="@+id/photos"
+                android:title="Photos"/>
+            <item
+                android:id="@+id/videos"
+                android:title="Videos"/>
+            <item
+                android:id="@+id/receivedfiles"
+                android:title="Received Files"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/settings"
+        android:orderInCategory="5"
+        android:title="@string/settings">
+        <menu>
+            <item
+                android:id="@+id/profiles"
+                android:title="Profiles"/>
+            <item
+                android:id="@+id/tonesettings"
+                android:title="Tonesettings"/>
+            <item
+                android:id="@+id/messagesettings"
+                android:title="Message Settings"/>
+            <item
+                android:id="@+id/networksettings"
+                android:title="Network Settings"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/games"
+        android:orderInCategory="6"
+        android:title="@string/games">
+        <menu>
+            <item
+                android:id="@+id/newgame"
+                android:title="New Game"/>
+            <item
+                android:id="@+id/highscore"
+                android:title="High Score"/>
+            <item
+                android:id="@+id/exit"
+                android:title="Exit"/>
+        </menu>
+    </item>
+
+</menu>

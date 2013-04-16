@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, DateAndTimePickerActivity!</string>
+    <string name="app_name">DateAndTimePicker</string>
+    <string name="set_date">set_date</string>
+    <string name="set_time">set_time</string>
+
+</resources>

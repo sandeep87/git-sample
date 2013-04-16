@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, CustomDialogDemoActivity!</string>
+    <string name="app_name">CustomDialogDemo</string>
+    <string name="ctext">Custom_dialog</string>
+    <string name="restartgame">Restart_Game</string>
+
+</resources>

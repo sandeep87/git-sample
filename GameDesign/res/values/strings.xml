@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Enter the user details to play the game</string>
+    <string name="app_name">GameDesign</string>
+
+</resources>

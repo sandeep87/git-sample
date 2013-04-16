@@ -17,13 +17,14 @@ public class SecondActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second);
-		
+				
 		newgame_btn = (Button) findViewById(R.id.newgame_id);
 		newgame_btn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(SecondActivity.this,ForthActivity.class);
+				
+				Intent intent = new Intent(SecondActivity.this,ThirdActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -32,7 +33,7 @@ public class SecondActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(SecondActivity.this,ForthActivity.class);
+				Intent intent = new Intent(SecondActivity.this,ThirdActivity.class);
 				startActivity(intent);
 				
 			}

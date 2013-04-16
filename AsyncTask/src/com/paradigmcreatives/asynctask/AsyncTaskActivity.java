@@ -97,7 +97,7 @@ public class AsyncTaskActivity extends Activity {
 
 	public void readWebpage() {
 		DownloadWebpage task = new DownloadWebpage();
-		task.execute(new String[] { "http://developer.android.com" });
+		task.execute(new String[] { "http://Gaana.com" });
 
 	}
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, AlarmDemoActivity!</string>
+    <string name="app_name">AlarmDemo</string>
+    <string name="details">Developers of Android are no doubt familiar with the Toast class, which displays a little pop-up containing whatever message you want to display to the user. However, the Toast pop-up will automatically dismiss itself after a while, making it useful as a tool to provide timely feedback to the user (such as informing the user that a file has been saved successfully), but not a really good tool to use for some asynchronous action </string>
+
+</resources>

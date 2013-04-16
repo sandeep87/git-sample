@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContentPro" >
+    <Button
+        android:id="@+id/CreateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_create" 
+        android:layout_below="@+id/ViewButton"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"/>
+    <Button
+        android:id="@+id/DeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_delete" 
+        android:layout_below="@+id/CreateButton"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"/>
+    <Button
+        android:id="@+id/UpdateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_update" 
+        android:layout_below="@+id/DeleteButton"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"/>
+
+    <Button
+        android:id="@+id/ViewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:text="@string/bt_text" />
+
+</RelativeLayout>
