@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="actor_responses">
+        <item>Sylvester Gardenzio Stallone ( born July 6, 1946), commonly known as Sylvester Stallone, and nicknamed Sly Stallone, is an American actor, filmmaker, screenwriter, film director and occasional painter.Stallone is known for his machismo and Hollywood action roles. </item>
+        <item>Aamir Khan (born March 14, 1965) is an Indian film actor, director, and producer who has established himself as one of the leading actors of Hindi cinema.</item>
+        <item>Kareena Kapoor (born on 21 September 1980),often informally referred to as Bebo, is an Indian actress who appears in Bollywood films.</item>
+        <item>Salman Khan (born on 27 December 1965) is an Indian film actor. He has starred in more than 80 Hindi films.</item>
+        <item>Priyanka Chopra (born 18 July 1982)is an Indian actress, singer-songwriter and former Miss World. Before starting her acting career, she worked as a model and gained fame after winning the Miss World title in 2000.</item>
+    </string-array>
+    <string-array name="movie_responses">
+        <item>A romantic story about a hilarious and dramatic summer in the lives of three strangers in London who inadvertently become best friends and start living together. Everything seems to be perfect until love comes to town. It is a contemporary story about the interplay between friendship and more.</item>
+        <item>Players is a 2012 Indian action thriller heist film directed by duo Abbas-Mustan and jointly produced by Viacom 18 Motion Pictures and Burmawala Partners. The film has an all-star ensemble cast, featuring Abhishek Bachchan, Sonam Kapoor, Neil Nitin Mukesh, Bipasha Basu, Bobby Deol, Sikander Kher and Omi Vaidya in the lead roles, while Aftab Shivdasani appears in a cameo.</item>
+        <item>Over the Top is a 1987 action drama film starring Sylvester Stallone. It was produced and directed by Menahem Golan, and its screenplay was written by Stirling Silliphant and Stallone. The original music score was composed by Giorgio Moroder.</item>
+        <item>Rocky is a boxing saga of popular films all written by and starring Sylvester Stallone, who plays the character Rocky Balboa. The films are, by order of release date: Rocky (1976), Rocky II (1979), Rocky III (1982), Rocky IV (1985), Rocky V (1990) and Rocky Balboa (2006).</item>
+        <item>Rambo is an action film series based on the David Morrell novel First Blood and starring Sylvester Stallone as John Rambo, a troubled Vietnam War veteran and former Green Beret who is skilled in many aspects of survival, weaponry, hand to hand combat and guerrilla warfare.</item>
+    </string-array>
+
+</resources>
